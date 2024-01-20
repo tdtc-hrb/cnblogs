@@ -197,6 +197,31 @@
     
         <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_openssl/">How To Install OpenSSL in RHEL</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>RHEL Community Version Alma Linux / Rocky Linux Prepare Install development tool:
+# dnf group install &#39;Development Tools&#39; Install dependencies:
+# dnf install perl-core zlib-devel -y down latest OpenSSL $mkdir openssl-1.1.1 $curl --progress https://www.openssl.org/source/openssl-1.1.1q.tar.gz | tar xz -C ./openssl-1.1.1 --strip-components 1 setup $cd openssl-1.1.1 RHEL8 ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib RHEL7 ./config --prefix=/usr --shared make &amp;&amp; install $make Root permission Required:
+$sudo make install RHEL8 # mv /bin/openssl /bin/openssl.backup# cp /usr/local/ssl/bin/openssl /bin/openssl test: <a class="read-more" href="/cnblogs/post/ops_openssl/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-10-05T08:38:08&#43;08:00">
+            5 Oct 2022
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/ops_openjdk_rhel/">设置OpenJDK</a></h2>
     </header>
     <section class="post-excerpt">
@@ -430,41 +455,6 @@ Header #include &lt;QObject&gt; class Worker : public QObject { Q_OBJECT public:
         
         <time class="post-date" datetime="2021-11-25T22:08:08&#43;08:00">
             25 Nov 2021
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-hello/">QT6简单demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>使用VS2019创建
-LTS: v6.2
-QT VS Tools的设置 设置qmake的位置 qt_x64 = C:\Qt\6.2.1\msvc2019_64 第一个为32位；第二个为64位
-创建Widget工程 设置工程 support c++17 Configuration Properties &gt; C/C++ &gt; Language
-c++ language standard: c++17
-support cplusplus Configuration Properties &gt; C/C++ &gt; Command Line property page.
-Add /Zc:__cplusplus to the Additional options: pane.
-添加QT对象 使用UI设计器 UI 设计器 拖拽“Push Button”，并修改他们（窗体和按钮）的属性：
-QMainWindow
-QObject:ObjectName= QtHelloClass QWidget
-QPushButton
-btnHello:ObjectName= btnHello QAbstractButton:Text= Click Me 设置qt对象响应事件 首先，声明方法；然后，编写方法；最后，关联qt对象。
-声明 注意： 声明是在slots下！
-private slots: void helloQT(); 方法 引用QMessageBox <a class="read-more" href="/cnblogs/post/qt-hello/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2021-11-20T06:08:08&#43;08:00">
-            20 Nov 2021
         </time>
     </footer>
 </article>

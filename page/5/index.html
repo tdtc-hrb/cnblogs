@@ -197,6 +197,33 @@
     
         <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-lwip-ethernet/">lwIP移植笔记 - ethernet篇</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>ethernet的移植工作，主要是“填空”ethernetif.c的过程！ （PS. 再一次感谢Adam Dunkels大侠的无私工作！以及对他的敬意！）
+头文件 ethernetif.h
+#ifndef ETHERNETIF_H_INCLUDED #define ETHERNETIF_H_INCLUDED #include &#34;lwip/netif.h&#34; #include &#34;lwip/ip_addr.h&#34; #include &#34;lwip/err.h&#34; #include &#34;netif/etharp.h&#34; err_t ethernetif_init(struct netif* netif); void ethernetif_input(struct netif* netif); #endif /* ETHERNETIF_H_INCLUDED */ ethernet interface ethernetif.c位置: ../src/netif
+初始化（低级） static void low_level_init(struct netif* netif) 发送（低级） static err_t low_level_output(struct netif* netif, struct pbuf* p) 接收（低级） static struct pbuf* low_level_input(struct netif* netif) 0. define hardware 根据硬件的不同！
+#include &#34;enc28j60.h&#34; ##　1. 初始化（低级）
+（1） 初始化MAC地址 netif-&gt;hwaddr[0] = 0x00; netif-&gt;hwaddr[1] = 0x04; netif-&gt;hwaddr[2] = 0x25; netif-&gt;hwaddr[3] = 0x1C; netif-&gt;hwaddr[4] = 0xA0; netif-&gt;hwaddr[5] = 0x02; （2） 初始化网卡 enc28j60Init(netif-&gt;hwaddr); （3）中断使能 如果使用RTOS，则设置MCU的SPI中断使能； 例如在CM0/3/4中： <a class="read-more" href="/cnblogs/post/e-lwip-ethernet/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-25T10:08:08&#43;08:00">
+            25 Jul 2020
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/asp-base/">3小时搞定asp.net 5.0</a></h2>
     </header>
     <section class="post-excerpt">
@@ -451,33 +478,6 @@ D:\etc\cas\jetty\thekeystore 3. build alter context path(pom.xml):
 
         
         <time class="post-date" datetime="2020-05-16T12:08:08&#43;08:00">
-            16 May 2020
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/cas-server-config/">cas server设置</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>Tomcat: V8.5.x Java: 1.8 x64 MySQL: 5.5.x+ OS: Win10 x64 下载部署包 使用gradle 的repo最高只支持gradle V4.3！
-0. clone git clone https://github.com/apereo/cas-gradle-overlay-template.git 1. set gradle 1) extract gradle-4.10.3-bin.zip
-2) set system variable $PATH=$PATH;%GRADLE_HOME%\bin 2. build war File location: cas\build\libs\cas.war
-1) config file gradle.properties
-cas.version=5.3.2 =&gt; cas.version=5.3.15.1 gradle.version=4.8 =&gt; gradle.version=4.10.3 springboot.version=1.5.14.RELEASE =&gt; springboot.version=1.5.18.RELEASE 2) build cd cas-gradle-overlay-template $gradle build II. Run 0. key/certificate 1) genkey info: -dname &ldquo;CN=localhost,OU=test.com,O=test,L=WH,ST=HB,C=CN&rdquo;
-keytool -genkey -keyalg RSA -alias thekeystore -keypass changeit -storepass changeit -keysize 2048 -keystore e:/etc/cas/thekeystore 2) export keytool -export -alias thekeystore -file e:/etc/cas/cas5311. <a class="read-more" href="/cnblogs/post/cas-server-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-05-16T10:08:08&#43;08:00">
             16 May 2020
         </time>
     </footer>

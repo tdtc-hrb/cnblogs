@@ -164,6 +164,41 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-hello/">QT6简单demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>使用VS2019创建
+LTS: v6.2
+QT VS Tools的设置 设置qmake的位置 qt_x64 = C:\Qt\6.2.1\msvc2019_64 第一个为32位；第二个为64位
+创建Widget工程 设置工程 support c++17 Configuration Properties &gt; C/C++ &gt; Language
+c++ language standard: c++17
+support cplusplus Configuration Properties &gt; C/C++ &gt; Command Line property page.
+Add /Zc:__cplusplus to the Additional options: pane.
+添加QT对象 使用UI设计器 UI 设计器 拖拽“Push Button”，并修改他们（窗体和按钮）的属性：
+QMainWindow
+QObject:ObjectName= QtHelloClass QWidget
+QPushButton
+btnHello:ObjectName= btnHello QAbstractButton:Text= Click Me 设置qt对象响应事件 首先，声明方法；然后，编写方法；最后，关联qt对象。
+声明 注意： 声明是在slots下！
+private slots: void helloQT(); 方法 引用QMessageBox <a class="read-more" href="/cnblogs/post/qt-hello/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-11-20T06:08:08&#43;08:00">
+            20 Nov 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/sqlite.net.core/">SQLite在.net core的demo</a></h2>
     </header>
     <section class="post-excerpt">
@@ -390,33 +425,6 @@ $ docker --version Docker compose 1. down sudo curl -L &#34;https://github. <a c
         
         <time class="post-date" datetime="2020-10-13T08:08:08&#43;08:00">
             13 Oct 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-lwip-ethernet/">lwIP移植笔记 - ethernet篇</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>ethernet的移植工作，主要是“填空”ethernetif.c的过程！ （PS. 再一次感谢Adam Dunkels大侠的无私工作！以及对他的敬意！）
-头文件 ethernetif.h
-#ifndef ETHERNETIF_H_INCLUDED #define ETHERNETIF_H_INCLUDED #include &#34;lwip/netif.h&#34; #include &#34;lwip/ip_addr.h&#34; #include &#34;lwip/err.h&#34; #include &#34;netif/etharp.h&#34; err_t ethernetif_init(struct netif* netif); void ethernetif_input(struct netif* netif); #endif /* ETHERNETIF_H_INCLUDED */ ethernet interface ethernetif.c位置: ../src/netif
-初始化（低级） static void low_level_init(struct netif* netif) 发送（低级） static err_t low_level_output(struct netif* netif, struct pbuf* p) 接收（低级） static struct pbuf* low_level_input(struct netif* netif) 0. define hardware 根据硬件的不同！
-#include &#34;enc28j60.h&#34; ##　1. 初始化（低级）
-（1） 初始化MAC地址 netif-&gt;hwaddr[0] = 0x00; netif-&gt;hwaddr[1] = 0x04; netif-&gt;hwaddr[2] = 0x25; netif-&gt;hwaddr[3] = 0x1C; netif-&gt;hwaddr[4] = 0xA0; netif-&gt;hwaddr[5] = 0x02; （2） 初始化网卡 enc28j60Init(netif-&gt;hwaddr); （3）中断使能 如果使用RTOS，则设置MCU的SPI中断使能； 例如在CM0/3/4中： <a class="read-more" href="/cnblogs/post/e-lwip-ethernet/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-07-25T10:08:08&#43;08:00">
-            25 Jul 2020
         </time>
     </footer>
 </article>

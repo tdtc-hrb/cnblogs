@@ -30,6 +30,13 @@
       <description>关于Php:&#xA;Non Thread Safe 和 Thread Safe： 使用Apache时，用“TS”，否则没有“php(7/8)apache2_4.dll”&#xA;VC Redist VS16 / VC15 / VC14&#xA;About Apache v2.4.56+:&#xA;OpenSSL When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.&#xA;Apache配置 路径 php-apache 重写 路径 网站根目录 替换“D:/progFiles/Apache24/htdocs”为自己使用的路径 程序 替换“D:/progFiles/Apache24/”为自己Apache2.4的路径； php-apache 在配置文件(conf/httpd.conf)最后增加&#xA;PHPv8.0 PHPIniDir &amp;#34;D:/progFiles/php8.0&amp;#34; LoadModule php_module &amp;#34;D:/progFiles/php-8.0/php8apache2_4.dll&amp;#34; PHPV7.1 PHPIniDir &amp;#34;D:/progFiles/php7.1&amp;#34; LoadModule php7_module &amp;#34;D:/progFiles/php7.1/php7apache2_4.dll&amp;#34; 重写 a.打开模块 LoadModule rewrite_module modules/mod_rewrite.so b.允许重写 AllowOverride All 配置PHP(php.ini) CodeIgniter When less than Php v8.1, use the CodeIgniter Symfony When greater than Php v8.</description>
     </item>
     <item>
+      <title>Windows的一些设置</title>
+      <link>https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq4/</link>
+      <pubDate>Sat, 18 Nov 2023 08:08:08 +0800</pubDate>
+      <guid>https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq4/</guid>
+      <description>Task Manager Task manager doesn’t update resources on real time&#xA;At the top, click View. Navigate to Update speed. If it’s paused, then click Normal. MS-Edge Regardless of Microsoft’s reasoning, you now know how to toggle the sidebar on or off in Edge 119. Just head to Settings &amp;gt; Sidebar &amp;gt; Copilot &amp;gt; Always Show Sidebar. Alternatively, you can use the Ctrl + Shift + / shortcut.&#xA;图标显示不正常 方法一 删除 IconCache.</description>
+    </item>
+    <item>
       <title>QQ mini browser</title>
       <link>https://tdtc-hrb.github.io/cnblogs/post/qt-webview/</link>
       <pubDate>Wed, 18 Oct 2023 23:38:08 +0800</pubDate>
