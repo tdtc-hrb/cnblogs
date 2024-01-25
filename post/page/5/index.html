@@ -164,6 +164,30 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-ubuntu-config/">docker(ce) on Ubuntu</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>Note:
+# - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command $ - requires given linux commands to be executed as a regular non-privileged user Docker CE 1. install $sudo apt install docker.io 2. enable $ sudo systemctl start docker $ sudo systemctl enable docker test:
+$ docker --version Docker compose 1. down sudo curl -L &#34;https://github. <a class="read-more" href="/cnblogs/post/docker_ce-ubuntu-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-10-13T08:08:08&#43;08:00">
+            13 Oct 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-lwip-ethernet/">lwIP移植笔记 - ethernet篇</a></h2>
     </header>
     <section class="post-excerpt">
@@ -415,36 +439,6 @@ Configure ZooKeeper Common Configuration Edit the /etc/zookeeper/conf/zoo.cfg fi
 
         
         <time class="post-date" datetime="2020-05-16T18:08:08&#43;08:00">
-            16 May 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/cas-client-config/">cas client设置</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>The client and server are the same thekeystore
-cas client version: 3.5.1(cas-client-core-3.5.1)
-git clone https://gitee.com/xiaobin80/cas-sample-java-webapp 1. config web.xml(src\main\webapp\WEB-INF)
-1) CAS Single Sign Out Filter https://localhost:8443/cas 2) CAS Authentication Filter https://localhost:8443/cas/login 3) CAS Validation Filter https://localhost:8443/cas 4) server name localhost 2. keystore copy
-/etc/cas/jetty/thekeystore to
-The disk root directory of the application. For example: my application:
-D:\projects\cas-sample-java-webapp then thekeystore file:
-D:\etc\cas\jetty\thekeystore 3. build alter context path(pom.xml):
-&lt;webApp&gt; &lt;contextPath&gt;/loginInfo&lt;/contextPath&gt; &lt;overrideDescriptor&gt;${basedir}/etc/jetty/web.xml&lt;/overrideDescriptor&gt; &lt;/webApp&gt; mvn clean package jetty:run-forked 1) Run directly mvn jetty:run-forked 4. <a class="read-more" href="/cnblogs/post/cas-client-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-05-16T12:08:08&#43;08:00">
             16 May 2020
         </time>
     </footer>

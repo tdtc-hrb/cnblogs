@@ -164,6 +164,32 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_keepalived-v2/">安装配置Keepalived - v2</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>OS: AlmaLinux/RockyLinux minimal(VBox v6.1.38)
+Virtual Box Network configure:
+Attached to Bridged Adapter Advanced promiscuous mode: Allow All 一、安装 prepare tool:
+RHEL7 #yum install gcc make autoconf automake openssl-devel libnl3-devel \ iptables-devel ipset-devel net-snmp-devel libnfnetlink-devel file-devel \ glib2-devel pcre2-devel libnftnl-devel libmnl-devel systemd-devel kmod-devel RHEL8 powertools: #dnf --enablerepo=powertools install ipset-devel libnfnetlink-devel file-devel libnftnl-devel kmod-devel pcre2-devel none:
+#dnf install gcc make autoconf automake openssl-devel libnl3-devel \ iptables-devel net-snmp-devel \ glib2-devel libmnl-devel systemd-devel git LVS manager: <a class="read-more" href="/cnblogs/post/ops_keepalived-v2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-10-06T08:38:08&#43;08:00">
+            6 Oct 2022
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/ops_openssl/">How To Install OpenSSL in RHEL</a></h2>
     </header>
     <section class="post-excerpt">
@@ -393,35 +419,6 @@ for QML C:\Qt\Qt5.12.11\5.12.11\msvc2017\bin\windeployqt --qmldir C:\Users\tdtc\
         
         <time class="post-date" datetime="2021-11-28T08:18:08&#43;08:00">
             28 Nov 2021
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-thread/">QT5简单thread</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>IDE: VS2019 V16.11 QT: V6.2 Project 使用Qt Visual Studio Tools创建, 以下简称qt tools。
-install qt tools Tools -&gt; Extensions and Updates 选择Online, 输入&quot;Qt Visual Studio Tools&quot;
-Create Qt Project File -&gt; New -&gt; Project Qt Console Application
-Add class 点击“工程名”右键, Add -&gt; Class Class name: Controller Base Class: QObject
-初始状态的Controller类: Controller.h
-#pragma once #include &lt;qobject.h&gt; class Controller : public QObject { }; Controller.cpp
-#include &#34;Controller.h&#34; Worker 此Worker使用的“easy worker”的案例.
-Header #include &lt;QObject&gt; class Worker : public QObject { Q_OBJECT public: Worker(); ~Worker(); public slots: void process(); signals: void finished(); void error(QString err); private: // add your variables here }; Class #include &#34;Worker. <a class="read-more" href="/cnblogs/post/qt-thread/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2021-11-25T22:08:08&#43;08:00">
-            25 Nov 2021
         </time>
     </footer>
 </article>

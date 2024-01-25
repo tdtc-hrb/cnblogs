@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN">
 <head>
 
     <meta charset="utf-8" />
@@ -13,7 +13,7 @@
 
 
 <meta name="twitter:title" content="Windows的一些安装"/>
-<meta name="twitter:description" content="dotnet dvd install, Visual Studio 的下载"/>
+<meta name="twitter:description" content="dotnet, Visual Studio 的下载"/>
 <meta name="twitter:site" content="@"/>
 
 
@@ -27,9 +27,9 @@
     
 
     
-    <meta property="og:description" content="dotnet dvd install, Visual Studio 的下载" />
+    <meta property="og:description" content="dotnet, Visual Studio 的下载" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2024-01-07T08:08:08&#43;08:00" />
+    <meta property="article:published_time" content="2024-01-18T08:08:08&#43;08:00" />
 
     
     
@@ -37,7 +37,7 @@
     <title>Windows的一些安装 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
 
     
-    <meta name="description" content="dotnet dvd install, Visual Studio 的下载" />
+    <meta name="description" content="dotnet, Visual Studio 的下载" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -92,18 +92,18 @@
     },
     "headline": "Windows的一些安装",
     "name": "Windows的一些安装",
-    "wordCount":  185 ,
-    "timeRequired": "PT1M",
+    "wordCount":  278 ,
+    "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2/",
-    "datePublished": "2024-01-07T08:08Z",
-    "dateModified": "2024-01-07T08:08Z",
+    "datePublished": "2024-01-18T08:08Z",
+    "dateModified": "2024-01-18T08:08Z",
     
     
-    "description": "dotnet dvd install, Visual Studio 的下载",
+    "description": "dotnet, Visual Studio 的下载",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2/"
@@ -164,12 +164,12 @@
 
     <header class="post-header">
         <h1 class="post-title">Windows的一些安装</h1>
-        <small>dotnet dvd install, Visual Studio 的下载</small>
+        <small>dotnet, Visual Studio 的下载</small>
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2024-01-07T08:08:08&#43;08:00">
-            Jan 7, 2024
+          <time class="post-date" datetime="2024-01-18T08:08:08&#43;08:00">
+            Jan 18, 2024
           </time>
         
          
@@ -177,9 +177,9 @@
     </header>
 
     <section class="post-content">
-      <h1 id="visual-studio-的下载">Visual Studio 的下载</h1>
+      <h1 id="visual-studio">Visual Studio</h1>
 <ul>
-<li>exec name <br>
+<li>exec name
 在主要维护周期, 名字是:</li>
 </ul>
 <pre tabindex="0"><code>x_community
@@ -201,27 +201,25 @@
 <ul>
 <li>Mainstream</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ps" data-lang="ps"><span style="display:flex;"><span><span style="color:#a6e22e">.\vs_community.exe</span> <span style="color:#a6e22e">--layout</span> <span style="color:#a6e22e">D:\win10soft\vs2019</span> <span style="color:#a6e22e">`</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">--add</span> <span style="color:#a6e22e">Microsoft.VisualStudio.Component.CoreEditor</span> <span style="color:#a6e22e">`</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">...</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">--lang</span> <span style="color:#a6e22e">en-US</span>
-</span></span></code></pre></div><ul>
+<pre tabindex="0"><code>.\vs_community.exe --layout D:\win10soft\vs2019 `
+--add Microsoft.VisualStudio.Component.CoreEditor `
+      ...
+--lang en-US
+</code></pre><ul>
 <li>Extended</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ps" data-lang="ps"><span style="display:flex;"><span><span style="color:#a6e22e">.\vs_Professional.exe</span> <span style="color:#a6e22e">--layout</span> <span style="color:#a6e22e">D:\win10soft\vs2017</span> <span style="color:#a6e22e">`</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">--add</span> <span style="color:#a6e22e">Microsoft.VisualStudio.Component.CoreEditor</span> <span style="color:#a6e22e">`</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">...</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">--lang</span> <span style="color:#a6e22e">en-US</span>
-</span></span></code></pre></div><p>所有的行尾 + 空格 +</p>
-<pre tabindex="0"><code> `
-</code></pre><p>尾行除外。</p>
-<h3 id="lifecycle">lifecycle</h3>
+<pre tabindex="0"><code>.\vs_Professional.exe --layout D:\win10soft\vs2017 `
+--add Microsoft.VisualStudio.Component.CoreEditor `
+      ...
+--lang en-US
+</code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
+<h2 id="lifecycle">lifecycle</h2>
 <ul>
-<li><a href="https://learn.microsoft.com/en-us/lifecycle/products/visual-studio-2022">Visual Studio 2022</a>
+<li><a href="https://learn.microsoft.com/en-us/lifecycle/products/visual-studio-2022">Visual Studio 2022</a> <br>
 Mainstream End Date: Jan 12, 2027</li>
-<li><a href="https://learn.microsoft.com/en-us/lifecycle/products/visual-studio-2019">Visual Studio 2019</a>
+<li><a href="https://learn.microsoft.com/en-us/lifecycle/products/visual-studio-2019">Visual Studio 2019</a> <br>
 Mainstream End Date: Apr 9, 2024</li>
-<li><a href="https://learn.microsoft.com/en-us/lifecycle/products/visual-studio-2017">Visual Studio 2017</a>
+<li><a href="https://learn.microsoft.com/en-us/lifecycle/products/visual-studio-2017">Visual Studio 2017</a> <br>
 Mainstream End Date: Apr 12, 2022</li>
 </ul>
 <h2 id="components">components</h2>
@@ -248,7 +246,6 @@ Mainstream End Date: Apr 12, 2022</li>
     &#34;Microsoft.VisualStudio.Component.VC.ATL&#34;,
     &#34;Microsoft.VisualStudio.Component.VC.ATLMFC&#34;,
     &#34;Microsoft.Component.VC.Runtime.UCRTSDK&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.140&#34;,
     &#34;Microsoft.VisualStudio.Workload.NativeDesktop&#34;
 </code></pre><ul>
 <li>Visual Studio 2019</li>
@@ -270,18 +267,18 @@ Mainstream End Date: Apr 12, 2022</li>
     &#34;Microsoft.VisualStudio.Component.VC.ATL&#34;,
     &#34;Microsoft.VisualStudio.Component.VC.ATLMFC&#34;,
     &#34;Microsoft.Component.VC.Runtime.UCRTSDK&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.140&#34;,
     &#34;Microsoft.VisualStudio.Workload.NativeDesktop&#34;
 </code></pre><ul>
 <li>Visual Studio 2022</li>
 </ul>
 <blockquote>
-<p>16.8</p>
+<p>16.8
+Most of the download options are the same as Visual Studio 2019; only the Windows SDK is different.</p>
 </blockquote>
-<pre tabindex="0"><code>...
+<pre tabindex="0"><code>        ...
     &#34;Microsoft.VisualStudio.Component.Windows11SDK.22621&#34;,
-...
-</code></pre><h4 id="default-windows-sdk">default Windows SDK</h4>
+        ...
+</code></pre><h3 id="default-windows-sdk">default Windows SDK</h3>
 <ul>
 <li>vs2017</li>
 </ul>
@@ -297,21 +294,42 @@ Mainstream End Date: Apr 12, 2022</li>
 </ul>
 <pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows11SDK.22621
 </code></pre><p>win22h2</p>
-<h4 id="c11-and-c17httpslearnmicrosoftcomen-uscppoverviewinstall-c17-supportviewmsvc-160"><a href="https://learn.microsoft.com/en-us/cpp/overview/install-c17-support?view=msvc-160">C++11 and C++17</a></h4>
-<pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows10SDK.20348
-</code></pre><h2 id="dotnet-dvd-install">dotnet dvd install</h2>
-<p><a href="https://www.askvg.com/how-to-install-microsoft-net-framework-3-5-offline-in-windows-8-without-internet-connection/">How to Install Microsoft .NET Framework 3.5 Offline in Windows 8 and Later without Internet Connection?</a></p>
+<h1 id="dotnet">Dotnet</h1>
+<ul>
+<li>install .net 3.5</li>
+<li>add dotnet env</li>
+</ul>
+<h2 id="how-to-install-microsoft-net-framework-35-offline-in-windows-8-and-later-without-internet-connectionhttpswwwaskvgcomhow-to-install-microsoft-net-framework-3-5-offline-in-windows-8-without-internet-connection"><a href="https://www.askvg.com/how-to-install-microsoft-net-framework-3-5-offline-in-windows-8-without-internet-connection/">How to Install Microsoft .NET Framework 3.5 Offline in Windows 8 and Later without Internet Connection?</a></h2>
 <p>first, mount windows installation DVD(ISO)</p>
 <ul>
 <li>DVD</li>
 </ul>
 <pre tabindex="0"><code>D:
-</code></pre><p>Then, execute</p>
-<blockquote>
-<p>PowerShell as Administrator</p>
-</blockquote>
+</code></pre><p>Then, execute PowerShell as Administrator</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ps" data-lang="ps"><span style="display:flex;"><span><span style="color:#a6e22e">dism</span> /online /enable-feature /featurename:NetFx3 /All /Source:D:\sources\sxs /LimitAccess
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="desktop-env">desktop env</h2>
+<pre tabindex="0"><code>An error occurred trying to load the page.
+Could not load file or assembly &#39;Microsoft.VSDesigner, Version=x.x.x.x, Culture=neutral, PublicKeyToken=y&#39; or one of its dependencies. 
+The system cannot find the file specified.
+</code></pre><p>Control Panel -&gt; Add/Remove Programs <br>
+right click &ldquo;Visual Studio 20xx&rdquo; -&gt; Change <br>
+Check &ldquo;.NET desktop development&rdquo;  and then in the options bar on the right:</p>
+<ul>
+<li>.NET Framework 4 - 4.6 development tools</li>
+<li>Just-In-Time Debugger</li>
+</ul>
+<h3 id="down-options">down options</h3>
+<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.Roslyn.LanguageServices&#34;,
+    &#34;Microsoft.VisualStudio.Component.PortableLibrary&#34;,
+    &#34;Microsoft.Net.Component.4.TargetingPack&#34;,
+    &#34;Microsoft.Net.Component.4.5.TargetingPack&#34;,
+    &#34;Microsoft.Net.Component.4.5.1.TargetingPack&#34;,
+    &#34;Microsoft.Net.Component.4.5.2.TargetingPack&#34;,
+    &#34;Microsoft.Net.Component.4.6.TargetingPack&#34;,
+    &#34;Microsoft.Net.ComponentGroup.TargetingPacks.Common&#34;,
+    &#34;Microsoft.VisualStudio.Component.ManagedDesktop.Prerequisites&#34;,
+    &#34;Microsoft.VisualStudio.Workload.ManagedDesktop&#34;
+</code></pre>
     </section>
 
 
@@ -362,17 +380,10 @@ Mainstream End Date: Apr 12, 2022</li>
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/java-jni-gcc/">
-          <section class="post">
-              <h2>jni - gcc</h2>
-              
-          </section>
-      </a>
   
-  
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/php-devenv-win/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ror_getstarted/">
           <section class="post">
-              <h2>Windows搭建PHP环境</h2>
+              <h2>开始Ruby On Rails</h2>
           </section>
       </a>
   

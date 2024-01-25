@@ -197,6 +197,35 @@
     
         <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-thread/">QT5简单thread</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>IDE: VS2019 V16.11 QT: V6.2 Project 使用Qt Visual Studio Tools创建, 以下简称qt tools。
+install qt tools Tools -&gt; Extensions and Updates 选择Online, 输入&quot;Qt Visual Studio Tools&quot;
+Create Qt Project File -&gt; New -&gt; Project Qt Console Application
+Add class 点击“工程名”右键, Add -&gt; Class Class name: Controller Base Class: QObject
+初始状态的Controller类: Controller.h
+#pragma once #include &lt;qobject.h&gt; class Controller : public QObject { }; Controller.cpp
+#include &#34;Controller.h&#34; Worker 此Worker使用的“easy worker”的案例.
+Header #include &lt;QObject&gt; class Worker : public QObject { Q_OBJECT public: Worker(); ~Worker(); public slots: void process(); signals: void finished(); void error(QString err); private: // add your variables here }; Class #include &#34;Worker. <a class="read-more" href="/cnblogs/post/qt-thread/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-11-25T22:08:08&#43;08:00">
+            25 Nov 2021
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/qt-hello/">QT6简单demo</a></h2>
     </header>
     <section class="post-excerpt">
@@ -434,30 +463,6 @@ Pre IDE Arduino CC(.zip文件) Atmel Studio 7 编码 我们使用使用AS7是为
         
         <time class="post-date" datetime="2021-03-06T05:08:08&#43;08:00">
             6 Mar 2021
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-ubuntu-config/">docker(ce) on Ubuntu</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>Note:
-# - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command $ - requires given linux commands to be executed as a regular non-privileged user Docker CE 1. install $sudo apt install docker.io 2. enable $ sudo systemctl start docker $ sudo systemctl enable docker test:
-$ docker --version Docker compose 1. down sudo curl -L &#34;https://github. <a class="read-more" href="/cnblogs/post/docker_ce-ubuntu-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-10-13T08:08:08&#43;08:00">
-            13 Oct 2020
         </time>
     </footer>
 </article>
