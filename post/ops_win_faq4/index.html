@@ -92,7 +92,7 @@
     },
     "headline": "Windows的一些设置",
     "name": "Windows的一些设置",
-    "wordCount":  213 ,
+    "wordCount":  212 ,
     "timeRequired": "PT1M",
     "inLanguage": {
       "@type": "Language",
@@ -197,7 +197,7 @@ Just head to Settings &gt; Sidebar &gt; Copilot &gt; Always Show Sidebar. Altern
 <h2 id="winre">WinRE</h2>
 <ul>
 <li><a href="https://answers.microsoft.com/en-us/windows/forum/all/kb5034441-update-problem-error-0x80070643/0821b603-9707-4587-9da5-e5809cac3779">update problem, error (0x80070643).</a> <br>
-need size: 750Mb</li>
+Required size: ≈750Mb</li>
 </ul>
 <h3 id="kb5028997httpssupportmicrosoftcomen-ustopickb5028997-instructions-to-manually-resize-your-partition-to-install-the-winre-update-400faa27-9343-461c-ada9-24c8229763bf"><a href="https://support.microsoft.com/en-us/topic/kb5028997-instructions-to-manually-resize-your-partition-to-install-the-winre-update-400faa27-9343-461c-ada9-24c8229763bf">KB5028997</a></h3>
 <ul>
@@ -232,8 +232,8 @@ delete partition override
 format quick fs=ntfs label=&#34;Windows RE&#34;
 exit
 </code></pre><h3 id="lost-winre">lost WinRE</h3>
-<p>if you format partition &ldquo;Recovery&rdquo; disk; or not disk partition &ldquo;Recovery&rdquo;.
-Then</p>
+<p>If you formatted, merged or deleted the &ldquo;Recovery&rdquo; disk partition,
+then:</p>
 <pre tabindex="0"><code>The Windows RE image was not found.
 </code></pre><p>set path and enable:</p>
 <pre tabindex="0"><code>reagentc /setreimage /path C:\Recovery\WindowsRE
