@@ -29,7 +29,7 @@
     
     <meta property="og:description" content="dotnet, Visual Studio 的下载" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2024-01-18T08:08:08&#43;08:00" />
+    <meta property="article:published_time" content="2024-04-18T08:08:08&#43;08:00" />
 
     
     
@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.123.4">
+    <meta name="generator" content="Hugo 0.125.1">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2/" />
 
@@ -92,15 +92,15 @@
     },
     "headline": "Windows的一些安装",
     "name": "Windows的一些安装",
-    "wordCount":  295 ,
+    "wordCount":  256 ,
     "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2/",
-    "datePublished": "2024-01-18T08:08Z",
-    "dateModified": "2024-01-18T08:08Z",
+    "datePublished": "2024-04-18T08:08Z",
+    "dateModified": "2024-04-18T08:08Z",
     
     
     "description": "dotnet, Visual Studio 的下载",
@@ -168,8 +168,8 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2024-01-18T08:08:08&#43;08:00">
-            Jan 18, 2024
+          <time class="post-date" datetime="2024-04-18T08:08:08&#43;08:00">
+            Apr 18, 2024
           </time>
         
          
@@ -177,7 +177,8 @@
     </header>
 
     <section class="post-content">
-      <h1 id="visual-studio">Visual Studio</h1>
+      <p>my.visualstudio.com 已经不提供 非订阅用户 的下载</p>
+<h1 id="visual-studio">Visual Studio</h1>
 <ul>
 <li>exec name
 在主要维护周期, 名字是:</li>
@@ -219,37 +220,13 @@
 Mainstream End Date: Jan 12, 2027</li>
 <li><a href="https://learn.microsoft.com/en-us/lifecycle/products/visual-studio-2019">Visual Studio 2019</a> <br>
 Mainstream End Date: Apr 9, 2024</li>
-<li><a href="https://learn.microsoft.com/en-us/lifecycle/products/visual-studio-2017">Visual Studio 2017</a> <br>
-Mainstream End Date: Apr 12, 2022</li>
 </ul>
 <h2 id="components">components</h2>
 <ul>
 <li>MFC/ATL</li>
 </ul>
-<p>Note:
-Using Windows 8.1 SDK is better compatible with Windows 7.</p>
 <h3 id="mfcatl">MFC/ATL</h3>
 <ul>
-<li>Visual Studio 2017</li>
-</ul>
-<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.CoreEditor&#34;,
-    &#34;Microsoft.VisualStudio.Workload.CoreEditor&#34;,
-    &#34;Microsoft.VisualStudio.Component.Roslyn.Compiler&#34;,
-    &#34;Microsoft.Component.MSBuild&#34;,
-    &#34;Microsoft.VisualStudio.Component.Static.Analysis.Tools&#34;,
-    &#34;Microsoft.VisualStudio.Component.TextTemplating&#34;,
-    &#34;Microsoft.VisualStudio.Component.Debugger.JustInTime&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.CoreIde&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.Redist.14.Latest&#34;,
-    &#34;Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.Tools.x86.x64&#34;,
-    &#34;Microsoft.VisualStudio.Component.Windows81SDK&#34;,
-    &#34;Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Win81&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.ATL&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.ATLMFC&#34;,
-    &#34;Microsoft.Component.VC.Runtime.UCRTSDK&#34;,
-    &#34;Microsoft.VisualStudio.Workload.NativeDesktop&#34;
-</code></pre><ul>
 <li>Visual Studio 2019</li>
 </ul>
 <pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.CoreEditor&#34;,
@@ -282,11 +259,6 @@ Most of the download options are the same as Visual Studio 2019; only the Window
         ...
 </code></pre><h3 id="windows-sdk">Windows SDK</h3>
 <p>default:</p>
-<ul>
-<li>vs2017</li>
-</ul>
-<pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows10SDK.17763
-</code></pre><p>win1809</p>
 <ul>
 <li>vs2019</li>
 </ul>
