@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.125.1">
+    <meta name="generator" content="Hugo 0.128.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2/" />
 
@@ -92,7 +92,7 @@
     },
     "headline": "Windows的一些安装",
     "name": "Windows的一些安装",
-    "wordCount":  256 ,
+    "wordCount":  296 ,
     "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
@@ -289,21 +289,78 @@ Could not load file or assembly &#39;Microsoft.VSDesigner, Version=x.x.x.x, Cult
 The system cannot find the file specified.
 </code></pre><p>Control Panel -&gt; Add/Remove Programs <br>
 right click &ldquo;Visual Studio 20xx&rdquo; -&gt; Change <br>
-Check &ldquo;.NET desktop development&rdquo;  and then in the options bar on the right:</p>
+Check &ldquo;.NET desktop development&rdquo;</p>
 <ul>
-<li>.NET Framework 4 - 4.6 development tools</li>
-<li>Just-In-Time Debugger</li>
+<li>vs2019</li>
 </ul>
-<h3 id="down-options">down options</h3>
-<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.Roslyn.LanguageServices&#34;,
-    &#34;Microsoft.VisualStudio.Component.PortableLibrary&#34;,
-    &#34;Microsoft.Net.Component.4.TargetingPack&#34;,
-    &#34;Microsoft.Net.Component.4.5.TargetingPack&#34;,
-    &#34;Microsoft.Net.Component.4.5.1.TargetingPack&#34;,
+<pre tabindex="0"><code>&#34;.NET development tools&#34;
+</code></pre><ul>
+<li>vs2022</li>
+</ul>
+<pre tabindex="0"><code>&#34;Development toos for .NET&#34;
+</code></pre><h3 id="down-options">down options</h3>
+<ul>
+<li>vs2019</li>
+</ul>
+<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.CoreEditor&#34;,
+    &#34;Microsoft.VisualStudio.Workload.CoreEditor&#34;,
+    &#34;Microsoft.VisualStudio.Component.NuGet&#34;,
+    &#34;Microsoft.Net.Component.4.6.1.TargetingPack&#34;,
+    &#34;Microsoft.VisualStudio.Component.Roslyn.Compiler&#34;,
+    &#34;Microsoft.VisualStudio.Component.Roslyn.LanguageServices&#34;,
+    &#34;Microsoft.VisualStudio.Component.FSharp&#34;,
+    &#34;Microsoft.ComponentGroup.ClickOnce.Publish&#34;,
+    &#34;Microsoft.NetCore.Component.DevelopmentTools&#34;,
+    &#34;Microsoft.Net.Component.4.8.SDK&#34;,
+    &#34;Microsoft.Net.Component.4.7.2.TargetingPack&#34;,
+    &#34;Microsoft.Net.ComponentGroup.DevelopmentPrerequisites&#34;,
+    &#34;Microsoft.Component.MSBuild&#34;,
+    &#34;Microsoft.VisualStudio.Component.TextTemplating&#34;,
+    &#34;Microsoft.VisualStudio.Component.SQL.CLR&#34;,
+    &#34;Microsoft.VisualStudio.Component.ManagedDesktop.Core&#34;,
     &#34;Microsoft.Net.Component.4.5.2.TargetingPack&#34;,
+    &#34;Microsoft.Net.Component.4.5.TargetingPack&#34;,
+    &#34;Microsoft.Net.Component.4.TargetingPack&#34;,
+    &#34;Microsoft.Net.Component.4.5.1.TargetingPack&#34;,
     &#34;Microsoft.Net.Component.4.6.TargetingPack&#34;,
     &#34;Microsoft.Net.ComponentGroup.TargetingPacks.Common&#34;,
+    &#34;Microsoft.VisualStudio.Component.EntityFramework&#34;,
+    &#34;Microsoft.VisualStudio.Component.Debugger.JustInTime&#34;,
+    &#34;Microsoft.VisualStudio.Component.IntelliCode&#34;,
+    &#34;Microsoft.Net.Component.4.6.2.TargetingPack&#34;,
+    &#34;Microsoft.Net.ComponentGroup.4.6.2.DeveloperTools&#34;,
     &#34;Microsoft.VisualStudio.Component.ManagedDesktop.Prerequisites&#34;,
+    &#34;Microsoft.VisualStudio.Workload.ManagedDesktop&#34;
+</code></pre><ul>
+<li>vs2022</li>
+</ul>
+<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.CoreEditor&#34;,
+    &#34;Microsoft.VisualStudio.Workload.CoreEditor&#34;,
+    &#34;Microsoft.Net.Component.4.8.SDK&#34;,
+    &#34;Microsoft.Net.Component.4.7.2.TargetingPack&#34;,
+    &#34;Microsoft.Net.ComponentGroup.DevelopmentPrerequisites&#34;,
+    &#34;Microsoft.VisualStudio.Component.Roslyn.Compiler&#34;,
+    &#34;Microsoft.Component.MSBuild&#34;,
+    &#34;Microsoft.VisualStudio.Component.Roslyn.LanguageServices&#34;,
+    &#34;Microsoft.VisualStudio.Component.TextTemplating&#34;,
+    &#34;Microsoft.VisualStudio.Component.NuGet&#34;,
+    &#34;Microsoft.VisualStudio.Component.SQL.CLR&#34;,
+    &#34;Microsoft.Component.ClickOnce&#34;,
+    &#34;Microsoft.VisualStudio.Component.ManagedDesktop.Core&#34;,
+    &#34;Microsoft.NetCore.Component.Runtime.8.0&#34;,
+    &#34;Microsoft.NetCore.Component.SDK&#34;,
+    &#34;Microsoft.VisualStudio.Component.FSharp&#34;,
+    &#34;Microsoft.ComponentGroup.ClickOnce.Publish&#34;,
+    &#34;Microsoft.NetCore.Component.DevelopmentTools&#34;,
+    &#34;Microsoft.VisualStudio.Component.EntityFramework&#34;,
+    &#34;Microsoft.VisualStudio.Component.Debugger.JustInTime&#34;,
+    &#34;Microsoft.VisualStudio.Component.IntelliCode&#34;,
+    &#34;Microsoft.Net.Component.4.6.2.TargetingPack&#34;,
+    &#34;Microsoft.Net.Component.4.7.TargetingPack&#34;,
+    &#34;Microsoft.Net.Component.4.7.1.TargetingPack&#34;,
+    &#34;Microsoft.Net.ComponentGroup.4.6.2-4.7.1.DeveloperTools&#34;,
+    &#34;Microsoft.VisualStudio.Component.ManagedDesktop.Prerequisites&#34;,
+    &#34;Microsoft.VisualStudio.Component.DotNetModelBuilder&#34;,
     &#34;Microsoft.VisualStudio.Workload.ManagedDesktop&#34;
 </code></pre>
     </section>

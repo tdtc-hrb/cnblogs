@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.125.1">
+    <meta name="generator" content="Hugo 0.128.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -311,7 +311,7 @@ using System.ComponentModel.DataAnnotations; namespace veic_web.Models { public 
 portable.h memory TCB Ln167~Ln187(port.c)
 pxPortInitialiseStack memory management 在heap_n.c中实现
 void *pvPortMalloc( size_t xSize ) PRIVILEGED_FUNCTION; void vPortFree( void *pv ) PRIVILEGED_FUNCTION; 如果MPU可用，则使用Ln105~106(mpu_wrappers.h)
-void vPortInitialiseBlocks( void ) PRIVILEGED_FUNCTION; size_t xPortGetFreeHeapSize( void ) PRIVILEGED_FUNCTION; task 此实现在Ln189~Ln262、Ln401~Ln406(port.c)
+void vPortInitialiseBlocks( void ) PRIVILEGED_FUNCTION; size_t xPortGetFreeHeapSize( void ) PRIVILEGED_FUNCTION; task 此实现在Ln189Ln262、Ln401Ln406(port.c)
 portBASE_TYPE xPortStartScheduler( void ) PRIVILEGED_FUNCTION; void vPortEndScheduler( void ) PRIVILEGED_FUNCTION; 注意：在windows系统下end是调用了TerminateProcess（WinBase.h Ln3398）
 portmacro.h Critical 此实现在Ln452~Ln513(port.c)
 void vPortEnterCritical( void ); void vPortExitCritical( void ); #define portENTER_CRITICAL()	vPortEnterCritical() #define portEXIT_CRITICAL()	vPortExitCritical() Interrupt #define portDISABLE_INTERRUPTS() #define portENABLE_INTERRUPTS() 此实现在Ln408~Ln450(port. <a class="read-more" href="/cnblogs/post/e-freertos-port_win32/">&raquo;</a></p>

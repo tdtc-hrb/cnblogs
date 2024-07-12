@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.125.1">
+    <meta name="generator" content="Hugo 0.128.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-freertos-port_win32/" />
 
@@ -193,7 +193,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortInitialiseBlocks</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">size_t</span> <span style="color:#a6e22e">xPortGetFreeHeapSize</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
 </span></span></code></pre></div><h2 id="task">task</h2>
-<p>此实现在Ln189~Ln262、Ln401~Ln406(port.c)</p>
+<p>此实现在Ln189<del>Ln262、Ln401</del>Ln406(port.c)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>portBASE_TYPE <span style="color:#a6e22e">xPortStartScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEndScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
 </span></span></code></pre></div><blockquote>
