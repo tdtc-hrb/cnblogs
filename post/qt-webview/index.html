@@ -29,7 +29,7 @@
     
     <meta property="og:description" content="qt quick" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2023-10-18T23:38:08&#43;08:00" />
+    <meta property="article:published_time" content="2024-08-30T01:38:08&#43;08:00" />
 
     
     
@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.128.2">
+    <meta name="generator" content="Hugo 0.133.1">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/qt-webview/" />
 
@@ -92,15 +92,15 @@
     },
     "headline": "QQ mini browser",
     "name": "QQ mini browser",
-    "wordCount":  642 ,
+    "wordCount":  713 ,
     "timeRequired": "PT4M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/qt-webview/",
-    "datePublished": "2023-10-18T23:38Z",
-    "dateModified": "2023-10-18T23:38Z",
+    "datePublished": "2024-08-30T01:38Z",
+    "dateModified": "2024-08-30T01:38Z",
     
     
     "description": "qt quick",
@@ -168,8 +168,8 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2023-10-18T23:38:08&#43;08:00">
-            Oct 18, 2023
+          <time class="post-date" datetime="2024-08-30T01:38:08&#43;08:00">
+            Aug 30, 2024
           </time>
         
          
@@ -178,9 +178,9 @@
 
     <section class="post-content">
       <ul>
-<li>Qt Design Studio: v4.3.1</li>
-<li>Qt Creator: v11.0.3</li>
-<li>QT: V6.2.4</li>
+<li>Android Studio: 2024.1.1</li>
+<li>Qt Creator: v14.0.1</li>
+<li>QT: V6.5.3</li>
 </ul>
 <h2 id="online-installer-version">online installer version</h2>
 <ul>
@@ -398,7 +398,7 @@ ApplicationWindow { //... }
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">QtQuick</span>.<span style="color:#a6e22e">Layouts</span>
 </span></span></code></pre></div><ul>
 <li>images folder
-copy &ldquo;Examples\Qt-6.2.4\webview\minibrowser\images&rdquo; to project folder</li>
+copy &ldquo;Examples\Qt-6.5.3\webview\minibrowser\images&rdquo; to project folder</li>
 </ul>
 <h4 id="mainqmlpart">Main.qml(part)</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">footer:</span> <span style="color:#a6e22e">ToolBar</span> {
@@ -493,7 +493,61 @@ copy &ldquo;Examples\Qt-6.2.4\webview\minibrowser\images&rdquo; to project folde
         &lt;file&gt;images/right32.png&lt;/file&gt;
     &lt;/qresource&gt;
 &lt;/RCC&gt;
-</code></pre><h1 id="reference">Reference</h1>
+</code></pre><h2 id="qt-creator-build-issues">QT Creator Build Issues</h2>
+<ul>
+<li>gradle</li>
+<li>SDK version</li>
+</ul>
+<h3 id="network-issue">network issue</h3>
+<p>gradle-wrapper.properties:</p>
+<pre tabindex="0"><code>android_x86\src\3rdparty\gradle\gradle\wrapper
+</code></pre><p>Use</p>
+<pre tabindex="0"><code>https://mirrors.cloud.tencent.com/gradle/
+</code></pre><p>instead of</p>
+<pre tabindex="0"><code>https\://services.gradle.org/distributions/
+</code></pre><h3 id="sdk-version">Sdk version</h3>
+<p>The sdk and sdk build-tools versions in Android Studio are higher! <br>
+Before using QT Creator, you must remove them in Android Studio. <br>
+Current version:</p>
+<ul>
+<li>SDK 35</li>
+<li>SDK Build 35</li>
+</ul>
+<p>Android SDK -&gt; <br>
+取消✔ <br>
+SDK Platforms -&gt;</p>
+<table>
+<thead>
+<tr>
+<th>check</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:white_large_square:</td>
+<td>Android API 35</td>
+</tr>
+</tbody>
+</table>
+<p>SDK Tools -&gt; <br>
+取消✔ <br>
+Android SDK Build-Tools 35</p>
+<table>
+<thead>
+<tr>
+<th>check</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:white_large_square:</td>
+<td>35.0.0</td>
+</tr>
+</tbody>
+</table>
+<h1 id="reference">Reference</h1>
 <ul>
 <li><a href="https://doc.qt.io/qt-6/qtwebview-minibrowser-example.html">Minibrowser</a></li>
 </ul>
@@ -548,17 +602,10 @@ copy &ldquo;Examples\Qt-6.2.4\webview\minibrowser\images&rdquo; to project folde
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/php-devenv-win/">
-          <section class="post">
-              <h2>Windows搭建PHP环境</h2>
-              
-          </section>
-      </a>
   
-  
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ror_installation/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ops_win_faq2/">
           <section class="post">
-              <h2>安装Ruby On Rails</h2>
+              <h2>Windows的一些安装</h2>
           </section>
       </a>
   

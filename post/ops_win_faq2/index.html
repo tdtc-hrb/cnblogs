@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.128.2">
+    <meta name="generator" content="Hugo 0.133.1">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2/" />
 
@@ -92,8 +92,8 @@
     },
     "headline": "Windows的一些安装",
     "name": "Windows的一些安装",
-    "wordCount":  296 ,
-    "timeRequired": "PT2M",
+    "wordCount":  211 ,
+    "timeRequired": "PT1M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
@@ -177,16 +177,11 @@
     </header>
 
     <section class="post-content">
-      <p>my.visualstudio.com 已经不提供 非订阅用户 的下载</p>
-<h1 id="visual-studio">Visual Studio</h1>
+      <h1 id="visual-studio">Visual Studio</h1>
+<blockquote>
+<p>my.visualstudio.com 已经不提供 非订阅用户 的下载</p>
+</blockquote>
 <ul>
-<li>exec name
-在主要维护周期, 名字是:</li>
-</ul>
-<pre tabindex="0"><code>x_community
-</code></pre><p>在次要维护周期, 名字是:</p>
-<pre tabindex="0"><code>x_Professional
-</code></pre><ul>
 <li>target directory</li>
 </ul>
 <pre tabindex="0"><code>--layout TARGET(directory)
@@ -198,65 +193,42 @@
 <li>language</li>
 </ul>
 <pre tabindex="0"><code>--lang en-US
-</code></pre><h2 id="format">format</h2>
-<ul>
-<li>Mainstream</li>
-</ul>
-<pre tabindex="0"><code>.\vs_community.exe --layout D:\win10soft\vs2019 `
---add Microsoft.VisualStudio.Component.CoreEditor `
-      ...
---lang en-US
-</code></pre><ul>
-<li>Extended</li>
-</ul>
-<pre tabindex="0"><code>.\vs_Professional.exe --layout D:\win10soft\vs2017 `
---add Microsoft.VisualStudio.Component.CoreEditor `
-      ...
---lang en-US
+</code></pre><p>exec:</p>
+<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs201x `
+...
 </code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
-<h2 id="lifecycle">lifecycle</h2>
+<h2 id="common">Common</h2>
 <ul>
-<li><a href="https://learn.microsoft.com/en-us/lifecycle/products/visual-studio-2022">Visual Studio 2022</a> <br>
-Mainstream End Date: Jan 12, 2027</li>
-<li><a href="https://learn.microsoft.com/en-us/lifecycle/products/visual-studio-2019">Visual Studio 2019</a> <br>
-Mainstream End Date: Apr 9, 2024</li>
+<li>Core</li>
 </ul>
-<h2 id="components">components</h2>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
+--add Microsoft.VisualStudio.Workload.CoreEditor `
+--add Microsoft.VisualStudio.Component.Roslyn.Compiler `
+--add Microsoft.Component.MSBuild `
+--add Microsoft.VisualStudio.Component.TextTemplating `
+</code></pre><ul>
+<li>IntelliCode</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
+</code></pre><ul>
+<li>JIT</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.Debugger.JustInTime `
+</code></pre><h2 id="vc">VC</h2>
 <ul>
 <li>MFC/ATL</li>
 </ul>
 <h3 id="mfcatl">MFC/ATL</h3>
-<ul>
-<li>Visual Studio 2019</li>
-</ul>
-<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.CoreEditor&#34;,
-    &#34;Microsoft.VisualStudio.Workload.CoreEditor&#34;,
-    &#34;Microsoft.VisualStudio.Component.Roslyn.Compiler&#34;,
-    &#34;Microsoft.Component.MSBuild&#34;,
-    &#34;Microsoft.VisualStudio.Component.IntelliCode&#34;,
-    &#34;Microsoft.VisualStudio.Component.TextTemplating&#34;,
-    &#34;Microsoft.VisualStudio.Component.Debugger.JustInTime&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.CoreIde&#34;,
+<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.VC.CoreIde&#34;,
     &#34;Microsoft.VisualStudio.Component.VC.Redist.14.Latest&#34;,
     &#34;Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core&#34;,
     &#34;Microsoft.VisualStudio.Component.VC.Tools.x86.x64&#34;,
-    &#34;Microsoft.VisualStudio.Component.Windows10SDK.20348&#34;,
     &#34;Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions.CMake&#34;,
     &#34;Microsoft.VisualStudio.Component.VC.CMake.Project&#34;,
     &#34;Microsoft.VisualStudio.Component.VC.ATL&#34;,
     &#34;Microsoft.VisualStudio.Component.VC.ATLMFC&#34;,
     &#34;Microsoft.Component.VC.Runtime.UCRTSDK&#34;,
     &#34;Microsoft.VisualStudio.Workload.NativeDesktop&#34;
-</code></pre><ul>
-<li>Visual Studio 2022</li>
-</ul>
-<blockquote>
-<p>16.10
-Most of the download options are the same as Visual Studio 2019; only the Windows SDK is different.</p>
-</blockquote>
-<pre tabindex="0"><code>        ...
-    &#34;Microsoft.VisualStudio.Component.Windows11SDK.22621&#34;,
-        ...
 </code></pre><h3 id="windows-sdk">Windows SDK</h3>
 <p>default:</p>
 <ul>
@@ -300,13 +272,10 @@ Check &ldquo;.NET desktop development&rdquo;</p>
 <pre tabindex="0"><code>&#34;Development toos for .NET&#34;
 </code></pre><h3 id="down-options">down options</h3>
 <ul>
-<li>vs2019</li>
+<li>vs2019(FX)</li>
 </ul>
-<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.CoreEditor&#34;,
-    &#34;Microsoft.VisualStudio.Workload.CoreEditor&#34;,
-    &#34;Microsoft.VisualStudio.Component.NuGet&#34;,
+<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.NuGet&#34;,
     &#34;Microsoft.Net.Component.4.6.1.TargetingPack&#34;,
-    &#34;Microsoft.VisualStudio.Component.Roslyn.Compiler&#34;,
     &#34;Microsoft.VisualStudio.Component.Roslyn.LanguageServices&#34;,
     &#34;Microsoft.VisualStudio.Component.FSharp&#34;,
     &#34;Microsoft.ComponentGroup.ClickOnce.Publish&#34;,
@@ -314,37 +283,17 @@ Check &ldquo;.NET desktop development&rdquo;</p>
     &#34;Microsoft.Net.Component.4.8.SDK&#34;,
     &#34;Microsoft.Net.Component.4.7.2.TargetingPack&#34;,
     &#34;Microsoft.Net.ComponentGroup.DevelopmentPrerequisites&#34;,
-    &#34;Microsoft.Component.MSBuild&#34;,
-    &#34;Microsoft.VisualStudio.Component.TextTemplating&#34;,
-    &#34;Microsoft.VisualStudio.Component.SQL.CLR&#34;,
     &#34;Microsoft.VisualStudio.Component.ManagedDesktop.Core&#34;,
-    &#34;Microsoft.Net.Component.4.5.2.TargetingPack&#34;,
-    &#34;Microsoft.Net.Component.4.5.TargetingPack&#34;,
-    &#34;Microsoft.Net.Component.4.TargetingPack&#34;,
-    &#34;Microsoft.Net.Component.4.5.1.TargetingPack&#34;,
-    &#34;Microsoft.Net.Component.4.6.TargetingPack&#34;,
-    &#34;Microsoft.Net.ComponentGroup.TargetingPacks.Common&#34;,
-    &#34;Microsoft.VisualStudio.Component.EntityFramework&#34;,
-    &#34;Microsoft.VisualStudio.Component.Debugger.JustInTime&#34;,
-    &#34;Microsoft.VisualStudio.Component.IntelliCode&#34;,
-    &#34;Microsoft.Net.Component.4.6.2.TargetingPack&#34;,
-    &#34;Microsoft.Net.ComponentGroup.4.6.2.DeveloperTools&#34;,
     &#34;Microsoft.VisualStudio.Component.ManagedDesktop.Prerequisites&#34;,
     &#34;Microsoft.VisualStudio.Workload.ManagedDesktop&#34;
 </code></pre><ul>
-<li>vs2022</li>
+<li>vs2022(.Net Core)</li>
 </ul>
-<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.CoreEditor&#34;,
-    &#34;Microsoft.VisualStudio.Workload.CoreEditor&#34;,
-    &#34;Microsoft.Net.Component.4.8.SDK&#34;,
+<pre tabindex="0"><code>    &#34;Microsoft.Net.Component.4.8.SDK&#34;,
     &#34;Microsoft.Net.Component.4.7.2.TargetingPack&#34;,
     &#34;Microsoft.Net.ComponentGroup.DevelopmentPrerequisites&#34;,
-    &#34;Microsoft.VisualStudio.Component.Roslyn.Compiler&#34;,
-    &#34;Microsoft.Component.MSBuild&#34;,
     &#34;Microsoft.VisualStudio.Component.Roslyn.LanguageServices&#34;,
-    &#34;Microsoft.VisualStudio.Component.TextTemplating&#34;,
     &#34;Microsoft.VisualStudio.Component.NuGet&#34;,
-    &#34;Microsoft.VisualStudio.Component.SQL.CLR&#34;,
     &#34;Microsoft.Component.ClickOnce&#34;,
     &#34;Microsoft.VisualStudio.Component.ManagedDesktop.Core&#34;,
     &#34;Microsoft.NetCore.Component.Runtime.8.0&#34;,
@@ -352,15 +301,7 @@ Check &ldquo;.NET desktop development&rdquo;</p>
     &#34;Microsoft.VisualStudio.Component.FSharp&#34;,
     &#34;Microsoft.ComponentGroup.ClickOnce.Publish&#34;,
     &#34;Microsoft.NetCore.Component.DevelopmentTools&#34;,
-    &#34;Microsoft.VisualStudio.Component.EntityFramework&#34;,
-    &#34;Microsoft.VisualStudio.Component.Debugger.JustInTime&#34;,
-    &#34;Microsoft.VisualStudio.Component.IntelliCode&#34;,
-    &#34;Microsoft.Net.Component.4.6.2.TargetingPack&#34;,
-    &#34;Microsoft.Net.Component.4.7.TargetingPack&#34;,
-    &#34;Microsoft.Net.Component.4.7.1.TargetingPack&#34;,
-    &#34;Microsoft.Net.ComponentGroup.4.6.2-4.7.1.DeveloperTools&#34;,
     &#34;Microsoft.VisualStudio.Component.ManagedDesktop.Prerequisites&#34;,
-    &#34;Microsoft.VisualStudio.Component.DotNetModelBuilder&#34;,
     &#34;Microsoft.VisualStudio.Workload.ManagedDesktop&#34;
 </code></pre>
     </section>
@@ -412,6 +353,13 @@ Check &ldquo;.NET desktop development&rdquo;</p>
 
 
   <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/qt-webview/">
+          <section class="post">
+              <h2>QQ mini browser</h2>
+              
+          </section>
+      </a>
   
   
       <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ops_win_faq4/">
