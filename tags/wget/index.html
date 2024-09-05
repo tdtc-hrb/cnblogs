@@ -57,7 +57,7 @@
         <link href='/cnblogs/tags/wget/index.xml' rel="alternate" type="application/rss+xml" title="Wget &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="generator" content="Hugo 0.134.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/tags/wget/" />
 
@@ -164,10 +164,32 @@
     </header>
     <section class="post-excerpt">
         
-            <p>OS: RHEL Community Minimal
-AlmaLinux 8.x RockyLinux 8.x CentOS 7.9 prepare User set Firewall dependencies:
-$sudo dnf group install &#39;Development Tools&#39; $sudo dnf install tcl wget v6+ Just to clarify: there is no way this issue will be fixed, Redis &gt;= 6 will require a C11 compiler.
-RHEL7 sudo dnf install centos-release-scl sudo dnf install devtoolset-8 scl enable devtoolset-8 bash verification $gcc -v $make -v $echo &#39;puts [info patchlevel];exit 0&#39; | tclsh installation $wget https://download. <a class="read-more" href="/cnblogs/post/redis-rhel/">&raquo;</a></p>
+            <p><blockquote>
+<p>OS: RHEL Community Minimal</p>
+</blockquote>
+<ul>
+<li>AlmaLinux 8.x</li>
+<li>RockyLinux 8.x</li>
+<li>CentOS 7.9</li>
+</ul>
+<h1 id="prepare">prepare</h1>
+<ul>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/ops_sudo/">User set</a></li>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/ops_firewall/">Firewall</a></li>
+</ul>
+<p>dependencies:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf group install <span style="color:#e6db74">&#39;Development Tools&#39;</span>
+</span></span><span style="display:flex;"><span>$sudo dnf install tcl wget
+</span></span></code></pre></div><h2 id="v6">v6+</h2>
+<p>Just to clarify: <br>
+there is no way this issue will be fixed, Redis &gt;= 6 will require a C11 compiler.</p>
+<ul>
+<li>RHEL7</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install centos-release-scl
+</span></span><span style="display:flex;"><span>sudo dnf install devtoolset-8
+</span></span><span style="display:flex;"><span>scl enable devtoolset-8 bash
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/redis-rhel/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

@@ -29,7 +29,7 @@
     
     <meta property="og:description" content="dotnet, Visual Studio 的下载" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2024-04-18T08:08:08&#43;08:00" />
+    <meta property="article:published_time" content="2024-09-04T08:08:08&#43;08:00" />
 
     
     
@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="generator" content="Hugo 0.134.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2/" />
 
@@ -92,15 +92,15 @@
     },
     "headline": "Windows的一些安装",
     "name": "Windows的一些安装",
-    "wordCount":  211 ,
-    "timeRequired": "PT1M",
+    "wordCount":  239 ,
+    "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2/",
-    "datePublished": "2024-04-18T08:08Z",
-    "dateModified": "2024-04-18T08:08Z",
+    "datePublished": "2024-09-04T08:08Z",
+    "dateModified": "2024-09-04T08:08Z",
     
     
     "description": "dotnet, Visual Studio 的下载",
@@ -168,8 +168,8 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2024-04-18T08:08:08&#43;08:00">
-            Apr 18, 2024
+          <time class="post-date" datetime="2024-09-04T08:08:08&#43;08:00">
+            Sep 4, 2024
           </time>
         
          
@@ -177,10 +177,12 @@
     </header>
 
     <section class="post-content">
-      <h1 id="visual-studio">Visual Studio</h1>
-<blockquote>
-<p>my.visualstudio.com 已经不提供 非订阅用户 的下载</p>
-</blockquote>
+      <p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
+<ul>
+<li><a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a></li>
+<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
+</ul>
+<h1 id="visual-studio">Visual Studio</h1>
 <ul>
 <li>target directory</li>
 </ul>
@@ -242,7 +244,21 @@
 <pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows11SDK.22621
 </code></pre><p>win22h2</p>
 <p>You can also <a href="https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/">download</a> it individually;</p>
-<h1 id="dotnet">Dotnet</h1>
+<h2 id="c-clang-tools-for-windows">C++ Clang tools for Windows</h2>
+<ul>
+<li>C++ Clang tools for Windows</li>
+</ul>
+<pre tabindex="0"><code>Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Llvm.Clang
+</code></pre><p>includes:</p>
+<ul>
+<li>C++ Clang Compiler for Windows</li>
+</ul>
+<pre tabindex="0"><code>Microsoft.VisualStudio.Component.VC.Llvm.Clang
+</code></pre><ul>
+<li>C++ Clang-cl for v142 build tools (x64/x86)</li>
+</ul>
+<pre tabindex="0"><code>Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset
+</code></pre><h1 id="dotnet">Dotnet</h1>
 <ul>
 <li>install .net 3.5</li>
 <li>add dotnet env</li>
@@ -354,17 +370,10 @@ Check &ldquo;.NET desktop development&rdquo;</p>
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/qt-webview/">
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/qt-webview/">
           <section class="post">
               <h2>QQ mini browser</h2>
-              
-          </section>
-      </a>
-  
-  
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ops_win_faq4/">
-          <section class="post">
-              <h2>Windows的一些设置</h2>
           </section>
       </a>
   

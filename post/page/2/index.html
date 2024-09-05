@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="generator" content="Hugo 0.134.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -168,9 +168,17 @@
     </header>
     <section class="post-excerpt">
         
-            <p>With a few changes, code for 877A can be easily transferred to 887 (as for any PIC, datasheet reading is necessary). 887 has internal oscillator, it is cheaper than 877A, &hellip;
-MPASM MPLAB X v5.30(x86) - 2019.10.29 Proteus v8.15 Blinking LED First, use the compiler to generate hex; Then, use protelus to draw &ldquo;Schematic Capture&rdquo;; Finally, import the hex file into the MCU component.
-16F887 We are using Proteus simulator for simulating our code but if you are testing the code in real world test bench all you need is, <a class="read-more" href="/cnblogs/post/e-pic16f_blink7/">&raquo;</a></p>
+            <p><p>With a few changes, code for 877A can be easily transferred to 887 (as for any PIC, datasheet reading is necessary).
+887 has internal oscillator, it is cheaper than 877A, &hellip;</p>
+<ul>
+<li>MPASM <br>
+<a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v5.30-windows-installer.exe">MPLAB X v5.30(x86) - 2019.10.29</a></li>
+<li>Proteus <a href="https://www.jb51.net/softs/854769.html">v8.15</a></li>
+</ul>
+<h1 id="blinking-led">Blinking LED</h1>
+<p>First, use the compiler to generate hex; <br>
+Then, use protelus to draw &ldquo;Schematic Capture&rdquo;; <br>
+Finally, import the hex file into the MCU component.</p> <a class="read-more" href="/cnblogs/post/e-pic16f_blink7/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -192,9 +200,56 @@ MPASM MPLAB X v5.30(x86) - 2019.10.29 Proteus v8.15 Blinking LED First, use the 
     </header>
     <section class="post-excerpt">
         
-            <p>TABLE 1-1: OPCODE FIELD DESCRIPTIONS
-Field Description f Register file address (0x00 to 0x7F) W Working register (accumulator) d Destination select; b Bit address within an 8-bit file register k Literal field, constant data or label d value where the results are placed d = 0 W(orking) register d = 1 file register; Default is d = 1. TABLE 1-2: ABBREVIATION DESCRIPTIONS
-|Field| Description| | PC | Program Counter| | TO | Time-Out bit| | C | Carry bit| | DC | Digit Carry bit| | Z | Zero bit| | PD | Power-Down bit| <a class="read-more" href="/cnblogs/post/e-pic16f_instruction-set/">&raquo;</a></p>
+            <p><p>TABLE 1-1: OPCODE FIELD DESCRIPTIONS</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">f</td>
+          <td style="text-align: left">Register file address (0x00 to 0x7F)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">W</td>
+          <td style="text-align: left">Working register (accumulator)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">d</td>
+          <td style="text-align: left">Destination select;</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">b</td>
+          <td style="text-align: left">Bit address within an 8-bit file register</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">k</td>
+          <td style="text-align: left">Literal field, constant data or label</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">d value</th>
+          <th style="text-align: left">where the results are placed</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">d = 0</td>
+          <td style="text-align: left">W(orking) register</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">d = 1</td>
+          <td style="text-align: left">file register; Default is d = 1.</td>
+      </tr>
+  </tbody>
+</table>
+<p>TABLE 1-2: ABBREVIATION DESCRIPTIONS</p> <a class="read-more" href="/cnblogs/post/e-pic16f_instruction-set/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -216,7 +271,14 @@ Field Description f Register file address (0x00 to 0x7F) W Working register (acc
     </header>
     <section class="post-excerpt">
         
-            <p>Create First of all select the 2D Graphics Box Mode as shown in the below figure. Now click on the workspace and drag the cursor to create a box, as shown in the below figure. We have created the body of our component, now there&rsquo;s a need to add pins in it. For this, click on the Device Pins Mode as shown in the below figure and click on the workspace. <a class="read-more" href="/cnblogs/post/e-proteus_component-designing/">&raquo;</a></p>
+            <p><h1 id="create">Create</h1>
+<p><img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS51.jpg.webp?ssl=1" alt=""></p>
+<p>First of all select the 2D Graphics Box Mode as shown in the below figure.
+<img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS.jpg.webp?ssl=1" alt=""></p>
+<p>Now click on the workspace and drag the cursor to create a box, as shown in the below figure.
+<img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS2.jpg.webp?ssl=1" alt=""></p>
+<p>We have created the body of our component, now there&rsquo;s a need to add pins in it. <br>
+For this, click on the Device Pins Mode as shown in the below figure and click on the workspace.</p> <a class="read-more" href="/cnblogs/post/e-proteus_component-designing/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -238,15 +300,55 @@ Field Description f Register file address (0x00 to 0x7F) W Working register (acc
     </header>
     <section class="post-excerpt">
         
-            <p>created date： 2021-03-10 modified date：
-2023-03-25 IDE Arduino V1.8.19 Library UIP Ethernet v2.x 接线 Arduino Uno Enc28j60 Pin 10 CS Pin 11 SI Pin 12 SO Pin 13 SCK Reset RST* +3v3 Vcc GND* GND Enc28j60 INTN: 置空（不接）
-*Rst接线: 注意 Nano V3 Ethernet Shield 接7号线柱，如下图所示： Arduino Uno *GND接线: 5V旁边的GND.
-供电: 必须使用USB接口.(使用电源口无法工作)
-网络及PC驱动 两种方式：
-平行线 接路由器Lan口。
-交叉线 接PC的Lan口。
-Network 设置同一网段的IP地址。
-PC Control Panel -&gt; Network and Internet -&gt; Network Connections Ethernet -&gt; Properties: Internet Protocol Version 4(TCP/IPv4) Enc28J60 IP and MAC 在源代码中更改. <a class="read-more" href="/cnblogs/post/e-avr8-web-server/">&raquo;</a></p>
+            <p><p>created date： 2021-03-10 <br>
+modified date：</p>
+<pre tabindex="0"><code>2023-03-25
+</code></pre><ul>
+<li>IDE <br>
+Arduino <a href="https://www.arduino.cc/en/software">V1.8.19</a></li>
+<li>Library <br>
+<a href="https://github.com/UIPEthernet/UIPEthernet/releases">UIP Ethernet v2.x</a></li>
+</ul>
+<h1 id="接线">接线</h1>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Arduino Uno</th>
+          <th style="text-align: left">Enc28j60</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Pin 10</td>
+          <td style="text-align: left">CS</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Pin 11</td>
+          <td style="text-align: left">SI</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Pin 12</td>
+          <td style="text-align: left">SO</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Pin 13</td>
+          <td style="text-align: left">SCK</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Reset</td>
+          <td style="text-align: left">RST<sup>*</sup></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">+3v3</td>
+          <td style="text-align: left">Vcc</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">GND<sup>*</sup></td>
+          <td style="text-align: left">GND</td>
+      </tr>
+  </tbody>
+</table>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Connection-Diagram.png" alt="spi connect"></p> <a class="read-more" href="/cnblogs/post/e-avr8-web-server/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -268,10 +370,28 @@ PC Control Panel -&gt; Network and Internet -&gt; Network Connections Ethernet -
     </header>
     <section class="post-excerpt">
         
-            <p>OS Windows 10 LTSB 2016+ IDE Visual Studio Code - v1.76.1 SDK .Net 6.0 终端(Terminal) PowerShell Core 数据库(Database) MySQL / Microsoft SQL Server 2012 Express LocalDB (vs2013 inside) 一、Create Project(VS Code) Init project Terminal -&gt; New Terminal
-cd .\Documents\ dotnet new mvc -o veic_web --framework net6.0 Set workspace dir File -&gt; Add Folder to Workspace
-设置缺省首页(Home Set Default) Program.cs app.UseStaticFiles(); 变更为:
-app.UseDefaultFiles(); app.UseStaticFiles(); Html 新建wwwroot/index.html，See附录1. Run Run -&gt; Start Debugging 运行效果: 二、Data namespace: <a class="read-more" href="/cnblogs/post/asp.net6-mvc/">&raquo;</a></p>
+            <p><ul>
+<li>OS <br>
+<a href="https://github.com/dotnet/core/blob/main/release-notes/6.0/supported-os.md">Windows 10 LTSB 2016+</a></li>
+<li>IDE <br>
+<a href="https://code.visualstudio.com/download">Visual Studio Code</a> - v1.76.1</li>
+<li>SDK <br>
+<a href="https://dotnet.microsoft.com/download/dotnet/6.0">.Net 6.0</a></li>
+<li>终端(Terminal) <br>
+<a href="https://github.com/PowerShell/PowerShell#get-powershell">PowerShell Core</a></li>
+<li>数据库(Database) <br>
+<a href="https://dev.mysql.com/downloads/mysql/">MySQL</a> / Microsoft SQL Server 2012 Express LocalDB (vs2013 inside)</li>
+</ul>
+<h1 id="一create-projectvs-code">一、Create Project(VS Code)</h1>
+<ul>
+<li>Init project</li>
+</ul>
+<blockquote>
+<p>Terminal -&gt; New Terminal</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd .<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>dotnet new mvc -o veic_web --framework net6.0
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/asp.net6-mvc/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -293,10 +413,29 @@ app.UseDefaultFiles(); app.UseStaticFiles(); Html 新建wwwroot/index.html，See
     </header>
     <section class="post-excerpt">
         
-            <p>Starting with the J2SE platform 5.0, JMX technology is included in the Java SE platform.
-jmxtools Download the jar and pom files, Then copy it to the M2 directory. M2: C:\Users\tdtc\.m2\repository\com\sun\jdmk\jmxtools\1.2.1 Source project . |____src | |____main | | |____java | | | |____jmxbook.ch2 |____pom.xml
-Gen jar:
-mvn package pom.xml &lt;project xmlns=&#34;http://maven.apache.org/POM/4.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;&gt; &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; &lt;groupId&gt;jmxbook&lt;/groupId&gt; &lt;artifactId&gt;jmxInAction&lt;/artifactId&gt; &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt; &lt;build/&gt; &lt;repositories&gt; &lt;repository&gt; &lt;id&gt;datanucleus.org/downloads/maven2&lt;/id&gt; &lt;name&gt;datanucleus.org Maven Repository&lt;/name&gt; &lt;url&gt;http://www.datanucleus.org/downloads/maven2/&lt;/url&gt; &lt;/repository&gt; &lt;/repositories&gt; &lt;dependencies&gt; &lt;! <a class="read-more" href="/cnblogs/post/java-jmx-ch2/">&raquo;</a></p>
+            <p><p>Starting with the J2SE platform 5.0, JMX technology is included in the Java SE platform.</p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Jmxarchitecture.png" alt="Jmx architecture"></p>
+<ul>
+<li>jmxtools
+Download the <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.jar">jar</a>
+and <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.pom">pom</a> files,
+Then copy it to the M2 directory.
+M2:</li>
+</ul>
+<pre tabindex="0"><code>C:\Users\tdtc\.m2\repository\com\sun\jdmk\jmxtools\1.2.1
+</code></pre><ul>
+<li><a href="https://www.manning.com/downloads/737">Source</a></li>
+</ul>
+<h1 id="project">project</h1>
+<p>. <br>
+|____src <br>
+| |____main <br>
+| | |____java <br>
+| | | |____jmxbook.ch2 <br>
+|____pom.xml</p>
+<p>Gen jar:</p>
+<pre tabindex="0"><code>mvn package
+</code></pr <a class="read-more" href="/cnblogs/post/java-jmx-ch2/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -318,9 +457,25 @@ mvn package pom.xml &lt;project xmlns=&#34;http://maven.apache.org/POM/4.0.0&#34
     </header>
     <section class="post-excerpt">
         
-            <p>Spark v3.1 OS RHEL8(Alma / Rocky Linux) 一、基础软件 1. R-lang $ sudo dnf -y install epel-release $ sudo dnf --enablerepo=powertools install R 注意：如果Java没有安装，会附带着安装OpenJDK。
-2. Scala $ wget https://downloads.lightbend.com/scala/2.12.17/scala-2.12.17.tgz $ tar xvf scala-2.12.17.tgz $ sudo mv scala-2.12.17 /usr/lib $ sudo ln -s /usr/lib/scala-2.12.17 /usr/lib/scala 1) add path $vi ~/.bashrc PATH=$PATH:/usr/lib/scala/bin 二、Spark 1. down &amp; unzip v3.1.3
-$ mkdir -p ~/app/spark $ tar zxvf spark-3.1.3-bin-hadoop2.7.tgz -C ~/app/spark $ mv ~/app/spark/spark-3.1.3-bin-hadoop2.7 ~/app/spark/3.1.3 2. <a class="read-more" href="/cnblogs/post/ops_spark_rhel/">&raquo;</a></p>
+            <p><ul>
+<li>Spark <br>
+v3.1</li>
+<li>OS <br>
+RHEL8(Alma / Rocky Linux)</li>
+</ul>
+<h1 id="一基础软件">一、基础软件</h1>
+<h2 id="1-r-lang">1. R-lang</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dnf -y install epel-release
+</span></span><span style="display:flex;"><span>$ sudo dnf  --enablerepo<span style="color:#f92672">=</span>powertools install R
+</span></span></code></pre></div><blockquote>
+<p>注意：如果Java没有安装，会附带着安装OpenJDK。</p>
+</blockquote>
+<h2 id="2-scala">2. Scala</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wget https://downloads.lightbend.com/scala/2.12.17/scala-2.12.17.tgz
+</span></span><span style="display:flex;"><span>$ tar xvf scala-2.12.17.tgz
+</span></span><span style="display:flex;"><span>$ sudo mv scala-2.12.17 /usr/lib
+</span></span><span style="display:flex;"><span>$ sudo ln -s /usr/lib/scala-2.12.17 /usr/lib/scala
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/ops_spark_rhel/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -342,11 +497,24 @@ $ mkdir -p ~/app/spark $ tar zxvf spark-3.1.3-bin-hadoop2.7.tgz -C ~/app/spark $
     </header>
     <section class="post-excerpt">
         
-            <p>OS: RHEL Community Minimal
-AlmaLinux 8.x RockyLinux 8.x CentOS 7.9 Root Permission:
-$su - root 0) open files Q: Increased maximum number of open files to 10032 (it was originally set to 1024). A:
-#ulimit -a #vi /etc/systemd/system/redis.service In the &ldquo;[Service]&rdquo; unit, add the following:
-LimitNOFILE=10032 1) somaxconn Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128. A: <a class="read-more" href="/cnblogs/post/redis-rhel-setup/">&raquo;</a></p>
+            <p><blockquote>
+<p>OS: RHEL Community Minimal</p>
+</blockquote>
+<ul>
+<li>AlmaLinux 8.x</li>
+<li>RockyLinux 8.x</li>
+<li>CentOS 7.9</li>
+</ul>
+<p>Root Permission:</p>
+<pre tabindex="0"><code>$su - root
+</code></pre><h1 id="0-open-files">0) open files</h1>
+<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#ulimit -a</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/systemd/system/redis.service</span>
+</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>LimitNOFILE=10032
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/redis-rhel-setup/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -368,10 +536,32 @@ LimitNOFILE=10032 1) somaxconn Q: WARNING: The TCP backlog setting of 511 cannot
     </header>
     <section class="post-excerpt">
         
-            <p>OS: RHEL Community Minimal
-AlmaLinux 8.x RockyLinux 8.x CentOS 7.9 prepare User set Firewall dependencies:
-$sudo dnf group install &#39;Development Tools&#39; $sudo dnf install tcl wget v6+ Just to clarify: there is no way this issue will be fixed, Redis &gt;= 6 will require a C11 compiler.
-RHEL7 sudo dnf install centos-release-scl sudo dnf install devtoolset-8 scl enable devtoolset-8 bash verification $gcc -v $make -v $echo &#39;puts [info patchlevel];exit 0&#39; | tclsh installation $wget https://download. <a class="read-more" href="/cnblogs/post/redis-rhel/">&raquo;</a></p>
+            <p><blockquote>
+<p>OS: RHEL Community Minimal</p>
+</blockquote>
+<ul>
+<li>AlmaLinux 8.x</li>
+<li>RockyLinux 8.x</li>
+<li>CentOS 7.9</li>
+</ul>
+<h1 id="prepare">prepare</h1>
+<ul>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/ops_sudo/">User set</a></li>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/ops_firewall/">Firewall</a></li>
+</ul>
+<p>dependencies:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf group install <span style="color:#e6db74">&#39;Development Tools&#39;</span>
+</span></span><span style="display:flex;"><span>$sudo dnf install tcl wget
+</span></span></code></pre></div><h2 id="v6">v6+</h2>
+<p>Just to clarify: <br>
+there is no way this issue will be fixed, Redis &gt;= 6 will require a C11 compiler.</p>
+<ul>
+<li>RHEL7</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install centos-release-scl
+</span></span><span style="display:flex;"><span>sudo dnf install devtoolset-8
+</span></span><span style="display:flex;"><span>scl enable devtoolset-8 bash
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/redis-rhel/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -403,12 +593,19 @@ RHEL7 sudo dnf install centos-release-scl sudo dnf install devtoolset-8 scl enab
     </header>
     <section class="post-excerpt">
         
-            <p>Nginx&rsquo;s load balancing
-一、安装 OS: RHEL Community Version(Rocky8/Alma8) minimal（安装时的选项）
-0. prepare #dnf -y install gcc gcc-c++ automake make pcre pcre-devel zlib zlib-devel openssl openssl-devel see update openssl
-Library devel $sudo dnf install gd-devel libxml2-devel libxslt-devel GeoIP Download latest atomic-release Install atomic-release rpm:
-$sudo rpm -Uvh http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/atomic-release-1.0-23.el8.art.noarch.rpm Install GeoIP-devel rpm package:
-$sudo dnf install GeoIP-devel allow fw $sudo firewall-cmd --permanent --zone=public --add-port=80/tcp $sudo firewall-cmd --reload installation First, install Nginx of centos repo; Then, replace the nginx program file. <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
+            <p><p>Nginx&rsquo;s load balancing</p>
+<h1 id="一安装">一、安装</h1>
+<p>OS: RHEL Community Version(Rocky8/Alma8) minimal（安装时的选项）</p>
+<h2 id="0-prepare">0. prepare</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf -y install gcc gcc-c++ automake make pcre pcre-devel zlib zlib-devel openssl openssl-devel</span>
+</span></span></code></pre></div><p>see <a href="https://tdtc-hrb.github.io/cnblogs/post/ops_openssl/">update openssl</a></p>
+<h3 id="library-devel">Library devel</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install gd-devel libxml2-devel libxslt-devel
+</span></span></code></pre></div><h4 id="geoip">GeoIP</h4>
+<p>Download latest <a href="http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/">atomic-release</a> <br>
+Install atomic-release rpm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo rpm -Uvh http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/atomic-release-1.0-23.el8.art.noarch.rpm
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

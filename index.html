@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="generator" content="Hugo 0.134.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -199,13 +199,181 @@
     
         <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
+<ul>
+<li><a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a></li>
+<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
+</ul>
+<h1 id="visual-studio">Visual Studio</h1>
+<ul>
+<li>target directory</li>
+</ul>
+<pre tabindex="0"><code>--layout TARGET(directory)
+</code></pre><ul>
+<li>components</li>
+</ul>
+<pre tabindex="0"><code>--add NAME(Component)
+</code></pre><ul>
+<li>language</li>
+</ul>
+<pre tabindex="0"><code>--lang en-US
+</code></pre><p>exec:</p>
+<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs201x `
+...
+</code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
+<h2 id="common">Common</h2>
+<ul>
+<li>Core</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
+--add Microsoft.VisualStudio.Workload.CoreEditor `
+--add Microsoft.VisualStudio.Component.Roslyn.Compiler `
+--add Microsoft.Component.MSBuild `
+--add Microsoft.VisualStudio.Component.TextTemplating `
+</code></pr <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-09-04T08:08:08&#43;08:00">
+            4 Sep 2024
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/qt-webview/">QQ mini browser</a></h2>
     </header>
     <section class="post-excerpt">
         
-            <p>Android Studio: 2024.1.1 Qt Creator: v14.0.1 QT: V6.5.3 online installer version Creator and Design Studio 始终更新 Commercial LTS phase 新 Normal 发布后, lts 转为 commercial LTS 镜像 list Note: 下载那个镜像点的&quot;qt-unified-windows-x64-online.exe&quot;, 就使用it&rsquo;s Network.
-tuna ustc sjtu nanyang Qt Qucik version:
-Qt Version QtQml QtQml.Models QtQuick QtQuick.Particles QtQuick.Controls QtQuick.Layouts QtQuick.Dialogs QtQuick.WebEngine Qt 5.11 2.11 2.11 2.11 2.11 2.4 1.11 1.11 1.7 Qt 5.12 - - 2.12 - 2.12 - - Qt 5. <a class="read-more" href="/cnblogs/post/qt-webview/">&raquo;</a></p>
+            <p><ul>
+<li>Android Studio: 2024.1.1</li>
+<li>Qt Creator: v14.0.1</li>
+<li>QT: V6.5.3</li>
+</ul>
+<h2 id="online-installer-version">online installer version</h2>
+<ul>
+<li>Creator and Design Studio <br>
+始终更新</li>
+<li>Commercial LTS phase <br>
+<a href="https://lists.qt-project.org/pipermail/development/2023-October/044573.html">新 Normal 发布后, lts 转为 commercial LTS</a></li>
+</ul>
+<h3 id="镜像-listhttpsdownloadqtiostaticmirrorlist"><a href="https://download.qt.io/static/mirrorlist/">镜像 list</a></h3>
+<p>Note: 下载那个镜像点的&quot;qt-unified-windows-x64-online.exe&quot;, 就使用it&rsquo;s Network.</p>
+<ul>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/qt/archive/online_installers/">tuna</a></li>
+<li><a href="http://iso.mirrors.ustc.edu.cn/qtproject/official_releases/online_installers/">ustc</a></li>
+<li><a href="https://mirror.sjtu.edu.cn/qt/official_releases/online_installers/">sjtu</a></li>
+<li><a href="https://mirror.nyist.edu.cn/qt/official_releases/online_installers/">nanyang</a></li>
+</ul>
+<h2 id="qt-qucik">Qt Qucik</h2>
+<p><a href="https://en.wikipedia.org/wiki/Qt_Quick">version</a>:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Qt Version</th>
+          <th style="text-align: left">QtQml</th>
+          <th style="text-align: left">QtQml.Models</th>
+          <th style="text-align: left">QtQuick</th>
+          <th style="text-align: left">QtQuick.Particles</th>
+          <th style="text-align: left">QtQuick.Controls</th>
+          <th style="text-align: left">QtQuick.Layouts</th>
+          <th style="text-align: left">QtQuick.Dialogs</th>
+          <th style="text-align: left">QtQuick.WebEngine</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Qt 5.11</td>
+          <td style="text-align: left">2.11</td>
+          <td style="text-align: left">2.11</td>
+          <td style="text-align: left">2.11</td>
+          <td style="text-align: left">2.11</td>
+          <td style="text-align: left">2.4</td>
+          <td style="text-align: left">1.11</td>
+          <td style="text-align: left">1.11</td>
+          <td style="text-align: left">1.7</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Qt 5.12</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">2.12</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">2.12</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Qt 5.13</td>
+          <td style="text-align: left">2.13</td>
+          <td style="text-align: left">2.13</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">2.13</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">1.11</td>
+          <td style="text-align: left">1.11</td>
+          <td style="text-align: left">1.9</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Qt 5.14</td>
+          <td style="text-align: left">2.14</td>
+          <td style="text-align: left">2.14</td>
+          <td style="text-align: left">2.14</td>
+          <td style="text-align: left">2.14</td>
+          <td style="text-align: left">2.14</td>
+          <td style="text-align: left">1.14</td>
+          <td style="text-align: left">1.3</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Qt 5.15</td>
+          <td style="text-align: left">2.15</td>
+          <td style="text-align: left">2.15</td>
+          <td style="text-align: left">2.15</td>
+          <td style="text-align: left">2.15</td>
+          <td style="text-align: left">2.15</td>
+          <td style="text-align: left">1.15</td>
+          <td style="text-align: left">1.3</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Qt 6.2</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">6.2</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">6.2</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Qt 6.5</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">6.5</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">6.5</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="qtquickcontrolsstyles">QtQuick.Controls.Styles</h3>
+<p>Q: <a href="https://stackoverflow.com/questions/49263604/qml-cannot-assign-to-non-existent-property-style">Cannot assign to non-existent property &ldquo;style&rdquo;</a></p> <a class="read-more" href="/cnblogs/post/qt-webview/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -223,39 +391,20 @@ Qt Version QtQml QtQml.Models QtQuick QtQuick.Particles QtQuick.Controls QtQuick
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>Visual Studio my.visualstudio.com 已经不提供 非订阅用户 的下载
-target directory --layout TARGET(directory) components --add NAME(Component) language --lang en-US exec:
-.\vs_Community.exe --layout D:\win10soft\vs201x `... 所有的行尾 + 空格 + ` 尾行除外。
-Common Core --add Microsoft.VisualStudio.Component.CoreEditor `--add Microsoft.VisualStudio.Workload.CoreEditor `--add Microsoft.VisualStudio.Component.Roslyn.Compiler `--add Microsoft.Component.MSBuild `--add Microsoft.VisualStudio.Component.TextTemplating ` IntelliCode --add Microsoft.VisualStudio.Component.IntelliCode ` JIT --add Microsoft.VisualStudio.Component.Debugger.JustInTime ` VC MFC/ATL MFC/ATL &#34;Microsoft.VisualStudio.Component.VC.CoreIde&#34;,&#34;Microsoft.VisualStudio.Component.VC.Redist.14.Latest&#34;,&#34;Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core&#34;,&#34;Microsoft.VisualStudio.Component.VC.Tools.x86.x64&#34;,&#34;Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions.CMake&#34;,&#34;Microsoft.VisualStudio.Component.VC.CMake.Project&#34;,&#34;Microsoft.VisualStudio.Component.VC.ATL&#34;,&#34;Microsoft.VisualStudio.Component.VC.ATLMFC&#34;,&#34;Microsoft.Component.VC.Runtime.UCRTSDK&#34;,&#34;Microsoft.VisualStudio.Workload.NativeDesktop&#34; Windows SDK default:
-vs2019 Microsoft. <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-04-18T08:08:08&#43;08:00">
-            18 Apr 2024
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq4/">Windows的一些设置</a></h2>
     </header>
     <section class="post-excerpt">
         
-            <p>Task Manager Task manager doesn’t update resources on real time
-At the top, click View. Navigate to Update speed. If it’s paused, then click Normal. MS-Edge Regardless of Microsoft’s reasoning, you now know how to toggle the sidebar on or off in Edge 119. Just head to Settings &gt; Sidebar &gt; Copilot &gt; Always Show Sidebar. Alternatively, you can use the Ctrl + Shift + / shortcut.
-图标显示不正常 方法一 删除 IconCache. <a class="read-more" href="/cnblogs/post/ops_win_faq4/">&raquo;</a></p>
+            <p><h3 id="task-manager">Task Manager</h3>
+<p>Task manager doesn’t update resources on real time</p>
+<ol>
+<li>At the top, click View.</li>
+<li>Navigate to Update speed. <br>
+If it’s paused, then click Normal.</li>
+</ol>
+<h3 id="ms-edge">MS-Edge</h3>
+<p>Regardless of Microsoft’s reasoning, you now know how to toggle the sidebar on or off in Edge 119.
+Just head to Settings &gt; Sidebar &gt; Copilot &gt; Always Show Sidebar. Alternatively, you can use the Ctrl + Shift + / shortcut.</p> <a class="read-more" href="/cnblogs/post/ops_win_faq4/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -277,14 +426,29 @@ At the top, click View. Navigate to Update speed. If it’s paused, then click N
     </header>
     <section class="post-excerpt">
         
-            <p>Prepare mysql-dev sudo apt install mysql-client libmysqlclient-dev gem install mysql2 nodejs
-foreman
-gem install foreman Yarn upload yarn_1.22.19_all.deb to ubuntu:
-scp d:\yarn_1.22.19_all.deb tdtc@192.168.3.99:/home/tdtc/ install:
-sudo chmod +x yarn_1.22.19_all.deb sudo dpkg -i yarn_1.22.19_all.deb Creating a New Rails Project new:
-rails new veic_web-r2 -j esbuild --css bulma -d mysql upload images windows 10:
-tar zcvf img.tar.gz ./img/ --transform s/img/images/ scp d:\projects\img.tar.gz tdtc@192.168.3.99:/home/tdtc/veic_web-r2/app/assets/ ubuntu:
-cd ~/veic_web-r2/app/assets/ tar zxvf img.tar.gz config db vi ./config/database.yml remote user: <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
+            <p><h1 id="prepare">Prepare</h1>
+<ul>
+<li>mysql-dev</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
+gem install mysql2
+</code></pre><ul>
+<li>
+<p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-ubuntu/">nodejs</a></p>
+</li>
+<li>
+<p>foreman</p>
+</li>
+</ul>
+<pre tabindex="0"><code>gem install foreman
+</code></pre><h2 id="yarn">Yarn</h2>
+<p>upload <a href="https://github.com/yarnpkg/yarn/releases/download/v1.22.19/yarn_1.22.19_all.deb">yarn_1.22.19_all.deb</a> to ubuntu:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>scp d:\yarn_1.22.19_all.deb tdtc@192.168.3.99:/home/tdtc/
+</span></span></code></pre></div><p>install:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.19_all.deb
+</span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.19_all.deb
+</span></span></code></pre></div><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
+<p>new:</p> <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -306,8 +470,36 @@ cd ~/veic_web-r2/app/assets/ tar zxvf img.tar.gz config db vi ./config/database.
     </header>
     <section class="post-excerpt">
         
-            <p>xbfLibR.dll generated by Delphi, Error in Ubuntu:
-java.lang.UnsatisfiedLinkError: /tmp/xbfLibR1872218867548961332.dll: /tmp/xbfLibR1872218867548961332.dll: invalid ELF header (Possible cause: endianness mismatch) JNI Header C++ JNI Header Write a Java Class ReadXbf.java that uses C/C++ Codes package com.cartionsoft.xbf;public class ReadXbf {static {System.loadLibrary(&#34;XbfLibR1&#34;); // Load native library XbfLibR1.dll (Windows) or libXbfLibR1.so (Unixes)// at runtime// This library contains a native method called sayHello()}// Declare an instance native method sayHello() which receives no parameter and returns voidprivate native String sayHello(int num, String text);// Test Driverpublic static void main(String[] args) {ReadXbf rf = new ReadXbf();String text = rf. <a class="read-more" href="/cnblogs/post/java-jni-gcc/">&raquo;</a></p>
+            <p><p>xbfLibR.dll generated by Delphi, Error in Ubuntu:</p>
+<pre tabindex="0"><code>java.lang.UnsatisfiedLinkError: /tmp/xbfLibR1872218867548961332.dll: /tmp/xbfLibR1872218867548961332.dll: 
+invalid ELF header (Possible cause: endianness mismatch)
+</code></pre><ul>
+<li>JNI Header</li>
+<li>C++</li>
+</ul>
+<h2 id="jni-header">JNI Header</h2>
+<ul>
+<li>Write a Java Class ReadXbf.java that uses C/C++ Codes</li>
+</ul>
+<pre tabindex="0"><code>package com.cartionsoft.xbf;
+
+public class ReadXbf {
+    static {
+      System.loadLibrary(&#34;XbfLibR1&#34;);  // Load native library XbfLibR1.dll (Windows) or libXbfLibR1.so (Unixes)
+                                   //  at runtime
+                                   // This library contains a native method called sayHello()
+    }
+    // Declare an instance native method sayHello() which receives no parameter and returns void
+    private native String sayHello(int num, String text);
+
+    // Test Driver
+    public static void main(String[] args) {
+      ReadXbf rf = new ReadXbf();
+      String text = rf.sayHello(1, &#34;world&#34;); // Create an instance and invoke the native method
+      System.out.println(text);
+    }
+}
+</code></pr <a class="read-more" href="/cnblogs/post/java-jni-gcc/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -329,13 +521,45 @@ java.lang.UnsatisfiedLinkError: /tmp/xbfLibR1872218867548961332.dll: /tmp/xbfLib
     </header>
     <section class="post-excerpt">
         
-            <p>关于Php:
-Non Thread Safe 和 Thread Safe： 使用Apache时，用“TS”，否则没有“php(7/8)apache2_4.dll”
-VC Redist VS16 / VC15 / VC14
-About Apache v2.4.56+:
-OpenSSL When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.
-Apache配置 路径 php-apache 重写 路径 网站根目录 替换“D:/progFiles/Apache24/htdocs”为自己使用的路径 程序 替换“D:/progFiles/Apache24/”为自己Apache2.4的路径； php-apache 在配置文件(conf/httpd.conf)最后增加
-PHPv8.0 PHPIniDir &#34;D:/progFiles/php8.0&#34; LoadModule php_module &#34;D:/progFiles/php-8.0/php8apache2_4.dll&#34; PHPV7.1 PHPIniDir &#34;D:/progFiles/php7.1&#34; LoadModule php7_module &#34;D:/progFiles/php7.1/php7apache2_4.dll&#34; 重写 a.打开模块 LoadModule rewrite_module modules/mod_rewrite.so b.允许重写 AllowOverride All 配置PHP(php.ini) CodeIgniter When less than Php v8.1, use the CodeIgniter Symfony When greater than Php v8. <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
+            <p><p>关于Php:</p>
+<ul>
+<li>
+<p>Non Thread Safe 和 Thread Safe： <br>
+使用Apache时，用“TS”，否则没有“php(7/8)apache2_4.dll”</p>
+</li>
+<li>
+<p>VC Redist <br>
+<a href="https://aka.ms/vs/16/release/VC_redist.x64.exe">VS16</a> /
+<a href="https://aka.ms/vs/15/release/VC_redist.x64.exe">VC15</a> /
+<a href="https://www.microsoft.com/en-us/download/details.aspx?id=53587">VC14</a></p>
+<p>About Apache v2.4.56+:</p>
+</li>
+<li>
+<p>OpenSSL <br>
+When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.</p>
+</li>
+</ul>
+<h1 id="apache配置">Apache配置</h1>
+<ul>
+<li>路径</li>
+<li>php-apache</li>
+<li>重写</li>
+</ul>
+<h2 id="路径">路径</h2>
+<ul>
+<li>网站根目录 <br>
+替换“D:/progFiles/Apache24/htdocs”为自己使用的路径</li>
+<li>程序 <br>
+替换“D:/progFiles/Apache24/”为自己Apache2.4的路径；</li>
+</ul>
+<h2 id="php-apache">php-apache</h2>
+<p>在配置文件(conf/httpd.conf)最后增加</p>
+<ul>
+<li>PHPv8.0</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;D:/progFiles/php8.0&#34;</span>
+</span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;D:/progFiles/php-8.0/php8apache2_4.dll&#34;</span>
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -357,8 +581,38 @@ PHPv8.0 PHPIniDir &#34;D:/progFiles/php8.0&#34; LoadModule php_module &#34;D:/pr
     </header>
     <section class="post-excerpt">
         
-            <p>Ruby &amp; Rails Compatibility Table Rails Version Required Ruby Version Recommended Ruby Version Required Rubygems Version Status 7.1.Z &gt;= 2.7.0 3.2.Z &gt;= 1.8.11 Maintained 7.0.Z &gt;= 2.7.0 3.1.Z &gt;= 1.8.11 Maintained RbEnv Install ruby using rbenv.
-Dependencies Ubuntu Ubuntu 20.04 default Ruby version is v2.7 sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \libyaml-dev libncurses5-dev libffi-dev libgdbm-dev RHEL RHEL8(Alma / Rocky) default Ruby version is v2. <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
+            <p><ul>
+<li><a href="https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html">Ruby &amp; Rails Compatibility Table</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Rails Version</th>
+          <th style="text-align: left">Required Ruby Version</th>
+          <th style="text-align: left">Recommended Ruby Version</th>
+          <th style="text-align: left">Required Rubygems Version</th>
+          <th style="text-align: left">Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">7.1.Z</td>
+          <td style="text-align: left">&gt;= 2.7.0</td>
+          <td style="text-align: left">3.2.Z</td>
+          <td style="text-align: left">&gt;= 1.8.11</td>
+          <td style="text-align: left">Maintained</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">7.0.Z</td>
+          <td style="text-align: left">&gt;= 2.7.0</td>
+          <td style="text-align: left">3.1.Z</td>
+          <td style="text-align: left">&gt;= 1.8.11</td>
+          <td style="text-align: left">Maintained</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="rbenv">RbEnv</h1>
+<p>Install ruby using rbenv.</p> <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -380,7 +634,83 @@ Dependencies Ubuntu Ubuntu 20.04 default Ruby version is v2.7 sudo apt install g
     </header>
     <section class="post-excerpt">
         
-            <p>Servlet API history Servlet API version Released Specification Platform Important Changes Jakarta Servlet 6.0 May 31, 2022 6.0 Jakarta EE 10 remove deprecated features and implement requested enhancements Jakarta Servlet 5.0 Oct 9, 2020 5.0 Jakarta EE 9 API moved from package javax.servlet to jakarta.servlet Jakarta Servlet 4.0.3 Sep 10, 2019 4.0 Jakarta EE 8 Renamed from &ldquo;Java&rdquo; trademark Java Servlet 4.0 Sep 2017 JSR 369 Java EE 8 HTTP/2 Java Servlet 3. <a class="read-more" href="/cnblogs/post/java-servlet_versions/">&raquo;</a></p>
+            <p><ul>
+<li><a href="https://en.wikipedia.org/wiki/Jakarta_Servlet#History">Servlet API history</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Servlet API version</th>
+          <th style="text-align: left">Released</th>
+          <th style="text-align: left">Specification</th>
+          <th style="text-align: left">Platform</th>
+          <th style="text-align: left">Important Changes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Jakarta Servlet 6.0</td>
+          <td style="text-align: left">May 31, 2022</td>
+          <td style="text-align: left">6.0</td>
+          <td style="text-align: left">Jakarta EE 10</td>
+          <td style="text-align: left">remove deprecated features and implement requested enhancements</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Jakarta Servlet 5.0</td>
+          <td style="text-align: left">Oct 9, 2020</td>
+          <td style="text-align: left">5.0</td>
+          <td style="text-align: left">Jakarta EE 9</td>
+          <td style="text-align: left">API moved from package javax.servlet to jakarta.servlet</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Jakarta Servlet 4.0.3</td>
+          <td style="text-align: left">Sep 10, 2019</td>
+          <td style="text-align: left">4.0</td>
+          <td style="text-align: left">Jakarta EE 8</td>
+          <td style="text-align: left">Renamed from &ldquo;Java&rdquo; trademark</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Java Servlet 4.0</td>
+          <td style="text-align: left">Sep 2017</td>
+          <td style="text-align: left">JSR 369</td>
+          <td style="text-align: left">Java EE 8</td>
+          <td style="text-align: left">HTTP/2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Java Servlet 3.1</td>
+          <td style="text-align: left">May 2013</td>
+          <td style="text-align: left">JSR 340</td>
+          <td style="text-align: left">Java EE 7</td>
+          <td style="text-align: left">Non-blocking I/O, HTTP protocol upgrade mechanism (WebSocket)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Java Servlet 3.0</td>
+          <td style="text-align: left">December 2009</td>
+          <td style="text-align: left">JSR 315</td>
+          <td style="text-align: left">Java EE 6, Java SE 6</td>
+          <td style="text-align: left">Pluggability, Ease of development, Async Servlet, Security, File Uploading</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Java Servlet 2.5</td>
+          <td style="text-align: left">September 2005</td>
+          <td style="text-align: left">JSR 154</td>
+          <td style="text-align: left">Java EE 5, Java SE 5</td>
+          <td style="text-align: left">Requires Java SE 5, supports annotation</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Java Servlet 2.4</td>
+          <td style="text-align: left">November 2003</td>
+          <td style="text-align: left">JSR 154</td>
+          <td style="text-align: left">J2EE 1.4, J2SE 1.3</td>
+          <td style="text-align: left">web.xml uses XML Schema</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="spring">Spring</h2>
+<ul>
+<li>
+<p>v6.1 <br>
+6.1.x is the upcoming feature branch (<a href="https://calendar.spring.io/">November 2023</a>).</p> <a class="read-more" href="/cnblogs/post/java-servlet_versions/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -402,8 +732,22 @@ Dependencies Ubuntu Ubuntu 20.04 default Ruby version is v2.7 sudo apt install g
     </header>
     <section class="post-excerpt">
         
-            <p> Visual C++ 14.0 (Visual Studio 2015) for PHP 7.0 or PHP 7.1. Visual C++ 15.0 (Visual Studio 2017) for PHP 7.2, PHP 7.3 or PHP 7.4. Visual C++ 16.0 (Visual Studio 2019) for master. Enter build git clone https://github.com/Microsoft/php-sdk-binary-tools cd php-sdk-binary-tools phpsdk-vs16-x64.bat Gen deps directory phpsdk_buildtree phpdev git php src cd d:\progFiles\phpdev\vs16\x64git clone -b PHP-8.0.* https://github.com/php/php-src.git *: version number
-deps updates phpsdk_deps --update build buildconf &amp;&amp; configure &amp;&amp; nmake Build your own PHP on Windows  <a class="read-more" href="/cnblogs/post/php-build-win/">&raquo;</a></p>
+            <p><ul>
+<li>Visual C++ 14.0 (Visual Studio 2015) for PHP 7.0 or PHP 7.1.</li>
+<li>Visual C++ 15.0 (Visual Studio 2017) for PHP 7.2, PHP 7.3 or PHP 7.4.</li>
+<li>Visual C++ 16.0 (Visual Studio 2019) for master.</li>
+</ul>
+<ol>
+<li>Enter build</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/Microsoft/php-sdk-binary-tools
+</span></span><span style="display:flex;"><span>cd php-sdk-binary-tools
+</span></span><span style="display:flex;"><span>phpsdk-vs16-x64.bat
+</span></span></code></pre></div><ol start="2">
+<li>Gen deps directory</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>phpsdk_buildtree phpdev
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/php-build-win/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -425,15 +769,26 @@ deps updates phpsdk_deps --update build buildconf &amp;&amp; configure &amp;&amp
     </header>
     <section class="post-excerpt">
         
-            <p>SQLite3 X:
-3400200 X: 当前版本号
-Debug版 Source Code -&gt; sqlite-amalgamation-X.zip
-新建DLL工程 project name: sqlite3（使用这个名字主要是在生成lib的时候不用更改输出名了）
-添加SQLite源文件 ， 把sqlite3.h、sqlite3ext.h和sqlite3.c拷贝到工程根目录。
-编译工程 Project ==&gt; Properties ==&gt; General
-Configureation Type : Static library(.lib) 编译即可
-Build -&gt; Rebuild sqlite3 预编译头文件 Project ==&gt; Properties ==&gt; C/C++ ==&gt; Precompiled Header
-Not Using Precompiled Headers vs2019 sqlite3.c : fatal error C1853: &#39;Debug\sqlite3.pch&#39; precompiled header file is from a previous version of the compiler,or the precompiled header is C++ and you are using it from C (or vice versa) vs2022 sqlite3. <a class="read-more" href="/cnblogs/post/vc-sqlite3lib/">&raquo;</a></p>
+            <p><p><a href="https://sqlite.org/download.html">SQLite3</a> X:</p>
+<pre tabindex="0"><code>3400200
+</code></pre><p>X: 当前版本号</p>
+<h1 id="debug版">Debug版</h1>
+<p>Source Code -&gt; sqlite-amalgamation-X.zip</p>
+<h2 id="新建dll工程">新建DLL工程</h2>
+<p>project name: sqlite3（使用这个名字主要是在生成lib的时候不用更改输出名了）</p>
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1-0prj(vs2013).png -->
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1-1prj(vs2013).png -->
+<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1prj.png -->
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1prj(vs2022).png" alt="VS2022 prj1"></p>
+<h3 id="添加sqlite源文件">添加SQLite源文件</h3>
+<p>，
+把sqlite3.h、sqlite3ext.h和sqlite3.c拷贝到工程根目录。</p>
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-2prj(vs2013).png -->
+<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-2prj.png -->
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-2prj(vs2022).png" alt="VS2022 prj2"></p>
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-3prj(vs2013).png -->
+<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-3prj.png -->
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-3prj(vs2022).png" alt="VS2022 prj21"></p> <a class="read-more" href="/cnblogs/post/vc-sqlite3lib/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

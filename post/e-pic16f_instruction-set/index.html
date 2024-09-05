@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="generator" content="Hugo 0.134.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_instruction-set/" />
 
@@ -179,52 +179,52 @@
     <section class="post-content">
       <p>TABLE 1-1: OPCODE FIELD DESCRIPTIONS</p>
 <table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>f</td>
-<td>Register file address (0x00 to 0x7F)</td>
-</tr>
-<tr>
-<td>W</td>
-<td>Working register (accumulator)</td>
-</tr>
-<tr>
-<td>d</td>
-<td>Destination select;</td>
-</tr>
-<tr>
-<td>b</td>
-<td>Bit address within an 8-bit file register</td>
-</tr>
-<tr>
-<td>k</td>
-<td>Literal field, constant data or label</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Field</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">f</td>
+          <td style="text-align: left">Register file address (0x00 to 0x7F)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">W</td>
+          <td style="text-align: left">Working register (accumulator)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">d</td>
+          <td style="text-align: left">Destination select;</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">b</td>
+          <td style="text-align: left">Bit address within an 8-bit file register</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">k</td>
+          <td style="text-align: left">Literal field, constant data or label</td>
+      </tr>
+  </tbody>
 </table>
 <table>
-<thead>
-<tr>
-<th>d value</th>
-<th>where the results are placed</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>d = 0</td>
-<td>W(orking) register</td>
-</tr>
-<tr>
-<td>d = 1</td>
-<td>file register; Default is d = 1.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">d value</th>
+          <th style="text-align: left">where the results are placed</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">d = 0</td>
+          <td style="text-align: left">W(orking) register</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">d = 1</td>
+          <td style="text-align: left">file register; Default is d = 1.</td>
+      </tr>
+  </tbody>
 </table>
 <p>TABLE 1-2: ABBREVIATION DESCRIPTIONS</p>
 <p>|Field| Description|
@@ -238,272 +238,272 @@
 <li>
 <p>Byte-Oriented File Register Operations</p>
 <table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>Description</th>
-<th>Affected Flags</th>
-<th>Instruction Cycles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CLRF   f</td>
-<td>f=0 <br>Clears the content of File Register f.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-<tr>
-<td>CLRW</td>
-<td>W=0 <br>Clears W.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-<tr>
-<td>SWAPF  f, d</td>
-<td>Swaps the nibbles of f and write the result to destination d.</td>
-<td>None</td>
-<td>1</td>
-</tr>
-<tr>
-<td>ADDWFC f, d</td>
-<td>Add WREG and Carry bit to f. <sup>1<sup></td>
-<td>C, DC, Z</td>
-<td>2</td>
-</tr>
-<tr>
-<td>ASRF   f, d</td>
-<td>Arithmetic Right Shift. <sup>1<sup></td>
-<td>C, Z</td>
-<td>2</td>
-</tr>
-<tr>
-<td>LSLF   f, d</td>
-<td>Logical Left Shift. <sup>1<sup></td>
-<td>C, Z</td>
-<td>2</td>
-</tr>
-<tr>
-<td>LSRF   f, d</td>
-<td>Logical Right Shift. <sup>1<sup></td>
-<td>C, Z</td>
-<td>2</td>
-</tr>
-<tr>
-<td>SUBWFB f, d</td>
-<td>Subtract WREG from f with Borrow. <sup>1<sup></td>
-<td>C, DC, Z</td>
-<td>2</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Instruction</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Affected Flags</th>
+          <th style="text-align: left">Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">CLRF   f</td>
+          <td style="text-align: left">f=0 <br>Clears the content of File Register f.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CLRW</td>
+          <td style="text-align: left">W=0 <br>Clears W.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SWAPF  f, d</td>
+          <td style="text-align: left">Swaps the nibbles of f and write the result to destination d.</td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ADDWFC f, d</td>
+          <td style="text-align: left">Add WREG and Carry bit to f. <sup>1<sup></td>
+          <td style="text-align: left">C, DC, Z</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ASRF   f, d</td>
+          <td style="text-align: left">Arithmetic Right Shift. <sup>1<sup></td>
+          <td style="text-align: left">C, Z</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">LSLF   f, d</td>
+          <td style="text-align: left">Logical Left Shift. <sup>1<sup></td>
+          <td style="text-align: left">C, Z</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">LSRF   f, d</td>
+          <td style="text-align: left">Logical Right Shift. <sup>1<sup></td>
+          <td style="text-align: left">C, Z</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SUBWFB f, d</td>
+          <td style="text-align: left">Subtract WREG from f with Borrow. <sup>1<sup></td>
+          <td style="text-align: left">C, DC, Z</td>
+          <td style="text-align: left">2</td>
+      </tr>
+  </tbody>
 </table>
 </li>
 <li>
 <p>Bit-Oriented File Register Operations</p>
 <table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>Description</th>
-<th>Affected Flags</th>
-<th>Instruction Cycles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BCF    f, b</td>
-<td>Clears (equates to 0) the bit b of register f.</td>
-<td>None</td>
-<td>1</td>
-</tr>
-<tr>
-<td>BSF    f, b</td>
-<td>Sets (equates to 1) the bit b of register f.</td>
-<td>None</td>
-<td>1</td>
-</tr>
-<tr>
-<td>BTFSC  f, b</td>
-<td>Checks if bit b of register f is equal to 0 or not. If it is NOT zero continue with the next line of code, otherwise skips next line.</td>
-<td>None</td>
-<td>1 (if 1)<br>2 (if 0)</br></td>
-</tr>
-<tr>
-<td>BTFSS  f, b</td>
-<td>Checks if bit b of register f is equal to 1 or not. If it is ZERO continue with the next line of code, otherwise skips next line.</td>
-<td>None</td>
-<td>1 (if 0)<br>2 (if 1)</br></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Instruction</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Affected Flags</th>
+          <th style="text-align: left">Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">BCF    f, b</td>
+          <td style="text-align: left">Clears (equates to 0) the bit b of register f.</td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">BSF    f, b</td>
+          <td style="text-align: left">Sets (equates to 1) the bit b of register f.</td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">BTFSC  f, b</td>
+          <td style="text-align: left">Checks if bit b of register f is equal to 0 or not. If it is NOT zero continue with the next line of code, otherwise skips next line.</td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1 (if 1)<br>2 (if 0)</br></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">BTFSS  f, b</td>
+          <td style="text-align: left">Checks if bit b of register f is equal to 1 or not. If it is ZERO continue with the next line of code, otherwise skips next line.</td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1 (if 0)<br>2 (if 1)</br></td>
+      </tr>
+  </tbody>
 </table>
 </li>
 <li>
 <p>Literal Operations</p>
 <table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>Description</th>
-<th>Affected Flags</th>
-<th>Instruction Cycles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MOVLB  k</td>
-<td>Move literal to BSR. <sup>1<sup></td>
-<td>None</td>
-<td>1</td>
-</tr>
-<tr>
-<td>MOVLP  k</td>
-<td>Move literal to PCLATH. <sup>1<sup></td>
-<td>None</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Instruction</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Affected Flags</th>
+          <th style="text-align: left">Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">MOVLB  k</td>
+          <td style="text-align: left">Move literal to BSR. <sup>1<sup></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">MOVLP  k</td>
+          <td style="text-align: left">Move literal to PCLATH. <sup>1<sup></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1</td>
+      </tr>
+  </tbody>
 </table>
 </li>
 <li>
 <p>Control Operations</p>
 <table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>Description</th>
-<th>Affected Flags</th>
-<th>Instruction Cycles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BRA    k</td>
-<td>Relative Branch. <sup>1<sup></td>
-<td>None</td>
-<td>2</td>
-</tr>
-<tr>
-<td>BRW    —</td>
-<td>Relative Branch with WREG. <sup>1<sup></td>
-<td>None</td>
-<td>2</td>
-</tr>
-<tr>
-<td>CALL  LABEL</td>
-<td>Calls subroutine LABEL.</td>
-<td>None</td>
-<td>2</td>
-</tr>
-<tr>
-<td>CALLW  —</td>
-<td>Call Subroutine with WREG. <sup>1<sup></td>
-<td>None</td>
-<td>2</td>
-</tr>
-<tr>
-<td>GOTO  LABEL</td>
-<td>Jumps to the code under LABEL.</td>
-<td>None</td>
-<td>2</td>
-</tr>
-<tr>
-<td>RETFIE</td>
-<td>Return command for interrupt subroutines.</td>
-<td>None</td>
-<td>2</td>
-</tr>
-<tr>
-<td>RETLW  k</td>
-<td>Return from a subroutine with W=N.</td>
-<td>None</td>
-<td>2</td>
-</tr>
-<tr>
-<td>RETURN</td>
-<td>Return from a subroutine.</td>
-<td>None</td>
-<td>2</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Instruction</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Affected Flags</th>
+          <th style="text-align: left">Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">BRA    k</td>
+          <td style="text-align: left">Relative Branch. <sup>1<sup></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">BRW    —</td>
+          <td style="text-align: left">Relative Branch with WREG. <sup>1<sup></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CALL  LABEL</td>
+          <td style="text-align: left">Calls subroutine LABEL.</td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CALLW  —</td>
+          <td style="text-align: left">Call Subroutine with WREG. <sup>1<sup></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">GOTO  LABEL</td>
+          <td style="text-align: left">Jumps to the code under LABEL.</td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RETFIE</td>
+          <td style="text-align: left">Return command for interrupt subroutines.</td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RETLW  k</td>
+          <td style="text-align: left">Return from a subroutine with W=N.</td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RETURN</td>
+          <td style="text-align: left">Return from a subroutine.</td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">2</td>
+      </tr>
+  </tbody>
 </table>
 </li>
 <li>
 <p>Inherent Operations</p>
 <table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>Description</th>
-<th>Affected Flags</th>
-<th>Instruction Cycles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CLRWDT</td>
-<td>Clears Watchdog Timer.</td>
-<td><SPAN style="TEXT-DECORATION: overline">TO</SPAN>, <SPAN style="TEXT-DECORATION: overline">PD</SPAN></td>
-<td>1</td>
-</tr>
-<tr>
-<td>NOP</td>
-<td>No Operation <br>Does Nothing.</br></td>
-<td>None</td>
-<td>1</td>
-</tr>
-<tr>
-<td>RESET  —</td>
-<td>Software device Reset. <sup>1<sup></td>
-<td>None</td>
-<td>1</td>
-</tr>
-<tr>
-<td>SLEEP</td>
-<td>Go into Standby Mode.</td>
-<td><SPAN style="TEXT-DECORATION: overline">TO</SPAN>, <SPAN style="TEXT-DECORATION: overline">PD</SPAN></td>
-<td>1</td>
-</tr>
-<tr>
-<td>TRIS   f</td>
-<td>Load TRIS register with WREG. <sup>1<sup></td>
-<td>None</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Instruction</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Affected Flags</th>
+          <th style="text-align: left">Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">CLRWDT</td>
+          <td style="text-align: left">Clears Watchdog Timer.</td>
+          <td style="text-align: left"><SPAN style="TEXT-DECORATION: overline">TO</SPAN>, <SPAN style="TEXT-DECORATION: overline">PD</SPAN></td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">NOP</td>
+          <td style="text-align: left">No Operation <br>Does Nothing.</br></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RESET  —</td>
+          <td style="text-align: left">Software device Reset. <sup>1<sup></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SLEEP</td>
+          <td style="text-align: left">Go into Standby Mode.</td>
+          <td style="text-align: left"><SPAN style="TEXT-DECORATION: overline">TO</SPAN>, <SPAN style="TEXT-DECORATION: overline">PD</SPAN></td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TRIS   f</td>
+          <td style="text-align: left">Load TRIS register with WREG. <sup>1<sup></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1</td>
+      </tr>
+  </tbody>
 </table>
 </li>
 </ul>
 <p>*1: New MCU (PIC16F188/152 etc.) series add 12（47 in total） assembly instructions.</p>
 <h2 id="sing-data-memory-and-moving-data">sing data memory and moving data</h2>
 <table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>Description</th>
-<th>Affected Flags</th>
-<th>Instruction Cycles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MOVF   f, d</td>
-<td>f⇒W (if d=0), f⇒f (if d=1) <br>Moves the content of f to destination d.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-<tr>
-<td>MOVWF  f</td>
-<td>W⇒f <br>Moves W to file register f.</br></td>
-<td>None</td>
-<td>1</td>
-</tr>
-<tr>
-<td>MOVLW  k</td>
-<td>k⇒W <br>Copies the number k to W.</br></td>
-<td>None</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Instruction</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Affected Flags</th>
+          <th style="text-align: left">Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">MOVF   f, d</td>
+          <td style="text-align: left">f⇒W (if d=0), f⇒f (if d=1) <br>Moves the content of f to destination d.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">MOVWF  f</td>
+          <td style="text-align: left">W⇒f <br>Moves W to file register f.</br></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">MOVLW  k</td>
+          <td style="text-align: left">k⇒W <br>Copies the number k to W.</br></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="movf">MOVF</h3>
 <p>In general, f is assigned to W.</p>
@@ -527,79 +527,79 @@ MOVF with a destination 1 (F), is generally used to check whether the content of
 <li>Skip if Zero</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>Description</th>
-<th>Affected Flags</th>
-<th>Instruction Cycles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>INCFSZ f, d</td>
-<td>f+1⇒W (if d=0), f+1⇒f (if d=1) <br>Increments f and write the result to destination d. The next instruction is skipped if the result is 0 (f=255).</br></td>
-<td>None</td>
-<td>1 (f≠255) <br>2 (f=255)</br></td>
-</tr>
-<tr>
-<td>DECFSZ f, d</td>
-<td>f-1⇒W (if d=0), f-1⇒f (if d=1) <br>Decrements f and write the result to destination d. The next instruction is skipped if the result is 0.</br></td>
-<td>None</td>
-<td>1 (f≠1) <br>2 (f=1)</br></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Instruction</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Affected Flags</th>
+          <th style="text-align: left">Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">INCFSZ f, d</td>
+          <td style="text-align: left">f+1⇒W (if d=0), f+1⇒f (if d=1) <br>Increments f and write the result to destination d. The next instruction is skipped if the result is 0 (f=255).</br></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1 (f≠255) <br>2 (f=255)</br></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">DECFSZ f, d</td>
+          <td style="text-align: left">f-1⇒W (if d=0), f-1⇒f (if d=1) <br>Decrements f and write the result to destination d. The next instruction is skipped if the result is 0.</br></td>
+          <td style="text-align: left">None</td>
+          <td style="text-align: left">1 (f≠1) <br>2 (f=1)</br></td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>Add &amp; Subtracts</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>Description</th>
-<th>Affected Flags</th>
-<th>Instruction Cycles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ADDWF  f, d</td>
-<td>f+W⇒W (if d=0), f+W⇒f (if d=1) <br>Add W with the content of file register f and write the result to destination d.</br></td>
-<td>Z, DC, C</td>
-<td>1</td>
-</tr>
-<tr>
-<td>ADDLW  k</td>
-<td>k+W⇒W <br>Add literal k and W.</br></td>
-<td>Z, DC, C</td>
-<td>1</td>
-</tr>
-<tr>
-<td>INCF   f, d</td>
-<td>f+1⇒W (if d=0), f+1⇒f (if d=1) <br>Increments f and write the result to destination d.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-<tr>
-<td>SUBWF  f, d</td>
-<td>f-W⇒W (if d=0), f-W⇒f (if d=1) <br>Subtracts W from f and write the result to destination d.</br></td>
-<td>C, DC, Z</td>
-<td>1</td>
-</tr>
-<tr>
-<td>SUBLW  k</td>
-<td>k-W⇒W <br>Subtract W from literal k and write the result to W.</br></td>
-<td>Z, DC, C</td>
-<td>1</td>
-</tr>
-<tr>
-<td>DECF   f, d</td>
-<td>f-1⇒W (if d=0), f-1⇒f (if d=1) <br>Decrements f and write the result to destination d.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Instruction</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Affected Flags</th>
+          <th style="text-align: left">Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">ADDWF  f, d</td>
+          <td style="text-align: left">f+W⇒W (if d=0), f+W⇒f (if d=1) <br>Add W with the content of file register f and write the result to destination d.</br></td>
+          <td style="text-align: left">Z, DC, C</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ADDLW  k</td>
+          <td style="text-align: left">k+W⇒W <br>Add literal k and W.</br></td>
+          <td style="text-align: left">Z, DC, C</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">INCF   f, d</td>
+          <td style="text-align: left">f+1⇒W (if d=0), f+1⇒f (if d=1) <br>Increments f and write the result to destination d.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SUBWF  f, d</td>
+          <td style="text-align: left">f-W⇒W (if d=0), f-W⇒f (if d=1) <br>Subtracts W from f and write the result to destination d.</br></td>
+          <td style="text-align: left">C, DC, Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SUBLW  k</td>
+          <td style="text-align: left">k-W⇒W <br>Subtract W from literal k and write the result to W.</br></td>
+          <td style="text-align: left">Z, DC, C</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">DECF   f, d</td>
+          <td style="text-align: left">f-1⇒W (if d=0), f-1⇒f (if d=1) <br>Decrements f and write the result to destination d.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="subwfhttpwwwonlinepiccompilercominstructionsenghtmlsectionsubwf"><a href="http://www.onlinepiccompiler.com/InstructionsENG.html#section=SUBWF">SUBWF</a></h3>
 <p><img src="http://www.onlinepiccompiler.com/img/subwfENG.png" alt="d=0">
@@ -618,83 +618,83 @@ Let&rsquo;s say W=15 and COUNTER=63, then</p>
 </code></pre><p>makes COUNTER=48. W remains the same. If the destination was W (or 0), W becomes 48 and COUNTER remains the same.</p>
 <h3 id="logic-operation">logic operation</h3>
 <table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>Description</th>
-<th>Affected Flags</th>
-<th>Instruction Cycles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ANDWF  f, d</td>
-<td>f&amp;W⇒W (if d=0), f&amp;W⇒f (if d=1) <br>Logically AND W with the content of file register f and write the result to destination d.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-<tr>
-<td>ANDLW  k</td>
-<td>k&amp;W⇒W <br>Logically ANDs literal k with W.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-<tr>
-<td>IORWF  f, d</td>
-<td>f | W⇒W (if d=0), f | W⇒f (if d=1) <br>Logically ORs f with W and write the result to destination d.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-<tr>
-<td>IORLW  k</td>
-<td>k | W⇒W <br>Logically ORs literal k with W.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-<tr>
-<td>XORWF  f, d</td>
-<td>f^W⇒W (if d=0), f^W⇒f (if d=1) <br>Logically XORs f with W and write the result to destination d.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-<tr>
-<td>XORLW  k</td>
-<td>k^W⇒W <br>Logically XORs literal k with W.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Instruction</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Affected Flags</th>
+          <th style="text-align: left">Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">ANDWF  f, d</td>
+          <td style="text-align: left">f&amp;W⇒W (if d=0), f&amp;W⇒f (if d=1) <br>Logically AND W with the content of file register f and write the result to destination d.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ANDLW  k</td>
+          <td style="text-align: left">k&amp;W⇒W <br>Logically ANDs literal k with W.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">IORWF  f, d</td>
+          <td style="text-align: left">f | W⇒W (if d=0), f | W⇒f (if d=1) <br>Logically ORs f with W and write the result to destination d.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">IORLW  k</td>
+          <td style="text-align: left">k | W⇒W <br>Logically ORs literal k with W.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">XORWF  f, d</td>
+          <td style="text-align: left">f^W⇒W (if d=0), f^W⇒f (if d=1) <br>Logically XORs f with W and write the result to destination d.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">XORLW  k</td>
+          <td style="text-align: left">k^W⇒W <br>Logically XORs literal k with W.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="code-bit-manipulation">Code bit manipulation</h2>
 <table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>Description</th>
-<th>Affected Flags</th>
-<th>Instruction Cycles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>COMF   f, d</td>
-<td><SPAN style="TEXT-DECORATION: overline">f</SPAN>⇒W (if d=0), <SPAN style="TEXT-DECORATION: overline">f</SPAN>⇒f (if d=1) <br>Takes the complement of each bit in f and write the result to destination d.</br></td>
-<td>Z</td>
-<td>1</td>
-</tr>
-<tr>
-<td>RLF    f, d</td>
-<td>f&lt;1⇒W (if d=0), f&lt;1⇒f (if d=1) <br>Rotates f one bit to the left through Carry Bit and write the result to destination d.</br></td>
-<td>C</td>
-<td>1</td>
-</tr>
-<tr>
-<td>RRF    f, d</td>
-<td>f&gt;1⇒W (if d=0), f&gt;1⇒f (if d=1) <br>Rotates f one bit to the right through Carry Bit and write the result to destination d.</br></td>
-<td>C</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Instruction</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Affected Flags</th>
+          <th style="text-align: left">Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">COMF   f, d</td>
+          <td style="text-align: left"><SPAN style="TEXT-DECORATION: overline">f</SPAN>⇒W (if d=0), <SPAN style="TEXT-DECORATION: overline">f</SPAN>⇒f (if d=1) <br>Takes the complement of each bit in f and write the result to destination d.</br></td>
+          <td style="text-align: left">Z</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RLF    f, d</td>
+          <td style="text-align: left">f&lt;1⇒W (if d=0), f&lt;1⇒f (if d=1) <br>Rotates f one bit to the left through Carry Bit and write the result to destination d.</br></td>
+          <td style="text-align: left">C</td>
+          <td style="text-align: left">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RRF    f, d</td>
+          <td style="text-align: left">f&gt;1⇒W (if d=0), f&gt;1⇒f (if d=1) <br>Rotates f one bit to the right through Carry Bit and write the result to destination d.</br></td>
+          <td style="text-align: left">C</td>
+          <td style="text-align: left">1</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="ref">Ref</h1>
 <ul>

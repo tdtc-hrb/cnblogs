@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="generator" content="Hugo 0.134.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/asp.net5-restful/" />
 
@@ -295,65 +295,65 @@
 推荐使用<a href="https://www.postman.com/downloads/">PostMan</a>来进行调试.</p>
 <p>Table 3-1. <a href="https://restfulapi.net/http-methods/">HTTP Methods and Operations</a></p>
 <table>
-<thead>
-<tr>
-<th>HTTP</th>
-<th>Method Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GET</td>
-<td>从服务器获取数据</td>
-</tr>
-<tr>
-<td>POST</td>
-<td>向服务器提交新的Object</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td>向服务器提交修改(整体)</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>向服务器提交删除object.</td>
-</tr>
-<tr>
-<td>PATCH</td>
-<td>向服务器提交更新部分object.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">HTTP</th>
+          <th style="text-align: left">Method Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">GET</td>
+          <td style="text-align: left">从服务器获取数据</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">POST</td>
+          <td style="text-align: left">向服务器提交新的Object</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PUT</td>
+          <td style="text-align: left">向服务器提交修改(整体)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">DELETE</td>
+          <td style="text-align: left">向服务器提交删除object.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PATCH</td>
+          <td style="text-align: left">向服务器提交更新部分object.</td>
+      </tr>
+  </tbody>
 </table>
 <p>Table 3-2. 源属性</p>
 <table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromqueryattribute">FromQuery</a></td>
-<td>Gets values from the query string.</td>
-</tr>
-<tr>
-<td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromrouteattribute">FromRoute</a></td>
-<td>Gets values from route data.</td>
-</tr>
-<tr>
-<td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromformattribute">FromForm</a></td>
-<td>Gets values from posted form fields.</td>
-</tr>
-<tr>
-<td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute">FromBody</a></td>
-<td>Gets values from the request body.</td>
-</tr>
-<tr>
-<td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromheaderattribute">FromHeader</a></td>
-<td>Gets values from HTTP headers.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Name</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromqueryattribute">FromQuery</a></td>
+          <td style="text-align: left">Gets values from the query string.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromrouteattribute">FromRoute</a></td>
+          <td style="text-align: left">Gets values from route data.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromformattribute">FromForm</a></td>
+          <td style="text-align: left">Gets values from posted form fields.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute">FromBody</a></td>
+          <td style="text-align: left">Gets values from the request body.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromheaderattribute">FromHeader</a></td>
+          <td style="text-align: left">Gets values from HTTP headers.</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="postdeleteput">POST/DELETE/PUT</h2>
 <ul>
@@ -372,38 +372,38 @@
 <p>在客户端patch时的操作码见Table3-3</p>
 <p>Table 3-3. httpPatch操作码</p>
 <table>
-<thead>
-<tr>
-<th>Operation</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>add</td>
-<td>Add a property or array element. For existing property: set value.</td>
-</tr>
-<tr>
-<td>remove</td>
-<td>Remove a property or array element.</td>
-</tr>
-<tr>
-<td>replace</td>
-<td>Same as remove followed by add at same location.</td>
-</tr>
-<tr>
-<td>move</td>
-<td>Same as remove from source followed by add to destination using value from source.</td>
-</tr>
-<tr>
-<td>copy</td>
-<td>Same as add to destination using value from source.</td>
-</tr>
-<tr>
-<td>test</td>
-<td>Return success status code if value at path = provided value.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Operation</th>
+          <th style="text-align: left">Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">add</td>
+          <td style="text-align: left">Add a property or array element. For existing property: set value.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">remove</td>
+          <td style="text-align: left">Remove a property or array element.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">replace</td>
+          <td style="text-align: left">Same as remove followed by add at same location.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">move</td>
+          <td style="text-align: left">Same as remove from source followed by add to destination using value from source.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">copy</td>
+          <td style="text-align: left">Same as add to destination using value from source.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">test</td>
+          <td style="text-align: left">Return success status code if value at path = provided value.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="pm-1">PM</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package Microsoft.AspNetCore.Mvc.NewtonsoftJson --Version 5.0.11

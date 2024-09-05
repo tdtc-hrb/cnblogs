@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="generator" content="Hugo 0.134.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -199,15 +199,20 @@
     </header>
     <section class="post-excerpt">
         
-            <p>The client and server are the same thekeystore
-cas client version: 3.5.1(cas-client-core-3.5.1)
-git clone https://gitee.com/xiaobin80/cas-sample-java-webapp 1. config web.xml(src\main\webapp\WEB-INF)
-1) CAS Single Sign Out Filter https://localhost:8443/cas 2) CAS Authentication Filter https://localhost:8443/cas/login 3) CAS Validation Filter https://localhost:8443/cas 4) server name localhost 2. keystore copy
-/etc/cas/jetty/thekeystore to
-The disk root directory of the application. For example: my application:
-D:\projects\cas-sample-java-webapp then thekeystore file:
-D:\etc\cas\jetty\thekeystore 3. build alter context path(pom.xml):
-&lt;webApp&gt; &lt;contextPath&gt;/loginInfo&lt;/contextPath&gt; &lt;overrideDescriptor&gt;${basedir}/etc/jetty/web.xml&lt;/overrideDescriptor&gt; &lt;/webApp&gt; mvn clean package jetty:run-forked 1) Run directly mvn jetty:run-forked 4. <a class="read-more" href="/cnblogs/post/cas-client-config/">&raquo;</a></p>
+            <p><blockquote>
+<p>The client and server are the same <a href="https://xiaobin80.gitee.io/cnblogs/post/cas-server-config/">thekeystore</a></p>
+</blockquote>
+<p>cas client version: 3.5.1(<a href="https://github.com/apereo/java-cas-client/tree/master/cas-client-core">cas-client-core-3.5.1</a>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://gitee.com/xiaobin80/cas-sample-java-webapp
+</span></span></code></pre></div><h1 id="1-config">1. config</h1>
+<p>web.xml(src\main\webapp\WEB-INF)</p>
+<h2 id="1-cas-single-sign-out-filter">1) CAS Single Sign Out Filter</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas
+</span></span></code></pre></div><h2 id="2-cas-authentication-filter">2) CAS Authentication Filter</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas/login
+</span></span></code></pre></div><h2 id="3-cas-validation-filter">3) CAS Validation Filter</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/cas-client-config/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -229,12 +234,29 @@ D:\etc\cas\jetty\thekeystore 3. build alter context path(pom.xml):
     </header>
     <section class="post-excerpt">
         
-            <p>Tomcat: V8.5.x Java: 1.8 x64 MySQL: 5.5.x+ OS: Win10 x64 下载部署包 使用gradle 的repo最高只支持gradle V4.3！
-0. clone git clone https://github.com/apereo/cas-gradle-overlay-template.git 1. set gradle 1) extract gradle-4.10.3-bin.zip
-2) set system variable $PATH=$PATH;%GRADLE_HOME%\bin 2. build war File location: cas\build\libs\cas.war
-1) config file gradle.properties
-cas.version=5.3.2 =&gt; cas.version=5.3.15.1 gradle.version=4.8 =&gt; gradle.version=4.10.3 springboot.version=1.5.14.RELEASE =&gt; springboot.version=1.5.18.RELEASE 2) build cd cas-gradle-overlay-template $gradle build II. Run 0. key/certificate 1) genkey info: -dname &ldquo;CN=localhost,OU=test.com,O=test,L=WH,ST=HB,C=CN&rdquo;
-keytool -genkey -keyalg RSA -alias thekeystore -keypass changeit -storepass changeit -keysize 2048 -keystore e:/etc/cas/thekeystore 2) export keytool -export -alias thekeystore -file e:/etc/cas/cas5311. <a class="read-more" href="/cnblogs/post/cas-server-config/">&raquo;</a></p>
+            <p><ul>
+<li>Tomcat: V8.5.x</li>
+<li>Java: 1.8 x64</li>
+<li>MySQL: 5.5.x+</li>
+<li>OS: Win10 x64</li>
+</ul>
+<h1 id="下载部署包">下载部署包</h1>
+<blockquote>
+<p>使用gradle 的repo最高只支持gradle V4.3！</p>
+</blockquote>
+<h2 id="0-clone">0. clone</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/apereo/cas-gradle-overlay-template.git
+</span></span></code></pre></div><h2 id="1-set-gradle">1. set gradle</h2>
+<h3 id="1-extract">1) extract</h3>
+<p><a href="https://gradle.org/next-steps/?version=4.10.3&amp;format=bin">gradle-4.10.3-bin.zip</a></p>
+<h3 id="2-set-system-variable">2) set system variable</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  $PATH<span style="color:#f92672">=</span>$PATH;%GRADLE_HOME%<span style="color:#ae81ff">\b</span>in
+</span></span></code></pre></div><h2 id="2-build-war">2. build war</h2>
+<blockquote>
+<p>File location: cas\build\libs\cas.war</p>
+</blockquote>
+<h3 id="1-config-file">1) config file</h3>
+<p>gradle.properties</p> <a class="read-more" href="/cnblogs/post/cas-server-config/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -256,11 +278,19 @@ keytool -genkey -keyalg RSA -alias thekeystore -keypass changeit -storepass chan
     </header>
     <section class="post-excerpt">
         
-            <p>OS: CentOS 7 Minimal
-0) open files Q: Increased maximum number of open files to 10032 (it was originally set to 1024). A:
-$ulimit -a $vi /etc/systemd/system/redis.service In the &ldquo;[Service]&rdquo; unit, add the following:
-LimitNOFILE=10032 1) somaxconn Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128. A:
-$vi /etc/sysctl.conf net.core.somaxconn=1024 2) overcommit_memory Q: WARNING overcommit_memory is set to 0! <a class="read-more" href="/cnblogs/post/redis-centos7-setup/">&raquo;</a></p>
+            <p><blockquote>
+<p>OS: CentOS 7 Minimal</p>
+</blockquote>
+<h1 id="0-open-files">0) open files</h1>
+<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ulimit -a
+</span></span><span style="display:flex;"><span>$vi /etc/systemd/system/redis.service
+</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LimitNOFILE<span style="color:#f92672">=</span><span style="color:#ae81ff">10032</span>
+</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
+<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+A:</p> <a class="read-more" href="/cnblogs/post/redis-centos7-setup/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -282,16 +312,33 @@ $vi /etc/sysctl.conf net.core.somaxconn=1024 2) overcommit_memory Q: WARNING ove
     </header>
     <section class="post-excerpt">
         
-            <p>Elementary 在没有出来NDB之前，都是使用这个组件。
-C-JDBC
-c-jdbc文档 src-Sequoia 2.10.10
-NDB Cluster 关于：
-JPA、JDBC省略不表。 ClusterJ ClusterJ requires Java 1.7 or 1.8.
-首先使用SessionFactory建立一个会话实例， 然后用Session提供的方法操作数据。
-会话实例 读取配置文件，然后建立Session实例。
-File propsFile = new File(&#34;clusterj.properties&#34;); InputStream inStream = new FileInputStream(propsFile); Properties props = new Properties(); props.load(inStream); SessionFactory factory = ClusterJHelper.getSessionFactory(props); Session session = factory.getSession(); 配置信息 clusterj.properties
-com.mysql.clusterj.connectstring=localhost:1186 com.mysql.clusterj.database=mydb 操作数据 参考4.2.2.4 ClusterJ Basic Operations文档。
-Reference 4.2.2 Using ClusterJ  <a class="read-more" href="/cnblogs/post/java-connector-cluster_mysql/">&raquo;</a></p>
+            <p><h1 id="elementary">Elementary</h1>
+<blockquote>
+<p>在没有出来NDB之前，都是使用这个组件。</p>
+</blockquote>
+<p><a href="http://www.frogthinker.org/projects/sequoia">C-JDBC</a></p>
+<blockquote>
+<p><a href="http://c-jdbc.ow2.org/index.html">c-jdbc文档</a> <br>
+<a href="https://sourceforge.net/projects/sequoiadb/files/">src-Sequoia 2.10.10</a></p>
+</blockquote>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Sequoia_architecture.jpg" alt="Sequoia architecture"></p>
+<h1 id="ndb-cluster">NDB Cluster</h1>
+<blockquote>
+<p>关于：</p>
+<blockquote>
+<p>JPA、JDBC省略不表。
+<img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-java-to-cluster.png" alt="mysql dev"></p>
+</blockquote>
+</blockquote>
+<h2 id="clusterj">ClusterJ</h2>
+<blockquote>
+<p>ClusterJ requires Java 1.7 or 1.8.</p>
+</blockquote>
+<p><img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-clusterj-user-view.png" alt="Figure 4.2 ClusterJ User View Of Application And Environment"></p>
+<p>首先使用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-sessionfactory.html">SessionFactory</a>建立一个会话实例， <br>
+然后用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-session.html">Session</a>提供的方法操作数据。</p>
+<h3 id="会话实例">会话实例</h3>
+<p>读取配置文件，然后建立Session实例。</p> <a class="read-more" href="/cnblogs/post/java-connector-cluster_mysql/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -313,9 +360,18 @@ Reference 4.2.2 Using ClusterJ  <a class="read-more" href="/cnblogs/post/java-co
     </header>
     <section class="post-excerpt">
         
-            <p>1. Options private Options options = new Options(); 2. option 增加选项有两种方式：直接赋值给各个参数； 另一种，就是赋值到一个实例中。
-1) way1 launcher.options.addOption(&#34;h&#34;, &#34;help&#34;, false, &#34;show help.&#34;); 2) way2 launcher.options.addOption(optFile); 3. command line parser CommandLineParser cmdParser = new DefaultParser(); 4. exec method private void help() { // This prints out some help HelpFormatter formater = new HelpFormatter(); formater.printHelp(this.getClass().getSimpleName(), options); System.exit(0); } 5. test java -cp cliDemo-0.0.1-SNAPSHOT.jar;C:\Users\xiaobin\.m2\repository\commons-cli\commons-cli\1.4\commons-cli-1.4.jar my.csdn9.ConsoleLauncher --help source code ConsoleLauncher.java
-package my.csdn9; import org.apache.commons.cli.CommandLine; import org.apache.commons.cli.CommandLineParser; import org. <a class="read-more" href="/cnblogs/post/java-apache_cli/">&raquo;</a></p>
+            <p><h1 id="1-options">1. Options</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> Options options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Options();
+</span></span></code></pre></div><h1 id="2-option">2. option</h1>
+<p>增加选项有两种方式：直接赋值给各个参数； <br>
+另一种，就是赋值到一个实例中。</p>
+<h2 id="1-way1">1) way1</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;show help.&#34;</span>);
+</span></span></code></pre></div><h2 id="2-way2">2) way2</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(optFile);
+</span></span></code></pre></div><h1 id="3-command-line-parser">3. command line parser</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>CommandLineParser cmdParser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DefaultParser();
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/java-apache_cli/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -337,15 +393,26 @@ package my.csdn9; import org.apache.commons.cli.CommandLine; import org.apache.c
     </header>
     <section class="post-excerpt">
         
-            <p>一、Apache2.4+php5.6 1. httpd.conf DSO Line:152
-LoadModule php5_module modules/libphp5.so Server Name Line:194 - Instead
-ServerName localhost:80 Each Directory Line:202 - Instead
-AllowOverride all Document Root Line:239 - Instead
-AllowOverride All Directory Index Line:252 - Instead
-DirectoryIndex index.html index.php MIME Type Line:390 - Add
-AddType application/x-httpd-php .php 2. php.ini Paths and Directories Line:709 - Instead
-include_path = &#34;/opt/php/lib/php&#34; socket [Pdo_mysql] pdo_mysql.default_socket = /var/lib/mysql/mysql.sock [MySQLi] Line:1221 - Instead
-mysqli.default_socket = /var/lib/mysql/mysql.sock 二、Apache2.2+php5.3 1. httpd. <a class="read-more" href="/cnblogs/post/php-lamp2/">&raquo;</a></p>
+            <p><h1 id="一apache24php56">一、Apache2.4+php5.6</h1>
+<h2 id="1-httpdconf">1. httpd.conf</h2>
+<h3 id="dso">DSO</h3>
+<blockquote>
+<p>Line:152</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule php5_module        modules/libphp5.so
+</span></span></code></pre></div><h3 id="server-name">Server Name</h3>
+<blockquote>
+<p>Line:194 - Instead</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ServerName localhost:80
+</span></span></code></pre></div><h3 id="each-directory">Each Directory</h3>
+<blockquote>
+<p>Line:202 - Instead</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
+</span></span></code></pre></div><h3 id="document-root">Document Root</h3>
+<blockquote>
+<p>Line:239 - Instead</p> <a class="read-more" href="/cnblogs/post/php-lamp2/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -367,13 +434,27 @@ mysqli.default_socket = /var/lib/mysql/mysql.sock 二、Apache2.2+php5.3 1. http
     </header>
     <section class="post-excerpt">
         
-            <p>操作系统：CentOS7.6(x86_64) 安装方式：源码安装 &amp; RPM包 安装目录：/opt/
-安装文件： (1) Apache Httpd V2.4.x (2) MariaDB V5.5(系统自带) (3) PHP V5.6.x
-一、Httpd 卸载系统自带httpd（V2.4.6-89）
-sudo yum remove httpd 1. depend soft APR down
-install $./configure --prefix=/opt/apr $make &amp;&amp; sudo make install APR-util Tips: https://bbs.csdn.net/topics/392191188
-down
-expat-devel sudo yum install expat-devel install apr-util $./configure --prefix=/opt/apr-util \ --with-apr=/opt/apr \ --with-expat=/usr/local/expat $make &amp;&amp; sudo make install install httpd pcre-devel sudo yum -y install pcre-devel Setup $ tar zxvf httpd-2. <a class="read-more" href="/cnblogs/post/php-lamp/">&raquo;</a></p>
+            <p><blockquote>
+<p> 操作系统：CentOS7.6(x86_64) <br>
+安装方式：源码安装 &amp; RPM包  <br>
+安装目录：/opt/</p>
+<blockquote>
+<p>安装文件：  <br>
+(1) Apache Httpd <a href="http://mirror.bit.edu.cn/apache//httpd/httpd-2.4.39.tar.gz">V2.4.x</a>  <br>
+(2) MariaDB V5.5(系统自带) <br>
+(3) PHP <a href="https://www.php.net/distributions/php-5.6.40.tar.gz">V5.6.x</a></p>
+</blockquote>
+</blockquote>
+<h1 id="一httpd">一、Httpd</h1>
+<p>卸载系统自带httpd（V2.4.6-89）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum remove httpd
+</span></span></code></pre></div><h2 id="1-depend-soft">1. depend soft</h2>
+<h2 id="apr">APR</h2>
+<p><a href="http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-1.7.0.tar.gz">down</a></p>
+<h3 id="install">install</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr
+</span></span><span style="display:flex;"><span>$make <span style="color:#f92672">&amp;&amp;</span> sudo make install
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/php-lamp/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -395,17 +476,22 @@ expat-devel sudo yum install expat-devel install apr-util $./configure --prefix=
     </header>
     <section class="post-excerpt">
         
-            <p>推荐PHP版本v5.6.40/v7.1.33
-1. v0.1 1）Only variable references should be returned by reference https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11
-return $_config[0] =&amp; $config; ==&gt;
-$_config[0] =&amp; $config; return $_config[0]; 2) sqli 从PHP5.5之后，会出现
-Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in xxx
-提示mysql_connect()未来将要被移出。
-官网的changelong 注意: php7.0.x已经移除了mysql.
-在php.ini(windows)中注释掉
-;extension=php_mysql.dll 2. mcrypt php7.2~php7.4
-使用 错误抑制符 停止提示。 修改Encrypt.php（.\system\libraries\）
-Ln273 $init_size = @mcrypt_get_iv_size($this-&gt;_get_cipher(), $this-&gt;_get_mode()); Ln274 $init_vect = @mcrypt_create_iv($init_size, MCRYPT_RAND); Ln275 return $this-&gt;_add_cipher_noise($init_vect. <a class="read-more" href="/cnblogs/post/php-faqs/">&raquo;</a></p>
+            <p><blockquote>
+<p>推荐PHP版本<a href="https://windows.php.net/downloads/releases/archives/">v5.6.40/v7.1.33</a></p>
+</blockquote>
+<h1 id="1-v01httpsgithubcomxiaobin80veic_webarchivev01-alphazip">1. <a href="https://github.com/xiaobin80/veic_web/archive/v0.1-alpha.zip">v0.1</a></h1>
+<h2 id="1only-variable-references-should-be-returned-by-reference">1）Only variable references should be returned by reference</h2>
+<p><a href="https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11">https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11</a></p>
+<p><img src="https://gitee.com/xiaobin80/csdn/raw/master/images/20190601144425762.png" alt="php encountered"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
+</span></span></code></pre></div><p>==&gt;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $_config[<span style="color:#ae81ff">0</span>];
+</span></span></code></pre></div><h2 id="2-sqli">2) sqli</h2>
+<blockquote>
+<p>从PHP5.5之后，会出现</p>
+<blockquote>
+<p>Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in xxx</p> <a class="read-more" href="/cnblogs/post/php-faqs/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
