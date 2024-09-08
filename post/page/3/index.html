@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.134.0">
+    <meta name="generator" content="Hugo 0.134.1">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -160,6 +160,40 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_nginx-v2/">前端（Web）负载均衡</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Nginx&rsquo;s load balancing</p>
+<h1 id="一安装">一、安装</h1>
+<p>OS: RHEL Community Version(Rocky8/Alma8) minimal（安装时的选项）</p>
+<h2 id="0-prepare">0. prepare</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf -y install gcc gcc-c++ automake make pcre pcre-devel zlib zlib-devel openssl openssl-devel</span>
+</span></span></code></pre></div><p>see <a href="https://tdtc-hrb.github.io/cnblogs/post/ops_openssl/">update openssl</a></p>
+<h3 id="library-devel">Library devel</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install gd-devel libxml2-devel libxslt-devel
+</span></span></code></pre></div><h4 id="geoip">GeoIP</h4>
+<p>Download latest <a href="http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/">atomic-release</a> <br>
+Install atomic-release rpm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo rpm -Uvh http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/atomic-release-1.0-23.el8.art.noarch.rpm
+</span></span></code></pr <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-10-06T08:38:08&#43;08:00">
+            6 Oct 2022
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -523,47 +557,6 @@ codename: focal</li>
         
         <time class="post-date" datetime="2022-05-15T18:08:08&#43;08:00">
             15 May 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-serialport/">使用qt5编写Serial Port</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p><img src="https://www.eltima.com/images/upload/products/spm/articles/howto/178.jpg" alt="RS-232 Testing Guide"></p>
-<h1 id="thread">thread</h1>
-<blockquote>
-<p>线程相关</p>
-</blockquote>
-<h2 id="asynchronously">asynchronously</h2>
-<p><a href="https://doc.qt.io/qt-5/qobject.html#connect">connect方法</a>已实现异步。</p>
-<h2 id="synchronously">synchronously</h2>
-<p><a href="https://doc.qt.io/qt-5/qmutexlocker.html">qmutexlocker</a></p>
-<h3 id="创建信号锁">创建信号锁</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>m_mutex.lock();
-</span></span></code></pre></div><h2 id="信号">信号</h2>
-<p>为便于调用者获得线程的内部信息，我们需要提供信号。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>signals:
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> error(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>s);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">timeout</span>(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>s);
-</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20200627152341.png" alt="program ui"></p>
-<h1 id="worker-method">Worker method</h1>
-<h2 id="init-port">Init Port</h2>
-<p>设置私有成员变量</p> <a class="read-more" href="/cnblogs/post/qt-serialport/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2021-11-28T08:18:08&#43;08:00">
-            28 Nov 2021
         </time>
     </footer>
 </article>
