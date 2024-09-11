@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.134.1">
+    <meta name="generator" content="Hugo 0.134.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -267,7 +267,9 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led3, LOW);
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/e-avr8-blink/">&raquo;</a></p>
+</span></span></code></pre></div><p>step 1: 项目-&gt;验证/编译 <br>
+step 2: 项目-&gt;上传 <br>
+在上传前,一定要查看&quot;工具&quot;中&quot;端口&quot;信息是否正确!</p> <a class="read-more" href="/cnblogs/post/e-avr8-blink/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -299,7 +301,17 @@
 <h1 id="docker-ce">Docker CE</h1>
 <h2 id="1-install">1. install</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker.io
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/docker_ce-ubuntu-config/">&raquo;</a></p>
+</span></span></code></pre></div><h2 id="2-enable">2. enable</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo systemctl start docker
+</span></span><span style="display:flex;"><span>$ sudo systemctl enable docker
+</span></span></code></pre></div><p>test:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker --version
+</span></span></code></pre></div><h1 id="docker-compose">Docker compose</h1>
+<h2 id="1-down">1. down</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl -L <span style="color:#e6db74">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span style="color:#66d9ef">$(</span>uname -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">-</span><span style="color:#66d9ef">$(</span>uname -m<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o /usr/local/bin/docker-compose
+</span></span></code></pre></div><h2 id="2-exec">2. exec</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/docker-compose
+</span></span></code></pre></div><p>test:</p> <a class="read-more" href="/cnblogs/post/docker_ce-ubuntu-config/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -340,7 +352,41 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ethernetif_input</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* ETHERNETIF_H_INCLUDED */</span><span style="color:#75715e">
-</span></span></span></code></pr <a class="read-more" href="/cnblogs/post/e-lwip-ethernet/">&raquo;</a></p>
+</span></span></span></code></pre></div><h1 id="ethernet-interface">ethernet interface</h1>
+<blockquote>
+<p>ethernetif.c位置: ../src/netif</p>
+</blockquote>
+<ul>
+<li>初始化（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_init</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif)
+</span></span></code></pre></div><ul>
+<li>发送（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">err_t</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_output</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif, <span style="color:#66d9ef">struct</span> pbuf<span style="color:#f92672">*</span> p)
+</span></span></code></pre></div><ul>
+<li>接收（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> pbuf<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_input</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif)
+</span></span></code></pre></div><h2 id="0-define-hardware">0. define hardware</h2>
+<p>根据硬件的不同！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;enc28j60.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>##　1. 初始化（低级）</p>
+<h3 id="1-初始化mac地址">（1） 初始化MAC地址</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x04</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x25</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1C</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xA0</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x02</span>;
+</span></span></code></pre></div><h3 id="2-初始化网卡">（2） 初始化网卡</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">enc28j60Init</span>(netif<span style="color:#f92672">-&gt;</span>hwaddr);
+</span></span></code></pre></div><h3 id="3中断使能">（3）中断使能</h3>
+<p>如果使用RTOS，则设置MCU的SPI中断使能； <br>
+例如在CM0/3/4中：</p> <a class="read-more" href="/cnblogs/post/e-lwip-ethernet/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -386,7 +432,37 @@
 <p>Views-》Index.cshtml</p>
 </blockquote>
 </blockquote>
-<p>增加如下代码：</p> <a class="read-more" href="/cnblogs/post/asp-base/">&raquo;</a></p>
+<p>增加如下代码：</p>
+<pre tabindex="0"><code class="language-asp.net" data-lang="asp.net">&lt;p&gt;这是我的第一个ASP.NET程序！&lt;/p&gt;
+</code></pre><p>点击“IIS Express”运行（如果弹出证书安装选“是”即可）。
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20200717214241.png" alt="vs2019 p2"></p>
+<h1 id="增加数据库">增加数据库</h1>
+<h2 id="ef-core">EF Core</h2>
+<blockquote>
+<p>Project-》Manager NuGet Packages
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20200717222234.png" alt="vs2019 p3"></p>
+</blockquote>
+<h2 id="entity-class">entity class</h2>
+<p>我们建立一个与数据表相对应的Entity类</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel.DataAnnotations;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> veic_web.Models
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Key]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> param_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> statu_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> lang_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> img_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> description { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="db-class">DB Class</h2>
+<blockquote>
+<p>Solution Explorer</p> <a class="read-more" href="/cnblogs/post/asp-base/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -461,7 +537,9 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#define configKERNEL_INTERRUPT_PRIORITY            (0x0f &lt;&lt; 4)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_SYSCALL_INTERRUPT_PRIORITY       (0x05 &lt;&lt; 4)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
-</span></span></span></code></pr <a class="read-more" href="/cnblogs/post/e-freertos-port_sam4s/">&raquo;</a></p>
+</span></span></span></code></pre></div><h1 id="hook">hook</h1>
+<blockquote>
+<p>必须实现3个callback函数</p> <a class="read-more" href="/cnblogs/post/e-freertos-port_sam4s/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -498,7 +576,32 @@
 </span></span></code></pre></div><p>如果MPU可用，则使用Ln105~106(mpu_wrappers.h)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortInitialiseBlocks</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">size_t</span> <span style="color:#a6e22e">xPortGetFreeHeapSize</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/e-freertos-port_win32/">&raquo;</a></p>
+</span></span></code></pre></div><h2 id="task">task</h2>
+<p>此实现在Ln189<del>Ln262、Ln401</del>Ln406(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>portBASE_TYPE <span style="color:#a6e22e">xPortStartScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEndScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><blockquote>
+<p>注意：在windows系统下end是调用了TerminateProcess（WinBase.h Ln3398）</p>
+</blockquote>
+<h1 id="portmacroh">portmacro.h</h1>
+<h2 id="critical">Critical</h2>
+<p>此实现在Ln452~Ln513(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEnterCritical</span>( <span style="color:#66d9ef">void</span> );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortExitCritical</span>( <span style="color:#66d9ef">void</span> );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define portENTER_CRITICAL()		vPortEnterCritical()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define portEXIT_CRITICAL()			vPortExitCritical()
+</span></span></span></code></pre></div><h2 id="interrupt">Interrupt</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define portDISABLE_INTERRUPTS()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define portENABLE_INTERRUPTS()
+</span></span></span></code></pre></div><p>此实现在Ln408~Ln450(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortGenerateSimulatedInterrupt</span>( <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> ulInterruptNumber );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortSetInterruptHandler</span>( <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> ulInterruptNumber, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> (<span style="color:#f92672">*</span>pvHandler)( <span style="color:#66d9ef">void</span> ) );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define portYIELD()					vPortGenerateSimulatedInterrupt( portINTERRUPT_YIELD )
+</span></span></span></code></pre></div><h1 id="other">other</h1>
+<h2 id="thread">thread</h2>
+<p>在portmacro.h定义，在Ln377~Ln399(port.c)实现</p> <a class="read-more" href="/cnblogs/post/e-freertos-port_win32/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -558,7 +661,18 @@ task-to-task, task-to-interrupt, interrupt-to-task.</li>
 <li>portmacro.h</li>
 </ul>
 <h1 id="最小化系统">最小化系统</h1>
-<p>main.c</p> <a class="read-more" href="/cnblogs/post/e-freertos-base/">&raquo;</a></p>
+<p>main.c</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">vTaskStartScheduler</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="header-1">header</h2>
+<blockquote>
+<p>vc <br>
+Configuration Properties -&gt; c/c++ -&gt; Additional include Directories</p> <a class="read-more" href="/cnblogs/post/e-freertos-base/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -611,7 +725,41 @@ project -&gt; Create new project <br>
 ✔ DSP library</p>
 <h2 id="不使用低级库">不使用低级库</h2>
 <blockquote>
-<p>Library Configuration</p> <a class="read-more" href="/cnblogs/post/e-iar-project-setup/">&raquo;</a></p>
+<p>Library Configuration</p>
+</blockquote>
+<p>Library low-level interface implementation</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>None
+</span></span></code></pre></div><h2 id="打印和输入">打印和输入</h2>
+<blockquote>
+<p>Library Options</p>
+</blockquote>
+<p>Printf formatter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Large
+</span></span></code></pre></div><p>Scanf formatter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>small
+</span></span></code></pre></div><hr>
+<h1 id="runtime-checking">Runtime Checking</h1>
+<blockquote>
+<p>Note：一定要设置Preprocessor（C/C++和Assembler）！！！</p>
+</blockquote>
+<p>在C/C++ Complie和Linker中开启诊断程序：</p>
+<blockquote>
+<p>Diagnostics <br>
+✔ Enable remarks</p>
+</blockquote>
+<h2 id="cc-complie">C/C++ Complie</h2>
+<p>设置方言和程序的大小</p>
+<h3 id="c方言设置">C方言设置</h3>
+<blockquote>
+<p>Language1</p>
+<blockquote>
+<p>C dialect</p>
+</blockquote>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Require prototype
+</span></span></code></pre></div><h3 id="生成最小的程序">生成最小的程序</h3>
+<blockquote>
+<p>Optimizations</p> <a class="read-more" href="/cnblogs/post/e-iar-project-setup/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -672,7 +820,7 @@ project -&gt; Create new project <br>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    MessageBox.Show(<span style="color:#e6db74">&#34;没有找到数据库: &#34;</span> + ex.Message);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/mysql.net/">&raquo;</a></p>
+</span></span></code></pre></div><p>下拉框（数据库列表）</p> <a class="read-more" href="/cnblogs/post/mysql.net/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -711,7 +859,12 @@ project -&gt; Create new project <br>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$PATH:$GOROOT/bin:$GOPATH/bin
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bashrc
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/golang-ubuntu-config/">&raquo;</a></p>
+</span></span></code></pre></div><h1 id="test">test</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go version
+</span></span></code></pre></div><h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://tecadmin.net/install-go-on-ubuntu/">How To Install Go 1.12 on Ubuntu 18.04 &amp; 16.04 LTS</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/golang-ubuntu-config/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

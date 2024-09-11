@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.134.1">
+    <meta name="generator" content="Hugo 0.134.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -213,7 +213,15 @@
 <p>Download latest <a href="http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/">atomic-release</a> <br>
 Install atomic-release rpm:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo rpm -Uvh http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/atomic-release-1.0-23.el8.art.noarch.rpm
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
+</span></span></code></pre></div><p>Install GeoIP-devel rpm package:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install GeoIP-devel
+</span></span></code></pre></div><h3 id="allow-fw">allow fw</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>80/tcp
+</span></span><span style="display:flex;"><span>$sudo firewall-cmd --reload
+</span></span></code></pre></div><h2 id="installation">installation</h2>
+<p>First, install Nginx of centos <a href="(https://nginx.org/en/linux_packages.html#RHEL)">repo</a>; <br>
+Then, replace the nginx program file. <br>
+Note: The replaced program file version must be the same as the repo!</p> <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -256,7 +264,16 @@ promiscuous mode:</li>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#yum install gcc make autoconf automake openssl-devel libnl3-devel \</span>
 </span></span><span style="display:flex;"><span>    iptables-devel ipset-devel net-snmp-devel libnfnetlink-devel file-devel <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    glib2-devel pcre2-devel libnftnl-devel libmnl-devel systemd-devel kmod-devel
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/ops_keepalived-v2/">&raquo;</a></p>
+</span></span></code></pre></div><ul>
+<li>RHEL8 <br>
+powertools:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf --enablerepo=powertools install ipset-devel libnfnetlink-devel file-devel libnftnl-devel kmod-devel pcre2-devel</span>
+</span></span></code></pre></div><p>none:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf install gcc make autoconf automake openssl-devel libnl3-devel \</span>
+</span></span><span style="display:flex;"><span>    iptables-devel net-snmp-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    glib2-devel libmnl-devel systemd-devel git
+</span></span></code></pre></div><p>LVS manager:</p> <a class="read-more" href="/cnblogs/post/ops_keepalived-v2/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -292,7 +309,22 @@ Alma Linux / Rocky Linux</li>
 </span></span><span style="display:flex;"><span>$curl --progress https://www.openssl.org/source/openssl-1.1.1q.tar.gz | tar xz -C ./openssl-1.1.1 --strip-components <span style="color:#ae81ff">1</span>
 </span></span></code></pre></div><h1 id="setup">setup</h1>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$cd openssl-1.1.1
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/ops_openssl/">&raquo;</a></p>
+</span></span></code></pre></div><ul>
+<li>RHEL8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr/local/ssl --openssldir<span style="color:#f92672">=</span>/usr/local/ssl shared zlib
+</span></span></code></pre></div><ul>
+<li>RHEL7</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr --shared
+</span></span></code></pre></div><h2 id="make--install">make &amp;&amp; install</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$make
+</span></span></code></pre></div><p>Root permission Required:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo make install
+</span></span></code></pre></div><h2 id="rhel8">RHEL8</h2>
+<pre tabindex="0"><code># mv /bin/openssl /bin/openssl.backup
+# cp /usr/local/ssl/bin/openssl /bin/openssl
+</code></pre><p>test:</p> <a class="read-more" href="/cnblogs/post/ops_openssl/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -328,7 +360,15 @@ Alma Linux / Rocky Linux</li>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export JAVA_HOME<span style="color:#f92672">=</span>/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.345.b01-1.el8_6.x86_64
 </span></span><span style="display:flex;"><span>export CLASSPATH<span style="color:#f92672">=</span>.:$JAVA_HOME/jre/lib/:.
 </span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$PATH:$JAVA_HOME/bin
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/ops_openjdk_rhel/">&raquo;</a></p>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$su - root
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#source /etc/profile</span>
+</span></span></code></pre></div><h2 id="about-path">About path</h2>
+<p><a href="https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/installation_guide/install_openjdk_on_red_hat_enterprise_linux">3.3. INSTALL OPENJDK ON RED HAT ENTERPRISE LINUX</a> - 2.Optional: Set the JAVA_HOME environment variable</p>
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://linuxize.com/post/install-java-on-centos-7/">How to install Java on CentOS 7</a></li>
+<li><a href="https://wiki.openjdk.java.net/display/jdk8u/Main">OpenJDK Version Info</a> - Releases</li>
+</ul> <a class="read-more" href="/cnblogs/post/ops_openjdk_rhel/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -371,7 +411,14 @@ VMware(v10.0.7) / Vbox(v6.1.38)</li>
 </code></pre><h3 id="vmware">vmware</h3>
 <p>i/o mode:</p>
 <pre tabindex="0"><code>yield CPU on poll
-</code></pr <a class="read-more" href="/cnblogs/post/vc-windbg_driver/">&raquo;</a></p>
+</code></pre><h3 id="vbox">vbox</h3>
+<p>Port 2: <br>
+uncheck:</p>
+<pre tabindex="0"><code>Connect to existing pipe/socket
+</code></pre><h2 id="windbg">windbg</h2>
+<p>about version: <br>
+The operating system needs to match the same or higher version of windbg. <br>
+Otherwise the OS version will not be recognized!!</p> <a class="read-more" href="/cnblogs/post/vc-windbg_driver/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -404,7 +451,70 @@ VMware(v10.0.7) / Vbox(v6.1.38)</li>
 </span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
 </span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
 </span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/css-bulma-tabs/">&raquo;</a></p>
+</span></span></code></pre></div><h2 id="body">Body</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tabs is-centered&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">table</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;table&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">tbody</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= image_tag &#34;#{@image.name}&#34; %&gt;
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @product.description %&gt;
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">tbody</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">table</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @parameter.ipxx %&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><h1 id="javascript">javascript</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsWithContent</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabs</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tabs li&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsContent</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tab-content&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">deactvateAllTabs</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hideTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tabContent</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tabContent</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">activateTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>[<span style="color:#a6e22e">getIndex</span>(<span style="color:#a6e22e">tab</span>)].<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">getIndex</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">el</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [...<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">parentElement</span>.<span style="color:#a6e22e">children</span>].<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">el</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">deactvateAllTabs</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">hideTabsContent</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">activateTabsContent</span>(<span style="color:#a6e22e">tab</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">click</span>();
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://eiji.dev/bulma-tabs-with-content.html">Bulma: Tabs with Content</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/css-bulma-tabs/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -447,7 +557,27 @@ VMware(v10.0.7) / Vbox(v6.1.38)</li>
 </span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export CLASSPATH=$JAVA_HOME/lib/:.&#39;</span> &gt;&gt; /etc/bash.bashrc
 </span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export PATH=$PATH:$JAVA_HOME/bin&#39;</span> &gt;&gt; /etc/bash.bashrc
 </span></span><span style="display:flex;"><span>$source /etc/bash.bashrc
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/es24-install/">&raquo;</a></p>
+</span></span></code></pre></div><h3 id="3-test">3) test</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -version
+</span></span><span style="display:flex;"><span>echo $JAVA_HOME
+</span></span></code></pre></div><h2 id="2-elasticsearch-exec-pack">2. Elasticsearch exec pack</h2>
+<h3 id="1-down">1) down</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -L -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.6/elasticsearch-2.4.6.tar.gz
+</span></span></code></pre></div><p>unzip:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xvf elasticsearch-2.4.6.tar.gz
+</span></span></code></pre></div><h3 id="2-config">2) config</h3>
+<blockquote>
+<p>../config/elasticsearch.yml</p>
+</blockquote>
+<h4 id="network">network</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>network.host: 0.0.0.0
+</span></span><span style="display:flex;"><span>http.port: <span style="color:#ae81ff">9200</span>
+</span></span></code></pre></div><h4 id="bootstrap">bootstrap</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bootstrap.system_call_filter: false
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bootstrap.seccomp: false
+</span></span></code></pre></div><h4 id="max-map-count">max map count</h4>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html">/etc/sysctl.conf</a></p> <a class="read-more" href="/cnblogs/post/es24-install/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -480,7 +610,18 @@ A set of spans that form a call tree structure, forms the trace of the request.<
 <p>Span <br>
 It is the basic unit of work, for example a call to a service.
 They are identified with a span ID and a trace ID to which span is owned.
-They have start and end, and with it you get track the response time between requests.</p> <a class="read-more" href="/cnblogs/post/trace-zipkin-config/">&raquo;</a></p>
+They have start and end, and with it you get track the response time between requests.</p>
+</li>
+<li>
+<p>Tag <br>
+Key/value pair that identifies certain information in the span.
+It doesn&rsquo;t contain timestamps, it just identifies.
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181202033721712.png" alt="ms info">
+<strong>Annotation:</strong> Used to record the existence of an event in time.
+With <a href="https://github.com/openzipkin/brave">Brave</a> instrumentation,
+we no longer need to set special events for Zipkin to understand who the client and server are,
+where the request started, and where it ended.
+For learning purposes, however, we mark these events to highlight what kind of an action took place.</p> <a class="read-more" href="/cnblogs/post/trace-zipkin-config/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -513,7 +654,19 @@ such as my &ldquo;C:\Users\tdtc.m2\repository\org\springframework\cloud\spring-c
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://archive.apache.org/dist/kafka/3.0.1/kafka_2.13-3.0.1.tgz
 </span></span></code></pre></div><h2 id="2-unzip">2. unzip</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$tar zxvf kafka_2.13-3.0.1.tgz
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/mq-kafka-config/">&raquo;</a></p>
+</span></span></code></pre></div><h1 id="ii-configuration">II. Configuration</h1>
+<blockquote>
+<p>server.properties</p>
+</blockquote>
+<h2 id="1-necessary-settings">1. Necessary settings</h2>
+<h3 id="1-basic">1) basic</h3>
+<h4 id="listener">listener</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>listeners<span style="color:#f92672">=</span>PLAINTEXT://your_IP:9092
+</span></span></code></pre></div><h4 id="logs">logs</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$mkdir HOME/kafka_2.13-3.0.1/logs
+</span></span></code></pre></div><h3 id="2-cluster">2) cluster</h3>
+<p>Sets the natural number of the broker ID to non-zero. <br>
+Host1:</p> <a class="read-more" href="/cnblogs/post/mq-kafka-config/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -579,7 +732,7 @@ codename: focal</li>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## Update package indices</span>
 </span></span><span style="display:flex;"><span>sudo apt-get update -y
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/mq-rabbitmq-config/">&raquo;</a></p>
+</span></span></code></pre></div><p>exec:</p> <a class="read-more" href="/cnblogs/post/mq-rabbitmq-config/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

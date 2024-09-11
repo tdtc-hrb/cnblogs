@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.134.1">
+    <meta name="generator" content="Hugo 0.134.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -162,135 +162,12 @@
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-android_started/">Qt6 for android</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>ndk</li>
-<li>avd(Android Virtual Device)</li>
-</ul>
-<h1 id="preparation">Preparation</h1>
-<ul>
-<li>Environment</li>
-<li>cmdline</li>
-</ul>
-<h2 id="environment-variables">Environment variables</h2>
-<p>:warning:
-安装完<a href="https://developer.android.google.cn/studio">Android Studio</a>, 先不要进入设置！</p>
-<h3 id="java-home">Java Home</h3>
-<ul>
-<li>Qt6.5/6.2 <br>
-set <a href="https://adoptium.net/temurin/archive/?variant=openjdk11&amp;version=11">JDK11</a></li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-11.0.24+8
-</span></span></code></pre></div><h3 id="android-home">Android Home</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\a</span>ndroid-sdk
-</span></span></code></pre></div><ul>
-<li>ANDROID_HOME</li>
-</ul>
-<pre tabindex="0"><code>Qt6.5.3
-</code></pre><ul>
-<li>ANDROID_SDK_ROOT</li>
-</ul>
-<pre tabindex="0"><code>Qt6.2.4
-</code></pre><h3 id="open-ssl">open ssl</h3>
-<p>Download &ldquo;<a href="https://github.com/KDAB/android_openssl">android openssl</a>&rdquo;
-and place it in the &ldquo;%ANDROID_SDK_ROOT%&rdquo;/&quot;%ANDROID_HOME%&quot; directory.</p> <a class="read-more" href="/cnblogs/post/qt-android_started/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-09-08T12:38:08&#43;08:00">
-            8 Sep 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
-<ul>
-<li><a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a></li>
-<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
-</ul>
-<h1 id="visual-studio">Visual Studio</h1>
-<ul>
-<li>target directory</li>
-</ul>
-<pre tabindex="0"><code>--layout TARGET(directory)
-</code></pre><ul>
-<li>components</li>
-</ul>
-<pre tabindex="0"><code>--add NAME(Component)
-</code></pre><ul>
-<li>language</li>
-</ul>
-<pre tabindex="0"><code>--lang en-US
-</code></pre><p>exec:</p>
-<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs201x `
-...
-</code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
-<h2 id="common">Common</h2>
-<ul>
-<li>Core</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
---add Microsoft.VisualStudio.Workload.CoreEditor `
---add Microsoft.VisualStudio.Component.Roslyn.Compiler `
---add Microsoft.Component.MSBuild `
---add Microsoft.VisualStudio.Component.TextTemplating `
-</code></pr <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-09-04T08:08:08&#43;08:00">
-            4 Sep 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/qt-webview/">QQ mini browser</a></h2>
     </header>
     <section class="post-excerpt">
         
-            <p><ul>
-<li>Android Studio: 2024.1.1</li>
-<li>Qt Creator: v14.0.1</li>
-<li>QT: V6.5.3</li>
-</ul>
-<h2 id="online-installer-version">online installer version</h2>
-<ul>
-<li>Creator and Design Studio <br>
-始终更新</li>
-<li>Commercial LTS phase <br>
-<a href="https://lists.qt-project.org/pipermail/development/2023-October/044573.html">新 Normal 发布后, lts 转为 commercial LTS</a></li>
-</ul>
-<h3 id="镜像-listhttpsdownloadqtiostaticmirrorlist"><a href="https://download.qt.io/static/mirrorlist/">镜像 list</a></h3>
-<p>Note: 下载那个镜像点的&quot;qt-unified-windows-x64-online.exe&quot;, 就使用it&rsquo;s Network.</p>
-<ul>
-<li><a href="https://mirrors.tuna.tsinghua.edu.cn/qt/archive/online_installers/">tuna</a></li>
-<li><a href="http://iso.mirrors.ustc.edu.cn/qtproject/official_releases/online_installers/">ustc</a></li>
-<li><a href="https://mirror.sjtu.edu.cn/qt/official_releases/online_installers/">sjtu</a></li>
-<li><a href="https://mirror.nyist.edu.cn/qt/official_releases/online_installers/">nanyang</a></li>
-</ul>
+            <p><p>:warning:
+安装完<a href="https://developer.android.google.cn/studio">Android Studio</a>, 先不要进入设置！</p>
 <h2 id="qt-qucik">Qt Qucik</h2>
 <p><a href="https://en.wikipedia.org/wiki/Qt_Quick">version</a>:</p>
 <table>
@@ -397,8 +274,232 @@ and place it in the &ldquo;%ANDROID_SDK_ROOT%&rdquo;/&quot;%ANDROID_HOME%&quot; 
         
 
         
-        <time class="post-date" datetime="2024-09-01T03:38:08&#43;08:00">
-            1 Sep 2024
+        <time class="post-date" datetime="2024-09-11T17:38:08&#43;08:00">
+            11 Sep 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-android_started/">Qt6 for android</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>ndk</li>
+<li>avd(Android Virtual Device)</li>
+</ul>
+<h1 id="preparation">Preparation</h1>
+<ul>
+<li>Environment</li>
+<li>cmdline</li>
+</ul>
+<h2 id="environment-variables">Environment variables</h2>
+<p>:warning:
+安装完<a href="https://developer.android.google.cn/studio">Android Studio</a>, 先不要进入设置！</p>
+<h3 id="java-home">Java Home</h3>
+<ul>
+<li>Qt6.5/6.2 <br>
+set <a href="https://adoptium.net/temurin/archive/?variant=openjdk11&amp;version=11">JDK11</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-11.0.24+8
+</span></span></code></pre></div><h3 id="android-home">Android Home</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\a</span>ndroid-sdk
+</span></span></code></pre></div><ul>
+<li>ANDROID_HOME</li>
+</ul>
+<pre tabindex="0"><code>Qt6.5.3
+</code></pre><ul>
+<li>ANDROID_SDK_ROOT</li>
+</ul>
+<pre tabindex="0"><code>Qt6.2.4
+</code></pre><h3 id="open-ssl">open ssl</h3>
+<p>Download &ldquo;<a href="https://github.com/KDAB/android_openssl">android openssl</a>&rdquo;
+and place it in the &ldquo;%ANDROID_SDK_ROOT%&rdquo;/&quot;%ANDROID_HOME%&quot; directory.</p>
+<h2 id="cmdline-tools">cmdline-tools</h2>
+<p>Qt Creator 的 version info(sdk_definitions.json):</p>
+<pre tabindex="0"><code>&lt;QT_INSTALL&gt;\Tools\QtCreator\share\qtcreator\android
+</code></pre><h3 id="versionshttpspackagesdebianorgsourcesidgoogle-android-installers"><a href="https://packages.debian.org/source/sid/google-android-installers">versions</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">ver</th>
+          <th style="text-align: left">name</th>
+          <th style="text-align: left">qt creator</th>
+          <th style="text-align: left">jdk</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">2.1</td>
+          <td style="text-align: left">6609375_latest</td>
+          <td style="text-align: left">v5.0.2</td>
+          <td style="text-align: left">v8</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">3.0</td>
+          <td style="text-align: left">6858069_latest</td>
+          <td style="text-align: left">none</td>
+          <td style="text-align: left">v8</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">4.0</td>
+          <td style="text-align: left">7302050_latest</td>
+          <td style="text-align: left">none</td>
+          <td style="text-align: left">v8</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">5.0</td>
+          <td style="text-align: left">7583922_latest</td>
+          <td style="text-align: left">none</td>
+          <td style="text-align: left">v8</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">6.0</td>
+          <td style="text-align: left">8092744_latest</td>
+          <td style="text-align: left">none</td>
+          <td style="text-align: left">v8</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">7.0</td>
+          <td style="text-align: left">8512546_latest</td>
+          <td style="text-align: left">none</td>
+          <td style="text-align: left">v8</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">8.0</td>
+          <td style="text-align: left">9123335_latest</td>
+          <td style="text-align: left">v11.0.3</td>
+          <td style="text-align: left">v8</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">9.0</td>
+          <td style="text-align: left">9477386_latest</td>
+          <td style="text-align: left">none</td>
+          <td style="text-align: left">v11</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">10.0</td>
+          <td style="text-align: left">9862592_latest</td>
+          <td style="text-align: left">none</td>
+          <td style="text-align: left">v11</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">11.0</td>
+          <td style="text-align: left">10406996_latest</td>
+          <td style="text-align: left">none</td>
+          <td style="text-align: left">v17</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">12.0</td>
+          <td style="text-align: left">11076708_latest</td>
+          <td style="text-align: left">v14.0.1</td>
+          <td style="text-align: left">v17</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">13.0</td>
+          <td style="text-align: left">11479570_latest</td>
+          <td style="text-align: left">none</td>
+          <td style="text-align: left">v17</td>
+      </tr>
+  </tbody>
+</table>
+<p>Take v12.0 as an example: Open <a href="https://packages.debian.org/sid/i386/google-android-cmdline-tools-12.0-installer/filelist">list of files</a>
+and see the version information: <strong>11076708_latest</strong></p> <a class="read-more" href="/cnblogs/post/qt-android_started/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-09-08T12:38:08&#43;08:00">
+            8 Sep 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
+<ul>
+<li><a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a></li>
+<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
+</ul>
+<h1 id="visual-studio">Visual Studio</h1>
+<ul>
+<li>target directory</li>
+</ul>
+<pre tabindex="0"><code>--layout TARGET(directory)
+</code></pre><ul>
+<li>components</li>
+</ul>
+<pre tabindex="0"><code>--add NAME(Component)
+</code></pre><ul>
+<li>language</li>
+</ul>
+<pre tabindex="0"><code>--lang en-US
+</code></pre><p>exec:</p>
+<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs201x `
+...
+</code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
+<h2 id="common">Common</h2>
+<ul>
+<li>Core</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
+--add Microsoft.VisualStudio.Workload.CoreEditor `
+--add Microsoft.VisualStudio.Component.Roslyn.Compiler `
+--add Microsoft.Component.MSBuild `
+--add Microsoft.VisualStudio.Component.TextTemplating `
+</code></pre><ul>
+<li>IntelliCode</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
+</code></pre><ul>
+<li>JIT</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.Debugger.JustInTime `
+</code></pre><h2 id="vc">VC</h2>
+<ul>
+<li>MFC/ATL</li>
+</ul>
+<h3 id="mfcatl">MFC/ATL</h3>
+<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.VC.CoreIde&#34;,
+    &#34;Microsoft.VisualStudio.Component.VC.Redist.14.Latest&#34;,
+    &#34;Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core&#34;,
+    &#34;Microsoft.VisualStudio.Component.VC.Tools.x86.x64&#34;,
+    &#34;Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions.CMake&#34;,
+    &#34;Microsoft.VisualStudio.Component.VC.CMake.Project&#34;,
+    &#34;Microsoft.VisualStudio.Component.VC.ATL&#34;,
+    &#34;Microsoft.VisualStudio.Component.VC.ATLMFC&#34;,
+    &#34;Microsoft.Component.VC.Runtime.UCRTSDK&#34;,
+    &#34;Microsoft.VisualStudio.Workload.NativeDesktop&#34;
+</code></pre><h3 id="windows-sdk">Windows SDK</h3>
+<p>default:</p>
+<ul>
+<li>vs2019</li>
+</ul>
+<pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows10SDK.19041
+</code></pre><p>win2004</p> <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-09-04T08:08:08&#43;08:00">
+            4 Sep 2024
         </time>
     </footer>
 </article>
@@ -419,7 +520,13 @@ If it’s paused, then click Normal.</li>
 </ol>
 <h3 id="ms-edge">MS-Edge</h3>
 <p>Regardless of Microsoft’s reasoning, you now know how to toggle the sidebar on or off in Edge 119.
-Just head to Settings &gt; Sidebar &gt; Copilot &gt; Always Show Sidebar. Alternatively, you can use the Ctrl + Shift + / shortcut.</p> <a class="read-more" href="/cnblogs/post/ops_win_faq4/">&raquo;</a></p>
+Just head to Settings &gt; Sidebar &gt; Copilot &gt; Always Show Sidebar. Alternatively, you can use the Ctrl + Shift + / shortcut.</p>
+<h3 id="图标显示不正常httpssspaicompost42874"><a href="https://sspai.com/post/42874">图标显示不正常</a></h3>
+<ul>
+<li>方法一 删除 IconCache.db 文件</li>
+</ul>
+<blockquote>
+<p>C:\Users\用户名\appdata\local</p> <a class="read-more" href="/cnblogs/post/ops_win_faq4/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -463,7 +570,21 @@ gem install mysql2
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.19_all.deb
 </span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.19_all.deb
 </span></span></code></pre></div><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
-<p>new:</p> <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
+<p>new:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rails new veic_web-r2 -j esbuild --css bulma -d mysql
+</span></span></code></pre></div><h2 id="upload-images">upload images</h2>
+<p>windows 10:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>tar zcvf img.tar.gz ./img/ --transform s/img/images/
+</span></span><span style="display:flex;"><span>scp d:\projects\img.tar.gz tdtc@192.168.3.99:/home/tdtc/veic_web-r2/app/assets/
+</span></span></code></pre></div><p>ubuntu:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~/veic_web-r2/app/assets/
+</span></span><span style="display:flex;"><span>tar zxvf img.tar.gz
+</span></span></code></pre></div><h2 id="config-db">config db</h2>
+<pre tabindex="0"><code>vi ./config/database.yml
+</code></pre><p>remote user:</p>
+<pre tabindex="0"><code>username: tdtc2022
+password: qaz1xsw2
+</code></pre><p>Remote db server:</p> <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -514,7 +635,12 @@ public class ReadXbf {
       System.out.println(text);
     }
 }
-</code></pr <a class="read-more" href="/cnblogs/post/java-jni-gcc/">&raquo;</a></p>
+</code></pre><ul>
+<li>Generate the JNI Header File</li>
+</ul>
+<pre tabindex="0"><code>javac -h . ReadXbf.java
+</code></pre><h2 id="jni-with-c">JNI with C++</h2>
+<p>XbfLibR1.cpp:</p> <a class="read-more" href="/cnblogs/post/java-jni-gcc/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -574,7 +700,29 @@ When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.</p>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;D:/progFiles/php8.0&#34;</span>
 </span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;D:/progFiles/php-8.0/php8apache2_4.dll&#34;</span>
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
+</span></span></code></pre></div><ul>
+<li>PHPV7.1</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;D:/progFiles/php7.1&#34;</span>
+</span></span><span style="display:flex;"><span>LoadModule php7_module <span style="color:#e6db74">&#34;D:/progFiles/php7.1/php7apache2_4.dll&#34;</span>
+</span></span></code></pre></div><h2 id="重写">重写</h2>
+<ul>
+<li>a.打开模块</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule rewrite_module modules/mod_rewrite.so
+</span></span></code></pre></div><ul>
+<li>b.允许重写</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
+</span></span></code></pre></div><h1 id="配置phpphpini">配置PHP(php.ini)</h1>
+<ul>
+<li>CodeIgniter <br>
+When less than Php v8.1, use the CodeIgniter</li>
+<li>Symfony <br>
+When greater than Php v8.1, use the Symfony</li>
+</ul>
+<h2 id="composer">Composer</h2>
+<p>v2.6.5</p> <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -627,7 +775,20 @@ When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.</p>
   </tbody>
 </table>
 <h1 id="rbenv">RbEnv</h1>
-<p>Install ruby using rbenv.</p> <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
+<p>Install ruby using rbenv.</p>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>Ubuntu <br>
+Ubuntu 20.04 default Ruby version is v2.7</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
+ libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
+</code></pre><ul>
+<li>RHEL <br>
+RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel
+</span></span></code></pre></div><p>install tar:</p> <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -762,7 +923,23 @@ When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.</p>
 <li>Gen deps directory</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>phpsdk_buildtree phpdev
-</span></span></code></pr <a class="read-more" href="/cnblogs/post/php-build-win/">&raquo;</a></p>
+</span></span></code></pre></div><ol start="3">
+<li>git php src</li>
+</ol>
+<pre tabindex="0"><code>cd d:\progFiles\phpdev\vs16\x64
+git clone -b PHP-8.0.* https://github.com/php/php-src.git
+</code></pre><p>*: version number</p>
+<ol start="4">
+<li>deps updates</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>phpsdk_deps --update
+</span></span></code></pre></div><ol start="5">
+<li>build</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>buildconf <span style="color:#f92672">&amp;&amp;</span> configure <span style="color:#f92672">&amp;&amp;</span> nmake
+</span></span></code></pre></div><ul>
+<li><a href="https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2">Build your own PHP on Windows</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/php-build-win/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

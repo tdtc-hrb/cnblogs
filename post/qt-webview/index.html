@@ -29,7 +29,7 @@
     
     <meta property="og:description" content="qt quick" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2024-09-01T03:38:08&#43;08:00" />
+    <meta property="article:published_time" content="2024-09-11T17:38:08&#43;08:00" />
 
     
     
@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.134.1">
+    <meta name="generator" content="Hugo 0.134.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/qt-webview/" />
 
@@ -92,15 +92,15 @@
     },
     "headline": "QQ mini browser",
     "name": "QQ mini browser",
-    "wordCount":  722 ,
+    "wordCount":  666 ,
     "timeRequired": "PT4M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/qt-webview/",
-    "datePublished": "2024-09-01T03:38Z",
-    "dateModified": "2024-09-01T03:38Z",
+    "datePublished": "2024-09-11T17:38Z",
+    "dateModified": "2024-09-11T17:38Z",
     
     
     "description": "qt quick",
@@ -168,8 +168,8 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2024-09-01T03:38:08&#43;08:00">
-            Sep 1, 2024
+          <time class="post-date" datetime="2024-09-11T17:38:08&#43;08:00">
+            Sep 11, 2024
           </time>
         
          
@@ -177,26 +177,8 @@
     </header>
 
     <section class="post-content">
-      <ul>
-<li>Android Studio: 2024.1.1</li>
-<li>Qt Creator: v14.0.1</li>
-<li>QT: V6.5.3</li>
-</ul>
-<h2 id="online-installer-version">online installer version</h2>
-<ul>
-<li>Creator and Design Studio <br>
-始终更新</li>
-<li>Commercial LTS phase <br>
-<a href="https://lists.qt-project.org/pipermail/development/2023-October/044573.html">新 Normal 发布后, lts 转为 commercial LTS</a></li>
-</ul>
-<h3 id="镜像-listhttpsdownloadqtiostaticmirrorlist"><a href="https://download.qt.io/static/mirrorlist/">镜像 list</a></h3>
-<p>Note: 下载那个镜像点的&quot;qt-unified-windows-x64-online.exe&quot;, 就使用it&rsquo;s Network.</p>
-<ul>
-<li><a href="https://mirrors.tuna.tsinghua.edu.cn/qt/archive/online_installers/">tuna</a></li>
-<li><a href="http://iso.mirrors.ustc.edu.cn/qtproject/official_releases/online_installers/">ustc</a></li>
-<li><a href="https://mirror.sjtu.edu.cn/qt/official_releases/online_installers/">sjtu</a></li>
-<li><a href="https://mirror.nyist.edu.cn/qt/official_releases/online_installers/">nanyang</a></li>
-</ul>
+      <p>:warning:
+安装完<a href="https://developer.android.google.cn/studio">Android Studio</a>, 先不要进入设置！</p>
 <h2 id="qt-qucik">Qt Qucik</h2>
 <p><a href="https://en.wikipedia.org/wiki/Qt_Quick">version</a>:</p>
 <table>
@@ -320,29 +302,14 @@ thus it does not require including a full web-browser stack as a part of the app
 so your application is more light-weight. Another point is that some platforms simply do not allow any non-system web-browsers, 
 so WebView is the only option available there.
 </code></pre><h1 id="project">Project</h1>
-<p>使用Qt Creator创建, 以下简称creator。</p>
-<h2 id="create-qt-project">Create Qt Project</h2>
-<p>File -&gt; New Project</p>
 <ul>
-<li>v6.x <br>
+<li>v6.5+ <br>
 Qt Quick Application</li>
 <li>v5.15 <br>
 Qt Quick Application(compat)</li>
 </ul>
-<h3 id="project-setting">project setting</h3>
-<ul>
-<li>project name</li>
-</ul>
+<p>project name:</p>
 <pre tabindex="0"><code>my_browser
-</code></pre><ul>
-<li>Define Build System</li>
-</ul>
-<pre tabindex="0"><code>CMake
-</code></pre><ul>
-<li>Define Project Details <br>
-Mini Qt version:</li>
-</ul>
-<pre tabindex="0"><code>Qt 5.15/6.2
 </code></pre><h2 id="using-qt-webview">Using Qt WebView</h2>
 <ul>
 <li>QML API</li>
@@ -352,27 +319,10 @@ Mini Qt version:</li>
 <li>C++ API</li>
 </ul>
 <pre tabindex="0"><code>#include &lt;QtWebView/QtWebView&gt;
-</code></pre><h3 id="building-with-cmake">Building with CMake</h3>
-<ul>
-<li>package</li>
-</ul>
-<pre tabindex="0"><code>find_package(Qt6 6.2 REQUIRED COMPONENTS Quick WebView)
-</code></pre><ul>
-<li>target</li>
-</ul>
-<pre tabindex="0"><code>target_link_libraries(appmy_browser
-    PRIVATE Qt6::Quick Qt6::WebView
-)
-</code></pre><h3 id="initial">initial</h3>
+</code></pre><h3 id="initial---c">initial - C++</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// first line
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>QtWebView<span style="color:#f92672">::</span>initialize();
-</span></span></code></pre></div><h2 id="layout">Layout</h2>
-<ul>
-<li>ApplicationWindow</li>
-<li>WebView</li>
-<li>ToolBar</li>
-</ul>
-<h3 id="qt-webviewhttpsdocqtioqt-62qtwebview-indexhtml"><a href="https://doc.qt.io/qt-6.2/qtwebview-index.html">Qt WebView</a></h3>
+</span></span></code></pre></div><h3 id="qt-webview---qmlhttpsdocqtioqt-65qtwebview-indexhtml"><a href="https://doc.qt.io/qt-6.5/qtwebview-index.html">Qt WebView - QML</a></h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span>    <span style="color:#a6e22e">WebView</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">id: webView</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">anchors.fill:</span> <span style="color:#a6e22e">parent</span>
@@ -382,10 +332,7 @@ Mini Qt version:</li>
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">loadRequest</span>.<span style="color:#a6e22e">errorString</span>);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
-</span></span></code></pre></div><h3 id="tool-barhttpsdocqtioqt-6qml-qtquick-controls2-toolbarhtml"><a href="https://doc.qt.io/qt-6/qml-qtquick-controls2-toolbar.html">tool bar</a></h3>
-<p>ToolBar is a container of application-wide and context sensitive actions and controls,
-such as navigation buttons and search fields.
-ToolBar is commonly used as a header or a footer of an ApplicationWindow.</p>
+</span></span></code></pre></div><h2 id="layout">Layout</h2>
 <ul>
 <li>footer <br>
 要使用footer属性时，必须使用</li>
@@ -399,11 +346,106 @@ ApplicationWindow {
 <li>Layout</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">QtQuick</span>.<span style="color:#a6e22e">Layouts</span>
-</span></span></code></pre></div><ul>
-<li>images folder
-copy &ldquo;Examples\Qt-6.5.3\webview\minibrowser\images&rdquo; to project folder</li>
+</span></span></code></pre></div><h3 id="tool-barhttpsdocqtioqt-6qml-qtquick-controls2-toolbarhtml"><a href="https://doc.qt.io/qt-6/qml-qtquick-controls2-toolbar.html">tool bar</a></h3>
+<p>ToolBar is a container of application-wide and context sensitive actions and controls,
+such as navigation buttons and search fields.
+ToolBar is commonly used as a header or a footer of an ApplicationWindow.</p>
+<h2 id="component-support-in-cmake">Component support in CMAKE</h2>
+<p>CMakeLists.txt</p>
+<h3 id="qt6">Qt6</h3>
+<ul>
+<li>package</li>
 </ul>
-<h4 id="mainqmlpart">Main.qml(part)</h4>
+<pre tabindex="0"><code>find_package(Qt6 6.5 REQUIRED COMPONENTS Quick WebView)
+</code></pre><ul>
+<li>target</li>
+</ul>
+<pre tabindex="0"><code>target_link_libraries(appmy_browser
+    PRIVATE Qt6::Quick Qt6::WebView
+)
+</code></pre><h3 id="qt5">Qt5</h3>
+<ul>
+<li>package</li>
+</ul>
+<pre tabindex="0"><code>find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick WebView)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick WebView)
+</code></pre><ul>
+<li>target</li>
+</ul>
+<pre tabindex="0"><code>target_link_libraries(my_browser
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::WebView)
+</code></pre><h1 id="qt5-与-qt6">Qt5 与 Qt6</h1>
+<ul>
+<li>qml component</li>
+<li>icon</li>
+</ul>
+<h2 id="qml-component">qml component</h2>
+<ul>
+<li>image button <br>
+usage <a href="https://forum.qt.io/topic/134678/toolbutton-icon-source/10">Button</a> 替换 ToolButton;</li>
+<li>image load <br>
+使用 IconImage 替换 iconSource</li>
+</ul>
+<h3 id="qt6-1">Qt6</h3>
+<pre tabindex="0"><code>        Button {
+            contentItem: Row {
+                IconImage {
+                    source: &#34;images/left32.png&#34;
+                }
+... ...
+        }
+</code></pre><h3 id="qt5-1">Qt5</h3>
+<pre tabindex="0"><code>            ToolButton {
+                contentItem: Row {
+                    iconSource {
+                        source: &#34;images/left32.png&#34;
+                    }
+... ...
+            }
+</code></pre><h2 id="resources">Resources</h2>
+<ul>
+<li>Qt 6.x <br>
+设置图标文件在 CMake 工程文件(CMakeLists.txt)</li>
+<li>Qt 5.15 <br>
+设置图标文件在 qml.qrc</li>
+</ul>
+<h3 id="images-folder">images folder</h3>
+<p>copy &ldquo;Examples\Qt-x.x.x\webview\minibrowser\images&rdquo; to project folder</p>
+<p>并重命名文件名:</p>
+<pre tabindex="0"><code>left32.png
+refresh32.png
+right32.png
+stop32.png
+</code></pre><h3 id="cmake---qt6httpsforumqtiotopic144345qml-image-cannot-open-cmake-qrc10"><a href="https://forum.qt.io/topic/144345/qml-image-cannot-open-cmake-qrc/10">CMake - Qt6</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>qt_add_qml_module(<span style="color:#e6db74">appmy_browser</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">URI</span> <span style="color:#e6db74">my_browser</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">1.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">QML_FILES</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">Main.qml</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">RESOURCE_PREFIX</span> <span style="color:#e6db74">/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">RESOURCES</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/left32.png</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/refresh32.png</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/right32.png</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/stop32.png</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="qt-515">Qt 5.15</h3>
+<blockquote>
+<p>qml.qrc</p>
+</blockquote>
+<pre tabindex="0"><code>&lt;RCC&gt;
+    &lt;qresource prefix=&#34;/&#34;&gt;
+        &lt;file&gt;main.qml&lt;/file&gt;
+        &lt;file&gt;images/left32.png&lt;/file&gt;
+        &lt;file&gt;images/stop32.png&lt;/file&gt;
+        &lt;file&gt;images/refresh32.png&lt;/file&gt;
+        &lt;file&gt;images/right32.png&lt;/file&gt;
+    &lt;/qresource&gt;
+&lt;/RCC&gt;
+</code></pre><h2 id="mainqmlpart">Main.qml(part)</h2>
+<ul>
+<li>Qt6</li>
+</ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">footer:</span> <span style="color:#a6e22e">ToolBar</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">id: navigationBar</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">height:</span> <span style="color:#ae81ff">64</span>
@@ -413,7 +455,7 @@ copy &ldquo;Examples\Qt-6.5.3\webview\minibrowser\images&rdquo; to project folde
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">spacing:</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Button</span> {
-</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">contentItem:</span> <span style="color:#a6e22e">Row</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">contentItem:</span> <span style="color:#a6e22e">Row</span> {
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">IconImage</span> {
 </span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">source:</span> <span style="color:#e6db74">&#34;images/left32.png&#34;</span>
 </span></span><span style="display:flex;"><span>                }
@@ -428,7 +470,7 @@ copy &ldquo;Examples\Qt-6.5.3\webview\minibrowser\images&rdquo; to project folde
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Item</span> { <span style="color:#66d9ef">Layout.preferredWidth:</span> <span style="color:#ae81ff">5</span> }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Button</span> {
-</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">contentItem:</span> <span style="color:#a6e22e">Row</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">contentItem:</span> <span style="color:#a6e22e">Row</span> {
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">IconImage</span> {
 </span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">source:</span> <span style="color:#e6db74">&#34;images/right32.png&#34;</span>
 </span></span><span style="display:flex;"><span>                }
@@ -443,7 +485,7 @@ copy &ldquo;Examples\Qt-6.5.3\webview\minibrowser\images&rdquo; to project folde
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Item</span> { <span style="color:#66d9ef">Layout.preferredWidth:</span> <span style="color:#ae81ff">5</span> }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Button</span> {
-</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">contentItem:</span> <span style="color:#a6e22e">Row</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">contentItem:</span> <span style="color:#a6e22e">Row</span> {
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">IconImage</span> {
 </span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">source:</span> <span style="color:#a6e22e">webView</span>.<span style="color:#a6e22e">loading</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;images/stop32.png&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/refresh32.png&#34;</span>
 </span></span><span style="display:flex;"><span>                }
@@ -461,97 +503,7 @@ copy &ldquo;Examples\Qt-6.5.3\webview\minibrowser\images&rdquo; to project folde
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Item</span> { <span style="color:#66d9ef">Layout.preferredWidth:</span> <span style="color:#ae81ff">10</span> }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="issues">Issues</h2>
-<p>Qt5 与 Qt6 的不同</p>
-<h3 id="icon">Icon</h3>
-<p>usage <a href="https://forum.qt.io/topic/134678/toolbutton-icon-source/10">Button</a> 替换 ToolButton</p>
-<ul>
-<li>Qt 6.x <br>
-设置图标文件在 CMake 工程文件(CMakeLists.txt)</li>
-<li>Qt 5.15 <br>
-设置图标文件在 qml.qrc</li>
-</ul>
-<h4 id="cmake---qt6httpsforumqtiotopic144345qml-image-cannot-open-cmake-qrc10"><a href="https://forum.qt.io/topic/144345/qml-image-cannot-open-cmake-qrc/10">CMake - Qt6</a></h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>qt_add_qml_module(<span style="color:#e6db74">appmy_browser</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">URI</span> <span style="color:#e6db74">my_browser</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">1.0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">QML_FILES</span> 
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">Main.qml</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">RESOURCE_PREFIX</span> <span style="color:#e6db74">/</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">RESOURCES</span> 
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/left32.png</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/refresh32.png</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/right32.png</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/stop32.png</span>
-</span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><h4 id="qt-515">Qt 5.15</h4>
-<blockquote>
-<p>qml.qrc</p>
-</blockquote>
-<pre tabindex="0"><code>&lt;RCC&gt;
-    &lt;qresource prefix=&#34;/&#34;&gt;
-        &lt;file&gt;main.qml&lt;/file&gt;
-        &lt;file&gt;images/left32.png&lt;/file&gt;
-        &lt;file&gt;images/stop32.png&lt;/file&gt;
-        &lt;file&gt;images/refresh32.png&lt;/file&gt;
-        &lt;file&gt;images/right32.png&lt;/file&gt;
-    &lt;/qresource&gt;
-&lt;/RCC&gt;
-</code></pre><h2 id="qt-creator-build-issues">QT Creator Build Issues</h2>
-<ul>
-<li>gradle</li>
-<li>SDK version</li>
-</ul>
-<h3 id="network-issue">network issue</h3>
-<p>gradle-wrapper.properties:</p>
-<pre tabindex="0"><code>android_x86_64\src\3rdparty\gradle\gradle\wrapper
-</code></pre><p>Use</p>
-<pre tabindex="0"><code>https://mirrors.cloud.tencent.com/gradle/
-</code></pre><p>instead of</p>
-<pre tabindex="0"><code>https\://services.gradle.org/distributions/
-</code></pre><h3 id="sdk-version">Sdk version</h3>
-<p>The sdk and sdk build-tools versions in Android Studio are higher! <br>
-Before using QT Creator, you must remove them in Android Studio. <br>
-Current version:</p>
-<ul>
-<li>SDK 35</li>
-<li>SDK Build 35</li>
-</ul>
-<p>Android SDK -&gt; <br>
-取消✔ <br>
-SDK Platforms -&gt;</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">check</th>
-          <th style="text-align: left">name</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left">⬜</td>
-          <td style="text-align: left">Android API 35</td>
-      </tr>
-  </tbody>
-</table>
-<p>SDK Tools -&gt; <br>
-取消✔ <br>
-Android SDK Build-Tools 35</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">check</th>
-          <th style="text-align: left">name</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left">⬜</td>
-          <td style="text-align: left">35.0.0</td>
-      </tr>
-  </tbody>
-</table>
-<h1 id="reference">Reference</h1>
+</span></span></code></pre></div><h1 id="reference">Reference</h1>
 <ul>
 <li><a href="https://doc.qt.io/qt-6/qtwebview-minibrowser-example.html">Minibrowser</a></li>
 <li><a href="https://doc.qt.io/qt-6/qt-cmake-policy-qtp0001.html">QTP0001</a></li>
@@ -608,17 +560,10 @@ Android SDK Build-Tools 35</p>
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/ops_win_faq2/">
-          <section class="post">
-              <h2>Windows的一些安装</h2>
-              
-          </section>
-      </a>
   
-  
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ops_win_faq4/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/qt-android_started/">
           <section class="post">
-              <h2>Windows的一些设置</h2>
+              <h2>Qt6 for android</h2>
           </section>
       </a>
   
