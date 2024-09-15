@@ -197,54 +197,6 @@
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/vc-sqlite3lib/">生成SQLite静态库</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p><a href="https://sqlite.org/download.html">SQLite3</a> X:</p>
-<pre tabindex="0"><code>3400200
-</code></pre><p>X: 当前版本号</p>
-<h1 id="debug版">Debug版</h1>
-<p>Source Code -&gt; sqlite-amalgamation-X.zip</p>
-<h2 id="新建dll工程">新建DLL工程</h2>
-<p>project name: sqlite3（使用这个名字主要是在生成lib的时候不用更改输出名了）</p>
-<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1-0prj(vs2013).png -->
-<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1-1prj(vs2013).png -->
-<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1prj.png -->
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1prj(vs2022).png" alt="VS2022 prj1"></p>
-<h3 id="添加sqlite源文件">添加SQLite源文件</h3>
-<p>，
-把sqlite3.h、sqlite3ext.h和sqlite3.c拷贝到工程根目录。</p>
-<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-2prj(vs2013).png -->
-<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-2prj.png -->
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-2prj(vs2022).png" alt="VS2022 prj2"></p>
-<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-3prj(vs2013).png -->
-<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-3prj.png -->
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-3prj(vs2022).png" alt="VS2022 prj21"></p>
-<h2 id="编译工程">编译工程</h2>
-<p>Project ==&gt; Properties ==&gt; General</p>
-<pre tabindex="0"><code>Configureation Type : Static library(.lib)
-</code></pre><p>编译即可</p>
-<pre tabindex="0"><code>Build -&gt; Rebuild sqlite3
-</code></pre><h3 id="预编译头文件">预编译头文件</h3>
-<p>Project ==&gt; Properties ==&gt; C/C++ ==&gt; Precompiled Header</p> <a class="read-more" href="/cnblogs/post/vc-sqlite3lib/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-06-13T21:08:08&#43;08:00">
-            13 Jun 2023
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_blink7/">PIC blinked</a></h2>
     </header>
     <section class="post-excerpt">
@@ -795,6 +747,48 @@ there is no way this issue will be fixed, Redis &gt;= 6 will require a C11 compi
         
         <time class="post-date" datetime="2022-10-07T04:58:39&#43;08:00">
             7 Oct 2022
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_nginx-v2/">前端（Web）负载均衡</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Nginx&rsquo;s load balancing</p>
+<h1 id="一安装">一、安装</h1>
+<p>OS: RHEL Community Version(Rocky8/Alma8) minimal（安装时的选项）</p>
+<h2 id="0-prepare">0. prepare</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf -y install gcc gcc-c++ automake make pcre pcre-devel zlib zlib-devel openssl openssl-devel</span>
+</span></span></code></pre></div><p>see <a href="https://tdtc-hrb.github.io/cnblogs/post/ops_openssl/">update openssl</a></p>
+<h3 id="library-devel">Library devel</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install gd-devel libxml2-devel libxslt-devel
+</span></span></code></pre></div><h4 id="geoip">GeoIP</h4>
+<p>Download latest <a href="http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/">atomic-release</a> <br>
+Install atomic-release rpm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo rpm -Uvh http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/atomic-release-1.0-23.el8.art.noarch.rpm
+</span></span></code></pre></div><p>Install GeoIP-devel rpm package:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install GeoIP-devel
+</span></span></code></pre></div><h3 id="allow-fw">allow fw</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>80/tcp
+</span></span><span style="display:flex;"><span>$sudo firewall-cmd --reload
+</span></span></code></pre></div><h2 id="installation">installation</h2>
+<p>First, install Nginx of centos <a href="(https://nginx.org/en/linux_packages.html#RHEL)">repo</a>; <br>
+Then, replace the nginx program file. <br>
+Note: The replaced program file version must be the same as the repo!</p> <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-10-06T08:38:08&#43;08:00">
+            6 Oct 2022
         </time>
     </footer>
 </article>

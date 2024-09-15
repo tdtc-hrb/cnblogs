@@ -92,7 +92,7 @@
     },
     "headline": "QQ mini browser",
     "name": "QQ mini browser",
-    "wordCount":  666 ,
+    "wordCount":  673 ,
     "timeRequired": "PT4M",
     "inLanguage": {
       "@type": "Language",
@@ -422,14 +422,21 @@ stop32.png
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">1.0</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">QML_FILES</span> 
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">Main.qml</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">RESOURCE_PREFIX</span> <span style="color:#e6db74">/</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">RESOURCES</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">##RESOURCE_PREFIX /
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#e6db74">RESOURCES</span> 
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/left32.png</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/refresh32.png</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/right32.png</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/stop32.png</span>
 </span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><h3 id="qt-515">Qt 5.15</h3>
+</span></span></span></code></pre></div><h4 id="resource-prefixhttpsdocqtioqt-6qt-add-qml-modulehtmlcaching-compiled-qml-sources"><a href="https://doc.qt.io/qt-6/qt-add-qml-module.html#caching-compiled-qml-sources">Resource prefix</a></h4>
+<p>在ds4.1.1+qc14.0.1，必须注释掉!
+否则，在模拟器会运行失败.</p>
+<pre tabindex="0"><code>    ##RESOURCE_PREFIX /
+</code></pre><p>在ds4.5.1+qc14.0.1，会出 <a href="https://doc.qt.io/qt-6/qt-cmake-policy-qtp0001.html">QTP0001</a> 警告！
+去掉注释，正常:</p>
+<pre tabindex="0"><code>    RESOURCE_PREFIX /
+</code></pre><h3 id="qt-515">Qt 5.15</h3>
 <blockquote>
 <p>qml.qrc</p>
 </blockquote>
@@ -506,8 +513,6 @@ stop32.png
 </span></span></code></pre></div><h1 id="reference">Reference</h1>
 <ul>
 <li><a href="https://doc.qt.io/qt-6/qtwebview-minibrowser-example.html">Minibrowser</a></li>
-<li><a href="https://doc.qt.io/qt-6/qt-cmake-policy-qtp0001.html">QTP0001</a></li>
-<li><a href="https://doc.qt.io/qt-6/qt-add-qml-module.html#caching-compiled-qml-sources">Caching compiled QML sources</a></li>
 </ul>
 
     </section>
@@ -561,9 +566,9 @@ stop32.png
   <aside class="read-next">
   
   
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/qt-android_started/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ops_win_faq2/">
           <section class="post">
-              <h2>Qt6 for android</h2>
+              <h2>Windows的一些安装</h2>
           </section>
       </a>
   
