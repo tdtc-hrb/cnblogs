@@ -298,8 +298,52 @@
         
 
         
-        <time class="post-date" datetime="2024-09-16T17:38:08&#43;08:00">
-            16 Sep 2024
+        <time class="post-date" datetime="2024-09-18T17:38:08&#43;08:00">
+            18 Sep 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-android_started/">Qt6 for android</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>ndk</li>
+<li>avd(Android Virtual Device)</li>
+</ul>
+<h1 id="preparation">Preparation</h1>
+<ul>
+<li>Environment</li>
+<li>cmdline</li>
+</ul>
+<h2 id="environment-variables">Environment variables</h2>
+<p>:warning:
+安装完<a href="https://developer.android.google.cn/studio">Android Studio</a>, 先不要进入设置！</p>
+<h3 id="java-home">Java Home</h3>
+<ul>
+<li>Qt6.8/6.5 <br>
+set <a href="https://adoptium.net/temurin/archive/?variant=openjdk11&amp;version=17">JDK17</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.12+7
+</span></span></code></pre></div><h3 id="android-homehttpsdeveloperandroidcomtoolsvariablesenvar"><a href="https://developer.android.com/tools/variables#envar">Android Home</a></h3>
+<p>Sets the path to the SDK installation directory.
+Once set, the value does not typically change and can be shared by multiple users on the same machine.
+ANDROID_SDK_ROOT, which also points to the SDK installation directory, is deprecated.
+If you continue to use it, Android Studio and the Android Gradle plugin will check that the old and new variables are consistent.</p> <a class="read-more" href="/cnblogs/post/qt-android_started/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-09-18T12:38:08&#43;08:00">
+            18 Sep 2024
         </time>
     </footer>
 </article>
@@ -832,54 +876,6 @@ git clone -b PHP-8.0.* https://github.com/php/php-src.git
         
         <time class="post-date" datetime="2023-08-20T10:08:08&#43;08:00">
             20 Aug 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/vc-sqlite3lib/">生成SQLite静态库</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p><a href="https://sqlite.org/download.html">SQLite3</a> X:</p>
-<pre tabindex="0"><code>3400200
-</code></pre><p>X: 当前版本号</p>
-<h1 id="debug版">Debug版</h1>
-<p>Source Code -&gt; sqlite-amalgamation-X.zip</p>
-<h2 id="新建dll工程">新建DLL工程</h2>
-<p>project name: sqlite3（使用这个名字主要是在生成lib的时候不用更改输出名了）</p>
-<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1-0prj(vs2013).png -->
-<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1-1prj(vs2013).png -->
-<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1prj.png -->
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-1prj(vs2022).png" alt="VS2022 prj1"></p>
-<h3 id="添加sqlite源文件">添加SQLite源文件</h3>
-<p>，
-把sqlite3.h、sqlite3ext.h和sqlite3.c拷贝到工程根目录。</p>
-<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-2prj(vs2013).png -->
-<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-2prj.png -->
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-2prj(vs2022).png" alt="VS2022 prj2"></p>
-<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-3prj(vs2013).png -->
-<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-3prj.png -->
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/sqlite3-3prj(vs2022).png" alt="VS2022 prj21"></p>
-<h2 id="编译工程">编译工程</h2>
-<p>Project ==&gt; Properties ==&gt; General</p>
-<pre tabindex="0"><code>Configureation Type : Static library(.lib)
-</code></pre><p>编译即可</p>
-<pre tabindex="0"><code>Build -&gt; Rebuild sqlite3
-</code></pre><h3 id="预编译头文件">预编译头文件</h3>
-<p>Project ==&gt; Properties ==&gt; C/C++ ==&gt; Precompiled Header</p> <a class="read-more" href="/cnblogs/post/vc-sqlite3lib/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-06-13T21:08:08&#43;08:00">
-            13 Jun 2023
         </time>
     </footer>
 </article>
