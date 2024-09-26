@@ -162,6 +162,88 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
+<ul>
+<li><a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a></li>
+<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
+</ul>
+<h1 id="visual-studio">Visual Studio</h1>
+<ul>
+<li>target directory</li>
+</ul>
+<pre tabindex="0"><code>--layout TARGET(directory)
+</code></pre><ul>
+<li>components</li>
+</ul>
+<pre tabindex="0"><code>--add NAME(Component)
+</code></pre><ul>
+<li>language</li>
+</ul>
+<pre tabindex="0"><code>--lang en-US
+</code></pre><p>exec:</p>
+<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs201x `
+...
+</code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
+<h2 id="common">Common</h2>
+<ul>
+<li>Core</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
+--add Microsoft.VisualStudio.Workload.CoreEditor `
+--add Microsoft.VisualStudio.Component.Roslyn.Compiler `
+--add Microsoft.Component.MSBuild `
+--add Microsoft.VisualStudio.Component.TextTemplating `
+</code></pre><ul>
+<li>IntelliCode</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
+</code></pre><ul>
+<li>JIT</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.Debugger.JustInTime `
+</code></pre><h2 id="vc">VC</h2>
+<ul>
+<li>MFC/ATL</li>
+</ul>
+<h3 id="mfcatl">MFC/ATL</h3>
+<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.VC.CoreIde&#34;,
+    &#34;Microsoft.VisualStudio.Component.VC.Redist.14.Latest&#34;,
+    &#34;Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core&#34;,
+    &#34;Microsoft.VisualStudio.Component.VC.Tools.x86.x64&#34;,
+    &#34;Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions.CMake&#34;,
+    &#34;Microsoft.VisualStudio.Component.VC.CMake.Project&#34;,
+    &#34;Microsoft.VisualStudio.Component.VC.ATL&#34;,
+    &#34;Microsoft.VisualStudio.Component.VC.ATLMFC&#34;,
+    &#34;Microsoft.Component.VC.Runtime.UCRTSDK&#34;,
+    &#34;Microsoft.VisualStudio.Workload.NativeDesktop&#34;
+</code></pre><h3 id="windows-sdk">Windows SDK</h3>
+<p>default:</p>
+<ul>
+<li>vs2019</li>
+</ul>
+<pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows10SDK.19041
+</code></pre><p>win2004</p> <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-09-24T08:08:08&#43;08:00">
+            24 Sep 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/qt-webview/">QQ mini browser</a></h2>
     </header>
     <section class="post-excerpt">
@@ -368,88 +450,6 @@ If you continue to use it, Android Studio and the Android Gradle plugin will che
         
         <time class="post-date" datetime="2024-09-19T12:38:08&#43;08:00">
             19 Sep 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
-<ul>
-<li><a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a></li>
-<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
-</ul>
-<h1 id="visual-studio">Visual Studio</h1>
-<ul>
-<li>target directory</li>
-</ul>
-<pre tabindex="0"><code>--layout TARGET(directory)
-</code></pre><ul>
-<li>components</li>
-</ul>
-<pre tabindex="0"><code>--add NAME(Component)
-</code></pre><ul>
-<li>language</li>
-</ul>
-<pre tabindex="0"><code>--lang en-US
-</code></pre><p>exec:</p>
-<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs201x `
-...
-</code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
-<h2 id="common">Common</h2>
-<ul>
-<li>Core</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
---add Microsoft.VisualStudio.Workload.CoreEditor `
---add Microsoft.VisualStudio.Component.Roslyn.Compiler `
---add Microsoft.Component.MSBuild `
---add Microsoft.VisualStudio.Component.TextTemplating `
-</code></pre><ul>
-<li>IntelliCode</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
-</code></pre><ul>
-<li>JIT</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.Debugger.JustInTime `
-</code></pre><h2 id="vc">VC</h2>
-<ul>
-<li>MFC/ATL</li>
-</ul>
-<h3 id="mfcatl">MFC/ATL</h3>
-<pre tabindex="0"><code>    &#34;Microsoft.VisualStudio.Component.VC.CoreIde&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.Redist.14.Latest&#34;,
-    &#34;Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.Tools.x86.x64&#34;,
-    &#34;Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions.CMake&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.CMake.Project&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.ATL&#34;,
-    &#34;Microsoft.VisualStudio.Component.VC.ATLMFC&#34;,
-    &#34;Microsoft.Component.VC.Runtime.UCRTSDK&#34;,
-    &#34;Microsoft.VisualStudio.Workload.NativeDesktop&#34;
-</code></pre><h3 id="windows-sdk">Windows SDK</h3>
-<p>default:</p>
-<ul>
-<li>vs2019</li>
-</ul>
-<pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows10SDK.19041
-</code></pre><p>win2004</p> <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-09-04T08:08:08&#43;08:00">
-            4 Sep 2024
         </time>
     </footer>
 </article>
