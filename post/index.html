@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.134.3">
+    <meta name="generator" content="Hugo 0.135.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -158,6 +158,152 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ror_installation/">安装Ruby On Rails</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html">Ruby &amp; Rails Compatibility Table</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Rails Version</th>
+          <th style="text-align: left">Required Ruby Version</th>
+          <th style="text-align: left">Recommended Ruby Version</th>
+          <th style="text-align: left">Required Rubygems Version</th>
+          <th style="text-align: left">Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">7.2.Z</td>
+          <td style="text-align: left">&gt;= 3.1.0</td>
+          <td style="text-align: left">3.3</td>
+          <td style="text-align: left">&gt;= 1.8.11</td>
+          <td style="text-align: left">Maintained</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">7.1.Z</td>
+          <td style="text-align: left">&gt;= 2.7.0</td>
+          <td style="text-align: left">3.2.Z</td>
+          <td style="text-align: left">&gt;= 1.8.11</td>
+          <td style="text-align: left">Maintained</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">7.0.Z</td>
+          <td style="text-align: left">&gt;= 2.7.0</td>
+          <td style="text-align: left">3.1.Z</td>
+          <td style="text-align: left">&gt;= 1.8.11</td>
+          <td style="text-align: left">Maintained</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="rbenv">RbEnv</h1>
+<p>Install ruby using rbenv.</p>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>Debian</li>
+</ul>
+<blockquote>
+<p>v12
+After enabling <a href="https://tdtc-hrb.github.io/csdn/post/apt-oper-ubuntu/">sudo</a>,
+the operation is the same as Ubuntu.</p>
+</blockquote>
+<ul>
+<li>Ubuntu <br>
+Ubuntu 20.04 default Ruby version is v2.7</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
+ libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
+</code></pre><ul>
+<li>RHEL <br>
+RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel
+</span></span></code></pre></div><p>install tar:</p> <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-09-29T08:08:08&#43;08:00">
+            29 Sep 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ror_getstarted/">开始Ruby On Rails</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="prepare">Prepare</h1>
+<ul>
+<li>
+<p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-ubuntu/">nodejs</a></p>
+</li>
+<li>
+<p>foreman</p>
+</li>
+</ul>
+<pre tabindex="0"><code>gem install foreman
+</code></pre><h2 id="mysql-dev">mysql-dev</h2>
+<ul>
+<li>ubuntu</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
+gem install mysql2
+</code></pre><h3 id="debianhttpsstackoverflowcoma34384709"><a href="https://stackoverflow.com/a/34384709">Debian</a></h3>
+<ul>
+<li>mariadb</li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install mariadb-server
+</code></pre><ul>
+<li><a href="https://github.com/ansible-community/ara-collection/issues/8">mariadbclient-dev</a></li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install libmariadb-dev-compat libmariadb-dev
+</code></pre><ul>
+<li><a href="https://stackoverflow.com/questions/72000977/how-do-i-install-libmysqlclient21-on-debianbuster-slim-based-docker-image">client</a></li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install mariadb-client mysql-common default-mysql-client
+</code></pre><ul>
+<li>mysql2</li>
+</ul>
+<pre tabindex="0"><code>gem install mysql2
+</code></pre><h2 id="yarn">Yarn</h2>
+<p>upload <a href="https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn_1.22.22_all.deb">yarn_1.22.22_all.deb</a> to ubuntu:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>scp d:\yarn_1.22.22_all.deb tdtc@192.168.3.99:/home/tdtc/
+</span></span></code></pre></div><p>install:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.22_all.deb
+</span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.22_all.deb
+</span></span></code></pre></div><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
+<p>new:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rails new veic_web-r2 -j esbuild --css bulma -d mysql
+</span></span></code></pre></div><h2 id="upload-images">upload images</h2>
+<p>windows 10:</p> <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-09-28T08:08:08&#43;08:00">
+            28 Sep 2024
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -490,64 +636,6 @@ Just head to Settings &gt; Sidebar &gt; Copilot &gt; Always Show Sidebar. Altern
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ror_getstarted/">开始Ruby On Rails</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="prepare">Prepare</h1>
-<ul>
-<li>mysql-dev</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
-gem install mysql2
-</code></pre><ul>
-<li>
-<p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-ubuntu/">nodejs</a></p>
-</li>
-<li>
-<p>foreman</p>
-</li>
-</ul>
-<pre tabindex="0"><code>gem install foreman
-</code></pre><h2 id="yarn">Yarn</h2>
-<p>upload <a href="https://github.com/yarnpkg/yarn/releases/download/v1.22.19/yarn_1.22.19_all.deb">yarn_1.22.19_all.deb</a> to ubuntu:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>scp d:\yarn_1.22.19_all.deb tdtc@192.168.3.99:/home/tdtc/
-</span></span></code></pre></div><p>install:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.19_all.deb
-</span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.19_all.deb
-</span></span></code></pre></div><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
-<p>new:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rails new veic_web-r2 -j esbuild --css bulma -d mysql
-</span></span></code></pre></div><h2 id="upload-images">upload images</h2>
-<p>windows 10:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>tar zcvf img.tar.gz ./img/ --transform s/img/images/
-</span></span><span style="display:flex;"><span>scp d:\projects\img.tar.gz tdtc@192.168.3.99:/home/tdtc/veic_web-r2/app/assets/
-</span></span></code></pre></div><p>ubuntu:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~/veic_web-r2/app/assets/
-</span></span><span style="display:flex;"><span>tar zxvf img.tar.gz
-</span></span></code></pre></div><h2 id="config-db">config db</h2>
-<pre tabindex="0"><code>vi ./config/database.yml
-</code></pre><p>remote user:</p>
-<pre tabindex="0"><code>username: tdtc2022
-password: qaz1xsw2
-</code></pre><p>Remote db server:</p> <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-01-18T08:08:08&#43;08:00">
-            18 Jan 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/java-jni-gcc/">jni - gcc</a></h2>
     </header>
     <section class="post-excerpt">
@@ -679,72 +767,6 @@ When greater than Php v8.1, use the Symfony</li>
         
         <time class="post-date" datetime="2023-11-30T18:08:08&#43;08:00">
             30 Nov 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ror_installation/">安装Ruby On Rails</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html">Ruby &amp; Rails Compatibility Table</a></li>
-</ul>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Rails Version</th>
-          <th style="text-align: left">Required Ruby Version</th>
-          <th style="text-align: left">Recommended Ruby Version</th>
-          <th style="text-align: left">Required Rubygems Version</th>
-          <th style="text-align: left">Status</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left">7.1.Z</td>
-          <td style="text-align: left">&gt;= 2.7.0</td>
-          <td style="text-align: left">3.2.Z</td>
-          <td style="text-align: left">&gt;= 1.8.11</td>
-          <td style="text-align: left">Maintained</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">7.0.Z</td>
-          <td style="text-align: left">&gt;= 2.7.0</td>
-          <td style="text-align: left">3.1.Z</td>
-          <td style="text-align: left">&gt;= 1.8.11</td>
-          <td style="text-align: left">Maintained</td>
-      </tr>
-  </tbody>
-</table>
-<h1 id="rbenv">RbEnv</h1>
-<p>Install ruby using rbenv.</p>
-<h2 id="dependencies">Dependencies</h2>
-<ul>
-<li>Ubuntu <br>
-Ubuntu 20.04 default Ruby version is v2.7</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
- libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
-</code></pre><ul>
-<li>RHEL <br>
-RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel
-</span></span></code></pre></div><p>install tar:</p> <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-10-17T08:08:08&#43;08:00">
-            17 Oct 2023
         </time>
     </footer>
 </article>
