@@ -164,6 +164,72 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/mq-rabbitmq-config/">Install and Configure RabbitMQ</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Ubuntu 18.04 <br>
+codename: bionic</li>
+<li>Ubuntu 20.04 <br>
+codename: focal</li>
+</ul>
+<p>Current Version(RabbitMQ):</p>
+<pre tabindex="0"><code>RabbitMQ 3.10.2 Erlang 24.3.3
+</code></pre><h1 id="installation">Installation</h1>
+<p>需要<a href="https://tdtc-hrb.github.io/csdn/post/ops_network_adapter_linux/">设置固定IP</a></p>
+<p>Replace the &ldquo;bionic&rdquo; in the <a href="https://www.rabbitmq.com/install-debian.html#apt-packagecloud">official website</a> shell with the ubuntu codename.</p>
+<p>Note: When saving, the format is Unix(LF).</p>
+<p>focal_rq.sh:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>sudo apt-get install curl gnupg apt-transport-https -y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Team RabbitMQ&#39;s main signing key</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/com.rabbitmq.team.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Launchpad PPA that provides modern Erlang releases</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0xf77f1eda57ebb1cc&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## PackageCloud RabbitMQ repository</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/io.packagecloud.rabbitmq.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Add apt repositories maintained by Team RabbitMQ</span>
+</span></span><span style="display:flex;"><span>sudo tee /etc/apt/sources.list.d/rabbitmq.list <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Provides modern Erlang/OTP releases
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">##
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## &#34;focal&#34; as distribution name should work for any reasonably recent Ubuntu or Debian release.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb [signed-by=/usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg] http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb-src [signed-by=/usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg] http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Provides RabbitMQ
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">##
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## &#34;focal&#34; as distribution name should work for any reasonably recent Ubuntu or Debian release.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb [signed-by=/usr/share/keyrings/io.packagecloud.rabbitmq.gpg] https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb-src [signed-by=/usr/share/keyrings/io.packagecloud.rabbitmq.gpg] https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Update package indices</span>
+</span></span><span style="display:flex;"><span>sudo apt-get update -y
+</span></span></code></pre></div><p>exec:</p> <a class="read-more" href="/cnblogs/post/mq-rabbitmq-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-05-15T18:08:08&#43;08:00">
+            15 May 2022
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/qt-serialport/">使用qt5编写Serial Port</a></h2>
     </header>
     <section class="post-excerpt">
@@ -911,87 +977,6 @@ password // 密码 <br>
         
         <time class="post-date" datetime="2021-04-20T20:26:39&#43;08:00">
             20 Apr 2021
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp.net5-grpc/">ASP.net Core 的gRPC Service应用</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>Server 在Ubuntu V20.04; Client 在Windows CMD运行。</p>
-</blockquote>
-<ul>
-<li>PowerShell v5.1</li>
-<li>IDE: VS2019 Community(v16.9)/VS Code(<a href="https://code.visualstudio.com/docs/containers/overview#_installation">docker extension</a>)</li>
-<li>VM: VBox(v6.1)</li>
-</ul>
-<h1 id="接口文件说明">接口文件说明</h1>
-<blockquote>
-<p>Protos/greet.proto</p>
-<blockquote>
-<p>现版本(v16.9)已可以自动生成</p>
-</blockquote>
-</blockquote>
-<h2 id="定义service">定义service</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>service Greeter <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  // Sends a greeting
-</span></span><span style="display:flex;"><span>  rpc SayHello <span style="color:#f92672">(</span>HelloRequest<span style="color:#f92672">)</span> returns <span style="color:#f92672">(</span>HelloReply<span style="color:#f92672">)</span> <span style="color:#f92672">{}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h2 id="定义message">定义message</h2>
-<ul>
-<li>request</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloRequest <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  string name <span style="color:#f92672">=</span> 1;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>response</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloReply <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  string message <span style="color:#f92672">=</span> 1;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h1 id="server">server</h1>
-<h2 class="tabset" id="create">Create</h2>
-<h3 id="vs2019">VS2019</h3>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122182726.png" alt="VS2019 pre1">
-注意：服务器需要docker支持！
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122183151.png" alt="VS2019 pre2"></p>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122184828.png" alt="VS2019 pre3"></p>
-<h3 id="vs-code">VS code</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new grpc -o GreeterServer
-</span></span></code></pre></div><h4 id="add-docke-file">add docke file</h4>
-<ul>
-<li>View -&gt; Command Palette(Ctrl+Shift+P)</li>
-</ul>
-<ul>
-<li>Enter: Docker fi</li>
-<li>choice1: Add Docker Files to Workspace&hellip;</li>
-<li>choice2: .NET: ASP.NET Core</li>
-<li>choice3: Linux</li>
-<li>Enter: 80</li>
-<li>choice4: No(Include compose file)</li>
-</ul>
-<h4 id="修改dockerfile">修改Dockerfile</h4>
-<ul>
-<li>移出Ubuntu版本信息(-focal)</li>
-</ul>
-<blockquote>
-<p>focal: Ubuntu 20.04</p> <a class="read-more" href="/cnblogs/post/asp.net5-grpc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2021-03-16T08:08:08&#43;08:00">
-            16 Mar 2021
         </time>
     </footer>
 </article>

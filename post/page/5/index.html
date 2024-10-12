@@ -164,6 +164,87 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp.net5-grpc/">ASP.net Core 的gRPC Service应用</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>Server 在Ubuntu V20.04; Client 在Windows CMD运行。</p>
+</blockquote>
+<ul>
+<li>PowerShell v5.1</li>
+<li>IDE: VS2019 Community(v16.9)/VS Code(<a href="https://code.visualstudio.com/docs/containers/overview#_installation">docker extension</a>)</li>
+<li>VM: VBox(v6.1)</li>
+</ul>
+<h1 id="接口文件说明">接口文件说明</h1>
+<blockquote>
+<p>Protos/greet.proto</p>
+<blockquote>
+<p>现版本(v16.9)已可以自动生成</p>
+</blockquote>
+</blockquote>
+<h2 id="定义service">定义service</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>service Greeter <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  // Sends a greeting
+</span></span><span style="display:flex;"><span>  rpc SayHello <span style="color:#f92672">(</span>HelloRequest<span style="color:#f92672">)</span> returns <span style="color:#f92672">(</span>HelloReply<span style="color:#f92672">)</span> <span style="color:#f92672">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="定义message">定义message</h2>
+<ul>
+<li>request</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloRequest <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  string name <span style="color:#f92672">=</span> 1;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>response</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloReply <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  string message <span style="color:#f92672">=</span> 1;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h1 id="server">server</h1>
+<h2 class="tabset" id="create">Create</h2>
+<h3 id="vs2019">VS2019</h3>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122182726.png" alt="VS2019 pre1">
+注意：服务器需要docker支持！
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122183151.png" alt="VS2019 pre2"></p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122184828.png" alt="VS2019 pre3"></p>
+<h3 id="vs-code">VS code</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new grpc -o GreeterServer
+</span></span></code></pre></div><h4 id="add-docke-file">add docke file</h4>
+<ul>
+<li>View -&gt; Command Palette(Ctrl+Shift+P)</li>
+</ul>
+<ul>
+<li>Enter: Docker fi</li>
+<li>choice1: Add Docker Files to Workspace&hellip;</li>
+<li>choice2: .NET: ASP.NET Core</li>
+<li>choice3: Linux</li>
+<li>Enter: 80</li>
+<li>choice4: No(Include compose file)</li>
+</ul>
+<h4 id="修改dockerfile">修改Dockerfile</h4>
+<ul>
+<li>移出Ubuntu版本信息(-focal)</li>
+</ul>
+<blockquote>
+<p>focal: Ubuntu 20.04</p> <a class="read-more" href="/cnblogs/post/asp.net5-grpc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-03-16T08:08:08&#43;08:00">
+            16 Mar 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-avr8-blink/">arduino 开发环境</a></h2>
     </header>
     <section class="post-excerpt">
@@ -364,82 +445,6 @@ step 2: 项目-&gt;上传 <br>
         
         <time class="post-date" datetime="2020-07-25T10:08:08&#43;08:00">
             25 Jul 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp-base/">3小时搞定asp.net 5.0</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>IDE: Visual Studio 2019(community)</li>
-<li>DB：MySQL5.6+</li>
-</ul>
-<h1 id="安装net-5-sdk">安装.net 5 SDK</h1>
-<p>从<a href="https://dotnet.microsoft.com/download/dotnet-core">官网</a>下载<a href="https://dotnet.microsoft.com/download/dotnet/5.0">V5.0</a>: 32位（<a href="https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-5.0.100-preview.6-windows-x86-installer">x86</a>）/64位（<a href="https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-5.0.100-preview.6-windows-x64-installer">x64</a>）.</p>
-<h2 id="使用preview版的sdk">使用preview版的SDK</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Tools-&gt;Options
-</span></span><span style="display:flex;"><span>	Preview Features -&gt; Use preview of the .net core sdk
-</span></span></code></pre></div><h1 id="建立工程">建立工程</h1>
-<blockquote>
-<p>File-》New-》Project</p>
-<blockquote>
-<p>ASP.NET Core Web Application</p>
-</blockquote>
-</blockquote>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20200717212145.png" alt="vs2019 p1"></p>
-<h2 id="简单修改主页">简单修改主页</h2>
-<blockquote>
-<p>Solution Explorer</p>
-<blockquote>
-<p>Views-》Index.cshtml</p>
-</blockquote>
-</blockquote>
-<p>增加如下代码：</p>
-<pre tabindex="0"><code class="language-asp.net" data-lang="asp.net">&lt;p&gt;这是我的第一个ASP.NET程序！&lt;/p&gt;
-</code></pre><p>点击“IIS Express”运行（如果弹出证书安装选“是”即可）。
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20200717214241.png" alt="vs2019 p2"></p>
-<h1 id="增加数据库">增加数据库</h1>
-<h2 id="ef-core">EF Core</h2>
-<blockquote>
-<p>Project-》Manager NuGet Packages
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20200717222234.png" alt="vs2019 p3"></p>
-</blockquote>
-<h2 id="entity-class">entity class</h2>
-<p>我们建立一个与数据表相对应的Entity类</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel.DataAnnotations;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> veic_web.Models
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span>
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Key]</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> param_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> statu_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> lang_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> img_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> description { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="db-class">DB Class</h2>
-<blockquote>
-<p>Solution Explorer</p> <a class="read-more" href="/cnblogs/post/asp-base/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-07-17T10:08:08&#43;08:00">
-            17 Jul 2020
         </time>
     </footer>
 </article>
