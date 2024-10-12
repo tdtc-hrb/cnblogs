@@ -193,7 +193,7 @@
 <p>ASP.NET Core Web Application(Model-View-Controller)</p>
 </blockquote>
 </blockquote>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/20241011124537.png" alt="vs2022 preview"></p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011124537.png" alt="vs2022 preview"></p>
 <h2 id="简单修改主页">简单修改主页</h2>
 <blockquote>
 <p>Solution Explorer</p>
@@ -213,13 +213,13 @@
 <p>default: https</p>
 </blockquote>
 <p>点击“IIS Express”运行（如果弹出证书安装选“是”即可）。
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/20241011134118.png" alt="iis cert - hint">
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/20241011134337.png" alt="windows - hint"></p>
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134118.png" alt="iis cert - hint">
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134337.png" alt="windows - hint"></p>
 <h1 id="增加数据库">增加数据库</h1>
 <h2 id="ef-core">EF Core</h2>
 <blockquote>
 <p>Project-》Manage NuGet Packages
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/20241011135217.png" alt="Microsoft EF Core"></p>
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011135217.png" alt="Microsoft EF Core"></p>
 </blockquote>
 <h2 id="entity-class">entity class</h2>
 <p>我们建立一个与数据表相对应的Entity类</p>
@@ -298,7 +298,7 @@ Version 9.0.0 released in January 2025 supports.</p>
 <h4 id="添加mysqlconnector">添加MySQLConnector</h4>
 <blockquote>
 <p>Project-》Manager NuGet Packages
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/20241011152840.png" alt="MySql EF Core"></p>
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011152840.png" alt="MySql EF Core"></p>
 </blockquote>
 <h4 id="connection-string">connection string</h4>
 <ul>
@@ -310,7 +310,7 @@ Version 9.0.0 released in January 2025 supports.</p>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>},
 </span></span></code></pre></div><p>前后代码比较：
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/uc202410111701.png" alt="ultra compare p0"></p>
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/uc202410111701.png" alt="ultra compare p0"></p>
 <h1 id="配置didependency-injection">配置DI（dependency injection）</h1>
 <blockquote>
 <p>Program.cs</p>
@@ -325,7 +325,7 @@ Version 9.0.0 released in January 2025 supports.</p>
 </span></span></code></pre></div><p>添加Repository</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>builder.Services.AddTransient&lt;IProductRepository, EFProductRepository&gt;();
 </span></span></code></pre></div><p>前后代码比较：
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/uc202410111716.png" alt="ultra compare p1"></p>
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/uc202410111716.png" alt="ultra compare p1"></p>
 <h1 id="添加view">添加View</h1>
 <blockquote>
 <p>Index.cshtml</p>
@@ -339,7 +339,7 @@ Version 9.0.0 released in January 2025 supports.</p>
 </span></span><span style="display:flex;"><span>    &lt;/div&gt;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>前后代码比较：
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/uc202410111737.png" alt="ultra compare p2"></p>
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/uc202410111737.png" alt="ultra compare p2"></p>
 <h1 id="添加controller">添加Controller</h1>
 <blockquote>
 <p>HomeController.cs</p>
@@ -358,7 +358,7 @@ Version 9.0.0 released in January 2025 supports.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> View(_productRepository.Products);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>前后代码比较：
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/uc202410111746.png" alt="ultra compare p3"></p>
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/uc202410111746.png" alt="ultra compare p3"></p>
 <p>运行效果：
 <img src="https://img-blog.csdnimg.cn/20210707161947768.png" alt="演示code"></p>
 <h1 id="reference">Reference</h1>
