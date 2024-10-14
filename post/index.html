@@ -162,6 +162,86 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp-ws2/">WebSockets over HTTP/2</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><a href="https://github.com/dotnet/AspNetCore.Docs/commit/75ce89b25e9ba61f9687ce36a41cd3c50aec1e3c">NET 7 introduces Websockets over HTTP/2 support for Kestrel, the SignalR JavaScript client, and SignalR with Blazor WebAssembly.</a></p>
+<h3 id="http2">HTTP2</h3>
+<ul>
+<li>Multiplexing
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*lY05UTuA-dWCXU-q.png" alt="Request multiplexing"></li>
+<li>Server push
+<img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*ZJLgVdXq_06hcF1o.png" alt="cacheable information"></li>
+<li>Header compression
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*5r8-MbhEseP6lEQg.png" alt="HPACK"></li>
+</ul>
+<p>ref site:</p>
+<ul>
+<li><a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1/">HTTP/2 vs. HTTP/1.1: How do they affect web performance?</a></li>
+<li><a href="https://factoryhr.medium.com/http-2-the-difference-between-http-1-1-benefits-and-how-to-use-it-38094fa0e95b">HTTP/2: the difference between HTTP/1.1, benefits and how to use it</a></li>
+</ul>
+<h4 id="os-and-browsers-support">os and browsers support</h4>
+<ul>
+<li>Windows 10 1607+</li>
+<li>TLS 1.2+</li>
+<li><a href="https://caniuse.com/http2">browsers</a></li>
+</ul>
+<p>Note: recommended to use Chrome/FireFox</p>
+<h2 id="websockets">WebSockets</h2>
+<ul>
+<li>Accept a WebSocket connection as an asynchronous operation <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.httplistenercontext.acceptwebsocketasync">HttpListenerContext.AcceptWebSocketAsync()</a></li>
+<li>Receives data from the WebSocket connection asynchronously <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.receiveasync">WebSocket.ReceiveAsync()</a></li>
+<li>Sends data over the WebSocket connection asynchronously <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.sendasync">WebSocket.SendAsync()</a></li>
+<li>Closes the WebSocket connection as an asynchronous operation <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.closeasync">CloseAsync</a></li>
+</ul>
+<h3 id="enable-websocket">Enable WebSocket</h3>
+<ul>
+<li>default</li>
+</ul>
+<pre tabindex="0"><code>app.UseWebSockets()
+</code></pre><ul>
+<li>options</li>
+</ul>
+<pre tabindex="0"><code>var webSocketOptions = new WebSocketOptions
+{
+    KeepAliveInterval = TimeSpan.FromMinutes(2)
+};
+
+app.UseWebSockets(webSocketOptions);
+</code></pre><h3 id="accept-websocket-requests">Accept WebSocket requests</h3>
+<pre tabindex="0"><code>if (HttpContext.WebSockets.IsWebSocketRequest)
+{
+    using var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
+}
+</code></pre><h3 id="receive-messages">receive messages</h3>
+<pre tabindex="0"><code>var buffer = new byte[1024 * 4];
+
+        var receiveResult = await webSocket.ReceiveAsync(
+            new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
+</code></pre><h4 id="arraysegmenthttpslearnmicrosoftcomen-usdotnetapisystemarraysegment-1"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
+<p>Array version of substring()</p> <a class="read-more" href="/cnblogs/post/asp-ws2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-10-13T20:38:18&#43;08:00">
+            13 Oct 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/asp-base/">3小时搞定asp.net 9.0</a></h2>
     </header>
     <section class="post-excerpt">
@@ -813,104 +893,6 @@ When greater than Php v8.1, use the Symfony</li>
         
         <time class="post-date" datetime="2023-11-30T18:08:08&#43;08:00">
             30 Nov 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/java-servlet_versions/">servlet version choose</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://en.wikipedia.org/wiki/Jakarta_Servlet#History">Servlet API history</a></li>
-</ul>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Servlet API version</th>
-          <th style="text-align: left">Released</th>
-          <th style="text-align: left">Specification</th>
-          <th style="text-align: left">Platform</th>
-          <th style="text-align: left">Important Changes</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left">Jakarta Servlet 6.0</td>
-          <td style="text-align: left">May 31, 2022</td>
-          <td style="text-align: left">6.0</td>
-          <td style="text-align: left">Jakarta EE 10</td>
-          <td style="text-align: left">remove deprecated features and implement requested enhancements</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">Jakarta Servlet 5.0</td>
-          <td style="text-align: left">Oct 9, 2020</td>
-          <td style="text-align: left">5.0</td>
-          <td style="text-align: left">Jakarta EE 9</td>
-          <td style="text-align: left">API moved from package javax.servlet to jakarta.servlet</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">Jakarta Servlet 4.0.3</td>
-          <td style="text-align: left">Sep 10, 2019</td>
-          <td style="text-align: left">4.0</td>
-          <td style="text-align: left">Jakarta EE 8</td>
-          <td style="text-align: left">Renamed from &ldquo;Java&rdquo; trademark</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">Java Servlet 4.0</td>
-          <td style="text-align: left">Sep 2017</td>
-          <td style="text-align: left">JSR 369</td>
-          <td style="text-align: left">Java EE 8</td>
-          <td style="text-align: left">HTTP/2</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">Java Servlet 3.1</td>
-          <td style="text-align: left">May 2013</td>
-          <td style="text-align: left">JSR 340</td>
-          <td style="text-align: left">Java EE 7</td>
-          <td style="text-align: left">Non-blocking I/O, HTTP protocol upgrade mechanism (WebSocket)</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">Java Servlet 3.0</td>
-          <td style="text-align: left">December 2009</td>
-          <td style="text-align: left">JSR 315</td>
-          <td style="text-align: left">Java EE 6, Java SE 6</td>
-          <td style="text-align: left">Pluggability, Ease of development, Async Servlet, Security, File Uploading</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">Java Servlet 2.5</td>
-          <td style="text-align: left">September 2005</td>
-          <td style="text-align: left">JSR 154</td>
-          <td style="text-align: left">Java EE 5, Java SE 5</td>
-          <td style="text-align: left">Requires Java SE 5, supports annotation</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">Java Servlet 2.4</td>
-          <td style="text-align: left">November 2003</td>
-          <td style="text-align: left">JSR 154</td>
-          <td style="text-align: left">J2EE 1.4, J2SE 1.3</td>
-          <td style="text-align: left">web.xml uses XML Schema</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="spring">Spring</h2>
-<ul>
-<li>
-<p>v6.1 <br>
-6.1.x is the upcoming feature branch (<a href="https://calendar.spring.io/">November 2023</a>).</p> <a class="read-more" href="/cnblogs/post/java-servlet_versions/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-09-18T08:08:08&#43;08:00">
-            18 Sep 2023
         </time>
     </footer>
 </article>

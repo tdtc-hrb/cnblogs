@@ -197,6 +197,104 @@
     
         <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/java-servlet_versions/">servlet version choose</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://en.wikipedia.org/wiki/Jakarta_Servlet#History">Servlet API history</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Servlet API version</th>
+          <th style="text-align: left">Released</th>
+          <th style="text-align: left">Specification</th>
+          <th style="text-align: left">Platform</th>
+          <th style="text-align: left">Important Changes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Jakarta Servlet 6.0</td>
+          <td style="text-align: left">May 31, 2022</td>
+          <td style="text-align: left">6.0</td>
+          <td style="text-align: left">Jakarta EE 10</td>
+          <td style="text-align: left">remove deprecated features and implement requested enhancements</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Jakarta Servlet 5.0</td>
+          <td style="text-align: left">Oct 9, 2020</td>
+          <td style="text-align: left">5.0</td>
+          <td style="text-align: left">Jakarta EE 9</td>
+          <td style="text-align: left">API moved from package javax.servlet to jakarta.servlet</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Jakarta Servlet 4.0.3</td>
+          <td style="text-align: left">Sep 10, 2019</td>
+          <td style="text-align: left">4.0</td>
+          <td style="text-align: left">Jakarta EE 8</td>
+          <td style="text-align: left">Renamed from &ldquo;Java&rdquo; trademark</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Java Servlet 4.0</td>
+          <td style="text-align: left">Sep 2017</td>
+          <td style="text-align: left">JSR 369</td>
+          <td style="text-align: left">Java EE 8</td>
+          <td style="text-align: left">HTTP/2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Java Servlet 3.1</td>
+          <td style="text-align: left">May 2013</td>
+          <td style="text-align: left">JSR 340</td>
+          <td style="text-align: left">Java EE 7</td>
+          <td style="text-align: left">Non-blocking I/O, HTTP protocol upgrade mechanism (WebSocket)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Java Servlet 3.0</td>
+          <td style="text-align: left">December 2009</td>
+          <td style="text-align: left">JSR 315</td>
+          <td style="text-align: left">Java EE 6, Java SE 6</td>
+          <td style="text-align: left">Pluggability, Ease of development, Async Servlet, Security, File Uploading</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Java Servlet 2.5</td>
+          <td style="text-align: left">September 2005</td>
+          <td style="text-align: left">JSR 154</td>
+          <td style="text-align: left">Java EE 5, Java SE 5</td>
+          <td style="text-align: left">Requires Java SE 5, supports annotation</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Java Servlet 2.4</td>
+          <td style="text-align: left">November 2003</td>
+          <td style="text-align: left">JSR 154</td>
+          <td style="text-align: left">J2EE 1.4, J2SE 1.3</td>
+          <td style="text-align: left">web.xml uses XML Schema</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="spring">Spring</h2>
+<ul>
+<li>
+<p>v6.1 <br>
+6.1.x is the upcoming feature branch (<a href="https://calendar.spring.io/">November 2023</a>).</p> <a class="read-more" href="/cnblogs/post/java-servlet_versions/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-09-18T08:08:08&#43;08:00">
+            18 Sep 2023
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/php-build-win/">Build your own PHP on Windows</a></h2>
     </header>
     <section class="post-excerpt">
@@ -727,53 +825,6 @@ RHEL8(Alma / Rocky Linux)</li>
         
         <time class="post-date" datetime="2022-10-10T00:08:08&#43;08:00">
             10 Oct 2022
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/redis-rhel-setup/">Redis Server installation FAQs</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>OS: RHEL Community Minimal</p>
-</blockquote>
-<ul>
-<li>AlmaLinux 8.x</li>
-<li>RockyLinux 8.x</li>
-<li>CentOS 7.9</li>
-</ul>
-<p>Root Permission:</p>
-<pre tabindex="0"><code>$su - root
-</code></pre><h1 id="0-open-files">0) open files</h1>
-<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
-A:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#ulimit -a</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/systemd/system/redis.service</span>
-</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>LimitNOFILE=10032
-</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
-<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
-A:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/sysctl.conf</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>net.core.somaxconn=1024
-</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
-<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
-To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
-for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-rhel-setup/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-10-08T08:08:08&#43;08:00">
-            8 Oct 2022
         </time>
     </footer>
 </article>
