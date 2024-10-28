@@ -92,7 +92,7 @@
     },
     "headline": "Windows的一些安装",
     "name": "Windows的一些安装",
-    "wordCount":  483 ,
+    "wordCount":  430 ,
     "timeRequired": "PT3M",
     "inLanguage": {
       "@type": "Language",
@@ -177,12 +177,32 @@
     </header>
 
     <section class="post-content">
-      <p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
+      <p>The latest version of Visual Studio:</p>
 <ul>
-<li><a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a></li>
-<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
+<li>vs2017</li>
 </ul>
+<blockquote>
+<p>15.9</p>
+</blockquote>
+<ul>
+<li>vs2019</li>
+</ul>
+<blockquote>
+<p>16.9</p>
+</blockquote>
+<ul>
+<li>vs2022</li>
+</ul>
+<blockquote>
+<p>17.11</p>
+</blockquote>
 <h1 id="visual-studio">Visual Studio</h1>
+<p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
+<ul>
+<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022 - v17.11</a></li>
+<li><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">down options</a></li>
+</ul>
+<h2 id="format">format</h2>
 <ul>
 <li>target directory</li>
 </ul>
@@ -196,7 +216,7 @@
 </ul>
 <pre tabindex="0"><code>--lang en-US
 </code></pre><p>exec:</p>
-<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs201x `
+<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs202x `
 ...
 </code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
 <h2 id="common">Common</h2>
@@ -217,6 +237,7 @@
 </ul>
 <pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
 </code></pre><h2 id="vc">VC</h2>
+<p>After <a href="https://visualstudio.microsoft.com/vs/preview">vs2022 17.12</a>, the main productivity for VC.</p>
 <pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.VC.CoreIde `
 --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
 --add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `
@@ -227,19 +248,27 @@
 </code></pre><h4 id="mfc">MFC</h4>
 <pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.VC.ATLMFC `
 </code></pre><h3 id="windows-sdk">Windows SDK</h3>
-<p>default:</p>
 <ul>
-<li>vs2019</li>
+<li>Win10 sdk</li>
 </ul>
-<pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows10SDK.19041
-</code></pre><p>win2004</p>
+<pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows10SDK.XXXXX
+</code></pre><ul>
+<li>Win11 sdk</li>
+</ul>
+<pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows11SDK.XXXXX
+</code></pre><h4 id="win10">Win10</h4>
 <ul>
-<li>vs2022</li>
+<li>18362</li>
+<li>19041</li>
+<li>20348</li>
 </ul>
-<pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows11SDK.22621
-</code></pre><p>win22h2</p>
-<p>You can also <a href="https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/">download</a> it individually;</p>
-<h2 id="c-clang-tools-for-windows">C++ Clang tools for Windows</h2>
+<h4 id="win11">Win11</h4>
+<ul>
+<li>22000</li>
+<li>26100</li>
+</ul>
+<h2 id="clangllvm-support-in-visual-studiohttpslearnmicrosoftcomen-uscppbuildclang-support-msbuild"><a href="https://learn.microsoft.com/en-us/cpp/build/clang-support-msbuild">Clang/LLVM support in Visual Studio</a></h2>
+<p><a href="https://clang.llvm.org/get_started.html">Visual Studio 2019 16.7 or later</a></p>
 <ul>
 <li>C++ Clang tools for Windows</li>
 </ul>
@@ -250,7 +279,7 @@
 </ul>
 <pre tabindex="0"><code>Microsoft.VisualStudio.Component.VC.Llvm.Clang
 </code></pre><ul>
-<li>C++ Clang-cl for v142 build tools (x64/x86)</li>
+<li>C++ Clang-cl for v143 build tools (x64/x86)</li>
 </ul>
 <pre tabindex="0"><code>Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset
 </code></pre><h1 id="dotnet">Dotnet</h1>
@@ -313,41 +342,8 @@ Check &ldquo;.NET desktop development&rdquo;</p>
 <li>vs2022</li>
 </ul>
 <pre tabindex="0"><code>&#34;Development toos for .NET&#34;
-</code></pre><h3 id="down-optionshttpslearnmicrosoftcomen-usvisualstudioinstallworkload-component-id-vs-build-tools"><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">down options</a></h3>
-<ul>
-<li>vs2019(FX)</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.NuGet `
---add Microsoft.Net.Component.4.6.1.TargetingPack `
---add Microsoft.VisualStudio.Component.Roslyn.LanguageServices `
---add Microsoft.VisualStudio.Component.FSharp `
---add Microsoft.ComponentGroup.ClickOnce.Publish `
---add Microsoft.NetCore.Component.DevelopmentTools `
---add Microsoft.Net.Component.4.8.SDK `
---add Microsoft.Net.Component.4.7.2.TargetingPack `
---add Microsoft.Net.ComponentGroup.DevelopmentPrerequisites `
---add Microsoft.VisualStudio.Component.ManagedDesktop.Core `
---add Microsoft.VisualStudio.Component.ManagedDesktop.Prerequisites `
---add Microsoft.VisualStudio.Workload.ManagedDesktop `
-</code></pre><ul>
-<li>vs2022(.Net Core)</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.Net.Component.4.8.SDK `
---add Microsoft.Net.Component.4.7.2.TargetingPack `
---add Microsoft.Net.ComponentGroup.DevelopmentPrerequisites `
---add Microsoft.VisualStudio.Component.Roslyn.LanguageServices `
---add Microsoft.VisualStudio.Component.NuGet `
---add Microsoft.Component.ClickOnce `
---add Microsoft.VisualStudio.Component.ManagedDesktop.Core `
---add Microsoft.NetCore.Component.Runtime.8.0 `
---add Microsoft.NetCore.Component.SDK `
---add Microsoft.VisualStudio.Component.FSharp `
---add Microsoft.ComponentGroup.ClickOnce.Publish `
---add Microsoft.NetCore.Component.DevelopmentTools `
---add Microsoft.VisualStudio.Component.ManagedDesktop.Prerequisites `
---add Microsoft.VisualStudio.Workload.ManagedDesktop `
 </code></pre><h4 id="net-framework-4--46-development-tools">.NET Framework 4 – 4.6 development tools</h4>
-<p>This option is only available in VS17/19!</p>
+<p>This option is only available in <a href="https://aka.ms/vs/15/release/vs_community.exe">vs2017</a>/<a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a>!</p>
 <pre tabindex="0"><code>--add Microsoft.Net.Component.4.5.2.TargetingPack `
 --add Microsoft.Net.Component.4.5.TargetingPack `
 --add Microsoft.Net.Component.4.TargetingPack `

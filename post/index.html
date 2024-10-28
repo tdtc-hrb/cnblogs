@@ -166,12 +166,32 @@
     </header>
     <section class="post-excerpt">
         
-            <p><p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
+            <p><p>The latest version of Visual Studio:</p>
 <ul>
-<li><a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a></li>
-<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
+<li>vs2017</li>
 </ul>
+<blockquote>
+<p>15.9</p>
+</blockquote>
+<ul>
+<li>vs2019</li>
+</ul>
+<blockquote>
+<p>16.9</p>
+</blockquote>
+<ul>
+<li>vs2022</li>
+</ul>
+<blockquote>
+<p>17.11</p>
+</blockquote>
 <h1 id="visual-studio">Visual Studio</h1>
+<p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
+<ul>
+<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022 - v17.11</a></li>
+<li><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">down options</a></li>
+</ul>
+<h2 id="format">format</h2>
 <ul>
 <li>target directory</li>
 </ul>
@@ -185,7 +205,7 @@
 </ul>
 <pre tabindex="0"><code>--lang en-US
 </code></pre><p>exec:</p>
-<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs201x `
+<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs202x `
 ...
 </code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
 <h2 id="common">Common</h2>
@@ -206,17 +226,7 @@
 </ul>
 <pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
 </code></pre><h2 id="vc">VC</h2>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.VC.CoreIde `
---add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
---add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `
-</code></pre><h3 id="atl">ATL</h3>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core `
---add Microsoft.VisualStudio.Component.VC.ATL `
---add Microsoft.VisualStudio.Workload.NativeDesktop `
-</code></pre><h4 id="mfc">MFC</h4>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.VC.ATLMFC `
-</code></pre><h3 id="windows-sdk">Windows SDK</h3>
-<p>default:</p> <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
+<p>After <a href="https://visualstudio.microsoft.com/vs/preview">vs2022 17.12</a>, the main productivity for VC.</p> <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
