@@ -29,7 +29,7 @@
     
     <meta property="og:description" content="WebSockets over HTTP/2 using ASP.NET" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2024-10-13T20:38:18&#43;08:00" />
+    <meta property="article:published_time" content="2024-10-18T20:38:18&#43;08:00" />
 
     
     
@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.135.0">
+    <meta name="generator" content="Hugo 0.136.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/asp-ws2/" />
 
@@ -99,8 +99,8 @@
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/asp-ws2/",
-    "datePublished": "2024-10-13T20:38Z",
-    "dateModified": "2024-10-13T20:38Z",
+    "datePublished": "2024-10-18T20:38Z",
+    "dateModified": "2024-10-18T20:38Z",
     
     
     "description": "WebSockets over HTTP/2 using ASP.NET",
@@ -168,8 +168,8 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2024-10-13T20:38:18&#43;08:00">
-            Oct 13, 2024
+          <time class="post-date" datetime="2024-10-18T20:38:18&#43;08:00">
+            Oct 18, 2024
           </time>
         
          
@@ -232,8 +232,8 @@ app.UseWebSockets(webSocketOptions);
 </code></pre><h3 id="receive-messages">receive messages</h3>
 <pre tabindex="0"><code>var buffer = new byte[1024 * 4];
 
-        var receiveResult = await webSocket.ReceiveAsync(
-            new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
+var receiveResult = await webSocket.ReceiveAsync(
+    new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
 </code></pre><h4 id="arraysegmenthttpslearnmicrosoftcomen-usdotnetapisystemarraysegment-1"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
 <p>Array version of substring()</p>
 <pre tabindex="0"><code>String[] names = { &#34;Adam&#34;, &#34;Bruce&#34;, &#34;Charles&#34;, &#34;Daniel&#34;,
@@ -364,6 +364,13 @@ Enable WebSocket</li>
 
 
   <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/ops_win_faq2/">
+          <section class="post">
+              <h2>Windows的一些安装</h2>
+              
+          </section>
+      </a>
   
   
       <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/asp-base/">

@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.135.0">
+    <meta name="generator" content="Hugo 0.136.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -162,6 +162,78 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
+<ul>
+<li><a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a></li>
+<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
+</ul>
+<h1 id="visual-studio">Visual Studio</h1>
+<ul>
+<li>target directory</li>
+</ul>
+<pre tabindex="0"><code>--layout TARGET(directory)
+</code></pre><ul>
+<li>components</li>
+</ul>
+<pre tabindex="0"><code>--add NAME(Component)
+</code></pre><ul>
+<li>language</li>
+</ul>
+<pre tabindex="0"><code>--lang en-US
+</code></pre><p>exec:</p>
+<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs201x `
+...
+</code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
+<h2 id="common">Common</h2>
+<ul>
+<li>Core</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
+--add Microsoft.VisualStudio.Workload.CoreEditor `
+--add Microsoft.VisualStudio.Component.Roslyn.Compiler `
+--add Microsoft.Component.MSBuild `
+--add Microsoft.VisualStudio.Component.TextTemplating `
+</code></pre><ul>
+<li>JIT</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.Debugger.JustInTime `
+</code></pre><ul>
+<li>IntelliCode</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
+</code></pre><h2 id="vc">VC</h2>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.VC.CoreIde `
+--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+--add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `
+</code></pre><h3 id="atl">ATL</h3>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core `
+--add Microsoft.VisualStudio.Component.VC.ATL `
+--add Microsoft.VisualStudio.Workload.NativeDesktop `
+</code></pre><h4 id="mfc">MFC</h4>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.VC.ATLMFC `
+</code></pre><h3 id="windows-sdk">Windows SDK</h3>
+<p>default:</p> <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-10-28T08:08:08&#43;08:00">
+            28 Oct 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/asp-ws2/">WebSockets over HTTP/2</a></h2>
     </header>
     <section class="post-excerpt">
@@ -221,8 +293,8 @@ app.UseWebSockets(webSocketOptions);
 </code></pre><h3 id="receive-messages">receive messages</h3>
 <pre tabindex="0"><code>var buffer = new byte[1024 * 4];
 
-        var receiveResult = await webSocket.ReceiveAsync(
-            new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
+var receiveResult = await webSocket.ReceiveAsync(
+    new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
 </code></pre><h4 id="arraysegmenthttpslearnmicrosoftcomen-usdotnetapisystemarraysegment-1"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
 <p>Array version of substring()</p> <a class="read-more" href="/cnblogs/post/asp-ws2/">&raquo;</a></p>
         
@@ -233,8 +305,8 @@ app.UseWebSockets(webSocketOptions);
         
 
         
-        <time class="post-date" datetime="2024-10-13T20:38:18&#43;08:00">
-            13 Oct 2024
+        <time class="post-date" datetime="2024-10-18T20:38:18&#43;08:00">
+            18 Oct 2024
         </time>
     </footer>
 </article>
@@ -348,94 +420,94 @@ app.UseWebSockets(webSocketOptions);
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Qt Version</th>
-          <th style="text-align: left">QtQml</th>
-          <th style="text-align: left">QtQml.Models</th>
-          <th style="text-align: left">QtQuick</th>
-          <th style="text-align: left">QtQuick.Particles</th>
-          <th style="text-align: left">QtQuick.Controls</th>
-          <th style="text-align: left">QtQuick.Layouts</th>
-          <th style="text-align: left">QtQuick.Dialogs</th>
-          <th style="text-align: left">QtQuick.WebEngine</th>
+          <th>Qt Version</th>
+          <th>QtQml</th>
+          <th>QtQml.Models</th>
+          <th>QtQuick</th>
+          <th>QtQuick.Particles</th>
+          <th>QtQuick.Controls</th>
+          <th>QtQuick.Layouts</th>
+          <th>QtQuick.Dialogs</th>
+          <th>QtQuick.WebEngine</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">Qt 5.11</td>
-          <td style="text-align: left">2.11</td>
-          <td style="text-align: left">2.11</td>
-          <td style="text-align: left">2.11</td>
-          <td style="text-align: left">2.11</td>
-          <td style="text-align: left">2.4</td>
-          <td style="text-align: left">1.11</td>
-          <td style="text-align: left">1.11</td>
-          <td style="text-align: left">1.7</td>
+          <td>Qt 5.11</td>
+          <td>2.11</td>
+          <td>2.11</td>
+          <td>2.11</td>
+          <td>2.11</td>
+          <td>2.4</td>
+          <td>1.11</td>
+          <td>1.11</td>
+          <td>1.7</td>
       </tr>
       <tr>
-          <td style="text-align: left">Qt 5.12</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">2.12</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">2.12</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left"></td>
+          <td>Qt 5.12</td>
+          <td>-</td>
+          <td>-</td>
+          <td>2.12</td>
+          <td>-</td>
+          <td>2.12</td>
+          <td>-</td>
+          <td>-</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">Qt 5.13</td>
-          <td style="text-align: left">2.13</td>
-          <td style="text-align: left">2.13</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">2.13</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">1.11</td>
-          <td style="text-align: left">1.11</td>
-          <td style="text-align: left">1.9</td>
+          <td>Qt 5.13</td>
+          <td>2.13</td>
+          <td>2.13</td>
+          <td>-</td>
+          <td>2.13</td>
+          <td>-</td>
+          <td>1.11</td>
+          <td>1.11</td>
+          <td>1.9</td>
       </tr>
       <tr>
-          <td style="text-align: left">Qt 5.14</td>
-          <td style="text-align: left">2.14</td>
-          <td style="text-align: left">2.14</td>
-          <td style="text-align: left">2.14</td>
-          <td style="text-align: left">2.14</td>
-          <td style="text-align: left">2.14</td>
-          <td style="text-align: left">1.14</td>
-          <td style="text-align: left">1.3</td>
-          <td style="text-align: left">-</td>
+          <td>Qt 5.14</td>
+          <td>2.14</td>
+          <td>2.14</td>
+          <td>2.14</td>
+          <td>2.14</td>
+          <td>2.14</td>
+          <td>1.14</td>
+          <td>1.3</td>
+          <td>-</td>
       </tr>
       <tr>
-          <td style="text-align: left">Qt 5.15</td>
-          <td style="text-align: left">2.15</td>
-          <td style="text-align: left">2.15</td>
-          <td style="text-align: left">2.15</td>
-          <td style="text-align: left">2.15</td>
-          <td style="text-align: left">2.15</td>
-          <td style="text-align: left">1.15</td>
-          <td style="text-align: left">1.3</td>
-          <td style="text-align: left">-</td>
+          <td>Qt 5.15</td>
+          <td>2.15</td>
+          <td>2.15</td>
+          <td>2.15</td>
+          <td>2.15</td>
+          <td>2.15</td>
+          <td>1.15</td>
+          <td>1.3</td>
+          <td>-</td>
       </tr>
       <tr>
-          <td style="text-align: left">Qt 6.2</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">6.2</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">6.2</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">-</td>
+          <td>Qt 6.2</td>
+          <td>-</td>
+          <td>-</td>
+          <td>6.2</td>
+          <td>-</td>
+          <td>6.2</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
       </tr>
       <tr>
-          <td style="text-align: left">Qt 6.5</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">6.5</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">6.5</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">-</td>
-          <td style="text-align: left">-</td>
+          <td>Qt 6.5</td>
+          <td>-</td>
+          <td>-</td>
+          <td>6.5</td>
+          <td>-</td>
+          <td>6.5</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
       </tr>
   </tbody>
 </table>
@@ -533,34 +605,34 @@ gem install mysql2
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Rails Version</th>
-          <th style="text-align: left">Required Ruby Version</th>
-          <th style="text-align: left">Recommended Ruby Version</th>
-          <th style="text-align: left">Required Rubygems Version</th>
-          <th style="text-align: left">Status</th>
+          <th>Rails Version</th>
+          <th>Required Ruby Version</th>
+          <th>Recommended Ruby Version</th>
+          <th>Required Rubygems Version</th>
+          <th>Status</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">7.2.Z</td>
-          <td style="text-align: left">&gt;= 3.1.0</td>
-          <td style="text-align: left">3.3</td>
-          <td style="text-align: left">&gt;= 1.8.11</td>
-          <td style="text-align: left">Maintained</td>
+          <td>7.2.Z</td>
+          <td>&gt;= 3.1.0</td>
+          <td>3.3</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
       </tr>
       <tr>
-          <td style="text-align: left">7.1.Z</td>
-          <td style="text-align: left">&gt;= 2.7.0</td>
-          <td style="text-align: left">3.2.Z</td>
-          <td style="text-align: left">&gt;= 1.8.11</td>
-          <td style="text-align: left">Maintained</td>
+          <td>7.1.Z</td>
+          <td>&gt;= 2.7.0</td>
+          <td>3.2.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
       </tr>
       <tr>
-          <td style="text-align: left">7.0.Z</td>
-          <td style="text-align: left">&gt;= 2.7.0</td>
-          <td style="text-align: left">3.1.Z</td>
-          <td style="text-align: left">&gt;= 1.8.11</td>
-          <td style="text-align: left">Maintained</td>
+          <td>7.0.Z</td>
+          <td>&gt;= 2.7.0</td>
+          <td>3.1.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
       </tr>
   </tbody>
 </table>
@@ -597,83 +669,6 @@ RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
         
         <time class="post-date" datetime="2024-09-29T08:08:08&#43;08:00">
             29 Sep 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
-<ul>
-<li><a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a></li>
-<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
-</ul>
-<h1 id="visual-studio">Visual Studio</h1>
-<ul>
-<li>target directory</li>
-</ul>
-<pre tabindex="0"><code>--layout TARGET(directory)
-</code></pre><ul>
-<li>components</li>
-</ul>
-<pre tabindex="0"><code>--add NAME(Component)
-</code></pre><ul>
-<li>language</li>
-</ul>
-<pre tabindex="0"><code>--lang en-US
-</code></pre><p>exec:</p>
-<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs201x `
-...
-</code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
-<h2 id="common">Common</h2>
-<ul>
-<li>Core</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
---add Microsoft.VisualStudio.Workload.CoreEditor `
---add Microsoft.VisualStudio.Component.Roslyn.Compiler `
---add Microsoft.Component.MSBuild `
---add Microsoft.VisualStudio.Component.TextTemplating `
-</code></pre><ul>
-<li>IntelliCode</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
-</code></pre><ul>
-<li>JIT</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.Debugger.JustInTime `
-</code></pre><h2 id="vc">VC</h2>
-<ul>
-<li>MFC/ATL</li>
-</ul>
-<h3 id="mfcatl">MFC/ATL</h3>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.VC.CoreIde `
---add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `
---add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core `
---add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
---add Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions.CMake `
---add Microsoft.VisualStudio.Component.VC.CMake.Project `
---add Microsoft.VisualStudio.Component.VC.ATL `
---add Microsoft.VisualStudio.Component.VC.ATLMFC `
---add Microsoft.Component.VC.Runtime.UCRTSDK `
---add Microsoft.VisualStudio.Workload.NativeDesktop `
-</code></pre><h3 id="windows-sdk">Windows SDK</h3>
-<p>default:</p> <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-09-27T08:08:08&#43;08:00">
-            27 Sep 2024
         </time>
     </footer>
 </article>
