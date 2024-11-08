@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.136.5">
+    <meta name="generator" content="Hugo 0.138.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -199,6 +199,50 @@
     
         <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-android_started/">Qt6 for android</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>ndk</li>
+<li>avd(Android Virtual Device)</li>
+</ul>
+<h1 id="preparation">Preparation</h1>
+<ul>
+<li>Environment</li>
+<li>cmdline</li>
+</ul>
+<h2 id="environment-variables">Environment variables</h2>
+<p>:warning:
+安装完<a href="https://developer.android.google.cn/studio">Android Studio</a>, 先不要进入设置！</p>
+<h3 id="java-home">Java Home</h3>
+<ul>
+<li>Qt6.8/6.5 <br>
+set <a href="https://adoptium.net/temurin/archive/?variant=openjdk11&amp;version=17">JDK17</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.12+7
+</span></span></code></pre></div><h3 id="android-homehttpsdeveloperandroidcomtoolsvariablesenvar"><a href="https://developer.android.com/tools/variables#envar">Android Home</a></h3>
+<p>Sets the path to the SDK installation directory.
+Once set, the value does not typically change and can be shared by multiple users on the same machine.
+ANDROID_SDK_ROOT, which also points to the SDK installation directory, is deprecated.
+If you continue to use it, Android Studio and the Android Gradle plugin will check that the old and new variables are consistent.</p> <a class="read-more" href="/cnblogs/post/qt-android_started/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-11-08T12:38:08&#43;08:00">
+            8 Nov 2024
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
     </header>
     <section class="post-excerpt">
@@ -252,8 +296,11 @@
 <pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
 --add Microsoft.VisualStudio.Workload.CoreEditor `
 --add Microsoft.VisualStudio.Component.Roslyn.Compiler `
---add Microsoft.Component.MSBuild `
 --add Microsoft.VisualStudio.Component.TextTemplating `
+</code></pre><ul>
+<li>Microsoft Build Tools</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.Component.MSBuild `
 </code></pre><ul>
 <li>JIT</li>
 </ul>
@@ -272,8 +319,8 @@
         
 
         
-        <time class="post-date" datetime="2024-10-28T08:08:08&#43;08:00">
-            28 Oct 2024
+        <time class="post-date" datetime="2024-10-29T08:08:08&#43;08:00">
+            29 Oct 2024
         </time>
     </footer>
 </article>
@@ -716,50 +763,6 @@ RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
         
         <time class="post-date" datetime="2024-09-29T08:08:08&#43;08:00">
             29 Sep 2024
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-android_started/">Qt6 for android</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>ndk</li>
-<li>avd(Android Virtual Device)</li>
-</ul>
-<h1 id="preparation">Preparation</h1>
-<ul>
-<li>Environment</li>
-<li>cmdline</li>
-</ul>
-<h2 id="environment-variables">Environment variables</h2>
-<p>:warning:
-安装完<a href="https://developer.android.google.cn/studio">Android Studio</a>, 先不要进入设置！</p>
-<h3 id="java-home">Java Home</h3>
-<ul>
-<li>Qt6.8/6.5 <br>
-set <a href="https://adoptium.net/temurin/archive/?variant=openjdk11&amp;version=17">JDK17</a></li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.12+7
-</span></span></code></pre></div><h3 id="android-homehttpsdeveloperandroidcomtoolsvariablesenvar"><a href="https://developer.android.com/tools/variables#envar">Android Home</a></h3>
-<p>Sets the path to the SDK installation directory.
-Once set, the value does not typically change and can be shared by multiple users on the same machine.
-ANDROID_SDK_ROOT, which also points to the SDK installation directory, is deprecated.
-If you continue to use it, Android Studio and the Android Gradle plugin will check that the old and new variables are consistent.</p> <a class="read-more" href="/cnblogs/post/qt-android_started/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-09-19T12:38:08&#43;08:00">
-            19 Sep 2024
         </time>
     </footer>
 </article>
