@@ -6,8 +6,15 @@
     <description>Recent content in Posts on 迁移自(cnblogs.com/xiaobin-hlj80)</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 19 Nov 2024 21:08:08 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 Nov 2024 08:08:08 +0800</lastBuildDate>
     <atom:link href="https://tdtc-hrb.github.io/cnblogs/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows的一些设置</title>
+      <link>https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq4/</link>
+      <pubDate>Sat, 30 Nov 2024 08:08:08 +0800</pubDate>
+      <guid>https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq4/</guid>
+      <description>&lt;h3 id=&#34;task-manager&#34;&gt;Task Manager&lt;/h3&gt;&#xA;&lt;p&gt;Task manager doesn’t update resources on real time&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;At the top, click View.&lt;/li&gt;&#xA;&lt;li&gt;Navigate to Update speed. &lt;br&gt;&#xA;If it’s paused, then click Normal.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;ms-edge&#34;&gt;MS-Edge&lt;/h3&gt;&#xA;&lt;p&gt;Regardless of Microsoft’s reasoning, you now know how to toggle the sidebar on or off in Edge 119.&#xA;Just head to Settings &amp;gt; Sidebar &amp;gt; Copilot &amp;gt; Always Show Sidebar. Alternatively, you can use the Ctrl + Shift + / shortcut.&lt;/p&gt;&#xA;&lt;h3 id=&#34;图标显示不正常httpssspaicompost42874&#34;&gt;&lt;a href=&#34;https://sspai.com/post/42874&#34;&gt;图标显示不正常&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;方法一 删除 IconCache.db 文件&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;C:\Users\用户名\appdata\local&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Windows的SQLite静态库</title>
       <link>https://tdtc-hrb.github.io/cnblogs/post/vc-sqlite3lib/</link>
@@ -63,13 +70,6 @@
       <pubDate>Sun, 29 Sep 2024 08:08:08 +0800</pubDate>
       <guid>https://tdtc-hrb.github.io/cnblogs/post/ror_installation/</guid>
       <description>&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html&#34;&gt;Ruby &amp;amp; Rails Compatibility Table&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Rails Version&lt;/th&gt;&#xA;          &lt;th&gt;Required Ruby Version&lt;/th&gt;&#xA;          &lt;th&gt;Recommended Ruby Version&lt;/th&gt;&#xA;          &lt;th&gt;Required Rubygems Version&lt;/th&gt;&#xA;          &lt;th&gt;Status&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;7.2.Z&lt;/td&gt;&#xA;          &lt;td&gt;&amp;gt;= 3.1.0&lt;/td&gt;&#xA;          &lt;td&gt;3.3&lt;/td&gt;&#xA;          &lt;td&gt;&amp;gt;= 1.8.11&lt;/td&gt;&#xA;          &lt;td&gt;Maintained&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;7.1.Z&lt;/td&gt;&#xA;          &lt;td&gt;&amp;gt;= 2.7.0&lt;/td&gt;&#xA;          &lt;td&gt;3.2.Z&lt;/td&gt;&#xA;          &lt;td&gt;&amp;gt;= 1.8.11&lt;/td&gt;&#xA;          &lt;td&gt;Maintained&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;7.0.Z&lt;/td&gt;&#xA;          &lt;td&gt;&amp;gt;= 2.7.0&lt;/td&gt;&#xA;          &lt;td&gt;3.1.Z&lt;/td&gt;&#xA;          &lt;td&gt;&amp;gt;= 1.8.11&lt;/td&gt;&#xA;          &lt;td&gt;Maintained&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h1 id=&#34;rbenv&#34;&gt;RbEnv&lt;/h1&gt;&#xA;&lt;p&gt;Install ruby using rbenv.&lt;/p&gt;&#xA;&lt;h2 id=&#34;dependencies&#34;&gt;Dependencies&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Debian&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;v12&#xA;After enabling &lt;a href=&#34;https://tdtc-hrb.github.io/csdn/post/apt-oper-ubuntu/&#34;&gt;sudo&lt;/a&gt;,&#xA;the operation is the same as Ubuntu.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ubuntu &lt;br&gt;&#xA;Ubuntu 20.04 default Ruby version is v2.7&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \&#xD;&#xA; libyaml-dev libncurses5-dev libffi-dev libgdbm-dev&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;RHEL &lt;br&gt;&#xA;RHEL8(Alma / Rocky) default Ruby version is v2.5.5&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;install tar:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Windows的一些设置</title>
-      <link>https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq4/</link>
-      <pubDate>Thu, 18 Jan 2024 08:08:08 +0800</pubDate>
-      <guid>https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq4/</guid>
-      <description>&lt;h3 id=&#34;task-manager&#34;&gt;Task Manager&lt;/h3&gt;&#xA;&lt;p&gt;Task manager doesn’t update resources on real time&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;At the top, click View.&lt;/li&gt;&#xA;&lt;li&gt;Navigate to Update speed. &lt;br&gt;&#xA;If it’s paused, then click Normal.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;ms-edge&#34;&gt;MS-Edge&lt;/h3&gt;&#xA;&lt;p&gt;Regardless of Microsoft’s reasoning, you now know how to toggle the sidebar on or off in Edge 119.&#xA;Just head to Settings &amp;gt; Sidebar &amp;gt; Copilot &amp;gt; Always Show Sidebar. Alternatively, you can use the Ctrl + Shift + / shortcut.&lt;/p&gt;&#xA;&lt;h3 id=&#34;图标显示不正常httpssspaicompost42874&#34;&gt;&lt;a href=&#34;https://sspai.com/post/42874&#34;&gt;图标显示不正常&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;方法一 删除 IconCache.db 文件&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;C:\Users\用户名\appdata\local&lt;/p&gt;</description>
     </item>
     <item>
       <title>jni - gcc</title>
