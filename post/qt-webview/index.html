@@ -12,13 +12,13 @@
 
 
 
-<meta name="twitter:title" content="QQ mini browser"/>
+<meta name="twitter:title" content="qtwebview minibrowser example"/>
 <meta name="twitter:description" content="qt quick"/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="QQ mini browser &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:title" content="qtwebview minibrowser example &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
   	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
   	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/qt-webview/" />
 
@@ -29,12 +29,12 @@
     
     <meta property="og:description" content="qt quick" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2024-10-09T23:38:08&#43;08:00" />
+    <meta property="article:published_time" content="2024-12-03T23:38:08&#43;08:00" />
 
     
     
 
-    <title>QQ mini browser &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+    <title>qtwebview minibrowser example &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
 
     
     <meta name="description" content="qt quick" />
@@ -90,17 +90,17 @@
             
         ]
     },
-    "headline": "QQ mini browser",
-    "name": "QQ mini browser",
-    "wordCount":  682 ,
-    "timeRequired": "PT4M",
+    "headline": "qtwebview minibrowser example",
+    "name": "qtwebview minibrowser example",
+    "wordCount":  364 ,
+    "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/qt-webview/",
-    "datePublished": "2024-10-09T23:38Z",
-    "dateModified": "2024-10-09T23:38Z",
+    "datePublished": "2024-12-03T23:38Z",
+    "dateModified": "2024-12-03T23:38Z",
     
     
     "description": "qt quick",
@@ -163,13 +163,13 @@
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">QQ mini browser</h1>
+        <h1 class="post-title">qtwebview minibrowser example</h1>
         <small>qt quick</small>
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2024-10-09T23:38:08&#43;08:00">
-            Oct 9, 2024
+          <time class="post-date" datetime="2024-12-03T23:38:08&#43;08:00">
+            Dec 3, 2024
           </time>
         
          
@@ -178,141 +178,12 @@
 
     <section class="post-content">
       <ul>
-<li>Qt Design Studio: v4.6.1</li>
-<li>Qt Creator: v14.0.2</li>
-<li>QT: V6.8.0</li>
+<li><a href="https://developer.android.google.cn/studio">Android Studio</a> <br>
+安装完, 先不要进入设置！</li>
+<li><a href="https://download.qt.io/static/mirrorlist/mirmon/">mirror - online installer</a></li>
 </ul>
-<p>:WARNING: <br>
-安装完<a href="https://developer.android.google.cn/studio">Android Studio</a>, 先不要进入设置！</p>
-<h2 id="online-installer">online installer</h2>
-<p><a href="https://lists.qt-project.org/pipermail/development/2023-October/044573.html">新 Normal 发布后, lts 转为 commercial LTS</a></p>
-<h3 id="镜像-listhttpsdownloadqtiostaticmirrorlistmirmon"><a href="https://download.qt.io/static/mirrorlist/mirmon/">镜像 list</a></h3>
 <pre tabindex="0"><code>qt-online-installer-windows-x64-x.x.x.exe --mirror Y
-</code></pre><h2 id="qt-qucik">Qt Qucik</h2>
-<p><a href="https://en.wikipedia.org/wiki/Qt_Quick">version</a>:</p>
-<table>
-  <thead>
-      <tr>
-          <th>Qt Version</th>
-          <th>QtQml</th>
-          <th>QtQml.Models</th>
-          <th>QtQuick</th>
-          <th>QtQuick.Particles</th>
-          <th>QtQuick.Controls</th>
-          <th>QtQuick.Layouts</th>
-          <th>QtQuick.Dialogs</th>
-          <th>QtQuick.WebEngine</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Qt 5.11</td>
-          <td>2.11</td>
-          <td>2.11</td>
-          <td>2.11</td>
-          <td>2.11</td>
-          <td>2.4</td>
-          <td>1.11</td>
-          <td>1.11</td>
-          <td>1.7</td>
-      </tr>
-      <tr>
-          <td>Qt 5.12</td>
-          <td>-</td>
-          <td>-</td>
-          <td>2.12</td>
-          <td>-</td>
-          <td>2.12</td>
-          <td>-</td>
-          <td>-</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Qt 5.13</td>
-          <td>2.13</td>
-          <td>2.13</td>
-          <td>-</td>
-          <td>2.13</td>
-          <td>-</td>
-          <td>1.11</td>
-          <td>1.11</td>
-          <td>1.9</td>
-      </tr>
-      <tr>
-          <td>Qt 5.14</td>
-          <td>2.14</td>
-          <td>2.14</td>
-          <td>2.14</td>
-          <td>2.14</td>
-          <td>2.14</td>
-          <td>1.14</td>
-          <td>1.3</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>Qt 5.15</td>
-          <td>2.15</td>
-          <td>2.15</td>
-          <td>2.15</td>
-          <td>2.15</td>
-          <td>2.15</td>
-          <td>1.15</td>
-          <td>1.3</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>Qt 6.2</td>
-          <td>-</td>
-          <td>-</td>
-          <td>6.2</td>
-          <td>-</td>
-          <td>6.2</td>
-          <td>-</td>
-          <td>-</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>Qt 6.5</td>
-          <td>-</td>
-          <td>-</td>
-          <td>6.5</td>
-          <td>-</td>
-          <td>6.5</td>
-          <td>-</td>
-          <td>-</td>
-          <td>-</td>
-      </tr>
-  </tbody>
-</table>
-<h3 id="qtquickcontrolsstyles">QtQuick.Controls.Styles</h3>
-<p>Q: <a href="https://stackoverflow.com/questions/49263604/qml-cannot-assign-to-non-existent-property-style">Cannot assign to non-existent property &ldquo;style&rdquo;</a></p>
-<p>A: 2.0已经不支持 QtQuick.Controls.Styles</p>
-<h3 id="webengineview-vs-webview">WebEngineView Vs WebView</h3>
-<ul>
-<li>WebEngine <br>
-来自于 Qt v5.4</li>
-<li>WebView <br>
-来自于 Qt v4.7</li>
-</ul>
-<pre tabindex="0"><code>QtQuick starts with qt 4.7.1.
-</code></pre><h3 id="webview">WebView</h3>
-<p>This is useful on mobile platforms such as Android and iOS;
-On iOS the policy dictates that all web content is displayed using the operating system&rsquo;s web view.</p>
-<p>On Windows and Linux, Qt WebView depends on the Qt WebEngine module to render content.</p>
-<p>On macOS, the system web view is used in the same manner as iOS.</p>
-<h3 id="webengineview--webviewhttpsdecovardevblog20180714html-from-qml-over-webchannel-websockets"><a href="https://decovar.dev/blog/2018/07/14/html-from-qml-over-webchannel-websockets/">WebEngineView ≠ WebView</a></h3>
-<pre tabindex="0"><code>WebEngineView is a web-view provided by Qt’s own web-browser engine which is based on Chromium (Qt WebEngine).    
-It is a full-featured web-browser that is bundled and integrated with Qt, which is good, 
-but at the same time it means that you need to drag it around together with your application, 
-and this thing is quite a big one (what did you expect, it’s almost a full-blown web-browser after all).
-
-WebView is a, well, web-view, but the difference is that it uses a native web-browser of the platform (if available), 
-thus it does not require including a full web-browser stack as a part of the application (which is the case with WebEngineView), 
-so your application is more light-weight. Another point is that some platforms simply do not allow any non-system web-browsers, 
-so WebView is the only option available there.
-</code></pre><h1 id="project">Project</h1>
-<p>使用Qt Creator创建, 以下简称creator。</p>
-<h2 id="create-qt-project">Create Qt Project</h2>
+</code></pre><h2 id="create-qt-project">Create Qt Project</h2>
 <p>File -&gt; New Project</p>
 <ul>
 <li>v6.x <br>
@@ -334,7 +205,11 @@ Qt Quick Application(compat)</li>
 Mini Qt version:</li>
 </ul>
 <pre tabindex="0"><code>Qt 5.15/6.5
-</code></pre><h2 id="using-qt-webview">Using Qt WebView</h2>
+</code></pre><ul>
+<li>Kit Selection</li>
+</ul>
+<pre tabindex="0"><code>Android Qt x.x.x Clang x86_64
+</code></pre><h3 id="using-qt-webviewhttpsdocqtioqt-68qtwebview-indexhtml"><a href="https://doc.qt.io/qt-6.8/qtwebview-index.html">Using Qt WebView</a></h3>
 <ul>
 <li>QML API</li>
 </ul>
@@ -343,27 +218,73 @@ Mini Qt version:</li>
 <li>C++ API</li>
 </ul>
 <pre tabindex="0"><code>#include &lt;QtWebView/QtWebView&gt;
-</code></pre><h3 id="building-with-cmake">Building with CMake</h3>
+</code></pre><h4 id="building-with-cmake">Building with CMake</h4>
 <ul>
 <li>package</li>
 </ul>
-<pre tabindex="0"><code>find_package(Qt6 6.5 REQUIRED COMPONENTS Quick WebView)
+<pre tabindex="0"><code>find_package(Qt6 REQUIRED COMPONENTS Quick WebView)
 </code></pre><ul>
 <li>target</li>
 </ul>
 <pre tabindex="0"><code>target_link_libraries(appmy_browser
     PRIVATE Qt6::Quick Qt6::WebView
 )
-</code></pre><h3 id="initial">initial</h3>
+</code></pre><h4 id="initial">initial</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// first line
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>QtWebView<span style="color:#f92672">::</span>initialize();
-</span></span></code></pre></div><h2 id="layout">Layout</h2>
+</span></span></code></pre></div><h3 id="icon">Icon</h3>
+<p>copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folder</p>
+<h4 id="qt-6xhttpsforumqtiotopic144345qml-image-cannot-open-cmake-qrc10"><a href="https://forum.qt.io/topic/144345/qml-image-cannot-open-cmake-qrc/10">Qt 6.x</a></h4>
+<blockquote>
+<p>CMakeLists.txt</p>
+</blockquote>
+<pre tabindex="0"><code>qt_add_qml_module(appmy_browser
+    URI my_browser
+    VERSION 1.0
+    QML_FILES 
+        Main.qml
+    RESOURCES 
+        images/left-32.png
+        images/refresh-32.png
+        images/right-32.png
+        images/stop-32.png
+)
+</code></pre><h4 id="qt-515">Qt 5.15</h4>
+<blockquote>
+<p>qml.qrc</p>
+</blockquote>
+<pre tabindex="0"><code>&lt;RCC&gt;
+    &lt;qresource prefix=&#34;/&#34;&gt;
+        &lt;file&gt;main.qml&lt;/file&gt;
+        &lt;file&gt;images/left-32.png&lt;/file&gt;
+        &lt;file&gt;images/stop-32.png&lt;/file&gt;
+        &lt;file&gt;images/refresh-32.png&lt;/file&gt;
+        &lt;file&gt;images/right-32.png&lt;/file&gt;
+    &lt;/qresource&gt;
+&lt;/RCC&gt;
+</code></pre><h2 id="implementation">implementation</h2>
 <ul>
-<li>ApplicationWindow</li>
-<li>WebView</li>
-<li>ToolBar</li>
+<li>Layouts</li>
 </ul>
-<h3 id="qt-webviewhttpsdocqtioqt-65qtwebview-indexhtml"><a href="https://doc.qt.io/qt-6.5/qtwebview-index.html">Qt WebView</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">QtQuick</span>.<span style="color:#a6e22e">Layouts</span>
+</span></span></code></pre></div><ul>
+<li>Button
+The Qt examples use ToolButton, but we use Button.</li>
+</ul>
+<p>usage <a href="https://forum.qt.io/topic/134678/toolbutton-icon-source/10">Button</a> 替换 toolbutton</p>
+<ul>
+<li>Icon Image
+Use IconImage instead of iconSource.</li>
+<li>v6.8 <br>
+The <a href="https://codereview.qt-project.org/c/qt/qtdeclarative/+/547022/4/src/quickcontrols/basic/CMakeLists.txt#b162">auto behavior</a>
+was changed in <a href="https://bugreports.qt.io/browse/QTBUG-123103">QTBUG-123103</a>,
+so IconImage must be explicitly introduced!</li>
+</ul>
+<pre tabindex="0"><code>import QtQuick.Controls.impl
+</code></pre><h3 id="styles">Styles</h3>
+<p>Q: <a href="https://stackoverflow.com/questions/49263604/qml-cannot-assign-to-non-existent-property-style">Cannot assign to non-existent property &ldquo;style&rdquo;</a></p>
+<p>A: 2.0已经不支持 QtQuick.Controls.Styles</p>
+<h3 id="webview">WebView</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span>    <span style="color:#a6e22e">WebView</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">id: webView</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">anchors.fill:</span> <span style="color:#a6e22e">parent</span>
@@ -394,15 +315,7 @@ ToolBar is commonly used as a header or a footer of an ApplicationWindow.</p>
 </ul>
 <pre tabindex="0"><code>import QtQuick.Controls
 ApplicationWindow { //... }
-</code></pre><ul>
-<li>Layout</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">QtQuick</span>.<span style="color:#a6e22e">Layouts</span>
-</span></span></code></pre></div><ul>
-<li>images folder
-copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folder</li>
-</ul>
-<h4 id="mainqmlpart">Main.qml(part)</h4>
+</code></pre><h4 id="mainqmlpart">Main.qml(part)</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">footer:</span> <span style="color:#a6e22e">ToolBar</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">id: navigationBar</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">height:</span> <span style="color:#ae81ff">64</span>
@@ -414,7 +327,7 @@ copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folde
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Button</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">contentItem:</span> <span style="color:#a6e22e">Row</span> {
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">IconImage</span> {
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">source:</span> <span style="color:#e6db74">&#34;images/left32.png&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">source:</span> <span style="color:#e6db74">&#34;images/left-32.png&#34;</span>
 </span></span><span style="display:flex;"><span>                }
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">Text</span> {
 </span></span><span style="display:flex;"><span>                     <span style="color:#66d9ef">text:</span> <span style="color:#a6e22e">qsTr</span>(<span style="color:#e6db74">&#34;&lt;&#34;</span>)
@@ -429,7 +342,7 @@ copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folde
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Button</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">contentItem:</span> <span style="color:#a6e22e">Row</span> {
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">IconImage</span> {
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">source:</span> <span style="color:#e6db74">&#34;images/right32.png&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">source:</span> <span style="color:#e6db74">&#34;images/right-32.png&#34;</span>
 </span></span><span style="display:flex;"><span>                }
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">Text</span> {
 </span></span><span style="display:flex;"><span>                     <span style="color:#66d9ef">text:</span> <span style="color:#a6e22e">qsTr</span>(<span style="color:#e6db74">&#34;&gt;&#34;</span>)
@@ -444,7 +357,7 @@ copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folde
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Button</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">contentItem:</span> <span style="color:#a6e22e">Row</span> {
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">IconImage</span> {
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">source:</span> <span style="color:#a6e22e">webView</span>.<span style="color:#a6e22e">loading</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;images/stop32.png&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/refresh32.png&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">source:</span> <span style="color:#a6e22e">webView</span>.<span style="color:#a6e22e">loading</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;images/stop-32.png&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/refresh-32.png&#34;</span>
 </span></span><span style="display:flex;"><span>                }
 </span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">Text</span> {
 </span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">text:</span> <span style="color:#a6e22e">qsTr</span>(<span style="color:#e6db74">&#34;Ref/Stop&#34;</span>)
@@ -460,53 +373,10 @@ copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folde
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Item</span> { <span style="color:#66d9ef">Layout.preferredWidth:</span> <span style="color:#ae81ff">10</span> }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="issues">Issues</h2>
-<p>Qt5 与 Qt6 的不同</p>
-<h3 id="image-load">image load</h3>
-<p>Use IconImage instead of iconSource.</p>
-<ul>
-<li>v6.8:
-The <a href="https://codereview.qt-project.org/c/qt/qtdeclarative/+/547022/4/src/quickcontrols/basic/CMakeLists.txt#b162">auto behavior</a>
-was changed in <a href="https://bugreports.qt.io/browse/QTBUG-123103">QTBUG-123103</a>,
-so IconImage must be explicitly introduced!</li>
-</ul>
-<pre tabindex="0"><code>import QtQuick.Controls.impl
-</code></pre><h3 id="icon">Icon</h3>
-<p>usage <a href="https://forum.qt.io/topic/134678/toolbutton-icon-source/10">Button</a> 替换 toolbutton</p>
-<ul>
-<li>Qt 6.x <br>
-设置图标文件在 CMake 工程文件(CMakeLists.txt)</li>
-<li>Qt 5.15 <br>
-设置图标文件在 qml.qrc</li>
-</ul>
-<h4 id="cmake---qt6httpsforumqtiotopic144345qml-image-cannot-open-cmake-qrc10"><a href="https://forum.qt.io/topic/144345/qml-image-cannot-open-cmake-qrc/10">CMake - Qt6</a></h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>qt_add_qml_module(<span style="color:#e6db74">appmy_browser</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">URI</span> <span style="color:#e6db74">my_browser</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">1.0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">QML_FILES</span> 
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">Main.qml</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">RESOURCES</span> 
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/left32.png</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/refresh32.png</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/right32.png</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">images/stop32.png</span>
-</span></span><span style="display:flex;"><span>)<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><h4 id="qt-515">Qt 5.15</h4>
-<blockquote>
-<p>qml.qrc</p>
-</blockquote>
-<pre tabindex="0"><code>&lt;RCC&gt;
-    &lt;qresource prefix=&#34;/&#34;&gt;
-        &lt;file&gt;main.qml&lt;/file&gt;
-        &lt;file&gt;images/left32.png&lt;/file&gt;
-        &lt;file&gt;images/stop32.png&lt;/file&gt;
-        &lt;file&gt;images/refresh32.png&lt;/file&gt;
-        &lt;file&gt;images/right32.png&lt;/file&gt;
-    &lt;/qresource&gt;
-&lt;/RCC&gt;
-</code></pre><h1 id="reference">Reference</h1>
+</span></span></code></pre></div><h2 id="ref">Ref</h2>
 <ul>
 <li><a href="https://doc.qt.io/qt-6/qtwebview-minibrowser-example.html">Minibrowser</a></li>
+<li><a href="https://decovar.dev/blog/2018/07/14/html-from-qml-over-webchannel-websockets/">WebEngineView ≠ WebView</a></li>
 </ul>
 
     </section>
@@ -523,7 +393,7 @@ so IconImage must be explicitly introduced!</li>
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=QQ%20mini%20browser&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fqt-webview%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=qtwebview%20minibrowser%20example&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fqt-webview%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
@@ -531,7 +401,7 @@ so IconImage must be explicitly introduced!</li>
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fqt-webview%2f&amp;description=QQ%20mini%20browser"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fqt-webview%2f&amp;description=qtwebview%20minibrowser%20example"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
@@ -559,17 +429,10 @@ so IconImage must be explicitly introduced!</li>
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/asp-base/">
-          <section class="post">
-              <h2>3小时搞定asp.net 9.0</h2>
-              
-          </section>
-      </a>
   
-  
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ror_getstarted/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/qt-android_started/">
           <section class="post">
-              <h2>开始Ruby On Rails</h2>
+              <h2>Qt6 for android</h2>
           </section>
       </a>
   

@@ -29,7 +29,7 @@
     
     <meta property="og:description" content="cmdline, ndk" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2024-11-08T12:38:08&#43;08:00" />
+    <meta property="article:published_time" content="2024-12-03T12:38:08&#43;08:00" />
 
     
     
@@ -92,15 +92,15 @@
     },
     "headline": "Qt6 for android",
     "name": "Qt6 for android",
-    "wordCount":  283 ,
+    "wordCount":  281 ,
     "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/qt-android_started/",
-    "datePublished": "2024-11-08T12:38Z",
-    "dateModified": "2024-11-08T12:38Z",
+    "datePublished": "2024-12-03T12:38Z",
+    "dateModified": "2024-12-03T12:38Z",
     
     
     "description": "cmdline, ndk",
@@ -168,8 +168,8 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2024-11-08T12:38:08&#43;08:00">
-            Nov 8, 2024
+          <time class="post-date" datetime="2024-12-03T12:38:08&#43;08:00">
+            Dec 3, 2024
           </time>
         
          
@@ -187,8 +187,8 @@
 <li>cmdline</li>
 </ul>
 <h2 id="environment-variables">Environment variables</h2>
-<p>:warning:
-安装完<a href="https://developer.android.google.cn/studio">Android Studio</a>, 先不要进入设置！</p>
+<p>:warning: <br>
+After installing <a href="https://developer.android.google.cn/studio">Android Studio</a>, don&rsquo;t go into settings yet!</p>
 <h3 id="java-home">Java Home</h3>
 <ul>
 <li>Qt6.8/6.5 <br>
@@ -206,7 +206,7 @@ If you continue to use it, Android Studio and the Android Gradle plugin will che
 <p>Download &ldquo;<a href="https://github.com/KDAB/android_openssl">android openssl</a>&rdquo;
 and place it in the &ldquo;%ANDROID_SDK_ROOT%&rdquo;/&quot;%ANDROID_HOME%&quot; directory.</p>
 <h2 id="cmdline-tools">cmdline-tools</h2>
-<p>Qt Creator 的 version info(sdk_definitions.json):</p>
+<p>Qt Creator&rsquo;s version info(sdk_definitions.json):</p>
 <pre tabindex="0"><code>&lt;QT_INSTALL&gt;\Tools\QtCreator\share\qtcreator\android
 </code></pre><h3 id="versionshttpspackagesdebianorgsourcesidgoogle-android-installers"><a href="https://packages.debian.org/source/sid/google-android-installers">versions</a></h3>
 <table>
@@ -331,8 +331,7 @@ source.properties
 <ul>
 <li>Android SDK</li>
 </ul>
-<pre tabindex="0"><code>sdkmanager --sdk_root=%ANDROID_HOME% --install &#34;platform-tools&#34; &#34;platforms;android-31&#34; &#34;build-tools;31.0.0&#34;
-</code></pre><pre tabindex="0"><code>sdkmanager --sdk_root=%ANDROID_HOME% --install &#34;platform-tools&#34; &#34;platforms;android-34&#34; &#34;build-tools;34.0.0&#34;
+<pre tabindex="0"><code>sdkmanager --sdk_root=%ANDROID_HOME% --install &#34;platform-tools&#34; &#34;platforms;android-34&#34; &#34;build-tools;34.0.0&#34;
 </code></pre><ul>
 <li>Android NDK</li>
 </ul>
@@ -349,9 +348,6 @@ source.properties
 <pre tabindex="0"><code>sdkmanager --sdk_root=%ANDROID_HOME% --install &#34;ndk;25.1.8937393&#34;
 </code></pre><h1 id="avd">avd</h1>
 <p>install emulator:</p>
-<ul>
-<li>Qt6.5</li>
-</ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sdkmanager --sdk_root<span style="color:#f92672">=</span>%ANDROID_HOME% --install <span style="color:#e6db74">&#34;emulator&#34;</span> <span style="color:#e6db74">&#34;patcher;v4&#34;</span>
 </span></span></code></pre></div><h3 id="hypervisor">Hypervisor</h3>
 <p>If you use android_x86/android_x86_64, you must install HAXM and AEHD.</p>
@@ -420,17 +416,17 @@ source.properties
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/ops_win_faq2/">
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/qt-webview/">
           <section class="post">
-              <h2>Windows的一些安装</h2>
+              <h2>qtwebview minibrowser example</h2>
               
           </section>
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/asp-ws2/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ops_win_faq4/">
           <section class="post">
-              <h2>WebSockets over HTTP/2</h2>
+              <h2>Windows的一些设置</h2>
           </section>
       </a>
   
