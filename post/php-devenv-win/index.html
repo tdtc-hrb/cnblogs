@@ -29,7 +29,7 @@
     
     <meta property="og:description" content="" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2023-11-30T18:08:08&#43;08:00" />
+    <meta property="article:published_time" content="2024-12-26T11:08:08&#43;08:00" />
 
     
     
@@ -37,15 +37,14 @@
     <title>Windows搭建PHP环境 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
 
     
-    <meta name="description" content="&lt;p&gt;关于Php:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Non Thread Safe 和 Thread Safe： &lt;br&gt;
-使用Apache时，用“TS”，否则没有“php(7/8)apache2_4.dll”&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;VC Redist &lt;br&gt;
-&lt;a href=&#34;https://aka" />
+    <meta name="description" content="&lt;ul&gt;
+&lt;li&gt;Apache&lt;/li&gt;
+&lt;li&gt;PHP&lt;/li&gt;
+&lt;li&gt;FAQ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;apache配置&#34;&gt;Apache配置&lt;/h1&gt;
+&lt;p&gt;Non Thread Safe(NTS) 和 Thread Safe(TS)： &lt;br&gt;
+&amp;ldquo;NTS&amp;rdquo;，没有“php(7/" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -67,7 +66,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.139.3">
+    <meta name="generator" content="Hugo 0.140.1">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/php-devenv-win/" />
 
@@ -100,15 +99,15 @@
     },
     "headline": "Windows搭建PHP环境",
     "name": "Windows搭建PHP环境",
-    "wordCount":  601 ,
+    "wordCount":  481 ,
     "timeRequired": "PT3M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/php-devenv-win/",
-    "datePublished": "2023-11-30T18:08Z",
-    "dateModified": "2023-11-30T18:08Z",
+    "datePublished": "2024-12-26T11:08Z",
+    "dateModified": "2024-12-26T11:08Z",
     
     
     "description": "",
@@ -176,8 +175,8 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2023-11-30T18:08:08&#43;08:00">
-            Nov 30, 2023
+          <time class="post-date" datetime="2024-12-26T11:08:08&#43;08:00">
+            Dec 26, 2024
           </time>
         
          
@@ -185,31 +184,22 @@
     </header>
 
     <section class="post-content">
-      <p>关于Php:</p>
-<ul>
-<li>
-<p>Non Thread Safe 和 Thread Safe： <br>
-使用Apache时，用“TS”，否则没有“php(7/8)apache2_4.dll”</p>
-</li>
-<li>
-<p>VC Redist <br>
-<a href="https://aka.ms/vs/16/release/VC_redist.x64.exe">VS16</a> /
-<a href="https://aka.ms/vs/15/release/VC_redist.x64.exe">VC15</a> /
-<a href="https://www.microsoft.com/en-us/download/details.aspx?id=53587">VC14</a></p>
-<p>About Apache v2.4.56+:</p>
-</li>
-<li>
-<p>OpenSSL <br>
-When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.</p>
-</li>
+      <ul>
+<li>Apache</li>
+<li>PHP</li>
+<li>FAQ</li>
 </ul>
 <h1 id="apache配置">Apache配置</h1>
+<p>Non Thread Safe(NTS) 和 Thread Safe(TS)： <br>
+&ldquo;NTS&rdquo;，没有“php(7/8)apache2_4.dll”</p>
+<h3 id="down">Down</h3>
 <ul>
-<li>路径</li>
-<li>php-apache</li>
-<li>重写</li>
+<li><a href="http://www.apachehaus.com/cgi-bin/download.plx">v2.4.55-</a></li>
+<li><a href="https://www.apachelounge.com/download/">v2.4.56+</a></li>
 </ul>
-<h2 id="路径">路径</h2>
+<pre tabindex="0"><code>OpenSSL    
+When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.
+</code></pre><h2 id="路径">路径</h2>
 <ul>
 <li>网站根目录 <br>
 替换“D:/progFiles/Apache24/htdocs”为自己使用的路径</li>
@@ -219,16 +209,21 @@ When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.</p>
 <h2 id="php-apache">php-apache</h2>
 <p>在配置文件(conf/httpd.conf)最后增加</p>
 <ul>
-<li>PHPv8.0</li>
+<li>PHP 8</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;D:/progFiles/php8.0&#34;</span>
 </span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;D:/progFiles/php-8.0/php8apache2_4.dll&#34;</span>
 </span></span></code></pre></div><ul>
-<li>PHPV7.1</li>
+<li>PHP 7</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;D:/progFiles/php7.1&#34;</span>
 </span></span><span style="display:flex;"><span>LoadModule php7_module <span style="color:#e6db74">&#34;D:/progFiles/php7.1/php7apache2_4.dll&#34;</span>
-</span></span></code></pre></div><h2 id="重写">重写</h2>
+</span></span></code></pre></div><ul>
+<li>Php 5</li>
+</ul>
+<pre tabindex="0"><code>PHPIniDir &#34;D:/progFiles/php-5.6&#34;
+LoadModule php5_module &#34;D:/progFiles/php-5.6/php5apache2_4.dll&#34;
+</code></pre><h2 id="重写">重写</h2>
 <ul>
 <li>a.打开模块</li>
 </ul>
@@ -238,92 +233,25 @@ When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.</p>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
 </span></span></code></pre></div><h1 id="配置phpphpini">配置PHP(php.ini)</h1>
-<ul>
-<li>CodeIgniter <br>
-When less than Php v8.1, use the CodeIgniter</li>
-<li>Symfony <br>
-When greater than Php v8.1, use the Symfony</li>
-</ul>
-<h2 id="composer">Composer</h2>
-<p>v2.6.5</p>
-<h3 id="intl">Intl</h3>
-<p>Please install the &ldquo;intl&rdquo; extension for full localization capabilities.</p>
-<ol>
-<li>set path</li>
-</ol>
-<pre tabindex="0"><code>; Directory in which the loadable extensions (modules) reside.
-; https://php.net/extension-dir
-;extension_dir = &#34;./&#34;
-; On windows:
-extension_dir = &#34;D:/progFiles/php8.1/ext&#34;
-</code></pre><ol start="2">
-<li>ON - intl</li>
-</ol>
-<pre tabindex="0"><code>extension=intl
-</code></pre><h4 id="package-snhttpspackagistorgpackagessymfonyintl"><a href="https://packagist.org/packages/symfony/intl">package-sn</a></h4>
-<ul>
-<li><a href="https://api.github.com/repos/symfony/intl/zipball/41d16f0294b9ca6e5540728580c65cfa3848fbf5">v6.4.0</a> /
-<a href="https://codeload.github.com/symfony/intl/legacy.zip/41d16f0294b9ca6e5540728580c65cfa3848fbf5">codeload</a></li>
-</ul>
-<h3 id="mysql">Mysql</h3>
-<p>An exception occurred in the driver: could not find driver.</p>
-<pre tabindex="0"><code>extension=mysqli
-extension=pdo_mysql
-</code></pre><h3 id="proxy">proxy</h3>
-<p>安装 Composer 时, 填写:</p>
-<pre tabindex="0"><code>http://&lt;ip&gt;:&lt;port&gt;
-</code></pre><p>手动增加 https_proxy 系统变量:</p>
-<pre tabindex="0"><code>name:https_proxy
-value: http://&lt;ip&gt;:&lt;port&gt;
-</code></pre><ul>
-<li>clean</li>
-</ul>
-<pre tabindex="0"><code>name:no_proxy
-value:*
-</code></pre><h3 id="cli">cli</h3>
-<ul>
-<li>config</li>
-<li>install</li>
-</ul>
-<h4 id="confighttpsgetcomposerorgdoc03-climdconfig"><a href="https://getcomposer.org/doc/03-cli.md#config">config</a></h4>
-<p>The config command allows you to edit Composer config settings and repositories
-in either the local composer.json file or the global config.json file.</p>
-<p>Additionally it lets you edit most properties in the local composer.json.</p>
-<pre tabindex="0"><code>composer config --list
-</code></pre><p>cache-files-dir:</p>
-<pre tabindex="0"><code>C:/Users/&lt;user name&gt;/AppData/Local/Composer/files
-</code></pre><ul>
-<li>symfony/intl</li>
-</ul>
-<pre tabindex="0"><code>C:/Users/&lt;user name&gt;/AppData/Local/Composer/files/symfony/intl
-</code></pre><h4 id="installhttpsgetcomposerorgdoc03-climdinstall-i">install(<a href="https://getcomposer.org/doc/03-cli.md#install-i">https://getcomposer.org/doc/03-cli.md#install-i</a>)</h4>
-<ul>
-<li>dist</li>
-</ul>
-<pre tabindex="0"><code>composer install --prefer-install=dist
-</code></pre><ul>
-<li>source</li>
-</ul>
-<pre tabindex="0"><code>composer install --prefer-install=source
-</code></pre><ul>
-<li>auto</li>
-</ul>
-<pre tabindex="0"><code>composer install --prefer-install=auto
+<p>test.php</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;?php
+</span></span><span style="display:flex;"><span>    header<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Content-Type: text/html; charset=utf-8&#34;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    phpinfo<span style="color:#f92672">()</span>;
+</span></span><span style="display:flex;"><span>?&gt;
+</span></span></code></pre></div><h3 id="memory-limit">memory limit</h3>
+<pre tabindex="0"><code>memory_limit = -1
 </code></pre><h2 id="extension设置">extension设置</h2>
 <p>目录位置:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>extension_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:/progFiles/php8.0/ext&#34;</span>
-</span></span><span style="display:flex;"><span>extension_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:/progFiles/php7.1/ext&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>extension_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:/progFiles/phpNUM.NUM/ext&#34;</span>
 </span></span></code></pre></div><h3 id="开启mysql">开启mysql</h3>
 <p>pdo and mysqli:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>extension<span style="color:#f92672">=</span>mysqli
 </span></span><span style="display:flex;"><span>extension<span style="color:#f92672">=</span>pdo_mysql
 </span></span></code></pre></div><h3 id="开启opcache">开启opcache</h3>
-<blockquote>
-<p>OPcache为php5.5+内置
-在Dynamic Extensions最下面增加：</p>
-</blockquote>
+<p>在Dynamic Extensions最下面增加：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zend_extension <span style="color:#f92672">=</span> php_opcache.dll
-</span></span></code></pre></div><p>Note: 如果不加入&quot;opcache.mmap_base = 0x20000000&quot; 会出现“Fatal Error Unable to open base address file”错误</p>
+</span></span></code></pre></div><p>Note: 如果不加入&quot;opcache.mmap_base = 0x20000000&quot;
+会出现“Fatal Error Unable to open base address file”错误</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>opcache<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>opcache.enable <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>opcache.memory_consumption <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>
@@ -336,31 +264,29 @@ in either the local composer.json file or the global config.json file.</p>
 </span></span><span style="display:flex;"><span>opcache.validate_timestamps <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>opcache.save_comments <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>opcache.enable_file_override <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span></code></pre></div><h3 id="memory-limit">memory limit</h3>
-<pre tabindex="0"><code>memory_limit = -1
-</code></pre><h2 id="测试">测试</h2>
-<p>test.php</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;?php
-</span></span><span style="display:flex;"><span>    header<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Content-Type: text/html; charset=utf-8&#34;</span><span style="color:#f92672">)</span>;
-</span></span><span style="display:flex;"><span>    phpinfo<span style="color:#f92672">()</span>;
-</span></span><span style="display:flex;"><span>?&gt;
-</span></span></code></pre></div><h2 id="phpmyadminhttpswwwphpmyadminnet"><a href="https://www.phpmyadmin.net/">phpMyAdmin</a></h2>
-<p>如果使用本机mysql则无需配置！</p>
-<h3 id="配置远程mysql">配置远程MySQL</h3>
+</span></span></code></pre></div><h2 id="pdo">pdo</h2>
+<p>test_pdo.php:</p>
+<pre tabindex="0"><code>&lt;?php
+// save as test_pdo.php
+
+var_dump(PDO::getAvailableDrivers());
+
+$host       = &#39;localhost&#39;;
+$dbname     = &#39;carnumber&#39;;
+$username   = &#39;tdtc2014&#39;;
+$password   = &#39;qazxsw&#39;;
+
+$pdo_object = new PDO(&#34;mysql:host=$host;dbname=$dbname&#34;, $username, $password);
+
+$query = $pdo_object-&gt;query(&#39;SELECT * FROM users&#39;);
+
+var_dump($query-&gt;fetchAll(PDO::FETCH_ASSOC));
+</code></pre><h2 id="reference">Reference</h2>
 <ul>
-<li>建立配置文件 <br>
-重命名config.sample.inc.php为config.inc.php</li>
-<li>添加服务器信息 <br>
-修改localhost值: 服务器IP。</li>
+<li><a href="http://stackoverflow.com/questions/17224798/how-to-use-php-opcache">How to use PHP OPCache?</a></li>
+<li><a href="http://php.net/manual/zh/opcache.configuration.php">OpCache文档</a></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$cfg<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;Servers&#39;</span><span style="color:#f92672">][</span>$i<span style="color:#f92672">][</span><span style="color:#e6db74">&#39;host&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;192.168.1.4&#39;</span>;
-</span></span></code></pre></div><h3 id="blowfish-secret">blowfish secret</h3>
-<p>The configuration file now needs a secret passphrase (blowfish_secret).</p>
-<ul>
-<li>config blowfish_secret</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$cfg<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;blowfish_secret&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;qtdRoGmbc9{8IZr323xYcSN]0s)r$9b_JUnb{~Xz&#39;</span>;
-</span></span></code></pre></div><h1 id="faq">FAQ</h1>
+<h1 id="faq">FAQ</h1>
 <p>Php7.2+ 已移除 <a href="https://windows.php.net/downloads/pecl/releases/mcrypt/">mcrypt</a>，
 下载 v7.2/v7.3/v7.4/v8.0 的 php_mcrypt.dll, 把它放在 PHP 的./ext, 并在php.ini配置它。</p>
 <ul>
@@ -383,7 +309,34 @@ Linux:</li>
 ; Directory where to load mcrypt modes
 ; Default: Compiled in into libmcrypt (usually /usr/local/lib/libmcrypt)
 ;mcrypt.modes_dir=
-</code></pre><h2 id="注册windows服务">注册Windows服务</h2>
+</code></pre><h2 id="apache-issues">Apache Issues</h2>
+<ul>
+<li>AH00526</li>
+<li>AH00072</li>
+</ul>
+<h3 id="ah00526">AH00526</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AH00526: Syntax error on line <span style="color:#ae81ff">233</span> of D:/progFiles/Apache24/conf/httpd.conf:
+</span></span><span style="display:flex;"><span>Invalid command <span style="color:#e6db74">&#39;Order&#39;</span>, perhaps misspelled or defined by a module not included in the server configuration
+</span></span></code></pre></div><p>A: 去除如下配置语句的注释符。 <br>
+<a href="http://www.cnblogs.com/haries/p/4677383.html">Apache2.4启动时报AH00526错误（Invalid command &lsquo;Order&rsquo;）</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#LoadModule access_compat_module modules/mod_access_compat.so</span>
+</span></span></code></pre></div><h3 id="ah00072">AH00072</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Errors reported here must be corrected before the service can be started.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>OS 10048<span style="color:#f92672">)</span>通常每个套接字地址<span style="color:#f92672">(</span>协议/网络地址/端口<span style="color:#f92672">)</span>只允许使用一次。  : AH00072: make_sock: could not bind to address <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:443
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>OS 10048<span style="color:#f92672">)</span>通常每个套接字地址<span style="color:#f92672">(</span>协议/网络地址/端口<span style="color:#f92672">)</span>只允许使用一次。  : AH00072: make_sock: could not bind to address 0.0.0.0:443
+</span></span><span style="display:flex;"><span>AH00451: no listening sockets available, shutting down
+</span></span><span style="display:flex;"><span>AH00015: Unable to open logs
+</span></span></code></pre></div><p>A: 关闭其他占用443端口的软件。</p>
+<blockquote>
+<p>本机为VMware:
+1)编辑-&gt;首选项</p>
+</blockquote>
+<ol start="2">
+<li>共享虚拟机     <br>
+i. 更改配置-&gt;禁用共享     <br>
+ii. 在“HTTPS”后面输入433，启用共享</li>
+</ol>
+<h2 id="注册windows服务">注册Windows服务</h2>
 <p>管理员权限</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>@echo off
 </span></span><span style="display:flex;"><span>echo register begin... ...
@@ -427,38 +380,23 @@ Linux:</li>
 </span></span><span style="display:flex;"><span>echo Service List End... ...
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>pause&gt;nul
-</span></span></code></pre></div><h2 id="ah00526">AH00526</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AH00526: Syntax error on line <span style="color:#ae81ff">233</span> of D:/progFiles/Apache24/conf/httpd.conf:
-</span></span><span style="display:flex;"><span>Invalid command <span style="color:#e6db74">&#39;Order&#39;</span>, perhaps misspelled or defined by a module not included in the server configuration
-</span></span></code></pre></div><p>A: 去除如下配置语句的注释符。 <br>
-<a href="http://www.cnblogs.com/haries/p/4677383.html">Apache2.4启动时报AH00526错误（Invalid command &lsquo;Order&rsquo;）</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#LoadModule access_compat_module modules/mod_access_compat.so</span>
-</span></span></code></pre></div><h2 id="ah00072">AH00072</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Errors reported here must be corrected before the service can be started.
-</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>OS 10048<span style="color:#f92672">)</span>通常每个套接字地址<span style="color:#f92672">(</span>协议/网络地址/端口<span style="color:#f92672">)</span>只允许使用一次。  : AH00072: make_sock: could not bind to address <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:443
-</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>OS 10048<span style="color:#f92672">)</span>通常每个套接字地址<span style="color:#f92672">(</span>协议/网络地址/端口<span style="color:#f92672">)</span>只允许使用一次。  : AH00072: make_sock: could not bind to address 0.0.0.0:443
-</span></span><span style="display:flex;"><span>AH00451: no listening sockets available, shutting down
-</span></span><span style="display:flex;"><span>AH00015: Unable to open logs
-</span></span></code></pre></div><p>A: 关闭其他占用443端口的软件。</p>
-<blockquote>
-<p>本机为VMware:
-1)编辑-&gt;首选项</p>
-</blockquote>
-<ol start="2">
-<li>共享虚拟机     <br>
-i. 更改配置-&gt;禁用共享     <br>
-ii. 在“HTTPS”后面输入433，启用共享</li>
-</ol>
-<h1 id="reference">Reference</h1>
+</span></span></code></pre></div><h2 id="phpmyadminhttpswwwphpmyadminnet"><a href="https://www.phpmyadmin.net/">phpMyAdmin</a></h2>
+<p>如果使用本机mysql则无需配置！</p>
+<h3 id="配置远程mysql">配置远程MySQL</h3>
 <ul>
-<li><a href="http://httpd.apache.org/docs/2.4/platform/windows.html">Apache install</a></li>
-<li><a href="http://www.apachehaus.com/cgi-bin/download.plx">v2.4.55-</a></li>
-<li><a href="https://www.apachelounge.com/download/">v2.4.56+</a></li>
-<li><a href="http://stackoverflow.com/questions/17224798/how-to-use-php-opcache">How to use PHP OPCache?</a></li>
-<li><a href="http://php.net/manual/zh/opcache.configuration.php">OpCache文档</a></li>
-<li><a href="https://serverfault.com/questions/615550/phpmyadmin-error-the-configuration-file-now-needs-a-secret-passphrase">phpmyadmin-error-the-configuration-file-now-needs-a-secret-passphrase</a></li>
+<li>建立配置文件 <br>
+重命名config.sample.inc.php为config.inc.php</li>
+<li>添加服务器信息 <br>
+修改localhost值: 服务器IP。</li>
 </ul>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$cfg<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;Servers&#39;</span><span style="color:#f92672">][</span>$i<span style="color:#f92672">][</span><span style="color:#e6db74">&#39;host&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;192.168.1.4&#39;</span>;
+</span></span></code></pre></div><h3 id="blowfish-secret">blowfish secret</h3>
+<p>The configuration file now needs a secret passphrase (blowfish_secret).</p>
+<ul>
+<li>config blowfish_secret</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$cfg<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;blowfish_secret&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;qtdRoGmbc9{8IZr323xYcSN]0s)r$9b_JUnb{~Xz&#39;</span>;
+</span></span></code></pre></div>
     </section>
 
 
@@ -509,17 +447,10 @@ ii. 在“HTTPS”后面输入433，启用共享</li>
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/java-jni-gcc/">
-          <section class="post">
-              <h2>jni - gcc</h2>
-              
-          </section>
-      </a>
   
-  
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/java-servlet_versions/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/qt-webview/">
           <section class="post">
-              <h2>servlet version choose</h2>
+              <h2>qtwebview minibrowser example</h2>
           </section>
       </a>
   
