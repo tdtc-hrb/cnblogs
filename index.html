@@ -199,30 +199,74 @@
     
         <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_openssl/">install and usage with OpenSSL</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>RHEL Community Version <br>
+Alma Linux / Rocky Linux</li>
+</ul>
+<h1 id="prepare">Prepare</h1>
+<p>Install development tool:</p>
+<pre tabindex="0"><code># dnf group install &#39;Development Tools&#39;
+</code></pre><p>Install dependencies:</p>
+<pre tabindex="0"><code># dnf install perl-core zlib-devel -y
+</code></pre><h2 id="down-latest-openssl">down latest OpenSSL</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$mkdir openssl-1.1.1
+</span></span><span style="display:flex;"><span>$curl --progress https://www.openssl.org/source/openssl-1.1.1w.tar.gz | tar xz -C ./openssl-1.1.1 --strip-components <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h1 id="setup">setup</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$cd openssl-1.1.1
+</span></span></code></pre></div><ul>
+<li>RHEL8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr/local/ssl --openssldir<span style="color:#f92672">=</span>/usr/local/ssl shared zlib
+</span></span></code></pre></div><ul>
+<li>RHEL7</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr --shared
+</span></span></code></pre></div><h2 id="make--install">make &amp;&amp; install</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$make
+</span></span></code></pre></div><p>Root permission Required:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo make install
+</span></span></code></pre></div><h2 id="rhel8">RHEL8</h2>
+<pre tabindex="0"><code># mv /bin/openssl /bin/openssl.backup
+# cp /usr/local/ssl/bin/openssl /bin/openssl
+</code></pre><p>test:</p> <a class="read-more" href="/cnblogs/post/ops_openssl/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-12-29T08:38:08&#43;08:00">
+            29 Dec 2024
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/php-devenv-win/">Windows搭建PHP环境</a></h2>
     </header>
     <section class="post-excerpt">
         
             <p><ul>
-<li>Apache</li>
-<li>PHP</li>
-<li>FAQ</li>
+<li><a href="https://www.apachelounge.com/download/">Apache Lounge Downloads</a></li>
+<li><a href="https://slproweb.com/products/Win32OpenSSL.html">windows openssl</a></li>
 </ul>
 <h1 id="apache配置">Apache配置</h1>
-<p>Non Thread Safe(NTS) 和 Thread Safe(TS)： <br>
-&ldquo;NTS&rdquo;，没有“php(7/8)apache2_4.dll”</p>
-<h3 id="down">Down</h3>
-<ul>
-<li><a href="http://www.apachehaus.com/cgi-bin/download.plx">v2.4.55-</a></li>
-<li><a href="https://www.apachelounge.com/download/">v2.4.56+</a></li>
-</ul>
-<pre tabindex="0"><code>OpenSSL    
-When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.
-</code></pre><h2 id="路径">路径</h2>
+<blockquote>
+<p>Non Thread Safe(NTS) 和 Thread Safe(TS)：
+&ldquo;NTS&rdquo;，没有“php(5/7/8)apache2_4.dll”</p>
+</blockquote>
 <ul>
 <li>网站根目录 <br>
 替换“D:/progFiles/Apache24/htdocs”为自己使用的路径</li>
-<li>程序 <br>
+<li>程序路径 <br>
 替换“D:/progFiles/Apache24/”为自己Apache2.4的路径；</li>
 </ul>
 <h2 id="php-apache">php-apache</h2>
@@ -230,11 +274,14 @@ When using vs17 redistribution, Only PHP 8.2 and 8.1 are supported.
 <ul>
 <li>PHP 8</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;D:/progFiles/php8.0&#34;</span>
-</span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;D:/progFiles/php-8.0/php8apache2_4.dll&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;D:/progFiles/php8.3&#34;</span>
+</span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;D:/progFiles/php-8.3/php8apache2_4.dll&#34;</span>
 </span></span></code></pre></div><ul>
 <li>PHP 7</li>
 </ul>
+<blockquote>
+<p>Php7.2+ 已移除 mcrypt.</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;D:/progFiles/php7.1&#34;</span>
 </span></span><span style="display:flex;"><span>LoadModule php7_module <span style="color:#e6db74">&#34;D:/progFiles/php7.1/php7apache2_4.dll&#34;</span>
 </span></span></code></pre></div><ul>
@@ -251,16 +298,25 @@ LoadModule php5_module &#34;D:/progFiles/php-5.6/php5apache2_4.dll&#34;
 <li>b.允许重写</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
-</span></span></code></pre></div><h1 id="配置phpphpini">配置PHP(php.ini)</h1>
-<p>test.php</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;?php
-</span></span><span style="display:flex;"><span>    header<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Content-Type: text/html; charset=utf-8&#34;</span><span style="color:#f92672">)</span>;
-</span></span><span style="display:flex;"><span>    phpinfo<span style="color:#f92672">()</span>;
-</span></span><span style="display:flex;"><span>?&gt;
-</span></span></code></pre></div><h3 id="memory-limit">memory limit</h3>
-<pre tabindex="0"><code>memory_limit = -1
-</code></pre><h2 id="extension设置">extension设置</h2>
-<p>目录位置:</p> <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
+</span></span></code></pre></div><h2 id="ssl">SSL</h2>
+<ul>
+<li>open module</li>
+</ul>
+<pre tabindex="0"><code>LoadModule ssl_module modules/mod_ssl.so
+</code></pre><ul>
+<li>at httpd.conf:</li>
+</ul>
+<pre tabindex="0"><code>Include conf/extra/httpd-ssl.conf
+## apache haus httpd-2.4.55-o111s-x64-vs16.zip
+##Include conf/extra/httpd-ahssl.conf
+</code></pre><h3 id="basic-confhttpshttpdapacheorgdocs24sslssl_howtohtml"><a href="https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html">basic conf</a></h3>
+<p>httpd-ssl.conf:</p>
+<ul>
+<li>ServerName localhost:443</li>
+<li>SSLCertificateFile &ldquo;${SRVROOT}/conf/ssl/development.crt&rdquo;</li>
+<li>SSLCertificateKeyFile &ldquo;${SRVROOT}/conf/ssl/development.key&rdquo;</li>
+</ul>
+<p>copy &ldquo;development.crt&rdquo; and &ldquo;development.key&rdquo; to directory:</p> <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -269,8 +325,8 @@ LoadModule php5_module &#34;D:/progFiles/php-5.6/php5apache2_4.dll&#34;
         
 
         
-        <time class="post-date" datetime="2024-12-26T11:08:08&#43;08:00">
-            26 Dec 2024
+        <time class="post-date" datetime="2024-12-28T11:08:08&#43;08:00">
+            28 Dec 2024
         </time>
     </footer>
 </article>
@@ -796,87 +852,6 @@ gem install mysql2
         
         <time class="post-date" datetime="2024-09-30T08:08:08&#43;08:00">
             30 Sep 2024
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ror_installation/">安装Ruby On Rails</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html">Ruby &amp; Rails Compatibility Table</a></li>
-</ul>
-<table>
-  <thead>
-      <tr>
-          <th>Rails Version</th>
-          <th>Required Ruby Version</th>
-          <th>Recommended Ruby Version</th>
-          <th>Required Rubygems Version</th>
-          <th>Status</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>7.2.Z</td>
-          <td>&gt;= 3.1.0</td>
-          <td>3.3</td>
-          <td>&gt;= 1.8.11</td>
-          <td>Maintained</td>
-      </tr>
-      <tr>
-          <td>7.1.Z</td>
-          <td>&gt;= 2.7.0</td>
-          <td>3.2.Z</td>
-          <td>&gt;= 1.8.11</td>
-          <td>Maintained</td>
-      </tr>
-      <tr>
-          <td>7.0.Z</td>
-          <td>&gt;= 2.7.0</td>
-          <td>3.1.Z</td>
-          <td>&gt;= 1.8.11</td>
-          <td>Maintained</td>
-      </tr>
-  </tbody>
-</table>
-<h1 id="rbenv">RbEnv</h1>
-<p>Install ruby using rbenv.</p>
-<h2 id="dependencies">Dependencies</h2>
-<ul>
-<li>Debian</li>
-</ul>
-<blockquote>
-<p>v12
-After enabling <a href="https://tdtc-hrb.github.io/csdn/post/apt-oper-ubuntu/">sudo</a>,
-the operation is the same as Ubuntu.</p>
-</blockquote>
-<ul>
-<li>Ubuntu <br>
-Ubuntu 20.04 default Ruby version is v2.7</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
- libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
-</code></pre><ul>
-<li>RHEL <br>
-RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel
-</span></span></code></pre></div><p>install tar:</p> <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-09-29T08:08:08&#43;08:00">
-            29 Sep 2024
         </time>
     </footer>
 </article>
