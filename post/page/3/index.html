@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.140.1">
+    <meta name="generator" content="Hugo 0.141.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -153,13 +153,151 @@
 	
 	    <a class="newer-posts" href="/cnblogs/post/page/2/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 3 of 6</span>
+	<span class="page-number">Page 3 of 7</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/4/">Older Posts &rarr;</a>
 	
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp.net6-mvc/">3小时搞定ASP.NET Core 6.0</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>OS <br>
+<a href="https://github.com/dotnet/core/blob/main/release-notes/6.0/supported-os.md">Windows 10 LTSB 2016+</a></li>
+<li>IDE <br>
+<a href="https://code.visualstudio.com/download">Visual Studio Code</a> - v1.76.1</li>
+<li>SDK <br>
+<a href="https://dotnet.microsoft.com/download/dotnet/6.0">.Net 6.0</a></li>
+<li>终端(Terminal) <br>
+<a href="https://github.com/PowerShell/PowerShell#get-powershell">PowerShell Core</a></li>
+<li>数据库(Database) <br>
+<a href="https://dev.mysql.com/downloads/mysql/">MySQL</a> / Microsoft SQL Server 2012 Express LocalDB (vs2013 inside)</li>
+</ul>
+<h1 id="一create-projectvs-code">一、Create Project(VS Code)</h1>
+<ul>
+<li>Init project</li>
+</ul>
+<blockquote>
+<p>Terminal -&gt; New Terminal</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd .<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>dotnet new mvc -o veic_web --framework net6.0
+</span></span></code></pre></div><ul>
+<li>Set workspace dir</li>
+</ul>
+<blockquote>
+<p>File -&gt; Add Folder to Workspace</p>
+</blockquote>
+<h2 id="设置缺省首页home-set-default">设置缺省首页(Home Set Default)</h2>
+<ul>
+<li>Program.cs</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>app.UseStaticFiles();
+</span></span></code></pre></div><p>变更为:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>app.UseDefaultFiles();
+</span></span><span style="display:flex;"><span>app.UseStaticFiles();
+</span></span></code></pre></div><ul>
+<li>Html <br>
+新建wwwroot/index.html，See附录<sup>1</sup>.</li>
+</ul>
+<h2 id="run">Run</h2>
+<pre tabindex="0"><code>Run -&gt; Start Debugging
+</code></pre><p>运行效果:
+<img src="https://img-blog.csdnimg.cn/20201102052153747.png" alt="home page"></p>
+<h1 id="二data">二、Data</h1>
+<p>namespace:</p> <a class="read-more" href="/cnblogs/post/asp.net6-mvc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-03-14T08:18:02&#43;08:00">
+            14 Mar 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/java-jmx-ch2/">jmx - first demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Starting with the J2SE platform 5.0, JMX technology is included in the Java SE platform.</p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Jmxarchitecture.png" alt="Jmx architecture"></p>
+<ul>
+<li>jmxtools
+Download the <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.jar">jar</a>
+and <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.pom">pom</a> files,
+Then copy it to the M2 directory.
+M2:</li>
+</ul>
+<pre tabindex="0"><code>C:\Users\tdtc\.m2\repository\com\sun\jdmk\jmxtools\1.2.1
+</code></pre><ul>
+<li><a href="https://www.manning.com/downloads/737">Source</a></li>
+</ul>
+<h1 id="project">project</h1>
+<p>. <br>
+|____src <br>
+| |____main <br>
+| | |____java <br>
+| | | |____jmxbook.ch2 <br>
+|____pom.xml</p>
+<p>Gen jar:</p>
+<pre tabindex="0"><code>mvn package
+</code></pre><ul>
+<li>pom.xml</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;modelVersion&gt;</span>4.0.0<span style="color:#f92672">&lt;/modelVersion&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>jmxbook<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>jmxInAction<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;version&gt;</span>0.0.1-SNAPSHOT<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;build/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;repositories&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;repository&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;id&gt;</span>datanucleus.org/downloads/maven2<span style="color:#f92672">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;name&gt;</span>datanucleus.org Maven Repository<span style="color:#f92672">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;url&gt;</span>http://www.datanucleus.org/downloads/maven2/<span style="color:#f92672">&lt;/url&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/repository&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/repositories&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/com.sun.jdmk/jmxtools --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;groupId&gt;</span>com.sun.jdmk<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;artifactId&gt;</span>jmxtools<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;version&gt;</span>1.2.1<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span>
+</span></span></code></pre></div><h2 id="the-agent-level">The Agent level</h2>
+<p>HelloAgent.java:</p> <a class="read-more" href="/cnblogs/post/java-jmx-ch2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-02-08T08:08:08&#43;08:00">
+            8 Feb 2023
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -621,119 +759,12 @@ Otherwise the OS version will not be recognized!!</p> <a class="read-more" href=
 </article>
 
 	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/es24-install/">Elasticsearch 2.4 安装</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>Ubuntu 20.04.1</p>
-</blockquote>
-<h1 id="part-i-elasticsearch">Part I. Elasticsearch</h1>
-<h2 id="1-install-jdk">1. install JDK</h2>
-<h3 id="1-down-jdk8">1) down jdk8</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u332-b09/OpenJDK8U-jdk_x64_linux_hotspot_8u332b09.tar.gz
-</span></span></code></pre></div><p>unzip:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo mkdir /usr/java
-</span></span><span style="display:flex;"><span>$sudo tar zxvf OpenJDK8U-jdk_x64_linux_hotspot_8u332b09.tar.gz -C /usr/java
-</span></span></code></pre></div><h3 id="2-setup">2) setup</h3>
-<blockquote>
-<p>root:</p>
-<blockquote>
-<p>$sudo -sH</p>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export JAVA_HOME=/usr/java/jdk8u332-b09&#39;</span> &gt;&gt; /etc/bash.bashrc
-</span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export CLASSPATH=$JAVA_HOME/lib/:.&#39;</span> &gt;&gt; /etc/bash.bashrc
-</span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export PATH=$PATH:$JAVA_HOME/bin&#39;</span> &gt;&gt; /etc/bash.bashrc
-</span></span><span style="display:flex;"><span>$source /etc/bash.bashrc
-</span></span></code></pre></div><h3 id="3-test">3) test</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -version
-</span></span><span style="display:flex;"><span>echo $JAVA_HOME
-</span></span></code></pre></div><h2 id="2-elasticsearch-exec-pack">2. Elasticsearch exec pack</h2>
-<h3 id="1-down">1) down</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -L -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.6/elasticsearch-2.4.6.tar.gz
-</span></span></code></pre></div><p>unzip:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xvf elasticsearch-2.4.6.tar.gz
-</span></span></code></pre></div><h3 id="2-config">2) config</h3>
-<blockquote>
-<p>../config/elasticsearch.yml</p>
-</blockquote>
-<h4 id="network">network</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>network.host: 0.0.0.0
-</span></span><span style="display:flex;"><span>http.port: <span style="color:#ae81ff">9200</span>
-</span></span></code></pre></div><h4 id="bootstrap">bootstrap</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bootstrap.system_call_filter: false
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>bootstrap.seccomp: false
-</span></span></code></pre></div><h4 id="max-map-count">max map count</h4>
-<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html">/etc/sysctl.conf</a></p> <a class="read-more" href="/cnblogs/post/es24-install/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-05-25T18:08:08&#43;08:00">
-            25 May 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/trace-zipkin-config/">Distributed traceability with Spring Cloud: Sleuth and Zipkin</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="i-sleuth">I. Sleuth</h1>
-<h2 id="0-concept">0. Concept</h2>
-<ul>
-<li>
-<p>Trace <br>
-A set of spans that form a call tree structure, forms the trace of the request.</p>
-</li>
-<li>
-<p>Span <br>
-It is the basic unit of work, for example a call to a service.
-They are identified with a span ID and a trace ID to which span is owned.
-They have start and end, and with it you get track the response time between requests.</p>
-</li>
-<li>
-<p>Tag <br>
-Key/value pair that identifies certain information in the span.
-It doesn&rsquo;t contain timestamps, it just identifies.
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181202033721712.png" alt="ms info">
-<strong>Annotation:</strong> Used to record the existence of an event in time.
-With <a href="https://github.com/openzipkin/brave">Brave</a> instrumentation,
-we no longer need to set special events for Zipkin to understand who the client and server are,
-where the request started, and where it ended.
-For learning purposes, however, we mark these events to highlight what kind of an action took place.</p> <a class="read-more" href="/cnblogs/post/trace-zipkin-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-05-25T08:08:08&#43;08:00">
-            25 May 2022
-        </time>
-    </footer>
-</article>
-
-	
 
 	<nav class="pagination" role="navigation">
 	
 	    <a class="newer-posts" href="/cnblogs/post/page/2/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 3 of 6</span>
+	<span class="page-number">Page 3 of 7</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/4/">Older Posts &rarr;</a>
 	

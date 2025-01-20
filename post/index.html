@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.140.1">
+    <meta name="generator" content="Hugo 0.141.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -151,13 +151,148 @@
 	<div class="extra-pagination inner">
     <nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 6</span>
+	<span class="page-number">Page 1 of 7</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/2/">Older Posts &rarr;</a>
 	
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq5/">Windows的一些设置</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="mainland-china">mainland China</h1>
+<p>also see: <a href="https://tdtc-hrb.github.io/csdn/post/ops_network_proxy">network proxy</a></p>
+<h2 id="visual-studio-2015">visual studio 2015</h2>
+<p>key: visual studio 2015 javascript_projectsystem</p>
+<ul>
+<li>file info</li>
+</ul>
+<pre tabindex="0"><code>en_visual_studio_community_2015_with_update_3_x86_x64_dvd_8923300.iso
+SHA1: C838DF0D2DAD6E763DF5A7974F5FFCD45B98FD0E
+size: 7.09GB
+date: 2016-06-27
+ed2k://|file|en_visual_studio_community_2015_with_update_3_x86_x64_dvd_8923300.iso|7617847296|AC962389EB54AF93431568804CB10875|/
+</code></pre><ul>
+<li>setup issue
+<a href="https://stackoverflow.com/a/39130542">&ldquo;A Setup Package is either missing or damaged&rdquo; error while installing Visual Studio 2015 on Windows 10</a></li>
+</ul>
+<h2 id="eset">ESET</h2>
+<ul>
+<li>Install</li>
+<li>Update</li>
+</ul>
+<h3 id="install-issue">Install issue</h3>
+<p>ACT.33/ECP.3:</p>
+<pre tabindex="0"><code>DNS:
+8.8.8.8
+8.8.4.4
+</code></pre><h3 id="update-issue">update issue</h3>
+<ul>
+<li>
+<ol>
+<li>Press the F5 key to access Advanced setup</li>
+</ol>
+</li>
+<li>2.a update -&gt; Profiles</li>
+</ul>
+<blockquote>
+<p>My profile</p>
+</blockquote>
+<ul>
+<li>2.b updates -&gt; Connection options</li>
+</ul>
+<h1 id="windows">windows</h1>
+<ul>
+<li>background</li>
+</ul>
+<h2 id="background">background</h2>
+<p>Desktop background and lock screen background</p> <a class="read-more" href="/cnblogs/post/ops_win_faq5/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-20T08:08:08&#43;08:00">
+            20 Jan 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow1-gcc/">signed warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>For development environment settings, see: <a href="https://blog.csdn.net/xiaobin_HLJ80/article/details/19500207#t0">pictures</a>
+and <a href="https://tdtc-hrb.github.io/csdn/post/c-console_app">run application</a></p>
+<h2 id="shellsort">shellsort</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Comparable<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> shellsort(vector<span style="color:#f92672">&lt;</span>Comparable<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>a)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> gap <span style="color:#f92672">=</span> a.size() <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; gap <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; gap <span style="color:#f92672">/=</span> <span style="color:#ae81ff">2</span>){
+</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> gap; i <span style="color:#f92672">&lt;</span> a.size(); <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>    	{
+</span></span><span style="display:flex;"><span>    		Comparable tmp <span style="color:#f92672">=</span> move(a[i]);
+</span></span><span style="display:flex;"><span>    		<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    		<span style="color:#66d9ef">for</span> (; j <span style="color:#f92672">&gt;=</span> gap <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">&lt;</span> a[j <span style="color:#f92672">-</span> gap]; j <span style="color:#f92672">-=</span> gap)
+</span></span><span style="display:flex;"><span>    		{
+</span></span><span style="display:flex;"><span>    			a[j] <span style="color:#f92672">=</span> move(a[j <span style="color:#f92672">-</span> gap]);
+</span></span><span style="display:flex;"><span>    		}
+</span></span><span style="display:flex;"><span>    		a[j] <span style="color:#f92672">=</span> move(tmp);
+</span></span><span style="display:flex;"><span>    	}
+</span></span><span style="display:flex;"><span>    	cout<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> gap <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> n : a)
+</span></span><span style="display:flex;"><span>    		cout <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> a <span style="color:#f92672">=</span> {<span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">55</span>, <span style="color:#ae81ff">23</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">65</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">29</span>};
+</span></span><span style="display:flex;"><span>    shellsort(a);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Warn info</li>
+</ul>
+<pre tabindex="0"><code>warning: comparison of integer expressions of different signedness: 
+&#39;int&#39; and &#39;std::vector&lt;int&gt;::size_type&#39; {aka &#39;long long unsigned int&#39;} [-Wsign-compare]
+   10 |         for(int i = gap; i &lt; a.size(); ++i)
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/a/3660928">A warning - comparison between signed and unsigned integer expressions</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c++4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow1-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-11T11:08:08&#43;08:00">
+            11 Jan 2025
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -669,161 +804,10 @@ var receiveResult = await webSocket.ReceiveAsync(
 </article>
 
 	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp-base/">3小时搞定asp.net 9.0</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>IDE: Visual Studio 2022 -<a href="https://visualstudio.microsoft.com/vs/preview/#download-preview">community</a></li>
-<li>DB：MySQL5.7+</li>
-</ul>
-<p>下载<a href="https://dotnet.microsoft.com/download/dotnet/9.0">V9.0</a>:</p>
-<ul>
-<li>32位 :<a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-9.0.100-rc.2-windows-x86-installer">x86</a></li>
-<li>64位 :<a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-9.0.100-rc.2-windows-x64-installer">x64</a></li>
-</ul>
-<h1 id="建立工程">建立工程</h1>
-<blockquote>
-<p>File-》New-》Project</p>
-<blockquote>
-<p>ASP.NET Core Web Application(Model-View-Controller)</p>
-</blockquote>
-</blockquote>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011124537.png" alt="vs2022 preview"></p>
-<h2 id="简单修改主页">简单修改主页</h2>
-<blockquote>
-<p>Solution Explorer</p>
-<blockquote>
-<p>Views-》Home-》Index.cshtml</p>
-</blockquote>
-</blockquote>
-<p>增加如下代码：</p>
-<pre tabindex="0"><code class="language-asp.net" data-lang="asp.net">&lt;p&gt;这是我的第1个ASP.NET程序！&lt;/p&gt;
-</code></pre><p>选择使用何种Web Server 运行：</p>
-<ul>
-<li>http</li>
-<li>https</li>
-<li>IIS Express</li>
-</ul>
-<blockquote>
-<p>default: https</p>
-</blockquote>
-<p>点击“IIS Express”运行（如果弹出证书安装选“是”即可）。
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134118.png" alt="iis cert - hint">
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134337.png" alt="windows - hint"></p>
-<h1 id="增加数据库">增加数据库</h1>
-<h2 id="ef-core">EF Core</h2>
-<blockquote>
-<p>Project-》Manage NuGet Packages
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011135217.png" alt="Microsoft EF Core"></p>
-</blockquote>
-<h2 id="entity-class">entity class</h2>
-<p>我们建立一个与数据表相对应的Entity类</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel.DataAnnotations;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> veic_web.Models
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span>
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Key]</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Param_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Statu_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Lang_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Img_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Description { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="db-class">DB Class</h2>
-<blockquote>
-<p>Solution Explorer</p> <a class="read-more" href="/cnblogs/post/asp-base/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-10-12T09:08:08&#43;08:00">
-            12 Oct 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ror_getstarted/">开始Ruby On Rails</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="prepare">Prepare</h1>
-<ul>
-<li>
-<p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-ubuntu/">nodejs</a></p>
-</li>
-<li>
-<p>foreman</p>
-</li>
-</ul>
-<pre tabindex="0"><code>gem install foreman
-</code></pre><h2 id="mysql-dev">mysql-dev</h2>
-<ul>
-<li>ubuntu</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
-gem install mysql2
-</code></pre><h3 id="debianhttpsstackoverflowcoma34384709"><a href="https://stackoverflow.com/a/34384709">Debian</a></h3>
-<ul>
-<li>mariadb</li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install mariadb-server
-</code></pre><ul>
-<li><a href="https://github.com/ansible-community/ara-collection/issues/8">mariadbclient-dev</a></li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install libmariadb-dev-compat libmariadb-dev
-</code></pre><ul>
-<li><a href="https://stackoverflow.com/questions/72000977/how-do-i-install-libmysqlclient21-on-debianbuster-slim-based-docker-image">client</a></li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install mariadb-client mysql-common default-mysql-client
-</code></pre><ul>
-<li>mysql2</li>
-</ul>
-<pre tabindex="0"><code>gem install mysql2
-</code></pre><h2 id="yarn">Yarn</h2>
-<p>upload <a href="https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn_1.22.22_all.deb">yarn_1.22.22_all.deb</a> to ubuntu:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>scp d:\yarn_1.22.22_all.deb tdtc@192.168.3.99:/home/tdtc/
-</span></span></code></pre></div><p>install:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.22_all.deb
-</span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.22_all.deb
-</span></span></code></pre></div><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
-<p>new:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rails new veic_web-r2 -j esbuild --css bulma -d mysql
-</span></span></code></pre></div><h2 id="upload-images">upload images</h2>
-<p>windows 10:</p> <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-09-30T08:08:08&#43;08:00">
-            30 Sep 2024
-        </time>
-    </footer>
-</article>
-
-	
 
 	<nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 6</span>
+	<span class="page-number">Page 1 of 7</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/2/">Older Posts &rarr;</a>
 	
