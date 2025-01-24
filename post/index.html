@@ -162,6 +162,152 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-hello/">Widgets简单demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022">Qt Visual Studio Tools</a></li>
+<li>Qt Design Studio</li>
+</ul>
+<p>Find &ldquo;Qt&rdquo; in &ldquo;Tools-&gt;Options&rdquo; of Visual Studio and set the qmake path
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123104033.png" alt="Versions - vs2022"></p>
+<h1 id="widget工程">Widget工程</h1>
+<ul>
+<li>QtHello
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123111036.png" alt="vs2022 info1"></li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130638.png" alt="Build config"></p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20250123130026.png" alt="set class name">
+&ldquo;User Interface(.ui)file&rdquo; is only available if you install the QtDesignStudio</p>
+<h2 id="设置工程properties">设置工程Properties</h2>
+<ul>
+<li>support c++17</li>
+</ul>
+<pre tabindex="0"><code>Configuration Properties &gt; C/C++ &gt; Language
+
+c++ language standard: c++17
+</code></pre><ul>
+<li><a href="https://learn.microsoft.com/en-us/cpp/build/reference/zc-cplusplus">support cplusplus</a></li>
+</ul>
+<pre tabindex="0"><code>Configuration Properties &gt; C/C++ &gt; Command Line property page.
+</code></pre><p>Add</p>
+<pre tabindex="0"><code>/Zc:__cplusplus
+</code></pre><p>to the Additional options.</p>
+<h2 id="ui">UI</h2>
+<ul>
+<li>Open the UI file using QT
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123131837.png" alt="QtDesignStudio"></li>
+</ul>
+<h3 id="push-button">Push Button</h3>
+<p>拖拽“Push Button”，并修改属性：</p> <a class="read-more" href="/cnblogs/post/qt-hello/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-24T13:08:08&#43;08:00">
+            24 Jan 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-thread/">QT5简单thread</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="project">Project</h1>
+<p>使用Qt Visual Studio Tools创建, 以下简称qt tools。</p>
+<p>also see: <a href="https://tdtc-hrb.github.io/cnblogs/post/qt-hello/">QT VS Tools的设置</a></p>
+<h2 id="install-qt-tools">install qt tools</h2>
+<p>Tools -&gt; Extensions and Updates <br>
+选择Online, 输入&quot;Qt Visual Studio Tools&quot;</p>
+<h2 id="create-qt-project">Create Qt Project</h2>
+<p>File -&gt; New -&gt; Project <br>
+Qt Console Application</p>
+<h2 id="add-class">Add class</h2>
+<p>点击“工程名”右键, Add -&gt; Class <br>
+Class name: Controller <br>
+Base Class: QObject</p>
+<p>初始状态的Controller类: <br>
+Controller.h</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;qobject.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Controller</span> <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> QObject
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Controller.cpp</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Controller.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h1 id="worker">Worker</h1>
+<p>此Worker使用的“easy worker”的案例.</p>
+<h2 id="header">Header</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QObject&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Worker</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QObject {
+</span></span><span style="display:flex;"><span>	Q_OBJECT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	Worker();
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">~</span>Worker();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> slots:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> process();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>signals:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> finished();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">error</span>(QString err);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// add your variables here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></code></pre></div><h2 id="class">Class</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Worker.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- CONSTRUCTOR ---
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Worker<span style="color:#f92672">::</span>Worker() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// you could copy data from constructor arguments to internal variables here.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- DECONSTRUCTOR ---
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Worker<span style="color:#f92672">::~</span>Worker() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// free resources
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- PROCESS ---
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Start processing data.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> Worker<span style="color:#f92672">::</span>process() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// allocate resources using new here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	qDebug(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>	emit <span style="color:#a6e22e">finished</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="controller">Controller</h1>
+<h2 id="header-1">Header</h2>
+<p>申明errorString槽, 以对接Worker的信号“error”;
+申明operate信号, 以供操作Controller。</p> <a class="read-more" href="/cnblogs/post/qt-thread/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-23T22:08:08&#43;08:00">
+            23 Jan 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq5/">Windows的一些设置</a></h2>
     </header>
     <section class="post-excerpt">
@@ -638,171 +784,6 @@ Just head to Settings &gt; Sidebar &gt; Copilot &gt; Always Show Sidebar. Altern
         
         <time class="post-date" datetime="2024-11-19T21:08:08&#43;08:00">
             19 Nov 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>The latest version of Visual Studio:</p>
-<ul>
-<li>vs2017</li>
-</ul>
-<blockquote>
-<p>15.9</p>
-</blockquote>
-<ul>
-<li>vs2019</li>
-</ul>
-<blockquote>
-<p>16.9</p>
-</blockquote>
-<ul>
-<li>vs2022</li>
-</ul>
-<blockquote>
-<p>17.12</p>
-</blockquote>
-<h1 id="visual-studio">Visual Studio</h1>
-<p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
-<ul>
-<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
-<li><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">down options</a></li>
-</ul>
-<h2 id="format">format</h2>
-<ul>
-<li>target directory</li>
-</ul>
-<pre tabindex="0"><code>--layout TARGET(directory)
-</code></pre><ul>
-<li>components</li>
-</ul>
-<pre tabindex="0"><code>--add NAME(Component)
-</code></pre><ul>
-<li>language</li>
-</ul>
-<pre tabindex="0"><code>--lang en-US
-</code></pre><p>exec:</p>
-<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs202x `
-...
-</code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
-<h2 id="common">Common</h2>
-<ul>
-<li>Core</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
---add Microsoft.VisualStudio.Workload.CoreEditor `
---add Microsoft.VisualStudio.Component.Roslyn.Compiler `
---add Microsoft.VisualStudio.Component.TextTemplating `
-</code></pre><ul>
-<li>Microsoft Build Tools</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.Component.MSBuild `
-</code></pre><ul>
-<li>JIT</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.Debugger.JustInTime `
-</code></pre><ul>
-<li>IntelliCode</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
-</code></pre><h2 id="vc">VC</h2>
-<p>After vs2022 17.12, the main productivity for VC.</p> <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-11-12T08:08:08&#43;08:00">
-            12 Nov 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp-ws2/">WebSockets over HTTP/2</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p><a href="https://github.com/dotnet/AspNetCore.Docs/commit/75ce89b25e9ba61f9687ce36a41cd3c50aec1e3c">NET 7 introduces Websockets over HTTP/2 support for Kestrel, the SignalR JavaScript client, and SignalR with Blazor WebAssembly.</a></p>
-<h3 id="http2">HTTP2</h3>
-<ul>
-<li>Multiplexing
-<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*lY05UTuA-dWCXU-q.png" alt="Request multiplexing"></li>
-<li>Server push
-<img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*ZJLgVdXq_06hcF1o.png" alt="cacheable information"></li>
-<li>Header compression
-<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*5r8-MbhEseP6lEQg.png" alt="HPACK"></li>
-</ul>
-<p>ref site:</p>
-<ul>
-<li><a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1/">HTTP/2 vs. HTTP/1.1: How do they affect web performance?</a></li>
-<li><a href="https://factoryhr.medium.com/http-2-the-difference-between-http-1-1-benefits-and-how-to-use-it-38094fa0e95b">HTTP/2: the difference between HTTP/1.1, benefits and how to use it</a></li>
-</ul>
-<h4 id="os-and-browsers-support">os and browsers support</h4>
-<ul>
-<li>Windows 10 1607+</li>
-<li>TLS 1.2+</li>
-<li><a href="https://caniuse.com/http2">browsers</a></li>
-</ul>
-<p>Note: recommended to use Chrome/FireFox</p>
-<h2 id="websockets">WebSockets</h2>
-<ul>
-<li>Accept a WebSocket connection as an asynchronous operation <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.httplistenercontext.acceptwebsocketasync">HttpListenerContext.AcceptWebSocketAsync()</a></li>
-<li>Receives data from the WebSocket connection asynchronously <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.receiveasync">WebSocket.ReceiveAsync()</a></li>
-<li>Sends data over the WebSocket connection asynchronously <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.sendasync">WebSocket.SendAsync()</a></li>
-<li>Closes the WebSocket connection as an asynchronous operation <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.closeasync">CloseAsync</a></li>
-</ul>
-<h3 id="enable-websocket">Enable WebSocket</h3>
-<ul>
-<li>default</li>
-</ul>
-<pre tabindex="0"><code>app.UseWebSockets()
-</code></pre><ul>
-<li>options</li>
-</ul>
-<pre tabindex="0"><code>var webSocketOptions = new WebSocketOptions
-{
-    KeepAliveInterval = TimeSpan.FromMinutes(2)
-};
-
-app.UseWebSockets(webSocketOptions);
-</code></pre><h3 id="accept-websocket-requests">Accept WebSocket requests</h3>
-<pre tabindex="0"><code>if (HttpContext.WebSockets.IsWebSocketRequest)
-{
-    using var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
-}
-</code></pre><h3 id="receive-messages">receive messages</h3>
-<pre tabindex="0"><code>var buffer = new byte[1024 * 4];
-
-var receiveResult = await webSocket.ReceiveAsync(
-    new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
-</code></pre><h4 id="arraysegmenthttpslearnmicrosoftcomen-usdotnetapisystemarraysegment-1"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
-<p>Array version of substring()</p> <a class="read-more" href="/cnblogs/post/asp-ws2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-10-18T20:38:18&#43;08:00">
-            18 Oct 2024
         </time>
     </footer>
 </article>
