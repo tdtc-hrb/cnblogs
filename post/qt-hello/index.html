@@ -29,7 +29,7 @@
     
     <meta property="og:description" content="Just a pop-up dialog box" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2025-01-25T09:08:08&#43;08:00" />
+    <meta property="article:published_time" content="2025-01-25T19:08:08&#43;08:00" />
 
     
     
@@ -92,15 +92,15 @@
     },
     "headline": "Widgets简单demo",
     "name": "Widgets简单demo",
-    "wordCount":  174 ,
+    "wordCount":  176 ,
     "timeRequired": "PT1M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/qt-hello/",
-    "datePublished": "2025-01-25T09:08Z",
-    "dateModified": "2025-01-25T09:08Z",
+    "datePublished": "2025-01-25T19:08Z",
+    "dateModified": "2025-01-25T19:08Z",
     
     
     "description": "Just a pop-up dialog box",
@@ -168,7 +168,7 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2025-01-25T09:08:08&#43;08:00">
+          <time class="post-date" datetime="2025-01-25T19:08:08&#43;08:00">
             Jan 25, 2025
           </time>
         
@@ -192,20 +192,6 @@
 <p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130638.png" alt="Build config"></p>
 <p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130026.png" alt="set class name">
 &ldquo;User Interface(.ui)file&rdquo; is only available if you install the QtDesignStudio</p>
-<h2 id="设置工程properties">设置工程Properties</h2>
-<ul>
-<li>support c++17</li>
-</ul>
-<pre tabindex="0"><code>Configuration Properties &gt; C/C++ &gt; Language
-
-c++ language standard: c++17
-</code></pre><ul>
-<li><a href="https://learn.microsoft.com/en-us/cpp/build/reference/zc-cplusplus">support cplusplus</a></li>
-</ul>
-<pre tabindex="0"><code>Configuration Properties &gt; C/C++ &gt; Command Line property page.
-</code></pre><p>Add</p>
-<pre tabindex="0"><code>/Zc:__cplusplus
-</code></pre><p>to the Additional options.</p>
 <h2 id="ui">UI</h2>
 <ul>
 <li>Open the UI file using QT
@@ -247,8 +233,7 @@ c++ language standard: c++17
 </span></span></code></pre></div><ul>
 <li>QtHello.cpp</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdafx.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtHello.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtHello.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMessageBox&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>QtHello<span style="color:#f92672">::</span>QtHello(QWidget <span style="color:#f92672">*</span>parent)
@@ -257,8 +242,10 @@ c++ language standard: c++17
 </span></span><span style="display:flex;"><span>    ui.setupUi(<span style="color:#66d9ef">this</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// add code // Association 3-Elements: Ui-Event-Method
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    connect(ui.btnHello, SIGNAL(clicked()), <span style="color:#66d9ef">this</span>, SLOT(helloQT()));
-</span></span><span style="display:flex;"><span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    connect(ui.btnHello, <span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked, <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>QtHello<span style="color:#f92672">::</span>helloQT);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The other way to connect a signal to a slot is to use QObject::connect() and the SIGNAL and SLOT macros. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// connect(ui.btnHello, SIGNAL(clicked()), this, SLOT(helloQT()));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Implementation
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> QtHello<span style="color:#f92672">::</span>helloQT()
@@ -269,22 +256,20 @@ c++ language standard: c++17
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="signals-and-slotshttpsdocqtioqt-6signalsandslotshtml"><a href="https://doc.qt.io/qt-6/signalsandslots.html">Signals and Slots</a></h2>
 <p><img src="https://doc.qt.io/qt-6/images/abstract-connections.png" alt="qt6 offical"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>connect(ui.btnHello, SIGNAL(clicked()), <span style="color:#66d9ef">this</span>, SLOT(helloQT()));
-</span></span></code></pre></div><ul>
-<li>Declarative</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">helloQT</span>();
-</span></span></code></pre></div><p>注意： 声明是在slots下！</p>
 <ul>
-<li>Implementation</li>
+<li>slot <br>
+The fun() declaration is placed in the slot. <br>
+In this case, it is helloQT().</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> QtHello<span style="color:#f92672">::</span>helloQT()
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    QMessageBox msgBox;
-</span></span><span style="display:flex;"><span>    msgBox.setText(<span style="color:#e6db74">&#34;Hello Qt!&#34;</span>);
-</span></span><span style="display:flex;"><span>    msgBox.exec();
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
+<h3 id="connecthttpsdocqtioqt-6qobjecthtmlconnect"><a href="https://doc.qt.io/qt-6/qobject.html#connect">connect</a></h3>
+<p>connect a signal to a slot:</p>
+<ul>
+<li>Pointer <br>
+需要关心信号的源头: 从哪里发出的信号</li>
+<li>Macro <br>
+只需要知道发出的是什么信号</li>
+</ul>
+
     </section>
 
 
