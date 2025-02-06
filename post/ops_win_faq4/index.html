@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.142.0">
+    <meta name="generator" content="Hugo 0.143.1">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq4/" />
 
@@ -192,8 +192,7 @@ Just head to Settings &gt; Sidebar &gt; Copilot &gt; Always Show Sidebar. Altern
 <li>方法一 删除 IconCache.db 文件</li>
 </ul>
 <blockquote>
-<p>C:\Users\用户名\appdata\local</p>
-</blockquote>
+<p>C:\Users\用户名\appdata\local</p></blockquote>
 <h2 id="winre">WinRE</h2>
 <ul>
 <li><a href="https://answers.microsoft.com/en-us/windows/forum/all/kb5034441-update-problem-error-0x80070643/0821b603-9707-4587-9da5-e5809cac3779">update problem, error (0x80070643).</a> <br>
@@ -220,14 +219,12 @@ list part
 shrink desired=250 minimum=250
 </code></pre><h4 id="del-winre-partition">del WinRE partition</h4>
 <blockquote>
-<p>tpye: Recovery</p>
-</blockquote>
+<p>tpye: Recovery</p></blockquote>
 <pre tabindex="0"><code>sel part 4
 delete partition override
 </code></pre><h4 id="create-a-new-recovery-partition">Create a new recovery partition</h4>
 <blockquote>
-<p>GPT</p>
-</blockquote>
+<p>GPT</p></blockquote>
 <pre tabindex="0"><code>create partition primary id=de94bba4-06d1-4d40-a16a-bfd50179d6ac
 format quick fs=ntfs label=&#34;Windows RE&#34;
 exit

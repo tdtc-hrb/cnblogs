@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.142.0">
+    <meta name="generator" content="Hugo 0.143.1">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-lwip-ethernet/" />
 
@@ -181,8 +181,7 @@
 （PS. 再一次感谢Adam Dunkels大侠的无私工作！以及对他的敬意！）</p>
 <h1 id="头文件">头文件</h1>
 <blockquote>
-<p>ethernetif.h</p>
-</blockquote>
+<p>ethernetif.h</p></blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef ETHERNETIF_H_INCLUDED
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define ETHERNETIF_H_INCLUDED
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
@@ -198,8 +197,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* ETHERNETIF_H_INCLUDED */</span><span style="color:#75715e">
 </span></span></span></code></pre></div><h1 id="ethernet-interface">ethernet interface</h1>
 <blockquote>
-<p>ethernetif.c位置: ../src/netif</p>
-</blockquote>
+<p>ethernetif.c位置: ../src/netif</p></blockquote>
 <ul>
 <li>初始化（低级）</li>
 </ul>
@@ -236,8 +234,7 @@
 </span></span></code></pre></div><h2 id="2-发送低级">2. 发送（低级）</h2>
 <h3 id="rtosnone">RTOS（None）</h3>
 <blockquote>
-<p>在不使用RTOS的情况下</p>
-</blockquote>
+<p>在不使用RTOS的情况下</p></blockquote>
 <h4 id="1-初始化传输">（1） 初始化传输</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">enc28j60InitiateTransfer</span>(p<span style="color:#f92672">-&gt;</span>tot_len);  <span style="color:#75715e">// initiate transfer();
 </span></span></span></code></pre></div><h4 id="init-transfer">init transfer</h4>

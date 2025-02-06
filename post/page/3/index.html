@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.142.0">
+    <meta name="generator" content="Hugo 0.143.1">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -317,16 +317,14 @@ IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代�
 <li>Init project</li>
 </ul>
 <blockquote>
-<p>Terminal -&gt; New Terminal</p>
-</blockquote>
+<p>Terminal -&gt; New Terminal</p></blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd .<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>dotnet new mvc -o veic_web --framework net6.0
 </span></span></code></pre></div><ul>
 <li>Set workspace dir</li>
 </ul>
 <blockquote>
-<p>File -&gt; Add Folder to Workspace</p>
-</blockquote>
+<p>File -&gt; Add Folder to Workspace</p></blockquote>
 <h2 id="设置缺省首页home-set-default">设置缺省首页(Home Set Default)</h2>
 <ul>
 <li>Program.cs</li>
@@ -342,9 +340,7 @@ IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代�
 <h2 id="run">Run</h2>
 <pre tabindex="0"><code>Run -&gt; Start Debugging
 </code></pre><p>运行效果:
-<img src="https://img-blog.csdnimg.cn/20201102052153747.png" alt="home page"></p>
-<h1 id="二data">二、Data</h1>
-<p>namespace:</p> <a class="read-more" href="/cnblogs/post/asp.net6-mvc/">&raquo;</a></p>
+<img src="https://img-blog.csdnimg.cn/20201102052153747.png" alt="home page"></p> <a class="read-more" href="/cnblogs/post/asp.net6-mvc/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -449,8 +445,7 @@ RHEL8(Alma / Rocky Linux)</li>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dnf -y install epel-release
 </span></span><span style="display:flex;"><span>$ sudo dnf  --enablerepo<span style="color:#f92672">=</span>powertools install R
 </span></span></code></pre></div><blockquote>
-<p>注意：如果Java没有安装，会附带着安装OpenJDK。</p>
-</blockquote>
+<p>注意：如果Java没有安装，会附带着安装OpenJDK。</p></blockquote>
 <h2 id="2-scala">2. Scala</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wget https://downloads.lightbend.com/scala/2.12.17/scala-2.12.17.tgz
 </span></span><span style="display:flex;"><span>$ tar xvf scala-2.12.17.tgz
@@ -462,8 +457,7 @@ RHEL8(Alma / Rocky Linux)</li>
 </span></span></code></pre></div><h1 id="二spark">二、Spark</h1>
 <h2 id="1-down--unzip">1. down &amp; unzip</h2>
 <blockquote>
-<p><a href="https://www.apache.org/dyn/closer.lua/spark/spark-3.1.3/spark-3.1.3-bin-hadoop2.7.tgz">v3.1.3</a></p>
-</blockquote>
+<p><a href="https://www.apache.org/dyn/closer.lua/spark/spark-3.1.3/spark-3.1.3-bin-hadoop2.7.tgz">v3.1.3</a></p></blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir -p ~/app/spark
 </span></span><span style="display:flex;"><span>$ tar zxvf spark-3.1.3-bin-hadoop2.7.tgz -C ~/app/spark
 </span></span><span style="display:flex;"><span>$ mv ~/app/spark/spark-3.1.3-bin-hadoop2.7 ~/app/spark/3.1.3
@@ -493,8 +487,7 @@ RHEL8(Alma / Rocky Linux)</li>
     <section class="post-excerpt">
         
             <p><blockquote>
-<p>OS: RHEL Community Minimal</p>
-</blockquote>
+<p>OS: RHEL Community Minimal</p></blockquote>
 <ul>
 <li>AlmaLinux 8.x</li>
 <li>RockyLinux 8.x</li>
@@ -511,13 +504,7 @@ A:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>LimitNOFILE=10032
 </span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
 <p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
-A:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/sysctl.conf</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>net.core.somaxconn=1024
-</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
-<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
-To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
-for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-rhel-setup/">&raquo;</a></p>
+A:</p> <a class="read-more" href="/cnblogs/post/redis-rhel-setup/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -540,8 +527,7 @@ for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-rhel
     <section class="post-excerpt">
         
             <p><blockquote>
-<p>OS: RHEL Community Minimal</p>
-</blockquote>
+<p>OS: RHEL Community Minimal</p></blockquote>
 <ul>
 <li>AlmaLinux 8.x</li>
 <li>RockyLinux 8.x</li>
@@ -656,8 +642,7 @@ Note: The replaced program file version must be the same as the repo!</p> <a cla
     <section class="post-excerpt">
         
             <p><blockquote>
-<p>OS: AlmaLinux/RockyLinux minimal(VBox v6.1.38)</p>
-</blockquote>
+<p>OS: AlmaLinux/RockyLinux minimal(VBox v6.1.38)</p></blockquote>
 <p>Virtual Box Network configure:</p>
 <ul>
 <li>Attached to</li>

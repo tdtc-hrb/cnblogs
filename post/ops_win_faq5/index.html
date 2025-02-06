@@ -29,7 +29,7 @@
     
     <meta property="og:description" content="software network on mainland China" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2025-02-01T08:08:08&#43;08:00" />
+    <meta property="article:published_time" content="2025-02-05T08:08:08&#43;08:00" />
 
     
     
@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.142.0">
+    <meta name="generator" content="Hugo 0.143.1">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq5/" />
 
@@ -92,15 +92,15 @@
     },
     "headline": "Windows的一些设置",
     "name": "Windows的一些设置",
-    "wordCount":  169 ,
-    "timeRequired": "PT1M",
+    "wordCount":  244 ,
+    "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq5/",
-    "datePublished": "2025-02-01T08:08Z",
-    "dateModified": "2025-02-01T08:08Z",
+    "datePublished": "2025-02-05T08:08Z",
+    "dateModified": "2025-02-05T08:08Z",
     
     
     "description": "software network on mainland China",
@@ -168,8 +168,8 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2025-02-01T08:08:08&#43;08:00">
-            Feb 1, 2025
+          <time class="post-date" datetime="2025-02-05T08:08:08&#43;08:00">
+            Feb 5, 2025
           </time>
         
          
@@ -186,12 +186,10 @@
 <li>Physical disconnection</li>
 </ul>
 <blockquote>
-<p>拔掉网线或不连接WIFI网络</p>
-</blockquote>
+<p>拔掉网线或不连接WIFI网络</p></blockquote>
 <h3 id="localdb">LocalDB</h3>
 <blockquote>
-<p>LocalDB is included with <a href="https://learn.microsoft.com/en-us/archive/blogs/sqlexpress/introducing-localdb-an-improved-sql-express">Visual Studio 2010+</a> and later.</p>
-</blockquote>
+<p>LocalDB is included with <a href="https://learn.microsoft.com/en-us/archive/blogs/sqlexpress/introducing-localdb-an-improved-sql-express">Visual Studio 2010+</a> and later.</p></blockquote>
 <p>see instances:</p>
 <pre tabindex="0"><code>sqllocaldb i
 </code></pre><h4 id="localdb-2012-v110">LocalDB 2012 (v11.0)</h4>
@@ -221,14 +219,12 @@
 <li>2.a update -&gt; Profiles</li>
 </ul>
 <blockquote>
-<p>My profile</p>
-</blockquote>
+<p>My profile</p></blockquote>
 <ul>
 <li>2.b updates -&gt; Connection options</li>
 </ul>
 <blockquote>
-<p>Use direct connection if proxy is not available: off</p>
-</blockquote>
+<p>Use direct connection if proxy is not available: off</p></blockquote>
 <h1 id="software">software</h1>
 <ul>
 <li><a href="https://download.virtualbox.org/virtualbox">virtual box</a></li>
@@ -241,11 +237,23 @@
 </span></span><span style="display:flex;"><span>python.exe -m pip install --upgrade pip
 </span></span></code></pre></div><h3 id="installing-the-windows-guest-additionshttpswwwvirtualboxorgmanualch04htmladditions-windows"><a href="https://www.virtualbox.org/manual/ch04.html#additions-windows">Installing the Windows Guest Additions</a></h3>
 <blockquote>
-<p>In v7.1.6+, you must first install the Code Signing Certificate</p>
-</blockquote>
+<p>In v7.1.6+, you must first install the Code Signing Certificate</p></blockquote>
 <p>Run CMD as administrator on the guest OS:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>VBoxCertUtil.exe add-trusted-publisher vbox*.cer
 </span></span></code></pre></div><p>You can install Guest Additions normally in Windows 7/8.1</p>
+<h2 id="input-method-editor">Input Method Editor</h2>
+<blockquote>
+<p>Windows 11 24H2</p></blockquote>
+<ul>
+<li><a href="https://answers.microsoft.com/zh-hans/windows/forum/all/%E5%8D%87%E7%BA%A7win11%E5%90%8E%E5%BE%AE%E8%BD%AF/65e4f45d-72ef-4ef2-ba07-0c8ee4ab15d3">win11 输入法不显示选字栏</a></li>
+</ul>
+<h3 id="revert-to-a-previous-version-of-an-ime-input-method-editorhttpssupportmicrosoftcomen-uswindowsrevert-to-a-previous-version-of-an-ime-input-method-editor-adcc9caa-17cb-44d8-b46e-f5b473b4dd77"><a href="https://support.microsoft.com/en-us/windows/revert-to-a-previous-version-of-an-ime-input-method-editor-adcc9caa-17cb-44d8-b46e-f5b473b4dd77">Revert to a previous version of an IME (Input Method Editor)</a></h3>
+<ol>
+<li>In the search box on the taskbar, type Settings, and then either select it in the list of results or select Enter.</li>
+<li>Type IME settings into the search box within Settings and select the IME settings that are appropriate to your language—for example Japanese IME Settings.</li>
+<li>Select General.</li>
+<li>Turn on Use previous version of Microsoft IME.</li>
+</ol>
 <h2 id="windows-background">Windows Background</h2>
 <p>Desktop background and lock screen background</p>
 <ul>

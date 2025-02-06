@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.142.0">
+    <meta name="generator" content="Hugo 0.143.1">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-freertos-base/" />
 
@@ -178,8 +178,7 @@
 
     <section class="post-content">
       <blockquote>
-<p>freeRTOS v6.1.1</p>
-</blockquote>
+<p>freeRTOS v6.1.1</p></blockquote>
 <h1 id="约定">约定</h1>
 <h2 id="变量名">变量名</h2>
 <p>u: unsigned
@@ -190,8 +189,7 @@ x: BaseType_t 和其他所有</p>
 <h2 id="函数名">函数名</h2>
 <blockquote>
 <p>前面的小写字母表示返回值；
-紧随其后的是文件名。</p>
-</blockquote>
+紧随其后的是文件名。</p></blockquote>
 <p>p: pointer
 v: void
 x: xQueueReceive() returns a variable of type BaseType_t and is defined within queue.c.</p>
@@ -204,8 +202,7 @@ task-to-task, task-to-interrupt, interrupt-to-task.</li>
 </ul>
 <h2 id="移植必须">移植必须</h2>
 <blockquote>
-<p>实现 portable.h</p>
-</blockquote>
+<p>实现 portable.h</p></blockquote>
 <ul>
 <li>heap_1.c or heap_2.c or heap_3.c</li>
 <li>port.c</li>
@@ -226,8 +223,7 @@ task-to-task, task-to-interrupt, interrupt-to-task.</li>
 </span></span></code></pre></div><h2 id="header-1">header</h2>
 <blockquote>
 <p>vc <br>
-Configuration Properties -&gt; c/c++ -&gt; Additional include Directories</p>
-</blockquote>
+Configuration Properties -&gt; c/c++ -&gt; Additional include Directories</p></blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ProjectDir<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ProjectDir<span style="color:#66d9ef">)</span><span style="color:#e6db74">\..\..\Source\include&#34;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ProjectDir<span style="color:#66d9ef">)</span><span style="color:#e6db74">\..\..\Source\portable\MSVC-MingW&#34;</span>
@@ -267,8 +263,7 @@ Configuration Properties -&gt; c/c++ -&gt; Additional include Directories</p>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="call-them">call them</h2>
 <blockquote>
-<p>main.c</p>
-</blockquote>
+<p>main.c</p></blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">xTaskCreate</span>( vTask1, <span style="color:#75715e">/* Pointer to the function that implements the task. */</span>
