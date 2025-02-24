@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.143.1">
+    <meta name="generator" content="Hugo 0.144.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/vc-windbg_driver/" />
 
@@ -281,7 +281,7 @@ checked</p>
 checked</p>
 </li>
 </ul>
-<h3 id="pathhttpsdocsmicrosoftcomen-uswindows-hardwaredriversdebugger-sympath--set-symbol-path-"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/-sympath--set-symbol-path-">path</a></h3>
+<h3 id="path"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/-sympath--set-symbol-path-">path</a></h3>
 <p>config:</p>
 <pre tabindex="0"><code>.sympath SRV*c:\symbols*http://msdl.microsoft.com/download/symbols
 </code></pre><p>details:</p>
@@ -295,15 +295,15 @@ For example, the first time:</p>
 </code></pre><h1 id="command">command</h1>
 <p>Enable Debugger Markup Language (DML) with .prefer_dml</p>
 <pre tabindex="0"><code>.prefer_dml 1
-</code></pre><h2 id="reload-modulehttpsdocsmicrosoftcomen-uswindows-hardwaredriversdebugger-reload--reload-module-"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/-reload--reload-module-">Reload Module</a></h2>
+</code></pre><h2 id="reload-module"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/-reload--reload-module-">Reload Module</a></h2>
 <p>load all modules:</p>
 <pre tabindex="0"><code>.reload /f
 </code></pre><p>Specified module:</p>
 <pre tabindex="0"><code>.reload /f /i SbieDrv.sys
-</code></pre><h2 id="list-loaded-moduleshttpsdocsmicrosoftcomen-uswindows-hardwaredriversdebuggerlm--list-loaded-modules-"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/lm--list-loaded-modules-">List Loaded Modules</a></h2>
+</code></pre><h2 id="list-loaded-modules"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/lm--list-loaded-modules-">List Loaded Modules</a></h2>
 <p>show specified module:</p>
 <pre tabindex="0"><code>lm m SbieDrv v
-</code></pre><h2 id="break-pointhttpsdocsmicrosoftcomen-uswindows-hardwaredriversdebuggerbp--bu--bm--set-breakpoint"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/bp--bu--bm--set-breakpoint">Break point</a></h2>
+</code></pre><h2 id="break-point"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/bp--bu--bm--set-breakpoint">Break point</a></h2>
 <h3 id="unresolved-breakpoint">Unresolved Breakpoint</h3>
 <p>Sets a breakpoint that is unresolved when the module is unloaded and re-enables when the module reloads.</p>
 <pre tabindex="0"><code>bu SbieDrv!Api_CopySidStringFromUser
@@ -329,7 +329,7 @@ bu SbieDrv!Api_Unload
 &ldquo;Create a new sandbox&rdquo;, <br>
 &ldquo;Run web Browser&rdquo;; <br>
 right click web link, &ldquo;Save target as&rdquo;.</p>
-<h3 id="breakepoint-listhttpsdocsmicrosoftcomen-uswindows-hardwaredriversdebuggerbl--breakpoint-list-"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/bl--breakpoint-list-">Breakepoint List</a></h3>
+<h3 id="breakepoint-list"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/bl--breakpoint-list-">Breakepoint List</a></h3>
 <p>List the current breakpoints to confirm that the breakpoint was set by typing the bl command.</p>
 <pre tabindex="0"><code>bl
 </code></pre><h2 id="run-and-quit">run and quit</h2>

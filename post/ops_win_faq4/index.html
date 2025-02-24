@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.143.1">
+    <meta name="generator" content="Hugo 0.144.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq4/" />
 
@@ -187,7 +187,7 @@ If it’s paused, then click Normal.</li>
 <h3 id="ms-edge">MS-Edge</h3>
 <p>Regardless of Microsoft’s reasoning, you now know how to toggle the sidebar on or off in Edge 119.
 Just head to Settings &gt; Sidebar &gt; Copilot &gt; Always Show Sidebar. Alternatively, you can use the Ctrl + Shift + / shortcut.</p>
-<h3 id="图标显示不正常httpssspaicompost42874"><a href="https://sspai.com/post/42874">图标显示不正常</a></h3>
+<h3 id="图标显示不正常"><a href="https://sspai.com/post/42874">图标显示不正常</a></h3>
 <ul>
 <li>方法一 删除 IconCache.db 文件</li>
 </ul>
@@ -198,7 +198,7 @@ Just head to Settings &gt; Sidebar &gt; Copilot &gt; Always Show Sidebar. Altern
 <li><a href="https://answers.microsoft.com/en-us/windows/forum/all/kb5034441-update-problem-error-0x80070643/0821b603-9707-4587-9da5-e5809cac3779">update problem, error (0x80070643).</a> <br>
 Required size: ≈750Mb</li>
 </ul>
-<h3 id="kb5028997httpssupportmicrosoftcomen-ustopickb5028997-instructions-to-manually-resize-your-partition-to-install-the-winre-update-400faa27-9343-461c-ada9-24c8229763bf"><a href="https://support.microsoft.com/en-us/topic/kb5028997-instructions-to-manually-resize-your-partition-to-install-the-winre-update-400faa27-9343-461c-ada9-24c8229763bf">KB5028997</a></h3>
+<h3 id="kb5028997"><a href="https://support.microsoft.com/en-us/topic/kb5028997-instructions-to-manually-resize-your-partition-to-install-the-winre-update-400faa27-9343-461c-ada9-24c8229763bf">KB5028997</a></h3>
 <ul>
 <li>To disable the WinRE</li>
 </ul>
@@ -254,12 +254,12 @@ reagentc /enable
 <li>local script</li>
 </ul>
 <pre tabindex="0"><code>Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
-</code></pre><h3 id="policyhttpslearnmicrosoftcomen-uspowershellmodulemicrosoftpowershellcoreaboutabout_execution_policiesviewpowershell-74change-the-execution-policy"><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4#change-the-execution-policy">Policy</a></h3>
+</code></pre><h3 id="policy"><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4#change-the-execution-policy">Policy</a></h3>
 <ul>
 <li>To set the execution policy in a particular scope:</li>
 </ul>
 <pre tabindex="0"><code>Set-ExecutionPolicy -ExecutionPolicy &lt;PolicyName&gt; -Scope &lt;scope&gt;
-</code></pre><h4 id="policieshttpslearnmicrosoftcomen-uspowershellmodulemicrosoftpowershellcoreaboutabout_execution_policiesviewpowershell-74powershell-execution-policies"><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4#powershell-execution-policies">policies</a></h4>
+</code></pre><h4 id="policies"><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4#powershell-execution-policies">policies</a></h4>
 <ul>
 <li>AllSigned</li>
 <li>Bypass</li>
@@ -269,10 +269,10 @@ reagentc /enable
 <li>Undefined</li>
 <li>Unrestricted</li>
 </ul>
-<h3 id="how-to-download-older-version-of-google-chromehttpssquirrelisticcombloghow_to_download_older_version_of_google_chrome"><a href="https://squirrelistic.com/blog/how_to_download_older_version_of_google_chrome">How to Download Older Version of Google Chrome</a></h3>
-<h3 id="openssh-for-windowshttpslearnmicrosoftcomzh-cnwindows-serveradministrationopensshopenssh_install_firstusetabsgui"><a href="https://learn.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui">Openssh for windows</a></h3>
+<h3 id="how-to-download-older-version-of-google-chrome"><a href="https://squirrelistic.com/blog/how_to_download_older_version_of_google_chrome">How to Download Older Version of Google Chrome</a></h3>
+<h3 id="openssh-for-windows"><a href="https://learn.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui">Openssh for windows</a></h3>
 <pre tabindex="0"><code>(New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-</code></pre><h4 id="install-openssh-for-windowshttpslearnmicrosoftcomzh-cnwindows-serveradministrationopensshopenssh_install_firstusetabspowershellinstall-openssh-for-windows"><a href="https://learn.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell#install-openssh-for-windows">install-openssh-for-windows</a></h4>
+</code></pre><h4 id="install-openssh-for-windows"><a href="https://learn.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell#install-openssh-for-windows">install-openssh-for-windows</a></h4>
 <pre tabindex="0"><code>Get-WindowsCapability -Online | Where-Object Name -like &#39;OpenSSH*&#39;
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 </code></pre><p>启动服务:</p>

@@ -61,7 +61,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.143.1">
+    <meta name="generator" content="Hugo 0.144.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/php-devenv-win/" />
 
@@ -241,7 +241,7 @@ LoadModule php5_module &#34;C:/Users/tdtc/php-5.6/php5apache2_4.dll&#34;
 <pre tabindex="0"><code>Include conf/extra/httpd-ssl.conf
 ## apache haus httpd-2.4.55-o111s-x64-vs16.zip
 ##Include conf/extra/httpd-ahssl.conf
-</code></pre><h3 id="basic-confhttpshttpdapacheorgdocs24sslssl_howtohtml"><a href="https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html">basic conf</a></h3>
+</code></pre><h3 id="basic-conf"><a href="https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html">basic conf</a></h3>
 <p>httpd-ssl.conf:</p>
 <ul>
 <li>ServerName localhost:443</li>
@@ -250,7 +250,7 @@ LoadModule php5_module &#34;C:/Users/tdtc/php-5.6/php5apache2_4.dll&#34;
 </ul>
 <p>copy &ldquo;development.crt&rdquo; and &ldquo;development.key&rdquo; to directory:</p>
 <pre tabindex="0"><code>${SRVROOT}/conf/ssl
-</code></pre><h1 id="phpmyadminhttpswwwphpmyadminnet"><a href="https://www.phpmyadmin.net/">phpMyAdmin</a></h1>
+</code></pre><h1 id="phpmyadmin"><a href="https://www.phpmyadmin.net/">phpMyAdmin</a></h1>
 <p>如果使用本机mysql则无需配置！</p>
 <h3 id="配置远程mysql">配置远程MySQL</h3>
 <ul>
@@ -304,7 +304,7 @@ $pdo_object = new PDO(&#34;mysql:host=$host;dbname=$dbname&#34;, $username, $pas
 $query = $pdo_object-&gt;query(&#39;SELECT * FROM users&#39;);
 
 var_dump($query-&gt;fetchAll(PDO::FETCH_ASSOC));
-</code></pre><h3 id="opcachehttpstackoverflowcomquestions17224798how-to-use-php-opcache"><a href="http://stackoverflow.com/questions/17224798/how-to-use-php-opcache">opcache</a></h3>
+</code></pre><h3 id="opcache"><a href="http://stackoverflow.com/questions/17224798/how-to-use-php-opcache">opcache</a></h3>
 <p>在Dynamic Extensions最下面增加：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zend_extension <span style="color:#f92672">=</span> php_opcache.dll
 </span></span></code></pre></div><p>Note: 如果不加入&quot;opcache.mmap_base = 0x20000000&quot;
@@ -385,7 +385,7 @@ var_dump($query-&gt;fetchAll(PDO::FETCH_ASSOC));
 </span></span><span style="display:flex;"><span>AH00451: no listening sockets available, shutting down
 </span></span><span style="display:flex;"><span>AH00015: Unable to open logs
 </span></span></code></pre></div><p>A: 关闭其他占用443端口的软件。</p>
-<h3 id="ah01797httpsstackoverflowcoma13923526"><a href="https://stackoverflow.com/a/13923526">AH01797</a></h3>
+<h3 id="ah01797"><a href="https://stackoverflow.com/a/13923526">AH01797</a></h3>
 <pre tabindex="0"><code>AH01797: client denied by server configuration
 </code></pre><p>httpd-ssl.conf:</p>
 <pre tabindex="0"><code>&lt;Directory &#34;${SRVROOT}/htdocs&#34;&gt;
@@ -454,6 +454,13 @@ var_dump($query-&gt;fetchAll(PDO::FETCH_ASSOC));
 
 
   <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/ops_win_faq2/">
+          <section class="post">
+              <h2>Windows的一些安装</h2>
+              
+          </section>
+      </a>
   
   
       <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ops_win_faq5/">

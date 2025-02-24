@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.143.1">
+    <meta name="generator" content="Hugo 0.144.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/asp-ws2/" />
 
@@ -234,7 +234,7 @@ app.UseWebSockets(webSocketOptions);
 
 var receiveResult = await webSocket.ReceiveAsync(
     new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
-</code></pre><h4 id="arraysegmenthttpslearnmicrosoftcomen-usdotnetapisystemarraysegment-1"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
+</code></pre><h4 id="arraysegment"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
 <p>Array version of substring()</p>
 <pre tabindex="0"><code>String[] names = { &#34;Adam&#34;, &#34;Bruce&#34;, &#34;Charles&#34;, &#34;Daniel&#34;,
                          &#34;Ebenezer&#34;, &#34;Francis&#34;, &#34;Gilbert&#34;,
@@ -255,12 +255,12 @@ await webSocket.SendAsync(
                 0, // text message
                 0, // none
                 CancellationToken.None);
-</code></pre><h4 id="readonlymemoryhttpslearnmicrosoftcomen-usdotnetapisystemreadonlymemory-1"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.readonlymemory-1">ReadOnlyMemory</a></h4>
+</code></pre><h4 id="readonlymemory"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.readonlymemory-1">ReadOnlyMemory</a></h4>
 <ul>
 <li><a href="https://stackoverflow.com/a/68306380">message</a></li>
 </ul>
 <pre tabindex="0"><code>var memory = new ReadOnlyMemory&lt;byte&gt;(Encoding.UTF8.GetBytes(str));
-</code></pre><h4 id="messagetypehttpslearnmicrosoftcomen-usdotnetapisystemnetwebsocketswebsocketmessagetype"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocketmessagetype">MessageType</a></h4>
+</code></pre><h4 id="messagetype"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocketmessagetype">MessageType</a></h4>
 <ul>
 <li>Binary</li>
 </ul>
@@ -276,7 +276,7 @@ await webSocket.SendAsync(
 </ul>
 <pre tabindex="0"><code>0
 </code></pre><p>The message is clear text.</p>
-<h4 id="websocketmessageflagshttpslearnmicrosoftcomen-usdotnetapisystemnetwebsocketswebsocketmessageflags"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocketmessageflags">WebSocketMessageFlags</a></h4>
+<h4 id="websocketmessageflags"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocketmessageflags">WebSocketMessageFlags</a></h4>
 <ul>
 <li>DisableCompression</li>
 </ul>
@@ -297,10 +297,10 @@ await webSocket.SendAsync(
             1000,  // NormalClosure
             &#34;normal closure&#34;,
             CancellationToken.None);
-</code></pre><h4 id="websocketclosestatushttpslearnmicrosoftcomen-usdotnetapisystemnetwebsocketswebsocketclosestatus"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocketclosestatus">WebSocketCloseStatus</a></h4>
+</code></pre><h4 id="websocketclosestatus"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocketclosestatus">WebSocketCloseStatus</a></h4>
 <p>Fields:</p>
 <pre tabindex="0"><code>1000, 1001, 1002, 1003, 1005, 1007, 1008, 1009, 1010, 1100
-</code></pre><h3 id="sampleshttpsgithubcomdotnetaspnetcoredocstreemainaspnetcorefundamentalswebsocketssamples"><a href="https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/websockets/samples">Samples</a></h3>
+</code></pre><h3 id="samples"><a href="https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/websockets/samples">Samples</a></h3>
 <ul>
 <li>WebSocketController <br>
 Operation WebSocket</li>
@@ -365,9 +365,9 @@ Enable WebSocket</li>
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/ops_win_faq2/">
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/vc-sqlite3lib/">
           <section class="post">
-              <h2>Windows的一些安装</h2>
+              <h2>Windows的SQLite静态库</h2>
               
           </section>
       </a>

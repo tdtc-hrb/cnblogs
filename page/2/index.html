@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.143.1">
+    <meta name="generator" content="Hugo 0.144.2">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -197,71 +197,26 @@
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
+        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq4/">Windows的一些设置</a></h2>
     </header>
     <section class="post-excerpt">
         
-            <p><p>The latest version of Visual Studio:</p>
+            <p><h3 id="task-manager">Task Manager</h3>
+<p>Task manager doesn’t update resources on real time</p>
+<ol>
+<li>At the top, click View.</li>
+<li>Navigate to Update speed. <br>
+If it’s paused, then click Normal.</li>
+</ol>
+<h3 id="ms-edge">MS-Edge</h3>
+<p>Regardless of Microsoft’s reasoning, you now know how to toggle the sidebar on or off in Edge 119.
+Just head to Settings &gt; Sidebar &gt; Copilot &gt; Always Show Sidebar. Alternatively, you can use the Ctrl + Shift + / shortcut.</p>
+<h3 id="图标显示不正常"><a href="https://sspai.com/post/42874">图标显示不正常</a></h3>
 <ul>
-<li>vs2017</li>
+<li>方法一 删除 IconCache.db 文件</li>
 </ul>
 <blockquote>
-<p>15.9</p></blockquote>
-<ul>
-<li>vs2019</li>
-</ul>
-<blockquote>
-<p>16.9</p></blockquote>
-<ul>
-<li>vs2022</li>
-</ul>
-<blockquote>
-<p>17.12</p></blockquote>
-<h1 id="visual-studio">Visual Studio</h1>
-<p>my.visualstudio.com 已经不提供 非订阅用户 的下载:</p>
-<ul>
-<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
-<li><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">down options</a></li>
-</ul>
-<h2 id="format">format</h2>
-<ul>
-<li>target directory</li>
-</ul>
-<pre tabindex="0"><code>--layout TARGET(directory)
-</code></pre><ul>
-<li>components</li>
-</ul>
-<pre tabindex="0"><code>--add NAME(Component)
-</code></pre><ul>
-<li>language</li>
-</ul>
-<pre tabindex="0"><code>--lang en-US
-</code></pre><p>exec:</p>
-<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs202x `
-...
-</code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
-<h2 id="common">Common</h2>
-<ul>
-<li>Core</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
---add Microsoft.VisualStudio.Workload.CoreEditor `
---add Microsoft.VisualStudio.Component.Roslyn.Compiler `
---add Microsoft.VisualStudio.Component.TextTemplating `
-</code></pre><ul>
-<li>Microsoft Build Tools</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.Component.MSBuild `
-</code></pre><ul>
-<li>JIT</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.Debugger.JustInTime `
-</code></pre><ul>
-<li>IntelliCode</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
-</code></pre><h2 id="vc">VC</h2>
-<p>After vs2022 17.12, the main productivity for VC.</p> <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
+<p>C:\Users\用户名\appdata\local</p> <a class="read-more" href="/cnblogs/post/ops_win_faq4/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -270,8 +225,58 @@
         
 
         
-        <time class="post-date" datetime="2024-11-12T08:08:08&#43;08:00">
-            12 Nov 2024
+        <time class="post-date" datetime="2024-11-30T08:08:08&#43;08:00">
+            30 Nov 2024
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/vc-sqlite3lib/">Windows的SQLite静态库</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Num(Current Version): 3470000</p>
+<h1 id="debug版">Debug版</h1>
+<p>&ldquo;Source Code&rdquo; -&gt; <a href="https://sqlite.org/download.html">sqlite-amalgamation-Num.zip</a></p>
+<h2 id="新建dll工程">新建DLL工程</h2>
+<p>project name: sqlite3（使用这个名字主要是在生成lib的时候不用更改输出名了）</p>
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-1-0prj(vs2013).png -->
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-1-1prj(vs2013).png -->
+<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-1prj.png -->
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-1prj(vs2022).png" alt="VS2022 prj1"></p>
+<h3 id="添加sqlite源文件">添加SQLite源文件</h3>
+<p>拷贝以下文件到工程根目录:</p>
+<ul>
+<li>sqlite3.h</li>
+<li>sqlite3ext.h</li>
+<li>sqlite3.c</li>
+</ul>
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-2prj(vs2013).png -->
+<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-2prj.png -->
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-2prj(vs2022).png" alt="VS2022 prj2"></p>
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-3prj(vs2013).png -->
+<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-3prj.png -->
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-3prj(vs2022).png" alt="VS2022 prj21"></p>
+<h2 id="编译工程">编译工程</h2>
+<p>Project ==&gt; Properties ==&gt; General</p>
+<pre tabindex="0"><code>Configureation Type : Static library(.lib)
+</code></pre><p>编译即可</p>
+<pre tabindex="0"><code>Build -&gt; Rebuild sqlite3
+</code></pre><h3 id="预编译头文件">预编译头文件</h3>
+<p>Project ==&gt; Properties ==&gt; C/C++ ==&gt; Precompiled Header</p> <a class="read-more" href="/cnblogs/post/vc-sqlite3lib/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-11-19T21:08:08&#43;08:00">
+            19 Nov 2024
         </time>
     </footer>
 </article>
@@ -340,7 +345,7 @@ app.UseWebSockets(webSocketOptions);
 
 var receiveResult = await webSocket.ReceiveAsync(
     new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
-</code></pre><h4 id="arraysegmenthttpslearnmicrosoftcomen-usdotnetapisystemarraysegment-1"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
+</code></pre><h4 id="arraysegment"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
 <p>Array version of substring()</p> <a class="read-more" href="/cnblogs/post/asp-ws2/">&raquo;</a></p>
         
     </section>
@@ -459,7 +464,7 @@ var receiveResult = await webSocket.ReceiveAsync(
 </ul>
 <pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
 gem install mysql2
-</code></pre><h3 id="debianhttpsstackoverflowcoma34384709"><a href="https://stackoverflow.com/a/34384709">Debian</a></h3>
+</code></pre><h3 id="debian"><a href="https://stackoverflow.com/a/34384709">Debian</a></h3>
 <ul>
 <li>mariadb</li>
 </ul>
@@ -818,84 +823,6 @@ Finally, import the hex file into the MCU component.</p>
         
         <time class="post-date" datetime="2023-05-18T08:08:08&#43;08:00">
             18 May 2023
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_instruction-set/">8位单片机PIC汇编语言</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>TABLE 1-1: OPCODE FIELD DESCRIPTIONS</p>
-<table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>f</td>
-          <td>Register file address (0x00 to 0x7F)</td>
-      </tr>
-      <tr>
-          <td>W</td>
-          <td>Working register (accumulator)</td>
-      </tr>
-      <tr>
-          <td>d</td>
-          <td>Destination select;</td>
-      </tr>
-      <tr>
-          <td>b</td>
-          <td>Bit address within an 8-bit file register</td>
-      </tr>
-      <tr>
-          <td>k</td>
-          <td>Literal field, constant data or label</td>
-      </tr>
-  </tbody>
-</table>
-<table>
-  <thead>
-      <tr>
-          <th>d value</th>
-          <th>where the results are placed</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>d = 0</td>
-          <td>W(orking) register</td>
-      </tr>
-      <tr>
-          <td>d = 1</td>
-          <td>file register; Default is d = 1.</td>
-      </tr>
-  </tbody>
-</table>
-<p>TABLE 1-2: ABBREVIATION DESCRIPTIONS</p>
-<p>|Field| Description|
-| PC | Program Counter|
-| TO | Time-Out bit|
-| C  | Carry bit|
-| DC | Digit Carry bit|
-| Z  | Zero bit|
-| PD | Power-Down bit|</p> <a class="read-more" href="/cnblogs/post/e-pic16f_instruction-set/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-05-17T10:08:08&#43;08:00">
-            17 May 2023
         </time>
     </footer>
 </article>
