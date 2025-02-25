@@ -173,22 +173,26 @@
 </ul>
 <h2 id="qt-environment">Qt Environment</h2>
 <ul>
-<li>Qt online installer</li>
+<li><a href="https://download.qt.io/official_releases/online_installers">Qt online installer</a></li>
 <li><a href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2">Visual Studio 2019/2022</a></li>
 </ul>
-<h3 id="qt在线安装程序"><a href="https://download.qt.io/official_releases/online_installers/">Qt在线安装程序</a></h3>
+<h3 id="installer">installer</h3>
+<p>default:</p>
+<ul>
+<li>qt creator
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-creator.png" alt="qt-online-creator"></li>
+<li>Build tools
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-cmake.png" alt="qt-online-cmake"></li>
+</ul>
+<h4 id="msvc">MSVC</h4>
 <!-- ![qt5 msvc2019](https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-msvc2019.png) -->
 <!-- ![qt6.5 msvc2019](https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt6-online-msvc2019.png) -->
 <p><img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-msvc2022.png" alt="qt6 msvc2022"></p>
-<ul>
-<li>以下几项为安装程序默认勾选:
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-creator.png" alt="qt-online-creator">
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-cmake.png" alt="qt-online-cmake"></li>
-</ul>
 <h4 id="additional-libraries">Additional Libraries</h4>
-<blockquote>
-<p>Qt6
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt6-online-serial_port.png" alt="Qt Serial Port - qt online"></p></blockquote>
+<ul>
+<li>Qt6
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt6-online-serial_port.png" alt="Qt Serial Port - qt online"></li>
+</ul>
 <h3 id="cmake-in-qt-creator">CMake in Qt Creator</h3>
 <p>程序设置：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-GNinja
@@ -206,13 +210,9 @@
 </span></span></code></pre></div><ul>
 <li>v6.8</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\6</span>.8.3<span style="color:#ae81ff">\m</span>svc2022_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\6</span>.8.2<span style="color:#ae81ff">\m</span>svc2022_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
 </span></span></code></pre></div><h2 id="qt-singleton">Qt Singleton</h2>
-<p>The version that fully supports singletons is <a href="https://doc.qt.io/qt-5/qqmlengine.html#qmlRegisterSingletonType-2">v5.14+</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">int</span> qmlRegisterSingletonType(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>uri, <span style="color:#66d9ef">int</span> versionMajor, <span style="color:#66d9ef">int</span> versionMinor, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>typeName, 
-</span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>function<span style="color:#f92672">&lt;</span>QObject <span style="color:#f92672">*</span>(QQmlEngine <span style="color:#f92672">*</span>, QJSEngine <span style="color:#f92672">*</span>)<span style="color:#f92672">&gt;</span> callback)
-</span></span></code></pre></div><p>主要的改进是第5个参数！ 之前，是实例不了带参的类的。 <br>
-The main improvement is the fifth parameter! Previously, only classes with no parameters could be instantiated.</p> <a class="read-more" href="/cnblogs/post/qt-serialport_v2/">&raquo;</a></p>
+<p>The version that fully supports singletons is <a href="https://doc.qt.io/qt-5/qqmlengine.html#qmlRegisterSingletonType-2">v5.14+</a></p> <a class="read-more" href="/cnblogs/post/qt-serialport_v2/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -221,8 +221,8 @@ The main improvement is the fifth parameter! Previously, only classes with no pa
         
 
         
-        <time class="post-date" datetime="2025-02-25T18:18:08&#43;08:00">
-            25 Feb 2025
+        <time class="post-date" datetime="2025-02-26T00:18:08&#43;08:00">
+            26 Feb 2025
         </time>
     </footer>
 </article>
