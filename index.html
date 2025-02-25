@@ -233,7 +233,14 @@
 </span></span><span style="display:flex;"><span>-DCMAKE_C_COMPILER:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Compiler:Executable:C<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>-DCMAKE_CXX_COMPILER:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Compiler:Executable:Cxx<span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="deploy">Deploy</h3>
+<ul>
+<li>v6.5</li>
+</ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\6</span>.5.3<span style="color:#ae81ff">\m</span>svc2019_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
+</span></span></code></pre></div><ul>
+<li>v6.8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\6</span>.8.3<span style="color:#ae81ff">\m</span>svc2022_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
 </span></span></code></pre></div><h2 id="qt-singleton">Qt Singleton</h2>
 <p>The version that fully supports singletons is <a href="https://doc.qt.io/qt-5/qqmlengine.html#qmlRegisterSingletonType-2">v5.14+</a></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">int</span> qmlRegisterSingletonType(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>uri, <span style="color:#66d9ef">int</span> versionMajor, <span style="color:#66d9ef">int</span> versionMinor, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>typeName, 
@@ -248,7 +255,107 @@ The main improvement is the fifth parameter! Previously, only classes with no pa
         
 
         
-        <time class="post-date" datetime="2025-02-24T08:18:08&#43;08:00">
+        <time class="post-date" datetime="2025-02-25T08:18:08&#43;08:00">
+            25 Feb 2025
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Visual C/C&#43;&#43;安装</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>x86(<a href="https://aka.ms/vs/16/release/vs_Community.exe">vs2019</a>) and x64(<a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a>)</li>
+<li><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">down options</a></li>
+</ul>
+<p>Note: 由于微软的支持策略，在v17（偶数为LTS）中有时候需要下载预览版</p>
+<p>Due to Microsoft&rsquo;s support policy, you may need to download <a href="https://visualstudio.microsoft.com/vs/preview">preview</a> versions in v17 (even numbers are LTS)</p>
+<h2 id="format">format</h2>
+<ul>
+<li>target directory</li>
+</ul>
+<pre tabindex="0"><code>--layout TARGET
+</code></pre><ul>
+<li>components</li>
+</ul>
+<pre tabindex="0"><code>--add NAME(Component)
+</code></pre><ul>
+<li>language</li>
+</ul>
+<pre tabindex="0"><code>--lang en-US
+</code></pre><p>exec:</p>
+<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs20xx `
+--add &lt;Component Name&gt;
+--lang en-US
+</code></pre><p>所有的行尾(最后行除外) + 空格 + <code> `</code></p>
+<h2 id="common">Common</h2>
+<ul>
+<li>Core</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
+--add Microsoft.VisualStudio.Workload.CoreEditor `
+--add Microsoft.VisualStudio.Component.Roslyn.Compiler `
+--add Microsoft.VisualStudio.Component.TextTemplating `
+</code></pre><ul>
+<li>Microsoft Build Tools</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.Component.MSBuild `
+</code></pre><ul>
+<li>JIT</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.Debugger.JustInTime `
+</code></pre><ul>
+<li>IntelliCode</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
+</code></pre><h2 id="vc">VC</h2>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.VC.CoreIde `
+--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+--add Microsoft.VisualStudio.Component.VC.Redist.14.Latest `
+</code></pre><ul>
+<li>MFC</li>
+</ul>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.VC.ATLMFC `
+</code></pre><h3 id="atl">ATL</h3>
+<pre tabindex="0"><code>--add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core `
+--add Microsoft.VisualStudio.Component.VC.ATL `
+--add Microsoft.VisualStudio.Workload.NativeDesktop `
+</code></pre><h3 id="windows-sdk">Windows SDK</h3>
+<ul>
+<li>Win10 sdk</li>
+</ul>
+<pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows10SDK.XXXXX
+</code></pre><ul>
+<li>Win11 sdk</li>
+</ul>
+<pre tabindex="0"><code>Microsoft.VisualStudio.Component.Windows11SDK.XXXXX
+</code></pre><h4 id="win10">Win10</h4>
+<ul>
+<li>18362</li>
+<li>19041</li>
+<li>20348</li>
+</ul>
+<h4 id="win11">Win11</h4>
+<ul>
+<li>22000</li>
+<li>22621</li>
+<li>26100</li>
+</ul>
+<h2 id="clangllvm-support-in-visual-studio"><a href="https://learn.microsoft.com/en-us/cpp/build/clang-support-msbuild">Clang/LLVM support in Visual Studio</a></h2>
+<p><a href="https://clang.llvm.org/get_started.html">Visual Studio 2019 16.7 or later</a></p> <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-02-24T08:08:08&#43;08:00">
             24 Feb 2025
         </time>
     </footer>
@@ -315,63 +422,40 @@ The main improvement is the fifth parameter! Previously, only classes with no pa
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq2/">Windows的一些安装</a></h2>
+        <h2 class="post-title"><a href="/cnblogs/post/ops_win_faq6/">Windows的一些安装</a></h2>
     </header>
     <section class="post-excerpt">
         
             <p><ul>
-<li>Visual Studio</li>
+<li>deploy</li>
+<li>add dotnet env</li>
 </ul>
-<pre tabindex="0"><code>x86(vs2019) and x64(vs2022)
-</code></pre><ul>
-<li>Dotnet</li>
-</ul>
-<h1 id="visual-studio">Visual Studio</h1>
+<h2 id="deploy">deploy</h2>
 <ul>
-<li><a href="https://aka.ms/vs/17/release/vs_Community.exe">vs2022</a></li>
-<li><a href="https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools">down options</a></li>
+<li>install .net 3.5</li>
 </ul>
-<p>Note: my.visualstudio.com 已经不提供 非订阅用户 的 vs2019/22下载</p>
-<h2 id="format">format</h2>
+<h3 id="net-framework-35---windows-8"><a href="https://www.askvg.com/how-to-install-microsoft-net-framework-3-5-offline-in-windows-8-without-internet-connection/">.NET Framework 3.5 - Windows 8</a></h3>
+<p>first, mount windows installation DVD(ISO)</p>
 <ul>
-<li>target directory</li>
+<li>DVD</li>
 </ul>
-<pre tabindex="0"><code>--layout TARGET
-</code></pre><ul>
-<li>components</li>
-</ul>
-<pre tabindex="0"><code>--add NAME(Component)
-</code></pre><ul>
-<li>language</li>
-</ul>
-<pre tabindex="0"><code>--lang en-US
-</code></pre><p>exec:</p>
-<pre tabindex="0"><code>.\vs_Community.exe --layout D:\win10soft\vs20xx `
---add &lt;Component Name&gt;
---lang en-US
-</code></pre><p>所有的行尾 + 空格 + <code> `</code> 尾行除外。</p>
-<h2 id="common">Common</h2>
+<pre tabindex="0"><code>D:
+</code></pre><p>Then, execute PowerShell as Administrator</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ps" data-lang="ps"><span style="display:flex;"><span><span style="color:#a6e22e">dism</span> /online /enable-feature /featurename:NetFx3 /All /Source:D:\sources\sxs /LimitAccess
+</span></span></code></pre></div><h2 id="deployment-of-sqlite-in-net-46">Deployment of SQLite in .NET 4.6</h2>
 <ul>
-<li>Core</li>
+<li><a href="https://stackoverflow.com/questions/46467530/method-not-found-0-system-array-empty">Method not found: System.Array.Empty</a></li>
 </ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.CoreEditor `
---add Microsoft.VisualStudio.Workload.CoreEditor `
---add Microsoft.VisualStudio.Component.Roslyn.Compiler `
---add Microsoft.VisualStudio.Component.TextTemplating `
-</code></pre><ul>
-<li>Microsoft Build Tools</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.Component.MSBuild `
-</code></pre><ul>
-<li>JIT</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.Debugger.JustInTime `
-</code></pre><ul>
-<li>IntelliCode</li>
-</ul>
-<pre tabindex="0"><code>--add Microsoft.VisualStudio.Component.IntelliCode `
-</code></pre><h2 id="vc">VC</h2>
-<p>After vs2022 17.12, the main productivity for VC.</p> <a class="read-more" href="/cnblogs/post/ops_win_faq2/">&raquo;</a></p>
+<pre tabindex="0"><code>System.MissingMethodException: Method not found: &#39;!!0[] System.Array.Empty()&#39;.
+   at System.Data.SQLite.SQLiteConvert.TypeNameToDbType(SQLiteConnection connection, String typeName, SQLiteConnectionFlags flags)
+   at System.Data.SQLite.SQLiteDataReader.GetSQLiteType(SQLiteConnectionFlags flags, Int32 i)
+   at System.Data.SQLite.SQLiteDataReader.GetValue(Int32 i)
+   at System.Data.SQLite.SQLiteDataReader.get_Item(Int32 i)
+   at System.Data.SQLite.SQLiteCommand.ExecuteScalar(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteScalar()
+... ...
+</code></pre><p>down <a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/net462">v4.6.2</a> /
+<a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472">v4.7.2</a> or above.</p> <a class="read-more" href="/cnblogs/post/ops_win_faq6/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -380,7 +464,7 @@ The main improvement is the fifth parameter! Previously, only classes with no pa
         
 
         
-        <time class="post-date" datetime="2025-02-22T08:08:08&#43;08:00">
+        <time class="post-date" datetime="2025-02-22T10:08:08&#43;08:00">
             22 Feb 2025
         </time>
     </footer>
@@ -852,84 +936,6 @@ Alma Linux / Rocky Linux</li>
         
         <time class="post-date" datetime="2024-12-29T08:38:08&#43;08:00">
             29 Dec 2024
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-webview/">qtwebview minibrowser example</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://developer.android.google.cn/studio">Android Studio</a> <br>
-安装完, 先不要进入设置！</li>
-<li><a href="https://download.qt.io/static/mirrorlist/mirmon/">mirror - online installer</a></li>
-</ul>
-<pre tabindex="0"><code>qt-online-installer-windows-x64-x.x.x.exe --mirror Y
-</code></pre><h2 id="create-qt-project">Create Qt Project</h2>
-<p>File -&gt; New Project</p>
-<ul>
-<li>v6.x <br>
-Qt Quick Application</li>
-<li>v5.15 <br>
-Qt Quick Application(compat)</li>
-</ul>
-<h3 id="project-setting">project setting</h3>
-<ul>
-<li>project name</li>
-</ul>
-<pre tabindex="0"><code>my_browser
-</code></pre><ul>
-<li>Define Build System</li>
-</ul>
-<pre tabindex="0"><code>CMake
-</code></pre><ul>
-<li>Define Project Details <br>
-Mini Qt version:</li>
-</ul>
-<pre tabindex="0"><code>Qt 5.15/6.5
-</code></pre><ul>
-<li>Kit Selection</li>
-</ul>
-<pre tabindex="0"><code>Android Qt x.x.x Clang x86_64
-</code></pre><h3 id="using-qt-webview"><a href="https://doc.qt.io/qt-6.8/qtwebview-index.html">Using Qt WebView</a></h3>
-<ul>
-<li>QML API</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">QtWebView</span>
-</span></span></code></pre></div><ul>
-<li>C++ API</li>
-</ul>
-<pre tabindex="0"><code>#include &lt;QtWebView/QtWebView&gt;
-</code></pre><h4 id="building-with-cmake">Building with CMake</h4>
-<ul>
-<li>package</li>
-</ul>
-<pre tabindex="0"><code>find_package(Qt6 REQUIRED COMPONENTS Quick WebView)
-</code></pre><ul>
-<li>target</li>
-</ul>
-<pre tabindex="0"><code>target_link_libraries(appmy_browser
-    PRIVATE Qt6::Quick Qt6::WebView
-)
-</code></pre><h4 id="initial">initial</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// first line
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>QtWebView<span style="color:#f92672">::</span>initialize();
-</span></span></code></pre></div><h3 id="icon">Icon</h3>
-<p>copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folder</p> <a class="read-more" href="/cnblogs/post/qt-webview/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-12-03T23:38:08&#43;08:00">
-            3 Dec 2024
         </time>
     </footer>
 </article>

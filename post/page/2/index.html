@@ -164,6 +164,84 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-webview/">qtwebview minibrowser example</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://developer.android.google.cn/studio">Android Studio</a> <br>
+安装完, 先不要进入设置！</li>
+<li><a href="https://download.qt.io/static/mirrorlist/mirmon/">mirror - online installer</a></li>
+</ul>
+<pre tabindex="0"><code>qt-online-installer-windows-x64-x.x.x.exe --mirror Y
+</code></pre><h2 id="create-qt-project">Create Qt Project</h2>
+<p>File -&gt; New Project</p>
+<ul>
+<li>v6.x <br>
+Qt Quick Application</li>
+<li>v5.15 <br>
+Qt Quick Application(compat)</li>
+</ul>
+<h3 id="project-setting">project setting</h3>
+<ul>
+<li>project name</li>
+</ul>
+<pre tabindex="0"><code>my_browser
+</code></pre><ul>
+<li>Define Build System</li>
+</ul>
+<pre tabindex="0"><code>CMake
+</code></pre><ul>
+<li>Define Project Details <br>
+Mini Qt version:</li>
+</ul>
+<pre tabindex="0"><code>Qt 5.15/6.5
+</code></pre><ul>
+<li>Kit Selection</li>
+</ul>
+<pre tabindex="0"><code>Android Qt x.x.x Clang x86_64
+</code></pre><h3 id="using-qt-webview"><a href="https://doc.qt.io/qt-6.8/qtwebview-index.html">Using Qt WebView</a></h3>
+<ul>
+<li>QML API</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">QtWebView</span>
+</span></span></code></pre></div><ul>
+<li>C++ API</li>
+</ul>
+<pre tabindex="0"><code>#include &lt;QtWebView/QtWebView&gt;
+</code></pre><h4 id="building-with-cmake">Building with CMake</h4>
+<ul>
+<li>package</li>
+</ul>
+<pre tabindex="0"><code>find_package(Qt6 REQUIRED COMPONENTS Quick WebView)
+</code></pre><ul>
+<li>target</li>
+</ul>
+<pre tabindex="0"><code>target_link_libraries(appmy_browser
+    PRIVATE Qt6::Quick Qt6::WebView
+)
+</code></pre><h4 id="initial">initial</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// first line
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>QtWebView<span style="color:#f92672">::</span>initialize();
+</span></span></code></pre></div><h3 id="icon">Icon</h3>
+<p>copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folder</p> <a class="read-more" href="/cnblogs/post/qt-webview/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-12-03T23:38:08&#43;08:00">
+            3 Dec 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/qt-android_started/">Qt6 for android</a></h2>
     </header>
     <section class="post-excerpt">
@@ -747,59 +825,6 @@ public class ReadXbf {
         
         <time class="post-date" datetime="2023-09-18T08:08:08&#43;08:00">
             18 Sep 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/php-build-win/">Build your own PHP on Windows</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>Visual C++ 14.0 (Visual Studio 2015) for PHP 7.0 or PHP 7.1.</li>
-<li>Visual C++ 15.0 (Visual Studio 2017) for PHP 7.2, PHP 7.3 or PHP 7.4.</li>
-<li>Visual C++ 16.0 (Visual Studio 2019) for master.</li>
-</ul>
-<ol>
-<li>Enter build</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/Microsoft/php-sdk-binary-tools
-</span></span><span style="display:flex;"><span>cd php-sdk-binary-tools
-</span></span><span style="display:flex;"><span>phpsdk-vs16-x64.bat
-</span></span></code></pre></div><ol start="2">
-<li>Gen deps directory</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>phpsdk_buildtree phpdev
-</span></span></code></pre></div><ol start="3">
-<li>git php src</li>
-</ol>
-<pre tabindex="0"><code>cd d:\progFiles\phpdev\vs16\x64
-git clone -b PHP-8.0.* https://github.com/php/php-src.git
-</code></pre><p>*: version number</p>
-<ol start="4">
-<li>deps updates</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>phpsdk_deps --update
-</span></span></code></pre></div><ol start="5">
-<li>build</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>buildconf <span style="color:#f92672">&amp;&amp;</span> configure <span style="color:#f92672">&amp;&amp;</span> nmake
-</span></span></code></pre></div><ul>
-<li><a href="https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2">Build your own PHP on Windows</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/php-build-win/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-08-20T10:08:08&#43;08:00">
-            20 Aug 2023
         </time>
     </footer>
 </article>
