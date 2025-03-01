@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.144.2">
+    <meta name="generator" content="Hugo 0.145.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -193,6 +193,79 @@
 </nav>
 
     </div>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/redis-rhel/">Install Redis from Source</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>OS: RHEL Community Minimal</p></blockquote>
+<ul>
+<li>AlmaLinux 8.x</li>
+<li>RockyLinux 8.x</li>
+<li>CentOS 7.9</li>
+</ul>
+<h1 id="prepare">prepare</h1>
+<ul>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/ops_sudo/">User set</a></li>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/ops_firewall/">Firewall</a></li>
+</ul>
+<p>dependencies:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf group install <span style="color:#e6db74">&#39;Development Tools&#39;</span>
+</span></span><span style="display:flex;"><span>$sudo dnf install tcl wget
+</span></span></code></pre></div><h2 id="v6">v6+</h2>
+<p>Just to clarify: <br>
+there is no way this issue will be fixed, Redis &gt;= 6 will require a C11 compiler.</p>
+<ul>
+<li>RHEL7</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install centos-release-scl
+</span></span><span style="display:flex;"><span>sudo dnf install devtoolset-8
+</span></span><span style="display:flex;"><span>scl enable devtoolset-8 bash
+</span></span></code></pre></div><h2 id="verification">verification</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$gcc -v
+</span></span><span style="display:flex;"><span>$make -v
+</span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;puts [info patchlevel];exit 0&#39;</span> | tclsh
+</span></span></code></pre></div><h1 id="installation">installation</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$wget https://download.redis.io/redis-stable.tar.gz
+</span></span><span style="display:flex;"><span>$tar xzvf redis-stable.tar.gz
+</span></span><span style="display:flex;"><span>$cd redis-stable
+</span></span><span style="display:flex;"><span>$make
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Single Core</span>
+</span></span><span style="display:flex;"><span>$taskset -c <span style="color:#ae81ff">0</span> make test
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## sudo</span>
+</span></span><span style="display:flex;"><span>$sudo make install
+</span></span></code></pre></div><h2 id="configure">configure</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo mkdir /etc/redis
+</span></span><span style="display:flex;"><span>$sudo mkdir -p /var/redis
+</span></span><span style="display:flex;"><span>$sudo cp /home/tdtc/redis-stable/redis.conf /etc/redis
+</span></span></code></pre></div><p>/etc/redis/redis.conf:</p> <a class="read-more" href="/cnblogs/post/redis-rhel/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        on
+            
+                <a href="https://tdtc-hrb.github.io/cnblogs//tags/redis/">#Redis</a>,
+            
+                <a href="https://tdtc-hrb.github.io/cnblogs//tags/development-tools/">#Development Tools</a>,
+            
+                <a href="https://tdtc-hrb.github.io/cnblogs//tags/wget/">#wget</a>,
+            
+                <a href="https://tdtc-hrb.github.io/cnblogs//tags/rhel/">#RHEL</a>,
+            
+        
+        <time class="post-date" datetime="2022-10-07T04:58:39&#43;08:00">
+            7 Oct 2022
+        </time>
+    </footer>
+</article>
 
     
         <article class="post post">
@@ -685,60 +758,6 @@ codename: focal</li>
         
         <time class="post-date" datetime="2022-05-15T18:08:08&#43;08:00">
             15 May 2022
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/sqlite.net.core/">SQLite在.net core的demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>IDE: VS2022 <br>
-语言: C#</p>
-<p>简介：
-本示例使用SQLite的密码、外键功能。</p>
-<h1 id="一工程设置">一、工程设置</h1>
-<h2 id="1-nuget">1. NuGet</h2>
-<blockquote>
-<p>Tools -&gt; NuGet Package Manager -&gt; Package Manager Console
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016115835.png" alt="sqlite-net-pcl"></p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package sqlite-net-pcl -Version 1.8.116
-</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016121731.png" alt="sqlite-net-sqlcipher"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package sqlite-net-sqlcipher -Version 1.8.116
-</span></span></code></pre></div><p>完整的窗体：
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016122849.png" alt="program ui"></p>
-<h2 id="2-控件">2. 控件</h2>
-<p>拖拽4个TextBox、4个Button、1个DataGridView</p>
-<h1 id="二功能实现">二、功能实现</h1>
-<p>使用Synchronous API来实现连接、factoryCar表的查询、插入等操作。</p>
-<h2 id="0-entity-class">0. Entity class</h2>
-<blockquote>
-<p>注意：主键和外键</p></blockquote>
-<p>建立两个实体类：<a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher/blob/master/FactoryCar.cs">FactoryCar</a>和<a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher/blob/master/MarqueCar.cs">MarqueCar</a></p>
-<h2 id="1-连接">1. 连接</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>asyncConn <span style="color:#f92672">=</span> new SQLite.<span style="color:#a6e22e">SQLiteAsyncConnection</span>(options);
-</span></span></code></pre></div><p>其中，options是SQLiteConnectionString实例化的字符串。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(edtDB.Text, true,
-</span></span><span style="display:flex;"><span>                                key: edtPwd.Text,
-</span></span><span style="display:flex;"><span>                                preKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA cipher_default_use_hmac = OFF;&#34;</span>),
-</span></span><span style="display:flex;"><span>                                postKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA kdf_iter = 128000;&#34;</span>));
-</span></span></code></pre></div><h2 id="2-查询">2. 查询</h2>
-<h3 id="异步查询">异步查询</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var factoryCars <span style="color:#f92672">=</span> asyncConn.Table<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(fc <span style="color:#f92672">=&gt;</span> fc.Name.<span style="color:#a6e22e">Contains</span>(edtStmt.Text));
-</span></span></code></pre></div><p>转换为List类型。</p> <a class="read-more" href="/cnblogs/post/sqlite.net.core/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2021-11-19T19:18:08&#43;08:00">
-            19 Nov 2021
         </time>
     </footer>
 </article>
