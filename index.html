@@ -162,6 +162,75 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/mysql.ef/">MySQL EF 的简单使用</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/net452">v4.5.2 Developer pack</a></li>
+<li>entityframework:6.4.4</li>
+</ul>
+<h2 id="nuget">NuGet</h2>
+<blockquote>
+<p>%USERPROFILE%\AppData\Roaming\NuGet
+NuGet.Config:</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;config&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;http_proxy&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;http://192.168.3.19:8580&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;https_proxy&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;http://192.168.3.19:8580&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/config&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageRestore&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;enabled&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;True&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;automatic&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;True&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageRestore&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageSources&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://www.nuget.org/api/v2/&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;NuGet V3&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://api.nuget.org/v3/index.json&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageSources&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;activePackageSource&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://www.nuget.org/api/v2/&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/activePackageSource&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/configuration&gt;</span>
+</span></span></code></pre></div><h3 id="new">New</h3>
+<p>Update <a href="https://dist.nuget.org/visualstudio-2013-vsix/v2.12.0/NuGet.Tools.vsix">NuGet.Tools.vsix</a>
+and
+<a href="https://stackoverflow.com/a/63574949">Visual Studio 2013 NuGet package management not working</a>:</p>
+<pre tabindex="0"><code class="language-Package" data-lang="Package">PM &gt; [Net.ServicePointManager]::SecurityProtocol=[Net.ServicePointManager]::SecurityProtocol-bOR [Net.SecurityProtocolType]::Tls12
+</code></pre><p>Put the following nuget packages into the Offline folder:</p>
+<ul>
+<li>mysql.data.entityframework:8.0.32</li>
+<li>mysql.data:8.0.32.1</li>
+</ul>
+<pre tabindex="0"><code>portable.bouncycastle:1.9.0
+Google.Protobuf:3.21.12
+K4os.Compression.LZ4.Streams:1.2.6
+Portable.BouncyCastle:1.9.0
+System.Buffers:4.5.1
+System.Runtime.CompilerServices.Unsafe:5.0.0
+</code></pre><h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework60.html">Entity Framework 6 Support</a></li>
+<li><a href="https://learn.microsoft.com/en-us/nuget/consume-packages/configuring-nuget-behavior">Common NuGet configurations</a></li>
+<li><a href="https://github.com/tdtc-hrb/Cps_dotnet-fx">Cps_x32-fx</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/mysql.ef/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-08-08T00:08:08&#43;08:00">
+            8 Aug 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/php-devenv-win/">Windows搭建PHP环境</a></h2>
     </header>
     <section class="post-excerpt">
@@ -174,7 +243,7 @@
 <ul>
 <li>ServerRoot</li>
 </ul>
-<pre tabindex="0"><code>Define SRVROOT &#34;D:/Apache24&#34;
+<pre tabindex="0"><code>Define SRVROOT &#34;C:/Apache24&#34;
 </code></pre><ul>
 <li>ServerName</li>
 </ul>
@@ -186,13 +255,13 @@
 <ul>
 <li>PHP 8</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;C:/Users/tdtc/php-8.3&#34;</span>
-</span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;C:/Users/tdtc/php-8.3/php8apache2_4.dll&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;C:/php-8.3&#34;</span>
+</span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;C:/php-8.3/php8apache2_4.dll&#34;</span>
 </span></span></code></pre></div><ul>
 <li>Php 5</li>
 </ul>
-<pre tabindex="0"><code>PHPIniDir &#34;C:/Users/tdtc/php-5.6&#34;
-LoadModule php5_module &#34;C:/Users/tdtc/php-5.6/php5apache2_4.dll&#34;
+<pre tabindex="0"><code>PHPIniDir &#34;C:/php-5.6&#34;
+LoadModule php5_module &#34;C:/php-5.6/php5apache2_4.dll&#34;
 </code></pre><p>在配置文件(conf/httpd.conf)最后增加:</p>
 <pre tabindex="0"><code>AddType application/x-httpd-php .php
 </code></pre><ul>
@@ -238,8 +307,8 @@ Did you restart the server after uncommenting the LoadModule line for mod_socach
         
 
         
-        <time class="post-date" datetime="2025-07-29T00:12:08&#43;08:00">
-            29 Jul 2025
+        <time class="post-date" datetime="2025-08-04T00:12:08&#43;08:00">
+            4 Aug 2025
         </time>
     </footer>
 </article>
@@ -803,84 +872,6 @@ Alma Linux / Rocky Linux</li>
         
         <time class="post-date" datetime="2024-12-29T08:38:08&#43;08:00">
             29 Dec 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-webview/">qtwebview minibrowser example</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://developer.android.google.cn/studio">Android Studio</a> <br>
-安装完, 先不要进入设置！</li>
-<li><a href="https://download.qt.io/static/mirrorlist/mirmon/">mirror - online installer</a></li>
-</ul>
-<pre tabindex="0"><code>qt-online-installer-windows-x64-x.x.x.exe --mirror Y
-</code></pre><h2 id="create-qt-project">Create Qt Project</h2>
-<p>File -&gt; New Project</p>
-<ul>
-<li>v6.x <br>
-Qt Quick Application</li>
-<li>v5.15 <br>
-Qt Quick Application(compat)</li>
-</ul>
-<h3 id="project-setting">project setting</h3>
-<ul>
-<li>project name</li>
-</ul>
-<pre tabindex="0"><code>my_browser
-</code></pre><ul>
-<li>Define Build System</li>
-</ul>
-<pre tabindex="0"><code>CMake
-</code></pre><ul>
-<li>Define Project Details <br>
-Mini Qt version:</li>
-</ul>
-<pre tabindex="0"><code>Qt 5.15/6.5
-</code></pre><ul>
-<li>Kit Selection</li>
-</ul>
-<pre tabindex="0"><code>Android Qt x.x.x Clang x86_64
-</code></pre><h3 id="using-qt-webview"><a href="https://doc.qt.io/qt-6.8/qtwebview-index.html">Using Qt WebView</a></h3>
-<ul>
-<li>QML API</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">QtWebView</span>
-</span></span></code></pre></div><ul>
-<li>C++ API</li>
-</ul>
-<pre tabindex="0"><code>#include &lt;QtWebView/QtWebView&gt;
-</code></pre><h4 id="building-with-cmake">Building with CMake</h4>
-<ul>
-<li>package</li>
-</ul>
-<pre tabindex="0"><code>find_package(Qt6 REQUIRED COMPONENTS Quick WebView)
-</code></pre><ul>
-<li>target</li>
-</ul>
-<pre tabindex="0"><code>target_link_libraries(appmy_browser
-    PRIVATE Qt6::Quick Qt6::WebView
-)
-</code></pre><h4 id="initial">initial</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// first line
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>QtWebView<span style="color:#f92672">::</span>initialize();
-</span></span></code></pre></div><h3 id="icon">Icon</h3>
-<p>copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folder</p> <a class="read-more" href="/cnblogs/post/qt-webview/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-12-03T23:38:08&#43;08:00">
-            3 Dec 2024
         </time>
     </footer>
 </article>

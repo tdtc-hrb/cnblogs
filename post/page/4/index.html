@@ -164,6 +164,102 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/css-bulma-tabs/">tabs 实现</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="html">html</h1>
+<p>Note: The header and body are wrapped with div!</p>
+<pre tabindex="0"><code>&lt;div id=&#34;tabs-with-content&#34;&gt;
+&lt;/div&gt;
+</code></pre><h2 id="header">Header</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tabs is-centered&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><h2 id="body">Body</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tabs is-centered&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">table</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;table&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">tbody</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= image_tag &#34;#{@image.name}&#34; %&gt;
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @product.description %&gt;
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">tbody</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">table</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @parameter.ipxx %&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><h1 id="javascript">javascript</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsWithContent</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabs</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tabs li&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsContent</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tab-content&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">deactvateAllTabs</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hideTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tabContent</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tabContent</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">activateTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>[<span style="color:#a6e22e">getIndex</span>(<span style="color:#a6e22e">tab</span>)].<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">getIndex</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">el</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [...<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">parentElement</span>.<span style="color:#a6e22e">children</span>].<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">el</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">deactvateAllTabs</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">hideTabsContent</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">activateTabsContent</span>(<span style="color:#a6e22e">tab</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">click</span>();
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://eiji.dev/bulma-tabs-with-content.html">Bulma: Tabs with Content</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/css-bulma-tabs/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-07-27T00:26:39&#43;08:00">
+            27 Jul 2022
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/es24-install/">Elasticsearch 2.4 安装</a></h2>
     </header>
     <section class="post-excerpt">
@@ -808,95 +904,6 @@ codename: focal</li>
         
         <time class="post-date" datetime="2021-06-18T00:08:08&#43;08:00">
             18 Jun 2021
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/php-mysqli-tutorial/">使用mysqli和mysql查询数据库</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="导入数据">导入数据</h1>
-<p>导入MySQL示例数据库<a href="https://github.com/datacharmer/test_db/releases/tag/v1.0.7">employees</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ownloads<span style="color:#ae81ff">\t</span>est_db&gt;%MYSQL57_HOME%<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\m</span>ysql &lt; employees.sql -u DBAdmin -p
-</span></span><span style="display:flex;"><span>Enter password: *******
-</span></span><span style="display:flex;"><span>INFO
-</span></span><span style="display:flex;"><span>CREATING DATABASE STRUCTURE
-</span></span><span style="display:flex;"><span>INFO
-</span></span><span style="display:flex;"><span>storage engine: InnoDB
-</span></span><span style="display:flex;"><span>INFO
-</span></span><span style="display:flex;"><span>LOADING departments
-</span></span><span style="display:flex;"><span>INFO
-</span></span><span style="display:flex;"><span>LOADING employees
-</span></span><span style="display:flex;"><span>INFO
-</span></span><span style="display:flex;"><span>LOADING dept_emp
-</span></span><span style="display:flex;"><span>INFO
-</span></span><span style="display:flex;"><span>LOADING dept_manager
-</span></span><span style="display:flex;"><span>INFO
-</span></span><span style="display:flex;"><span>LOADING titles
-</span></span><span style="display:flex;"><span>INFO
-</span></span><span style="display:flex;"><span>LOADING salaries
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ownloads<span style="color:#ae81ff">\t</span>est_db&gt;
-</span></span></code></pre></div><h1 id="查询数据">查询数据</h1>
-<p>查询固定员工ID的姓名，所属部门，职务</p>
-<blockquote>
-<p>以下为创建SQL的过程。</p></blockquote>
-<h2 id="1-查询姓名">1. 查询姓名</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> concat(first_name, <span style="color:#e6db74">&#39; &#39;</span> , last_name) <span style="color:#66d9ef">as</span> name <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
-</span></span></code></pre></div><h2 id="2-查询部门id">2. 查询部门ID</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
-</span></span></code></pre></div><h2 id="3-查询所在部门名称">3. 查询所在部门名称</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> dept_name
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> dept_no <span style="color:#f92672">=</span>
-</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
-</span></span></code></pre></div><h2 id="4-查询员工姓名以及部门名称">4. 查询员工姓名以及部门名称</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
-</span></span><span style="display:flex;"><span>concat(e.first_name, <span style="color:#e6db74">&#39; &#39;</span> , e.last_name) <span style="color:#66d9ef">as</span> name,
-</span></span><span style="display:flex;"><span>d.dept_name
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> e, <span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span> d
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> d.dept_no <span style="color:#f92672">=</span>
-</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
-</span></span><span style="display:flex;"><span>		 <span style="color:#66d9ef">and</span>
-</span></span><span style="display:flex;"><span>		e.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
-</span></span></code></pre></div><h2 id="5-整合sql">5. 整合SQL</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
-</span></span><span style="display:flex;"><span>concat(e.first_name, <span style="color:#e6db74">&#39; &#39;</span> , e.last_name) <span style="color:#66d9ef">as</span> name,
-</span></span><span style="display:flex;"><span>d.dept_name,
-</span></span><span style="display:flex;"><span>t.title
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> e,
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span> d,
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>titles<span style="color:#f92672">`</span> t
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> d.dept_no <span style="color:#f92672">=</span>
-</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
-</span></span><span style="display:flex;"><span>		 <span style="color:#66d9ef">and</span>
-</span></span><span style="display:flex;"><span>		e.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#66d9ef">and</span>
-</span></span><span style="display:flex;"><span>		t.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
-</span></span></code></pre></div><h1 id="mysql">mysql</h1>
-<h2 id="1-连接">1. 连接</h2>
-<blockquote>
-<p><a href="http://php.net/manual/en/function.mysql-connect.php">mysql_connect</a> <br>
-( <br>
-server, // 服务器地址 <br>
-username,  // 用户名 <br>
-password // 密码 <br>
-)</p> <a class="read-more" href="/cnblogs/post/php-mysqli-tutorial/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2021-04-20T20:26:39&#43;08:00">
-            20 Apr 2021
         </time>
     </footer>
 </article>
