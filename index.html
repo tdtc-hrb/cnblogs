@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Hugo 0.150.1">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -158,6 +158,150 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-hello/">Widgets简单demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://tdtc-hrb.github.io/ops-win/posts/vc-win">VC++</a></li>
+<li>Qt Design Studio</li>
+</ul>
+<h3 id="qt-visual-studio-tools"><a href="https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022">Qt Visual Studio Tools</a></h3>
+<p>Find &ldquo;Qt&rdquo; in &ldquo;Tools-&gt;Options&rdquo; of Visual Studio and set the qmake path
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123104033.png" alt="Versions - vs2022"></p>
+<h1 id="widget工程">Widget工程</h1>
+<ul>
+<li>QtHello
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123111036.png" alt="vs2022 info1"></li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130638.png" alt="Build config"></p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130026.png" alt="set class name">
+&ldquo;User Interface(.ui)file&rdquo; is only available if you install the QtDesignStudio</p>
+<h2 id="ui">UI</h2>
+<ul>
+<li>Open the UI file using QT
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123131837.png" alt="QtDesignStudio"></li>
+</ul>
+<h3 id="push-button">Push Button</h3>
+<p>拖拽“Push Button”，并修改属性：</p>
+<ul>
+<li>ObjectName</li>
+</ul>
+<pre tabindex="0"><code>btnHello
+</code></pre><ul>
+<li>Text</li>
+</ul>
+<pre tabindex="0"><code>Click Me
+</code></pre><h1 id="code-implementation">Code Implementation</h1>
+<ul>
+<li>QtHello.h</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMainWindow&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ui_QtHello.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QtHello</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QMainWindow
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Q_OBJECT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    QtHello(QWidget <span style="color:#f92672">*</span>parent <span style="color:#f92672">=</span> Q_NULLPTR);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Ui<span style="color:#f92672">::</span>QtHelloClass ui;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Declarative methods
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> slots:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> helloQT();
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>QtHello.cpp</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtHello.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMessageBox&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>QtHello<span style="color:#f92672">::</span>QtHello(QWidget <span style="color:#f92672">*</span>parent)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">:</span> QMainWindow(parent)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    ui.setupUi(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// add code // Association 3-Elements: Ui-Event-Method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    connect(ui.btnHello, <span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked, <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>QtHello<span style="color:#f92672">::</span>helloQT);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The other way to connect a signal to a slot is to use QObject::connect() and the SIGNAL and SLOT macros. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// connect(ui.btnHello, SIGNAL(clicked()), this, SLOT(helloQT()));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Implementation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> QtHello<span style="color:#f92672">::</span>helloQT()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QMessageBox msgBox;
+</span></span><span style="display:flex;"><span>    msgBox.setText(<span style="color:#e6db74">&#34;Hello Qt!&#34;</span>);
+</span></span><span style="display:flex;"><span>    msgBox.exec();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="signals-and-slots"><a href="https://doc.qt.io/qt-6/signalsandslots.html">Signals and Slots</a></h2>
+<p><img src="https://doc.qt.io/qt-6/images/abstract-connections.png" alt="qt6 offical"></p> <a class="read-more" href="/cnblogs/post/qt-hello/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-09-25T19:08:08&#43;08:00">
+            25 Sep 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-android_started/">Qt6 for android</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>ndk</li>
+<li>avd(Android Virtual Device)</li>
+</ul>
+<h1 id="preparation">Preparation</h1>
+<ul>
+<li>Environment</li>
+<li>cmdline</li>
+</ul>
+<h2 id="environment-variables">Environment variables</h2>
+<p>:warning: <br>
+After installing <a href="https://developer.android.google.cn/studio">Android Studio</a>, don&rsquo;t go into settings yet!</p>
+<h3 id="java-home">Java Home</h3>
+<ul>
+<li>Qt6.8/6.5 <br>
+set <a href="https://adoptium.net/temurin/releases?version=17&amp;os=any&amp;arch=any">JDK17</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.16+8
+</span></span></code></pre></div><h3 id="android-home"><a href="https://developer.android.com/tools/variables#envar">Android Home</a></h3>
+<p>Sets the path to the SDK installation directory.
+Once set, the value does not typically change and can be shared by multiple users on the same machine.
+ANDROID_SDK_ROOT, which also points to the SDK installation directory, is deprecated.
+If you continue to use it, Android Studio and the Android Gradle plugin will check that the old and new variables are consistent.</p> <a class="read-more" href="/cnblogs/post/qt-android_started/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-09-03T12:38:08&#43;08:00">
+            3 Sep 2025
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -309,50 +453,6 @@ Did you restart the server after uncommenting the LoadModule line for mod_socach
         
         <time class="post-date" datetime="2025-08-04T00:12:08&#43;08:00">
             4 Aug 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-android_started/">Qt6 for android</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>ndk</li>
-<li>avd(Android Virtual Device)</li>
-</ul>
-<h1 id="preparation">Preparation</h1>
-<ul>
-<li>Environment</li>
-<li>cmdline</li>
-</ul>
-<h2 id="environment-variables">Environment variables</h2>
-<p>:warning: <br>
-After installing <a href="https://developer.android.google.cn/studio">Android Studio</a>, don&rsquo;t go into settings yet!</p>
-<h3 id="java-home">Java Home</h3>
-<ul>
-<li>Qt6.8/6.5 <br>
-set <a href="https://adoptium.net/temurin/archive/?variant=openjdk11&amp;version=17">JDK17</a></li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.12+7
-</span></span></code></pre></div><h3 id="android-home"><a href="https://developer.android.com/tools/variables#envar">Android Home</a></h3>
-<p>Sets the path to the SDK installation directory.
-Once set, the value does not typically change and can be shared by multiple users on the same machine.
-ANDROID_SDK_ROOT, which also points to the SDK installation directory, is deprecated.
-If you continue to use it, Android Studio and the Android Gradle plugin will check that the old and new variables are consistent.</p> <a class="read-more" href="/cnblogs/post/qt-android_started/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-03-03T12:38:08&#43;08:00">
-            3 Mar 2025
         </time>
     </footer>
 </article>
@@ -564,106 +664,6 @@ If you continue to use it, Android Studio and the Android Gradle plugin will che
         
         <time class="post-date" datetime="2025-02-23T08:18:08&#43;08:00">
             23 Feb 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-hello/">Widgets简单demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2">VC++</a></li>
-<li>Qt Design Studio</li>
-</ul>
-<h3 id="qt-visual-studio-tools"><a href="https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022">Qt Visual Studio Tools</a></h3>
-<p>Find &ldquo;Qt&rdquo; in &ldquo;Tools-&gt;Options&rdquo; of Visual Studio and set the qmake path
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123104033.png" alt="Versions - vs2022"></p>
-<h1 id="widget工程">Widget工程</h1>
-<ul>
-<li>QtHello
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123111036.png" alt="vs2022 info1"></li>
-</ul>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130638.png" alt="Build config"></p>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130026.png" alt="set class name">
-&ldquo;User Interface(.ui)file&rdquo; is only available if you install the QtDesignStudio</p>
-<h2 id="ui">UI</h2>
-<ul>
-<li>Open the UI file using QT
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123131837.png" alt="QtDesignStudio"></li>
-</ul>
-<h3 id="push-button">Push Button</h3>
-<p>拖拽“Push Button”，并修改属性：</p>
-<ul>
-<li>ObjectName</li>
-</ul>
-<pre tabindex="0"><code>btnHello
-</code></pre><ul>
-<li>Text</li>
-</ul>
-<pre tabindex="0"><code>Click Me
-</code></pre><h1 id="code-implementation">Code Implementation</h1>
-<ul>
-<li>QtHello.h</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMainWindow&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ui_QtHello.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QtHello</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QMainWindow
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    Q_OBJECT
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    QtHello(QWidget <span style="color:#f92672">*</span>parent <span style="color:#f92672">=</span> Q_NULLPTR);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    Ui<span style="color:#f92672">::</span>QtHelloClass ui;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Declarative methods
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> slots:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> helloQT();
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><ul>
-<li>QtHello.cpp</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtHello.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMessageBox&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>QtHello<span style="color:#f92672">::</span>QtHello(QWidget <span style="color:#f92672">*</span>parent)
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">:</span> QMainWindow(parent)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    ui.setupUi(<span style="color:#66d9ef">this</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// add code // Association 3-Elements: Ui-Event-Method
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    connect(ui.btnHello, <span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked, <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>QtHello<span style="color:#f92672">::</span>helloQT);
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The other way to connect a signal to a slot is to use QObject::connect() and the SIGNAL and SLOT macros. 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// connect(ui.btnHello, SIGNAL(clicked()), this, SLOT(helloQT()));
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Implementation
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> QtHello<span style="color:#f92672">::</span>helloQT()
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    QMessageBox msgBox;
-</span></span><span style="display:flex;"><span>    msgBox.setText(<span style="color:#e6db74">&#34;Hello Qt!&#34;</span>);
-</span></span><span style="display:flex;"><span>    msgBox.exec();
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="signals-and-slots"><a href="https://doc.qt.io/qt-6/signalsandslots.html">Signals and Slots</a></h2>
-<p><img src="https://doc.qt.io/qt-6/images/abstract-connections.png" alt="qt6 offical"></p> <a class="read-more" href="/cnblogs/post/qt-hello/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-01-25T19:08:08&#43;08:00">
-            25 Jan 2025
         </time>
     </footer>
 </article>
