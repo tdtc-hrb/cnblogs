@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/asp.net6-restful/" />
 
@@ -184,7 +184,8 @@
 <li>NuGet</li>
 </ul>
 <blockquote>
-<p>..\AppData\Roaming\NuGet\NuGet.Config</p></blockquote>
+<p>..\AppData\Roaming\NuGet\NuGet.Config</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageSources&gt;</span>
@@ -238,7 +239,9 @@
 <blockquote>
 <p>Startup.cs</p>
 <blockquote>
-<p>Configure方法中</p></blockquote></blockquote>
+<p>Configure方法中</p>
+</blockquote>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>SeedData.EnsurePopulated<span style="color:#f92672">(</span>app<span style="color:#f92672">)</span>;
 </span></span></code></pre></div><p><a href="https://pan.baidu.com/s/1zX1TVAe_NONChAAGNp7k-w">Part I</a>  提取码: mmig</p>
 <h1 id="建立mcj">建立MC<sub>j</sub></h1>
@@ -391,7 +394,8 @@
 <pre tabindex="0"><code>dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 </code></pre><h2 id="config">config</h2>
 <blockquote>
-<p>Startup</p></blockquote>
+<p>Startup</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>            services.AddControllers<span style="color:#f92672">()</span>.AddNewtonsoftJson<span style="color:#f92672">()</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            services.Configure&lt;MvcNewtonsoftJsonOptions&gt;<span style="color:#f92672">(</span>opts <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
@@ -419,7 +423,8 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span></code></pre></div><h2 id="test-data">Test Data</h2>
 <blockquote>
-<p>PowerShell</p></blockquote>
+<p>PowerShell</p>
+</blockquote>
 <h3 id="get">get</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Invoke-WebRequest https://localhost:7255/api/products/1 | Select-Object Content
 </span></span></code></pre></div><h3 id="post">post</h3>
@@ -438,7 +443,8 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Invoke-WebRequest https://localhost:7255/api/products/100 |Select-Object StatusCode
 </span></span></code></pre></div><h3 id="patch-1">patch</h3>
 <blockquote>
-<p>allow tls1.2<sup>4</sup></p></blockquote>
+<p>allow tls1.2<sup>4</sup></p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ps" data-lang="ps"><span style="display:flex;"><span>[<span style="color:#a6e22e">Net.ServicePointManager</span>]<span style="color:#a6e22e">::SecurityProtocol</span> <span style="color:#a6e22e">=</span> [<span style="color:#a6e22e">Net.SecurityProtocolType</span>]<span style="color:#a6e22e">::Tls12</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Invoke-RestMethod https://localhost:7255/api/products/1 -Method PATCH -Body <span style="color:#e6db74">&#39;[{&#34;op&#34;:&#34;replace&#34;, &#34;path&#34;:&#34;Price&#34;, &#34;value&#34;:&#34;618.00&#34;}]&#39;</span> -ContentType <span style="color:#e6db74">&#34;application/json&#34;</span>
 </span></span></code></pre></div><p><a href="https://pan.baidu.com/s/1g1xXeNC1ootHACUopvRIwg">MyWebApp v6.0</a> 提取码: tocx</p>

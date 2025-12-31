@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-lwip-ethernet/" />
 
@@ -181,15 +181,16 @@
 （PS. 再一次感谢Adam Dunkels大侠的无私工作！以及对他的敬意！）</p>
 <h1 id="头文件">头文件</h1>
 <blockquote>
-<p>ethernetif.h</p></blockquote>
+<p>ethernetif.h</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef ETHERNETIF_H_INCLUDED
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define ETHERNETIF_H_INCLUDED
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/netif.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/ip_addr.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/err.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;netif/etharp.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">err_t</span> <span style="color:#a6e22e">ethernetif_init</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ethernetif_input</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif);
@@ -197,7 +198,8 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* ETHERNETIF_H_INCLUDED */</span><span style="color:#75715e">
 </span></span></span></code></pre></div><h1 id="ethernet-interface">ethernet interface</h1>
 <blockquote>
-<p>ethernetif.c位置: ../src/netif</p></blockquote>
+<p>ethernetif.c位置: ../src/netif</p>
+</blockquote>
 <ul>
 <li>初始化（低级）</li>
 </ul>
@@ -234,7 +236,8 @@
 </span></span></code></pre></div><h2 id="2-发送低级">2. 发送（低级）</h2>
 <h3 id="rtosnone">RTOS（None）</h3>
 <blockquote>
-<p>在不使用RTOS的情况下</p></blockquote>
+<p>在不使用RTOS的情况下</p>
+</blockquote>
 <h4 id="1-初始化传输">（1） 初始化传输</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">enc28j60InitiateTransfer</span>(p<span style="color:#f92672">-&gt;</span>tot_len);  <span style="color:#75715e">// initiate transfer();
 </span></span></span></code></pre></div><h4 id="init-transfer">init transfer</h4>
@@ -252,10 +255,10 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="2-准备传输">（2） 准备传输</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// send data from(q-&gt;payload, q-&gt;len);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">enc28j60Writebuf</span>( q<span style="color:#f92672">-&gt;</span>payload, q<span style="color:#f92672">-&gt;</span>len );
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">enc28j60Writebuf</span>( q<span style="color:#f92672">-&gt;</span>payload, q<span style="color:#f92672">-&gt;</span>len );
 </span></span></code></pre></div><h4 id="3-开始传输">（3） 开始传输</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// signal that packet should be sent();
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">enc28j60Sent</span>();
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">enc28j60Sent</span>();
 </span></span></code></pre></div><h4 id="sent">sent</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">enc28j60Sent</span>(<span style="color:#66d9ef">void</span>)
 </span></span><span style="display:flex;"><span>{
@@ -279,7 +282,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">pbuf_free</span>(p);
 </span></span></code></pre></div><h3 id="4-len大小">（4） len大小</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#if LWIP_STATS
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		lwip_rx_count <span style="color:#f92672">+=</span> p<span style="color:#f92672">-&gt;</span>tot_len;
+</span></span></span><span style="display:flex;"><span>		lwip_rx_count <span style="color:#f92672">+=</span> p<span style="color:#f92672">-&gt;</span>tot_len;
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
 </span></span></span></code></pre></div><h1 id="reference">Reference</h1>
 <ul>

@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/qt-sqlite3/" />
 
@@ -278,11 +278,11 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/ui&gt;</span>
 </span></span></code></pre></div><h2 id="qtsqlite3demoh">QtSqlite3Demo.h</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMainWindow&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ui_QtSqlite3Demo.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMessageBox&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QtSqlite3Demo</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QMainWindow
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    Q_OBJECT
@@ -300,16 +300,16 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtSqlite3Demo.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSql/QSqlDatabase&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSql/QSqlQueryModel&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#pragma comment(lib, &#34;Qt6Sql.lib&#34;)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>QtSqlite3Demo<span style="color:#f92672">::</span>QtSqlite3Demo(QWidget<span style="color:#f92672">*</span> parent)
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">:</span> QMainWindow(parent)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	ui.setupUi(<span style="color:#66d9ef">this</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">//
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	connect(ui.btnSearch, SIGNAL(clicked()), <span style="color:#66d9ef">this</span>, SLOT(sqlite_search()));
+</span></span></span><span style="display:flex;"><span>	connect(ui.btnSearch, SIGNAL(clicked()), <span style="color:#66d9ef">this</span>, SLOT(sqlite_search()));
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> QtSqlite3Demo<span style="color:#f92672">::</span>sqlite_search()

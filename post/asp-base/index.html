@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/asp-base/" />
 
@@ -190,13 +190,17 @@
 <blockquote>
 <p>File-》New-》Project</p>
 <blockquote>
-<p>ASP.NET Core Web Application(Model-View-Controller)</p></blockquote></blockquote>
+<p>ASP.NET Core Web Application(Model-View-Controller)</p>
+</blockquote>
+</blockquote>
 <p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011124537.png" alt="vs2022 preview"></p>
 <h2 id="简单修改主页">简单修改主页</h2>
 <blockquote>
 <p>Solution Explorer</p>
 <blockquote>
-<p>Views-》Home-》Index.cshtml</p></blockquote></blockquote>
+<p>Views-》Home-》Index.cshtml</p>
+</blockquote>
+</blockquote>
 <p>增加如下代码：</p>
 <pre tabindex="0"><code class="language-asp.net" data-lang="asp.net">&lt;p&gt;这是我的第1个ASP.NET程序！&lt;/p&gt;
 </code></pre><p>选择使用何种Web Server 运行：</p>
@@ -206,7 +210,8 @@
 <li>IIS Express</li>
 </ul>
 <blockquote>
-<p>default: https</p></blockquote>
+<p>default: https</p>
+</blockquote>
 <p>点击“IIS Express”运行（如果弹出证书安装选“是”即可）。
 <img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134118.png" alt="iis cert - hint">
 <img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134337.png" alt="windows - hint"></p>
@@ -214,7 +219,8 @@
 <h2 id="ef-core">EF Core</h2>
 <blockquote>
 <p>Project-》Manage NuGet Packages
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011135217.png" alt="Microsoft EF Core"></p></blockquote>
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011135217.png" alt="Microsoft EF Core"></p>
+</blockquote>
 <h2 id="entity-class">entity class</h2>
 <p>我们建立一个与数据表相对应的Entity类</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel.DataAnnotations;
@@ -238,7 +244,9 @@
 <p>Solution Explorer</p>
 <blockquote>
 <p>Model右键点击Add-》New Item选择Class
-Name: ApplicationDbContext.cs</p></blockquote></blockquote>
+Name: ApplicationDbContext.cs</p>
+</blockquote>
+</blockquote>
 <p>添加引用：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.EntityFrameworkCore;
 </span></span></code></pre></div><p>添加继承：DbContext; <br>
@@ -261,7 +269,9 @@ and &ldquo;Generate Constructor &lsquo;ApplicationDbContext(options)&rsquo;&quot
 <p>Solution Explorer -》
 Model右键点击Add-》New Item选择Interface</p>
 <blockquote>
-<p>Name: IProductRepository.cs</p></blockquote></blockquote>
+<p>Name: IProductRepository.cs</p>
+</blockquote>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IProductRepository</span>
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    IQueryable&lt;Product&gt; Products { <span style="color:#66d9ef">get</span>; }
@@ -271,7 +281,9 @@ Model右键点击Add-》New Item选择Interface</p>
 <p>Solution Explorer -》
 Model右键点击Add-》New Item选择Class</p>
 <blockquote>
-<p>Name: EFProductRepository.cs</p></blockquote></blockquote>
+<p>Name: EFProductRepository.cs</p>
+</blockquote>
+</blockquote>
 <ul>
 <li>Use primary Constructor</li>
 </ul>
@@ -286,7 +298,8 @@ Version 9.0.0 released in January 2025 supports.</p>
 <h4 id="添加mysqlconnector">添加MySQLConnector</h4>
 <blockquote>
 <p>Project-》Manager NuGet Packages
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011152840.png" alt="MySql EF Core"></p></blockquote>
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011152840.png" alt="MySql EF Core"></p>
+</blockquote>
 <h4 id="connection-string">connection string</h4>
 <ul>
 <li>appsettings.json</li>
@@ -302,7 +315,9 @@ Version 9.0.0 released in January 2025 supports.</p>
 <blockquote>
 <p>Program.cs</p>
 <blockquote>
-<p>Configure Services</p></blockquote></blockquote>
+<p>Configure Services</p>
+</blockquote>
+</blockquote>
 <p>添加数据库context</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">//// MySql - Oracle</span>
 </span></span><span style="display:flex;"><span>builder.Services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
@@ -313,7 +328,8 @@ Version 9.0.0 released in January 2025 supports.</p>
 <img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/uc202410111716.png" alt="ultra compare p1"></p>
 <h1 id="添加view">添加View</h1>
 <blockquote>
-<p>Index.cshtml</p></blockquote>
+<p>Index.cshtml</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>@model IEnumerable&lt;Product&gt;
 </span></span><span style="display:flex;"><span>@foreach (<span style="color:#66d9ef">var</span> p <span style="color:#66d9ef">in</span> Model)
 </span></span><span style="display:flex;"><span>{
@@ -326,7 +342,8 @@ Version 9.0.0 released in January 2025 supports.</p>
 <img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/uc202410111737.png" alt="ultra compare p2"></p>
 <h1 id="添加controller">添加Controller</h1>
 <blockquote>
-<p>HomeController.cs</p></blockquote>
+<p>HomeController.cs</p>
+</blockquote>
 <p>引用实例：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> IProductRepository _productRepository;
 </span></span><span style="display:flex;"><span>

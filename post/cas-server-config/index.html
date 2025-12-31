@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/cas-server-config/" />
 
@@ -185,7 +185,8 @@
 </ul>
 <h1 id="下载部署包">下载部署包</h1>
 <blockquote>
-<p>使用gradle 的repo最高只支持gradle V4.3！</p></blockquote>
+<p>使用gradle 的repo最高只支持gradle V4.3！</p>
+</blockquote>
 <h2 id="0-clone">0. clone</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/apereo/cas-gradle-overlay-template.git
 </span></span></code></pre></div><h2 id="1-set-gradle">1. set gradle</h2>
@@ -195,7 +196,8 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  $PATH<span style="color:#f92672">=</span>$PATH;%GRADLE_HOME%<span style="color:#ae81ff">\b</span>in
 </span></span></code></pre></div><h2 id="2-build-war">2. build war</h2>
 <blockquote>
-<p>File location: cas\build\libs\cas.war</p></blockquote>
+<p>File location: cas\build\libs\cas.war</p>
+</blockquote>
 <h3 id="1-config-file">1) config file</h3>
 <p>gradle.properties</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cas.version<span style="color:#f92672">=</span>5.3.2
@@ -217,7 +219,8 @@
 <h3 id="1-genkey">1) genkey</h3>
 <blockquote>
 <p>info:
--dname &ldquo;CN=localhost,OU=test.com,O=test,L=WH,ST=HB,C=CN&rdquo;</p></blockquote>
+-dname &ldquo;CN=localhost,OU=test.com,O=test,L=WH,ST=HB,C=CN&rdquo;</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -genkey -keyalg RSA -alias thekeystore -keypass changeit -storepass changeit -keysize <span style="color:#ae81ff">2048</span> -keystore e:/etc/cas/thekeystore
 </span></span></code></pre></div><h3 id="2-export">2) export</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -export -alias thekeystore -file e:/etc/cas/cas5311.crt -keystore e:/etc/cas/thekeystore -storepass changeit
@@ -261,7 +264,8 @@ https://localhost:8443/cas</p>
 <h2 id="1-service-register">1. service register</h2>
 <h3 id="0-on-services">0) ON Services</h3>
 <blockquote>
-<p>cas.properties</p></blockquote>
+<p>cas.properties</p>
+</blockquote>
 <p>Append the following Key-Value:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cas.serviceRegistry.initFromJson<span style="color:#f92672">=</span>true
 </span></span><span style="display:flex;"><span>cas.serviceRegistry.json.location<span style="color:#f92672">=</span>classpath:/services
@@ -293,7 +297,8 @@ loginInfo-10000004.json</li>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#cas.authn.accept.users=casuser::Mellon</span>
 </span></span></code></pre></div><h4 id="mysql55-mysql57">mysql5.5-mysql5.7</h4>
 <blockquote>
-<p>cas.properties</p></blockquote>
+<p>cas.properties</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># server.port = 8443</span>
 </span></span><span style="display:flex;"><span>cas.server.name: https://localhost:8443
 </span></span><span style="display:flex;"><span>cas.server.prefix: https://localhost:8443/cas
@@ -329,7 +334,8 @@ loginInfo-10000004.json</li>
 </span></span><span style="display:flex;"><span>cas.authn.jdbc.query<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>.passwordEncoder.strength<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
 </span></span></code></pre></div><h4 id="mysql80">mysql8.0+</h4>
 <blockquote>
-<p>cas.properties</p></blockquote>
+<p>cas.properties</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># server.port = 8443</span>
 </span></span><span style="display:flex;"><span>cas.server.name: https://localhost:8443
 </span></span><span style="display:flex;"><span>cas.server.prefix: https://localhost:8443/cas
@@ -378,7 +384,8 @@ loginInfo-10000004.json</li>
 </span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">UNIQUE</span> (sso_id)
 </span></span><span style="display:flex;"><span>);
 </span></span></code></pre></div><blockquote>
-<p>insert data</p></blockquote>
+<p>insert data</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> APP_USER(sso_id, password, first_name, last_name, email, <span style="color:#66d9ef">state</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">VALUES</span> (<span style="color:#e6db74">&#39;sam&#39;</span>,<span style="color:#e6db74">&#39;$2a$10$4eqIF5s/ewJwHK1p8lqlFOEm2QIA0S8g6./Lok.pQxqcxaBZYChRm&#39;</span>, <span style="color:#e6db74">&#39;Sam&#39;</span>,<span style="color:#e6db74">&#39;Smith&#39;</span>,<span style="color:#e6db74">&#39;samy@xyz.com&#39;</span>, <span style="color:#e6db74">&#39;Active&#39;</span>);
 </span></span></code></pre></div><h2 id="3-test">3. test</h2>

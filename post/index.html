@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -162,6 +162,85 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops-network_adapter-debian/">最新版的Debian网络Adapter</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Debian 13.x</li>
+</ul>
+<h4 id="unattended-installation">Unattended Installation</h4>
+<p>Cancel &ldquo;Proceed with Unattended Installation&rdquo;</p>
+<p>在使用自动无人值守安装时，会自动安装桌面的Debian</p>
+<h3 id="net-adapter">net adapter</h3>
+<p>设置Network Adapter为Bridged</p>
+<ul>
+<li>vmware(25h2) <br>
+default: ens32</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>failed</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>vbox <br>
+default: enp0s3</li>
+</ul>
+<h3 id="netplanio">netplan.io</h3>
+<pre tabindex="0"><code>sudo apt install netplan.io
+</code></pre><ul>
+<li>High version <br>
+If you get an error about systemd-resolved not being found/installed. Install it before proceeding:</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install systemd-resolved -y
+</code></pre><h3 id="manage-networkd-and-resolved">Manage networkd and resolved</h3>
+<pre tabindex="0"><code>sudo systemctl unmask systemd-networkd.service;
+sudo systemctl unmask systemd-resolved.service;
+sudo systemctl enable systemd-networkd.service;
+sudo systemctl mask networking;
+sudo systemctl enable systemd-resolved.service;
+</code></pre><h3 id="config-file">config file</h3>
+<ul>
+<li>/etc/netplan/10-config.yaml</li>
+</ul>
+<pre tabindex="0"><code>network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s3:
+      addresses:
+        - 192.168.0.49/24
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4, 192.168.0.1]
+      routes:
+        - to: default
+          via: 192.168.0.1
+</code></pre><h3 id="removed-ifupdown-and-resolvconf">removed ifupdown and resolvconf</h3>
+<pre tabindex="0"><code>reboot
+sudo apt purge ifupdown resolvconf -y
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://pedroagrodrigues.com/posts/Debian_To_Netplan/">Converting Debian 10/11/12 to Netplan.io</a></li>
+<li><a href="https://cloudspinx.com/how-to-manage-ubuntu-debian-networking-using-netplan/">How To Manage Ubuntu / Debian Networking using Netplan</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/ops-network_adapter-debian/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-12-30T21:08:39&#43;08:00">
+            30 Dec 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/qt-webview/">qtwebview minibrowser example</a></h2>
     </header>
     <section class="post-excerpt">
@@ -219,7 +298,7 @@ Mini Qt version:</li>
 )
 </code></pre><h4 id="initial">initial</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// first line
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>QtWebView<span style="color:#f92672">::</span>initialize();
+</span></span></span><span style="display:flex;"><span>QtWebView<span style="color:#f92672">::</span>initialize();
 </span></span></code></pre></div><h3 id="icon">Icon</h3>
 <p>copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folder</p> <a class="read-more" href="/cnblogs/post/qt-webview/">&raquo;</a></p>
         
@@ -322,10 +401,10 @@ If you continue to use it, Android Studio and the Android Gradle plugin will che
 <li>QtHello.h</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMainWindow&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ui_QtHello.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QtHello</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QMainWindow
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    Q_OBJECT
@@ -337,7 +416,7 @@ If you continue to use it, Android Studio and the Android Gradle plugin will che
 </span></span><span style="display:flex;"><span>    Ui<span style="color:#f92672">::</span>QtHelloClass ui;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Declarative methods
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> slots:
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> slots:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> helloQT();
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><ul>
@@ -345,20 +424,20 @@ If you continue to use it, Android Studio and the Android Gradle plugin will che
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtHello.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMessageBox&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>QtHello<span style="color:#f92672">::</span>QtHello(QWidget <span style="color:#f92672">*</span>parent)
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">:</span> QMainWindow(parent)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    ui.setupUi(<span style="color:#66d9ef">this</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// add code // Association 3-Elements: Ui-Event-Method
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    connect(ui.btnHello, <span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked, <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>QtHello<span style="color:#f92672">::</span>helloQT);
+</span></span></span><span style="display:flex;"><span>    connect(ui.btnHello, <span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked, <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>QtHello<span style="color:#f92672">::</span>helloQT);
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The other way to connect a signal to a slot is to use QObject::connect() and the SIGNAL and SLOT macros. 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// connect(ui.btnHello, SIGNAL(clicked()), this, SLOT(helloQT()));
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// connect(ui.btnHello, SIGNAL(clicked()), this, SLOT(helloQT()));
+</span></span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Implementation
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> QtHello<span style="color:#f92672">::</span>helloQT()
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> QtHello<span style="color:#f92672">::</span>helloQT()
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    QMessageBox msgBox;
 </span></span><span style="display:flex;"><span>    msgBox.setText(<span style="color:#e6db74">&#34;Hello Qt!&#34;</span>);
@@ -394,7 +473,8 @@ If you continue to use it, Android Studio and the Android Gradle plugin will che
 <h2 id="nuget">NuGet</h2>
 <blockquote>
 <p>%USERPROFILE%\AppData\Roaming\NuGet
-NuGet.Config:</p></blockquote>
+NuGet.Config:</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;config&gt;</span>
@@ -472,7 +552,8 @@ System.Runtime.CompilerServices.Unsafe:5.0.0
 </code></pre><h2 id="php-apache">php-apache</h2>
 <pre tabindex="0"><code>Non Thread Safe(NTS) 和 Thread Safe(TS)： &#34;NTS&#34;，没有&#34;php(5/7/8)apache2_4.dll&#34;
 </code></pre><blockquote>
-<p>Php7.2+ 已移除 mcrypt.</p></blockquote>
+<p>Php7.2+ 已移除 mcrypt.</p>
+</blockquote>
 <ul>
 <li>PHP 8</li>
 </ul>
@@ -643,7 +724,8 @@ Did you restart the server after uncommenting the LoadModule line for mod_socach
 <li>Qt5</li>
 </ul>
 <blockquote>
-<p>Included in the integration module</p></blockquote>
+<p>Included in the integration module</p>
+</blockquote>
 <p>No need to select additional</p>
 <ul>
 <li>Qt6 <br>
@@ -697,7 +779,8 @@ Did you restart the server after uncommenting the LoadModule line for mod_socach
             <p><p><img src="https://www.eltima.com/images/upload/products/spm/articles/howto/178.jpg" alt="RS-232 Testing Guide"></p>
 <h1 id="thread">thread</h1>
 <blockquote>
-<p>线程相关</p></blockquote>
+<p>线程相关</p>
+</blockquote>
 <h2 id="asynchronously">asynchronously</h2>
 <p><a href="https://doc.qt.io/qt-5/qobject.html#connect">connect方法</a> 已实现异步。</p>
 <h2 id="synchronously">synchronously</h2>
@@ -714,7 +797,8 @@ Did you restart the server after uncommenting the LoadModule line for mod_socach
 <h2 id="init-port">Init Port</h2>
 <p>设置私有成员变量</p>
 <blockquote>
-<p>部分代码</p></blockquote>
+<p>部分代码</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>m_waitTimeout <span style="color:#f92672">=</span> waitTimeout;
 </span></span></code></pre></div><h2 id="receive-data">Receive data</h2>
 <p>打开串口</p>
@@ -769,7 +853,7 @@ Base Class: QObject</p>
 Controller.h</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;qobject.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Controller</span> <span style="color:#f92672">:</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Controller</span> <span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> QObject
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>};
@@ -779,7 +863,7 @@ Controller.h</p>
 <p>此Worker使用的“easy worker”的案例.</p>
 <h2 id="header">Header</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QObject&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Worker</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QObject {
 </span></span><span style="display:flex;"><span>	Q_OBJECT
 </span></span><span style="display:flex;"><span>
@@ -796,25 +880,25 @@ Controller.h</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// add your variables here
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><h2 id="class">Class</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Worker.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// --- CONSTRUCTOR ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Worker<span style="color:#f92672">::</span>Worker() {
+</span></span></span><span style="display:flex;"><span>Worker<span style="color:#f92672">::</span>Worker() {
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// you could copy data from constructor arguments to internal variables here.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// --- DECONSTRUCTOR ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Worker<span style="color:#f92672">::~</span>Worker() {
+</span></span></span><span style="display:flex;"><span>Worker<span style="color:#f92672">::~</span>Worker() {
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// free resources
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// --- PROCESS ---
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Start processing data.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> Worker<span style="color:#f92672">::</span>process() {
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> Worker<span style="color:#f92672">::</span>process() {
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">// allocate resources using new here
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	qDebug(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span></span><span style="display:flex;"><span>	qDebug(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
 </span></span><span style="display:flex;"><span>	emit <span style="color:#a6e22e">finished</span>();
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="controller">Controller</h1>
@@ -831,73 +915,6 @@ Controller.h</p>
         
         <time class="post-date" datetime="2025-01-23T22:08:08&#43;08:00">
             23 Jan 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow1-gcc/">signed warning</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>For development environment settings, see: <a href="https://blog.csdn.net/xiaobin_HLJ80/article/details/19500207#t0">pictures</a>
-and <a href="https://tdtc-hrb.github.io/csdn/post/c-console_app">run application</a></p>
-<h2 id="shellsort">shellsort</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Comparable<span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> shellsort(vector<span style="color:#f92672">&lt;</span>Comparable<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>a)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> gap <span style="color:#f92672">=</span> a.size() <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; gap <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; gap <span style="color:#f92672">/=</span> <span style="color:#ae81ff">2</span>){
-</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> gap; i <span style="color:#f92672">&lt;</span> a.size(); <span style="color:#f92672">++</span>i)
-</span></span><span style="display:flex;"><span>    	{
-</span></span><span style="display:flex;"><span>    		Comparable tmp <span style="color:#f92672">=</span> move(a[i]);
-</span></span><span style="display:flex;"><span>    		<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    		<span style="color:#66d9ef">for</span> (; j <span style="color:#f92672">&gt;=</span> gap <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">&lt;</span> a[j <span style="color:#f92672">-</span> gap]; j <span style="color:#f92672">-=</span> gap)
-</span></span><span style="display:flex;"><span>    		{
-</span></span><span style="display:flex;"><span>    			a[j] <span style="color:#f92672">=</span> move(a[j <span style="color:#f92672">-</span> gap]);
-</span></span><span style="display:flex;"><span>    		}
-</span></span><span style="display:flex;"><span>    		a[j] <span style="color:#f92672">=</span> move(tmp);
-</span></span><span style="display:flex;"><span>    	}
-</span></span><span style="display:flex;"><span>    	cout<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> gap <span style="color:#f92672">&lt;&lt;</span> endl;
-</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> n : a)
-</span></span><span style="display:flex;"><span>    		cout <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> a <span style="color:#f92672">=</span> { <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">94</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">96</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">35</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">95</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">58</span>, <span style="color:#ae81ff">41</span>, <span style="color:#ae81ff">75</span>, <span style="color:#ae81ff">15</span>};
-</span></span><span style="display:flex;"><span>    shellsort(a);
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><ul>
-<li>Warn info</li>
-</ul>
-<pre tabindex="0"><code>warning: comparison of integer expressions of different signedness: 
-&#39;int&#39; and &#39;std::vector&lt;int&gt;::size_type&#39; {aka &#39;long long unsigned int&#39;} [-Wsign-compare]
-   10 |         for(int i = gap; i &lt; a.size(); ++i)
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://stackoverflow.com/a/3660928">A warning - comparison between signed and unsigned integer expressions</a></li>
-<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
-<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c++4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow1-gcc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-01-11T11:08:08&#43;08:00">
-            11 Jan 2025
         </time>
     </footer>
 </article>

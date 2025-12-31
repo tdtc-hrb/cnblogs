@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-freertos-port_sam4s/" />
 
@@ -178,29 +178,32 @@
 
     <section class="post-content">
       <blockquote>
-<p>freeRTOS v7.0.0</p></blockquote>
+<p>freeRTOS v7.0.0</p>
+</blockquote>
 <p>移植编译器（IAR）,以及头文件和hook。</p>
 <h1 id="头文件">头文件</h1>
 <blockquote>
-<p>asf.h</p></blockquote>
+<p>asf.h</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// From module: FreeRTOS mini Real-Time Kernel
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;task.h&gt;</span><span style="color:#75715e">
 </span></span></span></code></pre></div><h2 id="freertos-config">freeRTOS config</h2>
 <blockquote>
-<p>FreeRTOSConfig.h</p></blockquote>
+<p>FreeRTOSConfig.h</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef FREERTOS_CONFIG_H
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FREERTOS_CONFIG_H
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//#define configUSE_PREEMPTION                     1
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define configUSE_PREEMPTION                       0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_PREEMPTION                       0
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_IDLE_HOOK                        1
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TICK_HOOK                        1
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configCPU_CLOCK_HZ                         (sysclk_get_cpu_hz())
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configTICK_RATE_HZ                         ((portTickType) 1000)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMINIMAL_STACK_SIZE                   ((unsigned short) 70)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">//#define configTOTAL_HEAP_SIZE                    ((size_t) ( 0x2C00-600 ))
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define configMAX_TASK_NAME_LEN                    ( 16 )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//#define configTOTAL_HEAP_SIZE                    ((size_t) ( 0x2C00-600 ))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_TASK_NAME_LEN                    ( 16 )
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TRACE_FACILITY                   1
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_16_BIT_TICKS                     0
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configIDLE_SHOULD_YIELD                    0
@@ -210,11 +213,11 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configCHECK_FOR_STACK_OVERFLOW             2
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configGENERATE_RUN_TIME_STATS              0
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configENABLE_BACKWARD_COMPATIBILITY        1
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_PRIORITIES                       ((unsigned portBASE_TYPE) 5)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_CO_ROUTINE_PRIORITIES            (2)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configQUEUE_REGISTRY_SIZE                  10
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskPrioritySet                   1
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_uxTaskPriorityGet                  0
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelete                        0
@@ -223,13 +226,14 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelayUntil                    0
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelay                         1
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_uxTaskGetStackHighWaterMark        1
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#define configKERNEL_INTERRUPT_PRIORITY            (0x0f &lt;&lt; 4)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_SYSCALL_INTERRUPT_PRIORITY       (0x05 &lt;&lt; 4)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
 </span></span></span></code></pre></div><h1 id="hook">hook</h1>
 <blockquote>
-<p>必须实现3个callback函数</p></blockquote>
+<p>必须实现3个callback函数</p>
+</blockquote>
 <h2 id="stack-overflow">stack overflow</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vApplicationStackOverflowHook</span>(xTaskHandle <span style="color:#f92672">*</span>pxTask,
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>pcTaskName)

@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -162,6 +162,50 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/golang-ubuntu-config/">install go on ubuntu</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>WSL: Ubuntu 18.04</p>
+</blockquote>
+<h1 id="1-install-go">1. install go</h1>
+<p><a href="https://dl.google.com/go/go1.13.10.linux-amd64.tar.gz">go1.13.10</a></p>
+<h2 id="1-unzip">1) unzip</h2>
+<p>rename:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /usr/local/go
+</span></span><span style="display:flex;"><span>sudo mv go 1.13
+</span></span></code></pre></div><h2 id="2-set-path">2) set path</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vi ~/.bashrc
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export GOROOT<span style="color:#f92672">=</span>/usr/local/go/1.13
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>export GOPATH<span style="color:#f92672">=</span>/home/tdtc/go
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$PATH:$GOROOT/bin:$GOPATH/bin
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bashrc
+</span></span></code></pre></div><h1 id="test">test</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go version
+</span></span></code></pre></div><h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://tecadmin.net/install-go-on-ubuntu/">How To Install Go 1.12 on Ubuntu 18.04 &amp; 16.04 LTS</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/golang-ubuntu-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-17T00:08:08&#43;08:00">
+            17 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/dev-service_registry-zk/">ZooKeeper Installation(Dev)</a></h2>
     </header>
     <section class="post-excerpt">
@@ -224,7 +268,8 @@
     <section class="post-excerpt">
         
             <p><blockquote>
-<p>The client and server are the same <a href="https://xiaobin80.gitee.io/cnblogs/post/cas-server-config/">thekeystore</a></p></blockquote>
+<p>The client and server are the same <a href="https://xiaobin80.gitee.io/cnblogs/post/cas-server-config/">thekeystore</a></p>
+</blockquote>
 <p>cas client version: 3.5.1(<a href="https://github.com/apereo/java-cas-client/tree/master/cas-client-core">cas-client-core-3.5.1</a>)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://gitee.com/xiaobin80/cas-sample-java-webapp
 </span></span></code></pre></div><h1 id="1-config">1. config</h1>
@@ -291,7 +336,8 @@ thekeystore file:</p>
 </ul>
 <h1 id="下载部署包">下载部署包</h1>
 <blockquote>
-<p>使用gradle 的repo最高只支持gradle V4.3！</p></blockquote>
+<p>使用gradle 的repo最高只支持gradle V4.3！</p>
+</blockquote>
 <h2 id="0-clone">0. clone</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/apereo/cas-gradle-overlay-template.git
 </span></span></code></pre></div><h2 id="1-set-gradle">1. set gradle</h2>
@@ -301,7 +347,8 @@ thekeystore file:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  $PATH<span style="color:#f92672">=</span>$PATH;%GRADLE_HOME%<span style="color:#ae81ff">\b</span>in
 </span></span></code></pre></div><h2 id="2-build-war">2. build war</h2>
 <blockquote>
-<p>File location: cas\build\libs\cas.war</p></blockquote>
+<p>File location: cas\build\libs\cas.war</p>
+</blockquote>
 <h3 id="1-config-file">1) config file</h3>
 <p>gradle.properties</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cas.version<span style="color:#f92672">=</span>5.3.2
@@ -323,7 +370,8 @@ thekeystore file:</p>
 <h3 id="1-genkey">1) genkey</h3>
 <blockquote>
 <p>info:
--dname &ldquo;CN=localhost,OU=test.com,O=test,L=WH,ST=HB,C=CN&rdquo;</p></blockquote>
+-dname &ldquo;CN=localhost,OU=test.com,O=test,L=WH,ST=HB,C=CN&rdquo;</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -genkey -keyalg RSA -alias thekeystore -keypass changeit -storepass changeit -keysize <span style="color:#ae81ff">2048</span> -keystore e:/etc/cas/thekeystore
 </span></span></code></pre></div><h3 id="2-export">2) export</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -export -alias thekeystore -file e:/etc/cas/cas5311.crt -keystore e:/etc/cas/thekeystore -storepass changeit
@@ -354,7 +402,8 @@ thekeystore file:</p>
     <section class="post-excerpt">
         
             <p><blockquote>
-<p>OS: CentOS 7 Minimal</p></blockquote>
+<p>OS: CentOS 7 Minimal</p>
+</blockquote>
 <h1 id="0-open-files">0) open files</h1>
 <p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
 A:</p>
@@ -394,21 +443,26 @@ for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-cent
         
             <p><h1 id="elementary">Elementary</h1>
 <blockquote>
-<p>在没有出来NDB之前，都是使用这个组件。</p></blockquote>
+<p>在没有出来NDB之前，都是使用这个组件。</p>
+</blockquote>
 <p><a href="http://www.frogthinker.org/projects/sequoia">C-JDBC</a></p>
 <blockquote>
 <p><a href="http://c-jdbc.ow2.org/index.html">c-jdbc文档</a> <br>
-<a href="https://sourceforge.net/projects/sequoiadb/files/">src-Sequoia 2.10.10</a></p></blockquote>
+<a href="https://sourceforge.net/projects/sequoiadb/files/">src-Sequoia 2.10.10</a></p>
+</blockquote>
 <p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Sequoia_architecture.jpg" alt="Sequoia architecture"></p>
 <h1 id="ndb-cluster">NDB Cluster</h1>
 <blockquote>
 <p>关于：</p>
 <blockquote>
 <p>JPA、JDBC省略不表。
-<img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-java-to-cluster.png" alt="mysql dev"></p></blockquote></blockquote>
+<img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-java-to-cluster.png" alt="mysql dev"></p>
+</blockquote>
+</blockquote>
 <h2 id="clusterj">ClusterJ</h2>
 <blockquote>
-<p>ClusterJ requires Java 1.7 or 1.8.</p></blockquote>
+<p>ClusterJ requires Java 1.7 or 1.8.</p>
+</blockquote>
 <p><img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-clusterj-user-view.png" alt="Figure 4.2 ClusterJ User View Of Application And Environment"></p>
 <p>首先使用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-sessionfactory.html">SessionFactory</a>建立一个会话实例， <br>
 然后用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-session.html">Session</a>提供的方法操作数据。</p>
@@ -423,7 +477,8 @@ for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-cent
 </span></span><span style="display:flex;"><span>Session session <span style="color:#f92672">=</span> factory.<span style="color:#a6e22e">getSession</span>();
 </span></span></code></pre></div><h4 id="配置信息">配置信息</h4>
 <blockquote>
-<p>clusterj.properties</p></blockquote>
+<p>clusterj.properties</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">com.mysql.clusterj.connectstring</span><span style="color:#f92672">=</span><span style="color:#e6db74">localhost:1186</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">com.mysql.clusterj.database</span><span style="color:#f92672">=</span><span style="color:#e6db74">mydb</span>
 </span></span></code></pre></div><h3 id="操作数据">操作数据</h3>
@@ -557,39 +612,47 @@ for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-cent
 <h2 id="1-httpdconf">1. httpd.conf</h2>
 <h3 id="dso">DSO</h3>
 <blockquote>
-<p>Line:152</p></blockquote>
+<p>Line:152</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule php5_module        modules/libphp5.so
 </span></span></code></pre></div><h3 id="server-name">Server Name</h3>
 <blockquote>
-<p>Line:194 - Instead</p></blockquote>
+<p>Line:194 - Instead</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ServerName localhost:80
 </span></span></code></pre></div><h3 id="each-directory">Each Directory</h3>
 <blockquote>
-<p>Line:202 - Instead</p></blockquote>
+<p>Line:202 - Instead</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
 </span></span></code></pre></div><h3 id="document-root">Document Root</h3>
 <blockquote>
-<p>Line:239 - Instead</p></blockquote>
+<p>Line:239 - Instead</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
 </span></span></code></pre></div><h3 id="directory-index">Directory Index</h3>
 <blockquote>
-<p>Line:252 - Instead</p></blockquote>
+<p>Line:252 - Instead</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DirectoryIndex index.html index.php
 </span></span></code></pre></div><h3 id="mime-type">MIME Type</h3>
 <blockquote>
-<p>Line:390 - Add</p></blockquote>
+<p>Line:390 - Add</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AddType application/x-httpd-php .php
 </span></span></code></pre></div><h2 id="2-phpini">2. php.ini</h2>
 <h3 id="paths-and-directories">Paths and Directories</h3>
 <blockquote>
-<p>Line:709 - Instead</p></blockquote>
+<p>Line:709 - Instead</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>include_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/php/lib/php&#34;</span>
 </span></span></code></pre></div><h3 id="socket">socket</h3>
 <h4 id="pdo_mysql">[Pdo_mysql]</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pdo_mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
 </span></span></code></pre></div><h4 id="mysqli">[MySQLi]</h4>
 <blockquote>
-<p>Line:1221 - Instead</p></blockquote>
+<p>Line:1221 - Instead</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysqli.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
 </span></span></code></pre></div><h1 id="二apache22php53">二、Apache2.2+php5.3</h1>
 <h2 id="1-httpdconf-1">1. httpd.conf</h2>
@@ -673,7 +736,9 @@ for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-cent
 <p>安装文件：  <br>
 (1) Apache Httpd <a href="http://mirror.bit.edu.cn/apache//httpd/httpd-2.4.39.tar.gz">V2.4.x</a>  <br>
 (2) MariaDB V5.5(系统自带) <br>
-(3) PHP <a href="https://www.php.net/distributions/php-5.6.40.tar.gz">V5.6.x</a></p></blockquote></blockquote>
+(3) PHP <a href="https://www.php.net/distributions/php-5.6.40.tar.gz">V5.6.x</a></p>
+</blockquote>
+</blockquote>
 <h1 id="一httpd">一、Httpd</h1>
 <p>卸载系统自带httpd（V2.4.6-89）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum remove httpd
@@ -685,14 +750,15 @@ for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-cent
 </span></span><span style="display:flex;"><span>$make <span style="color:#f92672">&amp;&amp;</span> sudo make install
 </span></span></code></pre></div><h2 id="apr-util">APR-util</h2>
 <blockquote>
-<p>Tips: <a href="https://bbs.csdn.net/topics/392191188">https://bbs.csdn.net/topics/392191188</a></p></blockquote>
+<p>Tips: <a href="https://bbs.csdn.net/topics/392191188">https://bbs.csdn.net/topics/392191188</a></p>
+</blockquote>
 <p><a href="http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-util-1.6.1.tar.gz">down</a></p>
 <h3 id="expat-devel">expat-devel</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install expat-devel
 </span></span></code></pre></div><h3 id="install-apr-util">install apr-util</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	    --with-apr<span style="color:#f92672">=</span>/opt/apr <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	    --with-expat<span style="color:#f92672">=</span>/usr/local/expat
+</span></span></span><span style="display:flex;"><span>	    --with-apr<span style="color:#f92672">=</span>/opt/apr <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>	    --with-expat<span style="color:#f92672">=</span>/usr/local/expat
 </span></span><span style="display:flex;"><span>$make <span style="color:#f92672">&amp;&amp;</span> sudo make install
 </span></span></code></pre></div><h2 id="install-httpd">install httpd</h2>
 <h3 id="pcre-devel">pcre-devel</h3>
@@ -701,17 +767,17 @@ for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-cent
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tar zxvf httpd-2.4.39.tar.gz
 </span></span><span style="display:flex;"><span>$ &lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;cd&lt;/span&gt; httpd-2.4.39
 </span></span><span style="display:flex;"><span>$ ./configure --prefix<span style="color:#f92672">=</span>/opt/httpd <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	    --with-apr-util<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	    --&lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;enable&lt;/span&gt;-so <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --&lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;enable&lt;/span&gt;-rewrite
+</span></span></span><span style="display:flex;"><span>	    --with-apr-util<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>	    --&lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;enable&lt;/span&gt;-so <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        --&lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;enable&lt;/span&gt;-rewrite
 </span></span><span style="display:flex;"><span>$ make
 </span></span><span style="display:flex;"><span>$ sudo make install
 </span></span></code></pre></div><h1 id="二php">二、PHP</h1>
 <h2 id="依赖包安装">依赖包安装</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install libxml2-devel <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>            curl-devel <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>            libjpeg-devel <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>            libpng-devel
+</span></span></span><span style="display:flex;"><span>            curl-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>            libjpeg-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>            libpng-devel
 </span></span></code></pre></div><p>如果系统没有安装普通包，则安装之。默认已安装。 <br>
 安装libmcrypt</p> <a class="read-more" href="/cnblogs/post/php-lamp/">&raquo;</a></p>
         
@@ -736,7 +802,8 @@ for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-cent
     <section class="post-excerpt">
         
             <p><blockquote>
-<p>推荐PHP版本<a href="https://windows.php.net/downloads/releases/archives/">v5.6.40/v7.1.33</a></p></blockquote>
+<p>推荐PHP版本<a href="https://windows.php.net/downloads/releases/archives/">v5.6.40/v7.1.33</a></p>
+</blockquote>
 <h1 id="1-v01">1. <a href="https://github.com/xiaobin80/veic_web/archive/v0.1-alpha.zip">v0.1</a></h1>
 <h2 id="1only-variable-references-should-be-returned-by-reference">1）Only variable references should be returned by reference</h2>
 <p><a href="https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11">https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11</a></p>
@@ -749,16 +816,20 @@ for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-cent
 <blockquote>
 <p>从PHP5.5之后，会出现</p>
 <blockquote>
-<p>Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in xxx</p></blockquote></blockquote>
+<p>Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in xxx</p>
+</blockquote>
+</blockquote>
 <p>提示mysql_connect()未来将要被移出。</p>
 <blockquote>
 <p>官网的<a href="http://php.net/manual/en/changelog.mysql.php">changelong</a>
-注意: php7.0.x已经移除了mysql.</p></blockquote>
+注意: php7.0.x已经移除了mysql.</p>
+</blockquote>
 <p>在php.ini(windows)中注释掉</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>;extension<span style="color:#f92672">=</span>php_mysql.dll
 </span></span></code></pre></div><h1 id="2-mcrypt">2. mcrypt</h1>
 <blockquote>
-<p>php7.2~php7.4</p></blockquote>
+<p>php7.2~php7.4</p>
+</blockquote>
 <p>使用 错误抑制符 停止提示。
 修改Encrypt.php（.\system\libraries\）</p>
 <ul>

@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/es24-install/" />
 
@@ -178,7 +178,8 @@
 
     <section class="post-content">
       <blockquote>
-<p>Ubuntu 20.04.1</p></blockquote>
+<p>Ubuntu 20.04.1</p>
+</blockquote>
 <h1 id="part-i-elasticsearch">Part I. Elasticsearch</h1>
 <h2 id="1-install-jdk">1. install JDK</h2>
 <h3 id="1-down-jdk8">1) down jdk8</h3>
@@ -190,7 +191,9 @@
 <blockquote>
 <p>root:</p>
 <blockquote>
-<p>$sudo -sH</p></blockquote></blockquote>
+<p>$sudo -sH</p>
+</blockquote>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export JAVA_HOME=/usr/java/jdk8u332-b09&#39;</span> &gt;&gt; /etc/bash.bashrc
 </span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export CLASSPATH=$JAVA_HOME/lib/:.&#39;</span> &gt;&gt; /etc/bash.bashrc
 </span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export PATH=$PATH:$JAVA_HOME/bin&#39;</span> &gt;&gt; /etc/bash.bashrc
@@ -205,7 +208,8 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xvf elasticsearch-2.4.6.tar.gz
 </span></span></code></pre></div><h3 id="2-config">2) config</h3>
 <blockquote>
-<p>../config/elasticsearch.yml</p></blockquote>
+<p>../config/elasticsearch.yml</p>
+</blockquote>
 <h4 id="network">network</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>network.host: 0.0.0.0
 </span></span><span style="display:flex;"><span>http.port: <span style="color:#ae81ff">9200</span>

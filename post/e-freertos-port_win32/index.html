@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-freertos-port_win32/" />
 
@@ -178,7 +178,8 @@
 
     <section class="post-content">
       <blockquote>
-<p>freeRTOS v6.1.1</p></blockquote>
+<p>freeRTOS v6.1.1</p>
+</blockquote>
 <h1 id="portableh">portable.h</h1>
 <h2 id="memory">memory</h2>
 <h3 id="tcb">TCB</h3>
@@ -196,7 +197,8 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>portBASE_TYPE <span style="color:#a6e22e">xPortStartScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEndScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
 </span></span></code></pre></div><blockquote>
-<p>注意：在windows系统下end是调用了TerminateProcess（WinBase.h Ln3398）</p></blockquote>
+<p>注意：在windows系统下end是调用了TerminateProcess（WinBase.h Ln3398）</p>
+</blockquote>
 <h1 id="portmacroh">portmacro.h</h1>
 <h2 id="critical">Critical</h2>
 <p>此实现在Ln452~Ln513(port.c)</p>

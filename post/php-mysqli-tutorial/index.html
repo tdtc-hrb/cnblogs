@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/php-mysqli-tutorial/" />
 
@@ -202,7 +202,8 @@
 </span></span></code></pre></div><h1 id="查询数据">查询数据</h1>
 <p>查询固定员工ID的姓名，所属部门，职务</p>
 <blockquote>
-<p>以下为创建SQL的过程。</p></blockquote>
+<p>以下为创建SQL的过程。</p>
+</blockquote>
 <h2 id="1-查询姓名">1. 查询姓名</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> concat(first_name, <span style="color:#e6db74">&#39; &#39;</span> , last_name) <span style="color:#66d9ef">as</span> name <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
 </span></span></code></pre></div><h2 id="2-查询部门id">2. 查询部门ID</h2>
@@ -244,13 +245,14 @@
 server, // 服务器地址 <br>
 username,  // 用户名 <br>
 password // 密码 <br>
-)</p></blockquote>
+)</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">conn</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//$con = mysql_pconnect(&#34;localhost&#34;,&#34;root&#34;,&#34;qazxsw&#34;);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  $conn <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_connect</span>(<span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#e6db74">&#34;DBAdmin&#34;</span>, <span style="color:#e6db74">&#34;xbfirst&#34;</span>);
+</span></span></span><span style="display:flex;"><span>  $conn <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_connect</span>(<span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#e6db74">&#34;DBAdmin&#34;</span>, <span style="color:#e6db74">&#34;xbfirst&#34;</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//$conn = mysql_connect(&#34;localhost&#34;,&#34;root&#34;,&#34;xbfirst80&#34;);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//$conn = mysqli=_connect(&#34;localhost&#34;,&#34;tdtc2014&#34;,&#34;qazxsw&#34;);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$conn)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//$conn = mysqli=_connect(&#34;localhost&#34;,&#34;tdtc2014&#34;,&#34;qazxsw&#34;);
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$conn)
 </span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;Could not connect: &#39;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">mysql_error</span>());
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> $conn;
 </span></span><span style="display:flex;"><span>}
@@ -261,20 +263,23 @@ password // 密码 <br>
 ( <br>
 database_name, // 数据库名称 <br>
 link_identifier // 链接ID <br>
-)</p></blockquote>
+)</p>
+</blockquote>
 <h3 id="2-查询语句">2) 查询语句</h3>
 <blockquote>
 <p><a href="http://php.net/manual/en/function.mysql-query.php">mysql_query</a>
 ( <br>
 query, // 查询语句 <br>
 link_identifier // 链接ID <br>
-)</p></blockquote>
+)</p>
+</blockquote>
 <h3 id="3-返回结果">3) 返回结果</h3>
 <blockquote>
 <p><a href="http://php.net/manual/en/function.mysql-fetch-assoc.php">mysql_fetch_assoc</a>
 ( <br>
 result  // 结果集 <br>
-)</p></blockquote>
+)</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">myQuery</span>($sql, $conn) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$conn)
 </span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;Could not connect: &#39;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">mysql_error</span>());
@@ -289,7 +294,8 @@ result  // 结果集 <br>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="mysqli">mysqli</h1>
 <blockquote>
-<p>我们使用Procedural style（过程风格）。</p></blockquote>
+<p>我们使用Procedural style（过程风格）。</p>
+</blockquote>
 <h2 id="1-连接-1">1. 连接</h2>
 <blockquote>
 <p><a href="http://php.net/manual/en/function.mysqli-connect.php">mysqli_connect</a>
@@ -297,7 +303,8 @@ result  // 结果集 <br>
 server, // 服务器地址 <br>
 username, // 用户名 <br>
 password // 密码 <br>
-)</p></blockquote>
+)</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">conn_i</span>() {
 </span></span><span style="display:flex;"><span>  $conn_i <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysqli_connect</span>(<span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#e6db74">&#34;DBAdmin&#34;</span>, <span style="color:#e6db74">&#34;xbfirst&#34;</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$conn_i)
@@ -312,7 +319,8 @@ password // 密码 <br>
 ( <br>
 link_identifier, // 链接ID <br>
 database_name // 数据库名称 <br>
-)</p></blockquote>
+)</p>
+</blockquote>
 <h3 id="2-查询语句-1">2) 查询语句</h3>
 <blockquote>
 <p>与mysql参数是颠倒的。 <br>
@@ -320,13 +328,15 @@ database_name // 数据库名称 <br>
 ( <br>
 link_identifier // 链接ID <br>
 query // 查询语句 <br>
-)</p></blockquote>
+)</p>
+</blockquote>
 <h3 id="3-返回结果-1">3) 返回结果</h3>
 <blockquote>
 <p><a href="http://php.net/manual/en/mysqli-result.fetch-assoc.php">mysqli_fetch_assoc</a> <br>
 ( <br>
 result  // 结果集 <br>
-)</p></blockquote>
+)</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">myQuery_i</span>($sql_i, $conn_i) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$conn_i)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;Could not connect: &#39;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">mysqli_connect_errno</span>());
@@ -339,7 +349,7 @@ result  // 结果集 <br>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>($result_i <span style="color:#f92672">===</span> <span style="color:#66d9ef">FALSE</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;--not data source--&#34;</span>); <span style="color:#75715e">// TODO: better error handling
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span>(<span style="color:#66d9ef">null</span> <span style="color:#f92672">!==</span> ($row_i <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysqli_fetch_assoc</span>($result_i)))
 </span></span><span style="display:flex;"><span>  {
@@ -359,7 +369,8 @@ result  // 结果集 <br>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="附">附</h1>
 <blockquote>
-<p>test.php</p></blockquote>
+<p>test.php</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">header</span>(<span style="color:#e6db74">&#34;Content-Type: text/html; charset=utf-8&#34;</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">phpinfo</span>();
@@ -396,10 +407,10 @@ result  // 结果集 <br>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">conn</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//$con = mysql_pconnect(&#34;localhost&#34;,&#34;root&#34;,&#34;qazxsw&#34;);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  $conn <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_connect</span>(<span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#e6db74">&#34;DBAdmin&#34;</span>, <span style="color:#e6db74">&#34;xbfirst&#34;</span>);
+</span></span></span><span style="display:flex;"><span>  $conn <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_connect</span>(<span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#e6db74">&#34;DBAdmin&#34;</span>, <span style="color:#e6db74">&#34;xbfirst&#34;</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//$conn = mysql_connect(&#34;localhost&#34;,&#34;root&#34;,&#34;xbfirst80&#34;);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">//$conn = mysql_connect(&#34;localhost&#34;,&#34;tdtc2014&#34;,&#34;qazxsw&#34;);
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$conn)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//$conn = mysql_connect(&#34;localhost&#34;,&#34;tdtc2014&#34;,&#34;qazxsw&#34;);
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$conn)
 </span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;Could not connect: &#39;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">mysql_error</span>());
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> $conn;
 </span></span><span style="display:flex;"><span>}
@@ -450,7 +461,7 @@ result  // 结果集 <br>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>($result_i <span style="color:#f92672">===</span> <span style="color:#66d9ef">FALSE</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;--not data source--&#34;</span>); <span style="color:#75715e">// TODO: better error handling
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span>(<span style="color:#66d9ef">null</span> <span style="color:#f92672">!==</span> ($row_i <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysqli_fetch_assoc</span>($result_i)))
 </span></span><span style="display:flex;"><span>  {
@@ -473,7 +484,8 @@ result  // 结果集 <br>
 </span></span></span></code></pre></div><p>运行效果： <br>
 <img src="https://gitee.com/xiaobin80/csdn/raw/master/images/20160102192139273.png" alt="php info"></p>
 <blockquote>
-<p>关淤：</p></blockquote>
+<p>关淤：</p>
+</blockquote>
 <ol>
 <li>utf-8</li>
 </ol>
@@ -481,7 +493,9 @@ result  // 结果集 <br>
 </span></span></code></pre></div><blockquote>
 <blockquote>
 <p>在日文系统测试上图红框中name和title会出现乱码。 <br>
-在html头中加入utf-8编码即可解决。</p></blockquote></blockquote>
+在html头中加入utf-8编码即可解决。</p>
+</blockquote>
+</blockquote>
 <ul>
 <li><a href="http://php.net/manual/zh/function.header.php">header函数</a></li>
 </ul>

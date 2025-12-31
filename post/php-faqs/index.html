@@ -38,8 +38,9 @@
 
     
     <meta name="description" content="&lt;blockquote&gt;
-&lt;p&gt;推荐PHP版本&lt;a href=&#34;https://windows.php.net/downloads/releases/archives/&#34;&gt;v5.6.40/v7.1.33&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h1 id=&#34;1-v01&#34;&gt;1. &lt;a href=&#34;https://gi" />
+&lt;p&gt;推荐PHP版本&lt;a href=&#34;https://windows.php.net/downloads/releases/archives/&#34;&gt;v5.6.40/v7.1.33&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;1-v01&#34;&gt;1. &lt;a href=&#34;https://g" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -61,7 +62,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/php-faqs/" />
 
@@ -180,7 +181,8 @@
 
     <section class="post-content">
       <blockquote>
-<p>推荐PHP版本<a href="https://windows.php.net/downloads/releases/archives/">v5.6.40/v7.1.33</a></p></blockquote>
+<p>推荐PHP版本<a href="https://windows.php.net/downloads/releases/archives/">v5.6.40/v7.1.33</a></p>
+</blockquote>
 <h1 id="1-v01">1. <a href="https://github.com/xiaobin80/veic_web/archive/v0.1-alpha.zip">v0.1</a></h1>
 <h2 id="1only-variable-references-should-be-returned-by-reference">1）Only variable references should be returned by reference</h2>
 <p><a href="https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11">https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11</a></p>
@@ -193,16 +195,20 @@
 <blockquote>
 <p>从PHP5.5之后，会出现</p>
 <blockquote>
-<p>Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in xxx</p></blockquote></blockquote>
+<p>Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in xxx</p>
+</blockquote>
+</blockquote>
 <p>提示mysql_connect()未来将要被移出。</p>
 <blockquote>
 <p>官网的<a href="http://php.net/manual/en/changelog.mysql.php">changelong</a>
-注意: php7.0.x已经移除了mysql.</p></blockquote>
+注意: php7.0.x已经移除了mysql.</p>
+</blockquote>
 <p>在php.ini(windows)中注释掉</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>;extension<span style="color:#f92672">=</span>php_mysql.dll
 </span></span></code></pre></div><h1 id="2-mcrypt">2. mcrypt</h1>
 <blockquote>
-<p>php7.2~php7.4</p></blockquote>
+<p>php7.2~php7.4</p>
+</blockquote>
 <p>使用 错误抑制符 停止提示。
 修改Encrypt.php（.\system\libraries\）</p>
 <ul>

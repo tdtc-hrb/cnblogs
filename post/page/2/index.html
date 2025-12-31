@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -160,6 +160,73 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow1-gcc/">signed warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>For development environment settings, see: <a href="https://blog.csdn.net/xiaobin_HLJ80/article/details/19500207#t0">pictures</a>
+and <a href="https://tdtc-hrb.github.io/csdn/post/c-console_app">run application</a></p>
+<h2 id="shellsort">shellsort</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Comparable<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> shellsort(vector<span style="color:#f92672">&lt;</span>Comparable<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>a)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> gap <span style="color:#f92672">=</span> a.size() <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; gap <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; gap <span style="color:#f92672">/=</span> <span style="color:#ae81ff">2</span>){
+</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> gap; i <span style="color:#f92672">&lt;</span> a.size(); <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>    	{
+</span></span><span style="display:flex;"><span>    		Comparable tmp <span style="color:#f92672">=</span> move(a[i]);
+</span></span><span style="display:flex;"><span>    		<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    		<span style="color:#66d9ef">for</span> (; j <span style="color:#f92672">&gt;=</span> gap <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">&lt;</span> a[j <span style="color:#f92672">-</span> gap]; j <span style="color:#f92672">-=</span> gap)
+</span></span><span style="display:flex;"><span>    		{
+</span></span><span style="display:flex;"><span>    			a[j] <span style="color:#f92672">=</span> move(a[j <span style="color:#f92672">-</span> gap]);
+</span></span><span style="display:flex;"><span>    		}
+</span></span><span style="display:flex;"><span>    		a[j] <span style="color:#f92672">=</span> move(tmp);
+</span></span><span style="display:flex;"><span>    	}
+</span></span><span style="display:flex;"><span>    	cout<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> gap <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> n : a)
+</span></span><span style="display:flex;"><span>    		cout <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> a <span style="color:#f92672">=</span> { <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">94</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">96</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">35</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">95</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">58</span>, <span style="color:#ae81ff">41</span>, <span style="color:#ae81ff">75</span>, <span style="color:#ae81ff">15</span>};
+</span></span><span style="display:flex;"><span>    shellsort(a);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Warn info</li>
+</ul>
+<pre tabindex="0"><code>warning: comparison of integer expressions of different signedness: 
+&#39;int&#39; and &#39;std::vector&lt;int&gt;::size_type&#39; {aka &#39;long long unsigned int&#39;} [-Wsign-compare]
+   10 |         for(int i = gap; i &lt; a.size(); ++i)
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/a/3660928">A warning - comparison between signed and unsigned integer expressions</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c++4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow1-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-11T11:08:08&#43;08:00">
+            11 Jan 2025
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -312,13 +379,17 @@ var receiveResult = await webSocket.ReceiveAsync(
 <blockquote>
 <p>File-》New-》Project</p>
 <blockquote>
-<p>ASP.NET Core Web Application(Model-View-Controller)</p></blockquote></blockquote>
+<p>ASP.NET Core Web Application(Model-View-Controller)</p>
+</blockquote>
+</blockquote>
 <p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011124537.png" alt="vs2022 preview"></p>
 <h2 id="简单修改主页">简单修改主页</h2>
 <blockquote>
 <p>Solution Explorer</p>
 <blockquote>
-<p>Views-》Home-》Index.cshtml</p></blockquote></blockquote>
+<p>Views-》Home-》Index.cshtml</p>
+</blockquote>
+</blockquote>
 <p>增加如下代码：</p>
 <pre tabindex="0"><code class="language-asp.net" data-lang="asp.net">&lt;p&gt;这是我的第1个ASP.NET程序！&lt;/p&gt;
 </code></pre><p>选择使用何种Web Server 运行：</p>
@@ -328,7 +399,8 @@ var receiveResult = await webSocket.ReceiveAsync(
 <li>IIS Express</li>
 </ul>
 <blockquote>
-<p>default: https</p></blockquote>
+<p>default: https</p>
+</blockquote>
 <p>点击“IIS Express”运行（如果弹出证书安装选“是”即可）。
 <img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134118.png" alt="iis cert - hint">
 <img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134337.png" alt="windows - hint"></p>
@@ -336,7 +408,8 @@ var receiveResult = await webSocket.ReceiveAsync(
 <h2 id="ef-core">EF Core</h2>
 <blockquote>
 <p>Project-》Manage NuGet Packages
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011135217.png" alt="Microsoft EF Core"></p></blockquote>
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011135217.png" alt="Microsoft EF Core"></p>
+</blockquote>
 <h2 id="entity-class">entity class</h2>
 <p>我们建立一个与数据表相对应的Entity类</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel.DataAnnotations;
@@ -490,7 +563,8 @@ gem install mysql2
 <blockquote>
 <p>v12
 After enabling <a href="https://tdtc-hrb.github.io/csdn/post/apt-oper-ubuntu/">sudo</a>,
-the operation is the same as Ubuntu.</p></blockquote>
+the operation is the same as Ubuntu.</p>
+</blockquote>
 <ul>
 <li>Ubuntu <br>
 Ubuntu 20.04 default Ruby version is v2.7</li>
@@ -754,84 +828,6 @@ Finally, import the hex file into the MCU component.</p>
         
         <time class="post-date" datetime="2023-05-18T08:08:08&#43;08:00">
             18 May 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_instruction-set/">8位单片机PIC汇编语言</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>TABLE 1-1: OPCODE FIELD DESCRIPTIONS</p>
-<table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>f</td>
-          <td>Register file address (0x00 to 0x7F)</td>
-      </tr>
-      <tr>
-          <td>W</td>
-          <td>Working register (accumulator)</td>
-      </tr>
-      <tr>
-          <td>d</td>
-          <td>Destination select;</td>
-      </tr>
-      <tr>
-          <td>b</td>
-          <td>Bit address within an 8-bit file register</td>
-      </tr>
-      <tr>
-          <td>k</td>
-          <td>Literal field, constant data or label</td>
-      </tr>
-  </tbody>
-</table>
-<table>
-  <thead>
-      <tr>
-          <th>d value</th>
-          <th>where the results are placed</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>d = 0</td>
-          <td>W(orking) register</td>
-      </tr>
-      <tr>
-          <td>d = 1</td>
-          <td>file register; Default is d = 1.</td>
-      </tr>
-  </tbody>
-</table>
-<p>TABLE 1-2: ABBREVIATION DESCRIPTIONS</p>
-<p>|Field| Description|
-| PC | Program Counter|
-| TO | Time-Out bit|
-| C  | Carry bit|
-| DC | Digit Carry bit|
-| Z  | Zero bit|
-| PD | Power-Down bit|</p> <a class="read-more" href="/cnblogs/post/e-pic16f_instruction-set/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-05-17T10:08:08&#43;08:00">
-            17 May 2023
         </time>
     </footer>
 </article>

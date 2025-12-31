@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/qt-webview/" />
 
@@ -230,12 +230,13 @@ Mini Qt version:</li>
 )
 </code></pre><h4 id="initial">initial</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// first line
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>QtWebView<span style="color:#f92672">::</span>initialize();
+</span></span></span><span style="display:flex;"><span>QtWebView<span style="color:#f92672">::</span>initialize();
 </span></span></code></pre></div><h3 id="icon">Icon</h3>
 <p>copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folder</p>
 <h4 id="qt-6x"><a href="https://forum.qt.io/topic/144345/qml-image-cannot-open-cmake-qrc/10">Qt 6.x</a></h4>
 <blockquote>
-<p>CMakeLists.txt</p></blockquote>
+<p>CMakeLists.txt</p>
+</blockquote>
 <pre tabindex="0"><code>qt_add_qml_module(appmy_browser
     URI my_browser
     VERSION 1.0
@@ -249,7 +250,8 @@ Mini Qt version:</li>
 )
 </code></pre><h4 id="qt-515">Qt 5.15</h4>
 <blockquote>
-<p>qml.qrc</p></blockquote>
+<p>qml.qrc</p>
+</blockquote>
 <pre tabindex="0"><code>&lt;RCC&gt;
     &lt;qresource prefix=&#34;/&#34;&gt;
         &lt;file&gt;main.qml&lt;/file&gt;
@@ -425,6 +427,13 @@ ApplicationWindow { //... }
 
 
   <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/ops-network_adapter-debian/">
+          <section class="post">
+              <h2>最新版的Debian网络Adapter</h2>
+              
+          </section>
+      </a>
   
   
       <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/qt-android_started/">

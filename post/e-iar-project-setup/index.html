@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-iar-project-setup/" />
 
@@ -180,34 +180,42 @@
       <blockquote>
 <p>IAR7.50</p>
 <blockquote>
-<p>J-Link 5.10m</p></blockquote></blockquote>
+<p>J-Link 5.10m</p>
+</blockquote>
+</blockquote>
 <p>建立一个c工程： <br>
 project -&gt; Create new project <br>
 “Project Templates”选择empty project <br>
 选择工程目录下的prj（可自定义，主要是放IAR生成的相关文件）</p>
 <blockquote>
-<p>注意：没有更改的项，使用缺省设置！</p></blockquote>
+<p>注意：没有更改的项，使用缺省设置！</p>
+</blockquote>
 <h1 id="general-options">General Options</h1>
 <p>主要设置：目标芯片, CMSIS库, 打印和输入函数</p>
 <h2 id="设备">设备</h2>
 <blockquote>
 <p>Target</p>
 <blockquote>
-<p>Device</p></blockquote></blockquote>
+<p>Device</p>
+</blockquote>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Atmel SAM4SD32C
 </span></span></code></pre></div><h2 id="cmsis">CMSIS</h2>
 <blockquote>
-<p>Library Configuration</p></blockquote>
+<p>Library Configuration</p>
+</blockquote>
 <p>✔ Verify DownloadUse CMSIS <br>
 ✔ DSP library</p>
 <h2 id="不使用低级库">不使用低级库</h2>
 <blockquote>
-<p>Library Configuration</p></blockquote>
+<p>Library Configuration</p>
+</blockquote>
 <p>Library low-level interface implementation</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>None
 </span></span></code></pre></div><h2 id="打印和输入">打印和输入</h2>
 <blockquote>
-<p>Library Options</p></blockquote>
+<p>Library Options</p>
+</blockquote>
 <p>Printf formatter</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Large
 </span></span></code></pre></div><p>Scanf formatter</p>
@@ -215,46 +223,57 @@ project -&gt; Create new project <br>
 </span></span></code></pre></div><hr>
 <h1 id="runtime-checking">Runtime Checking</h1>
 <blockquote>
-<p>Note：一定要设置Preprocessor（C/C++和Assembler）！！！</p></blockquote>
+<p>Note：一定要设置Preprocessor（C/C++和Assembler）！！！</p>
+</blockquote>
 <p>在C/C++ Complie和Linker中开启诊断程序：</p>
 <blockquote>
 <p>Diagnostics <br>
-✔ Enable remarks</p></blockquote>
+✔ Enable remarks</p>
+</blockquote>
 <h2 id="cc-complie">C/C++ Complie</h2>
 <p>设置方言和程序的大小</p>
 <h3 id="c方言设置">C方言设置</h3>
 <blockquote>
 <p>Language1</p>
 <blockquote>
-<p>C dialect</p></blockquote></blockquote>
+<p>C dialect</p>
+</blockquote>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Require prototype
 </span></span></code></pre></div><h3 id="生成最小的程序">生成最小的程序</h3>
 <blockquote>
 <p>Optimizations</p>
 <blockquote>
-<p>Level</p></blockquote></blockquote>
+<p>Level</p>
+</blockquote>
+</blockquote>
 <p>High</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Size
 </span></span></code></pre></div><h2 id="生成格式">生成格式</h2>
 <blockquote>
 <p>Output Converter</p>
 <blockquote>
-<p>output</p></blockquote></blockquote>
+<p>output</p>
+</blockquote>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>binary
 </span></span></code></pre></div><p>✔  “Override default”</p>
 <h2 id="linker">Linker</h2>
 <blockquote>
 <p>Config
-设置脚本</p></blockquote>
+设置脚本</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$PROJ_DIR$/../config/linker_scripts/sam4sd32/flash.icf
 </span></span></code></pre></div><h3 id="可以指定命令参数">可以指定命令参数</h3>
 <blockquote>
-<p>Extra Options</p></blockquote>
+<p>Extra Options</p>
+</blockquote>
 <p>在使用rtos，必须指定！</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Use Command line options
 </span></span></code></pre></div><h2 id="debugger">Debugger</h2>
 <blockquote>
-<p>Setup</p></blockquote>
+<p>Setup</p>
+</blockquote>
 <p>Driver</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>J-Link/J-Trace
 </span></span></code></pre></div><h3 id="setup-macros">Setup macros</h3>
@@ -267,14 +286,17 @@ project -&gt; Create new project <br>
 <blockquote>
 <p>J-Link/J-Trace</p>
 <blockquote>
-<p>JTAG/SWD speed</p></blockquote></blockquote>
+<p>JTAG/SWD speed</p>
+</blockquote>
+</blockquote>
 <p>datasheet: 32.768kHz
 Auto</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Initial 32kHz
 </span></span></code></pre></div><h1 id="附件">附件</h1>
 <h2 id="preprocessor列表">preprocessor列表</h2>
 <blockquote>
-<p>.ewp</p></blockquote>
+<p>.ewp</p>
+</blockquote>
 <h3 id="初始时">初始时</h3>
 <p>main.c和asf.h的引用头文件</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;option&gt;

@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/asp.net5-restful/" />
 
@@ -185,7 +185,8 @@
 <li>NuGet</li>
 </ul>
 <blockquote>
-<p>..\AppData\Roaming\NuGet\NuGet.Config</p></blockquote>
+<p>..\AppData\Roaming\NuGet\NuGet.Config</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageSources&gt;</span>
@@ -255,7 +256,9 @@
 <blockquote>
 <p>Startup.cs</p>
 <blockquote>
-<p>Configure方法中</p></blockquote></blockquote>
+<p>Configure方法中</p>
+</blockquote>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>SeedData.EnsurePopulated<span style="color:#f92672">(</span>app<span style="color:#f92672">)</span>;
 </span></span></code></pre></div><p><a href="https://pan.baidu.com/s/15tjlrHp2Gmg8pJm7W9delg">Part I</a>  提取码: cn56</p>
 <h1 id="建立mcj">建立MC<sub>j</sub></h1>
@@ -408,7 +411,8 @@
 <pre tabindex="0"><code>dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 </code></pre><h2 id="config">config</h2>
 <blockquote>
-<p>Startup</p></blockquote>
+<p>Startup</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>services.AddControllers<span style="color:#f92672">()</span>.AddNewtonsoftJson<span style="color:#f92672">()</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            services.Configure&lt;MvcNewtonsoftJsonOptions&gt;<span style="color:#f92672">(</span>opts <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
@@ -421,7 +425,8 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>patchDoc.ApplyTo<span style="color:#f92672">(</span>product<span style="color:#f92672">)</span>;
 </span></span></code></pre></div><h2 id="test-data">Test Data</h2>
 <blockquote>
-<p>PowerShell</p></blockquote>
+<p>PowerShell</p>
+</blockquote>
 <h3 id="get">get</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Invoke-WebRequest https://localhost:44309/api/products/1 | Select-Object Content
 </span></span></code></pre></div><h3 id="post">post</h3>
@@ -440,7 +445,8 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Invoke-WebRequest https://localhost:44309/api/products/100 |Select-Object StatusCode
 </span></span></code></pre></div><h3 id="patch-1">patch</h3>
 <blockquote>
-<p>无法在PS中执行,只能在swaggerUI.</p></blockquote>
+<p>无法在PS中执行,只能在swaggerUI.</p>
+</blockquote>
 <p>输入ID: 5； 并在Request body,更改为如下内容:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>[
 </span></span><span style="display:flex;"><span>  {

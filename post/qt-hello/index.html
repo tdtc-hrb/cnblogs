@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/qt-hello/" />
 
@@ -212,10 +212,10 @@
 <li>QtHello.h</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMainWindow&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ui_QtHello.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QtHello</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QMainWindow
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    Q_OBJECT
@@ -227,7 +227,7 @@
 </span></span><span style="display:flex;"><span>    Ui<span style="color:#f92672">::</span>QtHelloClass ui;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Declarative methods
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> slots:
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> slots:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> helloQT();
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><ul>
@@ -235,20 +235,20 @@
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtHello.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMessageBox&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>QtHello<span style="color:#f92672">::</span>QtHello(QWidget <span style="color:#f92672">*</span>parent)
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">:</span> QMainWindow(parent)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    ui.setupUi(<span style="color:#66d9ef">this</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// add code // Association 3-Elements: Ui-Event-Method
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    connect(ui.btnHello, <span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked, <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>QtHello<span style="color:#f92672">::</span>helloQT);
+</span></span></span><span style="display:flex;"><span>    connect(ui.btnHello, <span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked, <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>QtHello<span style="color:#f92672">::</span>helloQT);
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The other way to connect a signal to a slot is to use QObject::connect() and the SIGNAL and SLOT macros. 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// connect(ui.btnHello, SIGNAL(clicked()), this, SLOT(helloQT()));
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// connect(ui.btnHello, SIGNAL(clicked()), this, SLOT(helloQT()));
+</span></span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Implementation
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> QtHello<span style="color:#f92672">::</span>helloQT()
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> QtHello<span style="color:#f92672">::</span>helloQT()
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    QMessageBox msgBox;
 </span></span><span style="display:flex;"><span>    msgBox.setText(<span style="color:#e6db74">&#34;Hello Qt!&#34;</span>);

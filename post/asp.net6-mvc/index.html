@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.153.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/asp.net6-mvc/" />
 
@@ -194,14 +194,16 @@
 <li>Init project</li>
 </ul>
 <blockquote>
-<p>Terminal -&gt; New Terminal</p></blockquote>
+<p>Terminal -&gt; New Terminal</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd .<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>dotnet new mvc -o veic_web --framework net6.0
+</span></span></span><span style="display:flex;"><span>dotnet new mvc -o veic_web --framework net6.0
 </span></span></code></pre></div><ul>
 <li>Set workspace dir</li>
 </ul>
 <blockquote>
-<p>File -&gt; Add Folder to Workspace</p></blockquote>
+<p>File -&gt; Add Folder to Workspace</p>
+</blockquote>
 <h2 id="设置缺省首页home-set-default">设置缺省首页(Home Set Default)</h2>
 <ul>
 <li>Program.cs</li>
@@ -277,7 +279,8 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="db-context">DB Context</h3>
 <blockquote>
-<p>ApplicationDbContext.cs</p></blockquote>
+<p>ApplicationDbContext.cs</p>
+</blockquote>
 <p>引用：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.EntityFrameworkCore;
 </span></span></code></pre></div><p>实现：</p>
@@ -315,7 +318,8 @@ Pomelo:</li>
 </span></span><span style="display:flex;"><span>                .EnableSensitiveDataLogging());
 </span></span></code></pre></div><h4 id="db-connection-string">DB Connection String</h4>
 <blockquote>
-<p>appsettings.json</p></blockquote>
+<p>appsettings.json</p>
+</blockquote>
 <ul>
 <li>MySQL</li>
 </ul>
@@ -372,7 +376,8 @@ Pomelo:</li>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="controller">Controller</h2>
 <blockquote>
-<p>HomeController.cs</p></blockquote>
+<p>HomeController.cs</p>
+</blockquote>
 <p>声明product repository：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> IProductRepository _repository;
 </span></span></code></pre></div><p>DI:</p>
