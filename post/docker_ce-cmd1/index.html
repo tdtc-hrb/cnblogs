@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="docker(ce) command"/>
+<meta name="twitter:description" content="Some commonly used commands"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="docker(ce) command &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/docker_ce-cmd1/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="Some commonly used commands" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2025-12-31T08:08:08&#43;08:00" />
+
+    
+    
+
+    <title>docker(ce) command &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="Some commonly used commands" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.153.5">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/docker_ce-cmd1/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "docker(ce) command",
+    "name": "docker(ce) command",
+    "wordCount":  57 ,
+    "timeRequired": "PT1M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/docker_ce-cmd1/",
+    "datePublished": "2025-12-31T08:08Z",
+    "dateModified": "2025-12-31T08:08Z",
+    
+    
+    "description": "Some commonly used commands",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/docker_ce-cmd1/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">docker(ce) command</h1>
+        <small>Some commonly used commands</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
+            Dec 31, 2025
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <h2 id="1-清理image">1. 清理image</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker system prune -a
+</span></span></code></pre></div><h2 id="2-管理image">2. 管理image</h2>
+<h3 id="1-ps">1) ps</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dokcer ps
+</span></span></code></pre></div><h3 id="2-进入container">2) 进入container</h3>
+<p>fat shell:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker exec -it &lt;container-id&gt; bash
+</span></span></code></pre></div><p>simple shell:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker exec -it &lt;container-id&gt; sh
+</span></span></code></pre></div><h3 id="3container内执行">3)container内执行</h3>
+<p>查看:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat Gopkg.toml |more
+</span></span></code></pre></div><p>编辑:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt-get update
+</span></span><span style="display:flex;"><span>apt-get install vim -y
+</span></span><span style="display:flex;"><span>vi Gopkg.toml
+</span></span></code></pre></div><h3 id="4-stop-all-containers">4) stop all containers</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker stop <span style="color:#66d9ef">$(</span>sudo docker ps -q<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div>
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=docker%28ce%29%20command&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-cmd1%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-cmd1%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-cmd1%2f&amp;description=docker%28ce%29%20command"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-cmd1%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/docker_ce-ubuntu-config/">
+          <section class="post">
+              <h2>docker(ce) on Ubuntu</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>
+

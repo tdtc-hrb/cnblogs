@@ -12,32 +12,32 @@
 
 
 
-<meta name="twitter:title" content="docker(ce) on Ubuntu"/>
-<meta name="twitter:description" content="Docker and Docker compose"/>
+<meta name="twitter:title" content="Install Docker on Debian"/>
+<meta name="twitter:description" content="Docker Engine and Docker compose"/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="docker(ce) on Ubuntu &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:title" content="Install Docker on Debian &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
   	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
-  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/docker_ce-ubuntu-config/" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/docker_ce-debian-config/" />
 
     
         
     
 
     
-    <meta property="og:description" content="Docker and Docker compose" />
+    <meta property="og:description" content="Docker Engine and Docker compose" />
   	<meta property="og:type" content="article" />
     <meta property="article:published_time" content="2025-12-31T08:08:08&#43;08:00" />
 
     
     
 
-    <title>docker(ce) on Ubuntu &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+    <title>Install Docker on Debian &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
 
     
-    <meta name="description" content="Docker and Docker compose" />
+    <meta name="description" content="Docker Engine and Docker compose" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -61,7 +61,7 @@
     
     <meta name="generator" content="Hugo 0.153.5">
 
-    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/docker_ce-ubuntu-config/" />
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/docker_ce-debian-config/" />
 
     
       
@@ -90,23 +90,23 @@
             
         ]
     },
-    "headline": "docker(ce) on Ubuntu",
-    "name": "docker(ce) on Ubuntu",
-    "wordCount":  112 ,
-    "timeRequired": "PT1M",
+    "headline": "Install Docker on Debian",
+    "name": "Install Docker on Debian",
+    "wordCount":  250 ,
+    "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
-    "url": "https://tdtc-hrb.github.io/cnblogs/post/docker_ce-ubuntu-config/",
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/docker_ce-debian-config/",
     "datePublished": "2025-12-31T08:08Z",
     "dateModified": "2025-12-31T08:08Z",
     
     
-    "description": "Docker and Docker compose",
+    "description": "Docker Engine and Docker compose",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://tdtc-hrb.github.io/cnblogs/post/docker_ce-ubuntu-config/"
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/docker_ce-debian-config/"
     }
 }
     </script>
@@ -163,8 +163,8 @@
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">docker(ce) on Ubuntu</h1>
-        <small>Docker and Docker compose</small>
+        <h1 class="post-title">Install Docker on Debian</h1>
+        <small>Docker Engine and Docker compose</small>
 
         <section class="post-meta">
         
@@ -177,34 +177,74 @@
     </header>
 
     <section class="post-content">
-      <blockquote>
-<p>Note:</p>
-<blockquote>
+      <p>Note:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command</span>
 </span></span><span style="display:flex;"><span>$ - requires given linux commands to be executed as a regular non-privileged user
-</span></span></code></pre></div></blockquote>
-</blockquote>
-<h1 id="docker-ce">Docker CE</h1>
-<h2 id="1-install">1. install</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker.io
-</span></span></code></pre></div><h2 id="2-enable">2. enable</h2>
+</span></span></code></pre></div><h1 id="docker-engine">Docker Engine</h1>
+<pre tabindex="0"><code># Add Docker&#39;s official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources &lt;&lt;EOF
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: $(. /etc/os-release &amp;&amp; echo &#34;$VERSION_CODENAME&#34;)
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+</code></pre><h2 id="1-install">1. install</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</span></span></code></pre></div><h3 id="docker-source">docker source</h3>
+<pre tabindex="0"><code>sudo systemctl daemon-reload
+</code></pre><h4 id="源地址"><a href="https://gitee.com/xiaobin80/grpc-hello">源地址</a></h4>
+<ul>
+<li>/etc/docker/daemon.json</li>
+</ul>
+<pre tabindex="0"><code>{
+  &#34;registry-mirrors&#34; : [
+    &#34;https://registry.docker-cn.com&#34;,
+    &#34;https://mirror.ccs.tencentyun.com&#34;
+  ]
+}
+</code></pre><p>每次都要更新<a href="https://zhuanlan.zhihu.com/p/1926211424398603825">China源</a></p>
+<h2 id="2-enable">2. enable</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo systemctl start docker
-</span></span><span style="display:flex;"><span>$ sudo systemctl enable docker
-</span></span></code></pre></div><p>test:</p>
+</span></span><span style="display:flex;"><span>$ sudo systemctl status docker
+</span></span></code></pre></div><h3 id="test">test</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker --version
-</span></span></code></pre></div><h1 id="docker-compose">Docker compose</h1>
+</span></span><span style="display:flex;"><span>$ sudo docker run hello-world
+</span></span></code></pre></div><h4 id="output-info">output info</h4>
+<pre tabindex="0"><code>Unable to find image &#39;hello-world:latest&#39; locally
+latest: Pulling from library/hello-world
+17eec7bbc9d7: Pull complete
+ea52d2000f90: Download complete
+Digest: sha256:d4aaab6242e0cace87e2ec17a2ed3d779d18fbfd03042ea58f2995626396a274
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+</code></pre><h1 id="docker-compose">Docker compose</h1>
+<p>Install the Docker Compose standalone (Legacy)</p>
 <h2 id="1-down">1. down</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl -L <span style="color:#e6db74">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span style="color:#66d9ef">$(</span>uname -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">-</span><span style="color:#66d9ef">$(</span>uname -m<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o /usr/local/bin/docker-compose
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl -SL https://github.com/docker/compose/releases/download/v5.0.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
 </span></span></code></pre></div><h2 id="2-exec">2. exec</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/docker-compose
-</span></span></code></pre></div><p>test:</p>
+</span></span></code></pre></div><p>ou can also create a symbolic link to /usr/bin or any other directory in your path:</p>
+<pre tabindex="0"><code>sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+</code></pre><h3 id="test-1">test</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tdtc@tdtc306:~$ docker-compose --version
-</span></span><span style="display:flex;"><span>docker-compose version 1.29.2, build xxx
+</span></span><span style="display:flex;"><span>Docker Compose version v5.0.1
 </span></span></code></pre></div><h1 id="reference">Reference</h1>
 <ul>
-<li><a href="https://linuxconfig.org/how-to-install-docker-on-ubuntu-18-04-bionic-beaver">How to Install Docker On Ubuntu 18.04 Bionic Beaver</a></li>
-<li><a href="https://docs.docker.com/compose/install/">Install Docker Compose</a>(Offical)</li>
-<li><a href="https://stackoverflow.com/questions/30172605/how-do-i-get-into-a-docker-containers-shell">How do I get into a Docker container&rsquo;s shell?</a></li>
+<li><a href="https://docs.docker.com/compose/install/standalone#on-linux">Install Docker Compose</a></li>
+<li><a href="https://docs.docker.com/engine/install/debian/#install-using-the-repository">Install using the apt repository</a></li>
+<li><a href="https://tdtc-hrb.github.io/cnblogs/post/docker_ce-ubuntu-config/">docker - ubuntu</a></li>
 </ul>
 
     </section>
@@ -221,19 +261,19 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=docker%28ce%29%20on%20Ubuntu&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-ubuntu-config%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Install%20Docker%20on%20Debian&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-debian-config%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-ubuntu-config%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-debian-config%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-ubuntu-config%2f&amp;description=docker%28ce%29%20on%20Ubuntu"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-debian-config%2f&amp;description=Install%20Docker%20on%20Debian"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-ubuntu-config%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fdocker_ce-debian-config%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -257,17 +297,17 @@
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/docker_ce-cmd1/">
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/docker_ce-ubuntu-config/">
           <section class="post">
-              <h2>docker(ce) command</h2>
+              <h2>docker(ce) on Ubuntu</h2>
               
           </section>
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/docker_ce-debian-config/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ops-network_adapter-debian/">
           <section class="post">
-              <h2>Install Docker on Debian</h2>
+              <h2>最新版的Debian网络Adapter</h2>
           </section>
       </a>
   
