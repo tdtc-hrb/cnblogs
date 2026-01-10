@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.153.5">
+    <meta name="generator" content="Hugo 0.154.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -158,6 +158,212 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ror_getstarted/">开始Ruby On Rails</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="prepare">Prepare</h1>
+<ul>
+<li>
+<p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-debian/">nodejs</a></p>
+</li>
+<li>
+<p>foreman</p>
+</li>
+</ul>
+<pre tabindex="0"><code>gem install foreman
+</code></pre><h2 id="mysql-dev">mysql-dev</h2>
+<ul>
+<li>ubuntu</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
+gem install mysql2
+</code></pre><h3 id="debian"><a href="https://stackoverflow.com/a/34384709">Debian</a></h3>
+<ul>
+<li>mariadb</li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install mariadb-server
+</code></pre><ul>
+<li><a href="https://github.com/ansible-community/ara-collection/issues/8">mariadbclient-dev</a></li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install libmariadb-dev-compat libmariadb-dev
+</code></pre><ul>
+<li><a href="https://stackoverflow.com/questions/72000977/how-do-i-install-libmysqlclient21-on-debianbuster-slim-based-docker-image">client</a></li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install mariadb-client mysql-common default-mysql-client
+</code></pre><ul>
+<li>mysql2</li>
+</ul>
+<pre tabindex="0"><code>gem install mysql2
+</code></pre><h2 id="yarn">Yarn</h2>
+<p>upload <a href="https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn_1.22.22_all.deb">yarn_1.22.22_all.deb</a> to ubuntu:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>scp d:\yarn_1.22.22_all.deb tdtc@192.168.3.99:/home/tdtc/
+</span></span></code></pre></div><p>install:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.22_all.deb
+</span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.22_all.deb
+</span></span></code></pre></div><h3 id="set-proxy">set proxy</h3>
+<pre tabindex="0"><code>sudo yarn config set proxy http://&lt;ip:port&gt;
+sudo yarn config set https-proxy http://&lt;ip:port&gt;
+</code></pre><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
+<p>new:</p> <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-01-10T08:08:08&#43;08:00">
+            10 Jan 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/php-route-sf/">Routing - Symfony</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Symfony v8.0</li>
+</ul>
+<h2 id="creating-routes">Creating Routes</h2>
+<ul>
+<li>routes</li>
+<li>attributes</li>
+</ul>
+<h3 id="routes">routes</h3>
+<p>/config/routes.yaml:</p>
+<pre tabindex="0"><code># yaml-language-server: $schema=../vendor/symfony/routing/Loader/schema/routing.schema.json
+
+# This file is the entry point to configure the routes of your app.
+# Methods with the #[Route] attribute are automatically imported.
+# See also https://symfony.com/doc/current/routing.html
+
+# To list all registered routes, run the following command:
+#   bin/console debug:router
+
+controllers:
+    resource: routing.controllers
+    type: attribute  ## only
+</code></pre><p>Add attributes only!</p>
+<h3 id="creating-routes-as-attributes">Creating Routes as Attributes</h3>
+<p>/config/routes/attributes.yaml:</p>
+<pre tabindex="0"><code>controllers:
+    resource: &#39;../../src/Controller/&#39;
+    type: attribute
+    prefix:
+        ja: &#39;/ja-jp&#39;
+        en: &#39;/en-us&#39;
+        zh: &#39;/zh-cn&#39;
+</code></pre><h2 id="matching-http-methods">Matching HTTP Methods</h2>
+<p>By default, routes match any HTTP verb (GET, POST, PUT, etc.) Use the methods option to restrict the verbs each route should respond to:</p> <a class="read-more" href="/cnblogs/post/php-route-sf/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-01-08T10:08:08&#43;08:00">
+            8 Jan 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/php-devenv-win/">Windows搭建PHP环境</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.apachelounge.com/download/">Apache Lounge Downloads</a></li>
+<li><a href="https://slproweb.com/products/Win32OpenSSL.html">windows openssl</a></li>
+</ul>
+<h1 id="apache配置">Apache配置</h1>
+<ul>
+<li>ServerRoot</li>
+</ul>
+<pre tabindex="0"><code>Define SRVROOT &#34;C:/Apache24&#34;
+</code></pre><ul>
+<li>ServerName</li>
+</ul>
+<pre tabindex="0"><code>ServerName localhost:80
+</code></pre><h2 id="php-apache">php-apache</h2>
+<pre tabindex="0"><code>Non Thread Safe(NTS) 和 Thread Safe(TS)： &#34;NTS&#34;，没有&#34;php(5/7/8)apache2_4.dll&#34;
+</code></pre><blockquote>
+<p>Php7.2+ 已移除 mcrypt.</p>
+</blockquote>
+<ul>
+<li>PHP 8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;C:/php-8.4&#34;</span>
+</span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;C:/php-8.4/php8apache2_4.dll&#34;</span>
+</span></span></code></pre></div><ul>
+<li>Php 5</li>
+</ul>
+<pre tabindex="0"><code>PHPIniDir &#34;C:/php-5.6&#34;
+LoadModule php5_module &#34;C:/php-5.6/php5apache2_4.dll&#34;
+</code></pre><p>在配置文件(conf/httpd.conf)最后增加:</p>
+<pre tabindex="0"><code>AddType application/x-httpd-php .php
+</code></pre><ul>
+<li>test config</li>
+</ul>
+<pre tabindex="0"><code>httpd -t
+</code></pre><h3 id="directory-index">Directory Index</h3>
+<p>DirectoryIndex: sets the file that Apache will serve if a directory is requested.</p>
+<ul>
+<li>append</li>
+</ul>
+<pre tabindex="0"><code>index.php
+</code></pre><h2 id="重写">重写</h2>
+<ul>
+<li>a.打开模块</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule rewrite_module modules/mod_rewrite.so
+</span></span></code></pre></div><ul>
+<li>b.允许重写</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
+</span></span></code></pre></div><h2 id="ssl">SSL</h2>
+<ul>
+<li>open module</li>
+</ul>
+<pre tabindex="0"><code>LoadModule ssl_module modules/mod_ssl.so
+LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
+</code></pre><ul>
+<li>at httpd.conf:</li>
+</ul>
+<pre tabindex="0"><code>Include conf/extra/httpd-ssl.conf
+</code></pre><h3 id="shmcb"><a href="https://www.apachelounge.com/viewtopic.php?t=7614">shmcb</a></h3>
+<pre tabindex="0"><code>glsmith:
+Did you restart the server after uncommenting the LoadModule line for mod_socache_shmcb?
+</code></pre><h3 id="basic-conf">basic conf</h3>
+<blockquote>
+<p>development</p> <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-01-04T00:12:08&#43;08:00">
+            4 Jan 2026
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -595,232 +801,6 @@ If you continue to use it, Android Studio and the Android Gradle plugin will che
         
         <time class="post-date" datetime="2025-09-25T19:08:08&#43;08:00">
             25 Sep 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/mysql.ef/">MySQL EF 的简单使用</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/net452">v4.5.2 Developer pack</a></li>
-<li>entityframework:6.4.4</li>
-</ul>
-<h2 id="nuget">NuGet</h2>
-<blockquote>
-<p>%USERPROFILE%\AppData\Roaming\NuGet
-NuGet.Config:</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;config&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;http_proxy&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;http://192.168.3.19:8580&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;https_proxy&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;http://192.168.3.19:8580&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/config&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageRestore&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;enabled&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;True&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;automatic&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;True&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageRestore&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageSources&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://www.nuget.org/api/v2/&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;NuGet V3&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://api.nuget.org/v3/index.json&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageSources&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;activePackageSource&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://www.nuget.org/api/v2/&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/activePackageSource&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/configuration&gt;</span>
-</span></span></code></pre></div><h3 id="new">New</h3>
-<p>Update <a href="https://dist.nuget.org/visualstudio-2013-vsix/v2.12.0/NuGet.Tools.vsix">NuGet.Tools.vsix</a>
-and
-<a href="https://stackoverflow.com/a/63574949">Visual Studio 2013 NuGet package management not working</a>:</p>
-<pre tabindex="0"><code class="language-Package" data-lang="Package">PM &gt; [Net.ServicePointManager]::SecurityProtocol=[Net.ServicePointManager]::SecurityProtocol-bOR [Net.SecurityProtocolType]::Tls12
-</code></pre><p>Put the following nuget packages into the Offline folder:</p>
-<ul>
-<li>mysql.data.entityframework:8.0.32</li>
-<li>mysql.data:8.0.32.1</li>
-</ul>
-<pre tabindex="0"><code>portable.bouncycastle:1.9.0
-Google.Protobuf:3.21.12
-K4os.Compression.LZ4.Streams:1.2.6
-Portable.BouncyCastle:1.9.0
-System.Buffers:4.5.1
-System.Runtime.CompilerServices.Unsafe:5.0.0
-</code></pre><h1 id="ref">Ref</h1>
-<ul>
-<li><a href="https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework60.html">Entity Framework 6 Support</a></li>
-<li><a href="https://learn.microsoft.com/en-us/nuget/consume-packages/configuring-nuget-behavior">Common NuGet configurations</a></li>
-<li><a href="https://github.com/tdtc-hrb/Cps_dotnet-fx">Cps_x32-fx</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/mysql.ef/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-08-08T00:08:08&#43;08:00">
-            8 Aug 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/php-devenv-win/">Windows搭建PHP环境</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://www.apachelounge.com/download/">Apache Lounge Downloads</a></li>
-<li><a href="https://slproweb.com/products/Win32OpenSSL.html">windows openssl</a></li>
-</ul>
-<h1 id="apache配置">Apache配置</h1>
-<ul>
-<li>ServerRoot</li>
-</ul>
-<pre tabindex="0"><code>Define SRVROOT &#34;C:/Apache24&#34;
-</code></pre><ul>
-<li>ServerName</li>
-</ul>
-<pre tabindex="0"><code>ServerName localhost:80
-</code></pre><h2 id="php-apache">php-apache</h2>
-<pre tabindex="0"><code>Non Thread Safe(NTS) 和 Thread Safe(TS)： &#34;NTS&#34;，没有&#34;php(5/7/8)apache2_4.dll&#34;
-</code></pre><blockquote>
-<p>Php7.2+ 已移除 mcrypt.</p>
-</blockquote>
-<ul>
-<li>PHP 8</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;C:/php-8.3&#34;</span>
-</span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;C:/php-8.3/php8apache2_4.dll&#34;</span>
-</span></span></code></pre></div><ul>
-<li>Php 5</li>
-</ul>
-<pre tabindex="0"><code>PHPIniDir &#34;C:/php-5.6&#34;
-LoadModule php5_module &#34;C:/php-5.6/php5apache2_4.dll&#34;
-</code></pre><p>在配置文件(conf/httpd.conf)最后增加:</p>
-<pre tabindex="0"><code>AddType application/x-httpd-php .php
-</code></pre><ul>
-<li>test config</li>
-</ul>
-<pre tabindex="0"><code>httpd -t
-</code></pre><h3 id="directory-index">Directory Index</h3>
-<p>sets the file that Apache will serve if a directory is requested.</p>
-<ul>
-<li>append</li>
-</ul>
-<pre tabindex="0"><code>index.php
-</code></pre><h2 id="重写">重写</h2>
-<ul>
-<li>a.打开模块</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule rewrite_module modules/mod_rewrite.so
-</span></span></code></pre></div><ul>
-<li>b.允许重写</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
-</span></span></code></pre></div><h2 id="ssl">SSL</h2>
-<ul>
-<li>open module</li>
-</ul>
-<pre tabindex="0"><code>LoadModule ssl_module modules/mod_ssl.so
-LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
-</code></pre><ul>
-<li>at httpd.conf:</li>
-</ul>
-<pre tabindex="0"><code>Include conf/extra/httpd-ssl.conf
-</code></pre><h3 id="shmcb"><a href="https://www.apachelounge.com/viewtopic.php?t=7614">shmcb</a></h3>
-<pre tabindex="0"><code>glsmith:
-Did you restart the server after uncommenting the LoadModule line for mod_socache_shmcb?
-</code></pre><h3 id="basic-conf">basic conf</h3>
-<blockquote>
-<p>development</p> <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-08-04T00:12:08&#43;08:00">
-            4 Aug 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/mysql.net/">MySQL Connector/Net 的简单使用</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><table>
-  <thead>
-      <tr>
-          <th>Connector/NET Version</th>
-          <th>ADO.NET Version</th>
-          <th>.NET Version Required</th>
-          <th>MySQL Server</th>
-          <th>IDE</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>6.9</td>
-          <td>2.x+</td>
-          <td>3.5+ for VS 2008, 4.x+ for VS 2010 / 2012 / 2013, WinRT for VS 2012 / 2013</td>
-          <td>5.7, 5.6, 5.5</td>
-          <td>Visual Studio 2010</td>
-      </tr>
-      <tr>
-          <td>6.1</td>
-          <td>2.x+</td>
-          <td>2.x+</td>
-          <td>5.6, 5.5, 5.1, 5.0, 4.1</td>
-          <td>Visual Studio 2008</td>
-      </tr>
-  </tbody>
-</table>
-<p>连接器(For .net)：</p>
-<ul>
-<li>vs2008/2010 <br>
-<a href="https://cdn.mysql.com/archives/mysql-connector-net-6.1/mysql-connector-net-6.1.6.msi">V6.1.6</a></li>
-<li><a href="https://stackoverflow.com/a/40750607">vs2015</a> <br>
-<a href="https://cdn.mysql.com/archives/mysql-connector-net-6.9/mysql-connector-net-6.9.8.msi">v6.9.8</a></li>
-<li><a href="https://dev.mysql.com/doc/connector-net/en/connector-net-versions.html">dotnet and mysql connector - vs2019</a> <br>
-<a href="https://cdn.mysql.com/archives/mysql-connector-net-8.0/mysql-connector-net-8.0.32.msi">v8.0.32</a></li>
-</ul>
-<h3 id="新建工程---windows-application">新建工程 - Windows Application</h3>
-<ul>
-<li>vs2008
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609110346.png" alt="vs2008 ui"></li>
-<li>vs2019
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20250301074031.png" alt="vs2019 ui"></li>
-</ul>
-<h3 id="增加引用mysqldata">增加引用(MySql.Data)</h3>
-<ul>
-<li>vs2008
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609110557.png" alt="vs2008 ui"></li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609111014.png" alt="vs2008 ui"></p> <a class="read-more" href="/cnblogs/post/mysql.net/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-03-02T00:08:08&#43;08:00">
-            2 Mar 2025
         </time>
     </footer>
 </article>

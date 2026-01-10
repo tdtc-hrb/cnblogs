@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.153.5">
+    <meta name="generator" content="Hugo 0.154.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -160,6 +160,53 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/redis-rhel-setup/">Redis Server installation FAQs</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>OS: RHEL Community Minimal</p>
+</blockquote>
+<ul>
+<li>AlmaLinux 8.x</li>
+<li>RockyLinux 8.x</li>
+<li>CentOS 7.9</li>
+</ul>
+<p>Root Permission:</p>
+<pre tabindex="0"><code>$su - root
+</code></pre><h1 id="0-open-files">0) open files</h1>
+<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#ulimit -a</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/systemd/system/redis.service</span>
+</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>LimitNOFILE=10032
+</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
+<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/sysctl.conf</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>net.core.somaxconn=1024
+</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
+<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
+To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
+for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-rhel-setup/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-10-08T08:08:08&#43;08:00">
+            8 Oct 2022
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -683,62 +730,6 @@ codename: focal</li>
         
         <time class="post-date" datetime="2022-05-15T18:08:08&#43;08:00">
             15 May 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/sqlite.net.core/">SQLite在.net core的demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>IDE: VS2022 <br>
-语言: C#</p>
-<p>简介：
-本示例使用SQLite的密码、外键功能。</p>
-<h1 id="一工程设置">一、工程设置</h1>
-<h2 id="1-nuget">1. NuGet</h2>
-<blockquote>
-<p>Tools -&gt; NuGet Package Manager -&gt; Package Manager Console
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016115835.png" alt="sqlite-net-pcl"></p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package sqlite-net-pcl -Version 1.8.116
-</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016121731.png" alt="sqlite-net-sqlcipher"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package sqlite-net-sqlcipher -Version 1.8.116
-</span></span></code></pre></div><p>完整的窗体：
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016122849.png" alt="program ui"></p>
-<h2 id="2-控件">2. 控件</h2>
-<p>拖拽4个TextBox、4个Button、1个DataGridView</p>
-<h1 id="二功能实现">二、功能实现</h1>
-<p>使用Synchronous API来实现连接、factoryCar表的查询、插入等操作。</p>
-<h2 id="0-entity-class">0. Entity class</h2>
-<blockquote>
-<p>注意：主键和外键</p>
-</blockquote>
-<p>建立两个实体类：<a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher/blob/master/FactoryCar.cs">FactoryCar</a>和<a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher/blob/master/MarqueCar.cs">MarqueCar</a></p>
-<h2 id="1-连接">1. 连接</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>asyncConn <span style="color:#f92672">=</span> new SQLite.<span style="color:#a6e22e">SQLiteAsyncConnection</span>(options);
-</span></span></code></pre></div><p>其中，options是SQLiteConnectionString实例化的字符串。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(edtDB.Text, true,
-</span></span><span style="display:flex;"><span>                                key: edtPwd.Text,
-</span></span><span style="display:flex;"><span>                                preKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA cipher_default_use_hmac = OFF;&#34;</span>),
-</span></span><span style="display:flex;"><span>                                postKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA kdf_iter = 128000;&#34;</span>));
-</span></span></code></pre></div><h2 id="2-查询">2. 查询</h2>
-<h3 id="异步查询">异步查询</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var factoryCars <span style="color:#f92672">=</span> asyncConn.Table<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(fc <span style="color:#f92672">=&gt;</span> fc.Name.<span style="color:#a6e22e">Contains</span>(edtStmt.Text));
-</span></span></code></pre></div><p>转换为List类型。</p> <a class="read-more" href="/cnblogs/post/sqlite.net.core/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2021-11-19T19:18:08&#43;08:00">
-            19 Nov 2021
         </time>
     </footer>
 </article>

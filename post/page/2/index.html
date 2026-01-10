@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.153.5">
+    <meta name="generator" content="Hugo 0.154.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -160,6 +160,146 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/mysql.ef/">MySQL EF 的简单使用</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/net452">v4.5.2 Developer pack</a></li>
+<li>entityframework:6.4.4</li>
+</ul>
+<h2 id="nuget">NuGet</h2>
+<blockquote>
+<p>%USERPROFILE%\AppData\Roaming\NuGet
+NuGet.Config:</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;config&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;http_proxy&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;http://192.168.3.19:8580&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;https_proxy&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;http://192.168.3.19:8580&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/config&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageRestore&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;enabled&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;True&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;automatic&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;True&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageRestore&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageSources&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://www.nuget.org/api/v2/&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;NuGet V3&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://api.nuget.org/v3/index.json&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageSources&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;activePackageSource&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://www.nuget.org/api/v2/&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/activePackageSource&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/configuration&gt;</span>
+</span></span></code></pre></div><h3 id="new">New</h3>
+<p>Update <a href="https://dist.nuget.org/visualstudio-2013-vsix/v2.12.0/NuGet.Tools.vsix">NuGet.Tools.vsix</a>
+and
+<a href="https://stackoverflow.com/a/63574949">Visual Studio 2013 NuGet package management not working</a>:</p>
+<pre tabindex="0"><code class="language-Package" data-lang="Package">PM &gt; [Net.ServicePointManager]::SecurityProtocol=[Net.ServicePointManager]::SecurityProtocol-bOR [Net.SecurityProtocolType]::Tls12
+</code></pre><p>Put the following nuget packages into the Offline folder:</p>
+<ul>
+<li>mysql.data.entityframework:8.0.32</li>
+<li>mysql.data:8.0.32.1</li>
+</ul>
+<pre tabindex="0"><code>portable.bouncycastle:1.9.0
+Google.Protobuf:3.21.12
+K4os.Compression.LZ4.Streams:1.2.6
+Portable.BouncyCastle:1.9.0
+System.Buffers:4.5.1
+System.Runtime.CompilerServices.Unsafe:5.0.0
+</code></pre><h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework60.html">Entity Framework 6 Support</a></li>
+<li><a href="https://learn.microsoft.com/en-us/nuget/consume-packages/configuring-nuget-behavior">Common NuGet configurations</a></li>
+<li><a href="https://github.com/tdtc-hrb/Cps_dotnet-fx">Cps_x32-fx</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/mysql.ef/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-08-08T00:08:08&#43;08:00">
+            8 Aug 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/mysql.net/">MySQL Connector/Net 的简单使用</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><table>
+  <thead>
+      <tr>
+          <th>Connector/NET Version</th>
+          <th>ADO.NET Version</th>
+          <th>.NET Version Required</th>
+          <th>MySQL Server</th>
+          <th>IDE</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>6.9</td>
+          <td>2.x+</td>
+          <td>3.5+ for VS 2008, 4.x+ for VS 2010 / 2012 / 2013, WinRT for VS 2012 / 2013</td>
+          <td>5.7, 5.6, 5.5</td>
+          <td>Visual Studio 2010</td>
+      </tr>
+      <tr>
+          <td>6.1</td>
+          <td>2.x+</td>
+          <td>2.x+</td>
+          <td>5.6, 5.5, 5.1, 5.0, 4.1</td>
+          <td>Visual Studio 2008</td>
+      </tr>
+  </tbody>
+</table>
+<p>连接器(For .net)：</p>
+<ul>
+<li>vs2008/2010 <br>
+<a href="https://cdn.mysql.com/archives/mysql-connector-net-6.1/mysql-connector-net-6.1.6.msi">V6.1.6</a></li>
+<li><a href="https://stackoverflow.com/a/40750607">vs2015</a> <br>
+<a href="https://cdn.mysql.com/archives/mysql-connector-net-6.9/mysql-connector-net-6.9.8.msi">v6.9.8</a></li>
+<li><a href="https://dev.mysql.com/doc/connector-net/en/connector-net-versions.html">dotnet and mysql connector - vs2019</a> <br>
+<a href="https://cdn.mysql.com/archives/mysql-connector-net-8.0/mysql-connector-net-8.0.32.msi">v8.0.32</a></li>
+</ul>
+<h3 id="新建工程---windows-application">新建工程 - Windows Application</h3>
+<ul>
+<li>vs2008
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609110346.png" alt="vs2008 ui"></li>
+<li>vs2019
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20250301074031.png" alt="vs2019 ui"></li>
+</ul>
+<h3 id="增加引用mysqldata">增加引用(MySql.Data)</h3>
+<ul>
+<li>vs2008
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609110557.png" alt="vs2008 ui"></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609111014.png" alt="vs2008 ui"></p> <a class="read-more" href="/cnblogs/post/mysql.net/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-03-02T00:08:08&#43;08:00">
+            2 Mar 2025
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -465,6 +605,87 @@ and <a href="https://tdtc-hrb.github.io/csdn/post/c-console_app">run application
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ror_installation/">安装Ruby On Rails</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html">Ruby &amp; Rails Compatibility Table</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Rails Version</th>
+          <th>Required Ruby Version</th>
+          <th>Recommended Ruby Version</th>
+          <th>Required Rubygems Version</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>8.1.Z</td>
+          <td>&gt;= 3.2.0</td>
+          <td>3.4.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+      <tr>
+          <td>8.0.Z</td>
+          <td>&gt;= 3.2.0</td>
+          <td>3.4.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+      <tr>
+          <td>7.2.Z</td>
+          <td>&gt;= 3.1.0</td>
+          <td>3.4.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="rbenv">RbEnv</h1>
+<p>Install ruby using rbenv.</p>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>Debian</li>
+</ul>
+<blockquote>
+<p>v12
+After enabling <a href="https://tdtc-hrb.github.io/csdn/post/apt-oper-ubuntu/">sudo</a>,
+the operation is the same as Ubuntu.</p>
+</blockquote>
+<ul>
+<li>Ubuntu <br>
+Ubuntu 20.04 default Ruby version is v2.7</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
+ libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
+</code></pre><ul>
+<li>RHEL <br>
+RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel
+</span></span></code></pre></div><p>install tar:</p> <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-08T08:08:08&#43;08:00">
+            8 Jan 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/ops_openssl/">install and usage with OpenSSL</a></h2>
     </header>
     <section class="post-excerpt">
@@ -675,208 +896,6 @@ var receiveResult = await webSocket.ReceiveAsync(
         
         <time class="post-date" datetime="2024-10-12T09:08:08&#43;08:00">
             12 Oct 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ror_getstarted/">开始Ruby On Rails</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="prepare">Prepare</h1>
-<ul>
-<li>
-<p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-ubuntu/">nodejs</a></p>
-</li>
-<li>
-<p>foreman</p>
-</li>
-</ul>
-<pre tabindex="0"><code>gem install foreman
-</code></pre><h2 id="mysql-dev">mysql-dev</h2>
-<ul>
-<li>ubuntu</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
-gem install mysql2
-</code></pre><h3 id="debian"><a href="https://stackoverflow.com/a/34384709">Debian</a></h3>
-<ul>
-<li>mariadb</li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install mariadb-server
-</code></pre><ul>
-<li><a href="https://github.com/ansible-community/ara-collection/issues/8">mariadbclient-dev</a></li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install libmariadb-dev-compat libmariadb-dev
-</code></pre><ul>
-<li><a href="https://stackoverflow.com/questions/72000977/how-do-i-install-libmysqlclient21-on-debianbuster-slim-based-docker-image">client</a></li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install mariadb-client mysql-common default-mysql-client
-</code></pre><ul>
-<li>mysql2</li>
-</ul>
-<pre tabindex="0"><code>gem install mysql2
-</code></pre><h2 id="yarn">Yarn</h2>
-<p>upload <a href="https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn_1.22.22_all.deb">yarn_1.22.22_all.deb</a> to ubuntu:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>scp d:\yarn_1.22.22_all.deb tdtc@192.168.3.99:/home/tdtc/
-</span></span></code></pre></div><p>install:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.22_all.deb
-</span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.22_all.deb
-</span></span></code></pre></div><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
-<p>new:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rails new veic_web-r2 -j esbuild --css bulma -d mysql
-</span></span></code></pre></div><h2 id="upload-images">upload images</h2>
-<p>windows 10:</p> <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-09-30T08:08:08&#43;08:00">
-            30 Sep 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ror_installation/">安装Ruby On Rails</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html">Ruby &amp; Rails Compatibility Table</a></li>
-</ul>
-<table>
-  <thead>
-      <tr>
-          <th>Rails Version</th>
-          <th>Required Ruby Version</th>
-          <th>Recommended Ruby Version</th>
-          <th>Required Rubygems Version</th>
-          <th>Status</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>7.2.Z</td>
-          <td>&gt;= 3.1.0</td>
-          <td>3.3</td>
-          <td>&gt;= 1.8.11</td>
-          <td>Maintained</td>
-      </tr>
-      <tr>
-          <td>7.1.Z</td>
-          <td>&gt;= 2.7.0</td>
-          <td>3.2.Z</td>
-          <td>&gt;= 1.8.11</td>
-          <td>Maintained</td>
-      </tr>
-      <tr>
-          <td>7.0.Z</td>
-          <td>&gt;= 2.7.0</td>
-          <td>3.1.Z</td>
-          <td>&gt;= 1.8.11</td>
-          <td>Maintained</td>
-      </tr>
-  </tbody>
-</table>
-<h1 id="rbenv">RbEnv</h1>
-<p>Install ruby using rbenv.</p>
-<h2 id="dependencies">Dependencies</h2>
-<ul>
-<li>Debian</li>
-</ul>
-<blockquote>
-<p>v12
-After enabling <a href="https://tdtc-hrb.github.io/csdn/post/apt-oper-ubuntu/">sudo</a>,
-the operation is the same as Ubuntu.</p>
-</blockquote>
-<ul>
-<li>Ubuntu <br>
-Ubuntu 20.04 default Ruby version is v2.7</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
- libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
-</code></pre><ul>
-<li>RHEL <br>
-RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel
-</span></span></code></pre></div><p>install tar:</p> <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-09-29T08:08:08&#43;08:00">
-            29 Sep 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/java-jni-gcc/">jni - gcc</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>xbfLibR.dll generated by Delphi, Error in Ubuntu:</p>
-<pre tabindex="0"><code>java.lang.UnsatisfiedLinkError: /tmp/xbfLibR1872218867548961332.dll: /tmp/xbfLibR1872218867548961332.dll: 
-invalid ELF header (Possible cause: endianness mismatch)
-</code></pre><ul>
-<li>JNI Header</li>
-<li>C++</li>
-</ul>
-<h2 id="jni-header">JNI Header</h2>
-<ul>
-<li>Write a Java Class ReadXbf.java that uses C/C++ Codes</li>
-</ul>
-<pre tabindex="0"><code>package com.cartionsoft.xbf;
-
-public class ReadXbf {
-    static {
-      System.loadLibrary(&#34;XbfLibR1&#34;);  // Load native library XbfLibR1.dll (Windows) or libXbfLibR1.so (Unixes)
-                                   //  at runtime
-                                   // This library contains a native method called sayHello()
-    }
-    // Declare an instance native method sayHello() which receives no parameter and returns void
-    private native String sayHello(int num, String text);
-
-    // Test Driver
-    public static void main(String[] args) {
-      ReadXbf rf = new ReadXbf();
-      String text = rf.sayHello(1, &#34;world&#34;); // Create an instance and invoke the native method
-      System.out.println(text);
-    }
-}
-</code></pre><ul>
-<li>Generate the JNI Header File</li>
-</ul>
-<pre tabindex="0"><code>javac -h . ReadXbf.java
-</code></pre><h2 id="jni-with-c">JNI with C++</h2>
-<p>XbfLibR1.cpp:</p> <a class="read-more" href="/cnblogs/post/java-jni-gcc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-01-09T08:08:08&#43;08:00">
-            9 Jan 2024
         </time>
     </footer>
 </article>

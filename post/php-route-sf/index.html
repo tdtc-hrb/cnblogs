@@ -12,15 +12,15 @@
 
 
 
-<meta name="twitter:title" content="最新版的Debian网络Adapter"/>
+<meta name="twitter:title" content="Routing - Symfony"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="最新版的Debian网络Adapter &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:title" content="Routing - Symfony &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
   	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
-  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/ops-network_adapter-debian/" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/php-route-sf/" />
 
     
         
@@ -29,20 +29,24 @@
     
     <meta property="og:description" content="" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2025-12-30T21:08:39&#43;08:00" />
+    <meta property="article:published_time" content="2026-01-08T10:08:08&#43;08:00" />
 
     
     
 
-    <title>最新版的Debian网络Adapter &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+    <title>Routing - Symfony &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
 
     
     <meta name="description" content="&lt;ul&gt;
-&lt;li&gt;Debian 13.x&lt;/li&gt;
+&lt;li&gt;Symfony v8.0&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;unattended-installation&#34;&gt;Unattended Installation&lt;/h4&gt;
-&lt;p&gt;Cancel &amp;ldquo;Proceed with Unattended Installation&amp;rdquo;&lt;/p&gt;
-&lt;" />
+&lt;h2 id=&#34;creating-routes&#34;&gt;Creating Routes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;routes&lt;/li&gt;
+&lt;li&gt;attributes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;routes&#34;&gt;routes&lt;/h3&gt;
+&lt;p&gt;/co" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -66,7 +70,7 @@
     
     <meta name="generator" content="Hugo 0.154.3">
 
-    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/ops-network_adapter-debian/" />
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/php-route-sf/" />
 
     
       
@@ -95,23 +99,23 @@
             
         ]
     },
-    "headline": "最新版的Debian网络Adapter",
-    "name": "最新版的Debian网络Adapter",
-    "wordCount":  121 ,
+    "headline": "Routing - Symfony",
+    "name": "Routing - Symfony",
+    "wordCount":  162 ,
     "timeRequired": "PT1M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
-    "url": "https://tdtc-hrb.github.io/cnblogs/post/ops-network_adapter-debian/",
-    "datePublished": "2025-12-30T21:08Z",
-    "dateModified": "2025-12-30T21:08Z",
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/php-route-sf/",
+    "datePublished": "2026-01-08T10:08Z",
+    "dateModified": "2026-01-08T10:08Z",
     
     
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://tdtc-hrb.github.io/cnblogs/post/ops-network_adapter-debian/"
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/php-route-sf/"
     }
 }
     </script>
@@ -168,13 +172,13 @@
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">最新版的Debian网络Adapter</h1>
+        <h1 class="post-title">Routing - Symfony</h1>
         <small></small>
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2025-12-30T21:08:39&#43;08:00">
-            Dec 30, 2025
+          <time class="post-date" datetime="2026-01-08T10:08:08&#43;08:00">
+            Jan 8, 2026
           </time>
         
          
@@ -183,62 +187,64 @@
 
     <section class="post-content">
       <ul>
-<li>Debian 13.x</li>
+<li>Symfony v8.0</li>
 </ul>
-<h4 id="unattended-installation">Unattended Installation</h4>
-<p>Cancel &ldquo;Proceed with Unattended Installation&rdquo;</p>
-<p>在使用自动无人值守安装时，会自动安装桌面的Debian</p>
-<h3 id="net-adapter">net adapter</h3>
-<p>设置Network Adapter为Bridged</p>
+<h2 id="creating-routes">Creating Routes</h2>
 <ul>
-<li>vmware(25h2) <br>
-default: ens32</li>
+<li>routes</li>
+<li>attributes</li>
 </ul>
-<blockquote>
-<blockquote>
-<p>failed</p>
-</blockquote>
-</blockquote>
-<ul>
-<li>vbox <br>
-default: enp0s3</li>
-</ul>
-<h3 id="netplanio">netplan.io</h3>
-<pre tabindex="0"><code>sudo apt install netplan.io
-</code></pre><ul>
-<li>High version <br>
-If you get an error about systemd-resolved not being found/installed. Install it before proceeding:</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install systemd-resolved -y
-</code></pre><h3 id="manage-networkd-and-resolved">Manage networkd and resolved</h3>
-<pre tabindex="0"><code>sudo systemctl unmask systemd-networkd.service;
-sudo systemctl unmask systemd-resolved.service;
-sudo systemctl enable systemd-networkd.service;
-sudo systemctl mask networking;
-sudo systemctl enable systemd-resolved.service;
-</code></pre><h3 id="config-file">config file</h3>
-<ul>
-<li>/etc/netplan/10-config.yaml</li>
-</ul>
-<pre tabindex="0"><code>network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    enp0s3:
-      addresses:
-        - 192.168.0.49/24
-      nameservers:
-        addresses: [8.8.8.8, 8.8.4.4, 192.168.0.1]
-      routes:
-        - to: default
-          via: 192.168.0.1
-</code></pre><h3 id="removed-ifupdown-and-resolvconf">removed ifupdown and resolvconf</h3>
-<pre tabindex="0"><code>reboot
-sudo apt purge ifupdown resolvconf -y
+<h3 id="routes">routes</h3>
+<p>/config/routes.yaml:</p>
+<pre tabindex="0"><code># yaml-language-server: $schema=../vendor/symfony/routing/Loader/schema/routing.schema.json
+
+# This file is the entry point to configure the routes of your app.
+# Methods with the #[Route] attribute are automatically imported.
+# See also https://symfony.com/doc/current/routing.html
+
+# To list all registered routes, run the following command:
+#   bin/console debug:router
+
+controllers:
+    resource: routing.controllers
+    type: attribute  ## only
+</code></pre><p>Add attributes only!</p>
+<h3 id="creating-routes-as-attributes">Creating Routes as Attributes</h3>
+<p>/config/routes/attributes.yaml:</p>
+<pre tabindex="0"><code>controllers:
+    resource: &#39;../../src/Controller/&#39;
+    type: attribute
+    prefix:
+        ja: &#39;/ja-jp&#39;
+        en: &#39;/en-us&#39;
+        zh: &#39;/zh-cn&#39;
+</code></pre><h2 id="matching-http-methods">Matching HTTP Methods</h2>
+<p>By default, routes match any HTTP verb (GET, POST, PUT, etc.) Use the methods option to restrict the verbs each route should respond to:</p>
+<pre tabindex="0"><code>// src/Controller/BlogApiController.php
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+
+class BlogApiController extends AbstractController
+{
+    #[Route(&#39;/api/posts/{id}&#39;, methods: [&#39;GET&#39;, &#39;HEAD&#39;])]
+    public function show(int $id): Response
+    {
+        // ... return a JSON response with the post
+    }
+
+    #[Route(&#39;/api/posts/{id}&#39;, methods: [&#39;PUT&#39;])]
+    public function edit(int $id): Response
+    {
+        // ... edit a post
+    }
+}
 </code></pre><h2 id="ref">Ref</h2>
 <ul>
-<li><a href="https://pedroagrodrigues.com/posts/Debian_To_Netplan/">Converting Debian 10/11/12 to Netplan.io</a></li>
-<li><a href="https://cloudspinx.com/how-to-manage-ubuntu-debian-networking-using-netplan/">How To Manage Ubuntu / Debian Networking using Netplan</a></li>
+<li><a href="https://symfony.com/doc/current/routing.html#creating-routes">Creating Routes</a></li>
+<li><a href="https://symfony.com/doc/current/routing.html#matching-http-methods">Matching HTTP Methods</a></li>
 </ul>
 
     </section>
@@ -255,19 +261,19 @@ sudo apt purge ifupdown resolvconf -y
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e6%9c%80%e6%96%b0%e7%89%88%e7%9a%84Debian%e7%bd%91%e7%bb%9cAdapter&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fops-network_adapter-debian%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Routing%20-%20Symfony&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fphp-route-sf%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fops-network_adapter-debian%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fphp-route-sf%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fops-network_adapter-debian%2f&amp;description=%e6%9c%80%e6%96%b0%e7%89%88%e7%9a%84Debian%e7%bd%91%e7%bb%9cAdapter"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fphp-route-sf%2f&amp;description=Routing%20-%20Symfony"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fops-network_adapter-debian%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fphp-route-sf%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -291,17 +297,17 @@ sudo apt purge ifupdown resolvconf -y
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/docker_ce-debian-config/">
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/ror_getstarted/">
           <section class="post">
-              <h2>Install Docker on Debian</h2>
+              <h2>开始Ruby On Rails</h2>
               
           </section>
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/qt-webview/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/php-devenv-win/">
           <section class="post">
-              <h2>qtwebview minibrowser example</h2>
+              <h2>Windows搭建PHP环境</h2>
           </section>
       </a>
   
