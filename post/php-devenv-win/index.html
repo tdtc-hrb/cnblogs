@@ -29,7 +29,7 @@
     
     <meta property="og:description" content="" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2026-01-04T00:12:08&#43;08:00" />
+    <meta property="article:published_time" content="2026-01-20T00:12:08&#43;08:00" />
 
     
     
@@ -39,7 +39,7 @@
     
     <meta name="description" content="&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.apachelounge.com/download/&#34;&gt;Apache Lounge Downloads&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://slproweb.com/products/Win32OpenSSL.html&#34;&gt;windows" />
+&lt;li&gt;&lt;a href=&#34;https://tdtc-hrb.github.io/csdn/post/dev_wsl_ubuntu&#34;&gt;ope" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -61,7 +61,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.154.3">
+    <meta name="generator" content="Hugo 0.154.5">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/php-devenv-win/" />
 
@@ -94,15 +94,15 @@
     },
     "headline": "Windows搭建PHP环境",
     "name": "Windows搭建PHP环境",
-    "wordCount":  527 ,
+    "wordCount":  528 ,
     "timeRequired": "PT3M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/php-devenv-win/",
-    "datePublished": "2026-01-04T00:12Z",
-    "dateModified": "2026-01-04T00:12Z",
+    "datePublished": "2026-01-20T00:12Z",
+    "dateModified": "2026-01-20T00:12Z",
     
     
     "description": "",
@@ -170,8 +170,8 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2026-01-04T00:12:08&#43;08:00">
-            Jan 4, 2026
+          <time class="post-date" datetime="2026-01-20T00:12:08&#43;08:00">
+            Jan 20, 2026
           </time>
         
          
@@ -181,7 +181,7 @@
     <section class="post-content">
       <ul>
 <li><a href="https://www.apachelounge.com/download/">Apache Lounge Downloads</a></li>
-<li><a href="https://slproweb.com/products/Win32OpenSSL.html">windows openssl</a></li>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/dev_wsl_ubuntu">openssl - wsl1</a></li>
 </ul>
 <h1 id="apache配置">Apache配置</h1>
 <ul>
@@ -249,13 +249,13 @@ Did you restart the server after uncommenting the LoadModule line for mod_socach
 </blockquote>
 </blockquote>
 <p>Replace</p>
-<pre tabindex="0"><code>SSLCertificateFile &#34;${SRVROOT}/conf/server.crt&#34;
-SSLCertificateKeyFile &#34;${SRVROOT}/conf/server.key&#34;
+<pre tabindex="0"><code>SSLCertificateFile &#34;/server.crt&#34;
+SSLCertificateKeyFile &#34;/server.key&#34;
 </code></pre><p>with</p>
-<pre tabindex="0"><code>SSLCertificateFile &#34;${SRVROOT}/conf/ssl/dev.crt&#34;
-SSLCertificateKeyFile &#34;${SRVROOT}/conf/ssl/dev.key&#34;
+<pre tabindex="0"><code>SSLCertificateFile &#34;C:/Apache24/conf/ssl/dev.crt&#34;
+SSLCertificateKeyFile &#34;C:/Apache24/conf/ssl/dev.key&#34;
 </code></pre><p>copy &ldquo;dev.crt&rdquo; and &ldquo;dev.key&rdquo; to directory:</p>
-<pre tabindex="0"><code>${SRVROOT}/conf/ssl
+<pre tabindex="0"><code>C:/Apache24/conf/ssl
 </code></pre><h1 id="phpmyadmin"><a href="https://www.phpmyadmin.net/">phpMyAdmin</a></h1>
 <blockquote>
 <p>如果使用本机mysql则无需配置！</p>
@@ -471,17 +471,10 @@ var_dump($query-&gt;fetchAll(PDO::FETCH_ASSOC));
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/php-route-sf/">
-          <section class="post">
-              <h2>Routing - Symfony</h2>
-              
-          </section>
-      </a>
   
-  
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/docker_ce-cmd1/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/ror_getstarted/">
           <section class="post">
-              <h2>docker(ce) command</h2>
+              <h2>开始Ruby On Rails</h2>
           </section>
       </a>
   
