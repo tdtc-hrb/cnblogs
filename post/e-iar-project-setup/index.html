@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.154.5">
+    <meta name="generator" content="Hugo 0.155.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-iar-project-setup/" />
 
@@ -199,7 +199,7 @@ project -&gt; Create new project <br>
 <p>Device</p>
 </blockquote>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Atmel SAM4SD32C
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Atmel SAM4SD32C
 </span></span></code></pre></div><h2 id="cmsis">CMSIS</h2>
 <blockquote>
 <p>Library Configuration</p>
@@ -211,15 +211,15 @@ project -&gt; Create new project <br>
 <p>Library Configuration</p>
 </blockquote>
 <p>Library low-level interface implementation</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>None
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>None
 </span></span></code></pre></div><h2 id="打印和输入">打印和输入</h2>
 <blockquote>
 <p>Library Options</p>
 </blockquote>
 <p>Printf formatter</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Large
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Large
 </span></span></code></pre></div><p>Scanf formatter</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>small
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>small
 </span></span></code></pre></div><hr>
 <h1 id="runtime-checking">Runtime Checking</h1>
 <blockquote>
@@ -239,7 +239,7 @@ project -&gt; Create new project <br>
 <p>C dialect</p>
 </blockquote>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Require prototype
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Require prototype
 </span></span></code></pre></div><h3 id="生成最小的程序">生成最小的程序</h3>
 <blockquote>
 <p>Optimizations</p>
@@ -248,7 +248,7 @@ project -&gt; Create new project <br>
 </blockquote>
 </blockquote>
 <p>High</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Size
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Size
 </span></span></code></pre></div><h2 id="生成格式">生成格式</h2>
 <blockquote>
 <p>Output Converter</p>
@@ -256,29 +256,29 @@ project -&gt; Create new project <br>
 <p>output</p>
 </blockquote>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>binary
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>binary
 </span></span></code></pre></div><p>✔  “Override default”</p>
 <h2 id="linker">Linker</h2>
 <blockquote>
 <p>Config
 设置脚本</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$PROJ_DIR$/../config/linker_scripts/sam4sd32/flash.icf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$PROJ_DIR$/../config/linker_scripts/sam4sd32/flash.icf
 </span></span></code></pre></div><h3 id="可以指定命令参数">可以指定命令参数</h3>
 <blockquote>
 <p>Extra Options</p>
 </blockquote>
 <p>在使用rtos，必须指定！</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Use Command line options
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Use Command line options
 </span></span></code></pre></div><h2 id="debugger">Debugger</h2>
 <blockquote>
 <p>Setup</p>
 </blockquote>
 <p>Driver</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>J-Link/J-Trace
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>J-Link/J-Trace
 </span></span></code></pre></div><h3 id="setup-macros">Setup macros</h3>
 <p>Use macro file(s)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$PROJ_DIR$/../config/debug_scripts/sam4s_ek2_flash.mac
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$PROJ_DIR$/../config/debug_scripts/sam4s_ek2_flash.mac
 </span></span></code></pre></div><h3 id="download">Download</h3>
 <p>✔ Verify Download
 ✔ Use flash loader</p>
@@ -291,7 +291,7 @@ project -&gt; Create new project <br>
 </blockquote>
 <p>datasheet: 32.768kHz
 Auto</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Initial 32kHz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Initial 32kHz
 </span></span></code></pre></div><h1 id="附件">附件</h1>
 <h2 id="preprocessor列表">preprocessor列表</h2>
 <blockquote>
@@ -299,7 +299,7 @@ Auto</p>
 </blockquote>
 <h3 id="初始时">初始时</h3>
 <p>main.c和asf.h的引用头文件</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;option&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;option&gt;
 </span></span><span style="display:flex;"><span>  &lt;name&gt;CCIncludePath2&lt;/name&gt;
 </span></span><span style="display:flex;"><span>  &lt;state&gt;$PROJ_DIR$<span style="color:#ae81ff">\.</span>.&lt;/state&gt;
 </span></span><span style="display:flex;"><span>  &lt;state&gt;$PROJ_DIR$<span style="color:#ae81ff">\.</span>.<span style="color:#ae81ff">\c</span>onfig&lt;/state&gt;

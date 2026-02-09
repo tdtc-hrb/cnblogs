@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.154.5">
+    <meta name="generator" content="Hugo 0.155.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -162,6 +162,106 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/java-apache_cli/">Apache CLI Demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="1-options">1. Options</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> Options options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Options();
+</span></span></code></pre></div><h1 id="2-option">2. option</h1>
+<p>增加选项有两种方式：直接赋值给各个参数； <br>
+另一种，就是赋值到一个实例中。</p>
+<h2 id="1-way1">1) way1</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;show help.&#34;</span>);
+</span></span></code></pre></div><h2 id="2-way2">2) way2</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(optFile);
+</span></span></code></pre></div><h1 id="3-command-line-parser">3. command line parser</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>CommandLineParser cmdParser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DefaultParser();
+</span></span></code></pre></div><h1 id="4-exec-method">4. exec method</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">help</span>() {
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">// This prints out some help</span>
+</span></span><span style="display:flex;"><span>  HelpFormatter formater <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HelpFormatter();
+</span></span><span style="display:flex;"><span>  formater.<span style="color:#a6e22e">printHelp</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getClass</span>().<span style="color:#a6e22e">getSimpleName</span>(), options);
+</span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">exit</span>(0);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="5-test">5. test</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -cp cliDemo-0.0.1-SNAPSHOT.jar;C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\x</span>iaobin<span style="color:#ae81ff">\.</span>m2<span style="color:#ae81ff">\r</span>epository<span style="color:#ae81ff">\c</span>ommons-cli<span style="color:#ae81ff">\c</span>ommons-cli<span style="color:#ae81ff">\1</span>.4<span style="color:#ae81ff">\c</span>ommons-cli-1.4.jar my.csdn9.ConsoleLauncher --help
+</span></span></code></pre></div><h1 id="source-code">source code</h1>
+<p>ConsoleLauncher.java</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> my.csdn9;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.CommandLine;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.CommandLineParser;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.DefaultParser;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.HelpFormatter;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.Option;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.Options;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.ParseException;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConsoleLauncher</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Step 1: otions</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Options options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Options();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// TODO Auto-generated method stub</span>
+</span></span><span style="display:flex;"><span>        ConsoleLauncher launcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConsoleLauncher();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 2: add option</span>
+</span></span><span style="display:flex;"><span>        Option optFile <span style="color:#f92672">=</span> Option.<span style="color:#a6e22e">builder</span>( <span style="color:#e6db74">&#34;file&#34;</span> )
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">longOpt</span>( <span style="color:#e6db74">&#34;logfile&#34;</span> )
+</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">hasArg</span>(<span style="color:#66d9ef">false</span>)
+</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">desc</span>(  <span style="color:#e6db74">&#34;use given file for log&#34;</span> )
+</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">build</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Way I: Direct definition</span>
+</span></span><span style="display:flex;"><span>        launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;show help.&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Way II: Use the option class to define</span>
+</span></span><span style="display:flex;"><span>        launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(optFile);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 3: cmd parser</span>
+</span></span><span style="display:flex;"><span>        CommandLineParser cmdParser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DefaultParser();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            CommandLine cmd <span style="color:#f92672">=</span> cmdParser.<span style="color:#a6e22e">parse</span>(launcher.<span style="color:#a6e22e">options</span>, args);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cmd.<span style="color:#a6e22e">hasOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>)) {
+</span></span><span style="display:flex;"><span>                launcher.<span style="color:#a6e22e">help</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cmd.<span style="color:#a6e22e">hasOption</span>(<span style="color:#e6db74">&#34;file&#34;</span>)) {
+</span></span><span style="display:flex;"><span>                 System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;----file----&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (ParseException e) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// TODO Auto-generated catch block</span>
+</span></span><span style="display:flex;"><span>             e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// Step 4: exec method</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">help</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// This prints out some help</span>
+</span></span><span style="display:flex;"><span>         HelpFormatter formater <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HelpFormatter();
+</span></span><span style="display:flex;"><span>         formater.<span style="color:#a6e22e">printHelp</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getClass</span>().<span style="color:#a6e22e">getSimpleName</span>(), options);
+</span></span><span style="display:flex;"><span>         System.<span style="color:#a6e22e">exit</span>(0);
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="pom">pom</h2>
+<p>pom.xml</p> <a class="read-more" href="/cnblogs/post/java-apache_cli/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T02:58:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/php-lamp2/">httpd配置</a></h2>
     </header>
     <section class="post-excerpt">
@@ -172,98 +272,98 @@
 <blockquote>
 <p>Line:152</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule php5_module        modules/libphp5.so
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule php5_module        modules/libphp5.so
 </span></span></code></pre></div><h3 id="server-name">Server Name</h3>
 <blockquote>
 <p>Line:194 - Instead</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ServerName localhost:80
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ServerName localhost:80
 </span></span></code></pre></div><h3 id="each-directory">Each Directory</h3>
 <blockquote>
 <p>Line:202 - Instead</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
 </span></span></code></pre></div><h3 id="document-root">Document Root</h3>
 <blockquote>
 <p>Line:239 - Instead</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
 </span></span></code></pre></div><h3 id="directory-index">Directory Index</h3>
 <blockquote>
 <p>Line:252 - Instead</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DirectoryIndex index.html index.php
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DirectoryIndex index.html index.php
 </span></span></code></pre></div><h3 id="mime-type">MIME Type</h3>
 <blockquote>
 <p>Line:390 - Add</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AddType application/x-httpd-php .php
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AddType application/x-httpd-php .php
 </span></span></code></pre></div><h2 id="2-phpini">2. php.ini</h2>
 <h3 id="paths-and-directories">Paths and Directories</h3>
 <blockquote>
 <p>Line:709 - Instead</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>include_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/php/lib/php&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>include_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/php/lib/php&#34;</span>
 </span></span></code></pre></div><h3 id="socket">socket</h3>
 <h4 id="pdo_mysql">[Pdo_mysql]</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pdo_mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pdo_mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
 </span></span></code></pre></div><h4 id="mysqli">[MySQLi]</h4>
 <blockquote>
 <p>Line:1221 - Instead</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysqli.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysqli.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
 </span></span></code></pre></div><h1 id="二apache22php53">二、Apache2.2+php5.3</h1>
 <h2 id="1-httpdconf-1">1. httpd.conf</h2>
 <ul>
 <li>DSO(Dynamic Shard Object)  <br>
 (Line:55 - Add)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule php5_module        modules/libphp5.so
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule php5_module        modules/libphp5.so
 </span></span></code></pre></div><ul>
 <li>Server Name  <br>
 (Line:99 - Instead)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ServerName localhost:80
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ServerName localhost:80
 </span></span></code></pre></div><ul>
 <li>Each Directory  <br>
 (Line:118 - Instead)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
 </span></span></code></pre></div><ul>
 <li>Document Root  <br>
 (Line:153 - Instead)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
 </span></span></code></pre></div><ul>
 <li>Directory Index <br>
 (Line:168 - Instead)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DirectoryIndex index.html index.php
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DirectoryIndex index.html index.php
 </span></span></code></pre></div><ul>
 <li>MIME Type <br>
 (Line:285 - Add)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AddType application/x-httpd-php .php
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AddType application/x-httpd-php .php
 </span></span></code></pre></div><h2 id="2-phpini-1">2. php.ini</h2>
 <ul>
 <li>Paths and Directories  <br>
 (Line:796 - Instead)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>include_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/php/lib/php&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>include_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/php/lib/php&#34;</span>
 </span></span></code></pre></div><ul>
 <li>socket</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Sock file when using RPM default installation location
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Sock file when using RPM default installation location
 </span></span></code></pre></div><ol>
 <li>[Pdo_mysql] <br>
 (Line:1075 - Instead)</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pdo_mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pdo_mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
 </span></span></code></pre></div><ol start="2">
 <li>[MySQL]  <br>
 (Line:1229 - Instead)</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
 </span></span></code></pre></div> <a class="read-more" href="/cnblogs/post/php-lamp2/">&raquo;</a></p>
         
     </section>
@@ -299,12 +399,12 @@
 </blockquote>
 <h1 id="一httpd">一、Httpd</h1>
 <p>卸载系统自带httpd（V2.4.6-89）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum remove httpd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum remove httpd
 </span></span></code></pre></div><h2 id="1-depend-soft">1. depend soft</h2>
 <h2 id="apr">APR</h2>
 <p><a href="http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-1.7.0.tar.gz">down</a></p>
 <h3 id="install">install</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr
 </span></span><span style="display:flex;"><span>$make <span style="color:#f92672">&amp;&amp;</span> sudo make install
 </span></span></code></pre></div><h2 id="apr-util">APR-util</h2>
 <blockquote>
@@ -312,17 +412,17 @@
 </blockquote>
 <p><a href="http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-util-1.6.1.tar.gz">down</a></p>
 <h3 id="expat-devel">expat-devel</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install expat-devel
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install expat-devel
 </span></span></code></pre></div><h3 id="install-apr-util">install apr-util</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>	    --with-apr<span style="color:#f92672">=</span>/opt/apr <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>	    --with-expat<span style="color:#f92672">=</span>/usr/local/expat
 </span></span><span style="display:flex;"><span>$make <span style="color:#f92672">&amp;&amp;</span> sudo make install
 </span></span></code></pre></div><h2 id="install-httpd">install httpd</h2>
 <h3 id="pcre-devel">pcre-devel</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum -y install pcre-devel
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum -y install pcre-devel
 </span></span></code></pre></div><h2 id="setup">Setup</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tar zxvf httpd-2.4.39.tar.gz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tar zxvf httpd-2.4.39.tar.gz
 </span></span><span style="display:flex;"><span>$ &lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;cd&lt;/span&gt; httpd-2.4.39
 </span></span><span style="display:flex;"><span>$ ./configure --prefix<span style="color:#f92672">=</span>/opt/httpd <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>	    --with-apr-util<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
@@ -332,7 +432,7 @@
 </span></span><span style="display:flex;"><span>$ sudo make install
 </span></span></code></pre></div><h1 id="二php">二、PHP</h1>
 <h2 id="依赖包安装">依赖包安装</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install libxml2-devel <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install libxml2-devel <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>            curl-devel <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>            libjpeg-devel <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>            libpng-devel
@@ -366,9 +466,9 @@
 <h2 id="1only-variable-references-should-be-returned-by-reference">1）Only variable references should be returned by reference</h2>
 <p><a href="https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11">https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11</a></p>
 <p><img src="https://gitee.com/xiaobin80/csdn/raw/master/images/20190601144425762.png" alt="php encountered"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
 </span></span></code></pre></div><p>==&gt;</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $_config[<span style="color:#ae81ff">0</span>];
 </span></span></code></pre></div><h2 id="2-sqli">2) sqli</h2>
 <blockquote>
@@ -383,7 +483,7 @@
 注意: php7.0.x已经移除了mysql.</p>
 </blockquote>
 <p>在php.ini(windows)中注释掉</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>;extension<span style="color:#f92672">=</span>php_mysql.dll
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>;extension<span style="color:#f92672">=</span>php_mysql.dll
 </span></span></code></pre></div><h1 id="2-mcrypt">2. mcrypt</h1>
 <blockquote>
 <p>php7.2~php7.4</p>
@@ -393,25 +493,25 @@
 <ul>
 <li>Ln273</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_size <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_get_iv_size</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>());
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_size <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_get_iv_size</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>());
 </span></span></code></pre></div><ul>
 <li>Ln274</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_vect <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_create_iv</span>($init_size, <span style="color:#a6e22e">MCRYPT_RAND</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_vect <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_create_iv</span>($init_size, <span style="color:#a6e22e">MCRYPT_RAND</span>);
 </span></span></code></pre></div><ul>
 <li>Ln275</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_add_cipher_noise</span>($init_vect<span style="color:#f92672">.@</span><span style="color:#a6e22e">mcrypt_encrypt</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_add_cipher_noise</span>($init_vect<span style="color:#f92672">.@</span><span style="color:#a6e22e">mcrypt_encrypt</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), 
 </span></span><span style="display:flex;"><span>    $key, $data, $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>(), $init_vect), $key);
 </span></span></code></pre></div><ul>
 <li>Ln291</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_size <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_get_iv_size</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>());
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_size <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_get_iv_size</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>());
 </span></span></code></pre></div><ul>
 <li></li>
 <li>Ln300</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rtrim</span>(<span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_decrypt</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $key, $data, $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>(), $init_vect), <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rtrim</span>(<span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_decrypt</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $key, $data, $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>(), $init_vect), <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#34;</span>);
 </span></span></code></pre></div><h2 id="down"><a href="https://pecl.php.net/package/mcrypt/1.0.4/windows">down</a></h2>
 <table>
   <thead>

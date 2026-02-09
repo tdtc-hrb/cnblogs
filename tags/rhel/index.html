@@ -57,7 +57,7 @@
         <link href='/cnblogs/tags/rhel/index.xml' rel="alternate" type="application/rss+xml" title="RHEL &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.154.5">
+    <meta name="generator" content="Hugo 0.155.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/tags/rhel/" />
 
@@ -178,7 +178,7 @@
 <li><a href="https://tdtc-hrb.github.io/csdn/post/ops_firewall/">Firewall</a></li>
 </ul>
 <p>dependencies:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf group install <span style="color:#e6db74">&#39;Development Tools&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf group install <span style="color:#e6db74">&#39;Development Tools&#39;</span>
 </span></span><span style="display:flex;"><span>$sudo dnf install tcl wget
 </span></span></code></pre></div><h2 id="v6">v6+</h2>
 <p>Just to clarify: <br>
@@ -186,15 +186,15 @@ there is no way this issue will be fixed, Redis &gt;= 6 will require a C11 compi
 <ul>
 <li>RHEL7</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install centos-release-scl
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install centos-release-scl
 </span></span><span style="display:flex;"><span>sudo dnf install devtoolset-8
 </span></span><span style="display:flex;"><span>scl enable devtoolset-8 bash
 </span></span></code></pre></div><h2 id="verification">verification</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$gcc -v
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$gcc -v
 </span></span><span style="display:flex;"><span>$make -v
 </span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;puts [info patchlevel];exit 0&#39;</span> | tclsh
 </span></span></code></pre></div><h1 id="installation">installation</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$wget https://download.redis.io/redis-stable.tar.gz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$wget https://download.redis.io/redis-stable.tar.gz
 </span></span><span style="display:flex;"><span>$tar xzvf redis-stable.tar.gz
 </span></span><span style="display:flex;"><span>$cd redis-stable
 </span></span><span style="display:flex;"><span>$make
@@ -203,7 +203,7 @@ there is no way this issue will be fixed, Redis &gt;= 6 will require a C11 compi
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## sudo</span>
 </span></span><span style="display:flex;"><span>$sudo make install
 </span></span></code></pre></div><h2 id="configure">configure</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo mkdir /etc/redis
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo mkdir /etc/redis
 </span></span><span style="display:flex;"><span>$sudo mkdir -p /var/redis
 </span></span><span style="display:flex;"><span>$sudo cp /home/tdtc/redis-stable/redis.conf /etc/redis
 </span></span></code></pre></div><p>/etc/redis/redis.conf:</p> <a class="read-more" href="/cnblogs/post/redis-rhel/">&raquo;</a></p>

@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.154.5">
+    <meta name="generator" content="Hugo 0.155.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/mq-rabbitmq-config/" />
 
@@ -190,7 +190,7 @@ codename: focal</li>
 <p>Replace the &ldquo;bionic&rdquo; in the <a href="https://www.rabbitmq.com/install-debian.html#apt-packagecloud">official website</a> shell with the ubuntu codename.</p>
 <p>Note: When saving, the format is Unix(LF).</p>
 <p>focal_rq.sh:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo apt-get install curl gnupg apt-transport-https -y
 </span></span><span style="display:flex;"><span>
@@ -227,7 +227,7 @@ sudo bash ./focal_rq.sh
 </code></pre><h2 id="install-erlang">Install erlang</h2>
 <p>安装Erlang默认使用&quot;Normal&quot;； 如果无法使用Specific.</p>
 <h3 id="normal">Normal</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">## Install Erlang packages</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">## Install Erlang packages</span>
 </span></span><span style="display:flex;"><span>sudo apt-get install -y erlang-base <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>                        erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>                        erlang-mnesia erlang-os-mon erlang-parsetools erlang-public-key <span style="color:#ae81ff">\
@@ -244,31 +244,31 @@ sudo dpkg -i erlang-solutions_2.0_all.deb
 Add one of the following lines to your /etc/apt/sources.list (according to your distribution):</p>
 <pre tabindex="0"><code>deb https://packages.erlang-solutions.com/ubuntu focal contrib
 </code></pre><p>Next, add the Erlang Solutions public key for &ldquo;apt-secure&rdquo; using following commands:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
 </span></span><span style="display:flex;"><span>sudo apt-key add erlang_solutions.asc
 </span></span></code></pre></div><ol start="2">
 <li>Installing Erlang <br>
 There may be problems that the update needs to fix:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt --fix-broken install
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get update
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt --fix-broken install
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get update
 </span></span><span style="display:flex;"><span>sudo apt-get install erlang-nox
 </span></span></code></pre></div><h2 id="install-rabbitmq-server">Install rabbitmq-server</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">## Install rabbitmq-server and its dependencies</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">## Install rabbitmq-server and its dependencies</span>
 </span></span><span style="display:flex;"><span>sudo apt-get install rabbitmq-server -y --fix-missing
 </span></span></code></pre></div><h1 id="manage">Manage</h1>
 <h2 id="1-rabbitmq-service">1. RabbitMQ service</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl enable rabbitmq-server
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl enable rabbitmq-server
 </span></span><span style="display:flex;"><span>sudo systemctl start rabbitmq-server
 </span></span><span style="display:flex;"><span>sudo systemctl stop rabbitmq-server
 </span></span></code></pre></div><h2 id="2-create-user---admin">2. create user - admin</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rabbitmqctl add_user admin admin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rabbitmqctl add_user admin admin
 </span></span><span style="display:flex;"><span>sudo rabbitmqctl set_user_tags admin administrator
 </span></span><span style="display:flex;"><span>sudo rabbitmqctl set_permissions -p / admin <span style="color:#e6db74">&#34;.*&#34;</span> <span style="color:#e6db74">&#34;.*&#34;</span> <span style="color:#e6db74">&#34;.*&#34;</span>
 </span></span></code></pre></div><h2 id="3-enable-rabbitmq-management">3. Enable RabbitMQ Management</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rabbitmq-plugins enable rabbitmq_management
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rabbitmq-plugins enable rabbitmq_management
 </span></span></code></pre></div><p>info:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tdtc@ubuntu:~$ sudo rabbitmq-plugins enable rabbitmq_management
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tdtc@ubuntu:~$ sudo rabbitmq-plugins enable rabbitmq_management
 </span></span><span style="display:flex;"><span>The following plugins have been configured:
 </span></span><span style="display:flex;"><span>  rabbitmq_management
 </span></span><span style="display:flex;"><span>  rabbitmq_management_agent

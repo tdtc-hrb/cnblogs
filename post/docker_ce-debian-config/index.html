@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.154.5">
+    <meta name="generator" content="Hugo 0.155.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/docker_ce-debian-config/" />
 
@@ -178,7 +178,7 @@
 
     <section class="post-content">
       <p>Note:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command</span>
 </span></span><span style="display:flex;"><span>$ - requires given linux commands to be executed as a regular non-privileged user
 </span></span></code></pre></div><h1 id="docker-engine">Docker Engine</h1>
 <pre tabindex="0"><code># Add Docker&#39;s official GPG key:
@@ -199,7 +199,7 @@ EOF
 
 sudo apt update
 </code></pre><h2 id="1-install">1. install</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 </span></span></code></pre></div><h3 id="docker-source">docker source</h3>
 <pre tabindex="0"><code>sudo systemctl daemon-reload
 </code></pre><h4 id="源地址"><a href="https://gitee.com/xiaobin80/grpc-hello">源地址</a></h4>
@@ -214,10 +214,10 @@ sudo apt update
 }
 </code></pre><p>每次都要更新<a href="https://zhuanlan.zhihu.com/p/1926211424398603825">China源</a></p>
 <h2 id="2-enable">2. enable</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo systemctl start docker
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo systemctl start docker
 </span></span><span style="display:flex;"><span>$ sudo systemctl status docker
 </span></span></code></pre></div><h3 id="test">test</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker --version
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker --version
 </span></span><span style="display:flex;"><span>$ sudo docker run hello-world
 </span></span></code></pre></div><h4 id="output-info">output info</h4>
 <pre tabindex="0"><code>Unable to find image &#39;hello-world:latest&#39; locally
@@ -232,13 +232,13 @@ This message shows that your installation appears to be working correctly.
 </code></pre><h1 id="docker-compose">Docker compose</h1>
 <p>Install the Docker Compose standalone (Legacy)</p>
 <h2 id="1-down">1. down</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl -SL https://github.com/docker/compose/releases/download/v5.0.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl -SL https://github.com/docker/compose/releases/download/v5.0.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
 </span></span></code></pre></div><h2 id="2-exec">2. exec</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/docker-compose
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/docker-compose
 </span></span></code></pre></div><p>ou can also create a symbolic link to /usr/bin or any other directory in your path:</p>
 <pre tabindex="0"><code>sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 </code></pre><h3 id="test-1">test</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tdtc@tdtc306:~$ docker-compose --version
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tdtc@tdtc306:~$ docker-compose --version
 </span></span><span style="display:flex;"><span>Docker Compose version v5.0.1
 </span></span></code></pre></div><h1 id="reference">Reference</h1>
 <ul>

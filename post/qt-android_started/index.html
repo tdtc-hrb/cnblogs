@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.154.5">
+    <meta name="generator" content="Hugo 0.155.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/qt-android_started/" />
 
@@ -194,14 +194,14 @@ After installing <a href="https://developer.android.google.cn/studio">Android St
 <li>Qt6.8/6.5 <br>
 set <a href="https://adoptium.net/temurin/releases?version=17&amp;os=any&amp;arch=any">JDK17</a></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.16+8
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.16+8
 </span></span></code></pre></div><h3 id="android-home"><a href="https://developer.android.com/tools/variables#envar">Android Home</a></h3>
 <p>Sets the path to the SDK installation directory.
 Once set, the value does not typically change and can be shared by multiple users on the same machine.
 ANDROID_SDK_ROOT, which also points to the SDK installation directory, is deprecated.
 If you continue to use it, Android Studio and the Android Gradle plugin will check that the old and new variables are consistent.</p>
 <p>default value:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\&lt;</span>user name&gt;<span style="color:#ae81ff">\A</span>ppData<span style="color:#ae81ff">\L</span>ocal<span style="color:#ae81ff">\A</span>ndroid<span style="color:#ae81ff">\S</span>dk
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\&lt;</span>user name&gt;<span style="color:#ae81ff">\A</span>ppData<span style="color:#ae81ff">\L</span>ocal<span style="color:#ae81ff">\A</span>ndroid<span style="color:#ae81ff">\S</span>dk
 </span></span></code></pre></div><h3 id="open-ssl">open ssl</h3>
 <p>Download &ldquo;<a href="https://github.com/KDAB/android_openssl">android openssl</a>&rdquo;
 and place it in the &ldquo;%ANDROID_SDK_ROOT%&rdquo;/&quot;%ANDROID_HOME%&quot; directory.</p>
@@ -326,7 +326,7 @@ source.properties
   </tbody>
 </table>
 <p>usb driver:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sdkmanager --sdk_root<span style="color:#f92672">=</span>%ANDROID_SDK_ROOT% --install <span style="color:#e6db74">&#34;extras;google;usb_driver&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sdkmanager --sdk_root<span style="color:#f92672">=</span>%ANDROID_SDK_ROOT% --install <span style="color:#e6db74">&#34;extras;google;usb_driver&#34;</span>
 </span></span></code></pre></div><h3 id="qt68">Qt6.8</h3>
 <ul>
 <li>Android SDK</li>
@@ -348,7 +348,7 @@ source.properties
 <pre tabindex="0"><code>sdkmanager --sdk_root=%ANDROID_HOME% --install &#34;ndk;25.1.8937393&#34;
 </code></pre><h1 id="avd">avd</h1>
 <p>install emulator:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sdkmanager --sdk_root<span style="color:#f92672">=</span>%ANDROID_HOME% --install <span style="color:#e6db74">&#34;emulator&#34;</span> <span style="color:#e6db74">&#34;patcher;v4&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sdkmanager --sdk_root<span style="color:#f92672">=</span>%ANDROID_HOME% --install <span style="color:#e6db74">&#34;emulator&#34;</span> <span style="color:#e6db74">&#34;patcher;v4&#34;</span>
 </span></span></code></pre></div><h3 id="hypervisor">Hypervisor</h3>
 <p>If you use android_x86/android_x86_64, you must install HAXM and AEHD.</p>
 <ul>

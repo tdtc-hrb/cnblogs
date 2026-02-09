@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.154.5">
+    <meta name="generator" content="Hugo 0.155.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-freertos-base/" />
 
@@ -216,7 +216,7 @@ task-to-task, task-to-interrupt, interrupt-to-task.</li>
 </ul>
 <h1 id="最小化系统">最小化系统</h1>
 <p>main.c</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
 </span></span><span style="display:flex;"><span>{
@@ -228,11 +228,11 @@ task-to-task, task-to-interrupt, interrupt-to-task.</li>
 <p>vc <br>
 Configuration Properties -&gt; c/c++ -&gt; Additional include Directories</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ProjectDir<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ProjectDir<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ProjectDir<span style="color:#66d9ef">)</span><span style="color:#e6db74">\..\..\Source\include&#34;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ProjectDir<span style="color:#66d9ef">)</span><span style="color:#e6db74">\..\..\Source\portable\MSVC-MingW&#34;</span>
 </span></span></code></pre></div><p>FreeRTOSConfig.h</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_PREEMPTION			1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_PREEMPTION			1
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_IDLE_HOOK				0
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TICK_HOOK				0
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_CO_ROUTINES 			0
@@ -255,7 +255,7 @@ Configuration Properties -&gt; c/c++ -&gt; Additional include Directories</p>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_xTaskGetSchedulerState		1
 </span></span></span></code></pre></div><h1 id="add-task">add task</h1>
 <h2 id="task-function">task function</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vTask1</span> (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>pvParameter)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vTask1</span> (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>pvParameter)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> pcTaskName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Task 1</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> ul;
@@ -269,7 +269,7 @@ Configuration Properties -&gt; c/c++ -&gt; Additional include Directories</p>
 <blockquote>
 <p>main.c</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">xTaskCreate</span>( vTask1, <span style="color:#75715e">/* Pointer to the function that implements the task. */</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Task 1&#34;</span>,<span style="color:#75715e">/* Text name for the task. This is to facilitate debugging only. */</span>
