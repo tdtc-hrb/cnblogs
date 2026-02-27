@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.155.3">
+    <meta name="generator" content="Hugo 0.157.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -158,6 +158,78 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/sqlite.net.core/">SQLite在.net core的demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>.net core <br>
+v8.0+</li>
+<li>test-backup.db <br>
+由 <a href="https://tdtc-hrb.github.io/com-vc/posts/sqlite3lib-wx">Windows的SQLite静态库 - wx</a> 的 minimal.exe 生成</li>
+</ul>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016122849.png" alt="program ui"></p>
+<h3 id="nuget">NuGet</h3>
+<blockquote>
+<p>pmc: Package Manager Console</p>
+</blockquote>
+<ul>
+<li>SQLite3MC.PCLRaw.bundle</li>
+</ul>
+<pre tabindex="0"><code class="language-pmc" data-lang="pmc">Install-Package SQLite3MC.PCLRaw.bundle
+</code></pre><p>Warning! Don&rsquo;t use multiple SQLitePCLRaw bundles in the same project. See the instructions below for details.</p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016121731.png" alt="SQLite3MC.PCLRaw.bundle"></p>
+<ul>
+<li>SQLite-net</li>
+</ul>
+<pre tabindex="0"><code class="language-pmc" data-lang="pmc">Install-Package sqlite-net-base -Version 1.9.172
+</code></pre><p>With SQLite-net, be sure to use the sqlite-net-base package instead of the main one to avoid using multiple bundles.</p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016115835.png" alt="sqlite-net-base"></p>
+<h2 id="1-连接">1. 连接</h2>
+<p>SQLite Connection String:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(
+</span></span><span style="display:flex;"><span>    edtDB.Text, 
+</span></span><span style="display:flex;"><span>    storeDateTimeAsTicks: true,
+</span></span><span style="display:flex;"><span>    key: edtPwd.Text);
+</span></span></code></pre></div><ul>
+<li>Async Connection</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>asyncConn <span style="color:#f92672">=</span> new SQLite.<span style="color:#a6e22e">SQLiteAsyncConnection</span>(options);
+</span></span></code></pre></div><ul>
+<li>Sync</li>
+</ul>
+<pre tabindex="0"><code></code></pre><h2 id="2-查询">2. 查询</h2>
+<ul>
+<li>Synchronous API</li>
+<li>Asynchronous API</li>
+</ul>
+<h3 id="异步查询">异步查询</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var empRecords <span style="color:#f92672">=</span> connection.Table<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(emp <span style="color:#f92672">=&gt;</span> emp.Empno <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">111</span> <span style="color:#f92672">&amp;&amp;</span> emp.Empno <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">666</span>);
+</span></span></code></pre></div><h3 id="show-data">show data</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  table <span style="color:#f92672">=</span> new System.Data.<span style="color:#a6e22e">DataTable</span>(<span style="color:#e6db74">&#34;emp&#34;</span>);
+</span></span></code></pre></div><ul>
+<li>数据源</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  dataGridView1.DataSource <span style="color:#f92672">=</span> table;
+</span></span></code></pre></div><h2 id="3-插入">3. 插入</h2>
+<p>也可以执行Update、Delete等DML语句。</p> <a class="read-more" href="/cnblogs/post/sqlite.net.core/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-02-19T19:18:08&#43;08:00">
+            19 Feb 2026
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -721,50 +793,6 @@ Mini Qt version:</li>
 
         
         <time class="post-date" datetime="2025-10-03T23:38:08&#43;08:00">
-            3 Oct 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-android_started/">Qt6 for android</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>ndk</li>
-<li>avd(Android Virtual Device)</li>
-</ul>
-<h1 id="preparation">Preparation</h1>
-<ul>
-<li>Environment</li>
-<li>cmdline</li>
-</ul>
-<h2 id="environment-variables">Environment variables</h2>
-<p>:warning: <br>
-After installing <a href="https://developer.android.google.cn/studio">Android Studio</a>, don&rsquo;t go into settings yet!</p>
-<h3 id="java-home">Java Home</h3>
-<ul>
-<li>Qt6.8/6.5 <br>
-set <a href="https://adoptium.net/temurin/releases?version=17&amp;os=any&amp;arch=any">JDK17</a></li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.16+8
-</span></span></code></pre></div><h3 id="android-home"><a href="https://developer.android.com/tools/variables#envar">Android Home</a></h3>
-<p>Sets the path to the SDK installation directory.
-Once set, the value does not typically change and can be shared by multiple users on the same machine.
-ANDROID_SDK_ROOT, which also points to the SDK installation directory, is deprecated.
-If you continue to use it, Android Studio and the Android Gradle plugin will check that the old and new variables are consistent.</p> <a class="read-more" href="/cnblogs/post/qt-android_started/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-10-03T12:38:08&#43;08:00">
             3 Oct 2025
         </time>
     </footer>

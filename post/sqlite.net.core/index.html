@@ -13,7 +13,7 @@
 
 
 <meta name="twitter:title" content="SQLite在.net core的demo"/>
-<meta name="twitter:description" content="使用sqlite-net-sqlcipher"/>
+<meta name="twitter:description" content="使用sqlite-net-base and SQLite3MC.PCLRaw.bundle"/>
 <meta name="twitter:site" content="@"/>
 
 
@@ -27,9 +27,9 @@
     
 
     
-    <meta property="og:description" content="使用sqlite-net-sqlcipher" />
+    <meta property="og:description" content="使用sqlite-net-base and SQLite3MC.PCLRaw.bundle" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2021-11-19T19:18:08&#43;08:00" />
+    <meta property="article:published_time" content="2026-02-19T19:18:08&#43;08:00" />
 
     
     
@@ -37,7 +37,7 @@
     <title>SQLite在.net core的demo &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
 
     
-    <meta name="description" content="使用sqlite-net-sqlcipher" />
+    <meta name="description" content="使用sqlite-net-base and SQLite3MC.PCLRaw.bundle" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.155.3">
+    <meta name="generator" content="Hugo 0.157.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/sqlite.net.core/" />
 
@@ -92,18 +92,18 @@
     },
     "headline": "SQLite在.net core的demo",
     "name": "SQLite在.net core的demo",
-    "wordCount":  283 ,
+    "wordCount":  351 ,
     "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/sqlite.net.core/",
-    "datePublished": "2021-11-19T19:18Z",
-    "dateModified": "2021-11-19T19:18Z",
+    "datePublished": "2026-02-19T19:18Z",
+    "dateModified": "2026-02-19T19:18Z",
     
     
-    "description": "使用sqlite-net-sqlcipher",
+    "description": "使用sqlite-net-base and SQLite3MC.PCLRaw.bundle",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://tdtc-hrb.github.io/cnblogs/post/sqlite.net.core/"
@@ -164,12 +164,12 @@
 
     <header class="post-header">
         <h1 class="post-title">SQLite在.net core的demo</h1>
-        <small>使用sqlite-net-sqlcipher</small>
+        <small>使用sqlite-net-base and SQLite3MC.PCLRaw.bundle</small>
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2021-11-19T19:18:08&#43;08:00">
-            Nov 19, 2021
+          <time class="post-date" datetime="2026-02-19T19:18:08&#43;08:00">
+            Feb 19, 2026
           </time>
         
          
@@ -177,177 +177,166 @@
     </header>
 
     <section class="post-content">
-      <p>IDE: VS2022 <br>
-语言: C#</p>
-<p>简介：
-本示例使用SQLite的密码、外键功能。</p>
-<h1 id="一工程设置">一、工程设置</h1>
-<h2 id="1-nuget">1. NuGet</h2>
+      <ul>
+<li>.net core <br>
+v8.0+</li>
+<li>test-backup.db <br>
+由 <a href="https://tdtc-hrb.github.io/com-vc/posts/sqlite3lib-wx">Windows的SQLite静态库 - wx</a> 的 minimal.exe 生成</li>
+</ul>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016122849.png" alt="program ui"></p>
+<h3 id="nuget">NuGet</h3>
 <blockquote>
-<p>Tools -&gt; NuGet Package Manager -&gt; Package Manager Console
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016115835.png" alt="sqlite-net-pcl"></p>
+<p>pmc: Package Manager Console</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package sqlite-net-pcl -Version 1.8.116
-</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016121731.png" alt="sqlite-net-sqlcipher"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package sqlite-net-sqlcipher -Version 1.8.116
-</span></span></code></pre></div><p>完整的窗体：
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016122849.png" alt="program ui"></p>
-<h2 id="2-控件">2. 控件</h2>
-<p>拖拽4个TextBox、4个Button、1个DataGridView</p>
-<h1 id="二功能实现">二、功能实现</h1>
-<p>使用Synchronous API来实现连接、factoryCar表的查询、插入等操作。</p>
-<h2 id="0-entity-class">0. Entity class</h2>
-<blockquote>
-<p>注意：主键和外键</p>
-</blockquote>
-<p>建立两个实体类：<a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher/blob/master/FactoryCar.cs">FactoryCar</a>和<a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher/blob/master/MarqueCar.cs">MarqueCar</a></p>
+<ul>
+<li>SQLite3MC.PCLRaw.bundle</li>
+</ul>
+<pre tabindex="0"><code class="language-pmc" data-lang="pmc">Install-Package SQLite3MC.PCLRaw.bundle
+</code></pre><p>Warning! Don&rsquo;t use multiple SQLitePCLRaw bundles in the same project. See the instructions below for details.</p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016121731.png" alt="SQLite3MC.PCLRaw.bundle"></p>
+<ul>
+<li>SQLite-net</li>
+</ul>
+<pre tabindex="0"><code class="language-pmc" data-lang="pmc">Install-Package sqlite-net-base -Version 1.9.172
+</code></pre><p>With SQLite-net, be sure to use the sqlite-net-base package instead of the main one to avoid using multiple bundles.</p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016115835.png" alt="sqlite-net-base"></p>
 <h2 id="1-连接">1. 连接</h2>
+<p>SQLite Connection String:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(
+</span></span><span style="display:flex;"><span>    edtDB.Text, 
+</span></span><span style="display:flex;"><span>    storeDateTimeAsTicks: true,
+</span></span><span style="display:flex;"><span>    key: edtPwd.Text);
+</span></span></code></pre></div><ul>
+<li>Async Connection</li>
+</ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>asyncConn <span style="color:#f92672">=</span> new SQLite.<span style="color:#a6e22e">SQLiteAsyncConnection</span>(options);
-</span></span></code></pre></div><p>其中，options是SQLiteConnectionString实例化的字符串。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(edtDB.Text, true,
-</span></span><span style="display:flex;"><span>                                key: edtPwd.Text,
-</span></span><span style="display:flex;"><span>                                preKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA cipher_default_use_hmac = OFF;&#34;</span>),
-</span></span><span style="display:flex;"><span>                                postKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA kdf_iter = 128000;&#34;</span>));
-</span></span></code></pre></div><h2 id="2-查询">2. 查询</h2>
+</span></span></code></pre></div><ul>
+<li>Sync</li>
+</ul>
+<pre tabindex="0"><code></code></pre><h2 id="2-查询">2. 查询</h2>
+<ul>
+<li>Synchronous API</li>
+<li>Asynchronous API</li>
+</ul>
 <h3 id="异步查询">异步查询</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var factoryCars <span style="color:#f92672">=</span> asyncConn.Table<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(fc <span style="color:#f92672">=&gt;</span> fc.Name.<span style="color:#a6e22e">Contains</span>(edtStmt.Text));
-</span></span></code></pre></div><p>转换为List类型。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var result <span style="color:#f92672">=</span> await factoryCars.<span style="color:#a6e22e">ToListAsync</span>();
-</span></span></code></pre></div><h3 id="建立数据表">建立数据表</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  table <span style="color:#f92672">=</span> new System.Data.<span style="color:#a6e22e">DataTable</span>(<span style="color:#e6db74">&#34;factoryCar&#34;</span>);
-</span></span></code></pre></div><h3 id="指定数据源">指定数据源</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var empRecords <span style="color:#f92672">=</span> connection.Table<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(emp <span style="color:#f92672">=&gt;</span> emp.Empno <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">111</span> <span style="color:#f92672">&amp;&amp;</span> emp.Empno <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">666</span>);
+</span></span></code></pre></div><h3 id="show-data">show data</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  table <span style="color:#f92672">=</span> new System.Data.<span style="color:#a6e22e">DataTable</span>(<span style="color:#e6db74">&#34;emp&#34;</span>);
+</span></span></code></pre></div><ul>
+<li>数据源</li>
+</ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  dataGridView1.DataSource <span style="color:#f92672">=</span> table;
 </span></span></code></pre></div><h2 id="3-插入">3. 插入</h2>
 <p>也可以执行Update、Delete等DML语句。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>asyncConn.ExecuteScalarAsync<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>(edtSql.Text);
-</span></span></code></pre></div><h1 id="源代码">源代码</h1>
-<h2 id="form1cs">Form1.cs</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>using System;
-</span></span><span style="display:flex;"><span>using System.Windows.Forms;
-</span></span><span style="display:flex;"><span>using SQLite;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>asyncConn.ExecuteScalarAsync<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span>(edtSql.Text);
+</span></span></code></pre></div><h2 id="源代码">源代码</h2>
+<ul>
+<li>Emp.cs</li>
+</ul>
+<pre tabindex="0"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace testSqlite_core
+{
+    internal class Emp
+    {
+        public int Empno { get; set; }
+        public string Empname { get; set; }
+        public decimal Salary { get; set; }
+    }
+}
+</code></pre><ul>
+<li>Form1.cs</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>using SQLite;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>namespace test_sqlite_net_sqlcipher
+</span></span><span style="display:flex;"><span>namespace testSqlite_core
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    public partial class Form1 : Form
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        private SQLite.SQLiteAsyncConnection asyncConn;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        private System.Data.DataTable table;
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        public <span style="color:#a6e22e">Form1</span>()
 </span></span><span style="display:flex;"><span>        {
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">InitializeComponent</span>();
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        private <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">btnGen_Click</span>(object sender, EventArgs e)
+</span></span><span style="display:flex;"><span>        private <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">button1_Click</span>(object sender, EventArgs e)
 </span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            asyncConn.CreateTableAsync<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>();
-</span></span><span style="display:flex;"><span>            asyncConn.CreateTableAsync<span style="color:#f92672">&lt;</span>MarqueCar<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>            SQLitePCL.Batteries_V2.<span style="color:#a6e22e">Init</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            var connection <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnection</span>(<span style="color:#a6e22e">new</span>(<span style="color:#e6db74">&#34;test-backup.db&#34;</span>, storeDateTimeAsTicks: true, key: <span style="color:#e6db74">&#34;password&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            var empRecords <span style="color:#f92672">=</span> connection.Table<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(emp <span style="color:#f92672">=&gt;</span> emp.Empno <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">111</span> <span style="color:#f92672">&amp;&amp;</span> emp.Empno <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">666</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            var result <span style="color:#f92672">=</span> empRecords.<span style="color:#a6e22e">ToList</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">showDataGrid</span>(result);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        private <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">btnConn_Click</span>(object sender, EventArgs e)
+</span></span><span style="display:flex;"><span>        private async <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">button2_Click</span>(object sender, EventArgs e)
 </span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(edtDB.Text, true,
-</span></span><span style="display:flex;"><span>                                key: edtPwd.Text,
-</span></span><span style="display:flex;"><span>                                preKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA cipher_default_use_hmac = OFF;&#34;</span>),
-</span></span><span style="display:flex;"><span>                                postKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA kdf_iter = 128000;&#34;</span>));
-</span></span><span style="display:flex;"><span>            asyncConn <span style="color:#f92672">=</span> new SQLite.<span style="color:#a6e22e">SQLiteAsyncConnection</span>(options);
+</span></span><span style="display:flex;"><span>            var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(
+</span></span><span style="display:flex;"><span>                            edtDB.Text,
+</span></span><span style="display:flex;"><span>                            storeDateTimeAsTicks: true,
+</span></span><span style="display:flex;"><span>                            key: edtPwd.Text);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            SQLitePCL.Batteries_V2.<span style="color:#a6e22e">Init</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            var asyncConn <span style="color:#f92672">=</span> new SQLite.<span style="color:#a6e22e">SQLiteAsyncConnection</span>(options);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            var empRecords <span style="color:#f92672">=</span> asyncConn.Table<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(emp <span style="color:#f92672">=&gt;</span> emp.Empno <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> emp.Empno <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">999</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            var result <span style="color:#f92672">=</span> await empRecords.<span style="color:#a6e22e">ToListAsync</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">showDataGrid</span>(result);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        private async <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">btnSearch_Click</span>(object sender, EventArgs e)
+</span></span><span style="display:flex;"><span>        private <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">button3_Click</span>(object sender, EventArgs e)
 </span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            var factoryCars <span style="color:#f92672">=</span> asyncConn.Table<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(fc <span style="color:#f92672">=&gt;</span> fc.Name.<span style="color:#a6e22e">Contains</span>(edtStmt.Text));
+</span></span><span style="display:flex;"><span>            SQLitePCL.Batteries_V2.<span style="color:#a6e22e">Init</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            var result <span style="color:#f92672">=</span> await factoryCars.<span style="color:#a6e22e">ToListAsync</span>();
+</span></span><span style="display:flex;"><span>            var connection <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnection</span>(<span style="color:#a6e22e">new</span>(<span style="color:#e6db74">&#34;test-backup.db&#34;</span>, storeDateTimeAsTicks: true, key: <span style="color:#e6db74">&#34;password&#34;</span>));
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            table <span style="color:#f92672">=</span> new System.Data.<span style="color:#a6e22e">DataTable</span>(<span style="color:#e6db74">&#34;factoryCar&#34;</span>);
+</span></span><span style="display:flex;"><span>            var cmd <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteCommand</span>(connection);
+</span></span><span style="display:flex;"><span>            cmd.CommandText <span style="color:#f92672">=</span> edtSql.Text;
+</span></span><span style="display:flex;"><span>            var emps <span style="color:#f92672">=</span> cmd.ExecuteQuery<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            table.Columns.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;sn&#34;</span>, System.Type.<span style="color:#a6e22e">GetType</span>(<span style="color:#e6db74">&#34;System.Int32&#34;</span>));
-</span></span><span style="display:flex;"><span>            table.Columns.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;name&#34;</span>, System.Type.<span style="color:#a6e22e">GetType</span>(<span style="color:#e6db74">&#34;System.String&#34;</span>));
-</span></span><span style="display:flex;"><span>            table.Columns.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;acronym&#34;</span>, System.Type.<span style="color:#a6e22e">GetType</span>(<span style="color:#e6db74">&#34;System.String&#34;</span>));
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">showDataGrid</span>(emps.<span style="color:#a6e22e">ToList</span>());
+</span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">foreach</span> (var factoryCar in result)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;summary&gt;
+</span></span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// Display data to DataGridView
+</span></span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span></span></span><span style="display:flex;"><span>        <span style="color:#75715e">/// &lt;param name=&#34;list&#34;&gt;&lt;/param&gt;
+</span></span></span><span style="display:flex;"><span>        private <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">showDataGrid</span>(IList<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span> list)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            var table <span style="color:#f92672">=</span> new System.Data.<span style="color:#a6e22e">DataTable</span>(<span style="color:#e6db74">&#34;emp&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            table.Columns.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;empno&#34;</span>, Type.<span style="color:#a6e22e">GetType</span>(<span style="color:#e6db74">&#34;System.Int32&#34;</span>)<span style="color:#f92672">!</span>);
+</span></span><span style="display:flex;"><span>            table.Columns.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;empname&#34;</span>, Type.<span style="color:#a6e22e">GetType</span>(<span style="color:#e6db74">&#34;System.String&#34;</span>)<span style="color:#f92672">!</span>);
+</span></span><span style="display:flex;"><span>            table.Columns.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;salary&#34;</span>, Type.<span style="color:#a6e22e">GetType</span>(<span style="color:#e6db74">&#34;System.Decimal&#34;</span>)<span style="color:#f92672">!</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">foreach</span> (var emp in list)
 </span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">long</span> sn <span style="color:#f92672">=</span> (<span style="color:#66d9ef">long</span>)factoryCar.Sn;
-</span></span><span style="display:flex;"><span>                string strName <span style="color:#f92672">=</span> (string)factoryCar.Name;
-</span></span><span style="display:flex;"><span>                string strAcronym <span style="color:#f92672">=</span> (string)factoryCar.Acronym;
+</span></span><span style="display:flex;"><span>                var no <span style="color:#f92672">=</span> emp.Empno;
+</span></span><span style="display:flex;"><span>                var name <span style="color:#f92672">=</span> emp.Empname;
+</span></span><span style="display:flex;"><span>                var sale <span style="color:#f92672">=</span> emp.Salary;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                table.Rows.<span style="color:#a6e22e">Add</span>(sn, strName, strAcronym);
+</span></span><span style="display:flex;"><span>                table.Rows.<span style="color:#a6e22e">Add</span>(no, name, sale);
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            dataGridView1.DataSource <span style="color:#f92672">=</span> table;
 </span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        private <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">btnExec_Click</span>(object sender, EventArgs e)
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            asyncConn.ExecuteScalarAsync<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>(edtSql.Text);
-</span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher.git">gitee testSqlite-core</a></p>
-<h1 id="sqlite-net-sqlcipher"><a href="https://github.com/praeclarum/sqlite-net">sqlite-net-sqlcipher</a></h1>
-<p>以PCL为基础的一套组件。</p>
-<h2 id="pclportable-class-library">PCL(Portable Class Library)</h2>
-<p>是过时的!现在的.NET Standard已经包括了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PCL-&gt;.net standard-&gt;.net 5.0+
-</span></span></code></pre></div><p><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/net-standard#pcl-compatibility">PCL兼容性</a></p>
-<h2 id="visual-studio-vs-net-framework"><a href="https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies#version-information">Visual Studio vs .net framework</a></h2>
-<table>
-  <thead>
-      <tr>
-          <th>VS</th>
-          <th>.net framework</th>
-          <th>Windows</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>2019</td>
-          <td>4.7.2</td>
-          <td>10(1803/1809)</td>
-      </tr>
-      <tr>
-          <td>2017</td>
-          <td>4.6.1</td>
-          <td>10(1511)</td>
-      </tr>
-      <tr>
-          <td>2015</td>
-          <td>4.6</td>
-          <td>10</td>
-      </tr>
-      <tr>
-          <td>2013</td>
-          <td>4.5.1</td>
-          <td>8.1</td>
-      </tr>
-      <tr>
-          <td>2012</td>
-          <td>4.5</td>
-          <td>8</td>
-      </tr>
-      <tr>
-          <td>2010</td>
-          <td>4.0</td>
-          <td>N/A</td>
-      </tr>
-      <tr>
-          <td>2008</td>
-          <td>3.5</td>
-          <td>7</td>
-      </tr>
-      <tr>
-          <td>2005</td>
-          <td>2.0</td>
-          <td>N/A</td>
-      </tr>
-      <tr>
-          <td>2003</td>
-          <td>1.1</td>
-          <td>N/A</td>
-      </tr>
-  </tbody>
-</table>
+</span></span></code></pre></div><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://github.com/praeclarum/sqlite-net/wiki">sqlite-net</a></li>
+<li><a href="https://www.nuget.org/packages/SQLite3MC.PCLRaw.bundle#readme-body-tab">SQLite-net-base</a></li>
+<li><a href="https://learn.microsoft.com/en-us/answers/questions/1658280/how-can-find-data-between-two-date-using-linq">How Can find Data between Two Date Using LINQ</a></li>
+</ul>
 
     </section>
 
@@ -399,17 +388,10 @@
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/mq-rabbitmq-config/">
-          <section class="post">
-              <h2>Install and Configure RabbitMQ</h2>
-              
-          </section>
-      </a>
   
-  
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/asp.net6-restful/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/asp-tryvalue/">
           <section class="post">
-              <h2>ASP.net Core 的RESTful应用</h2>
+              <h2>Try Value</h2>
           </section>
       </a>
   

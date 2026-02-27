@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.155.3">
+    <meta name="generator" content="Hugo 0.157.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -160,6 +160,50 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-android_started/">Qt6 for android</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>ndk</li>
+<li>avd(Android Virtual Device)</li>
+</ul>
+<h1 id="preparation">Preparation</h1>
+<ul>
+<li>Environment</li>
+<li>cmdline</li>
+</ul>
+<h2 id="environment-variables">Environment variables</h2>
+<p>:warning: <br>
+After installing <a href="https://developer.android.google.cn/studio">Android Studio</a>, don&rsquo;t go into settings yet!</p>
+<h3 id="java-home">Java Home</h3>
+<ul>
+<li>Qt6.8/6.5 <br>
+set <a href="https://adoptium.net/temurin/releases?version=17&amp;os=any&amp;arch=any">JDK17</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.16+8
+</span></span></code></pre></div><h3 id="android-home"><a href="https://developer.android.com/tools/variables#envar">Android Home</a></h3>
+<p>Sets the path to the SDK installation directory.
+Once set, the value does not typically change and can be shared by multiple users on the same machine.
+ANDROID_SDK_ROOT, which also points to the SDK installation directory, is deprecated.
+If you continue to use it, Android Studio and the Android Gradle plugin will check that the old and new variables are consistent.</p> <a class="read-more" href="/cnblogs/post/qt-android_started/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-10-03T12:38:08&#43;08:00">
+            3 Oct 2025
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -830,86 +874,6 @@ Alma Linux / Rocky Linux</li>
         
         <time class="post-date" datetime="2024-12-29T08:38:08&#43;08:00">
             29 Dec 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp-ws2/">WebSockets over HTTP/2</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p><a href="https://github.com/dotnet/AspNetCore.Docs/commit/75ce89b25e9ba61f9687ce36a41cd3c50aec1e3c">NET 7 introduces Websockets over HTTP/2 support for Kestrel, the SignalR JavaScript client, and SignalR with Blazor WebAssembly.</a></p>
-<h3 id="http2">HTTP2</h3>
-<ul>
-<li>Multiplexing
-<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*lY05UTuA-dWCXU-q.png" alt="Request multiplexing"></li>
-<li>Server push
-<img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*ZJLgVdXq_06hcF1o.png" alt="cacheable information"></li>
-<li>Header compression
-<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*5r8-MbhEseP6lEQg.png" alt="HPACK"></li>
-</ul>
-<p>ref site:</p>
-<ul>
-<li><a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1/">HTTP/2 vs. HTTP/1.1: How do they affect web performance?</a></li>
-<li><a href="https://factoryhr.medium.com/http-2-the-difference-between-http-1-1-benefits-and-how-to-use-it-38094fa0e95b">HTTP/2: the difference between HTTP/1.1, benefits and how to use it</a></li>
-</ul>
-<h4 id="os-and-browsers-support">os and browsers support</h4>
-<ul>
-<li>Windows 10 1607+</li>
-<li>TLS 1.2+</li>
-<li><a href="https://caniuse.com/http2">browsers</a></li>
-</ul>
-<p>Note: recommended to use Chrome/FireFox</p>
-<h2 id="websockets">WebSockets</h2>
-<ul>
-<li>Accept a WebSocket connection as an asynchronous operation <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.httplistenercontext.acceptwebsocketasync">HttpListenerContext.AcceptWebSocketAsync()</a></li>
-<li>Receives data from the WebSocket connection asynchronously <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.receiveasync">WebSocket.ReceiveAsync()</a></li>
-<li>Sends data over the WebSocket connection asynchronously <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.sendasync">WebSocket.SendAsync()</a></li>
-<li>Closes the WebSocket connection as an asynchronous operation <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.closeasync">CloseAsync</a></li>
-</ul>
-<h3 id="enable-websocket">Enable WebSocket</h3>
-<ul>
-<li>default</li>
-</ul>
-<pre tabindex="0"><code>app.UseWebSockets()
-</code></pre><ul>
-<li>options</li>
-</ul>
-<pre tabindex="0"><code>var webSocketOptions = new WebSocketOptions
-{
-    KeepAliveInterval = TimeSpan.FromMinutes(2)
-};
-
-app.UseWebSockets(webSocketOptions);
-</code></pre><h3 id="accept-websocket-requests">Accept WebSocket requests</h3>
-<pre tabindex="0"><code>if (HttpContext.WebSockets.IsWebSocketRequest)
-{
-    using var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
-}
-</code></pre><h3 id="receive-messages">receive messages</h3>
-<pre tabindex="0"><code>var buffer = new byte[1024 * 4];
-
-var receiveResult = await webSocket.ReceiveAsync(
-    new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
-</code></pre><h4 id="arraysegment"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
-<p>Array version of substring()</p> <a class="read-more" href="/cnblogs/post/asp-ws2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-11-18T20:38:18&#43;08:00">
-            18 Nov 2024
         </time>
     </footer>
 </article>

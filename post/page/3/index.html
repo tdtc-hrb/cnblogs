@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.155.3">
+    <meta name="generator" content="Hugo 0.157.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -160,6 +160,86 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp-ws2/">WebSockets over HTTP/2</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><a href="https://github.com/dotnet/AspNetCore.Docs/commit/75ce89b25e9ba61f9687ce36a41cd3c50aec1e3c">NET 7 introduces Websockets over HTTP/2 support for Kestrel, the SignalR JavaScript client, and SignalR with Blazor WebAssembly.</a></p>
+<h3 id="http2">HTTP2</h3>
+<ul>
+<li>Multiplexing
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*lY05UTuA-dWCXU-q.png" alt="Request multiplexing"></li>
+<li>Server push
+<img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*ZJLgVdXq_06hcF1o.png" alt="cacheable information"></li>
+<li>Header compression
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*5r8-MbhEseP6lEQg.png" alt="HPACK"></li>
+</ul>
+<p>ref site:</p>
+<ul>
+<li><a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1/">HTTP/2 vs. HTTP/1.1: How do they affect web performance?</a></li>
+<li><a href="https://factoryhr.medium.com/http-2-the-difference-between-http-1-1-benefits-and-how-to-use-it-38094fa0e95b">HTTP/2: the difference between HTTP/1.1, benefits and how to use it</a></li>
+</ul>
+<h4 id="os-and-browsers-support">os and browsers support</h4>
+<ul>
+<li>Windows 10 1607+</li>
+<li>TLS 1.2+</li>
+<li><a href="https://caniuse.com/http2">browsers</a></li>
+</ul>
+<p>Note: recommended to use Chrome/FireFox</p>
+<h2 id="websockets">WebSockets</h2>
+<ul>
+<li>Accept a WebSocket connection as an asynchronous operation <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.httplistenercontext.acceptwebsocketasync">HttpListenerContext.AcceptWebSocketAsync()</a></li>
+<li>Receives data from the WebSocket connection asynchronously <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.receiveasync">WebSocket.ReceiveAsync()</a></li>
+<li>Sends data over the WebSocket connection asynchronously <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.sendasync">WebSocket.SendAsync()</a></li>
+<li>Closes the WebSocket connection as an asynchronous operation <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.closeasync">CloseAsync</a></li>
+</ul>
+<h3 id="enable-websocket">Enable WebSocket</h3>
+<ul>
+<li>default</li>
+</ul>
+<pre tabindex="0"><code>app.UseWebSockets()
+</code></pre><ul>
+<li>options</li>
+</ul>
+<pre tabindex="0"><code>var webSocketOptions = new WebSocketOptions
+{
+    KeepAliveInterval = TimeSpan.FromMinutes(2)
+};
+
+app.UseWebSockets(webSocketOptions);
+</code></pre><h3 id="accept-websocket-requests">Accept WebSocket requests</h3>
+<pre tabindex="0"><code>if (HttpContext.WebSockets.IsWebSocketRequest)
+{
+    using var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
+}
+</code></pre><h3 id="receive-messages">receive messages</h3>
+<pre tabindex="0"><code>var buffer = new byte[1024 * 4];
+
+var receiveResult = await webSocket.ReceiveAsync(
+    new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
+</code></pre><h4 id="arraysegment"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
+<p>Array version of substring()</p> <a class="read-more" href="/cnblogs/post/asp-ws2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-11-18T20:38:18&#43;08:00">
+            18 Nov 2024
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -760,78 +840,6 @@ IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代�
         
         <time class="post-date" datetime="2023-03-14T08:18:02&#43;08:00">
             14 Mar 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/java-jmx-ch2/">jmx - first demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>Starting with the J2SE platform 5.0, JMX technology is included in the Java SE platform.</p>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Jmxarchitecture.png" alt="Jmx architecture"></p>
-<ul>
-<li>jmxtools
-Download the <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.jar">jar</a>
-and <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.pom">pom</a> files,
-Then copy it to the M2 directory.
-M2:</li>
-</ul>
-<pre tabindex="0"><code>C:\Users\tdtc\.m2\repository\com\sun\jdmk\jmxtools\1.2.1
-</code></pre><ul>
-<li><a href="https://www.manning.com/downloads/737">Source</a></li>
-</ul>
-<h1 id="project">project</h1>
-<p>. <br>
-|____src <br>
-| |____main <br>
-| | |____java <br>
-| | | |____jmxbook.ch2 <br>
-|____pom.xml</p>
-<p>Gen jar:</p>
-<pre tabindex="0"><code>mvn package
-</code></pre><ul>
-<li>pom.xml</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;modelVersion&gt;</span>4.0.0<span style="color:#f92672">&lt;/modelVersion&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>jmxbook<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>jmxInAction<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;version&gt;</span>0.0.1-SNAPSHOT<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;build/&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;repositories&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;repository&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;id&gt;</span>datanucleus.org/downloads/maven2<span style="color:#f92672">&lt;/id&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;name&gt;</span>datanucleus.org Maven Repository<span style="color:#f92672">&lt;/name&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;url&gt;</span>http://www.datanucleus.org/downloads/maven2/<span style="color:#f92672">&lt;/url&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/repository&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/repositories&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dependencies&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/com.sun.jdmk/jmxtools --&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dependency&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;groupId&gt;</span>com.sun.jdmk<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;artifactId&gt;</span>jmxtools<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;version&gt;</span>1.2.1<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/dependency&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/dependencies&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span>
-</span></span></code></pre></div><h2 id="the-agent-level">The Agent level</h2>
-<p>HelloAgent.java:</p> <a class="read-more" href="/cnblogs/post/java-jmx-ch2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-02-08T08:08:08&#43;08:00">
-            8 Feb 2023
         </time>
     </footer>
 </article>
