@@ -164,6 +164,57 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_openssl/">install and usage with OpenSSL</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>RHEL Community Version <br>
+Alma Linux / Rocky Linux</li>
+</ul>
+<h1 id="prepare">Prepare</h1>
+<p>Install development tool:</p>
+<pre tabindex="0"><code># dnf group install &#39;Development Tools&#39;
+</code></pre><p>Install dependencies:</p>
+<pre tabindex="0"><code># dnf install perl-core zlib-devel -y
+</code></pre><h2 id="down-latest-openssl">down latest OpenSSL</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$mkdir openssl-1.1.1
+</span></span><span style="display:flex;"><span>$curl --progress https://www.openssl.org/source/openssl-1.1.1w.tar.gz | tar xz -C ./openssl-1.1.1 --strip-components <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h1 id="setup">setup</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$cd openssl-1.1.1
+</span></span></code></pre></div><ul>
+<li>RHEL8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr/local/ssl --openssldir<span style="color:#f92672">=</span>/usr/local/ssl shared zlib
+</span></span></code></pre></div><ul>
+<li>RHEL7</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr --shared
+</span></span></code></pre></div><h2 id="make--install">make &amp;&amp; install</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$make
+</span></span></code></pre></div><p>Root permission Required:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo make install
+</span></span></code></pre></div><h2 id="rhel8">RHEL8</h2>
+<pre tabindex="0"><code># mv /bin/openssl /bin/openssl.backup
+# cp /usr/local/ssl/bin/openssl /bin/openssl
+</code></pre><p>test:</p> <a class="read-more" href="/cnblogs/post/ops_openssl/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-12-29T08:38:08&#43;08:00">
+            29 Dec 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/asp-ws2/">WebSockets over HTTP/2</a></h2>
     </header>
     <section class="post-excerpt">
@@ -774,72 +825,6 @@ IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代�
         
         <time class="post-date" datetime="2023-03-28T01:08:08&#43;08:00">
             28 Mar 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp.net6-mvc/">3小时搞定ASP.NET Core 6.0</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>OS <br>
-<a href="https://github.com/dotnet/core/blob/main/release-notes/6.0/supported-os.md">Windows 10 LTSB 2016+</a></li>
-<li>IDE <br>
-<a href="https://code.visualstudio.com/download">Visual Studio Code</a> - v1.76.1</li>
-<li>SDK <br>
-<a href="https://dotnet.microsoft.com/download/dotnet/6.0">.Net 6.0</a></li>
-<li>终端(Terminal) <br>
-<a href="https://github.com/PowerShell/PowerShell#get-powershell">PowerShell Core</a></li>
-<li>数据库(Database) <br>
-<a href="https://dev.mysql.com/downloads/mysql/">MySQL</a> / Microsoft SQL Server 2012 Express LocalDB (vs2013 inside)</li>
-</ul>
-<h1 id="一create-projectvs-code">一、Create Project(VS Code)</h1>
-<ul>
-<li>Init project</li>
-</ul>
-<blockquote>
-<p>Terminal -&gt; New Terminal</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd .<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>dotnet new mvc -o veic_web --framework net6.0
-</span></span></code></pre></div><ul>
-<li>Set workspace dir</li>
-</ul>
-<blockquote>
-<p>File -&gt; Add Folder to Workspace</p>
-</blockquote>
-<h2 id="设置缺省首页home-set-default">设置缺省首页(Home Set Default)</h2>
-<ul>
-<li>Program.cs</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>app.UseStaticFiles();
-</span></span></code></pre></div><p>变更为:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>app.UseDefaultFiles();
-</span></span><span style="display:flex;"><span>app.UseStaticFiles();
-</span></span></code></pre></div><ul>
-<li>Html <br>
-新建wwwroot/index.html，See附录<sup>1</sup>.</li>
-</ul>
-<h2 id="run">Run</h2>
-<pre tabindex="0"><code>Run -&gt; Start Debugging
-</code></pre><p>运行效果:
-<img src="https://img-blog.csdnimg.cn/20201102052153747.png" alt="home page"></p>
-<h1 id="二data">二、Data</h1>
-<p>namespace:</p> <a class="read-more" href="/cnblogs/post/asp.net6-mvc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-03-14T08:18:02&#43;08:00">
-            14 Mar 2023
         </time>
     </footer>
 </article>
