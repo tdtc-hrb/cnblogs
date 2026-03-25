@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.157.0">
+    <meta name="generator" content="Hugo 0.159.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -160,6 +160,138 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-proteus_component-designing/">Component Designing in Proteus ISIS</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="create">Create</h1>
+<p><img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS51.jpg.webp?ssl=1" alt=""></p>
+<p>First of all select the 2D Graphics Box Mode as shown in the below figure.
+<img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS.jpg.webp?ssl=1" alt=""></p>
+<p>Now click on the workspace and drag the cursor to create a box, as shown in the below figure.
+<img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS2.jpg.webp?ssl=1" alt=""></p>
+<p>We have created the body of our component, now there&rsquo;s a need to add pins in it. <br>
+For this, click on the Device Pins Mode as shown in the below figure and click on the workspace.</p> <a class="read-more" href="/cnblogs/post/e-proteus_component-designing/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-05-16T10:08:08&#43;08:00">
+            16 May 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-web-server/">web server</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>created date： 2021-03-10 <br>
+modified date：</p>
+<pre tabindex="0"><code>2023-03-25
+</code></pre><ul>
+<li>IDE <br>
+Arduino <a href="https://www.arduino.cc/en/software">V1.8.19</a></li>
+<li>Library <br>
+<a href="https://github.com/UIPEthernet/UIPEthernet/releases">UIP Ethernet v2.x</a></li>
+</ul>
+<h1 id="接线">接线</h1>
+<table>
+  <thead>
+      <tr>
+          <th>Arduino Uno</th>
+          <th>Enc28j60</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Pin 10</td>
+          <td>CS</td>
+      </tr>
+      <tr>
+          <td>Pin 11</td>
+          <td>SI</td>
+      </tr>
+      <tr>
+          <td>Pin 12</td>
+          <td>SO</td>
+      </tr>
+      <tr>
+          <td>Pin 13</td>
+          <td>SCK</td>
+      </tr>
+      <tr>
+          <td>Reset</td>
+          <td>RST<sup>*</sup></td>
+      </tr>
+      <tr>
+          <td>+3v3</td>
+          <td>Vcc</td>
+      </tr>
+      <tr>
+          <td>GND<sup>*</sup></td>
+          <td>GND</td>
+      </tr>
+  </tbody>
+</table>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Connection-Diagram.png" alt="spi connect"></p>
+<h2 id="enc28j60">Enc28j60</h2>
+<p>INTN: 置空（不接）</p>
+<p>*Rst接线: 注意 <a href="https://robotdyn.com/nano-v3-ethernet-shield-enc28j60.html">Nano V3 Ethernet Shield</a> 接7号线柱，如下图所示：
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/NanoEthENC28J60-Shield.jpg" alt="reset connect"></p>
+<h2 id="arduino-uno"><a href="https://content.arduino.cc/assets/UNO-TH_Rev3e_sch.pdf">Arduino Uno</a></h2>
+<p>*GND接线:  5V旁边的GND.</p>
+<p>供电: 必须使用USB接口.(使用电源口无法工作)</p>
+<h1 id="网络及pc驱动">网络及PC驱动</h1>
+<p>两种方式：</p>
+<ul>
+<li>
+<p>平行线 <br>
+接路由器Lan口。</p>
+</li>
+<li>
+<p>交叉线 <br>
+接PC的Lan口。</p>
+</li>
+</ul>
+<h2 id="network">Network</h2>
+<p>设置同一网段的IP地址。</p>
+<ul>
+<li>PC <br>
+Control Panel -&gt; Network and Internet -&gt; Network Connections <br>
+Ethernet -&gt; Properties:</li>
+</ul>
+<pre tabindex="0"><code>Internet Protocol Version 4(TCP/IPv4)
+</code></pre><ul>
+<li>Enc28J60 <br>
+IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代码中更改.</li>
+</ul>
+<h3 id="router">Router</h3>
+<p>不支持以下路由器:</p> <a class="read-more" href="/cnblogs/post/e-avr8-web-server/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-03-28T01:08:08&#43;08:00">
+            28 Mar 2023
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -608,165 +740,6 @@ Alma Linux / Rocky Linux</li>
         
         <time class="post-date" datetime="2022-10-04T08:08:08-08:00">
             4 Oct 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/css-bulma-tabs/">tabs 实现</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="html">html</h1>
-<p>Note: The header and body are wrapped with div!</p>
-<pre tabindex="0"><code>&lt;div id=&#34;tabs-with-content&#34;&gt;
-&lt;/div&gt;
-</code></pre><h2 id="header">Header</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tabs is-centered&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
-</span></span></code></pre></div><h2 id="body">Body</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tabs is-centered&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">table</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;table&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">tbody</span>&gt;
-</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= image_tag &#34;#{@image.name}&#34; %&gt;
-</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @product.description %&gt;
-</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">tbody</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">table</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @parameter.ipxx %&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
-</span></span></code></pre></div><h1 id="javascript">javascript</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsWithContent</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabs</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tabs li&#39;</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsContent</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tab-content&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">deactvateAllTabs</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hideTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tabContent</span>) {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tabContent</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">activateTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>[<span style="color:#a6e22e">getIndex</span>(<span style="color:#a6e22e">tab</span>)].<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">getIndex</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">el</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [...<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">parentElement</span>.<span style="color:#a6e22e">children</span>].<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">el</span>);
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">deactvateAllTabs</span>();
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">hideTabsContent</span>();
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">activateTabsContent</span>(<span style="color:#a6e22e">tab</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>  })
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">click</span>();
-</span></span><span style="display:flex;"><span>})();
-</span></span></code></pre></div><h1 id="ref">Ref</h1>
-<ul>
-<li><a href="https://eiji.dev/bulma-tabs-with-content.html">Bulma: Tabs with Content</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/css-bulma-tabs/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-07-27T00:26:39&#43;08:00">
-            27 Jul 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/es24-install/">Elasticsearch 2.4 安装</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>Ubuntu 20.04.1</p>
-</blockquote>
-<h1 id="part-i-elasticsearch">Part I. Elasticsearch</h1>
-<h2 id="1-install-jdk">1. install JDK</h2>
-<h3 id="1-down-jdk8">1) down jdk8</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u332-b09/OpenJDK8U-jdk_x64_linux_hotspot_8u332b09.tar.gz
-</span></span></code></pre></div><p>unzip:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo mkdir /usr/java
-</span></span><span style="display:flex;"><span>$sudo tar zxvf OpenJDK8U-jdk_x64_linux_hotspot_8u332b09.tar.gz -C /usr/java
-</span></span></code></pre></div><h3 id="2-setup">2) setup</h3>
-<blockquote>
-<p>root:</p>
-<blockquote>
-<p>$sudo -sH</p>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export JAVA_HOME=/usr/java/jdk8u332-b09&#39;</span> &gt;&gt; /etc/bash.bashrc
-</span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export CLASSPATH=$JAVA_HOME/lib/:.&#39;</span> &gt;&gt; /etc/bash.bashrc
-</span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export PATH=$PATH:$JAVA_HOME/bin&#39;</span> &gt;&gt; /etc/bash.bashrc
-</span></span><span style="display:flex;"><span>$source /etc/bash.bashrc
-</span></span></code></pre></div><h3 id="3-test">3) test</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -version
-</span></span><span style="display:flex;"><span>echo $JAVA_HOME
-</span></span></code></pre></div><h2 id="2-elasticsearch-exec-pack">2. Elasticsearch exec pack</h2>
-<h3 id="1-down">1) down</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -L -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.6/elasticsearch-2.4.6.tar.gz
-</span></span></code></pre></div><p>unzip:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xvf elasticsearch-2.4.6.tar.gz
-</span></span></code></pre></div><h3 id="2-config">2) config</h3>
-<blockquote>
-<p>../config/elasticsearch.yml</p>
-</blockquote>
-<h4 id="network">network</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>network.host: 0.0.0.0
-</span></span><span style="display:flex;"><span>http.port: <span style="color:#ae81ff">9200</span>
-</span></span></code></pre></div><h4 id="bootstrap">bootstrap</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bootstrap.system_call_filter: false
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>bootstrap.seccomp: false
-</span></span></code></pre></div><h4 id="max-map-count">max map count</h4>
-<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html">/etc/sysctl.conf</a></p> <a class="read-more" href="/cnblogs/post/es24-install/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-05-25T18:08:08&#43;08:00">
-            25 May 2022
         </time>
     </footer>
 </article>

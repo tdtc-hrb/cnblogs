@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.157.0">
+    <meta name="generator" content="Hugo 0.159.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -158,6 +158,221 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow3-gcc/">size_t warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
+</ul>
+<hr>
+<p><strong>NOTE</strong></p>
+<h2 id="no-warning-messages-are-displayed-in-cdt">No warning messages are displayed in CDT.</h2>
+<h2 id="heapsort">heapsort</h2>
+<pre tabindex="0"><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// TIP To &lt;b&gt;Run&lt;/b&gt; code, press &lt;shortcut actionId=&#34;Run&#34;/&gt; or click the &lt;icon src=&#34;AllIcons.Actions.Execute&#34;/&gt; icon in the gutter.
+/**
+ * Internal method for heapsort.
+ * i is the index of an item in the heap.
+ * Returns the index of the left child.
+ */
+inline int leftChild( int i )
+{
+    return 2 * i + 1;
+}
+
+/**
+ * Internal method for heapsort that is used in deleteMax and buildHeap.
+ * i is the position from which to percolate down.
+ * n is the logical size of the binary heap.
+ */
+template &lt;typename Comparable&gt;
+void percDown( vector&lt;Comparable&gt; &amp; a, int i, int n )
+{
+    int child;
+    Comparable tmp;
+
+    for( tmp = std::move( a[ i ] ); leftChild( i ) &lt; n; i = child )
+    {
+        child = leftChild( i );
+        if( child != n-1 &amp;&amp; a[ child ] &lt; a[ child + 1 ] )
+            ++child;
+        if( tmp &lt; a[ child ] )
+            a[ i ] = std::move( a[ child ] );
+        else
+            break;
+    }
+    a[ i ] = std::move( tmp );
+}
+
+/**
+ * Standard heapsort.
+ */
+template &lt;typename Comparable&gt;
+void heapsort( vector&lt;Comparable&gt; &amp; a)
+{
+    for( int i = a.size( ) / 2- 1; i &gt;= 0; --i ) /* buildHeap */
+        percDown( a, i, a.size() );
+    for( int j = a.size( )- 1; j &gt; 0; --j )
+    {
+        std::swap( a[ 0 ], a[ j ] ); /* deleteMax */
+        percDown( a, 0, j );
+    }
+}
+
+int main() {
+    vector v = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
+    heapsort(v);
+
+    for(int i : v)
+        cout &lt;&lt; i &lt;&lt; &#34; &#34;;
+
+    return 0;
+    // TIP See CLion help at &lt;a href=&#34;https://www.jetbrains.com/help/clion/&#34;&gt;jetbrains.com/help/clion/&lt;/a&gt;. Also, you can try interactive lessons for CLion by selecting &#39;Help | Learn IDE Features&#39; from the main menu.
+}
+</code></pre><ul>
+<li>Warn info - vs2022</li>
+</ul>
+<pre tabindex="0"><code>ConsoleApplication1.cpp(45,16): warning C4267: &#39;initializing&#39;: conversion from &#39;size_t&#39; to &#39;int&#39;, possible loss of data
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c++4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow3-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-21T11:08:08&#43;08:00">
+            21 Mar 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow4-gcc/">size_t warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
+</ul>
+<hr>
+<p><strong>NOTE</strong></p>
+<h2 id="no-warning-messages-are-displayed-in-cdt">No warning messages are displayed in CDT.</h2>
+<h2 id="mergesort">MergeSort</h2>
+<pre tabindex="0"><code>/**
+ * Internal method that makes recursive calls.
+ * a is an array of Comparable items.
+ * tmpArray is an array to place the merged result.
+ * left is the left-most index of the subarray.
+ * right is the right-most index of the subarray.
+ */
+template &lt;typename Comparable&gt;
+void mergeSort( vector&lt;Comparable&gt; &amp; a,
+                vector&lt;Comparable&gt; &amp; tmpArray, int left, int right )
+{
+    if( left &lt; right )
+    {
+        int center = ( left + right ) / 2;
+        mergeSort( a, tmpArray, left, center );
+        mergeSort( a, tmpArray, center + 1, right );
+        merge( a, tmpArray, left, center + 1, right );
+    }
+}
+
+/**
+ * Mergesort algorithm (driver).
+ */
+template &lt;typename Comparable&gt;
+void mergeSort( vector&lt;Comparable&gt; &amp; a )
+{
+    vector&lt;Comparable&gt; tmpArray( a.size( ) );
+
+    mergeSort( a, tmpArray, 0, a.size( ) - 1 );
+}
+</code></pre><ul>
+<li>merge</li>
+</ul>
+<pre tabindex="0"><code>/**
+ * Internal method that merges two sorted halves of a subarray.
+ * a is an array of Comparable items.
+ * tmpArray is an array to place the merged result.
+ * leftPos is the left-most index of the subarray.
+ * rightPos is the index of the start of the second half.
+ * rightEnd is the right-most index of the subarray.
+ */
+template &lt;typename Comparable&gt;
+void merge( vector&lt;Comparable&gt; &amp; a, vector&lt;Comparable&gt; &amp; tmpArray,
+            int leftPos, int rightPos, int rightEnd )
+{
+    int leftEnd = rightPos - 1;
+    int tmpPos = leftPos;
+    int numElements = rightEnd - leftPos + 1;
+
+    // Main loop
+    while( leftPos &lt;= leftEnd &amp;&amp; rightPos &lt;= rightEnd )
+        if( a[ leftPos ] &lt;= a[ rightPos ] )
+            tmpArray[ tmpPos++ ] = std::move( a[ leftPos++ ] );
+        else
+            tmpArray[ tmpPos++ ] = std::move( a[ rightPos++ ] );
+
+    while( leftPos &lt;= leftEnd )    // Copy rest of first half
+        tmpArray[ tmpPos++ ] = std::move( a[ leftPos++ ] );
+
+    while( rightPos &lt;= rightEnd )  // Copy rest of right half
+        tmpArray[ tmpPos++ ] = std::move( a[ rightPos++ ] );
+
+    // Copy tmpArray back
+    for( int i = 0; i &lt; numElements; ++i, --rightEnd )
+        a[ rightEnd ] = std::move( tmpArray[ rightEnd ] );
+}
+</code></pre><ul>
+<li>main</li>
+</ul>
+<pre tabindex="0"><code>int main() {
+	vector v = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
+
+	mergeSort(v);
+
+    for(size_t i = 0; i &lt; v.size(); ++i)
+        cout &lt;&lt; v[i] &lt;&lt; &#34; &#34;;
+
+    return 0;
+}
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c++4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow4-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-21T11:08:08&#43;08:00">
+            21 Mar 2026
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -688,142 +903,6 @@ controllers:
         
         <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
             31 Dec 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-debian-config/">Install Docker on Debian</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>Note:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command</span>
-</span></span><span style="display:flex;"><span>$ - requires given linux commands to be executed as a regular non-privileged user
-</span></span></code></pre></div><h1 id="docker-engine">Docker Engine</h1>
-<pre tabindex="0"><code># Add Docker&#39;s official GPG key:
-sudo apt update
-sudo apt install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
-sudo tee /etc/apt/sources.list.d/docker.sources &lt;&lt;EOF
-Types: deb
-URIs: https://download.docker.com/linux/debian
-Suites: $(. /etc/os-release &amp;&amp; echo &#34;$VERSION_CODENAME&#34;)
-Components: stable
-Signed-By: /etc/apt/keyrings/docker.asc
-EOF
-
-sudo apt update
-</code></pre><h2 id="1-install">1. install</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-</span></span></code></pre></div><h3 id="docker-source">docker source</h3>
-<pre tabindex="0"><code>sudo systemctl daemon-reload
-</code></pre><h4 id="源地址"><a href="https://gitee.com/xiaobin80/grpc-hello">源地址</a></h4>
-<ul>
-<li>/etc/docker/daemon.json</li>
-</ul>
-<pre tabindex="0"><code>{
-  &#34;registry-mirrors&#34; : [
-    &#34;https://registry.docker-cn.com&#34;,
-    &#34;https://mirror.ccs.tencentyun.com&#34;
-  ]
-}
-</code></pre><p>每次都要更新<a href="https://zhuanlan.zhihu.com/p/1926211424398603825">China源</a></p> <a class="read-more" href="/cnblogs/post/docker_ce-debian-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
-            31 Dec 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops-network_adapter-debian/">最新版的Debian网络Adapter</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>Debian 13.x</li>
-</ul>
-<h4 id="unattended-installation">Unattended Installation</h4>
-<p>Cancel &ldquo;Proceed with Unattended Installation&rdquo;</p>
-<p>在使用自动无人值守安装时，会自动安装桌面的Debian</p>
-<h3 id="net-adapter">net adapter</h3>
-<p>设置Network Adapter为Bridged</p>
-<ul>
-<li>vmware(25h2) <br>
-default: ens32</li>
-</ul>
-<blockquote>
-<blockquote>
-<p>failed</p>
-</blockquote>
-</blockquote>
-<ul>
-<li>vbox <br>
-default: enp0s3</li>
-</ul>
-<h3 id="netplanio">netplan.io</h3>
-<pre tabindex="0"><code>sudo apt install netplan.io
-</code></pre><ul>
-<li>High version <br>
-If you get an error about systemd-resolved not being found/installed. Install it before proceeding:</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install systemd-resolved -y
-</code></pre><h3 id="manage-networkd-and-resolved">Manage networkd and resolved</h3>
-<pre tabindex="0"><code>sudo systemctl unmask systemd-networkd.service;
-sudo systemctl unmask systemd-resolved.service;
-sudo systemctl enable systemd-networkd.service;
-sudo systemctl mask networking;
-sudo systemctl enable systemd-resolved.service;
-</code></pre><h3 id="config-file">config file</h3>
-<ul>
-<li>/etc/netplan/10-config.yaml</li>
-</ul>
-<pre tabindex="0"><code>network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    enp0s3:
-      addresses:
-        - 192.168.0.49/24
-      nameservers:
-        addresses: [8.8.8.8, 8.8.4.4, 192.168.0.1]
-      routes:
-        - to: default
-          via: 192.168.0.1
-</code></pre><h3 id="removed-ifupdown-and-resolvconf">removed ifupdown and resolvconf</h3>
-<pre tabindex="0"><code>reboot
-sudo apt purge ifupdown resolvconf -y
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://pedroagrodrigues.com/posts/Debian_To_Netplan/">Converting Debian 10/11/12 to Netplan.io</a></li>
-<li><a href="https://cloudspinx.com/how-to-manage-ubuntu-debian-networking-using-netplan/">How To Manage Ubuntu / Debian Networking using Netplan</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/ops-network_adapter-debian/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-12-30T21:08:39&#43;08:00">
-            30 Dec 2025
         </time>
     </footer>
 </article>

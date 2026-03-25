@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.157.0">
+    <meta name="generator" content="Hugo 0.159.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -160,6 +160,155 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow1-gcc/">signed warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
+</ul>
+<h2 id="shellsort">shellsort</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Comparable<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> shellsort(vector<span style="color:#f92672">&lt;</span>Comparable<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>a)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> gap <span style="color:#f92672">=</span> a.size() <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; gap <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; gap <span style="color:#f92672">/=</span> <span style="color:#ae81ff">2</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> gap; i <span style="color:#f92672">&lt;</span> a.size(); <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Comparable tmp <span style="color:#f92672">=</span> move(a[i]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (; j <span style="color:#f92672">&gt;=</span> gap <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">&lt;</span> a[j <span style="color:#f92672">-</span> gap]; j <span style="color:#f92672">-=</span> gap)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                a[j] <span style="color:#f92672">=</span> move(a[j <span style="color:#f92672">-</span> gap]);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            a[j] <span style="color:#f92672">=</span> move(tmp);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        cout<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> gap <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> n : a)
+</span></span><span style="display:flex;"><span>            cout <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> a <span style="color:#f92672">=</span> { <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">94</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">96</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">35</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">95</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">58</span>, <span style="color:#ae81ff">41</span>, <span style="color:#ae81ff">75</span>, <span style="color:#ae81ff">15</span>};
+</span></span><span style="display:flex;"><span>    shellsort(a);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Warn info</li>
+</ul>
+<pre tabindex="0"><code>warning: comparison of integer expressions of different signedness: 
+&#39;int&#39; and &#39;std::vector&lt;int&gt;::size_type&#39; {aka &#39;long long unsigned int&#39;} [-Wsign-compare]
+   10 |         for(int i = gap; i &lt; a.size(); ++i)
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/a/3660928">A warning - comparison between signed and unsigned integer expressions</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c++4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow1-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-11T11:08:08&#43;08:00">
+            11 Jan 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ror_installation/">安装Ruby On Rails</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html">Ruby &amp; Rails Compatibility Table</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Rails Version</th>
+          <th>Required Ruby Version</th>
+          <th>Recommended Ruby Version</th>
+          <th>Required Rubygems Version</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>8.1.Z</td>
+          <td>&gt;= 3.2.0</td>
+          <td>3.4.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+      <tr>
+          <td>8.0.Z</td>
+          <td>&gt;= 3.2.0</td>
+          <td>3.4.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+      <tr>
+          <td>7.2.Z</td>
+          <td>&gt;= 3.1.0</td>
+          <td>3.4.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="rbenv">RbEnv</h1>
+<p>Install ruby using rbenv.</p>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>Debian</li>
+</ul>
+<blockquote>
+<p>v12
+After enabling <a href="https://tdtc-hrb.github.io/csdn/post/apt-oper-ubuntu/">sudo</a>,
+the operation is the same as Ubuntu.</p>
+</blockquote>
+<ul>
+<li>Ubuntu <br>
+Ubuntu 20.04 default Ruby version is v2.7</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
+ libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
+</code></pre><ul>
+<li>RHEL <br>
+RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel
+</span></span></code></pre></div><p>install tar:</p> <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-08T08:08:08&#43;08:00">
+            8 Jan 2025
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -693,138 +842,6 @@ Finally, import the hex file into the MCU component.</p>
         
         <time class="post-date" datetime="2023-05-17T10:08:08&#43;08:00">
             17 May 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-proteus_component-designing/">Component Designing in Proteus ISIS</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="create">Create</h1>
-<p><img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS51.jpg.webp?ssl=1" alt=""></p>
-<p>First of all select the 2D Graphics Box Mode as shown in the below figure.
-<img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS.jpg.webp?ssl=1" alt=""></p>
-<p>Now click on the workspace and drag the cursor to create a box, as shown in the below figure.
-<img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS2.jpg.webp?ssl=1" alt=""></p>
-<p>We have created the body of our component, now there&rsquo;s a need to add pins in it. <br>
-For this, click on the Device Pins Mode as shown in the below figure and click on the workspace.</p> <a class="read-more" href="/cnblogs/post/e-proteus_component-designing/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-05-16T10:08:08&#43;08:00">
-            16 May 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-web-server/">web server</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>created date： 2021-03-10 <br>
-modified date：</p>
-<pre tabindex="0"><code>2023-03-25
-</code></pre><ul>
-<li>IDE <br>
-Arduino <a href="https://www.arduino.cc/en/software">V1.8.19</a></li>
-<li>Library <br>
-<a href="https://github.com/UIPEthernet/UIPEthernet/releases">UIP Ethernet v2.x</a></li>
-</ul>
-<h1 id="接线">接线</h1>
-<table>
-  <thead>
-      <tr>
-          <th>Arduino Uno</th>
-          <th>Enc28j60</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Pin 10</td>
-          <td>CS</td>
-      </tr>
-      <tr>
-          <td>Pin 11</td>
-          <td>SI</td>
-      </tr>
-      <tr>
-          <td>Pin 12</td>
-          <td>SO</td>
-      </tr>
-      <tr>
-          <td>Pin 13</td>
-          <td>SCK</td>
-      </tr>
-      <tr>
-          <td>Reset</td>
-          <td>RST<sup>*</sup></td>
-      </tr>
-      <tr>
-          <td>+3v3</td>
-          <td>Vcc</td>
-      </tr>
-      <tr>
-          <td>GND<sup>*</sup></td>
-          <td>GND</td>
-      </tr>
-  </tbody>
-</table>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Connection-Diagram.png" alt="spi connect"></p>
-<h2 id="enc28j60">Enc28j60</h2>
-<p>INTN: 置空（不接）</p>
-<p>*Rst接线: 注意 <a href="https://robotdyn.com/nano-v3-ethernet-shield-enc28j60.html">Nano V3 Ethernet Shield</a> 接7号线柱，如下图所示：
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/NanoEthENC28J60-Shield.jpg" alt="reset connect"></p>
-<h2 id="arduino-uno"><a href="https://content.arduino.cc/assets/UNO-TH_Rev3e_sch.pdf">Arduino Uno</a></h2>
-<p>*GND接线:  5V旁边的GND.</p>
-<p>供电: 必须使用USB接口.(使用电源口无法工作)</p>
-<h1 id="网络及pc驱动">网络及PC驱动</h1>
-<p>两种方式：</p>
-<ul>
-<li>
-<p>平行线 <br>
-接路由器Lan口。</p>
-</li>
-<li>
-<p>交叉线 <br>
-接PC的Lan口。</p>
-</li>
-</ul>
-<h2 id="network">Network</h2>
-<p>设置同一网段的IP地址。</p>
-<ul>
-<li>PC <br>
-Control Panel -&gt; Network and Internet -&gt; Network Connections <br>
-Ethernet -&gt; Properties:</li>
-</ul>
-<pre tabindex="0"><code>Internet Protocol Version 4(TCP/IPv4)
-</code></pre><ul>
-<li>Enc28J60 <br>
-IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代码中更改.</li>
-</ul>
-<h3 id="router">Router</h3>
-<p>不支持以下路由器:</p> <a class="read-more" href="/cnblogs/post/e-avr8-web-server/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-03-28T01:08:08&#43;08:00">
-            28 Mar 2023
         </time>
     </footer>
 </article>

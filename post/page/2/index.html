@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.157.0">
+    <meta name="generator" content="Hugo 0.159.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -160,6 +160,142 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-debian-config/">Install Docker on Debian</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Note:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command</span>
+</span></span><span style="display:flex;"><span>$ - requires given linux commands to be executed as a regular non-privileged user
+</span></span></code></pre></div><h1 id="docker-engine">Docker Engine</h1>
+<pre tabindex="0"><code># Add Docker&#39;s official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources &lt;&lt;EOF
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: $(. /etc/os-release &amp;&amp; echo &#34;$VERSION_CODENAME&#34;)
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+</code></pre><h2 id="1-install">1. install</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</span></span></code></pre></div><h3 id="docker-source">docker source</h3>
+<pre tabindex="0"><code>sudo systemctl daemon-reload
+</code></pre><h4 id="源地址"><a href="https://gitee.com/xiaobin80/grpc-hello">源地址</a></h4>
+<ul>
+<li>/etc/docker/daemon.json</li>
+</ul>
+<pre tabindex="0"><code>{
+  &#34;registry-mirrors&#34; : [
+    &#34;https://registry.docker-cn.com&#34;,
+    &#34;https://mirror.ccs.tencentyun.com&#34;
+  ]
+}
+</code></pre><p>每次都要更新<a href="https://zhuanlan.zhihu.com/p/1926211424398603825">China源</a></p> <a class="read-more" href="/cnblogs/post/docker_ce-debian-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
+            31 Dec 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops-network_adapter-debian/">最新版的Debian网络Adapter</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Debian 13.x</li>
+</ul>
+<h4 id="unattended-installation">Unattended Installation</h4>
+<p>Cancel &ldquo;Proceed with Unattended Installation&rdquo;</p>
+<p>在使用自动无人值守安装时，会自动安装桌面的Debian</p>
+<h3 id="net-adapter">net adapter</h3>
+<p>设置Network Adapter为Bridged</p>
+<ul>
+<li>vmware(25h2) <br>
+default: ens32</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>failed</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>vbox <br>
+default: enp0s3</li>
+</ul>
+<h3 id="netplanio">netplan.io</h3>
+<pre tabindex="0"><code>sudo apt install netplan.io
+</code></pre><ul>
+<li>High version <br>
+If you get an error about systemd-resolved not being found/installed. Install it before proceeding:</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install systemd-resolved -y
+</code></pre><h3 id="manage-networkd-and-resolved">Manage networkd and resolved</h3>
+<pre tabindex="0"><code>sudo systemctl unmask systemd-networkd.service;
+sudo systemctl unmask systemd-resolved.service;
+sudo systemctl enable systemd-networkd.service;
+sudo systemctl mask networking;
+sudo systemctl enable systemd-resolved.service;
+</code></pre><h3 id="config-file">config file</h3>
+<ul>
+<li>/etc/netplan/10-config.yaml</li>
+</ul>
+<pre tabindex="0"><code>network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s3:
+      addresses:
+        - 192.168.0.49/24
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4, 192.168.0.1]
+      routes:
+        - to: default
+          via: 192.168.0.1
+</code></pre><h3 id="removed-ifupdown-and-resolvconf">removed ifupdown and resolvconf</h3>
+<pre tabindex="0"><code>reboot
+sudo apt purge ifupdown resolvconf -y
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://pedroagrodrigues.com/posts/Debian_To_Netplan/">Converting Debian 10/11/12 to Netplan.io</a></li>
+<li><a href="https://cloudspinx.com/how-to-manage-ubuntu-debian-networking-using-netplan/">How To Manage Ubuntu / Debian Networking using Netplan</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/ops-network_adapter-debian/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-12-30T21:08:39&#43;08:00">
+            30 Dec 2025
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -752,154 +888,6 @@ Controller.h</p>
         
         <time class="post-date" datetime="2025-01-23T22:08:08&#43;08:00">
             23 Jan 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow1-gcc/">signed warning</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>For development environment settings, see: <a href="https://www.cnblogs.com/xiaobin-hlj80/p/19190375">Clang IDE的选择在Windows</a>
-and <a href="https://tdtc-hrb.github.io/csdn/post/c-console_app">run application</a></p>
-<h2 id="shellsort">shellsort</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Comparable<span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> shellsort(vector<span style="color:#f92672">&lt;</span>Comparable<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>a)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> gap <span style="color:#f92672">=</span> a.size() <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; gap <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; gap <span style="color:#f92672">/=</span> <span style="color:#ae81ff">2</span>){
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> gap; i <span style="color:#f92672">&lt;</span> a.size(); <span style="color:#f92672">++</span>i)
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            Comparable tmp <span style="color:#f92672">=</span> move(a[i]);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (; j <span style="color:#f92672">&gt;=</span> gap <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">&lt;</span> a[j <span style="color:#f92672">-</span> gap]; j <span style="color:#f92672">-=</span> gap)
-</span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>                a[j] <span style="color:#f92672">=</span> move(a[j <span style="color:#f92672">-</span> gap]);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            a[j] <span style="color:#f92672">=</span> move(tmp);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        cout<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> gap <span style="color:#f92672">&lt;&lt;</span> endl;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> n : a)
-</span></span><span style="display:flex;"><span>            cout <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> a <span style="color:#f92672">=</span> { <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">94</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">96</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">35</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">95</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">58</span>, <span style="color:#ae81ff">41</span>, <span style="color:#ae81ff">75</span>, <span style="color:#ae81ff">15</span>};
-</span></span><span style="display:flex;"><span>    shellsort(a);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><ul>
-<li>Warn info</li>
-</ul>
-<pre tabindex="0"><code>warning: comparison of integer expressions of different signedness: 
-&#39;int&#39; and &#39;std::vector&lt;int&gt;::size_type&#39; {aka &#39;long long unsigned int&#39;} [-Wsign-compare]
-   10 |         for(int i = gap; i &lt; a.size(); ++i)
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://stackoverflow.com/a/3660928">A warning - comparison between signed and unsigned integer expressions</a></li>
-<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
-<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c++4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow1-gcc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-01-11T11:08:08&#43;08:00">
-            11 Jan 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ror_installation/">安装Ruby On Rails</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html">Ruby &amp; Rails Compatibility Table</a></li>
-</ul>
-<table>
-  <thead>
-      <tr>
-          <th>Rails Version</th>
-          <th>Required Ruby Version</th>
-          <th>Recommended Ruby Version</th>
-          <th>Required Rubygems Version</th>
-          <th>Status</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>8.1.Z</td>
-          <td>&gt;= 3.2.0</td>
-          <td>3.4.Z</td>
-          <td>&gt;= 1.8.11</td>
-          <td>Maintained</td>
-      </tr>
-      <tr>
-          <td>8.0.Z</td>
-          <td>&gt;= 3.2.0</td>
-          <td>3.4.Z</td>
-          <td>&gt;= 1.8.11</td>
-          <td>Maintained</td>
-      </tr>
-      <tr>
-          <td>7.2.Z</td>
-          <td>&gt;= 3.1.0</td>
-          <td>3.4.Z</td>
-          <td>&gt;= 1.8.11</td>
-          <td>Maintained</td>
-      </tr>
-  </tbody>
-</table>
-<h1 id="rbenv">RbEnv</h1>
-<p>Install ruby using rbenv.</p>
-<h2 id="dependencies">Dependencies</h2>
-<ul>
-<li>Debian</li>
-</ul>
-<blockquote>
-<p>v12
-After enabling <a href="https://tdtc-hrb.github.io/csdn/post/apt-oper-ubuntu/">sudo</a>,
-the operation is the same as Ubuntu.</p>
-</blockquote>
-<ul>
-<li>Ubuntu <br>
-Ubuntu 20.04 default Ruby version is v2.7</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
- libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
-</code></pre><ul>
-<li>RHEL <br>
-RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel
-</span></span></code></pre></div><p>install tar:</p> <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-01-08T08:08:08&#43;08:00">
-            8 Jan 2025
         </time>
     </footer>
 </article>
