@@ -59,7 +59,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.159.0">
+    <meta name="generator" content="Hugo 0.163.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/asp.net6-restful/" />
 
@@ -96,7 +96,7 @@
     "timeRequired": "PT3M",
     "inLanguage": {
       "@type": "Language",
-      "alternateName": "en"
+      "alternateName": "zh"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/asp.net6-restful/",
     "datePublished": "2021-11-11T12:38Z",
@@ -278,65 +278,65 @@
 推荐使用<a href="https://www.postman.com/downloads/">PostMan</a>来进行调试.</p>
 <p>Table 3-1. <a href="https://restfulapi.net/http-methods/">HTTP Methods and Operations</a></p>
 <table>
-  <thead>
-      <tr>
-          <th>HTTP</th>
-          <th>Method Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>GET</td>
-          <td>从服务器获取数据</td>
-      </tr>
-      <tr>
-          <td>POST</td>
-          <td>向服务器提交新的Object</td>
-      </tr>
-      <tr>
-          <td>PUT</td>
-          <td>向服务器提交修改(整体)</td>
-      </tr>
-      <tr>
-          <td>DELETE</td>
-          <td>向服务器提交删除object.</td>
-      </tr>
-      <tr>
-          <td>PATCH</td>
-          <td>向服务器提交更新部分object.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>HTTP</th>
+					<th>Method Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>GET</td>
+					<td>从服务器获取数据</td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td>向服务器提交新的Object</td>
+			</tr>
+			<tr>
+					<td>PUT</td>
+					<td>向服务器提交修改(整体)</td>
+			</tr>
+			<tr>
+					<td>DELETE</td>
+					<td>向服务器提交删除object.</td>
+			</tr>
+			<tr>
+					<td>PATCH</td>
+					<td>向服务器提交更新部分object.</td>
+			</tr>
+	</tbody>
 </table>
 <p>Table 3-2. 源属性</p>
 <table>
-  <thead>
-      <tr>
-          <th>Name</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromqueryattribute">FromQuery</a></td>
-          <td>Gets values from the query string.</td>
-      </tr>
-      <tr>
-          <td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromrouteattribute">FromRoute</a></td>
-          <td>Gets values from route data.</td>
-      </tr>
-      <tr>
-          <td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromformattribute">FromForm</a></td>
-          <td>Gets values from posted form fields.</td>
-      </tr>
-      <tr>
-          <td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute">FromBody</a></td>
-          <td>Gets values from the request body.</td>
-      </tr>
-      <tr>
-          <td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromheaderattribute">FromHeader</a></td>
-          <td>Gets values from HTTP headers.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Name</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromqueryattribute">FromQuery</a></td>
+					<td>Gets values from the query string.</td>
+			</tr>
+			<tr>
+					<td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromrouteattribute">FromRoute</a></td>
+					<td>Gets values from route data.</td>
+			</tr>
+			<tr>
+					<td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromformattribute">FromForm</a></td>
+					<td>Gets values from posted form fields.</td>
+			</tr>
+			<tr>
+					<td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute">FromBody</a></td>
+					<td>Gets values from the request body.</td>
+			</tr>
+			<tr>
+					<td><a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.fromheaderattribute">FromHeader</a></td>
+					<td>Gets values from HTTP headers.</td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="putpostdelete">PUT/POST/DELETE</h2>
 <ul>
@@ -355,38 +355,38 @@
 <p>在客户端patch时的操作码见Table3-3</p>
 <p>Table 3-3. httpPatch操作码</p>
 <table>
-  <thead>
-      <tr>
-          <th>Operation</th>
-          <th>Notes</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>add</td>
-          <td>Add a property or array element. For existing property: set value.</td>
-      </tr>
-      <tr>
-          <td>remove</td>
-          <td>Remove a property or array element.</td>
-      </tr>
-      <tr>
-          <td>replace</td>
-          <td>Same as remove followed by add at same location.</td>
-      </tr>
-      <tr>
-          <td>move</td>
-          <td>Same as remove from source followed by add to destination using value from source.</td>
-      </tr>
-      <tr>
-          <td>copy</td>
-          <td>Same as add to destination using value from source.</td>
-      </tr>
-      <tr>
-          <td>test</td>
-          <td>Return success status code if value at path = provided value.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Operation</th>
+					<th>Notes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>add</td>
+					<td>Add a property or array element. For existing property: set value.</td>
+			</tr>
+			<tr>
+					<td>remove</td>
+					<td>Remove a property or array element.</td>
+			</tr>
+			<tr>
+					<td>replace</td>
+					<td>Same as remove followed by add at same location.</td>
+			</tr>
+			<tr>
+					<td>move</td>
+					<td>Same as remove from source followed by add to destination using value from source.</td>
+			</tr>
+			<tr>
+					<td>copy</td>
+					<td>Same as add to destination using value from source.</td>
+			</tr>
+			<tr>
+					<td>test</td>
+					<td>Return success status code if value at path = provided value.</td>
+			</tr>
+	</tbody>
 </table>
 <h3 id="pm">PM</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package Microsoft.AspNetCore.Mvc.NewtonsoftJson
@@ -512,9 +512,9 @@
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/mq-rabbitmq-config/">
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/mq-kafka-config/">
           <section class="post">
-              <h2>Install and Configure RabbitMQ</h2>
+              <h2>Install and Configure Apache Kafka</h2>
               
           </section>
       </a>

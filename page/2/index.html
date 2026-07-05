@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.159.0">
+    <meta name="generator" content="Hugo 0.163.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -160,6 +160,144 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/php-route-sf/">Routing - Symfony</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Symfony v8.0</li>
+</ul>
+<h2 id="creating-routes">Creating Routes</h2>
+<ul>
+<li>routes</li>
+<li>attributes</li>
+</ul>
+<h3 id="routes">routes</h3>
+<p>/config/routes.yaml:</p>
+<pre tabindex="0"><code># yaml-language-server: $schema=../vendor/symfony/routing/Loader/schema/routing.schema.json
+
+# This file is the entry point to configure the routes of your app.
+# Methods with the #[Route] attribute are automatically imported.
+# See also https://symfony.com/doc/current/routing.html
+
+# To list all registered routes, run the following command:
+#   bin/console debug:router
+
+controllers:
+    resource: routing.controllers
+    type: attribute  ## only
+</code></pre><p>Add attributes only!</p>
+<h3 id="creating-routes-as-attributes">Creating Routes as Attributes</h3>
+<p>/config/routes/attributes.yaml:</p>
+<pre tabindex="0"><code>controllers:
+    resource: &#39;../../src/Controller/&#39;
+    type: attribute
+    prefix:
+        ja: &#39;/ja-jp&#39;
+        en: &#39;/en-us&#39;
+        zh: &#39;/zh-cn&#39;
+</code></pre><h2 id="matching-http-methods">Matching HTTP Methods</h2>
+<p>By default, routes match any HTTP verb (GET, POST, PUT, etc.) Use the methods option to restrict the verbs each route should respond to:</p> <a class="read-more" href="/cnblogs/post/php-route-sf/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-01-08T10:08:08&#43;08:00">
+            8 Jan 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-cmd1/">docker(ce) command</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h2 id="1-清理image">1. 清理image</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker system prune -a
+</span></span></code></pre></div><h2 id="2-管理image">2. 管理image</h2>
+<h3 id="1-ps">1) ps</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dokcer ps
+</span></span></code></pre></div><h3 id="2-进入container">2) 进入container</h3>
+<p>fat shell:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker exec -it &lt;container-id&gt; bash
+</span></span></code></pre></div><p>simple shell:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker exec -it &lt;container-id&gt; sh
+</span></span></code></pre></div><h3 id="3container内执行">3)container内执行</h3>
+<p>查看:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat Gopkg.toml |more
+</span></span></code></pre></div><p>编辑:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt-get update
+</span></span><span style="display:flex;"><span>apt-get install vim -y
+</span></span><span style="display:flex;"><span>vi Gopkg.toml
+</span></span></code></pre></div><h3 id="4-stop-all-containers">4) stop all containers</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker stop <span style="color:#66d9ef">$(</span>sudo docker ps -q<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div> <a class="read-more" href="/cnblogs/post/docker_ce-cmd1/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
+            31 Dec 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-ubuntu-config/">docker(ce) on Ubuntu</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>Note:</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command</span>
+</span></span><span style="display:flex;"><span>$ - requires given linux commands to be executed as a regular non-privileged user
+</span></span></code></pre></div></blockquote>
+</blockquote>
+<h1 id="docker-ce">Docker CE</h1>
+<h2 id="1-install">1. install</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker.io
+</span></span></code></pre></div><h2 id="2-enable">2. enable</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo systemctl start docker
+</span></span><span style="display:flex;"><span>$ sudo systemctl enable docker
+</span></span></code></pre></div><p>test:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker --version
+</span></span></code></pre></div><h1 id="docker-compose">Docker compose</h1>
+<h2 id="1-down">1. down</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl -L <span style="color:#e6db74">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span style="color:#66d9ef">$(</span>uname -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">-</span><span style="color:#66d9ef">$(</span>uname -m<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o /usr/local/bin/docker-compose
+</span></span></code></pre></div><h2 id="2-exec">2. exec</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/docker-compose
+</span></span></code></pre></div><p>test:</p> <a class="read-more" href="/cnblogs/post/docker_ce-ubuntu-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
+            31 Dec 2025
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -596,31 +734,31 @@ System.Runtime.CompilerServices.Unsafe:5.0.0
     <section class="post-excerpt">
         
             <p><table>
-  <thead>
-      <tr>
-          <th>Connector/NET Version</th>
-          <th>ADO.NET Version</th>
-          <th>.NET Version Required</th>
-          <th>MySQL Server</th>
-          <th>IDE</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>6.9</td>
-          <td>2.x+</td>
-          <td>3.5+ for VS 2008, 4.x+ for VS 2010 / 2012 / 2013, WinRT for VS 2012 / 2013</td>
-          <td>5.7, 5.6, 5.5</td>
-          <td>Visual Studio 2010</td>
-      </tr>
-      <tr>
-          <td>6.1</td>
-          <td>2.x+</td>
-          <td>2.x+</td>
-          <td>5.6, 5.5, 5.1, 5.0, 4.1</td>
-          <td>Visual Studio 2008</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Connector/NET Version</th>
+					<th>ADO.NET Version</th>
+					<th>.NET Version Required</th>
+					<th>MySQL Server</th>
+					<th>IDE</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>6.9</td>
+					<td>2.x+</td>
+					<td>3.5+ for VS 2008, 4.x+ for VS 2010 / 2012 / 2013, WinRT for VS 2012 / 2013</td>
+					<td>5.7, 5.6, 5.5</td>
+					<td>Visual Studio 2010</td>
+			</tr>
+			<tr>
+					<td>6.1</td>
+					<td>2.x+</td>
+					<td>2.x+</td>
+					<td>5.6, 5.5, 5.1, 5.0, 4.1</td>
+					<td>Visual Studio 2008</td>
+			</tr>
+	</tbody>
 </table>
 <p>连接器(For .net)：</p>
 <ul>
@@ -654,240 +792,6 @@ System.Runtime.CompilerServices.Unsafe:5.0.0
         
         <time class="post-date" datetime="2025-03-02T00:08:08&#43;08:00">
             2 Mar 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-serialport_v2/">使用qt6的qml编写Serial Port</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>Qt Environment</li>
-<li>Qt Singleton</li>
-<li>Qt Update Issue</li>
-</ul>
-<h2 id="qt-environment">Qt Environment</h2>
-<ul>
-<li><a href="https://download.qt.io/official_releases/online_installers">Qt online installer</a></li>
-<li><a href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2">Visual Studio 2019/2022</a></li>
-</ul>
-<h3 id="installer">installer</h3>
-<p>default:</p>
-<ul>
-<li>qt creator <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-creator.png" alt="qt-online-creator"></li>
-<li>Build tools <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-cmake.png" alt="qt-online-cmake"></li>
-</ul>
-<h4 id="msvc">MSVC</h4>
-<ul>
-<li>vs2019(qt5.15) <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-msvc2019.png" alt="qt5.15 msvc2019"></li>
-<li>vs2019 <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt6-online-msvc2019.png" alt="qt6.5 msvc2019"></li>
-<li>vs2022 <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-msvc2022.png" alt="qt6.8 msvc2022"></li>
-</ul>
-<h4 id="additional-libraries">Additional Libraries</h4>
-<ul>
-<li>Qt5</li>
-</ul>
-<blockquote>
-<p>Included in the integration module</p>
-</blockquote>
-<p>No need to select additional</p>
-<ul>
-<li>Qt6 <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt6-online-serial_port.png" alt="Qt Serial Port"></li>
-</ul>
-<h3 id="cmake-in-qt-creator">CMake in Qt Creator</h3>
-<p>程序设置：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-GNinja
-</span></span><span style="display:flex;"><span>-DCMAKE_BUILD_TYPE:STRING<span style="color:#f92672">=</span>Release
-</span></span><span style="display:flex;"><span>-DCMAKE_PROJECT_INCLUDE_BEFORE:PATH<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>IDE:ResourcePath<span style="color:#f92672">}</span>/package-manager/auto-setup.cmake
-</span></span><span style="display:flex;"><span>-DQT_QMAKE_EXECUTABLE:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Qt:qmakeExecutable<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>-DCMAKE_PREFIX_PATH:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Qt:QT_INSTALL_PREFIX<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>-DCMAKE_C_COMPILER:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Compiler:Executable:C<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>-DCMAKE_CXX_COMPILER:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Compiler:Executable:Cxx<span style="color:#f92672">}</span>
-</span></span></code></pre></div><h3 id="deploy">Deploy</h3>
-<ul>
-<li>v5.15</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\5</span>.15.2<span style="color:#ae81ff">\m</span>svc2019_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
-</span></span></code></pre></div><ul>
-<li>v6.5</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\6</span>.5.3<span style="color:#ae81ff">\m</span>svc2019_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
-</span></span></code></pre></div><ul>
-<li>v6.8</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\6</span>.8.2<span style="color:#ae81ff">\m</span>svc2022_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
-</span></span></code></pre></div><h2 id="qt-singleton">Qt Singleton</h2>
-<p>The version that fully supports singletons is <a href="https://doc.qt.io/qt-5/qqmlengine.html#qmlRegisterSingletonType-2">v5.14+</a></p> <a class="read-more" href="/cnblogs/post/qt-serialport_v2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-02-26T08:18:08&#43;08:00">
-            26 Feb 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-serialport/">使用qt5编写Serial Port</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p><img src="https://www.eltima.com/images/upload/products/spm/articles/howto/178.jpg" alt="RS-232 Testing Guide"></p>
-<h1 id="thread">thread</h1>
-<blockquote>
-<p>线程相关</p>
-</blockquote>
-<h2 id="asynchronously">asynchronously</h2>
-<p><a href="https://doc.qt.io/qt-5/qobject.html#connect">connect方法</a> 已实现异步。</p>
-<h2 id="synchronously">synchronously</h2>
-<p><a href="https://doc.qt.io/qt-5/qmutexlocker.html">qmutexlocker</a></p>
-<h3 id="创建信号锁">创建信号锁</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>m_mutex.lock();
-</span></span></code></pre></div><h2 id="信号">信号</h2>
-<p>为便于调用者获得线程的内部信息，我们需要提供信号。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>signals:
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> error(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>s);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">timeout</span>(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>s);
-</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20200627152341.png" alt="program ui"></p>
-<h1 id="worker-method">Worker method</h1>
-<h2 id="init-port">Init Port</h2>
-<p>设置私有成员变量</p>
-<blockquote>
-<p>部分代码</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>m_waitTimeout <span style="color:#f92672">=</span> waitTimeout;
-</span></span></code></pre></div><h2 id="receive-data">Receive data</h2>
-<p>打开串口</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>m_serialPort<span style="color:#f92672">-&gt;</span>open(QIODevice<span style="color:#f92672">::</span>ReadWrite)) {
-</span></span><span style="display:flex;"><span>		qDebug() <span style="color:#f92672">&lt;&lt;</span> tr(<span style="color:#e6db74">&#34;Can&#39;t open %1, error code %2&#34;</span>)
-</span></span><span style="display:flex;"><span>			.arg(m_portName).arg(m_serialPort<span style="color:#f92672">-&gt;</span>error());
-</span></span><span style="display:flex;"><span>		m_serialPort<span style="color:#f92672">-&gt;</span>close();
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> false;
-</span></span><span style="display:flex;"><span>	}
-</span></span></code></pre></div><p>接收数据</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (m_serialPort<span style="color:#f92672">-&gt;</span>waitForReadyRead(<span style="color:#ae81ff">500</span>))
-</span></span><span style="display:flex;"><span>            responseData <span style="color:#f92672">+=</span> m_serialPort<span style="color:#f92672">-&gt;</span>read(<span style="color:#ae81ff">1024</span>);
-</span></span></code></pre></div><h1 id="deploy-for-windows">Deploy for windows</h1>
-<p>copy exe to target directory.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>copy C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\P</span>rojects<span style="color:#ae81ff">\s</span>erialCommQt<span style="color:#ae81ff">\R</span>elease<span style="color:#ae81ff">\s</span>erialCommQt.exe C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\s</span>erialCommQt_qmake<span style="color:#ae81ff">\
-</span></span></span></code></pre></div><p>exec windeployqt:</p> <a class="read-more" href="/cnblogs/post/qt-serialport/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-02-23T08:18:08&#43;08:00">
-            23 Feb 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-thread/">QT5简单thread</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="project">Project</h1>
-<p>使用Qt Visual Studio Tools创建, 以下简称qt tools。</p>
-<p>also see: <a href="https://tdtc-hrb.github.io/cnblogs/post/qt-hello/">QT VS Tools的设置</a></p>
-<h2 id="install-qt-tools">install qt tools</h2>
-<p>Tools -&gt; Extensions and Updates <br>
-选择Online, 输入&quot;Qt Visual Studio Tools&quot;</p>
-<h2 id="create-qt-project">Create Qt Project</h2>
-<p>File -&gt; New -&gt; Project <br>
-Qt Console Application</p>
-<h2 id="add-class">Add class</h2>
-<p>点击“工程名”右键, Add -&gt; Class <br>
-Class name: Controller <br>
-Base Class: QObject</p>
-<p>初始状态的Controller类: <br>
-Controller.h</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;qobject.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Controller</span> <span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> QObject
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p>Controller.cpp</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Controller.h&#34;</span><span style="color:#75715e">
-</span></span></span></code></pre></div><h1 id="worker">Worker</h1>
-<p>此Worker使用的“easy worker”的案例.</p>
-<h2 id="header">Header</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QObject&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Worker</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QObject {
-</span></span><span style="display:flex;"><span>	Q_OBJECT
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>	Worker();
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">~</span>Worker();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> slots:
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> process();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>signals:
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> finished();
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">error</span>(QString err);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// add your variables here
-</span></span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><h2 id="class">Class</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Worker.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- CONSTRUCTOR ---
-</span></span></span><span style="display:flex;"><span>Worker<span style="color:#f92672">::</span>Worker() {
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// you could copy data from constructor arguments to internal variables here.
-</span></span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- DECONSTRUCTOR ---
-</span></span></span><span style="display:flex;"><span>Worker<span style="color:#f92672">::~</span>Worker() {
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// free resources
-</span></span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- PROCESS ---
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Start processing data.
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> Worker<span style="color:#f92672">::</span>process() {
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// allocate resources using new here
-</span></span></span><span style="display:flex;"><span>	qDebug(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
-</span></span><span style="display:flex;"><span>	emit <span style="color:#a6e22e">finished</span>();
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h1 id="controller">Controller</h1>
-<h2 id="header-1">Header</h2>
-<p>申明errorString槽, 以对接Worker的信号“error”;
-申明operate信号, 以供操作Controller。</p> <a class="read-more" href="/cnblogs/post/qt-thread/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-01-23T22:08:08&#43;08:00">
-            23 Jan 2025
         </time>
     </footer>
 </article>

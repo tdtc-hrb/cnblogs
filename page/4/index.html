@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.159.0">
+    <meta name="generator" content="Hugo 0.163.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -164,6 +164,118 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_blink7/">PIC blinked</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>With a few changes, code for 877A can be easily transferred to 887 (as for any PIC, datasheet reading is necessary).
+887 has internal oscillator, it is cheaper than 877A, &hellip;</p>
+<ul>
+<li>MPASM <br>
+<a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v5.30-windows-installer.exe">MPLAB X v5.30(x86) - 2019.10.29</a></li>
+<li>Proteus <a href="https://www.jb51.net/softs/854769.html">v8.15</a></li>
+</ul>
+<h1 id="blinking-led">Blinking LED</h1>
+<p>First, use the compiler to generate hex; <br>
+Then, use protelus to draw &ldquo;Schematic Capture&rdquo;; <br>
+Finally, import the hex file into the MCU component.</p>
+<h2 id="16f887">16F887</h2>
+<p>We are using Proteus simulator for simulating our code but if you are testing the code in real world test bench all you need is,</p> <a class="read-more" href="/cnblogs/post/e-pic16f_blink7/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-05-18T08:08:08&#43;08:00">
+            18 May 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_instruction-set/">8位单片机PIC汇编语言</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>TABLE 1-1: OPCODE FIELD DESCRIPTIONS</p>
+<table>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>f</td>
+					<td>Register file address (0x00 to 0x7F)</td>
+			</tr>
+			<tr>
+					<td>W</td>
+					<td>Working register (accumulator)</td>
+			</tr>
+			<tr>
+					<td>d</td>
+					<td>Destination select;</td>
+			</tr>
+			<tr>
+					<td>b</td>
+					<td>Bit address within an 8-bit file register</td>
+			</tr>
+			<tr>
+					<td>k</td>
+					<td>Literal field, constant data or label</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>d value</th>
+					<th>where the results are placed</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>d = 0</td>
+					<td>W(orking) register</td>
+			</tr>
+			<tr>
+					<td>d = 1</td>
+					<td>file register; Default is d = 1.</td>
+			</tr>
+	</tbody>
+</table>
+<p>TABLE 1-2: ABBREVIATION DESCRIPTIONS</p>
+<p>|Field| Description|
+| PC | Program Counter|
+| TO | Time-Out bit|
+| C  | Carry bit|
+| DC | Digit Carry bit|
+| Z  | Zero bit|
+| PD | Power-Down bit|</p> <a class="read-more" href="/cnblogs/post/e-pic16f_instruction-set/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-05-17T10:08:08&#43;08:00">
+            17 May 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-proteus_component-designing/">Component Designing in Proteus ISIS</a></h2>
     </header>
     <section class="post-excerpt">
@@ -208,42 +320,42 @@ Arduino <a href="https://www.arduino.cc/en/software">V1.8.19</a></li>
 </ul>
 <h1 id="接线">接线</h1>
 <table>
-  <thead>
-      <tr>
-          <th>Arduino Uno</th>
-          <th>Enc28j60</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Pin 10</td>
-          <td>CS</td>
-      </tr>
-      <tr>
-          <td>Pin 11</td>
-          <td>SI</td>
-      </tr>
-      <tr>
-          <td>Pin 12</td>
-          <td>SO</td>
-      </tr>
-      <tr>
-          <td>Pin 13</td>
-          <td>SCK</td>
-      </tr>
-      <tr>
-          <td>Reset</td>
-          <td>RST<sup>*</sup></td>
-      </tr>
-      <tr>
-          <td>+3v3</td>
-          <td>Vcc</td>
-      </tr>
-      <tr>
-          <td>GND<sup>*</sup></td>
-          <td>GND</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Arduino Uno</th>
+					<th>Enc28j60</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Pin 10</td>
+					<td>CS</td>
+			</tr>
+			<tr>
+					<td>Pin 11</td>
+					<td>SI</td>
+			</tr>
+			<tr>
+					<td>Pin 12</td>
+					<td>SO</td>
+			</tr>
+			<tr>
+					<td>Pin 13</td>
+					<td>SCK</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>RST<sup>*</sup></td>
+			</tr>
+			<tr>
+					<td>+3v3</td>
+					<td>Vcc</td>
+			</tr>
+			<tr>
+					<td>GND<sup>*</sup></td>
+					<td>GND</td>
+			</tr>
+	</tbody>
 </table>
 <p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Connection-Diagram.png" alt="spi connect"></p>
 <h2 id="enc28j60">Enc28j60</h2>
@@ -609,48 +721,6 @@ there is no way this issue will be fixed, Redis &gt;= 6 will require a C11 compi
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_nginx-v2/">前端（Web）负载均衡</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>Nginx&rsquo;s load balancing</p>
-<h1 id="一安装">一、安装</h1>
-<p>OS: RHEL Community Version(Rocky8/Alma8) minimal（安装时的选项）</p>
-<h2 id="0-prepare">0. prepare</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf -y install gcc gcc-c++ automake make pcre pcre-devel zlib zlib-devel openssl openssl-devel</span>
-</span></span></code></pre></div><p>see <a href="https://tdtc-hrb.github.io/cnblogs/post/ops_openssl/">update openssl</a></p>
-<h3 id="library-devel">Library devel</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install gd-devel libxml2-devel libxslt-devel
-</span></span></code></pre></div><h4 id="geoip">GeoIP</h4>
-<p>Download latest <a href="http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/">atomic-release</a> <br>
-Install atomic-release rpm:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo rpm -Uvh http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/atomic-release-1.0-23.el8.art.noarch.rpm
-</span></span></code></pre></div><p>Install GeoIP-devel rpm package:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install GeoIP-devel
-</span></span></code></pre></div><h3 id="allow-fw">allow fw</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>80/tcp
-</span></span><span style="display:flex;"><span>$sudo firewall-cmd --reload
-</span></span></code></pre></div><h2 id="installation">installation</h2>
-<p>First, install Nginx of centos <a href="(https://nginx.org/en/linux_packages.html#RHEL)">repo</a>; <br>
-Then, replace the nginx program file. <br>
-Note: The replaced program file version must be the same as the repo!</p> <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-10-06T08:38:08&#43;08:00">
-            6 Oct 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/ops_keepalived-v2/">安装配置Keepalived - v2</a></h2>
     </header>
     <section class="post-excerpt">
@@ -696,50 +766,6 @@ powertools:</li>
         
         <time class="post-date" datetime="2022-10-06T08:38:08&#43;08:00">
             6 Oct 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_openjdk_rhel/">设置OpenJDK</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>RHEL Community Version <br>
-Alma Linux / Rocky Linux</li>
-</ul>
-<h1 id="1-install">1. install</h1>
-<p>jre:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install java -y
-</span></span></code></pre></div><h2 id="jdk">jdk</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install java-1.8.0-openjdk-devel
-</span></span></code></pre></div><h1 id="2-set-path">2. set path</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo vi /etc/profile
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export JAVA_HOME<span style="color:#f92672">=</span>/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.345.b01-1.el8_6.x86_64
-</span></span><span style="display:flex;"><span>export CLASSPATH<span style="color:#f92672">=</span>.:$JAVA_HOME/jre/lib/:.
-</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$PATH:$JAVA_HOME/bin
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$su - root
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#source /etc/profile</span>
-</span></span></code></pre></div><h2 id="about-path">About path</h2>
-<p><a href="https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/installation_guide/install_openjdk_on_red_hat_enterprise_linux">3.3. INSTALL OPENJDK ON RED HAT ENTERPRISE LINUX</a> - 2.Optional: Set the JAVA_HOME environment variable</p>
-<h1 id="reference">Reference</h1>
-<ul>
-<li><a href="https://linuxize.com/post/install-java-on-centos-7/">How to install Java on CentOS 7</a></li>
-<li><a href="https://wiki.openjdk.java.net/display/jdk8u/Main">OpenJDK Version Info</a> - Releases</li>
-</ul> <a class="read-more" href="/cnblogs/post/ops_openjdk_rhel/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-10-04T08:08:08-08:00">
-            4 Oct 2022
         </time>
     </footer>
 </article>

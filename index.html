@@ -57,7 +57,7 @@
         <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.159.0">
+    <meta name="generator" content="Hugo 0.163.3">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
 
@@ -162,6 +162,202 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/mq-rabbitmq-config/">Install and Configure RabbitMQ</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Ubuntu 18.04 <br>
+codename: bionic</li>
+<li>Ubuntu 20.04 <br>
+codename: focal</li>
+</ul>
+<p>Current Version(RabbitMQ):</p>
+<pre tabindex="0"><code>RabbitMQ 3.10.2 Erlang 24.3.3
+</code></pre><h1 id="installation">Installation</h1>
+<p>需要<a href="https://tdtc-hrb.github.io/csdn/post/ops_network_adapter_linux/">设置固定IP</a></p>
+<p>Replace the &ldquo;bionic&rdquo; in the <a href="https://www.rabbitmq.com/install-debian.html#apt-packagecloud">official website</a> shell with the ubuntu codename.</p>
+<p>Note: When saving, the format is Unix(LF).</p>
+<p>focal_rq.sh:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apt-get install curl gnupg apt-transport-https -y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Team RabbitMQ&#39;s main signing key</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/com.rabbitmq.team.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Launchpad PPA that provides modern Erlang releases</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0xf77f1eda57ebb1cc&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## PackageCloud RabbitMQ repository</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/io.packagecloud.rabbitmq.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Add apt repositories maintained by Team RabbitMQ</span>
+</span></span><span style="display:flex;"><span>sudo tee /etc/apt/sources.list.d/rabbitmq.list <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Provides modern Erlang/OTP releases
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">##
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## &#34;focal&#34; as distribution name should work for any reasonably recent Ubuntu or Debian release.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb [signed-by=/usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg] http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb-src [signed-by=/usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg] http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Provides RabbitMQ
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">##
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## &#34;focal&#34; as distribution name should work for any reasonably recent Ubuntu or Debian release.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb [signed-by=/usr/share/keyrings/io.packagecloud.rabbitmq.gpg] https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb-src [signed-by=/usr/share/keyrings/io.packagecloud.rabbitmq.gpg] https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Update package indices</span>
+</span></span><span style="display:flex;"><span>sudo apt-get update -y
+</span></span></code></pre></div><p>exec:</p> <a class="read-more" href="/cnblogs/post/mq-rabbitmq-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-05T18:08:08&#43;08:00">
+            5 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp-base/">3小时搞定asp.net</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: <a href="https://visualstudio.microsoft.com">Visual Studio community</a></li>
+<li>DB：MySQL5.7+</li>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-10.0.301-windows-x64-installer">.net SDK - x64</a></li>
+</ul>
+<h2 id="准备">准备</h2>
+<blockquote>
+<p>File-》New-》Project</p>
+<blockquote>
+<p>ASP.NET Core Web Application(Model-View-Controller)</p>
+</blockquote>
+</blockquote>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011124537.png" alt="vs2026"></p>
+<h3 id="additional-information">Additional information</h3>
+<ul>
+<li>.Net 10.0(Lts)</li>
+<li>Authentication type</li>
+</ul>
+<pre tabindex="0"><code>None
+</code></pre><ul>
+<li>Configure for HTTPS</li>
+</ul>
+<pre tabindex="0"><code>checked
+</code></pre><h3 id="web-server">Web Server</h3>
+<ul>
+<li>http</li>
+<li>https</li>
+</ul>
+<blockquote>
+<p>default</p>
+</blockquote>
+<ul>
+<li>
+<p>IIS Express</p>
+<p>点击“IIS Express”运行（如果弹出证书安装选“是”即可）。
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134118.png" alt="iis cert - hint">
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134337.png" alt="windows - hint"></p>
+</li>
+</ul>
+<h1 id="demo">Demo</h1>
+<p><img src="https://img-blog.csdnimg.cn/20210707161947768.png" alt="演示code"></p>
+<h2 id="repository">Repository</h2>
+<blockquote>
+<p>Project-》Manage NuGet Packages
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011135217.png" alt="Microsoft.EntityFrameworkCore"></p>
+</blockquote>
+<h3 id="entity-class">entity class</h3>
+<p>数据表的Entity类</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel.DataAnnotations;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> veic_web.Models
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Key]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Param_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Statu_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Lang_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Img_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Description { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="db-context">Db Context</h3>
+<blockquote>
+<p>Solution Explorer</p> <a class="read-more" href="/cnblogs/post/asp-base/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-05T09:08:08&#43;08:00">
+            5 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_nginx-v2/">前端（Web）负载均衡</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Nginx&rsquo;s load balancing</p>
+<h1 id="一安装">一、安装</h1>
+<p>OS: RHEL Community Version(Rocky8/Alma8) minimal（安装时的选项）</p>
+<h2 id="0-prepare">0. prepare</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf -y install gcc gcc-c++ automake make pcre pcre-devel zlib zlib-devel openssl openssl-devel</span>
+</span></span></code></pre></div><p>see <a href="https://tdtc-hrb.github.io/cnblogs/post/ops_openssl/">update openssl</a></p>
+<h3 id="library-devel">Library devel</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install gd-devel libxml2-devel libxslt-devel
+</span></span></code></pre></div><h4 id="geoip">GeoIP</h4>
+<p>Download latest <a href="http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/">atomic-release</a> <br>
+Install atomic-release rpm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo rpm -Uvh http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/atomic-release-1.0-23.el8.art.noarch.rpm
+</span></span></code></pre></div><p>Install GeoIP-devel rpm package:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install GeoIP-devel
+</span></span></code></pre></div><h3 id="allow-fw">allow fw</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>80/tcp
+</span></span><span style="display:flex;"><span>$sudo firewall-cmd --reload
+</span></span></code></pre></div><h2 id="installation">installation</h2>
+<p>First, install Nginx of centos <a href="https://nginx.org/en/linux_packages.html#RHEL">repo</a>; <br>
+Then, replace the nginx program file. <br>
+Note: The replaced program file version must be the same as the repo!</p> <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-05T08:38:08&#43;08:00">
+            5 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow3-gcc/">size_t warning</a></h2>
     </header>
     <section class="post-excerpt">
@@ -245,7 +441,7 @@ int main() {
 <ul>
 <li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
 <li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
-<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c++4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
 </ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow3-gcc/">&raquo;</a></p>
         
     </section>
@@ -358,7 +554,7 @@ void merge( vector&lt;Comparable&gt; &amp; a, vector&lt;Comparable&gt; &amp; tmp
 <ul>
 <li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
 <li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
-<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c++4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
 </ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow4-gcc/">&raquo;</a></p>
         
     </section>
@@ -409,30 +605,30 @@ void merge( vector&lt;Comparable&gt; &amp; a, vector&lt;Comparable&gt; &amp; tmp
     return it-&gt;first;
 </code></pre><h4 id="diff">diff</h4>
 <table>
-  <thead>
-      <tr>
-          <th>std::next</th>
-          <th>std::advance</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>It is used to return nth successor of an iterator</td>
-          <td>It does not have any return type.</td>
-      </tr>
-      <tr>
-          <td>It takes two parameters that are -: number of elements and a iterator.</td>
-          <td>It takes two parameters number of elements and iterator</td>
-      </tr>
-      <tr>
-          <td>Its Time complexity in best case is constant</td>
-          <td>Its Time complexity in best case is constant</td>
-      </tr>
-      <tr>
-          <td>Its Time complexity in worst case is linear</td>
-          <td>Its Time complexity in worst case is linear</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>std::next</th>
+					<th>std::advance</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>It is used to return nth successor of an iterator</td>
+					<td>It does not have any return type.</td>
+			</tr>
+			<tr>
+					<td>It takes two parameters that are -: number of elements and a iterator.</td>
+					<td>It takes two parameters number of elements and iterator</td>
+			</tr>
+			<tr>
+					<td>Its Time complexity in best case is constant</td>
+					<td>Its Time complexity in best case is constant</td>
+			</tr>
+			<tr>
+					<td>Its Time complexity in worst case is linear</td>
+					<td>Its Time complexity in worst case is linear</td>
+			</tr>
+	</tbody>
 </table>
 <h3 id="test">test</h3>
 <pre tabindex="0"><code>#include &lt;iostream&gt;
@@ -765,144 +961,6 @@ sudo yarn config set https-proxy http://&lt;ip:port&gt;
         
         <time class="post-date" datetime="2026-01-10T08:08:08&#43;08:00">
             10 Jan 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/php-route-sf/">Routing - Symfony</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>Symfony v8.0</li>
-</ul>
-<h2 id="creating-routes">Creating Routes</h2>
-<ul>
-<li>routes</li>
-<li>attributes</li>
-</ul>
-<h3 id="routes">routes</h3>
-<p>/config/routes.yaml:</p>
-<pre tabindex="0"><code># yaml-language-server: $schema=../vendor/symfony/routing/Loader/schema/routing.schema.json
-
-# This file is the entry point to configure the routes of your app.
-# Methods with the #[Route] attribute are automatically imported.
-# See also https://symfony.com/doc/current/routing.html
-
-# To list all registered routes, run the following command:
-#   bin/console debug:router
-
-controllers:
-    resource: routing.controllers
-    type: attribute  ## only
-</code></pre><p>Add attributes only!</p>
-<h3 id="creating-routes-as-attributes">Creating Routes as Attributes</h3>
-<p>/config/routes/attributes.yaml:</p>
-<pre tabindex="0"><code>controllers:
-    resource: &#39;../../src/Controller/&#39;
-    type: attribute
-    prefix:
-        ja: &#39;/ja-jp&#39;
-        en: &#39;/en-us&#39;
-        zh: &#39;/zh-cn&#39;
-</code></pre><h2 id="matching-http-methods">Matching HTTP Methods</h2>
-<p>By default, routes match any HTTP verb (GET, POST, PUT, etc.) Use the methods option to restrict the verbs each route should respond to:</p> <a class="read-more" href="/cnblogs/post/php-route-sf/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-01-08T10:08:08&#43;08:00">
-            8 Jan 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-cmd1/">docker(ce) command</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h2 id="1-清理image">1. 清理image</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker system prune -a
-</span></span></code></pre></div><h2 id="2-管理image">2. 管理image</h2>
-<h3 id="1-ps">1) ps</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dokcer ps
-</span></span></code></pre></div><h3 id="2-进入container">2) 进入container</h3>
-<p>fat shell:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker exec -it &lt;container-id&gt; bash
-</span></span></code></pre></div><p>simple shell:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker exec -it &lt;container-id&gt; sh
-</span></span></code></pre></div><h3 id="3container内执行">3)container内执行</h3>
-<p>查看:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat Gopkg.toml |more
-</span></span></code></pre></div><p>编辑:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt-get update
-</span></span><span style="display:flex;"><span>apt-get install vim -y
-</span></span><span style="display:flex;"><span>vi Gopkg.toml
-</span></span></code></pre></div><h3 id="4-stop-all-containers">4) stop all containers</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker stop <span style="color:#66d9ef">$(</span>sudo docker ps -q<span style="color:#66d9ef">)</span>
-</span></span></code></pre></div> <a class="read-more" href="/cnblogs/post/docker_ce-cmd1/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
-            31 Dec 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-ubuntu-config/">docker(ce) on Ubuntu</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>Note:</p>
-<blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command</span>
-</span></span><span style="display:flex;"><span>$ - requires given linux commands to be executed as a regular non-privileged user
-</span></span></code></pre></div></blockquote>
-</blockquote>
-<h1 id="docker-ce">Docker CE</h1>
-<h2 id="1-install">1. install</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker.io
-</span></span></code></pre></div><h2 id="2-enable">2. enable</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo systemctl start docker
-</span></span><span style="display:flex;"><span>$ sudo systemctl enable docker
-</span></span></code></pre></div><p>test:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker --version
-</span></span></code></pre></div><h1 id="docker-compose">Docker compose</h1>
-<h2 id="1-down">1. down</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl -L <span style="color:#e6db74">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span style="color:#66d9ef">$(</span>uname -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">-</span><span style="color:#66d9ef">$(</span>uname -m<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o /usr/local/bin/docker-compose
-</span></span></code></pre></div><h2 id="2-exec">2. exec</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/docker-compose
-</span></span></code></pre></div><p>test:</p> <a class="read-more" href="/cnblogs/post/docker_ce-ubuntu-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
-            31 Dec 2025
         </time>
     </footer>
 </article>
