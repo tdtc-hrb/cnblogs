@@ -183,20 +183,12 @@
 <pre tabindex="0"><code>ServerName localhost:80
 </code></pre><h2 id="php-apache">php-apache</h2>
 <pre tabindex="0"><code>Non Thread Safe(NTS) 和 Thread Safe(TS)： &#34;NTS&#34;，没有&#34;php(5/7/8)apache2_4.dll&#34;
-</code></pre><blockquote>
-<p>Php7.2+ 已移除 mcrypt.</p>
-</blockquote>
-<ul>
+</code></pre><ul>
 <li>PHP 8</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;C:/php-8.4&#34;</span>
 </span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;C:/php-8.4/php8apache2_4.dll&#34;</span>
-</span></span></code></pre></div><ul>
-<li>Php 5</li>
-</ul>
-<pre tabindex="0"><code>PHPIniDir &#34;C:/php-5.6&#34;
-LoadModule php5_module &#34;C:/php-5.6/php5apache2_4.dll&#34;
-</code></pre><p>在配置文件(conf/httpd.conf)最后增加:</p>
+</span></span></code></pre></div><p>在配置文件(conf/httpd.conf)最后增加:</p>
 <pre tabindex="0"><code>AddType application/x-httpd-php .php
 </code></pre><ul>
 <li>test config</li>
