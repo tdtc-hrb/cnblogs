@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.163.3">
+    <meta name="generator" content="Hugo 0.164.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -158,6 +158,185 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-enc28j60/">Enc28j60 外接模块</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.flyrobo.in/nano-v3-ethernet-shield">Nano V3 Ethernet Shield - ENC28J60</a></li>
+</ul>
+<blockquote>
+<p>Purchased on February 12, 2020.</p>
+</blockquote>
+<h2 id="sam4s-ek2"><a href="https://www.microchip.com/en-us/development-tool/atsam4s-ek">SAM4S-EK2</a></h2>
+<ul>
+<li>IDE: <a href="https://tdtc-hrb.github.io/cnblogs/post/e-iar-project-setup">iar V7.50.3.10751</a></li>
+<li>Advanced Software Framework (ASF): <a href="https://www.microchip.com/en-us/tools-resources/archives/avr-sam-mcus">V3.33.0.50</a></li>
+<li>ICE: j-link v8.0</li>
+</ul>
+<h3 id="test">test</h3>
+<ol>
+<li>led &amp; uart</li>
+</ol>
+<pre tabindex="0"><code>xdk-asf-3.33.0\sam\applications\getting-started\sam4sd32c_sam4s_ek2
+</code></pre><ol>
+<li>LED</li>
+<li>UART</li>
+</ol>
+<pre tabindex="0"><code>Baud: 115200
+</code></pre><ol start="2">
+<li>TFT LCD</li>
+</ol>
+<pre tabindex="0"><code>xdk-asf-3.33.0\sam\components\display\ili93xx\example\sam4sd32c_sam4s_ek2
+</code></pre><ol>
+<li>On</li>
+</ol>
+<pre tabindex="0"><code>JP13 Connect.
+</code></pre><h3 id="web-server">web server</h3>
+<p><strong>无论是 USB 接口 供电，还是 圆形 DC 接口 供电 均无法工作!</strong></p>
+<h2 id="arduino-uno-rev-3e">Arduino Uno Rev 3e</h2>
+<ul>
+<li><a href="https://tdtc-hrb.github.io/cnblogs/post/e-avr8-blink">blink</a> - Ok</li>
+</ul>
+<h3 id="web-server-1"><a href="https://tdtc-hrb.github.io/cnblogs/post/e-avr8-web-server">web server</a></h3>
+<p><strong>供电1: USB接口 - 可以工作.</strong>
+<em><strong>供电2: 圆形 DC 接口 - 无法工作!</strong></em></p>
+<h2 id="iar">IAR</h2>
+<ul>
+<li>Current Use:
+V7.50.3</li>
+<li><a href="http://supp.iar.com/Updates/?product=EWarm">version history</a></li>
+</ul>
+<h3 id="j-link-driver">j-link driver</h3>
+<pre tabindex="0"><code>IAR &lt;=&gt; J-Link:
+   V7.50.3 - v5.10m
+   V7.80.4 - v6.12f 
+</code></pre><h3 id="down-file-from-csdn-blog">down file: from <a href="https://blog.csdn.net/weixin_38343172/article/details/84034840">CSDN Blog</a></h3>
+<pre tabindex="0"><code>    CD-EWARM-6405-4275
+    EWARM-CD-7501-10273.exe
+    EWARM-CD-7503-10751.exe
+</code></pre><p>for example:</p> <a class="read-more" href="/cnblogs/post/e-enc28j60/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-07T01:08:08&#43;08:00">
+            7 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-web-server/">web server</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>created date： 2021-03-10 <br>
+modified date：</p>
+<pre tabindex="0"><code>2023-03-25
+</code></pre><ul>
+<li>IDE <br>
+Arduino <a href="https://www.arduino.cc/en/software">V1.8.19</a></li>
+<li>Library <br>
+<a href="https://github.com/UIPEthernet/UIPEthernet/releases">UIP Ethernet v2.x</a></li>
+</ul>
+<h1 id="接线">接线</h1>
+<table>
+	<thead>
+			<tr>
+					<th>Arduino Uno</th>
+					<th>Enc28j60</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Pin 10</td>
+					<td>CS</td>
+			</tr>
+			<tr>
+					<td>Pin 11</td>
+					<td>SI</td>
+			</tr>
+			<tr>
+					<td>Pin 12</td>
+					<td>SO</td>
+			</tr>
+			<tr>
+					<td>Pin 13</td>
+					<td>SCK</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>RST<sup>*</sup></td>
+			</tr>
+			<tr>
+					<td>+3v3</td>
+					<td>Vcc</td>
+			</tr>
+			<tr>
+					<td>GND<sup>*</sup></td>
+					<td>GND</td>
+			</tr>
+	</tbody>
+</table>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Connection-Diagram.png" alt="spi connect"></p>
+<h2 id="enc28j60">Enc28j60</h2>
+<p>INTN: 置空（不接）</p>
+<p>*Rst接线: 注意 <a href="https://robotdyn.com/nano-v3-ethernet-shield-enc28j60.html">Nano V3 Ethernet Shield</a> 接7号线柱，如下图所示：
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/NanoEthENC28J60-Shield.jpg" alt="reset connect"></p>
+<h2 id="arduino-uno"><a href="https://content.arduino.cc/assets/UNO-TH_Rev3e_sch.pdf">Arduino Uno</a></h2>
+<p>*GND接线:  5V旁边的GND.</p>
+<p><strong>供电: 必须使用USB接口.</strong>
+<em><strong>使用 圆形 DC 接口 无法工作!</strong></em></p>
+<h1 id="网络及pc驱动">网络及PC驱动</h1>
+<p>两种方式：</p>
+<ul>
+<li>
+<p>平行线 <br>
+接路由器Lan口。</p>
+</li>
+<li>
+<p>交叉线 <br>
+接PC的Lan口。</p>
+</li>
+</ul>
+<h2 id="network">Network</h2>
+<p>设置同一网段的IP地址。</p>
+<ul>
+<li>PC <br>
+Control Panel -&gt; Network and Internet -&gt; Network Connections <br>
+Ethernet -&gt; Properties:</li>
+</ul>
+<pre tabindex="0"><code>Internet Protocol Version 4(TCP/IPv4)
+</code></pre><ul>
+<li>Enc28J60 <br>
+IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代码中更改.</li>
+</ul>
+<h3 id="router">Router</h3>
+<p>不支持以下路由器:</p> <a class="read-more" href="/cnblogs/post/e-avr8-web-server/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-07T01:08:08&#43;08:00">
+            7 Jul 2026
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -810,157 +989,6 @@ result += m_kbd.TryGetValue(kbd.Key, out var value)? value : null;
         
         <time class="post-date" datetime="2026-02-09T09:08:08&#43;08:00">
             9 Feb 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/php-devenv-win/">Windows搭建PHP环境</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://www.apachelounge.com/download/">Apache Lounge Downloads</a></li>
-<li><a href="https://tdtc-hrb.github.io/csdn/post/dev_wsl_ubuntu">openssl - wsl1</a></li>
-</ul>
-<h1 id="apache配置">Apache配置</h1>
-<ul>
-<li>ServerRoot</li>
-</ul>
-<pre tabindex="0"><code>Define SRVROOT &#34;C:/Apache24&#34;
-</code></pre><ul>
-<li>ServerName</li>
-</ul>
-<pre tabindex="0"><code>ServerName localhost:80
-</code></pre><h2 id="php-apache">php-apache</h2>
-<pre tabindex="0"><code>Non Thread Safe(NTS) 和 Thread Safe(TS)： &#34;NTS&#34;，没有&#34;php(5/7/8)apache2_4.dll&#34;
-</code></pre><blockquote>
-<p>Php7.2+ 已移除 mcrypt.</p>
-</blockquote>
-<ul>
-<li>PHP 8</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;C:/php-8.4&#34;</span>
-</span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;C:/php-8.4/php8apache2_4.dll&#34;</span>
-</span></span></code></pre></div><ul>
-<li>Php 5</li>
-</ul>
-<pre tabindex="0"><code>PHPIniDir &#34;C:/php-5.6&#34;
-LoadModule php5_module &#34;C:/php-5.6/php5apache2_4.dll&#34;
-</code></pre><p>在配置文件(conf/httpd.conf)最后增加:</p>
-<pre tabindex="0"><code>AddType application/x-httpd-php .php
-</code></pre><ul>
-<li>test config</li>
-</ul>
-<pre tabindex="0"><code>httpd -t
-</code></pre><h3 id="directory-index">Directory Index</h3>
-<p>DirectoryIndex: sets the file that Apache will serve if a directory is requested.</p>
-<ul>
-<li>append</li>
-</ul>
-<pre tabindex="0"><code>index.php
-</code></pre><h2 id="重写">重写</h2>
-<ul>
-<li>a.打开模块</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule rewrite_module modules/mod_rewrite.so
-</span></span></code></pre></div><ul>
-<li>b.允许重写</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
-</span></span></code></pre></div><h2 id="ssl">SSL</h2>
-<ul>
-<li>open module</li>
-</ul>
-<pre tabindex="0"><code>LoadModule ssl_module modules/mod_ssl.so
-LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
-</code></pre><ul>
-<li>at httpd.conf:</li>
-</ul>
-<pre tabindex="0"><code>Include conf/extra/httpd-ssl.conf
-</code></pre><h3 id="shmcb"><a href="https://www.apachelounge.com/viewtopic.php?t=7614">shmcb</a></h3>
-<pre tabindex="0"><code>glsmith:
-Did you restart the server after uncommenting the LoadModule line for mod_socache_shmcb?
-</code></pre><h3 id="basic-conf">basic conf</h3>
-<blockquote>
-<p>development</p> <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-01-20T00:12:08&#43;08:00">
-            20 Jan 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ror_getstarted/">开始Ruby On Rails</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="prepare">Prepare</h1>
-<ul>
-<li>
-<p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-debian/">nodejs</a></p>
-</li>
-<li>
-<p>foreman</p>
-</li>
-</ul>
-<pre tabindex="0"><code>gem install foreman
-</code></pre><h2 id="mysql-dev">mysql-dev</h2>
-<ul>
-<li>ubuntu</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
-gem install mysql2
-</code></pre><h3 id="debian"><a href="https://stackoverflow.com/a/34384709">Debian</a></h3>
-<ul>
-<li>mariadb</li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install mariadb-server
-</code></pre><ul>
-<li><a href="https://github.com/ansible-community/ara-collection/issues/8">mariadbclient-dev</a></li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install libmariadb-dev-compat libmariadb-dev
-</code></pre><ul>
-<li><a href="https://stackoverflow.com/questions/72000977/how-do-i-install-libmysqlclient21-on-debianbuster-slim-based-docker-image">client</a></li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install mariadb-client mysql-common default-mysql-client
-</code></pre><ul>
-<li>mysql2</li>
-</ul>
-<pre tabindex="0"><code>gem install mysql2
-</code></pre><h2 id="yarn">Yarn</h2>
-<p>upload <a href="https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn_1.22.22_all.deb">yarn_1.22.22_all.deb</a> to ubuntu:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>scp d:\yarn_1.22.22_all.deb tdtc@192.168.3.99:/home/tdtc/
-</span></span></code></pre></div><p>install:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.22_all.deb
-</span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.22_all.deb
-</span></span></code></pre></div><h3 id="set-proxy">set proxy</h3>
-<pre tabindex="0"><code>sudo yarn config set proxy http://&lt;ip:port&gt;
-sudo yarn config set https-proxy http://&lt;ip:port&gt;
-</code></pre><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
-<p>new:</p> <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-01-10T08:08:08&#43;08:00">
-            10 Jan 2026
         </time>
     </footer>
 </article>
