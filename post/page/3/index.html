@@ -164,6 +164,150 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-android_started/">Qt6 for android</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>ndk</li>
+<li>avd(Android Virtual Device)</li>
+</ul>
+<h1 id="preparation">Preparation</h1>
+<ul>
+<li>Environment</li>
+<li>cmdline</li>
+</ul>
+<h2 id="environment-variables">Environment variables</h2>
+<p>:warning: <br>
+After installing <a href="https://developer.android.google.cn/studio">Android Studio</a>, don&rsquo;t go into settings yet!</p>
+<h3 id="java-home">Java Home</h3>
+<ul>
+<li>Qt6.8/6.5 <br>
+set <a href="https://adoptium.net/temurin/releases?version=17&amp;os=any&amp;arch=any">JDK17</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.16+8
+</span></span></code></pre></div><h3 id="android-home"><a href="https://developer.android.com/tools/variables#envar">Android Home</a></h3>
+<p>Sets the path to the SDK installation directory.
+Once set, the value does not typically change and can be shared by multiple users on the same machine.
+ANDROID_SDK_ROOT, which also points to the SDK installation directory, is deprecated.
+If you continue to use it, Android Studio and the Android Gradle plugin will check that the old and new variables are consistent.</p> <a class="read-more" href="/cnblogs/post/qt-android_started/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-10-03T12:38:08&#43;08:00">
+            3 Oct 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-hello/">Widgets简单demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://tdtc-hrb.github.io/ops-win/posts/vc-win">VC++</a></li>
+<li>Qt Design Studio</li>
+</ul>
+<h3 id="qt-visual-studio-tools"><a href="https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022">Qt Visual Studio Tools</a></h3>
+<p>Find &ldquo;Qt&rdquo; in &ldquo;Tools-&gt;Options&rdquo; of Visual Studio and set the qmake path
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123104033.png" alt="Versions - vs2022"></p>
+<h1 id="widget工程">Widget工程</h1>
+<ul>
+<li>QtHello
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123111036.png" alt="vs2022 info1"></li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130638.png" alt="Build config"></p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130026.png" alt="set class name">
+&ldquo;User Interface(.ui)file&rdquo; is only available if you install the QtDesignStudio</p>
+<h2 id="ui">UI</h2>
+<ul>
+<li>Open the UI file using QT
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123131837.png" alt="QtDesignStudio"></li>
+</ul>
+<h3 id="push-button">Push Button</h3>
+<p>拖拽“Push Button”，并修改属性：</p>
+<ul>
+<li>ObjectName</li>
+</ul>
+<pre tabindex="0"><code>btnHello
+</code></pre><ul>
+<li>Text</li>
+</ul>
+<pre tabindex="0"><code>Click Me
+</code></pre><h1 id="code-implementation">Code Implementation</h1>
+<ul>
+<li>QtHello.h</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMainWindow&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ui_QtHello.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QtHello</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QMainWindow
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Q_OBJECT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    QtHello(QWidget <span style="color:#f92672">*</span>parent <span style="color:#f92672">=</span> Q_NULLPTR);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Ui<span style="color:#f92672">::</span>QtHelloClass ui;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Declarative methods
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> slots:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> helloQT();
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>QtHello.cpp</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtHello.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMessageBox&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QtHello<span style="color:#f92672">::</span>QtHello(QWidget <span style="color:#f92672">*</span>parent)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">:</span> QMainWindow(parent)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    ui.setupUi(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// add code // Association 3-Elements: Ui-Event-Method
+</span></span></span><span style="display:flex;"><span>    connect(ui.btnHello, <span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked, <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>QtHello<span style="color:#f92672">::</span>helloQT);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The other way to connect a signal to a slot is to use QObject::connect() and the SIGNAL and SLOT macros. 
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// connect(ui.btnHello, SIGNAL(clicked()), this, SLOT(helloQT()));
+</span></span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Implementation
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> QtHello<span style="color:#f92672">::</span>helloQT()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QMessageBox msgBox;
+</span></span><span style="display:flex;"><span>    msgBox.setText(<span style="color:#e6db74">&#34;Hello Qt!&#34;</span>);
+</span></span><span style="display:flex;"><span>    msgBox.exec();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="signals-and-slots"><a href="https://doc.qt.io/qt-6/signalsandslots.html">Signals and Slots</a></h2>
+<p><img src="https://doc.qt.io/qt-6/images/abstract-connections.png" alt="qt6 offical"></p> <a class="read-more" href="/cnblogs/post/qt-hello/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-09-25T19:08:08&#43;08:00">
+            25 Sep 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/mysql.ef/">MySQL EF 的简单使用</a></h2>
     </header>
     <section class="post-excerpt">
@@ -731,142 +875,6 @@ Alma Linux / Rocky Linux</li>
         
         <time class="post-date" datetime="2024-12-29T08:38:08&#43;08:00">
             29 Dec 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp-ws2/">WebSockets over HTTP/2</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p><a href="https://github.com/dotnet/AspNetCore.Docs/commit/75ce89b25e9ba61f9687ce36a41cd3c50aec1e3c">NET 7 introduces Websockets over HTTP/2 support for Kestrel, the SignalR JavaScript client, and SignalR with Blazor WebAssembly.</a></p>
-<h3 id="http2">HTTP2</h3>
-<ul>
-<li>Multiplexing
-<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*lY05UTuA-dWCXU-q.png" alt="Request multiplexing"></li>
-<li>Server push
-<img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*ZJLgVdXq_06hcF1o.png" alt="cacheable information"></li>
-<li>Header compression
-<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*5r8-MbhEseP6lEQg.png" alt="HPACK"></li>
-</ul>
-<p>ref site:</p>
-<ul>
-<li><a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1/">HTTP/2 vs. HTTP/1.1: How do they affect web performance?</a></li>
-<li><a href="https://factoryhr.medium.com/http-2-the-difference-between-http-1-1-benefits-and-how-to-use-it-38094fa0e95b">HTTP/2: the difference between HTTP/1.1, benefits and how to use it</a></li>
-</ul>
-<h4 id="os-and-browsers-support">os and browsers support</h4>
-<ul>
-<li>Windows 10 1607+</li>
-<li>TLS 1.2+</li>
-<li><a href="https://caniuse.com/http2">browsers</a></li>
-</ul>
-<p>Note: recommended to use Chrome/FireFox</p>
-<h2 id="websockets">WebSockets</h2>
-<ul>
-<li>Accept a WebSocket connection as an asynchronous operation <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.httplistenercontext.acceptwebsocketasync">HttpListenerContext.AcceptWebSocketAsync()</a></li>
-<li>Receives data from the WebSocket connection asynchronously <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.receiveasync">WebSocket.ReceiveAsync()</a></li>
-<li>Sends data over the WebSocket connection asynchronously <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.sendasync">WebSocket.SendAsync()</a></li>
-<li>Closes the WebSocket connection as an asynchronous operation <br>
-<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.closeasync">CloseAsync</a></li>
-</ul>
-<h3 id="enable-websocket">Enable WebSocket</h3>
-<ul>
-<li>default</li>
-</ul>
-<pre tabindex="0"><code>app.UseWebSockets()
-</code></pre><ul>
-<li>options</li>
-</ul>
-<pre tabindex="0"><code>var webSocketOptions = new WebSocketOptions
-{
-    KeepAliveInterval = TimeSpan.FromMinutes(2)
-};
-
-app.UseWebSockets(webSocketOptions);
-</code></pre><h3 id="accept-websocket-requests">Accept WebSocket requests</h3>
-<pre tabindex="0"><code>if (HttpContext.WebSockets.IsWebSocketRequest)
-{
-    using var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
-}
-</code></pre><h3 id="receive-messages">receive messages</h3>
-<pre tabindex="0"><code>var buffer = new byte[1024 * 4];
-
-var receiveResult = await webSocket.ReceiveAsync(
-    new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
-</code></pre><h4 id="arraysegment"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
-<p>Array version of substring()</p> <a class="read-more" href="/cnblogs/post/asp-ws2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-11-18T20:38:18&#43;08:00">
-            18 Nov 2024
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/java-jni-gcc/">jni - gcc</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>xbfLibR.dll generated by Delphi, Error in Ubuntu:</p>
-<pre tabindex="0"><code>java.lang.UnsatisfiedLinkError: /tmp/xbfLibR1872218867548961332.dll: /tmp/xbfLibR1872218867548961332.dll: 
-invalid ELF header (Possible cause: endianness mismatch)
-</code></pre><ul>
-<li>JNI Header</li>
-<li>C++</li>
-</ul>
-<h2 id="jni-header">JNI Header</h2>
-<ul>
-<li>Write a Java Class ReadXbf.java that uses C/C++ Codes</li>
-</ul>
-<pre tabindex="0"><code>package com.cartionsoft.xbf;
-
-public class ReadXbf {
-    static {
-      System.loadLibrary(&#34;XbfLibR1&#34;);  // Load native library XbfLibR1.dll (Windows) or libXbfLibR1.so (Unixes)
-                                   //  at runtime
-                                   // This library contains a native method called sayHello()
-    }
-    // Declare an instance native method sayHello() which receives no parameter and returns void
-    private native String sayHello(int num, String text);
-
-    // Test Driver
-    public static void main(String[] args) {
-      ReadXbf rf = new ReadXbf();
-      String text = rf.sayHello(1, &#34;world&#34;); // Create an instance and invoke the native method
-      System.out.println(text);
-    }
-}
-</code></pre><ul>
-<li>Generate the JNI Header File</li>
-</ul>
-<pre tabindex="0"><code>javac -h . ReadXbf.java
-</code></pre><h2 id="jni-with-c">JNI with C++</h2>
-<p>XbfLibR1.cpp:</p> <a class="read-more" href="/cnblogs/post/java-jni-gcc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2024-01-09T08:08:08&#43;08:00">
-            9 Jan 2024
         </time>
     </footer>
 </article>

@@ -162,6 +162,219 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_blink7/">PIC blinked</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v5.35-windows-installer.exe">MPLAB X v5.35 - latest MPASM</a></li>
+<li><a href="https://www.jb51.net/softs/905053.html">Proteus v8.16</a></li>
+</ul>
+<h1 id="blinking-led">Blinking LED</h1>
+<ul>
+<li>First, use the MPLAB X to generate hex;</li>
+<li>Then, use protelus to draw &ldquo;Schematic Capture&rdquo;;</li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/schematic_capture-887a.png" alt="blink-16f877a"></p>
+<ul>
+<li>Finally, import the hex file into the MCU component.</li>
+</ul>
+<pre tabindex="0"><code>Right-click the &#34;mcu&#34; icon and select &#34;Edit Properties&#34;.
+</code></pre><p><img src="https://electrosome.com/wp-content/uploads/2012/05/Proteus-Edit-Component-PIC-16F877A.jpg" alt="load hex"></p>
+<h2 id="16f887"><a href="https://web.archive.org/web/20260120160017/https://www.fypsolutions.com/assembly-language/pic-microcontroller-led-blink-code-example-in-assembly-language">16F887</a></h2>
+<ul>
+<li>PIC16F887 or PIC16F877A</li>
+<li>LED</li>
+<li>470R Resistor</li>
+<li>8Mhz Crystal</li>
+<li>Two 22pF capacitors in parallel</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">LIST</span> <span style="color:#66d9ef">p</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">16</span><span style="color:#66d9ef">F887</span>			 <span style="color:#75715e">;tell assembler what chip we are using
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">INCLUDE</span> <span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#66d9ef">P16F887.INC</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">__CONFIG</span>  <span style="color:#66d9ef">_CONFIG1</span>, <span style="color:#66d9ef">_INTOSCIO</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDT_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_PWRTE_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_MCLRE_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CP_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CPD_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_BOR_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_IESO_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_FCMEN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_LVP_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_DEBUG_ON</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">CBLOCK</span> <span style="color:#66d9ef">h</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#ae81ff">20</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">COUNT1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">COUNT2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ENDC</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ORG</span>		<span style="color:#ae81ff">0x00</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MAIN:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>		<span style="color:#66d9ef">TRISB</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span> 	    <span style="color:#66d9ef">TRISB</span>,<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>		<span style="color:#66d9ef">PORTB</span>
+</span></span><span style="display:flex;"><span>MainLoop:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span>		    <span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CALL</span>		<span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BSF</span>			<span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CALL</span>		<span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>	    <span style="color:#66d9ef">MainLoop</span>            <span style="color:#75715e">; Do it again...
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DELAY3:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>		<span style="color:#66d9ef">COUNT1</span>,<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>		<span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>		<span style="color:#66d9ef">COUNT2</span>,<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>		<span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">END</span>
+</span></span></code></pre></div><h2 id="16f18877-example-v550mplabx"><a href="https://github.com/dsoze1138/MPLABXv5xx_pic-as_examples/tree/master/16F18877_Example_v550.X">16F18877 Example v550(mplabx)</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#66d9ef">Blink</span> <span style="color:#66d9ef">V.</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">.0</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">subtitle</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#66d9ef">The</span> <span style="color:#66d9ef">uC</span> <span style="color:#66d9ef">Equivalent</span> <span style="color:#66d9ef">of</span> <span style="color:#66d9ef">Hello</span> <span style="color:#66d9ef">world</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">; ***** Program Header *******************************************************************************
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">list</span> <span style="color:#66d9ef">P</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">PIC16F18877</span>, <span style="color:#66d9ef">ST</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">OFF</span>, <span style="color:#66d9ef">MM</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">OFF</span>, <span style="color:#66d9ef">N</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">42</span>, <span style="color:#66d9ef">B</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">4</span>, <span style="color:#66d9ef">W</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">1</span> <span style="color:#75715e">; &lt;-- List file directives
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">include</span> <span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#66d9ef">p16f18877.inc</span><span style="color:#960050;background-color:#1e0010">&gt;</span> <span style="color:#75715e">; &lt;--Use the name of your PIC here
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">; ***** Device Configuration *************************************************************************
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG1</span>, <span style="color:#66d9ef">_FEXTOSC_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_RSTOSC_HFINT32</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CLKOUTEN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CSWEN_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_FCMEN_ON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG2</span>, <span style="color:#66d9ef">_MCLRE_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_PWRTE_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_LPBOREN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_BOREN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_BORV_LO</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_ZCD_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_PPS1WAY_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_STVREN_ON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG3</span>, <span style="color:#66d9ef">_WDTCPS_WDTCPS_31</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTE_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTCWS_WDTCWS_7</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTCCS_SC</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG4</span>, <span style="color:#66d9ef">_WRT_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_SCANE_available</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_LVP_ON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG5</span>, <span style="color:#66d9ef">_CP_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CPD_OFF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CBLOCK</span> <span style="color:#66d9ef">h</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#ae81ff">20</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">COUNT1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">COUNT2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ENDC</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ORG</span>     <span style="color:#ae81ff">0x00</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MAIN:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>     <span style="color:#66d9ef">TRISB</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span>         <span style="color:#66d9ef">TRISB</span>,<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CALL</span>        <span style="color:#66d9ef">Init_Osc</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>     <span style="color:#66d9ef">PORTB</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MainLoop:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span>         <span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CALL</span>        <span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BSF</span>         <span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CALL</span>        <span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">MainLoop</span>            <span style="color:#75715e">; Do it again...
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">; Initialize the PIC Oscillator.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; For the 16F18877, 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; page 122 of the data sheet(F version), the OSCCON1 register. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Set according to Table 6-1(NOSC/COSC Bit Settings) and Table 6-2(NDIV/CDIV Bit Settings): 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">;  Clock Source: HFINTOSC(110)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">;  Clock divider: 8(0011)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100000(0x60) - 32 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100001(0x61) - 16 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100010(0x62) - 8 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100011(0x63) - 4 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100100(0x64) - 2 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100101(0x65) - 1 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100110(0x66) - 500 kHz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100111(0x67) - 250 kHz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1101001(0x68) - 125 kHz.
+</span></span></span><span style="display:flex;"><span>Init_Osc:          <span style="color:#75715e">; System oscillator set to 4MHz
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">banksel</span> <span style="color:#66d9ef">OSCCON1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">movlw</span>   <span style="color:#ae81ff">0x63</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">movwf</span>   <span style="color:#66d9ef">OSCCON1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DELAY3:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>      <span style="color:#66d9ef">COUNT1</span>,<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>      <span style="color:#66d9ef">COUNT2</span>,<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">END</span>
+</span></span></code></pre></div> <a class="read-more" href="/cnblogs/post/e-pic16f_blink7/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-13T08:08:08&#43;08:00">
+            13 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_pickit/">In-Circuit Debugger and pic product</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.microchip.com/en-us/tools-resources/debug/programmers-debuggers">In-Circuit Emulator and Debugger Selection Guide</a></li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>Feature</th>
+					<th>ICE 4</th>
+					<th>ICD</th>
+					<th>PICkit</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Part Number</td>
+					<td>DV244140</td>
+					<td>DV164055</td>
+					<td>PG164150</td>
+			</tr>
+			<tr>
+					<td>MSRP</td>
+					<td>$1,799.00</td>
+					<td>$399.99</td>
+					<td>$94.99</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="how-to-connect-the-pins-from-the-pickit">How to connect the pins from the PICkit</h2>
+<ul>
+<li>Vpp/MCLR</li>
+<li>V<sub>DD</sub> Target (Power on Target) : ‘ + ‘</li>
+<li>V<sub>SS</sub> (Ground) : ‘ – ‘.</li>
+<li>ICSPDAT/PGD (Standard COM Data)</li>
+<li>ICSPCLK/PGC (Standard COM Clock)</li>
+<li>LVP (Low Voltage Programming)</li>
+</ul>
+<pre tabindex="0"><code>pic16f887 - connect
+pic16f18877 - not connect
+</code></pre><p><img src="https://www.northernsoftware.com/nsdsp/gr/c9.svg" alt="pic16f887-c9.svg">
+<img src="https://www.northernsoftware.com/nsdsp/gr/c4.svg" alt="pic16f18877-c4.svg"></p>
+<h3 id="ref">Ref</h3>
+<ul>
+<li><a href="https://www.northernsoftware.com/dev/pic16f/pic16f887.htm">PIC16F887</a></li>
+<li><a href="https://www.northernsoftware.com/dev/pic16f/pic16f18877.htm">PIC16F18877</a></li>
+</ul>
+<h2 id="pic-product">PIC product</h2>
+<ul>
+<li><a href="https://www.digikey.cn/zh/products/detail/microchip-technology/PIC16F18877-I-P/6098396">PIC16F18877-I/P</a></li>
+<li><a href="https://www.mouser.cn/zh/ProductDetail/Microchip-Technology/PIC16F18877-I-P?qs=BA62vJVifGqHcm2iAjr4Vw%3D%3D">PIC16F18877-I/P</a></li>
+</ul>
+<p>The PIC16F877A is quite an old design, supplanted by the PIC16F887,
+which also is an old design which itself was replaced by the 16F18877.</p> <a class="read-more" href="/cnblogs/post/e-pic16f_pickit/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-12T08:08:08&#43;08:00">
+            12 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-enc28j60/">Enc28j60 外接模块</a></h2>
     </header>
     <section class="post-excerpt">
@@ -845,143 +1058,6 @@ int main() {
         
         <time class="post-date" datetime="2026-03-11T11:08:08&#43;08:00">
             11 Mar 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/sqlite.net.core/">SQLite在.net core的demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>.net core <br>
-v8.0+</li>
-<li>test-backup.db <br>
-由 <a href="https://tdtc-hrb.github.io/com-vc/posts/sqlite3lib-wx">Windows的SQLite静态库 - wx</a> 的 minimal.exe 生成</li>
-</ul>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016122849.png" alt="program ui"></p>
-<h3 id="nuget">NuGet</h3>
-<blockquote>
-<p>pmc: Package Manager Console</p>
-</blockquote>
-<ul>
-<li>SQLite3MC.PCLRaw.bundle</li>
-</ul>
-<pre tabindex="0"><code class="language-pmc" data-lang="pmc">Install-Package SQLite3MC.PCLRaw.bundle
-</code></pre><p>Warning! Don&rsquo;t use multiple SQLitePCLRaw bundles in the same project. See the instructions below for details.</p>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016121731.png" alt="SQLite3MC.PCLRaw.bundle"></p>
-<ul>
-<li>SQLite-net</li>
-</ul>
-<pre tabindex="0"><code class="language-pmc" data-lang="pmc">Install-Package sqlite-net-base -Version 1.9.172
-</code></pre><p>With SQLite-net, be sure to use the sqlite-net-base package instead of the main one to avoid using multiple bundles.</p>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016115835.png" alt="sqlite-net-base"></p>
-<h2 id="1-连接">1. 连接</h2>
-<p>SQLite Connection String:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(
-</span></span><span style="display:flex;"><span>    edtDB.Text, 
-</span></span><span style="display:flex;"><span>    storeDateTimeAsTicks: true,
-</span></span><span style="display:flex;"><span>    key: edtPwd.Text);
-</span></span></code></pre></div><ul>
-<li>Async Connection</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>asyncConn <span style="color:#f92672">=</span> new SQLite.<span style="color:#a6e22e">SQLiteAsyncConnection</span>(options);
-</span></span></code></pre></div><ul>
-<li>Sync</li>
-</ul>
-<pre tabindex="0"><code></code></pre><h2 id="2-查询">2. 查询</h2>
-<ul>
-<li>Synchronous API</li>
-<li>Asynchronous API</li>
-</ul>
-<h3 id="异步查询">异步查询</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var empRecords <span style="color:#f92672">=</span> connection.Table<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(emp <span style="color:#f92672">=&gt;</span> emp.Empno <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">111</span> <span style="color:#f92672">&amp;&amp;</span> emp.Empno <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">666</span>);
-</span></span></code></pre></div><h3 id="show-data">show data</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  table <span style="color:#f92672">=</span> new System.Data.<span style="color:#a6e22e">DataTable</span>(<span style="color:#e6db74">&#34;emp&#34;</span>);
-</span></span></code></pre></div><ul>
-<li>数据源</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  dataGridView1.DataSource <span style="color:#f92672">=</span> table;
-</span></span></code></pre></div><h2 id="3-插入">3. 插入</h2>
-<p>也可以执行Update、Delete等DML语句。</p> <a class="read-more" href="/cnblogs/post/sqlite.net.core/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-02-19T19:18:08&#43;08:00">
-            19 Feb 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp-tryvalue/">Try Value</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h2 id="get-value-by-key">Get Value by Key</h2>
-<ul>
-<li>GetValueOrDefault</li>
-</ul>
-<blockquote>
-<p>.net core</p>
-</blockquote>
-<ul>
-<li>TryGetValue</li>
-</ul>
-<blockquote>
-<p>fx</p>
-</blockquote>
-<h3 id="getvalueordefault"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.collectionextensions.getvalueordefault">GetValueOrDefault</a></h3>
-<pre tabindex="0"><code>Dictionary&lt;string, string&gt; m_kbd = new Dictionary&lt;string, string&gt;();
-result += m_kbd.GetValueOrDefault(kbd.Key);
-</code></pre><h3 id="trygetvalue"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2.trygetvalue">TryGetValue</a></h3>
-<pre tabindex="0"><code>Dictionary&lt;string, string&gt; m_kbd = new Dictionary&lt;string, string&gt;();
-result += m_kbd.TryGetValue(kbd.Key, out var value)? value : null;
-</code></pre><h2 id="get-an-integer-from-a-string">Get an integer from a string</h2>
-<ul>
-<li>TryParse</li>
-</ul>
-<h3 id="tryparse"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.int32.tryparse">TryParse</a></h3>
-<pre tabindex="0"><code>string itostr(string val)
-{
-    string result = &#34;&#34;;
-    int iVal = 0;
-
-    if (Int32.TryParse(val, out iVal))
-    {
-        val = &#34;_&#34; + val;
-    }
-
-    result = val;
-
-    return result;
-}
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history">The history of C#</a></li>
-<li><a href="https://github.com/dotnet/runtime/issues/23651#issuecomment-332634353">GetValueOrDefault available for IReadOnlyDictionary but not IDictionary</a></li>
-<li><a href="https://stackoverflow.com/a/67204390">C# System.Collections.Generic cannot use GetValueOrDefault method</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/asp-tryvalue/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-02-09T09:08:08&#43;08:00">
-            9 Feb 2026
         </time>
     </footer>
 </article>
