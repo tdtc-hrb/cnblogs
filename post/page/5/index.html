@@ -153,13 +153,716 @@
 	
 	    <a class="newer-posts" href="/cnblogs/post/page/4/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 5 of 7</span>
+	<span class="page-number">Page 5 of 8</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/6/">Older Posts &rarr;</a>
 	
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f188_memory-map-banks/">Memory Map Banks - PIC</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Ver 0.1</p>
+<h2 id="data-memory-organization">Data Memory Organization</h2>
+<ul>
+<li>Core Registers</li>
+<li>Special Function Registers</li>
+<li>General Purpose RAM(GPR) <br>
+80 Bytes</li>
+<li>Common RAM <br>
+Accesses 70h~7Fh</li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/partitioning188.png" alt="Banked Memory Partitioning - 18857/77"></p>
+<h3 id="core-registers">Core Registers</h3>
+<blockquote>
+<p>4.3.2 Core Registers
+Table 4-3. Core Registers:</p>
+</blockquote>
+<table>
+	<thead>
+			<tr>
+					<th>Addresses in BANKx</th>
+					<th>Core Registers</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>x00h or x80h</td>
+					<td>INDF0</td>
+			</tr>
+			<tr>
+					<td>x01h or x81h</td>
+					<td>INDF1</td>
+			</tr>
+			<tr>
+					<td>x02h or x82h</td>
+					<td>PCL</td>
+			</tr>
+			<tr>
+					<td>x03h or x83h</td>
+					<td>STATUS</td>
+			</tr>
+			<tr>
+					<td>x04h or x84h</td>
+					<td>FSR0L</td>
+			</tr>
+			<tr>
+					<td>x05h or x85h</td>
+					<td>FSR0H</td>
+			</tr>
+			<tr>
+					<td>x06h or x86h</td>
+					<td>FSR1L</td>
+			</tr>
+			<tr>
+					<td>x07h or x87h</td>
+					<td>FSR1H</td>
+			</tr>
+			<tr>
+					<td>x08h or x88h</td>
+					<td>BSR</td>
+			</tr>
+			<tr>
+					<td>x09h or x89h</td>
+					<td>WREG</td>
+			</tr>
+			<tr>
+					<td>x0Ah or x8Ah</td>
+					<td>PCLATH</td>
+			</tr>
+			<tr>
+					<td>x0Bh or x8Bh</td>
+					<td>INTCON</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="memory-map-bank-0-7">Memory Map Bank 0-7</h3>
+<blockquote>
+<p>Table 3-5 PIC16(L)F18877</p> <a class="read-more" href="/cnblogs/post/e-pic16f188_memory-map-banks/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-05-18T18:08:08&#43;08:00">
+            18 May 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f188_status-register/">PIC的 STATUS Register</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Ver 0.1</p>
+<h1 id="status-register">STATUS Register</h1>
+<table>
+	<thead>
+			<tr>
+					<th>name</th>
+					<th>Bit</th>
+					<th>access</th>
+					<th>reset</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><SPAN style="TEXT-DECORATION: overline">TO</SPAN></td>
+					<td>4</td>
+					<td>R</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td><SPAN style="TEXT-DECORATION: overline">PD</SPAN></td>
+					<td>3</td>
+					<td>R</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>Z</td>
+					<td>2</td>
+					<td>R/W</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>DC</td>
+					<td>1</td>
+					<td>R/W</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>C</td>
+					<td>0</td>
+					<td>R/W</td>
+					<td>0</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="time-out">Time-Out</h2>
+<p>Watchdog overflow. <br>
+Bit is set after turning on the supply and execution of CLRWDT and SLEEP instructions. <br>
+Bit is reset when watchdog gets to the end signaling that overflow took place.</p>
+<p>1 = overflow did not occur <br>
+0 = overflow did occur</p> <a class="read-more" href="/cnblogs/post/e-pic16f188_status-register/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-05-18T12:08:08&#43;08:00">
+            18 May 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f188_register-definitions/">PIC的 Register Definitions: Configuration Words</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Ver: 0.1</p>
+<h2 id="41-configuration-words">4.1 Configuration Words</h2>
+<p>TABLE 4-1: CONFIGURATION WORD LOCATIONS</p>
+<table>
+	<thead>
+			<tr>
+					<th>Configuration Word</th>
+					<th>Location</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>CONFIG1</td>
+					<td>8007h</td>
+			</tr>
+			<tr>
+					<td>CONFIG2</td>
+					<td>8008h</td>
+			</tr>
+			<tr>
+					<td>CONFIG3</td>
+					<td>8009h</td>
+			</tr>
+			<tr>
+					<td>CONFIG4</td>
+					<td>800Ah</td>
+			</tr>
+			<tr>
+					<td>CONFIG5</td>
+					<td>800Bh</td>
+			</tr>
+	</tbody>
+</table>
+<p>Note: The DEBUG bit in Configuration Words is managed automatically by device
+development tools including debuggers and programmers. For normal device
+operation, this bit should be maintained as a ‘1’</p>
+<h2 id="42-register-definitions-configuration-word">4.2 Register Definitions: Configuration Word</h2>
+<p>Legend:</p>
+<ul>
+<li>R:   Readable bit</li>
+<li>P:   Programmable bit</li>
+<li>U:   Unimplemented bit, read as &lsquo;1&rsquo;</li>
+<li>&lsquo;0&rsquo;: Bit is cleared</li>
+<li>&lsquo;1&rsquo;: Bit is set</li>
+<li>n:   Value when blank or after Bulk Erase</li>
+</ul>
+<h3 id="421-config1">4.2.1 CONFIG1</h3>
+<ul>
+<li>Name:   OSCILLATORS</li>
+<li>Offset: 0x8007</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>13</th>
+					<th>12</th>
+					<th>11</th>
+					<th>10</th>
+					<th>9</th>
+					<th>8</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>FCMEN</td>
+					<td>Reserved</td>
+					<td>CSWEN</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td><SPAN style="TEXT-DECORATION: overline">CLKOUTEN</SPAN></td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>-</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>1</td>
+					<td>-</td>
+					<td>1</td>
+					<td>-</td>
+					<td>-</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>7</th>
+					<th>6 ~ 4</th>
+					<th>3</th>
+					<th>2 ~ 0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>Reserved</td>
+					<td>RSTOSC&lt;2:0&gt;</td>
+					<td>Reserved</td>
+					<td>FEXTOSC&lt;2:0&gt;</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>-</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>-</td>
+					<td>1</td>
+					<td>-</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-13--fcmen-fall-safe-clock-monitor-enable-bit">Bit 13 – FCMEN: Fall-Safe Clock Monitor Enable Bit</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = ON</td>
+					<td>FSCM timer enabled</td>
+			</tr>
+			<tr>
+					<td>0 = OFF</td>
+					<td>FSCM timer disabled</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-11---cswen-clock-switch-enable-bit">Bit 11 - CSWEN: Clock Switch Enable bit</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = ON</td>
+					<td>Writing to NOSO and NDIV is allowed</td>
+			</tr>
+			<tr>
+					<td>0 = OFF</td>
+					<td>The NOSC and NDIV bits cannot be changed by user software</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-8--clkouten-clock-out-enable-bit">Bit 8 – <SPAN style="TEXT-DECORATION: overline">CLKOUTEN</SPAN> Clock Out Enable bit</h4>
+<p>if FEXTOSC = EC(high, mid or low) or Not Enabled:</p> <a class="read-more" href="/cnblogs/post/e-pic16f188_register-definitions/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-05-18T10:08:08&#43;08:00">
+            18 May 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_instruction-set/">8位单片机PIC汇编语言</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>TABLE 1-1: OPCODE FIELD DESCRIPTIONS</p>
+<table>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>f</td>
+					<td>Register file address (0x00 to 0x7F)</td>
+			</tr>
+			<tr>
+					<td>W</td>
+					<td>Working register (accumulator)</td>
+			</tr>
+			<tr>
+					<td>d</td>
+					<td>Destination select;</td>
+			</tr>
+			<tr>
+					<td>b</td>
+					<td>Bit address within an 8-bit file register</td>
+			</tr>
+			<tr>
+					<td>k</td>
+					<td>Literal field, constant data or label</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>d value</th>
+					<th>where the results are placed</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>d = 0</td>
+					<td>W(orking) register</td>
+			</tr>
+			<tr>
+					<td>d = 1</td>
+					<td>file register; Default is d = 1.</td>
+			</tr>
+	</tbody>
+</table>
+<p>TABLE 1-2: ABBREVIATION DESCRIPTIONS</p>
+<p>|Field| Description|
+| PC | Program Counter|
+| TO | Time-Out bit|
+| C  | Carry bit|
+| DC | Digit Carry bit|
+| Z  | Zero bit|
+| PD | Power-Down bit|</p> <a class="read-more" href="/cnblogs/post/e-pic16f_instruction-set/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-05-17T10:08:08&#43;08:00">
+            17 May 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-proteus_component-designing/">Component Designing in Proteus ISIS</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="create">Create</h1>
+<p><img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS51.jpg.webp?ssl=1" alt=""></p>
+<p>First of all select the 2D Graphics Box Mode as shown in the below figure.
+<img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS.jpg.webp?ssl=1" alt=""></p>
+<p>Now click on the workspace and drag the cursor to create a box, as shown in the below figure.
+<img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS2.jpg.webp?ssl=1" alt=""></p>
+<p>We have created the body of our component, now there&rsquo;s a need to add pins in it. <br>
+For this, click on the Device Pins Mode as shown in the below figure and click on the workspace.</p> <a class="read-more" href="/cnblogs/post/e-proteus_component-designing/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-05-16T10:08:08&#43;08:00">
+            16 May 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp.net6-mvc/">3小时搞定ASP.NET Core 6.0</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>OS <br>
+<a href="https://github.com/dotnet/core/blob/main/release-notes/6.0/supported-os.md">Windows 10 LTSB 2016+</a></li>
+<li>IDE <br>
+<a href="https://code.visualstudio.com/download">Visual Studio Code</a> - v1.76.1</li>
+<li>SDK <br>
+<a href="https://dotnet.microsoft.com/download/dotnet/6.0">.Net 6.0</a></li>
+<li>终端(Terminal) <br>
+<a href="https://github.com/PowerShell/PowerShell#get-powershell">PowerShell Core</a></li>
+<li>数据库(Database) <br>
+<a href="https://dev.mysql.com/downloads/mysql/">MySQL</a> / Microsoft SQL Server 2012 Express LocalDB (vs2013 inside)</li>
+</ul>
+<h1 id="一create-projectvs-code">一、Create Project(VS Code)</h1>
+<ul>
+<li>Init project</li>
+</ul>
+<blockquote>
+<p>Terminal -&gt; New Terminal</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd .<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>dotnet new mvc -o veic_web --framework net6.0
+</span></span></code></pre></div><ul>
+<li>Set workspace dir</li>
+</ul>
+<blockquote>
+<p>File -&gt; Add Folder to Workspace</p>
+</blockquote>
+<h2 id="设置缺省首页home-set-default">设置缺省首页(Home Set Default)</h2>
+<ul>
+<li>Program.cs</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>app.UseStaticFiles();
+</span></span></code></pre></div><p>变更为:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>app.UseDefaultFiles();
+</span></span><span style="display:flex;"><span>app.UseStaticFiles();
+</span></span></code></pre></div><ul>
+<li>Html <br>
+新建wwwroot/index.html，See附录<sup>1</sup>.</li>
+</ul>
+<h2 id="run">Run</h2>
+<pre tabindex="0"><code>Run -&gt; Start Debugging
+</code></pre><p>运行效果:
+<img src="https://img-blog.csdnimg.cn/20201102052153747.png" alt="home page"></p>
+<h1 id="二data">二、Data</h1>
+<p>namespace:</p> <a class="read-more" href="/cnblogs/post/asp.net6-mvc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-03-14T08:18:02&#43;08:00">
+            14 Mar 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/java-jmx-ch2/">jmx - first demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Starting with the J2SE platform 5.0, JMX technology is included in the Java SE platform.</p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Jmxarchitecture.png" alt="Jmx architecture"></p>
+<ul>
+<li>jmxtools
+Download the <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.jar">jar</a>
+and <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.pom">pom</a> files,
+Then copy it to the M2 directory.
+M2:</li>
+</ul>
+<pre tabindex="0"><code>C:\Users\tdtc\.m2\repository\com\sun\jdmk\jmxtools\1.2.1
+</code></pre><ul>
+<li><a href="https://www.manning.com/downloads/737">Source</a></li>
+</ul>
+<h1 id="project">project</h1>
+<p>. <br>
+|____src <br>
+| |____main <br>
+| | |____java <br>
+| | | |____jmxbook.ch2 <br>
+|____pom.xml</p>
+<p>Gen jar:</p>
+<pre tabindex="0"><code>mvn package
+</code></pre><ul>
+<li>pom.xml</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;modelVersion&gt;</span>4.0.0<span style="color:#f92672">&lt;/modelVersion&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>jmxbook<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>jmxInAction<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;version&gt;</span>0.0.1-SNAPSHOT<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;build/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;repositories&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;repository&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;id&gt;</span>datanucleus.org/downloads/maven2<span style="color:#f92672">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;name&gt;</span>datanucleus.org Maven Repository<span style="color:#f92672">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;url&gt;</span>http://www.datanucleus.org/downloads/maven2/<span style="color:#f92672">&lt;/url&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/repository&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/repositories&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/com.sun.jdmk/jmxtools --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;groupId&gt;</span>com.sun.jdmk<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;artifactId&gt;</span>jmxtools<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;version&gt;</span>1.2.1<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span>
+</span></span></code></pre></div><h2 id="the-agent-level">The Agent level</h2>
+<p>HelloAgent.java:</p> <a class="read-more" href="/cnblogs/post/java-jmx-ch2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-02-08T08:08:08&#43;08:00">
+            8 Feb 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_spark_rhel/">spark安装</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Spark <br>
+v3.1</li>
+<li>OS <br>
+RHEL8(Alma / Rocky Linux)</li>
+</ul>
+<h1 id="一基础软件">一、基础软件</h1>
+<h2 id="1-r-lang">1. R-lang</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dnf -y install epel-release
+</span></span><span style="display:flex;"><span>$ sudo dnf  --enablerepo<span style="color:#f92672">=</span>powertools install R
+</span></span></code></pre></div><blockquote>
+<p>注意：如果Java没有安装，会附带着安装OpenJDK。</p>
+</blockquote>
+<h2 id="2-scala">2. Scala</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wget https://downloads.lightbend.com/scala/2.12.17/scala-2.12.17.tgz
+</span></span><span style="display:flex;"><span>$ tar xvf scala-2.12.17.tgz
+</span></span><span style="display:flex;"><span>$ sudo mv scala-2.12.17 /usr/lib
+</span></span><span style="display:flex;"><span>$ sudo ln -s /usr/lib/scala-2.12.17 /usr/lib/scala
+</span></span></code></pre></div><h3 id="1-add-path">1) add path</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$vi ~/.bashrc
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$PATH:/usr/lib/scala/bin
+</span></span></code></pre></div><h1 id="二spark">二、Spark</h1>
+<h2 id="1-down--unzip">1. down &amp; unzip</h2>
+<blockquote>
+<p><a href="https://www.apache.org/dyn/closer.lua/spark/spark-3.1.3/spark-3.1.3-bin-hadoop2.7.tgz">v3.1.3</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir -p ~/app/spark
+</span></span><span style="display:flex;"><span>$ tar zxvf spark-3.1.3-bin-hadoop2.7.tgz -C ~/app/spark
+</span></span><span style="display:flex;"><span>$ mv ~/app/spark/spark-3.1.3-bin-hadoop2.7 ~/app/spark/3.1.3
+</span></span></code></pre></div><h2 id="2-test">2. test</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd ~/app/spark/3.1.3
+</span></span><span style="display:flex;"><span>$ ./bin/spark-shell --master local<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>input:</p> <a class="read-more" href="/cnblogs/post/ops_spark_rhel/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-10-10T00:08:08&#43;08:00">
+            10 Oct 2022
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/redis-rhel-setup/">Redis Server installation FAQs</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>OS: RHEL Community Minimal</p>
+</blockquote>
+<ul>
+<li>AlmaLinux 8.x</li>
+<li>RockyLinux 8.x</li>
+<li>CentOS 7.9</li>
+</ul>
+<p>Root Permission:</p>
+<pre tabindex="0"><code>$su - root
+</code></pre><h1 id="0-open-files">0) open files</h1>
+<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#ulimit -a</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/systemd/system/redis.service</span>
+</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>LimitNOFILE=10032
+</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
+<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/sysctl.conf</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>net.core.somaxconn=1024
+</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
+<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
+To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
+for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-rhel-setup/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-10-08T08:08:08&#43;08:00">
+            8 Oct 2022
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -236,562 +939,12 @@ there is no way this issue will be fixed, Redis &gt;= 6 will require a C11 compi
 </article>
 
 	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_keepalived-v2/">安装配置Keepalived - v2</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>OS: AlmaLinux/RockyLinux minimal(VBox v6.1.38)</p>
-</blockquote>
-<p>Virtual Box Network configure:</p>
-<ul>
-<li>Attached to</li>
-</ul>
-<pre tabindex="0"><code>Bridged Adapter
-</code></pre><ul>
-<li>Advanced <br>
-promiscuous mode:</li>
-</ul>
-<pre tabindex="0"><code>Allow All
-</code></pre><h1 id="一安装">一、安装</h1>
-<p>prepare tool:</p>
-<ul>
-<li>RHEL7</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#yum install gcc make autoconf automake openssl-devel libnl3-devel \</span>
-</span></span><span style="display:flex;"><span>    iptables-devel ipset-devel net-snmp-devel libnfnetlink-devel file-devel <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>    glib2-devel pcre2-devel libnftnl-devel libmnl-devel systemd-devel kmod-devel
-</span></span></code></pre></div><ul>
-<li>RHEL8 <br>
-powertools:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf --enablerepo=powertools install ipset-devel libnfnetlink-devel file-devel libnftnl-devel kmod-devel pcre2-devel</span>
-</span></span></code></pre></div><p>none:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf install gcc make autoconf automake openssl-devel libnl3-devel \</span>
-</span></span><span style="display:flex;"><span>    iptables-devel net-snmp-devel <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>    glib2-devel libmnl-devel systemd-devel git
-</span></span></code></pre></div><p>LVS manager:</p> <a class="read-more" href="/cnblogs/post/ops_keepalived-v2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-10-06T08:38:08&#43;08:00">
-            6 Oct 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_openjdk_rhel/">设置OpenJDK</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>RHEL Community Version <br>
-Alma Linux / Rocky Linux</li>
-</ul>
-<h1 id="1-install">1. install</h1>
-<p>jre:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install java -y
-</span></span></code></pre></div><h2 id="jdk">jdk</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install java-1.8.0-openjdk-devel
-</span></span></code></pre></div><h1 id="2-set-path">2. set path</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo vi /etc/profile
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export JAVA_HOME<span style="color:#f92672">=</span>/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.345.b01-1.el8_6.x86_64
-</span></span><span style="display:flex;"><span>export CLASSPATH<span style="color:#f92672">=</span>.:$JAVA_HOME/jre/lib/:.
-</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$PATH:$JAVA_HOME/bin
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$su - root
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#source /etc/profile</span>
-</span></span></code></pre></div><h2 id="about-path">About path</h2>
-<p><a href="https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/installation_guide/install_openjdk_on_red_hat_enterprise_linux">3.3. INSTALL OPENJDK ON RED HAT ENTERPRISE LINUX</a> - 2.Optional: Set the JAVA_HOME environment variable</p>
-<h1 id="reference">Reference</h1>
-<ul>
-<li><a href="https://linuxize.com/post/install-java-on-centos-7/">How to install Java on CentOS 7</a></li>
-<li><a href="https://wiki.openjdk.java.net/display/jdk8u/Main">OpenJDK Version Info</a> - Releases</li>
-</ul> <a class="read-more" href="/cnblogs/post/ops_openjdk_rhel/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-10-04T08:08:08-08:00">
-            4 Oct 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/css-bulma-tabs/">tabs 实现</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="html">html</h1>
-<p>Note: The header and body are wrapped with div!</p>
-<pre tabindex="0"><code>&lt;div id=&#34;tabs-with-content&#34;&gt;
-&lt;/div&gt;
-</code></pre><h2 id="header">Header</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tabs is-centered&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
-</span></span></code></pre></div><h2 id="body">Body</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tabs is-centered&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">table</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;table&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">tbody</span>&gt;
-</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= image_tag &#34;#{@image.name}&#34; %&gt;
-</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @product.description %&gt;
-</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">tbody</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">table</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @parameter.ipxx %&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
-</span></span></code></pre></div><h1 id="javascript">javascript</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsWithContent</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabs</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tabs li&#39;</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsContent</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tab-content&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">deactvateAllTabs</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hideTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tabContent</span>) {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tabContent</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">activateTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>[<span style="color:#a6e22e">getIndex</span>(<span style="color:#a6e22e">tab</span>)].<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">getIndex</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">el</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [...<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">parentElement</span>.<span style="color:#a6e22e">children</span>].<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">el</span>);
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">deactvateAllTabs</span>();
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">hideTabsContent</span>();
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">activateTabsContent</span>(<span style="color:#a6e22e">tab</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>  })
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">click</span>();
-</span></span><span style="display:flex;"><span>})();
-</span></span></code></pre></div><h1 id="ref">Ref</h1>
-<ul>
-<li><a href="https://eiji.dev/bulma-tabs-with-content.html">Bulma: Tabs with Content</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/css-bulma-tabs/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-07-27T00:26:39&#43;08:00">
-            27 Jul 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/es24-install/">Elasticsearch 2.4 安装</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>Ubuntu 20.04.1</p>
-</blockquote>
-<h1 id="part-i-elasticsearch">Part I. Elasticsearch</h1>
-<h2 id="1-install-jdk">1. install JDK</h2>
-<h3 id="1-down-jdk8">1) down jdk8</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u332-b09/OpenJDK8U-jdk_x64_linux_hotspot_8u332b09.tar.gz
-</span></span></code></pre></div><p>unzip:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo mkdir /usr/java
-</span></span><span style="display:flex;"><span>$sudo tar zxvf OpenJDK8U-jdk_x64_linux_hotspot_8u332b09.tar.gz -C /usr/java
-</span></span></code></pre></div><h3 id="2-setup">2) setup</h3>
-<blockquote>
-<p>root:</p>
-<blockquote>
-<p>$sudo -sH</p>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export JAVA_HOME=/usr/java/jdk8u332-b09&#39;</span> &gt;&gt; /etc/bash.bashrc
-</span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export CLASSPATH=$JAVA_HOME/lib/:.&#39;</span> &gt;&gt; /etc/bash.bashrc
-</span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export PATH=$PATH:$JAVA_HOME/bin&#39;</span> &gt;&gt; /etc/bash.bashrc
-</span></span><span style="display:flex;"><span>$source /etc/bash.bashrc
-</span></span></code></pre></div><h3 id="3-test">3) test</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -version
-</span></span><span style="display:flex;"><span>echo $JAVA_HOME
-</span></span></code></pre></div><h2 id="2-elasticsearch-exec-pack">2. Elasticsearch exec pack</h2>
-<h3 id="1-down">1) down</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -L -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.6/elasticsearch-2.4.6.tar.gz
-</span></span></code></pre></div><p>unzip:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xvf elasticsearch-2.4.6.tar.gz
-</span></span></code></pre></div><h3 id="2-config">2) config</h3>
-<blockquote>
-<p>../config/elasticsearch.yml</p>
-</blockquote>
-<h4 id="network">network</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>network.host: 0.0.0.0
-</span></span><span style="display:flex;"><span>http.port: <span style="color:#ae81ff">9200</span>
-</span></span></code></pre></div><h4 id="bootstrap">bootstrap</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bootstrap.system_call_filter: false
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>bootstrap.seccomp: false
-</span></span></code></pre></div><h4 id="max-map-count">max map count</h4>
-<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html">/etc/sysctl.conf</a></p> <a class="read-more" href="/cnblogs/post/es24-install/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-05-25T18:08:08&#43;08:00">
-            25 May 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/trace-zipkin-config/">Distributed traceability with Spring Cloud: Sleuth and Zipkin</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="i-sleuth">I. Sleuth</h1>
-<h2 id="0-concept">0. Concept</h2>
-<ul>
-<li>
-<p>Trace <br>
-A set of spans that form a call tree structure, forms the trace of the request.</p>
-</li>
-<li>
-<p>Span <br>
-It is the basic unit of work, for example a call to a service.
-They are identified with a span ID and a trace ID to which span is owned.
-They have start and end, and with it you get track the response time between requests.</p>
-</li>
-<li>
-<p>Tag <br>
-Key/value pair that identifies certain information in the span.
-It doesn&rsquo;t contain timestamps, it just identifies.
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181202033721712.png" alt="ms info">
-<strong>Annotation:</strong> Used to record the existence of an event in time.
-With <a href="https://github.com/openzipkin/brave">Brave</a> instrumentation,
-we no longer need to set special events for Zipkin to understand who the client and server are,
-where the request started, and where it ended.
-For learning purposes, however, we mark these events to highlight what kind of an action took place.</p> <a class="read-more" href="/cnblogs/post/trace-zipkin-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-05-25T08:08:08&#43;08:00">
-            25 May 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/mq-kafka-config/">Install and Configure Apache Kafka</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="i-installation">I. Installation</h1>
-<p>The installation environment must have JDK, verify that you enter:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -version
-</span></span></code></pre></div><h2 id="1-down">1. down</h2>
-<p>Install server-side versions based on the jar downloaded by maven,
-such as my &ldquo;C:\Users\tdtc.m2\repository\org\apache\kafka\kafka-clients\3.0.1&rdquo;</p>
-<p>And choose Scala version based on pom,
-such as my &ldquo;C:\Users\tdtc.m2\repository\org\springframework\cloud\spring-cloud-stream-binder-kafka\3.2.4\spring-cloud-stream-binder-kafka-3.2.4.pom&rdquo;</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://archive.apache.org/dist/kafka/3.0.1/kafka_2.13-3.0.1.tgz
-</span></span></code></pre></div><h2 id="2-unzip">2. unzip</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$tar zxvf kafka_2.13-3.0.1.tgz
-</span></span></code></pre></div><h1 id="ii-configuration">II. Configuration</h1>
-<blockquote>
-<p>server.properties</p>
-</blockquote>
-<h2 id="1-necessary-settings">1. Necessary settings</h2>
-<h3 id="1-basic">1) basic</h3>
-<h4 id="listener">listener</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>listeners<span style="color:#f92672">=</span>PLAINTEXT://your_IP:9092
-</span></span></code></pre></div><h4 id="logs">logs</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$mkdir HOME/kafka_2.13-3.0.1/logs
-</span></span></code></pre></div><h3 id="2-cluster">2) cluster</h3>
-<p>Sets the natural number of the broker ID to non-zero. <br>
-Host1:</p> <a class="read-more" href="/cnblogs/post/mq-kafka-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-05-16T18:08:08&#43;08:00">
-            16 May 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp.net6-restful/">ASP.net Core 的RESTful应用</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>使用Scaffolder模板创建api。</p>
-<ul>
-<li>PowerShell v5.1</li>
-<li>IDE: Visual Studio Code/<a href="https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes">Visual Studio 2022</a></li>
-<li>NuGet</li>
-</ul>
-<blockquote>
-<p>..\AppData\Roaming\NuGet\NuGet.Config</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageSources&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;api.nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://api.nuget.org/v3/index.json&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageSources&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/configuration&gt;</span>
-</span></span></code></pre></div><h1 id="create-project">Create Project</h1>
-<p>vs code</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new webapi -o MyWebApp --package Swashbuckle.AspNetCore:PackageVersion<span style="color:#f92672">=</span>6.2.3
-</span></span></code></pre></div><h3 id="add-nuget-package">add NuGet package</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add package Microsoft.EntityFrameworkCore
-</span></span><span style="display:flex;"><span>dotnet add package MySql.EntityFrameworkCore
-</span></span><span style="display:flex;"><span>dotnet add package Microsoft.EntityFrameworkCore.Tools
-</span></span></code></pre></div><h3 id="option-nuget-package">Option NuGet package</h3>
-<p>Pomelo:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CLI&gt; dotnet add package Pomelo.EntityFrameworkCore.MySql
-</span></span></code></pre></div><h2 id="test">Test</h2>
-<p><a href="https://localhost:5001/swagger/index.html">Browser</a></p>
-<h1 id="models">Models</h1>
-<p>建立Entity类：Supplier、Product、Category</p>
-<h2 id="dbcontext">DbContext</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>public class StorageBuyDbContext : DbContext
-</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    public StorageBuyDbContext<span style="color:#f92672">(</span>DbContextOptions&lt;StorageBuyDbContext&gt; options<span style="color:#f92672">)</span> : base<span style="color:#f92672">(</span>options<span style="color:#f92672">){}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    public DbSet&lt;Category&gt; Categories <span style="color:#f92672">{</span> get; set; <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>    public DbSet&lt;Supplier&gt; Suppliers <span style="color:#f92672">{</span> get; set; <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>    public DbSet&lt;Product&gt; Products <span style="color:#f92672">{</span> get; set; <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h2 id="add-service">add service</h2>
-<h3 id="add-connectiong-string">add connectiong string</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>&#34;Data&#34;: {
-</span></span><span style="display:flex;"><span>  &#34;StorageBuy&#34;: {
-</span></span><span style="display:flex;"><span>    &#34;ConnectionString&#34;: &#34;server=127.0.0.1; user id=DBAdmin; password=xbfirst; database=storagebuy; pooling=false; Convert Zero Datetime=True;&#34;
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="add-mysql">add mysql</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>services.AddDbContext&lt;StorageBuyDbContext&gt;<span style="color:#f92672">(</span>options <span style="color:#f92672">=</span>&gt;
-</span></span><span style="display:flex;"><span>    options.UseMySQL<span style="color:#f92672">(</span>Configuration<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;Data:StorageBuy:ConnectionString&#34;</span><span style="color:#f92672">])</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>;
-</span></span></code></pre></div><h1 id="数据表">数据表</h1>
-<p>install ef-tool</p> <a class="read-more" href="/cnblogs/post/asp.net6-restful/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2021-11-11T12:38:08&#43;08:00">
-            11 Nov 2021
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp.net6-grpc/">ASP.net Core 的gRPC Service应用</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>Server 在Ubuntu V20.04; Client 在Windows CMD运行。</p>
-</blockquote>
-<ul>
-<li>PowerShell Core v7.2</li>
-<li>IDE: VS2022 Community(v17.0)/VS Code(<a href="https://code.visualstudio.com/docs/containers/overview#_installation">docker extension</a>)</li>
-<li>VM: VBox(v6.1)</li>
-</ul>
-<h1 id="接口文件说明">接口文件说明</h1>
-<blockquote>
-<p>Protos/greet.proto</p>
-</blockquote>
-<h2 id="定义service">定义service</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>service Greeter <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  // Sends a greeting
-</span></span><span style="display:flex;"><span>  rpc SayHello <span style="color:#f92672">(</span>HelloRequest<span style="color:#f92672">)</span> returns <span style="color:#f92672">(</span>HelloReply<span style="color:#f92672">)</span> <span style="color:#f92672">{}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h2 id="定义message">定义message</h2>
-<ul>
-<li>request</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloRequest <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  string name <span style="color:#f92672">=</span> 1;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>response</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloReply <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  string message <span style="color:#f92672">=</span> 1;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h1 id="server">server</h1>
-<h2 class="tabset" id="create">Create</h2>
-<h3 id="vs2022">VS2022</h3>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20211109172442.png" alt="VS2022 pre1">
-注意：服务器需要docker支持！
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20211109173447.png" alt="VS2022 pre2"></p>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20211109174850.png" alt="VS2022 pre3"></p>
-<h3 id="vs-code">VS code</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new grpc -o GreeterServer
-</span></span></code></pre></div><h4 id="add-docke-file">add docke file</h4>
-<ul>
-<li>View -&gt; Command Palette(Ctrl+Shift+P)</li>
-</ul>
-<ul>
-<li>Enter: Docker fi</li>
-<li>choice1: Add Docker Files to Workspace&hellip;</li>
-<li>choice2: .NET: ASP.NET Core</li>
-<li>choice3: Linux</li>
-<li>Enter: 80</li>
-<li>choice4: No(Include compose file)</li>
-</ul>
-<h2 id="实现的service">实现的service</h2>
-<blockquote>
-<p>VS2022/vs code自动生成</p> <a class="read-more" href="/cnblogs/post/asp.net6-grpc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2021-11-09T20:38:18&#43;08:00">
-            9 Nov 2021
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp.net5-restful/">ASP.net Core 的RESTful应用</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>在发布具有历史意义的.net 5.0的2H前，写下此博文。
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201110005040.png" alt="windows msg1"></p>
-<ul>
-<li>PowerShell v5.1</li>
-<li>IDE: VS Code/VS 2019</li>
-<li>NuGet</li>
-</ul>
-<blockquote>
-<p>..\AppData\Roaming\NuGet\NuGet.Config</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageSources&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;api.nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://api.nuget.org/v3/index.json&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageSources&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/configuration&gt;</span>
-</span></span></code></pre></div><h1 class="tabset" id="create-project">Create Project</h1>
-<p>Choice vs2019 or vs code.</p>
-<ul>
-<li>VS Code</li>
-<li>VS 2019</li>
-</ul>
-<h2 id="vs2019">VS2019</h2>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201110010117.png" alt="VS2019 pre1"></p>
-<h3 id="add-nuget-packages">add NuGet packages</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package Microsoft.EntityFrameworkCore
-</span></span><span style="display:flex;"><span>Install-Package MySql.Data.EntityFrameworkCore
-</span></span><span style="display:flex;"><span>Install-Package Microsoft.EntityFrameworkCore.Tools
-</span></span></code></pre></div><h2 id="vs-code">vs code</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new webapi -o MyWebApp --package Swashbuckle.AspNetCore:PackageVersion<span style="color:#f92672">=</span>6.2.3
-</span></span></code></pre></div><h3 id="add-nuget-package">add NuGet package</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add package Microsoft.EntityFrameworkCore
-</span></span><span style="display:flex;"><span>dotnet add package MySql.EntityFrameworkCore
-</span></span><span style="display:flex;"><span>dotnet add package Microsoft.EntityFrameworkCore.Tools
-</span></span></code></pre></div><h2 id="test">Test</h2>
-<p><a href="https://localhost:5001/swagger/index.html">Browser</a></p>
-<h1 id="models">Models</h1>
-<p>建立Entity类：Supplier、Product、Category</p> <a class="read-more" href="/cnblogs/post/asp.net5-restful/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2021-10-23T12:08:08&#43;08:00">
-            23 Oct 2021
-        </time>
-    </footer>
-</article>
-
-	
 
 	<nav class="pagination" role="navigation">
 	
 	    <a class="newer-posts" href="/cnblogs/post/page/4/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 5 of 7</span>
+	<span class="page-number">Page 5 of 8</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/6/">Older Posts &rarr;</a>
 	

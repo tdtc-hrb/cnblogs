@@ -151,13 +151,361 @@
 	<div class="extra-pagination inner">
     <nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 7</span>
+	<span class="page-number">Page 1 of 8</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/2/">Older Posts &rarr;</a>
 	
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_psect/">psect - Pseudo instruction</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><pre tabindex="0"><code>PSECT psect_name, flags
+</code></pre><h3 id="table-4-10-psect-flags">Table 4-10. Psect Flags</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Flag</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>abs</td>
+					<td>psect is absolute.</td>
+			</tr>
+			<tr>
+					<td>bit</td>
+					<td>psect holds bit objects.</td>
+			</tr>
+			<tr>
+					<td>class=name</td>
+					<td>Specify class name for psect.</td>
+			</tr>
+			<tr>
+					<td>delta=size</td>
+					<td>Size of an addressing unit.</td>
+			</tr>
+			<tr>
+					<td>global</td>
+					<td>psect is global (default).</td>
+			</tr>
+			<tr>
+					<td>inline</td>
+					<td>psect contents (function) can be inlined when called.</td>
+			</tr>
+			<tr>
+					<td>keep</td>
+					<td>psect will not be deleted after inlining.</td>
+			</tr>
+			<tr>
+					<td>limit=address</td>
+					<td>Upper address limit of psect (PIC18 only).</td>
+			</tr>
+			<tr>
+					<td>local</td>
+					<td>psect is unique and will not link with others having the same name.</td>
+			</tr>
+			<tr>
+					<td>lowdata</td>
+					<td>psect will be entirely located below the 0x1000 address.</td>
+			</tr>
+			<tr>
+					<td>merge=allow</td>
+					<td>Allow or prevent merging of this psect.</td>
+			</tr>
+			<tr>
+					<td>noexec</td>
+					<td>For debugging purposes, this psect contains no executable code.</td>
+			</tr>
+			<tr>
+					<td>note</td>
+					<td>psect does not contain any data that should appear in the program image.</td>
+			</tr>
+			<tr>
+					<td>optim=optimizations</td>
+					<td>specify optimizations allowable with this psect.</td>
+			</tr>
+			<tr>
+					<td>ovrld</td>
+					<td>psect will overlap same psect in other modules.</td>
+			</tr>
+			<tr>
+					<td>pure</td>
+					<td>psect is to be read-only.</td>
+			</tr>
+			<tr>
+					<td>reloc=boundary</td>
+					<td>Start psect on specified boundary.</td>
+			</tr>
+			<tr>
+					<td>size=max</td>
+					<td>Maximum size of psect.</td>
+			</tr>
+			<tr>
+					<td>space=area</td>
+					<td>Represents area in which psect will reside.</td>
+			</tr>
+			<tr>
+					<td>split=allow</td>
+					<td>Allow or prevent splitting of this psect.</td>
+			</tr>
+			<tr>
+					<td>with=psect</td>
+					<td>Place psect in the same page as specified psect.</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers/xc8">MPLAB XC8</a></li>
+<li><a href="https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/UserGuides/MPLAB-XC8-PIC-Assembler-Users-Guide-DS50002974.pdf">MPLAB XC8 PIC Assembler Users Guide</a></li>
+<li><a href="https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/UserGuides/MPASM-to-MPLAB-XC8-PIC-Assembler-Migration-Guide-50002973.pdf">MPASM to MPLAB XC8 PIC Assembler Migration Guide</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/e-pic16f_psect/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-14T10:08:08&#43;08:00">
+            14 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic_as-tutor/">blinked - pic-as</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Why use PSECT instead of ORG directive? <br>
+PSECT (Program Section) handles code placement intelligently,
+preventing overlaps and managing placement across memory banks.
+PIC-AS linker resolves section placement automatically, whereas ORG in MPASM required manual address management.</li>
+</ul>
+<h3 id="blinked---pic-as">blinked - pic-as</h3>
+<pre tabindex="0"><code>    PROCESSOR   16F887
+#include &lt;xc.inc&gt;
+
+; _CONFIG1, _INTOSCIO &amp; _WDT_OFF &amp; _PWRTE_ON &amp; _MCLRE_ON &amp; _CP_OFF &amp; _CPD_OFF &amp; _BOR_OFF &amp; _IESO_OFF &amp; _FCMEN_OFF &amp; _LVP_OFF &amp; _DEBUG_ON
+  CONFIG  FOSC = INTRC_NOCLKOUT ; Oscillator Selection bits (INTOSCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin,I/O function on RA7/OSC1/CLKIN)
+  CONFIG  WDTE = OFF            ; Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
+  CONFIG  PWRTE = ON            ; Power-up Timer Enable bit (PWRT enabled)
+  CONFIG  MCLRE = ON            ; RE3/MCLR pin function select bit (RE3/MCLR pin function is MCLR)
+  CONFIG  CP = OFF              ; Code Protection bit (Program memory code protection is disabled)
+  CONFIG  CPD = OFF             ; Data Code Protection bit (Data memory code protection is disabled)
+  CONFIG  BOREN = OFF           ; Brown Out Reset Selection bits (BOR disabled)
+  CONFIG  IESO = OFF            ; Internal External Switchover bit (Internal/External Switchover mode is disabled)
+  CONFIG  FCMEN = ON            ; Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is enabled)
+  CONFIG  LVP = OFF             ; Low Voltage Programming Enable bit (RB3 pin has digital I/O,HV on MCLR must be used for programming)
+
+; CONFIG2
+  CONFIG  BOR4V = BOR21V        ; Brown-out Reset Selection bit (Brown-out Reset set to 2.1V)
+  CONFIG  WRT = OFF             ; Flash Program Memory Self Write Enable bits (Write protection off)
+
+    PSECT reset_vec,class=CODE,delta=2
+ResetVec:
+    PAGESEL Main
+    GOTO    Main
+
+    PSECT   common_data,class=COMMON,space=1,delta=1,noexec
+    GLOBAL  Count1,Count2
+
+Count1: ds 1
+Count2: ds 1
+
+    ; ORG   0
+    PSECT   main_code,class=CODE,delta=2
+Main:
+    BANKSEL     TRISB
+    bcf         TRISB,0
+    BANKSEL     PORTB
+Loop:
+    bcf         PORTB,0
+    CALL        Delay3
+    bsf         PORTB,0
+    CALL        Delay3
+    GOTO        Loop
+
+Delay3:
+    decfsz      Count1,1
+    GOTO        Delay3
+    decfsz      Count2,1
+    GOTO        Delay3
+    RETURN
+
+END
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://industrialmonitordirect.com/blogs/knowledgebase/pic-as-assembly-with-mplab-x-ide-620-setup-guide?srsltid=AfmBOooOw8SjjzN6KxWgEbtCPXzOBCSNqrQX6x-Pp8JLI16zWAXn_puM">PIC-AS Assembly with MPLAB X IDE 6.20 Setup Guide</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/e-pic_as-tutor/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-14T08:08:08&#43;08:00">
+            14 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_blink6/">PIC blinked - m2</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>blink188m2.asm:</p>
+<pre tabindex="0"><code>    title &#34;Blink V. 1.1&#34;
+    subtitle &#34;The uC Equivalent of Hello world&#34;
+; This program uses Assembly language to blink a small LED, using the PIC16F18877&#39;s onboard timers
+; and interrupts.  Use and modify this code however you wish
+
+; ***** Program Header *******************************************************************************
+    list P=PIC16F18877, ST=OFF, MM=OFF, N=42, B=4, W=1 ; &lt;-- List file directives
+    include &lt;p16f18877.inc&gt; ; &lt;--Use the name of your PIC here
+
+; ***** Device Configuration *************************************************************************
+    __CONFIG _CONFIG1, _FEXTOSC_OFF &amp; _RSTOSC_HFINT32 &amp; _CLKOUTEN_OFF &amp; _CSWEN_ON &amp; _FCMEN_ON
+    __CONFIG _CONFIG2, _MCLRE_ON &amp; _PWRTE_OFF &amp; _LPBOREN_OFF &amp; _BOREN_OFF &amp; _BORV_LO &amp; _ZCD_OFF &amp; _PPS1WAY_OFF &amp; _STVREN_ON
+    __CONFIG _CONFIG3, _WDTCPS_WDTCPS_31 &amp; _WDTE_OFF &amp; _WDTCWS_WDTCWS_7 &amp; _WDTCCS_SC
+    __CONFIG _CONFIG4, _WRT_OFF &amp; _SCANE_available &amp; _LVP_ON
+    __CONFIG _CONFIG5, _CP_OFF &amp; _CPD_OFF
+
+; ******* Main Program ********************************************************************************
+; Org 0 tells the compiler that this is literally the origin of the actual program, IE line 0
+; From hereon out, the compiler assumes that each instruction is to be executed sequentially.
+    org 0
+
+Start:
+    clrf    INTCON      ; Disable all interrupts
+    banksel PIE0
+    clrf    PIE0
+    clrf    PIE1
+    clrf    PIE2
+    clrf    PIE3
+    clrf    PIE4
+    clrf    PIE5
+    clrf    PIE6
+    clrf    PIE7
+    clrf    PIE8
+
+    banksel OSCCON1
+    movlw   0x62        ; System oscillator set to 8MHz
+    movwf   OSCCON1
+
+    banksel T0CON1
+    movlw   0x48        ; Set TIMER0 clock source to FOSC/4, scale 1:256 TIMER0 overflows every 32.768 milliseconds
+    movwf   T0CON1
+    banksel T0CON0
+    movlw   0x80        ; Start TIMER0
+    movwf   T0CON0
+
+    banksel ANSELB
+    clrf    ANSELB
+    banksel TRISB
+    movlw   0xF0
+    movwf   TRISB
+    banksel LATB
+    movwf   LATB
+
+    banksel TMR0L
+    clrf    TMR0L
+    movlw   0xFF
+    movwf   TMR0H
+    banksel PIR0
+    bcf     PIR0, TMR0IF
+
+    clrf    FSR1L
+    movlw   10
+    subwf   FSR1L,F
+    goto    AppLoop
+;
+; Application loop
+;
+AppLoop:
+    banksel LATB
+    movlw   1
+    xorwf   LATB,F      ; Toggle LED1
+    call    Delay
+    goto    AppLoop     ;loop forever
+;
+; Spin wait
+;
+Delay:
+    clrf    FSR0L
+    clrf    FSR0H
+    bsf     FSR0H,7
+Delay_1:
+    call    Delay_2
+    incfsz  FSR0L,F
+    goto    Delay_1
+    incfsz  FSR0H,F
+    goto    Delay_1
+    return
+;
+; Toggle LED2 when TIMER0 overflows
+;
+; Note: This delay always takes the same number
+;       of instruction cycles for each of
+;       three possible paths.
+;
+Delay_2:
+    banksel PIR0
+    btfss   PIR0, TMR0IF
+    goto    Delay_3
+    bcf     PIR0, TMR0IF
+    banksel FSR1L
+    movlw   10
+    incfsz  FSR1L,F
+    goto    Delay_4
+    subwf   FSR1L,F
+    movlw   2
+    xorwf   LATB,F      ; Toggle LED2
+    return
+Delay_3:
+    nop
+    nop
+    nop
+    nop
+    nop
+Delay_4:
+    nop
+    nop
+    return
+
+    end
+</code></pre> <a class="read-more" href="/cnblogs/post/e-pic16f_blink6/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-14T08:08:08&#43;08:00">
+            14 Jul 2026
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -741,332 +1089,10 @@ Note: The replaced program file version must be the same as the repo!</p> <a cla
 </article>
 
 	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow3-gcc/">size_t warning</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
-</ul>
-<hr>
-<p><strong>NOTE</strong></p>
-<h2 id="no-warning-messages-are-displayed-in-cdt">No warning messages are displayed in CDT.</h2>
-<h2 id="heapsort">heapsort</h2>
-<pre tabindex="0"><code>#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-// TIP To &lt;b&gt;Run&lt;/b&gt; code, press &lt;shortcut actionId=&#34;Run&#34;/&gt; or click the &lt;icon src=&#34;AllIcons.Actions.Execute&#34;/&gt; icon in the gutter.
-/**
- * Internal method for heapsort.
- * i is the index of an item in the heap.
- * Returns the index of the left child.
- */
-inline int leftChild( int i )
-{
-    return 2 * i + 1;
-}
-
-/**
- * Internal method for heapsort that is used in deleteMax and buildHeap.
- * i is the position from which to percolate down.
- * n is the logical size of the binary heap.
- */
-template &lt;typename Comparable&gt;
-void percDown( vector&lt;Comparable&gt; &amp; a, int i, int n )
-{
-    int child;
-    Comparable tmp;
-
-    for( tmp = std::move( a[ i ] ); leftChild( i ) &lt; n; i = child )
-    {
-        child = leftChild( i );
-        if( child != n-1 &amp;&amp; a[ child ] &lt; a[ child + 1 ] )
-            ++child;
-        if( tmp &lt; a[ child ] )
-            a[ i ] = std::move( a[ child ] );
-        else
-            break;
-    }
-    a[ i ] = std::move( tmp );
-}
-
-/**
- * Standard heapsort.
- */
-template &lt;typename Comparable&gt;
-void heapsort( vector&lt;Comparable&gt; &amp; a)
-{
-    for( int i = a.size( ) / 2- 1; i &gt;= 0; --i ) /* buildHeap */
-        percDown( a, i, a.size() );
-    for( int j = a.size( )- 1; j &gt; 0; --j )
-    {
-        std::swap( a[ 0 ], a[ j ] ); /* deleteMax */
-        percDown( a, 0, j );
-    }
-}
-
-int main() {
-    vector v = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
-    heapsort(v);
-
-    for(int i : v)
-        cout &lt;&lt; i &lt;&lt; &#34; &#34;;
-
-    return 0;
-    // TIP See CLion help at &lt;a href=&#34;https://www.jetbrains.com/help/clion/&#34;&gt;jetbrains.com/help/clion/&lt;/a&gt;. Also, you can try interactive lessons for CLion by selecting &#39;Help | Learn IDE Features&#39; from the main menu.
-}
-</code></pre><ul>
-<li>Warn info - vs2022</li>
-</ul>
-<pre tabindex="0"><code>ConsoleApplication1.cpp(45,16): warning C4267: &#39;initializing&#39;: conversion from &#39;size_t&#39; to &#39;int&#39;, possible loss of data
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
-<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
-<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow3-gcc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-03-21T11:08:08&#43;08:00">
-            21 Mar 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow4-gcc/">size_t warning</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
-</ul>
-<hr>
-<p><strong>NOTE</strong></p>
-<h2 id="no-warning-messages-are-displayed-in-cdt">No warning messages are displayed in CDT.</h2>
-<h2 id="mergesort">MergeSort</h2>
-<pre tabindex="0"><code>/**
- * Internal method that makes recursive calls.
- * a is an array of Comparable items.
- * tmpArray is an array to place the merged result.
- * left is the left-most index of the subarray.
- * right is the right-most index of the subarray.
- */
-template &lt;typename Comparable&gt;
-void mergeSort( vector&lt;Comparable&gt; &amp; a,
-                vector&lt;Comparable&gt; &amp; tmpArray, int left, int right )
-{
-    if( left &lt; right )
-    {
-        int center = ( left + right ) / 2;
-        mergeSort( a, tmpArray, left, center );
-        mergeSort( a, tmpArray, center + 1, right );
-        merge( a, tmpArray, left, center + 1, right );
-    }
-}
-
-/**
- * Mergesort algorithm (driver).
- */
-template &lt;typename Comparable&gt;
-void mergeSort( vector&lt;Comparable&gt; &amp; a )
-{
-    vector&lt;Comparable&gt; tmpArray( a.size( ) );
-
-    mergeSort( a, tmpArray, 0, a.size( ) - 1 );
-}
-</code></pre><ul>
-<li>merge</li>
-</ul>
-<pre tabindex="0"><code>/**
- * Internal method that merges two sorted halves of a subarray.
- * a is an array of Comparable items.
- * tmpArray is an array to place the merged result.
- * leftPos is the left-most index of the subarray.
- * rightPos is the index of the start of the second half.
- * rightEnd is the right-most index of the subarray.
- */
-template &lt;typename Comparable&gt;
-void merge( vector&lt;Comparable&gt; &amp; a, vector&lt;Comparable&gt; &amp; tmpArray,
-            int leftPos, int rightPos, int rightEnd )
-{
-    int leftEnd = rightPos - 1;
-    int tmpPos = leftPos;
-    int numElements = rightEnd - leftPos + 1;
-
-    // Main loop
-    while( leftPos &lt;= leftEnd &amp;&amp; rightPos &lt;= rightEnd )
-        if( a[ leftPos ] &lt;= a[ rightPos ] )
-            tmpArray[ tmpPos++ ] = std::move( a[ leftPos++ ] );
-        else
-            tmpArray[ tmpPos++ ] = std::move( a[ rightPos++ ] );
-
-    while( leftPos &lt;= leftEnd )    // Copy rest of first half
-        tmpArray[ tmpPos++ ] = std::move( a[ leftPos++ ] );
-
-    while( rightPos &lt;= rightEnd )  // Copy rest of right half
-        tmpArray[ tmpPos++ ] = std::move( a[ rightPos++ ] );
-
-    // Copy tmpArray back
-    for( int i = 0; i &lt; numElements; ++i, --rightEnd )
-        a[ rightEnd ] = std::move( tmpArray[ rightEnd ] );
-}
-</code></pre><ul>
-<li>main</li>
-</ul>
-<pre tabindex="0"><code>int main() {
-	vector v = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
-
-	mergeSort(v);
-
-    for(size_t i = 0; i &lt; v.size(); ++i)
-        cout &lt;&lt; v[i] &lt;&lt; &#34; &#34;;
-
-    return 0;
-}
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
-<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
-<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow4-gcc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-03-21T11:08:08&#43;08:00">
-            21 Mar 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow2-gcc/">Accessing map value by index</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup></p>
-<h3 id="define-and-use">define and use</h3>
-<ul>
-<li>aMap and bMap</li>
-</ul>
-<pre tabindex="0"><code>    std::map&lt;int, string&gt; aMap;
-    std::map&lt;int, string&gt; bMap;
-</code></pre><ul>
-<li>calc it</li>
-</ul>
-<pre tabindex="0"><code>    int a = getMapKey(aMap, 0);
-    int b = getMapKey(bMap, 0);
-</code></pre><h3 id="getmapkey">getMapKey</h3>
-<p><code>int getMapKey(std::map&lt;int, std::string&gt; myMap ,int index) { }</code></p>
-<ul>
-<li>next</li>
-</ul>
-<pre tabindex="0"><code>    auto it = myMap.begin();
-    auto it2 = std::next(it, index);
-    return it2-&gt;first;
-</code></pre><ul>
-<li>advance</li>
-</ul>
-<pre tabindex="0"><code>    auto it = myMap.begin();
-    std::advance(it, index);
-    return it-&gt;first;
-</code></pre><h4 id="diff">diff</h4>
-<table>
-	<thead>
-			<tr>
-					<th>std::next</th>
-					<th>std::advance</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>It is used to return nth successor of an iterator</td>
-					<td>It does not have any return type.</td>
-			</tr>
-			<tr>
-					<td>It takes two parameters that are -: number of elements and a iterator.</td>
-					<td>It takes two parameters number of elements and iterator</td>
-			</tr>
-			<tr>
-					<td>Its Time complexity in best case is constant</td>
-					<td>Its Time complexity in best case is constant</td>
-			</tr>
-			<tr>
-					<td>Its Time complexity in worst case is linear</td>
-					<td>Its Time complexity in worst case is linear</td>
-			</tr>
-	</tbody>
-</table>
-<h3 id="test">test</h3>
-<pre tabindex="0"><code>#include &lt;iostream&gt;
-#include &lt;map&gt;
-#include &lt;cmath&gt;
-
-int getMapKey(std::map&lt;int, std::string&gt; myMap ,int index) {
-    auto it = myMap.begin();
-    auto it2 = std::next(it, index);
-    return it2-&gt;first;
-}
-
-int main() {
-    std::map&lt;int, std::string&gt; aMap;
-    std::map&lt;int, std::string&gt; bMap;
-
-    aMap.insert(std::pair&lt;int, std::string&gt;(3, &#34;a&#34;));
-    bMap.insert(std::pair&lt;int, std::string&gt;(4, &#34;b&#34;));
-
-    int a = getMapKey(aMap, 0);
-    int b = getMapKey(bMap, 0);
-
-    int c = pow(a, 2) + pow(b, 2);
-
-    std::cout &lt;&lt; sqrt(c) &lt;&lt; std::endl;
-    return 0;
-}
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://stackoverflow.com/questions/7856453/accessing-map-value-by-index">Accessing map value by index</a></li>
-<li><a href="https://en.cppreference.com/w/cpp/iterator/advance.html">std::advance - c++17</a></li>
-<li><a href="https://en.cppreference.com/w/cpp/iterator/next.html">std::next - c++11</a></li>
-<li><a href="https://www.geeksforgeeks.org/cpp/stdnext-vs-stdadvance-in-cpp/">std::next vs std::advance in C++</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow2-gcc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-03-11T11:08:08&#43;08:00">
-            11 Mar 2026
-        </time>
-    </footer>
-</article>
-
-	
 
 	<nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 7</span>
+	<span class="page-number">Page 1 of 8</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/2/">Older Posts &rarr;</a>
 	

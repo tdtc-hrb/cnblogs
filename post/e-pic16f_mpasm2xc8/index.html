@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="MPASM to MPLAB XC8 PIC Assembler"/>
+<meta name="twitter:description" content="v0.1"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="MPASM to MPLAB XC8 PIC Assembler &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_mpasm2xc8/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="v0.1" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2023-06-18T08:08:08&#43;08:00" />
+
+    
+    
+
+    <title>MPASM to MPLAB XC8 PIC Assembler &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="v0.1" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.164.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_mpasm2xc8/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "MPASM to MPLAB XC8 PIC Assembler",
+    "name": "MPASM to MPLAB XC8 PIC Assembler",
+    "wordCount":  1708 ,
+    "timeRequired": "PT9M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "zh"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_mpasm2xc8/",
+    "datePublished": "2023-06-18T08:08Z",
+    "dateModified": "2023-06-18T08:08Z",
+    
+    
+    "description": "v0.1",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_mpasm2xc8/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">MPASM to MPLAB XC8 PIC Assembler</h1>
+        <small>v0.1</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2023-06-18T08:08:08&#43;08:00">
+            Jun 18, 2023
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <table>
+	<thead>
+			<tr>
+					<th>old</th>
+					<th>Alternate Products</th>
+					<th></th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><a href="https://www.microchip.com/en-us/product/PIC16F84">PIC16F84-1998</a></td>
+					<td>pic16f15243</td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><a href="https://www.microchip.com/en-us/product/PIC16F877A">PIC16F877a-2001</a></td>
+					<td>PIC16F18877</td>
+					<td></td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>
+<p>MPASM <br>
+<a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v5.35-windows-installer.exe">MPLAB X v5.35(x64) - 2020.02.21</a></p>
+</li>
+<li>
+<p>PIC-AS <br>
+<a href="https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide">MPLAB X v5.40+</a> and
+<a href="https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers/downloads-documentation#XC8">XC8 v2.41</a></p>
+</li>
+</ul>
+<h2 id="specific-controller">specific controller</h2>
+<table>
+	<thead>
+			<tr>
+					<th>MPASM</th>
+					<th>XC8 Assembler</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>LIST P = DeviceName</td>
+					<td>PROCESSOR   DeviceName</td>
+			</tr>
+	</tbody>
+</table>
+<p>LIST (indicates specific controller, e.g., LIST P=18F452) unique to PIC assembler.</p>
+<h2 id="include-files">Include Files</h2>
+<table>
+	<thead>
+			<tr>
+					<th>MPASM</th>
+					<th>XC8 Assembler</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>INCLUDE &lt;DeviceName.INC&gt;</td>
+					<td>#include &lt;xc.inc&gt;</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="set-devices-configuration-bits">Set device&rsquo;s configuration bits</h2>
+<table>
+	<thead>
+			<tr>
+					<th>MPASM</th>
+					<th>XC8 Assembler</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>__CONFIG</td>
+					<td>The CONFIG directive with appropriate settings and values</td>
+			</tr>
+	</tbody>
+</table>
+<p>MPASM:</p>
+<pre tabindex="0"><code>__CONFIG  _WDT_OFF &amp; _PWRTE_ON &amp; _CP_OFF
+</code></pre><p>PIC Assembler:</p>
+<pre tabindex="0"><code>CONFIG WDT   = OFF
+CONFIG PWRTE = ON
+CONFIG CP    = OFF
+</code></pre><h2 id="label-name">Label name</h2>
+<p>Labels in PIC Assembler must be followed by a colon “:” <br>
+In MPASM the colon is optional.</p>
+<h2 id="constants-and-radices">Constants and Radices</h2>
+<p>By default, MPASM interprets the numeric constants as hexadecimal values. <br>
+PIC Assembler interprets them by default as decimal values! <br>
+This is where explicit definition can help with code portability.</p>
+<table>
+	<thead>
+			<tr>
+					<th>MPASM</th>
+					<th>XC8 Assembler</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>-</td>
+					<td>RADIX DEC</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="numeric-constants">numeric constants</h3>
+<p>Table 3-1. Equivalent Constants Radix Specifiers</p>
+<p>|MPASM Constant Forms |Radix |PIC Assembler Equivalent|
+|B&rsquo;binary_digits&rsquo; |Binary| binary_digitsB|
+|O&rsquo;octal_digits&rsquo; |Octal| octal_digits[O|o|Q|q]
+|D&rsquo;decimal_digits&rsquo; <br>or .decimal_digits</br>|Decimal| decimal_digits[D|d|nothing]|
+|H&rsquo;hexadecimal_digits&rsquo; or <br>0xhexadecimal_digits</br>|Hexadecimal| 0hexadecimal_digits[H|h] or <br>0xhexadecimal_digits</br>|
+|A&rsquo;character&rsquo; or &lsquo;character&rsquo;| ASCII| &lsquo;character&rsquo;|</p>
+<ul>
+<li>MPASM</li>
+</ul>
+<pre tabindex="0"><code>movlw b&#39;10110011&#39; ; binary value
+movlw o&#39;72&#39; ;octal value
+movlw d&#39;34&#39; ;decimal value
+movlw 4F ;hexadecimal value
+movlw ‘b’ ;ASCII value
+</code></pre><ul>
+<li>PIC Assembler</li>
+</ul>
+<pre tabindex="0"><code>movlw 10110011B ;binary value
+movlw 72q ;octal value
+movlw 34 ;decimal value
+movlw 04Fh ;hexadecimal value
+movlw ‘b’ ;ASCII value
+</code></pre><h2 id="lacing-psects-into-memory">lacing Psects into Memory</h2>
+<table>
+	<thead>
+			<tr>
+					<th>MPASM</th>
+					<th>XC8 Assembler</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ORG</td>
+					<td>PSECT</td>
+			</tr>
+	</tbody>
+</table>
+<p>MPASM supports absolute mode, using the ORG directive, or relocatable mode, using program sections. <br>
+PIC Assembler only supports the relocatable mode.</p>
+<p>Since the tutorials use the absolute mode you will need to remove the ORG directive and add a program section for the code and data. <br>
+I have just added a code section for all the instructions and used the already defined equates to access the data memory variables (user registers). <br>
+So, I have just replaced the ORG directive with the PSECT directive like this:</p>
+<pre tabindex="0"><code>PSECT MyCode,class=CODE,delta=2
+</code></pre><p>To make sure the linker places this section at address 000h,
+we need to provide an additional command line parameter: <br>
+Go to “Project Properties” &gt; “pic-as Global Options” &gt; “Additional Options:” and add the following parameter (without spaces!):</p>
+<pre tabindex="0"><code>-Wl,-pMyCode=0h
+</code></pre><h3 id="about-section-name">About section name</h3>
+<p>Where “MyCode” is the section name, “class=CODE” tells the linker to use the default code section,
+“delta=2&quot; tells the linker the number of data bytes that are associated with each address.</p>
+<p>We can also just define a code section like this:</p>
+<pre tabindex="0"><code>PSECT code
+</code></pre><p>But I’d rather define my own code section “MyCode” so that I can tell the linker to specifically place this code section at the zero address. <br>
+Otherwise, the linker will place it somewhere else,
+and it will probably overwrite the RC oscillator calibration instruction at the top of the memory (address 0FFh).</p>
+<h3 id="class---psect-flag">class - psect flag</h3>
+<p>Table 5-2. Assembler-provided Psects and Linker Classes</p>
+<table>
+	<thead>
+			<tr>
+					<th>Psect name</th>
+					<th>Linker class</th>
+					<th>Target device families</th>
+					<th>Purpose</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>code</td>
+					<td>CODE</td>
+					<td>All</td>
+					<td>To hold executable code</td>
+			</tr>
+			<tr>
+					<td>eedata</td>
+					<td>EEDATA</td>
+					<td>All</td>
+					<td>To hold data in EEPROM</td>
+			</tr>
+			<tr>
+					<td>data</td>
+					<td>STRCODE</td>
+					<td>Baseline, Mid-range</td>
+					<td>To hold data in program memory</td>
+			</tr>
+			<tr>
+					<td>udata</td>
+					<td>RAM</td>
+					<td>All</td>
+					<td>To hold objects allocatable anywhere in GPR</td>
+			</tr>
+			<tr>
+					<td>udata_bankn</td>
+					<td>BANKN</td>
+					<td>All</td>
+					<td>To hold object allocatable in a particular data memory bank</td>
+			</tr>
+			<tr>
+					<td>udata_shr</td>
+					<td>COMMON</td>
+					<td>Baseline, Mid-range</td>
+					<td>To hold objects allocatable in common memory</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="delta---psect-flag">delta - psect flag</h3>
+<p>The delta psect flag defines the size of the addressable unit. <br>
+In other words, the number of data bytes that are associated with each address. <br>
+With PIC Mid-range and Baseline devices, the program memory space is word addressable; so, psects in this space must use a delta of 2. <br>
+That is to say, each address in program memory requires 2 bytes of data in the HEX file to define their contents. <br>
+So, addresses in the HEX file will not match addresses in the program memory. <br>
+The data memory space on these devices is byte addressable; so, psects in this space must use a delta of 1. <br>
+This is the default delta value. <br>
+All memory spaces on PIC18 devices are byte addressable; so a delta of 1 (the default) should be used for all psects on these devices. <br>
+The redefinition of a psect with conflicting delta values can lead to phase errors being issued by the assembler.</p>
+<h3 id="global---psect-flag">global - psect flag</h3>
+<p>the global psect flag indicates that the linker should concatenate this psect with global psects in other modules and which have the same name.</p>
+<h1 id="directive">Directive</h1>
+<p>Table 4-1.Equivalent Directives</p>
+<table>
+	<thead>
+			<tr>
+					<th>MPASM Directive</th>
+					<th>PIC Assembler Replacement</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ACCESS_OVR</td>
+					<td>A psect with the ovrld flag set</td>
+			</tr>
+			<tr>
+					<td>__BADRAM and __BADROM No replacement</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>BANSISEL</td>
+					<td>The instruction sequence to write indirect access registers</td>
+			</tr>
+			<tr>
+					<td>BANKSEL</td>
+					<td>The BANKSEL directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>CBLOCK</td>
+					<td>Consider the SET/EQU directives, or DS.</td>
+			</tr>
+			<tr>
+					<td>CODE</td>
+					<td>The code psect or similar</td>
+			</tr>
+			<tr>
+					<td>CODE_PACK</td>
+					<td>The code psect or similar</td>
+			</tr>
+			<tr>
+					<td>__CONFIG</td>
+					<td>The CONFIG directive with appropriate settings and values</td>
+			</tr>
+			<tr>
+					<td>CONFIG</td>
+					<td>The CONFIG directive with appropriate settings and values</td>
+			</tr>
+			<tr>
+					<td>CONSTANT</td>
+					<td>The EQU directive</td>
+			</tr>
+			<tr>
+					<td>DA</td>
+					<td>Consider the DB or IRPC directives</td>
+			</tr>
+			<tr>
+					<td>DATA</td>
+					<td>Consider the DW directive</td>
+			</tr>
+			<tr>
+					<td>DB</td>
+					<td>The DB directive</td>
+			</tr>
+			<tr>
+					<td>DE</td>
+					<td>Consider the DB directive inside a suitable psect</td>
+			</tr>
+			<tr>
+					<td>#DEFINE</td>
+					<td>The #define preprocessor directive</td>
+			</tr>
+			<tr>
+					<td>DT</td>
+					<td>The IRP directive</td>
+			</tr>
+			<tr>
+					<td>DTM</td>
+					<td>The IRP directive</td>
+			</tr>
+			<tr>
+					<td>DW</td>
+					<td>The DW or DB directive</td>
+			</tr>
+			<tr>
+					<td>ELSE</td>
+					<td>The ELSE directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>END</td>
+					<td>The END directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>ENDC</td>
+					<td>No replacement</td>
+			</tr>
+			<tr>
+					<td>ENDM</td>
+					<td>The ENDM directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>ENDW</td>
+					<td>No replacement</td>
+			</tr>
+			<tr>
+					<td>EQU</td>
+					<td>The EQU directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>ERROR</td>
+					<td>The ERROR directive</td>
+			</tr>
+			<tr>
+					<td>ERRORLEVEL</td>
+					<td>Consider the -w driver option</td>
+			</tr>
+			<tr>
+					<td>EXITM</td>
+					<td>No replacement</td>
+			</tr>
+			<tr>
+					<td>EXPAND</td>
+					<td>The EXPAND directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>EXTERN</td>
+					<td>The EXTRN directive (note different spelling)</td>
+			</tr>
+			<tr>
+					<td>FILL</td>
+					<td>Consider the &ndash;fill driver option</td>
+			</tr>
+			<tr>
+					<td>GLOBAL</td>
+					<td>The GLOBAL directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>IDATA</td>
+					<td>A psect with the initial values in program memory and another reserving space for the data objects</td>
+			</tr>
+			<tr>
+					<td>IDATA_ACS</td>
+					<td>A psect with the initial values in program memory and another reserving space for the data objects</td>
+			</tr>
+			<tr>
+					<td>IF</td>
+					<td>The IF directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>IFDEF</td>
+					<td>Consider the #ifdef preprocessor directive</td>
+			</tr>
+			<tr>
+					<td>IFNDEF</td>
+					<td>Consider the #ifndef preprocessor directive</td>
+			</tr>
+			<tr>
+					<td>#INCLUDE</td>
+					<td>The #include preprocessor directive</td>
+			</tr>
+			<tr>
+					<td>LIST</td>
+					<td>The LIST directive or consider alternate assembler options</td>
+			</tr>
+			<tr>
+					<td>LOCAL</td>
+					<td>The LOCAL directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>MACRO</td>
+					<td>The MACRO directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>__MAXRAM <sub>and</sub> __MAXROM</td>
+					<td>No replacement</td>
+			</tr>
+			<tr>
+					<td>MESSG</td>
+					<td>The MESSG directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>NOEXPAND</td>
+					<td>The NOEXPAND directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>NOLIST</td>
+					<td>The NOLIST directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>ORG</td>
+					<td>Consider the ORG directive</td>
+			</tr>
+			<tr>
+					<td>PAGE</td>
+					<td>No replacement</td>
+			</tr>
+			<tr>
+					<td>PAGESEL</td>
+					<td>The PAGESEL directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>PAGESELW</td>
+					<td>Consider the PAGESEL directive</td>
+			</tr>
+			<tr>
+					<td>PROCESSOR</td>
+					<td>The PROCESSOR directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>RADIX</td>
+					<td>The RADIX directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>RES</td>
+					<td>Consider the DS directive</td>
+			</tr>
+			<tr>
+					<td>SET</td>
+					<td>The SET directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>SPACE</td>
+					<td>The SPACE directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>SUBTITLE</td>
+					<td>The SUBTITLE directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>TITLE</td>
+					<td>The TITLE directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>UDATA</td>
+					<td>The udata_bankn psect or similar</td>
+			</tr>
+			<tr>
+					<td>UDATA_ACS</td>
+					<td>The udata_acs psect or similar</td>
+			</tr>
+			<tr>
+					<td>UDATA_OVR</td>
+					<td>A psect with the ovrld flag set</td>
+			</tr>
+			<tr>
+					<td>UDATA_SHR</td>
+					<td>A psect with the ovrld flag set</td>
+			</tr>
+			<tr>
+					<td>#UNDEFINE</td>
+					<td>The #undefine preprocessor directive</td>
+			</tr>
+			<tr>
+					<td>VARIABLE</td>
+					<td>Consider the SET directive</td>
+			</tr>
+			<tr>
+					<td>WHILE</td>
+					<td>Consider the REPT directive</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="list-directive">List Directive</h3>
+<p>TABLE 4-2: LIST DIRECTIVE OPTIONS</p>
+<p>|Option| Default| Description|
+|-|-|
+|b=nnn| 8 |Set tab spaces.|
+|c=nnn| 132| Set column width.|
+|f=format| INHX8 <br>M</br> |Set the hex file output. format can be INHX32, INHX8M, or INHX8S. <br>Note: Hex file format is set in the IDE (Build Options dialog.)</br>|
+|free| FIXED| Use free-format parser. Provided for backward compatibility.|
+|fixed| FIXED| Use fixed-format parser.|
+|mm={ON|OFF}| On| Print memory map in list file.|
+|n=nnn| 60| Set lines per page.|
+|p=type| None| Set processor type; for example, PIC16F877. See also processor. <br>Note: Processor type is set in MPLAB IDE or MPLAB X IDE projects.</br>
+|pe=type| None| Set processor type and enable extended instruction set, for example; LIST pe=PIC18F4620 <br>Only valid with processors which support the extended instruction set and the generic processor PIC18XXX. Is overridden by command-line option /y- or -y- (disable extended instruction set).<br>Note: Processor type is set in MPLAB IDE or MPLAB X IDE projects.</br>
+|r=radix| hex| Set radix: hex, dec, oct. See also radix.|
+|st={ON|OFF}| On| Print symbol table in list file.|
+|t={ON|OFF}| Off| Truncate lines of listing (otherwise wrap).|
+|w={0|1|2}| 0| Set the message level. See also errorlevel.|
+|x={ON|OFF}| On| Turn macro expansion on or off|</p>
+<h3 id="define-a-block-of-constants">Define a Block Of Constants</h3>
+<p>Do not use <b>cblock</b> or <b>equ</b> to define variable location names for relocatable code.</p>
+<pre tabindex="0"><code>CBLOCK = accumulative equ
+</code></pre><ul>
+<li>CBLOCK</li>
+</ul>
+<pre tabindex="0"><code>cblock 0x20 ; name_1 will be assigned 20
+name_1, name_2 ; name_2, 21 and so on
+name_3, name_4 ; name_4 is assigned 23.
+endc
+</code></pre><ul>
+<li>EQU</li>
+</ul>
+<pre tabindex="0"><code>    name_1    EQU 0x20
+    name_2    EQU 0x21
+    name_3    EQU 0x22
+    name_4    EQU 0x23
+</code></pre><h3 id="tris-register">TRIS register</h3>
+<p>In order to define a pin as input or output pin,
+the right combination of zeros and ones must be written in TRIS register.</p>
+<pre tabindex="0"><code>TRIS: The Register Input/output State.
+
+TRISA: which is the address of the Tri-State register for PortA
+...
+TRISC: which is the address of the Tri-State register for PortC
+</code></pre><h3 id="banksel">banksel</h3>
+<p>The file registers of the pic are held in banks,
+some are shared across all banks and some program data can also be shared across all banks but this is obviously
+wasteful of memory so it’s limited to select registers and shared data.</p>
+<p>Special function registers, SFR’s are used to control, configure and check the pic’s status. <br>
+These tend to be on different banks to the programs variables so you need to change banks or your program will be accessing the wrong bank. <br>
+This is where the ‘banksel’ instruction comes in. It makes sure you are addressing the correct memory bank.</p>
+<h4 id="when-to-use-banksel">When to use banksel</h4>
+<ul>
+<li>first access of any UDATA section variable</li>
+<li>first access of register after a subroutine call/external module</li>
+<li>when accessing a banked special function register</li>
+<li>after having accessed a banked SFR(special function register)</li>
+</ul>
+<h4 id="when-to-dont-need-to-use-banksel">When to don’t need to use banksel</h4>
+<ul>
+<li>after first access to a UDATA variable other UDATA variables are in the same bank</li>
+<li>UDATA_SHR variables are available on any bank</li>
+<li>accessing Non-banked SFR’s like STATUS etc.. can be done from any bank</li>
+</ul>
+<h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MPASM%20to%20MPLAB%20XC8%20PIC%20Assembler%20Migration%20Guide%2050002973A.pdf">MPASM to MPLAB XC8 PIC Assembler Migration Guide 50002973A</a></li>
+<li><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MPLAB%20XC8%20PIC%20Assembler%20User%27s%20Guide%2050002974A.pdf">MPLAB XC8 PIC Assembler User&rsquo;s Guide 50002974A</a></li>
+<li><a href="https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/UserGuides/MPLAB-XC8-PIC-Assembler-User-Guide-50002974.pdf">MPLAB-XC8-PIC-Assembler-User-Guide-50002974</a></li>
+<li><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/50002994B.pdf">MPLAB XC8 PIC Assembler User&rsquo;s Guide for Embedded Engineers</a></li>
+<li><a href="https://www.circuitbread.com/tutorials/mpasm-to-mplab-xc8-pic-assembler">MPASM to MPLAB XC8 PIC Assembler</a></li>
+<li><a href="https://microcontrollerlog.wordpress.com/2012/08/17/when-to-use-banksel/">When to use banksel</a></li>
+<li><a href="https://forum.microchip.com/s/topic/a5C3l000000MbBxEAK/t373025">There is no make executable in the path. - MPLABX v5.35</a></li>
+<li><a href="https://ww1.microchip.com/downloads/en/devicedoc/33014l.pdf">4.43 list - Listing Options</a></li>
+<li><a href="https://ww1.microchip.com/downloads/en/devicedoc/33014l.pdf">4.8.5 Simple Example - MPASM Assembler User&rsquo;s Guide</a></li>
+<li><a href="https://electronics.stackexchange.com/a/12364">What is the meaning of Microchip&rsquo;s acronym TRIS for data direction registers?</a></li>
+<li><a href="http://www.matidavid.com/pic/picbook_site/2_05chapter.htm">2.4 Ports</a></li>
+<li><a href="https://forum.microchip.com/s/topic/a5C3l000000McGfEAK/t377161?comment=P-2834053">MPASM Removed? !!!</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=MPASM%20to%20MPLAB%20XC8%20PIC%20Assembler&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic16f_mpasm2xc8%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic16f_mpasm2xc8%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic16f_mpasm2xc8%2f&amp;description=MPASM%20to%20MPLAB%20XC8%20PIC%20Assembler"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic16f_mpasm2xc8%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/php-build-win/">
+          <section class="post">
+              <h2>Build your own PHP on Windows</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-pic16f188_memory-map-banks/">
+          <section class="post">
+              <h2>Memory Map Banks - PIC</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>
+

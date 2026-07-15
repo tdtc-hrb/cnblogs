@@ -153,13 +153,450 @@
 	
 	    <a class="newer-posts" href="/cnblogs/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 2 of 7</span>
+	<span class="page-number">Page 2 of 8</span>
 	
 	    <a class="older-posts" href="/cnblogs/page/3/">Older Posts &rarr;</a>
 	
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow3-gcc/">size_t warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
+</ul>
+<hr>
+<p><strong>NOTE</strong></p>
+<h2 id="no-warning-messages-are-displayed-in-cdt">No warning messages are displayed in CDT.</h2>
+<h2 id="heapsort">heapsort</h2>
+<pre tabindex="0"><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// TIP To &lt;b&gt;Run&lt;/b&gt; code, press &lt;shortcut actionId=&#34;Run&#34;/&gt; or click the &lt;icon src=&#34;AllIcons.Actions.Execute&#34;/&gt; icon in the gutter.
+/**
+ * Internal method for heapsort.
+ * i is the index of an item in the heap.
+ * Returns the index of the left child.
+ */
+inline int leftChild( int i )
+{
+    return 2 * i + 1;
+}
+
+/**
+ * Internal method for heapsort that is used in deleteMax and buildHeap.
+ * i is the position from which to percolate down.
+ * n is the logical size of the binary heap.
+ */
+template &lt;typename Comparable&gt;
+void percDown( vector&lt;Comparable&gt; &amp; a, int i, int n )
+{
+    int child;
+    Comparable tmp;
+
+    for( tmp = std::move( a[ i ] ); leftChild( i ) &lt; n; i = child )
+    {
+        child = leftChild( i );
+        if( child != n-1 &amp;&amp; a[ child ] &lt; a[ child + 1 ] )
+            ++child;
+        if( tmp &lt; a[ child ] )
+            a[ i ] = std::move( a[ child ] );
+        else
+            break;
+    }
+    a[ i ] = std::move( tmp );
+}
+
+/**
+ * Standard heapsort.
+ */
+template &lt;typename Comparable&gt;
+void heapsort( vector&lt;Comparable&gt; &amp; a)
+{
+    for( int i = a.size( ) / 2- 1; i &gt;= 0; --i ) /* buildHeap */
+        percDown( a, i, a.size() );
+    for( int j = a.size( )- 1; j &gt; 0; --j )
+    {
+        std::swap( a[ 0 ], a[ j ] ); /* deleteMax */
+        percDown( a, 0, j );
+    }
+}
+
+int main() {
+    vector v = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
+    heapsort(v);
+
+    for(int i : v)
+        cout &lt;&lt; i &lt;&lt; &#34; &#34;;
+
+    return 0;
+    // TIP See CLion help at &lt;a href=&#34;https://www.jetbrains.com/help/clion/&#34;&gt;jetbrains.com/help/clion/&lt;/a&gt;. Also, you can try interactive lessons for CLion by selecting &#39;Help | Learn IDE Features&#39; from the main menu.
+}
+</code></pre><ul>
+<li>Warn info - vs2022</li>
+</ul>
+<pre tabindex="0"><code>ConsoleApplication1.cpp(45,16): warning C4267: &#39;initializing&#39;: conversion from &#39;size_t&#39; to &#39;int&#39;, possible loss of data
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow3-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-21T11:08:08&#43;08:00">
+            21 Mar 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow4-gcc/">size_t warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
+</ul>
+<hr>
+<p><strong>NOTE</strong></p>
+<h2 id="no-warning-messages-are-displayed-in-cdt">No warning messages are displayed in CDT.</h2>
+<h2 id="mergesort">MergeSort</h2>
+<pre tabindex="0"><code>/**
+ * Internal method that makes recursive calls.
+ * a is an array of Comparable items.
+ * tmpArray is an array to place the merged result.
+ * left is the left-most index of the subarray.
+ * right is the right-most index of the subarray.
+ */
+template &lt;typename Comparable&gt;
+void mergeSort( vector&lt;Comparable&gt; &amp; a,
+                vector&lt;Comparable&gt; &amp; tmpArray, int left, int right )
+{
+    if( left &lt; right )
+    {
+        int center = ( left + right ) / 2;
+        mergeSort( a, tmpArray, left, center );
+        mergeSort( a, tmpArray, center + 1, right );
+        merge( a, tmpArray, left, center + 1, right );
+    }
+}
+
+/**
+ * Mergesort algorithm (driver).
+ */
+template &lt;typename Comparable&gt;
+void mergeSort( vector&lt;Comparable&gt; &amp; a )
+{
+    vector&lt;Comparable&gt; tmpArray( a.size( ) );
+
+    mergeSort( a, tmpArray, 0, a.size( ) - 1 );
+}
+</code></pre><ul>
+<li>merge</li>
+</ul>
+<pre tabindex="0"><code>/**
+ * Internal method that merges two sorted halves of a subarray.
+ * a is an array of Comparable items.
+ * tmpArray is an array to place the merged result.
+ * leftPos is the left-most index of the subarray.
+ * rightPos is the index of the start of the second half.
+ * rightEnd is the right-most index of the subarray.
+ */
+template &lt;typename Comparable&gt;
+void merge( vector&lt;Comparable&gt; &amp; a, vector&lt;Comparable&gt; &amp; tmpArray,
+            int leftPos, int rightPos, int rightEnd )
+{
+    int leftEnd = rightPos - 1;
+    int tmpPos = leftPos;
+    int numElements = rightEnd - leftPos + 1;
+
+    // Main loop
+    while( leftPos &lt;= leftEnd &amp;&amp; rightPos &lt;= rightEnd )
+        if( a[ leftPos ] &lt;= a[ rightPos ] )
+            tmpArray[ tmpPos++ ] = std::move( a[ leftPos++ ] );
+        else
+            tmpArray[ tmpPos++ ] = std::move( a[ rightPos++ ] );
+
+    while( leftPos &lt;= leftEnd )    // Copy rest of first half
+        tmpArray[ tmpPos++ ] = std::move( a[ leftPos++ ] );
+
+    while( rightPos &lt;= rightEnd )  // Copy rest of right half
+        tmpArray[ tmpPos++ ] = std::move( a[ rightPos++ ] );
+
+    // Copy tmpArray back
+    for( int i = 0; i &lt; numElements; ++i, --rightEnd )
+        a[ rightEnd ] = std::move( tmpArray[ rightEnd ] );
+}
+</code></pre><ul>
+<li>main</li>
+</ul>
+<pre tabindex="0"><code>int main() {
+	vector v = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
+
+	mergeSort(v);
+
+    for(size_t i = 0; i &lt; v.size(); ++i)
+        cout &lt;&lt; v[i] &lt;&lt; &#34; &#34;;
+
+    return 0;
+}
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow4-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-21T11:08:08&#43;08:00">
+            21 Mar 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/doxy-comment/">c or c&#43;&#43; comments</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><a href="https://www.jetbrains.com/help/rider/Creating_and_Viewing_Doxygen_Documentation.html#create-doxygen-comments">Type one of the following symbols</a>:</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags">c-sharp style</a></li>
+</ul>
+<pre tabindex="0"><code>///
+</code></pre><ul>
+<li>Qt style</li>
+</ul>
+<pre tabindex="0"><code>//!
+/*!
+</code></pre><ul>
+<li>javadoc</li>
+</ul>
+<pre tabindex="0"><code>/**
+</code></pre><h4 id="putting-documentation-after-members">Putting documentation after members</h4>
+<pre tabindex="0"><code>//!&lt; this is End of line
+</code></pre><h3 id="javadoc-style">javadoc style</h3>
+<ul>
+<li><a href="https://www.doxygen.nl/manual/commands.html#cmdfile">file</a></li>
+</ul>
+<pre tabindex="0"><code>/**
+ * @file PokerType.h
+ * Created by tdtc-hrb on 2/14/2026 - UTC+8.
+ */
+</code></pre><ul>
+<li><a href="https://www.doxygen.nl/manual/commands.html#cmdauthor">author</a></li>
+</ul>
+<pre tabindex="0"><code>/**
+ *  Pretty nice class.
+ *  @details   This class is used to demonstrate a number of section commands; 
+ *             detailed description.
+ *  @author    John Doe
+ *  @author    Jan Doe
+ *  @version   1.16.1
+ *  @date      2026-03-11
+ */
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://www.doxygen.nl/manual/docblocks.html">Documenting the code</a></li>
+<li><a href="https://www.doxygen.nl/manual/commands.html">Special Commands</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/doxy-comment/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-11T20:38:18&#43;08:00">
+            11 Mar 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/doxy-config/">config doxygen</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>template -&gt; basic -&gt; project -&gt;
+generate documentation</p>
+<pre tabindex="0"><code>doxygen mydoxy
+</code></pre><h2 id="config---template">config - template</h2>
+<pre tabindex="0"><code>doxygen -g mydoxy
+</code></pre><p>default name: Doxyfile</p>
+<h3 id="update">update</h3>
+<p>If you are using a newer version of Doxygen, you need to execute:</p>
+<pre tabindex="0"><code>doxygen -u mydoxy
+</code></pre><h2 id="config---basic">config - basic</h2>
+<ul>
+<li>AUTO BRIEF</li>
+</ul>
+<pre tabindex="0"><code>JAVADOC_AUTOBRIEF      = YES
+</code></pre><ul>
+<li>BANNER</li>
+</ul>
+<pre tabindex="0"><code>JAVADOC_BANNER         = YES
+</code></pre><h4 id="python---off">PYTHON - Off</h4>
+<pre tabindex="0"><code>PYTHON_DOCSTRING       = NO
+</code></pre><h4 id="inherit---off">Inherit - Off</h4>
+<pre tabindex="0"><code>INHERIT_DOCS           = NO
+</code></pre><h2 id="config---project">config - project</h2>
+<ul>
+<li>output</li>
+</ul>
+<pre tabindex="0"><code>OUTPUT_DIRECTORY       = C:/Users/hp262/Documents
+</code></pre><h3 id="project-src">project src</h3>
+<pre tabindex="0"><code>INPUT                  = C:/Users/hp262/CLionProjects/untitled
+</code></pre><h4 id="searched-subdirectories">Searched subdirectories</h4>
+<pre tabindex="0"><code>RECURSIVE              = YES
+</code></pre> <a class="read-more" href="/cnblogs/post/doxy-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-11T20:38:18&#43;08:00">
+            11 Mar 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow2-gcc/">Accessing map value by index</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup></p>
+<h3 id="define-and-use">define and use</h3>
+<ul>
+<li>aMap and bMap</li>
+</ul>
+<pre tabindex="0"><code>    std::map&lt;int, string&gt; aMap;
+    std::map&lt;int, string&gt; bMap;
+</code></pre><ul>
+<li>calc it</li>
+</ul>
+<pre tabindex="0"><code>    int a = getMapKey(aMap, 0);
+    int b = getMapKey(bMap, 0);
+</code></pre><h3 id="getmapkey">getMapKey</h3>
+<p><code>int getMapKey(std::map&lt;int, std::string&gt; myMap ,int index) { }</code></p>
+<ul>
+<li>next</li>
+</ul>
+<pre tabindex="0"><code>    auto it = myMap.begin();
+    auto it2 = std::next(it, index);
+    return it2-&gt;first;
+</code></pre><ul>
+<li>advance</li>
+</ul>
+<pre tabindex="0"><code>    auto it = myMap.begin();
+    std::advance(it, index);
+    return it-&gt;first;
+</code></pre><h4 id="diff">diff</h4>
+<table>
+	<thead>
+			<tr>
+					<th>std::next</th>
+					<th>std::advance</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>It is used to return nth successor of an iterator</td>
+					<td>It does not have any return type.</td>
+			</tr>
+			<tr>
+					<td>It takes two parameters that are -: number of elements and a iterator.</td>
+					<td>It takes two parameters number of elements and iterator</td>
+			</tr>
+			<tr>
+					<td>Its Time complexity in best case is constant</td>
+					<td>Its Time complexity in best case is constant</td>
+			</tr>
+			<tr>
+					<td>Its Time complexity in worst case is linear</td>
+					<td>Its Time complexity in worst case is linear</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="test">test</h3>
+<pre tabindex="0"><code>#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;cmath&gt;
+
+int getMapKey(std::map&lt;int, std::string&gt; myMap ,int index) {
+    auto it = myMap.begin();
+    auto it2 = std::next(it, index);
+    return it2-&gt;first;
+}
+
+int main() {
+    std::map&lt;int, std::string&gt; aMap;
+    std::map&lt;int, std::string&gt; bMap;
+
+    aMap.insert(std::pair&lt;int, std::string&gt;(3, &#34;a&#34;));
+    bMap.insert(std::pair&lt;int, std::string&gt;(4, &#34;b&#34;));
+
+    int a = getMapKey(aMap, 0);
+    int b = getMapKey(bMap, 0);
+
+    int c = pow(a, 2) + pow(b, 2);
+
+    std::cout &lt;&lt; sqrt(c) &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/7856453/accessing-map-value-by-index">Accessing map value by index</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/iterator/advance.html">std::advance - c++17</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/iterator/next.html">std::next - c++11</a></li>
+<li><a href="https://www.geeksforgeeks.org/cpp/stdnext-vs-stdadvance-in-cpp/">std::next vs std::advance in C++</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow2-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-11T11:08:08&#43;08:00">
+            11 Mar 2026
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -497,308 +934,12 @@ controllers:
 </article>
 
 	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-cmd1/">docker(ce) command</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h2 id="1-清理image">1. 清理image</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker system prune -a
-</span></span></code></pre></div><h2 id="2-管理image">2. 管理image</h2>
-<h3 id="1-ps">1) ps</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dokcer ps
-</span></span></code></pre></div><h3 id="2-进入container">2) 进入container</h3>
-<p>fat shell:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker exec -it &lt;container-id&gt; bash
-</span></span></code></pre></div><p>simple shell:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker exec -it &lt;container-id&gt; sh
-</span></span></code></pre></div><h3 id="3container内执行">3)container内执行</h3>
-<p>查看:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat Gopkg.toml |more
-</span></span></code></pre></div><p>编辑:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt-get update
-</span></span><span style="display:flex;"><span>apt-get install vim -y
-</span></span><span style="display:flex;"><span>vi Gopkg.toml
-</span></span></code></pre></div><h3 id="4-stop-all-containers">4) stop all containers</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker stop <span style="color:#66d9ef">$(</span>sudo docker ps -q<span style="color:#66d9ef">)</span>
-</span></span></code></pre></div> <a class="read-more" href="/cnblogs/post/docker_ce-cmd1/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
-            31 Dec 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-ubuntu-config/">docker(ce) on Ubuntu</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>Note:</p>
-<blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command</span>
-</span></span><span style="display:flex;"><span>$ - requires given linux commands to be executed as a regular non-privileged user
-</span></span></code></pre></div></blockquote>
-</blockquote>
-<h1 id="docker-ce">Docker CE</h1>
-<h2 id="1-install">1. install</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker.io
-</span></span></code></pre></div><h2 id="2-enable">2. enable</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo systemctl start docker
-</span></span><span style="display:flex;"><span>$ sudo systemctl enable docker
-</span></span></code></pre></div><p>test:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker --version
-</span></span></code></pre></div><h1 id="docker-compose">Docker compose</h1>
-<h2 id="1-down">1. down</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl -L <span style="color:#e6db74">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span style="color:#66d9ef">$(</span>uname -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">-</span><span style="color:#66d9ef">$(</span>uname -m<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o /usr/local/bin/docker-compose
-</span></span></code></pre></div><h2 id="2-exec">2. exec</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/docker-compose
-</span></span></code></pre></div><p>test:</p> <a class="read-more" href="/cnblogs/post/docker_ce-ubuntu-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
-            31 Dec 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-debian-config/">Install Docker on Debian</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>Note:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command</span>
-</span></span><span style="display:flex;"><span>$ - requires given linux commands to be executed as a regular non-privileged user
-</span></span></code></pre></div><h1 id="docker-engine">Docker Engine</h1>
-<pre tabindex="0"><code># Add Docker&#39;s official GPG key:
-sudo apt update
-sudo apt install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
-sudo tee /etc/apt/sources.list.d/docker.sources &lt;&lt;EOF
-Types: deb
-URIs: https://download.docker.com/linux/debian
-Suites: $(. /etc/os-release &amp;&amp; echo &#34;$VERSION_CODENAME&#34;)
-Components: stable
-Signed-By: /etc/apt/keyrings/docker.asc
-EOF
-
-sudo apt update
-</code></pre><h2 id="1-install">1. install</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-</span></span></code></pre></div><h3 id="docker-source">docker source</h3>
-<pre tabindex="0"><code>sudo systemctl daemon-reload
-</code></pre><h4 id="源地址"><a href="https://gitee.com/xiaobin80/grpc-hello">源地址</a></h4>
-<ul>
-<li>/etc/docker/daemon.json</li>
-</ul>
-<pre tabindex="0"><code>{
-  &#34;registry-mirrors&#34; : [
-    &#34;https://registry.docker-cn.com&#34;,
-    &#34;https://mirror.ccs.tencentyun.com&#34;
-  ]
-}
-</code></pre><p>每次都要更新<a href="https://zhuanlan.zhihu.com/p/1926211424398603825">China源</a></p> <a class="read-more" href="/cnblogs/post/docker_ce-debian-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
-            31 Dec 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops-network_adapter-debian/">最新版的Debian网络Adapter</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>Debian 13.x</li>
-</ul>
-<h4 id="unattended-installation">Unattended Installation</h4>
-<p>Cancel &ldquo;Proceed with Unattended Installation&rdquo;</p>
-<p>在使用自动无人值守安装时，会自动安装桌面的Debian</p>
-<h3 id="net-adapter">net adapter</h3>
-<p>设置Network Adapter为Bridged</p>
-<ul>
-<li>vmware(25h2) <br>
-default: ens32</li>
-</ul>
-<blockquote>
-<blockquote>
-<p>failed</p>
-</blockquote>
-</blockquote>
-<ul>
-<li>vbox <br>
-default: enp0s3</li>
-</ul>
-<h3 id="netplanio">netplan.io</h3>
-<pre tabindex="0"><code>sudo apt install netplan.io
-</code></pre><ul>
-<li>High version <br>
-If you get an error about systemd-resolved not being found/installed. Install it before proceeding:</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install systemd-resolved -y
-</code></pre><h3 id="manage-networkd-and-resolved">Manage networkd and resolved</h3>
-<pre tabindex="0"><code>sudo systemctl unmask systemd-networkd.service;
-sudo systemctl unmask systemd-resolved.service;
-sudo systemctl enable systemd-networkd.service;
-sudo systemctl mask networking;
-sudo systemctl enable systemd-resolved.service;
-</code></pre><h3 id="config-file">config file</h3>
-<ul>
-<li>/etc/netplan/10-config.yaml</li>
-</ul>
-<pre tabindex="0"><code>network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    enp0s3:
-      addresses:
-        - 192.168.0.49/24
-      nameservers:
-        addresses: [8.8.8.8, 8.8.4.4, 192.168.0.1]
-      routes:
-        - to: default
-          via: 192.168.0.1
-</code></pre><h3 id="removed-ifupdown-and-resolvconf">removed ifupdown and resolvconf</h3>
-<pre tabindex="0"><code>reboot
-sudo apt purge ifupdown resolvconf -y
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://pedroagrodrigues.com/posts/Debian_To_Netplan/">Converting Debian 10/11/12 to Netplan.io</a></li>
-<li><a href="https://cloudspinx.com/how-to-manage-ubuntu-debian-networking-using-netplan/">How To Manage Ubuntu / Debian Networking using Netplan</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/ops-network_adapter-debian/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-12-30T21:08:39&#43;08:00">
-            30 Dec 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-webview/">qtwebview minibrowser example</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://developer.android.google.cn/studio">Android Studio</a></li>
-<li><a href="https://download.qt.io/static/mirrorlist/mirmon/">mirror - online installer</a></li>
-</ul>
-<pre tabindex="0"><code>qt-online-installer-windows-x64-x.x.x.exe --mirror Y
-</code></pre><h2 id="create-qt-project">Create Qt Project</h2>
-<p>File -&gt; New Project</p>
-<ul>
-<li>v6.x <br>
-Qt Quick Application</li>
-<li>v5.15 <br>
-Qt Quick Application(compat)</li>
-</ul>
-<h3 id="project-setting">project setting</h3>
-<ul>
-<li>project name</li>
-</ul>
-<pre tabindex="0"><code>my_browser
-</code></pre><ul>
-<li>Define Build System</li>
-</ul>
-<pre tabindex="0"><code>CMake
-</code></pre><ul>
-<li>Define Project Details <br>
-Mini Qt version:</li>
-</ul>
-<pre tabindex="0"><code>Qt 5.15/6.5
-</code></pre><ul>
-<li>Kit Selection</li>
-</ul>
-<pre tabindex="0"><code>Android Qt x.x.x Clang x86_64
-</code></pre><h3 id="using-qt-webview"><a href="https://doc.qt.io/qt-6.8/qtwebview-index.html">Using Qt WebView</a></h3>
-<ul>
-<li>QML API</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">QtWebView</span>
-</span></span></code></pre></div><ul>
-<li>C++ API</li>
-</ul>
-<pre tabindex="0"><code>#include &lt;QtWebView/QtWebView&gt;
-</code></pre><h4 id="building-with-cmake">Building with CMake</h4>
-<ul>
-<li>package</li>
-</ul>
-<pre tabindex="0"><code>find_package(Qt6 REQUIRED COMPONENTS Quick WebView)
-</code></pre><ul>
-<li>target</li>
-</ul>
-<pre tabindex="0"><code>target_link_libraries(appmy_browser
-    PRIVATE Qt6::Quick Qt6::WebView
-)
-</code></pre><h4 id="initial">initial</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// first line
-</span></span></span><span style="display:flex;"><span>QtWebView<span style="color:#f92672">::</span>initialize();
-</span></span></code></pre></div><h3 id="icon">Icon</h3>
-<p>copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folder</p> <a class="read-more" href="/cnblogs/post/qt-webview/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-10-03T23:38:08&#43;08:00">
-            3 Oct 2025
-        </time>
-    </footer>
-</article>
-
-	
 
 	<nav class="pagination" role="navigation">
 	
 	    <a class="newer-posts" href="/cnblogs/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 2 of 7</span>
+	<span class="page-number">Page 2 of 8</span>
 	
 	    <a class="older-posts" href="/cnblogs/page/3/">Older Posts &rarr;</a>
 	

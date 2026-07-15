@@ -153,11 +153,690 @@
 	
 	    <a class="newer-posts" href="/cnblogs/post/page/6/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 7 of 7</span>
+	<span class="page-number">Page 7 of 8</span>
+	
+	    <a class="older-posts" href="/cnblogs/post/page/8/">Older Posts &rarr;</a>
 	
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/php-mysqli-tutorial/">使用mysqli和mysql查询数据库</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="导入数据">导入数据</h1>
+<p>导入MySQL示例数据库<a href="https://github.com/datacharmer/test_db/releases/tag/v1.0.7">employees</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ownloads<span style="color:#ae81ff">\t</span>est_db&gt;%MYSQL57_HOME%<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\m</span>ysql &lt; employees.sql -u DBAdmin -p
+</span></span><span style="display:flex;"><span>Enter password: *******
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>CREATING DATABASE STRUCTURE
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>storage engine: InnoDB
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING departments
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING employees
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING dept_emp
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING dept_manager
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING titles
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING salaries
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ownloads<span style="color:#ae81ff">\t</span>est_db&gt;
+</span></span></code></pre></div><h1 id="查询数据">查询数据</h1>
+<p>查询固定员工ID的姓名，所属部门，职务</p>
+<blockquote>
+<p>以下为创建SQL的过程。</p>
+</blockquote>
+<h2 id="1-查询姓名">1. 查询姓名</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> concat(first_name, <span style="color:#e6db74">&#39; &#39;</span> , last_name) <span style="color:#66d9ef">as</span> name <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h2 id="2-查询部门id">2. 查询部门ID</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h2 id="3-查询所在部门名称">3. 查询所在部门名称</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> dept_name
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> dept_no <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
+</span></span></code></pre></div><h2 id="4-查询员工姓名以及部门名称">4. 查询员工姓名以及部门名称</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>concat(e.first_name, <span style="color:#e6db74">&#39; &#39;</span> , e.last_name) <span style="color:#66d9ef">as</span> name,
+</span></span><span style="display:flex;"><span>d.dept_name
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> e, <span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span> d
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> d.dept_no <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
+</span></span><span style="display:flex;"><span>		 <span style="color:#66d9ef">and</span>
+</span></span><span style="display:flex;"><span>		e.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h2 id="5-整合sql">5. 整合SQL</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>concat(e.first_name, <span style="color:#e6db74">&#39; &#39;</span> , e.last_name) <span style="color:#66d9ef">as</span> name,
+</span></span><span style="display:flex;"><span>d.dept_name,
+</span></span><span style="display:flex;"><span>t.title
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> e,
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span> d,
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>titles<span style="color:#f92672">`</span> t
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> d.dept_no <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
+</span></span><span style="display:flex;"><span>		 <span style="color:#66d9ef">and</span>
+</span></span><span style="display:flex;"><span>		e.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#66d9ef">and</span>
+</span></span><span style="display:flex;"><span>		t.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h1 id="mysql">mysql</h1>
+<h2 id="1-连接">1. 连接</h2>
+<blockquote>
+<p><a href="http://php.net/manual/en/function.mysql-connect.php">mysql_connect</a> <br>
+( <br>
+server, // 服务器地址 <br>
+username,  // 用户名 <br>
+password // 密码 <br>
+)</p> <a class="read-more" href="/cnblogs/post/php-mysqli-tutorial/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-04-20T20:26:39&#43;08:00">
+            20 Apr 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp.net5-grpc/">ASP.net Core 的gRPC Service应用</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>Server 在Ubuntu V20.04; Client 在Windows CMD运行。</p>
+</blockquote>
+<ul>
+<li>PowerShell v5.1</li>
+<li>IDE: VS2019 Community(v16.9)/VS Code(<a href="https://code.visualstudio.com/docs/containers/overview#_installation">docker extension</a>)</li>
+<li>VM: VBox(v6.1)</li>
+</ul>
+<h1 id="接口文件说明">接口文件说明</h1>
+<blockquote>
+<p>Protos/greet.proto</p>
+<blockquote>
+<p>现版本(v16.9)已可以自动生成</p>
+</blockquote>
+</blockquote>
+<h2 id="定义service">定义service</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>service Greeter <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  // Sends a greeting
+</span></span><span style="display:flex;"><span>  rpc SayHello <span style="color:#f92672">(</span>HelloRequest<span style="color:#f92672">)</span> returns <span style="color:#f92672">(</span>HelloReply<span style="color:#f92672">)</span> <span style="color:#f92672">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="定义message">定义message</h2>
+<ul>
+<li>request</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloRequest <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  string name <span style="color:#f92672">=</span> 1;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>response</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloReply <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  string message <span style="color:#f92672">=</span> 1;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h1 id="server">server</h1>
+<h2 class="tabset" id="create">Create</h2>
+<h3 id="vs2019">VS2019</h3>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122182726.png" alt="VS2019 pre1">
+注意：服务器需要docker支持！
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122183151.png" alt="VS2019 pre2"></p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122184828.png" alt="VS2019 pre3"></p>
+<h3 id="vs-code">VS code</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new grpc -o GreeterServer
+</span></span></code></pre></div><h4 id="add-docke-file">add docke file</h4>
+<ul>
+<li>View -&gt; Command Palette(Ctrl+Shift+P)</li>
+</ul>
+<ul>
+<li>Enter: Docker fi</li>
+<li>choice1: Add Docker Files to Workspace&hellip;</li>
+<li>choice2: .NET: ASP.NET Core</li>
+<li>choice3: Linux</li>
+<li>Enter: 80</li>
+<li>choice4: No(Include compose file)</li>
+</ul>
+<h4 id="修改dockerfile">修改Dockerfile</h4>
+<ul>
+<li>移出Ubuntu版本信息(-focal)</li>
+</ul>
+<blockquote>
+<p>focal: Ubuntu 20.04</p> <a class="read-more" href="/cnblogs/post/asp.net5-grpc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-03-16T08:08:08&#43;08:00">
+            16 Mar 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-blink/">arduino 开发环境</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>使用跑马灯来验证.</p>
+<h1 id="pre-ide">Pre IDE</h1>
+<ul>
+<li><a href="https://www.arduino.cc/en/software">Arduino CC(.zip文件)</a></li>
+<li><a href="https://www.microchip.com/en-us/development-tools-tools-and-software/microchip-studio-for-avr-and-sam-devices">Atmel Studio 7</a></li>
+</ul>
+<h1 id="编码">编码</h1>
+<p>我们使用使用AS7是为了使用它的智能提示和方便查看函数原型.</p>
+<h2 id="建立工程---arduino">建立工程 - Arduino</h2>
+<p>文件-&gt;示例-&gt;01.Basics-&gt;Blink</p>
+<h2 id="建立工程---as7">建立工程 - AS7</h2>
+<p>New-&gt;Project <br>
+&ldquo;Create Project from Arduino Sketch&rdquo;
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20210306045329.png" alt="Create Project from Arduino Sketch">
+设置Arduino sketch属性: Sketch File、Arduino IDE、Board、Device
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20210306045520.png" alt="设置Arduino sketch"></p>
+<h1 id="烧写">烧写</h1>
+<p>把代码copy回arduino ide</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Blink
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Turns on an LED on for one second, then off for one second, repeatedly.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN takes care
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  of use the correct LED pin whatever is the board used.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  If you want to know what pin the on-board LED is connected to on your Arduino model, check
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  the Technical Specs of your board  at https://www.arduino.cc/en/Main/Products
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  This example code is in the public domain.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  modified 8 May 2014
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  by Scott Fitzgerald
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  modified 2 Sep 2016
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  by Arturo Guadalupi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  modified 6 Mar 2021
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  by tdtc
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> led1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">// pin2
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> led2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>; <span style="color:#75715e">// pin3
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> led3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; <span style="color:#75715e">// pin4
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the setup function runs once when you press reset or power the board
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// initialize digital pin LED_BUILTIN as an output.
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pinMode</span>(led1, OUTPUT);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pinMode</span>(led2, OUTPUT);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pinMode</span>(led3, OUTPUT);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the loop function runs over and over again forever
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led1, HIGH);   <span style="color:#75715e">// turn the LED on (HIGH is the voltage level)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);                       <span style="color:#75715e">// wait for a second
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led1, LOW);    <span style="color:#75715e">// turn the LED off by making the voltage LOW
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);                       <span style="color:#75715e">// wait for a second
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led2, HIGH);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led2, LOW);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led3, HIGH);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led3, LOW);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>step 1: 项目-&gt;验证/编译 <br>
+step 2: 项目-&gt;上传 <br>
+在上传前,一定要查看&quot;工具&quot;中&quot;端口&quot;信息是否正确!</p> <a class="read-more" href="/cnblogs/post/e-avr8-blink/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-03-06T05:08:08&#43;08:00">
+            6 Mar 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-lwip-ethernet/">lwIP移植笔记 - ethernet篇</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>ethernet的移植工作，主要是“填空”ethernetif.c的过程！ <br>
+（PS. 再一次感谢Adam Dunkels大侠的无私工作！以及对他的敬意！）</p>
+<h1 id="头文件">头文件</h1>
+<blockquote>
+<p>ethernetif.h</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef ETHERNETIF_H_INCLUDED
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define ETHERNETIF_H_INCLUDED
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/netif.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/ip_addr.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/err.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;netif/etharp.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">err_t</span> <span style="color:#a6e22e">ethernetif_init</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ethernetif_input</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* ETHERNETIF_H_INCLUDED */</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h1 id="ethernet-interface">ethernet interface</h1>
+<blockquote>
+<p>ethernetif.c位置: ../src/netif</p>
+</blockquote>
+<ul>
+<li>初始化（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_init</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif)
+</span></span></code></pre></div><ul>
+<li>发送（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">err_t</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_output</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif, <span style="color:#66d9ef">struct</span> pbuf<span style="color:#f92672">*</span> p)
+</span></span></code></pre></div><ul>
+<li>接收（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> pbuf<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_input</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif)
+</span></span></code></pre></div><h2 id="0-define-hardware">0. define hardware</h2>
+<p>根据硬件的不同！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;enc28j60.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>##　1. 初始化（低级）</p>
+<h3 id="1-初始化mac地址">（1） 初始化MAC地址</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x04</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x25</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1C</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xA0</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x02</span>;
+</span></span></code></pre></div><h3 id="2-初始化网卡">（2） 初始化网卡</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">enc28j60Init</span>(netif<span style="color:#f92672">-&gt;</span>hwaddr);
+</span></span></code></pre></div><h3 id="3中断使能">（3）中断使能</h3>
+<p>如果使用RTOS，则设置MCU的SPI中断使能； <br>
+例如在CM0/3/4中：</p> <a class="read-more" href="/cnblogs/post/e-lwip-ethernet/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-25T10:08:08&#43;08:00">
+            25 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-freertos-port_sam4s/">freeRTOS移植-sam</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>freeRTOS v7.0.0</p>
+</blockquote>
+<p>移植编译器（IAR）,以及头文件和hook。</p>
+<h1 id="头文件">头文件</h1>
+<blockquote>
+<p>asf.h</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// From module: FreeRTOS mini Real-Time Kernel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;task.h&gt;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h2 id="freertos-config">freeRTOS config</h2>
+<blockquote>
+<p>FreeRTOSConfig.h</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef FREERTOS_CONFIG_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FREERTOS_CONFIG_H
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//#define configUSE_PREEMPTION                     1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_PREEMPTION                       0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_IDLE_HOOK                        1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TICK_HOOK                        1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configCPU_CLOCK_HZ                         (sysclk_get_cpu_hz())
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configTICK_RATE_HZ                         ((portTickType) 1000)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMINIMAL_STACK_SIZE                   ((unsigned short) 70)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//#define configTOTAL_HEAP_SIZE                    ((size_t) ( 0x2C00-600 ))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_TASK_NAME_LEN                    ( 16 )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TRACE_FACILITY                   1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_16_BIT_TICKS                     0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configIDLE_SHOULD_YIELD                    0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_CO_ROUTINES                      0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_MUTEXES                          1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_RECURSIVE_MUTEXES                0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configCHECK_FOR_STACK_OVERFLOW             2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configGENERATE_RUN_TIME_STATS              0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configENABLE_BACKWARD_COMPATIBILITY        1
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_PRIORITIES                       ((unsigned portBASE_TYPE) 5)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_CO_ROUTINE_PRIORITIES            (2)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configQUEUE_REGISTRY_SIZE                  10
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskPrioritySet                   1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_uxTaskPriorityGet                  0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelete                        0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskCleanUpResources              0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskSuspend                       1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelayUntil                    0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelay                         1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_uxTaskGetStackHighWaterMark        1
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define configKERNEL_INTERRUPT_PRIORITY            (0x0f &lt;&lt; 4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_SYSCALL_INTERRUPT_PRIORITY       (0x05 &lt;&lt; 4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div><h1 id="hook">hook</h1>
+<blockquote>
+<p>必须实现3个callback函数</p> <a class="read-more" href="/cnblogs/post/e-freertos-port_sam4s/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-08T08:08:08&#43;08:00">
+            8 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-freertos-port_win32/">freeRTOS移植</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>freeRTOS v6.1.1</p>
+</blockquote>
+<h1 id="portableh">portable.h</h1>
+<h2 id="memory">memory</h2>
+<h3 id="tcb">TCB</h3>
+<p>Ln167~Ln187(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>pxPortInitialiseStack
+</span></span></code></pre></div><h3 id="memory-management">memory management</h3>
+<p>在heap_n.c中实现</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">pvPortMalloc</span>( <span style="color:#66d9ef">size_t</span> xSize ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortFree</span>( <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>pv ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><p>如果MPU可用，则使用Ln105~106(mpu_wrappers.h)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortInitialiseBlocks</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">size_t</span> <span style="color:#a6e22e">xPortGetFreeHeapSize</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><h2 id="task">task</h2>
+<p>此实现在Ln189<del>Ln262、Ln401</del>Ln406(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>portBASE_TYPE <span style="color:#a6e22e">xPortStartScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEndScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><blockquote>
+<p>注意：在windows系统下end是调用了TerminateProcess（WinBase.h Ln3398）</p>
+</blockquote>
+<h1 id="portmacroh">portmacro.h</h1>
+<h2 id="critical">Critical</h2>
+<p>此实现在Ln452~Ln513(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEnterCritical</span>( <span style="color:#66d9ef">void</span> );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortExitCritical</span>( <span style="color:#66d9ef">void</span> );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define portENTER_CRITICAL()		vPortEnterCritical()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define portEXIT_CRITICAL()			vPortExitCritical()
+</span></span></span></code></pre></div><h2 id="interrupt">Interrupt</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define portDISABLE_INTERRUPTS()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define portENABLE_INTERRUPTS()
+</span></span></span></code></pre></div><p>此实现在Ln408~Ln450(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortGenerateSimulatedInterrupt</span>( <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> ulInterruptNumber );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortSetInterruptHandler</span>( <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> ulInterruptNumber, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> (<span style="color:#f92672">*</span>pvHandler)( <span style="color:#66d9ef">void</span> ) );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define portYIELD()					vPortGenerateSimulatedInterrupt( portINTERRUPT_YIELD )
+</span></span></span></code></pre></div><h1 id="other">other</h1>
+<h2 id="thread">thread</h2>
+<p>在portmacro.h定义，在Ln377~Ln399(port.c)实现</p> <a class="read-more" href="/cnblogs/post/e-freertos-port_win32/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-06T08:08:08&#43;08:00">
+            6 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-freertos-base/">freeRTOS基础</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>freeRTOS v6.1.1</p>
+</blockquote>
+<h1 id="约定">约定</h1>
+<h2 id="变量名">变量名</h2>
+<p>u: unsigned
+c: char
+s: int16_t(short)
+l: int32_t(long)<br>
+x: BaseType_t 和其他所有</p>
+<h2 id="函数名">函数名</h2>
+<blockquote>
+<p>前面的小写字母表示返回值；
+紧随其后的是文件名。</p>
+</blockquote>
+<p>p: pointer
+v: void
+x: xQueueReceive() returns a variable of type BaseType_t and is defined within queue.c.</p>
+<h1 id="必须使用">必须使用</h1>
+<ul>
+<li>task.c</li>
+<li>list.c</li>
+<li>queue.c <br>
+task-to-task, task-to-interrupt, interrupt-to-task.</li>
+</ul>
+<h2 id="移植必须">移植必须</h2>
+<blockquote>
+<p>实现 portable.h</p>
+</blockquote>
+<ul>
+<li>heap_1.c or heap_2.c or heap_3.c</li>
+<li>port.c</li>
+</ul>
+<h3 id="header">header</h3>
+<ul>
+<li>portmacro.h</li>
+</ul>
+<h1 id="最小化系统">最小化系统</h1>
+<p>main.c</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">vTaskStartScheduler</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="header-1">header</h2>
+<blockquote>
+<p>vc <br>
+Configuration Properties -&gt; c/c++ -&gt; Additional include Directories</p> <a class="read-more" href="/cnblogs/post/e-freertos-base/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-04T08:08:08&#43;08:00">
+            4 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-iar-project-setup/">iar 工程基本设置</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>IAR7.50</p>
+<blockquote>
+<p>J-Link 5.10m</p>
+</blockquote>
+</blockquote>
+<p>建立一个c工程： <br>
+project -&gt; Create new project <br>
+“Project Templates”选择empty project <br>
+选择工程目录下的prj（可自定义，主要是放IAR生成的相关文件）</p>
+<blockquote>
+<p>注意：没有更改的项，使用缺省设置！</p>
+</blockquote>
+<h1 id="general-options">General Options</h1>
+<p>主要设置：目标芯片, CMSIS库, 打印和输入函数</p>
+<h2 id="设备">设备</h2>
+<blockquote>
+<p>Target</p>
+<blockquote>
+<p>Device</p>
+</blockquote>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Atmel SAM4SD32C
+</span></span></code></pre></div><h2 id="cmsis">CMSIS</h2>
+<blockquote>
+<p>Library Configuration</p>
+</blockquote>
+<p>✔ Verify DownloadUse CMSIS <br>
+✔ DSP library</p>
+<h2 id="不使用低级库">不使用低级库</h2>
+<blockquote>
+<p>Library Configuration</p>
+</blockquote>
+<p>Library low-level interface implementation</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>None
+</span></span></code></pre></div><h2 id="打印和输入">打印和输入</h2>
+<blockquote>
+<p>Library Options</p>
+</blockquote>
+<p>Printf formatter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Large
+</span></span></code></pre></div><p>Scanf formatter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>small
+</span></span></code></pre></div><hr>
+<h1 id="runtime-checking">Runtime Checking</h1>
+<blockquote>
+<p>Note：一定要设置Preprocessor（C/C++和Assembler）！！！</p>
+</blockquote>
+<p>在C/C++ Complie和Linker中开启诊断程序：</p>
+<blockquote>
+<p>Diagnostics <br>
+✔ Enable remarks</p>
+</blockquote>
+<h2 id="cc-complie">C/C++ Complie</h2>
+<p>设置方言和程序的大小</p>
+<h3 id="c方言设置">C方言设置</h3>
+<blockquote>
+<p>Language1</p>
+<blockquote>
+<p>C dialect</p>
+</blockquote>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Require prototype
+</span></span></code></pre></div><h3 id="生成最小的程序">生成最小的程序</h3>
+<blockquote>
+<p>Optimizations</p> <a class="read-more" href="/cnblogs/post/e-iar-project-setup/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-02T08:08:08&#43;08:00">
+            2 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/golang-ubuntu-config/">install go on ubuntu</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>WSL: Ubuntu 18.04</p>
+</blockquote>
+<h1 id="1-install-go">1. install go</h1>
+<p><a href="https://dl.google.com/go/go1.13.10.linux-amd64.tar.gz">go1.13.10</a></p>
+<h2 id="1-unzip">1) unzip</h2>
+<p>rename:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /usr/local/go
+</span></span><span style="display:flex;"><span>sudo mv go 1.13
+</span></span></code></pre></div><h2 id="2-set-path">2) set path</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vi ~/.bashrc
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export GOROOT<span style="color:#f92672">=</span>/usr/local/go/1.13
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>export GOPATH<span style="color:#f92672">=</span>/home/tdtc/go
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$PATH:$GOROOT/bin:$GOPATH/bin
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bashrc
+</span></span></code></pre></div><h1 id="test">test</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go version
+</span></span></code></pre></div><h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://tecadmin.net/install-go-on-ubuntu/">How To Install Go 1.12 on Ubuntu 18.04 &amp; 16.04 LTS</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/golang-ubuntu-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-17T00:08:08&#43;08:00">
+            17 May 2020
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -217,648 +896,14 @@
 </article>
 
 	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/cas-client-config/">cas client设置</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>The client and server are the same <a href="https://xiaobin80.gitee.io/cnblogs/post/cas-server-config/">thekeystore</a></p>
-</blockquote>
-<p>cas client version: 3.5.1(<a href="https://github.com/apereo/java-cas-client/tree/master/cas-client-core">cas-client-core-3.5.1</a>)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://gitee.com/xiaobin80/cas-sample-java-webapp
-</span></span></code></pre></div><h1 id="1-config">1. config</h1>
-<p>web.xml(src\main\webapp\WEB-INF)</p>
-<h2 id="1-cas-single-sign-out-filter">1) CAS Single Sign Out Filter</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas
-</span></span></code></pre></div><h2 id="2-cas-authentication-filter">2) CAS Authentication Filter</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas/login
-</span></span></code></pre></div><h2 id="3-cas-validation-filter">3) CAS Validation Filter</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas
-</span></span></code></pre></div><h2 id="4-server-name">4) server name</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>localhost
-</span></span></code></pre></div><h1 id="2-keystore">2. keystore</h1>
-<p>copy</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/etc/cas/jetty/thekeystore
-</span></span></code></pre></div><p>to</p>
-<p>The disk root directory of the application. <br>
-For example:
-my application:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>D:<span style="color:#ae81ff">\p</span>rojects<span style="color:#ae81ff">\c</span>as-sample-java-webapp
-</span></span></code></pre></div><p>then <br>
-thekeystore file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>D:<span style="color:#ae81ff">\e</span>tc<span style="color:#ae81ff">\c</span>as<span style="color:#ae81ff">\j</span>etty<span style="color:#ae81ff">\t</span>hekeystore
-</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181113192532190.png" alt="win info"></p>
-<h1 id="3-build">3. build</h1>
-<p>alter context path(pom.xml):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;webApp&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;contextPath&gt;</span>/loginInfo<span style="color:#f92672">&lt;/contextPath&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;overrideDescriptor&gt;</span>${basedir}/etc/jetty/web.xml<span style="color:#f92672">&lt;/overrideDescriptor&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/webApp&gt;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mvn clean package jetty:run-forked
-</span></span></code></pre></div><h2 id="1-run-directly">1) Run directly</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mvn jetty:run-forked
-</span></span></code></pre></div><h1 id="4-test">4. test</h1>
-<p>http://localhost:9080/loginInfo
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20190811082322077.png" alt="browser info">
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181115204456890.png" alt="cas info"></p> <a class="read-more" href="/cnblogs/post/cas-client-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-05-16T12:08:08&#43;08:00">
-            16 May 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/cas-server-config/">cas server设置</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>Tomcat: V8.5.x</li>
-<li>Java: 1.8 x64</li>
-<li>MySQL: 5.5.x+</li>
-<li>OS: Win10 x64</li>
-</ul>
-<h1 id="下载部署包">下载部署包</h1>
-<blockquote>
-<p>使用gradle 的repo最高只支持gradle V4.3！</p>
-</blockquote>
-<h2 id="0-clone">0. clone</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/apereo/cas-gradle-overlay-template.git
-</span></span></code></pre></div><h2 id="1-set-gradle">1. set gradle</h2>
-<h3 id="1-extract">1) extract</h3>
-<p><a href="https://gradle.org/next-steps/?version=4.10.3&amp;format=bin">gradle-4.10.3-bin.zip</a></p>
-<h3 id="2-set-system-variable">2) set system variable</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  $PATH<span style="color:#f92672">=</span>$PATH;%GRADLE_HOME%<span style="color:#ae81ff">\b</span>in
-</span></span></code></pre></div><h2 id="2-build-war">2. build war</h2>
-<blockquote>
-<p>File location: cas\build\libs\cas.war</p>
-</blockquote>
-<h3 id="1-config-file">1) config file</h3>
-<p>gradle.properties</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cas.version<span style="color:#f92672">=</span>5.3.2
-</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt;
-</span></span><span style="display:flex;"><span>cas.version<span style="color:#f92672">=</span>5.3.15.1
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>gradle.version<span style="color:#f92672">=</span>4.8
-</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt;
-</span></span><span style="display:flex;"><span>gradle.version<span style="color:#f92672">=</span>4.10.3
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>springboot.version<span style="color:#f92672">=</span>1.5.14.RELEASE
-</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt;
-</span></span><span style="display:flex;"><span>springboot.version<span style="color:#f92672">=</span>1.5.18.RELEASE
-</span></span></code></pre></div><h3 id="2-build">2) build</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd cas-gradle-overlay-template
-</span></span><span style="display:flex;"><span>$gradle build
-</span></span></code></pre></div><h1 id="ii-run">II. Run</h1>
-<h2 id="0-keycertificate">0. key/certificate</h2>
-<h3 id="1-genkey">1) genkey</h3>
-<blockquote>
-<p>info:
--dname &ldquo;CN=localhost,OU=test.com,O=test,L=WH,ST=HB,C=CN&rdquo;</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -genkey -keyalg RSA -alias thekeystore -keypass changeit -storepass changeit -keysize <span style="color:#ae81ff">2048</span> -keystore e:/etc/cas/thekeystore
-</span></span></code></pre></div><h3 id="2-export">2) export</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -export -alias thekeystore -file e:/etc/cas/cas5311.crt -keystore e:/etc/cas/thekeystore -storepass changeit
-</span></span></code></pre></div><h3 id="3-import">3) import</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -import -alias thekeystore -storepass changeit -file e:/etc/cas/cas5311.crt -keystore <span style="color:#e6db74">&#34;%JAVA_HOME%\jre\lib\security\cacerts&#34;</span>
-</span></span></code></pre></div><h2 id="1-set-tomcat">1. set tomcat</h2>
-<h3 id="1-thekeystore">1) thekeystore</h3>
-<p>copy thekeystore file to $TOMCAT_HOME/conf</p> <a class="read-more" href="/cnblogs/post/cas-server-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-05-16T10:08:08&#43;08:00">
-            16 May 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/redis-centos7-setup/">Redis Server installation FAQs</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>OS: CentOS 7 Minimal</p>
-</blockquote>
-<h1 id="0-open-files">0) open files</h1>
-<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
-A:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ulimit -a
-</span></span><span style="display:flex;"><span>$vi /etc/systemd/system/redis.service
-</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LimitNOFILE<span style="color:#f92672">=</span><span style="color:#ae81ff">10032</span>
-</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
-<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
-A:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$vi /etc/sysctl.conf
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net.core.somaxconn<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span>
-</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
-<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
-To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
-for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-centos7-setup/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-05-16T08:08:08&#43;08:00">
-            16 May 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/java-connector-cluster_mysql/">cluster connector</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="elementary">Elementary</h1>
-<blockquote>
-<p>在没有出来NDB之前，都是使用这个组件。</p>
-</blockquote>
-<p><a href="http://www.frogthinker.org/projects/sequoia">C-JDBC</a></p>
-<blockquote>
-<p><a href="http://c-jdbc.ow2.org/index.html">c-jdbc文档</a> <br>
-<a href="https://sourceforge.net/projects/sequoiadb/files/">src-Sequoia 2.10.10</a></p>
-</blockquote>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Sequoia_architecture.jpg" alt="Sequoia architecture"></p>
-<h1 id="ndb-cluster">NDB Cluster</h1>
-<blockquote>
-<p>关于：</p>
-<blockquote>
-<p>JPA、JDBC省略不表。
-<img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-java-to-cluster.png" alt="mysql dev"></p>
-</blockquote>
-</blockquote>
-<h2 id="clusterj">ClusterJ</h2>
-<blockquote>
-<p>ClusterJ requires Java 1.7 or 1.8.</p>
-</blockquote>
-<p><img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-clusterj-user-view.png" alt="Figure 4.2 ClusterJ User View Of Application And Environment"></p>
-<p>首先使用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-sessionfactory.html">SessionFactory</a>建立一个会话实例， <br>
-然后用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-session.html">Session</a>提供的方法操作数据。</p>
-<h3 id="会话实例">会话实例</h3>
-<p>读取配置文件，然后建立Session实例。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>File propsFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;clusterj.properties&#34;</span>);
-</span></span><span style="display:flex;"><span>InputStream inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(propsFile);
-</span></span><span style="display:flex;"><span>Properties props <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Properties();
-</span></span><span style="display:flex;"><span>props.<span style="color:#a6e22e">load</span>(inStream);
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>SessionFactory factory <span style="color:#f92672">=</span> ClusterJHelper.<span style="color:#a6e22e">getSessionFactory</span>(props);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Session session <span style="color:#f92672">=</span> factory.<span style="color:#a6e22e">getSession</span>();
-</span></span></code></pre></div><h4 id="配置信息">配置信息</h4>
-<blockquote>
-<p>clusterj.properties</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">com.mysql.clusterj.connectstring</span><span style="color:#f92672">=</span><span style="color:#e6db74">localhost:1186</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">com.mysql.clusterj.database</span><span style="color:#f92672">=</span><span style="color:#e6db74">mydb</span>
-</span></span></code></pre></div><h3 id="操作数据">操作数据</h3>
-<p>参考<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj-operations.html">4.2.2.4 ClusterJ Basic Operations</a>文档。</p>
-<h1 id="reference">Reference</h1>
-<ul>
-<li><a href="https://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj.html">4.2.2 Using ClusterJ</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/java-connector-cluster_mysql/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-05-16T05:58:08&#43;08:00">
-            16 May 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/java-apache_cli/">Apache CLI Demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="1-options">1. Options</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> Options options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Options();
-</span></span></code></pre></div><h1 id="2-option">2. option</h1>
-<p>增加选项有两种方式：直接赋值给各个参数； <br>
-另一种，就是赋值到一个实例中。</p>
-<h2 id="1-way1">1) way1</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;show help.&#34;</span>);
-</span></span></code></pre></div><h2 id="2-way2">2) way2</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(optFile);
-</span></span></code></pre></div><h1 id="3-command-line-parser">3. command line parser</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>CommandLineParser cmdParser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DefaultParser();
-</span></span></code></pre></div><h1 id="4-exec-method">4. exec method</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">help</span>() {
-</span></span><span style="display:flex;"><span> <span style="color:#75715e">// This prints out some help</span>
-</span></span><span style="display:flex;"><span>  HelpFormatter formater <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HelpFormatter();
-</span></span><span style="display:flex;"><span>  formater.<span style="color:#a6e22e">printHelp</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getClass</span>().<span style="color:#a6e22e">getSimpleName</span>(), options);
-</span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">exit</span>(0);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h1 id="5-test">5. test</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -cp cliDemo-0.0.1-SNAPSHOT.jar;C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\x</span>iaobin<span style="color:#ae81ff">\.</span>m2<span style="color:#ae81ff">\r</span>epository<span style="color:#ae81ff">\c</span>ommons-cli<span style="color:#ae81ff">\c</span>ommons-cli<span style="color:#ae81ff">\1</span>.4<span style="color:#ae81ff">\c</span>ommons-cli-1.4.jar my.csdn9.ConsoleLauncher --help
-</span></span></code></pre></div><h1 id="source-code">source code</h1>
-<p>ConsoleLauncher.java</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> my.csdn9;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.CommandLine;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.CommandLineParser;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.DefaultParser;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.HelpFormatter;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.Option;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.Options;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.ParseException;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConsoleLauncher</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Step 1: otions</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Options options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Options();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// TODO Auto-generated method stub</span>
-</span></span><span style="display:flex;"><span>        ConsoleLauncher launcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConsoleLauncher();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 2: add option</span>
-</span></span><span style="display:flex;"><span>        Option optFile <span style="color:#f92672">=</span> Option.<span style="color:#a6e22e">builder</span>( <span style="color:#e6db74">&#34;file&#34;</span> )
-</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">longOpt</span>( <span style="color:#e6db74">&#34;logfile&#34;</span> )
-</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">hasArg</span>(<span style="color:#66d9ef">false</span>)
-</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">desc</span>(  <span style="color:#e6db74">&#34;use given file for log&#34;</span> )
-</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">build</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Way I: Direct definition</span>
-</span></span><span style="display:flex;"><span>        launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;show help.&#34;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Way II: Use the option class to define</span>
-</span></span><span style="display:flex;"><span>        launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(optFile);
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 3: cmd parser</span>
-</span></span><span style="display:flex;"><span>        CommandLineParser cmdParser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DefaultParser();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            CommandLine cmd <span style="color:#f92672">=</span> cmdParser.<span style="color:#a6e22e">parse</span>(launcher.<span style="color:#a6e22e">options</span>, args);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cmd.<span style="color:#a6e22e">hasOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>)) {
-</span></span><span style="display:flex;"><span>                launcher.<span style="color:#a6e22e">help</span>();
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cmd.<span style="color:#a6e22e">hasOption</span>(<span style="color:#e6db74">&#34;file&#34;</span>)) {
-</span></span><span style="display:flex;"><span>                 System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;----file----&#34;</span>);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (ParseException e) {
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// TODO Auto-generated catch block</span>
-</span></span><span style="display:flex;"><span>             e.<span style="color:#a6e22e">printStackTrace</span>();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// Step 4: exec method</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">help</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// This prints out some help</span>
-</span></span><span style="display:flex;"><span>         HelpFormatter formater <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HelpFormatter();
-</span></span><span style="display:flex;"><span>         formater.<span style="color:#a6e22e">printHelp</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getClass</span>().<span style="color:#a6e22e">getSimpleName</span>(), options);
-</span></span><span style="display:flex;"><span>         System.<span style="color:#a6e22e">exit</span>(0);
-</span></span><span style="display:flex;"><span>     }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="pom">pom</h2>
-<p>pom.xml</p> <a class="read-more" href="/cnblogs/post/java-apache_cli/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-05-16T02:58:08&#43;08:00">
-            16 May 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/php-lamp2/">httpd配置</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="一apache24php56">一、Apache2.4+php5.6</h1>
-<h2 id="1-httpdconf">1. httpd.conf</h2>
-<h3 id="dso">DSO</h3>
-<blockquote>
-<p>Line:152</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule php5_module        modules/libphp5.so
-</span></span></code></pre></div><h3 id="server-name">Server Name</h3>
-<blockquote>
-<p>Line:194 - Instead</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ServerName localhost:80
-</span></span></code></pre></div><h3 id="each-directory">Each Directory</h3>
-<blockquote>
-<p>Line:202 - Instead</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
-</span></span></code></pre></div><h3 id="document-root">Document Root</h3>
-<blockquote>
-<p>Line:239 - Instead</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
-</span></span></code></pre></div><h3 id="directory-index">Directory Index</h3>
-<blockquote>
-<p>Line:252 - Instead</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DirectoryIndex index.html index.php
-</span></span></code></pre></div><h3 id="mime-type">MIME Type</h3>
-<blockquote>
-<p>Line:390 - Add</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AddType application/x-httpd-php .php
-</span></span></code></pre></div><h2 id="2-phpini">2. php.ini</h2>
-<h3 id="paths-and-directories">Paths and Directories</h3>
-<blockquote>
-<p>Line:709 - Instead</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>include_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/php/lib/php&#34;</span>
-</span></span></code></pre></div><h3 id="socket">socket</h3>
-<h4 id="pdo_mysql">[Pdo_mysql]</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pdo_mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
-</span></span></code></pre></div><h4 id="mysqli">[MySQLi]</h4>
-<blockquote>
-<p>Line:1221 - Instead</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysqli.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
-</span></span></code></pre></div><h1 id="二apache22php53">二、Apache2.2+php5.3</h1>
-<h2 id="1-httpdconf-1">1. httpd.conf</h2>
-<ul>
-<li>DSO(Dynamic Shard Object)  <br>
-(Line:55 - Add)</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule php5_module        modules/libphp5.so
-</span></span></code></pre></div><ul>
-<li>Server Name  <br>
-(Line:99 - Instead)</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ServerName localhost:80
-</span></span></code></pre></div><ul>
-<li>Each Directory  <br>
-(Line:118 - Instead)</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
-</span></span></code></pre></div><ul>
-<li>Document Root  <br>
-(Line:153 - Instead)</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
-</span></span></code></pre></div><ul>
-<li>Directory Index <br>
-(Line:168 - Instead)</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DirectoryIndex index.html index.php
-</span></span></code></pre></div><ul>
-<li>MIME Type <br>
-(Line:285 - Add)</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AddType application/x-httpd-php .php
-</span></span></code></pre></div><h2 id="2-phpini-1">2. php.ini</h2>
-<ul>
-<li>Paths and Directories  <br>
-(Line:796 - Instead)</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>include_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/php/lib/php&#34;</span>
-</span></span></code></pre></div><ul>
-<li>socket</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Sock file when using RPM default installation location
-</span></span></code></pre></div><ol>
-<li>[Pdo_mysql] <br>
-(Line:1075 - Instead)</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pdo_mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
-</span></span></code></pre></div><ol start="2">
-<li>[MySQL]  <br>
-(Line:1229 - Instead)</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
-</span></span></code></pre></div> <a class="read-more" href="/cnblogs/post/php-lamp2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-04-13T03:38:08&#43;08:00">
-            13 Apr 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/php-lamp/">安装LAMP</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p> 操作系统：CentOS7.6(x86_64) <br>
-安装方式：源码安装 &amp; RPM包  <br>
-安装目录：/opt/</p>
-<blockquote>
-<p>安装文件：  <br>
-(1) Apache Httpd <a href="http://mirror.bit.edu.cn/apache//httpd/httpd-2.4.39.tar.gz">V2.4.x</a>  <br>
-(2) MariaDB V5.5(系统自带) <br>
-(3) PHP <a href="https://www.php.net/distributions/php-5.6.40.tar.gz">V5.6.x</a></p>
-</blockquote>
-</blockquote>
-<h1 id="一httpd">一、Httpd</h1>
-<p>卸载系统自带httpd（V2.4.6-89）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum remove httpd
-</span></span></code></pre></div><h2 id="1-depend-soft">1. depend soft</h2>
-<h2 id="apr">APR</h2>
-<p><a href="http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-1.7.0.tar.gz">down</a></p>
-<h3 id="install">install</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr
-</span></span><span style="display:flex;"><span>$make <span style="color:#f92672">&amp;&amp;</span> sudo make install
-</span></span></code></pre></div><h2 id="apr-util">APR-util</h2>
-<blockquote>
-<p>Tips: <a href="https://bbs.csdn.net/topics/392191188">https://bbs.csdn.net/topics/392191188</a></p>
-</blockquote>
-<p><a href="http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-util-1.6.1.tar.gz">down</a></p>
-<h3 id="expat-devel">expat-devel</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install expat-devel
-</span></span></code></pre></div><h3 id="install-apr-util">install apr-util</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>	    --with-apr<span style="color:#f92672">=</span>/opt/apr <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>	    --with-expat<span style="color:#f92672">=</span>/usr/local/expat
-</span></span><span style="display:flex;"><span>$make <span style="color:#f92672">&amp;&amp;</span> sudo make install
-</span></span></code></pre></div><h2 id="install-httpd">install httpd</h2>
-<h3 id="pcre-devel">pcre-devel</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum -y install pcre-devel
-</span></span></code></pre></div><h2 id="setup">Setup</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tar zxvf httpd-2.4.39.tar.gz
-</span></span><span style="display:flex;"><span>$ &lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;cd&lt;/span&gt; httpd-2.4.39
-</span></span><span style="display:flex;"><span>$ ./configure --prefix<span style="color:#f92672">=</span>/opt/httpd <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>	    --with-apr-util<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>	    --&lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;enable&lt;/span&gt;-so <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>        --&lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;enable&lt;/span&gt;-rewrite
-</span></span><span style="display:flex;"><span>$ make
-</span></span><span style="display:flex;"><span>$ sudo make install
-</span></span></code></pre></div><h1 id="二php">二、PHP</h1>
-<h2 id="依赖包安装">依赖包安装</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install libxml2-devel <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>            curl-devel <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>            libjpeg-devel <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>            libpng-devel
-</span></span></code></pre></div><p>如果系统没有安装普通包，则安装之。默认已安装。 <br>
-安装libmcrypt</p> <a class="read-more" href="/cnblogs/post/php-lamp/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-04-13T03:28:08&#43;08:00">
-            13 Apr 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/php-faqs/">veic web的版本使用问题</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>推荐PHP版本<a href="https://windows.php.net/downloads/releases/archives/">v5.6.40/v7.1.33</a></p>
-</blockquote>
-<h1 id="1-v01">1. <a href="https://github.com/xiaobin80/veic_web/archive/v0.1-alpha.zip">v0.1</a></h1>
-<h2 id="1only-variable-references-should-be-returned-by-reference">1）Only variable references should be returned by reference</h2>
-<p><a href="https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11">https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11</a></p>
-<p><img src="https://gitee.com/xiaobin80/csdn/raw/master/images/20190601144425762.png" alt="php encountered"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
-</span></span></code></pre></div><p>==&gt;</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $_config[<span style="color:#ae81ff">0</span>];
-</span></span></code></pre></div><h2 id="2-sqli">2) sqli</h2>
-<blockquote>
-<p>从PHP5.5之后，会出现</p>
-<blockquote>
-<p>Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in xxx</p>
-</blockquote>
-</blockquote>
-<p>提示mysql_connect()未来将要被移出。</p>
-<blockquote>
-<p>官网的<a href="http://php.net/manual/en/changelog.mysql.php">changelong</a>
-注意: php7.0.x已经移除了mysql.</p>
-</blockquote>
-<p>在php.ini(windows)中注释掉</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>;extension<span style="color:#f92672">=</span>php_mysql.dll
-</span></span></code></pre></div><h1 id="2-mcrypt">2. mcrypt</h1>
-<blockquote>
-<p>php7.2~php7.4</p>
-</blockquote>
-<p>使用 错误抑制符 停止提示。
-修改Encrypt.php（.\system\libraries\）</p>
-<ul>
-<li>Ln273</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_size <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_get_iv_size</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>());
-</span></span></code></pre></div><ul>
-<li>Ln274</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_vect <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_create_iv</span>($init_size, <span style="color:#a6e22e">MCRYPT_RAND</span>);
-</span></span></code></pre></div><ul>
-<li>Ln275</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_add_cipher_noise</span>($init_vect<span style="color:#f92672">.@</span><span style="color:#a6e22e">mcrypt_encrypt</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), 
-</span></span><span style="display:flex;"><span>    $key, $data, $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>(), $init_vect), $key);
-</span></span></code></pre></div><ul>
-<li>Ln291</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_size <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_get_iv_size</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>());
-</span></span></code></pre></div><ul>
-<li></li>
-<li>Ln300</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rtrim</span>(<span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_decrypt</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $key, $data, $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>(), $init_vect), <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#34;</span>);
-</span></span></code></pre></div><h2 id="down"><a href="https://pecl.php.net/package/mcrypt/1.0.4/windows">down</a></h2>
-<table>
-	<thead>
-			<tr>
-					<th>Php</th>
-					<th>mcrypt</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>8.0</td>
-					<td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-8.0-ts-vs16-x64.zip">x64</a></td>
-			</tr>
-			<tr>
-					<td>7.4</td>
-					<td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.4-ts-vc15-x64.zip">x64</a></td>
-			</tr>
-			<tr>
-					<td>7.3</td>
-					<td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.3-ts-vc15-x64.zip">x64</a></td>
-			</tr>
-			<tr>
-					<td>7.2</td>
-					<td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.2-ts-vc15-x64.zip">x64</a></td>
-			</tr>
-	</tbody>
-</table>
-<p>把php_mcrypt.dll拷贝到&quot;ext&quot;中.</p> <a class="read-more" href="/cnblogs/post/php-faqs/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-04-11T21:08:39&#43;08:00">
-            11 Apr 2020
-        </time>
-    </footer>
-</article>
-
-	
 
 	<nav class="pagination" role="navigation">
 	
 	    <a class="newer-posts" href="/cnblogs/post/page/6/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 7 of 7</span>
+	<span class="page-number">Page 7 of 8</span>
+	
+	    <a class="older-posts" href="/cnblogs/post/page/8/">Older Posts &rarr;</a>
 	
 </nav>
 

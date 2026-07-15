@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_blink7/</loc>
-    <lastmod>2026-07-13T08:08:08+08:00</lastmod>
-  </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/</loc>
-    <lastmod>2026-07-13T08:08:08+08:00</lastmod>
+    <lastmod>2026-07-14T10:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_psect/</loc>
+    <lastmod>2026-07-14T10:08:08+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/</loc>
+    <lastmod>2026-07-14T10:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic_as-tutor/</loc>
+    <lastmod>2026-07-14T08:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_blink6/</loc>
+    <lastmod>2026-07-14T08:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_blink7/</loc>
     <lastmod>2026-07-13T08:08:08+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_pickit/</loc>
@@ -34,6 +43,12 @@
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/c2plus-overflow4-gcc/</loc>
     <lastmod>2026-03-21T11:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/doxy-comment/</loc>
+    <lastmod>2026-03-11T20:38:18+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/doxy-config/</loc>
+    <lastmod>2026-03-11T20:38:18+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/c2plus-overflow2-gcc/</loc>
     <lastmod>2026-03-11T11:08:08+08:00</lastmod>
@@ -109,6 +124,18 @@
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/php-build-win/</loc>
     <lastmod>2023-08-20T10:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_mpasm2xc8/</loc>
+    <lastmod>2023-06-18T08:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f188_memory-map-banks/</loc>
+    <lastmod>2023-05-18T18:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f188_status-register/</loc>
+    <lastmod>2023-05-18T12:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f188_register-definitions/</loc>
+    <lastmod>2023-05-18T10:08:08+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_instruction-set/</loc>
     <lastmod>2023-05-17T10:08:08+08:00</lastmod>
@@ -217,6 +244,9 @@
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/java-connector-cluster_mysql/</loc>
     <lastmod>2020-05-16T05:58:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/java-jmx-jdk7/</loc>
+    <lastmod>2020-05-16T03:58:08+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/java-apache_cli/</loc>
     <lastmod>2020-05-16T02:58:08+08:00</lastmod>

@@ -153,13 +153,363 @@
 	
 	    <a class="newer-posts" href="/cnblogs/page/3/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 4 of 7</span>
+	<span class="page-number">Page 4 of 8</span>
 	
 	    <a class="older-posts" href="/cnblogs/page/5/">Older Posts &rarr;</a>
 	
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-serialport/">使用qt5编写Serial Port</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><img src="https://www.eltima.com/images/upload/products/spm/articles/howto/178.jpg" alt="RS-232 Testing Guide"></p>
+<h1 id="thread">thread</h1>
+<blockquote>
+<p>线程相关</p>
+</blockquote>
+<h2 id="asynchronously">asynchronously</h2>
+<p><a href="https://doc.qt.io/qt-5/qobject.html#connect">connect方法</a> 已实现异步。</p>
+<h2 id="synchronously">synchronously</h2>
+<p><a href="https://doc.qt.io/qt-5/qmutexlocker.html">qmutexlocker</a></p>
+<h3 id="创建信号锁">创建信号锁</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>m_mutex.lock();
+</span></span></code></pre></div><h2 id="信号">信号</h2>
+<p>为便于调用者获得线程的内部信息，我们需要提供信号。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>signals:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> error(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>s);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">timeout</span>(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>s);
+</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20200627152341.png" alt="program ui"></p>
+<h1 id="worker-method">Worker method</h1>
+<h2 id="init-port">Init Port</h2>
+<p>设置私有成员变量</p>
+<blockquote>
+<p>部分代码</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>m_waitTimeout <span style="color:#f92672">=</span> waitTimeout;
+</span></span></code></pre></div><h2 id="receive-data">Receive data</h2>
+<p>打开串口</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>m_serialPort<span style="color:#f92672">-&gt;</span>open(QIODevice<span style="color:#f92672">::</span>ReadWrite)) {
+</span></span><span style="display:flex;"><span>		qDebug() <span style="color:#f92672">&lt;&lt;</span> tr(<span style="color:#e6db74">&#34;Can&#39;t open %1, error code %2&#34;</span>)
+</span></span><span style="display:flex;"><span>			.arg(m_portName).arg(m_serialPort<span style="color:#f92672">-&gt;</span>error());
+</span></span><span style="display:flex;"><span>		m_serialPort<span style="color:#f92672">-&gt;</span>close();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>接收数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (m_serialPort<span style="color:#f92672">-&gt;</span>waitForReadyRead(<span style="color:#ae81ff">500</span>))
+</span></span><span style="display:flex;"><span>            responseData <span style="color:#f92672">+=</span> m_serialPort<span style="color:#f92672">-&gt;</span>read(<span style="color:#ae81ff">1024</span>);
+</span></span></code></pre></div><h1 id="deploy-for-windows">Deploy for windows</h1>
+<p>copy exe to target directory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>copy C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\P</span>rojects<span style="color:#ae81ff">\s</span>erialCommQt<span style="color:#ae81ff">\R</span>elease<span style="color:#ae81ff">\s</span>erialCommQt.exe C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\s</span>erialCommQt_qmake<span style="color:#ae81ff">\
+</span></span></span></code></pre></div><p>exec windeployqt:</p> <a class="read-more" href="/cnblogs/post/qt-serialport/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-02-23T08:18:08&#43;08:00">
+            23 Feb 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-thread/">QT5简单thread</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="project">Project</h1>
+<p>使用Qt Visual Studio Tools创建, 以下简称qt tools。</p>
+<p>also see: <a href="https://tdtc-hrb.github.io/cnblogs/post/qt-hello/">QT VS Tools的设置</a></p>
+<h2 id="install-qt-tools">install qt tools</h2>
+<p>Tools -&gt; Extensions and Updates <br>
+选择Online, 输入&quot;Qt Visual Studio Tools&quot;</p>
+<h2 id="create-qt-project">Create Qt Project</h2>
+<p>File -&gt; New -&gt; Project <br>
+Qt Console Application</p>
+<h2 id="add-class">Add class</h2>
+<p>点击“工程名”右键, Add -&gt; Class <br>
+Class name: Controller <br>
+Base Class: QObject</p>
+<p>初始状态的Controller类: <br>
+Controller.h</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;qobject.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Controller</span> <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> QObject
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Controller.cpp</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Controller.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h1 id="worker">Worker</h1>
+<p>此Worker使用的“easy worker”的案例.</p>
+<h2 id="header">Header</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QObject&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Worker</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QObject {
+</span></span><span style="display:flex;"><span>	Q_OBJECT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	Worker();
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">~</span>Worker();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> slots:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> process();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>signals:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> finished();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">error</span>(QString err);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// add your variables here
+</span></span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="class">Class</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Worker.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- CONSTRUCTOR ---
+</span></span></span><span style="display:flex;"><span>Worker<span style="color:#f92672">::</span>Worker() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// you could copy data from constructor arguments to internal variables here.
+</span></span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- DECONSTRUCTOR ---
+</span></span></span><span style="display:flex;"><span>Worker<span style="color:#f92672">::~</span>Worker() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// free resources
+</span></span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- PROCESS ---
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Start processing data.
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> Worker<span style="color:#f92672">::</span>process() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// allocate resources using new here
+</span></span></span><span style="display:flex;"><span>	qDebug(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>	emit <span style="color:#a6e22e">finished</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="controller">Controller</h1>
+<h2 id="header-1">Header</h2>
+<p>申明errorString槽, 以对接Worker的信号“error”;
+申明operate信号, 以供操作Controller。</p> <a class="read-more" href="/cnblogs/post/qt-thread/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-23T22:08:08&#43;08:00">
+            23 Jan 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow1-gcc/">signed warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
+</ul>
+<h2 id="shellsort">shellsort</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Comparable<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> shellsort(vector<span style="color:#f92672">&lt;</span>Comparable<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>a)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> gap <span style="color:#f92672">=</span> a.size() <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; gap <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; gap <span style="color:#f92672">/=</span> <span style="color:#ae81ff">2</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> gap; i <span style="color:#f92672">&lt;</span> a.size(); <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Comparable tmp <span style="color:#f92672">=</span> move(a[i]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (; j <span style="color:#f92672">&gt;=</span> gap <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">&lt;</span> a[j <span style="color:#f92672">-</span> gap]; j <span style="color:#f92672">-=</span> gap)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                a[j] <span style="color:#f92672">=</span> move(a[j <span style="color:#f92672">-</span> gap]);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            a[j] <span style="color:#f92672">=</span> move(tmp);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        cout<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> gap <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> n : a)
+</span></span><span style="display:flex;"><span>            cout <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> a <span style="color:#f92672">=</span> { <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">94</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">96</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">35</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">95</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">58</span>, <span style="color:#ae81ff">41</span>, <span style="color:#ae81ff">75</span>, <span style="color:#ae81ff">15</span>};
+</span></span><span style="display:flex;"><span>    shellsort(a);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Warn info</li>
+</ul>
+<pre tabindex="0"><code>warning: comparison of integer expressions of different signedness: 
+&#39;int&#39; and &#39;std::vector&lt;int&gt;::size_type&#39; {aka &#39;long long unsigned int&#39;} [-Wsign-compare]
+   10 |         for(int i = gap; i &lt; a.size(); ++i)
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/a/3660928">A warning - comparison between signed and unsigned integer expressions</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow1-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-11T11:08:08&#43;08:00">
+            11 Jan 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ror_installation/">安装Ruby On Rails</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html">Ruby &amp; Rails Compatibility Table</a></li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>Rails Version</th>
+					<th>Required Ruby Version</th>
+					<th>Recommended Ruby Version</th>
+					<th>Required Rubygems Version</th>
+					<th>Status</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>8.1.Z</td>
+					<td>&gt;= 3.2.0</td>
+					<td>3.4.Z</td>
+					<td>&gt;= 1.8.11</td>
+					<td>Maintained</td>
+			</tr>
+			<tr>
+					<td>8.0.Z</td>
+					<td>&gt;= 3.2.0</td>
+					<td>3.4.Z</td>
+					<td>&gt;= 1.8.11</td>
+					<td>Maintained</td>
+			</tr>
+			<tr>
+					<td>7.2.Z</td>
+					<td>&gt;= 3.1.0</td>
+					<td>3.4.Z</td>
+					<td>&gt;= 1.8.11</td>
+					<td>Maintained</td>
+			</tr>
+	</tbody>
+</table>
+<h1 id="rbenv">RbEnv</h1>
+<p>Install ruby using rbenv.</p>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>Debian</li>
+</ul>
+<blockquote>
+<p>v12
+After enabling <a href="https://tdtc-hrb.github.io/csdn/post/apt-oper-ubuntu/">sudo</a>,
+the operation is the same as Ubuntu.</p>
+</blockquote>
+<ul>
+<li>Ubuntu <br>
+Ubuntu 20.04 default Ruby version is v2.7</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
+ libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
+</code></pre><ul>
+<li>RHEL <br>
+RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel
+</span></span></code></pre></div><p>install tar:</p> <a class="read-more" href="/cnblogs/post/ror_installation/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-08T08:08:08&#43;08:00">
+            8 Jan 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_openssl/">install and usage with OpenSSL</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>RHEL Community Version <br>
+Alma Linux / Rocky Linux</li>
+</ul>
+<h1 id="prepare">Prepare</h1>
+<p>Install development tool:</p>
+<pre tabindex="0"><code># dnf group install &#39;Development Tools&#39;
+</code></pre><p>Install dependencies:</p>
+<pre tabindex="0"><code># dnf install perl-core zlib-devel -y
+</code></pre><h2 id="down-latest-openssl">down latest OpenSSL</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$mkdir openssl-1.1.1
+</span></span><span style="display:flex;"><span>$curl --progress https://www.openssl.org/source/openssl-1.1.1w.tar.gz | tar xz -C ./openssl-1.1.1 --strip-components <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h1 id="setup">setup</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$cd openssl-1.1.1
+</span></span></code></pre></div><ul>
+<li>RHEL8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr/local/ssl --openssldir<span style="color:#f92672">=</span>/usr/local/ssl shared zlib
+</span></span></code></pre></div><ul>
+<li>RHEL7</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr --shared
+</span></span></code></pre></div><h2 id="make--install">make &amp;&amp; install</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$make
+</span></span></code></pre></div><p>Root permission Required:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo make install
+</span></span></code></pre></div><h2 id="rhel8">RHEL8</h2>
+<pre tabindex="0"><code># mv /bin/openssl /bin/openssl.backup
+# cp /usr/local/ssl/bin/openssl /bin/openssl
+</code></pre><p>test:</p> <a class="read-more" href="/cnblogs/post/ops_openssl/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-12-29T08:38:08&#43;08:00">
+            29 Dec 2024
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -451,67 +801,92 @@ git clone -b PHP-8.0.* https://github.com/php/php-src.git
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_instruction-set/">8位单片机PIC汇编语言</a></h2>
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic16f_mpasm2xc8/">MPASM to MPLAB XC8 PIC Assembler</a></h2>
     </header>
     <section class="post-excerpt">
         
-            <p><p>TABLE 1-1: OPCODE FIELD DESCRIPTIONS</p>
-<table>
+            <p><table>
 	<thead>
 			<tr>
-					<th>Field</th>
-					<th>Description</th>
+					<th>old</th>
+					<th>Alternate Products</th>
+					<th></th>
+					<th></th>
 			</tr>
 	</thead>
 	<tbody>
 			<tr>
-					<td>f</td>
-					<td>Register file address (0x00 to 0x7F)</td>
+					<td><a href="https://www.microchip.com/en-us/product/PIC16F84">PIC16F84-1998</a></td>
+					<td>pic16f15243</td>
+					<td></td>
+					<td></td>
 			</tr>
 			<tr>
-					<td>W</td>
-					<td>Working register (accumulator)</td>
-			</tr>
-			<tr>
-					<td>d</td>
-					<td>Destination select;</td>
-			</tr>
-			<tr>
-					<td>b</td>
-					<td>Bit address within an 8-bit file register</td>
-			</tr>
-			<tr>
-					<td>k</td>
-					<td>Literal field, constant data or label</td>
+					<td><a href="https://www.microchip.com/en-us/product/PIC16F877A">PIC16F877a-2001</a></td>
+					<td>PIC16F18877</td>
+					<td></td>
+					<td></td>
 			</tr>
 	</tbody>
 </table>
+<ul>
+<li>
+<p>MPASM <br>
+<a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v5.35-windows-installer.exe">MPLAB X v5.35(x64) - 2020.02.21</a></p>
+</li>
+<li>
+<p>PIC-AS <br>
+<a href="https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide">MPLAB X v5.40+</a> and
+<a href="https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers/downloads-documentation#XC8">XC8 v2.41</a></p>
+</li>
+</ul>
+<h2 id="specific-controller">specific controller</h2>
 <table>
 	<thead>
 			<tr>
-					<th>d value</th>
-					<th>where the results are placed</th>
+					<th>MPASM</th>
+					<th>XC8 Assembler</th>
 			</tr>
 	</thead>
 	<tbody>
 			<tr>
-					<td>d = 0</td>
-					<td>W(orking) register</td>
-			</tr>
-			<tr>
-					<td>d = 1</td>
-					<td>file register; Default is d = 1.</td>
+					<td>LIST P = DeviceName</td>
+					<td>PROCESSOR   DeviceName</td>
 			</tr>
 	</tbody>
 </table>
-<p>TABLE 1-2: ABBREVIATION DESCRIPTIONS</p>
-<p>|Field| Description|
-| PC | Program Counter|
-| TO | Time-Out bit|
-| C  | Carry bit|
-| DC | Digit Carry bit|
-| Z  | Zero bit|
-| PD | Power-Down bit|</p> <a class="read-more" href="/cnblogs/post/e-pic16f_instruction-set/">&raquo;</a></p>
+<p>LIST (indicates specific controller, e.g., LIST P=18F452) unique to PIC assembler.</p>
+<h2 id="include-files">Include Files</h2>
+<table>
+	<thead>
+			<tr>
+					<th>MPASM</th>
+					<th>XC8 Assembler</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>INCLUDE &lt;DeviceName.INC&gt;</td>
+					<td>#include &lt;xc.inc&gt;</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="set-devices-configuration-bits">Set device&rsquo;s configuration bits</h2>
+<table>
+	<thead>
+			<tr>
+					<th>MPASM</th>
+					<th>XC8 Assembler</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>__CONFIG</td>
+					<td>The CONFIG directive with appropriate settings and values</td>
+			</tr>
+	</tbody>
+</table>
+<p>MPASM:</p> <a class="read-more" href="/cnblogs/post/e-pic16f_mpasm2xc8/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -520,276 +895,8 @@ git clone -b PHP-8.0.* https://github.com/php/php-src.git
         
 
         
-        <time class="post-date" datetime="2023-05-17T10:08:08&#43;08:00">
-            17 May 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-proteus_component-designing/">Component Designing in Proteus ISIS</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="create">Create</h1>
-<p><img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS51.jpg.webp?ssl=1" alt=""></p>
-<p>First of all select the 2D Graphics Box Mode as shown in the below figure.
-<img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS.jpg.webp?ssl=1" alt=""></p>
-<p>Now click on the workspace and drag the cursor to create a box, as shown in the below figure.
-<img src="https://images.theengineeringprojects.com/image/webp/2013/09/Component-Designing-in-Proteus-ISIS2.jpg.webp?ssl=1" alt=""></p>
-<p>We have created the body of our component, now there&rsquo;s a need to add pins in it. <br>
-For this, click on the Device Pins Mode as shown in the below figure and click on the workspace.</p> <a class="read-more" href="/cnblogs/post/e-proteus_component-designing/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-05-16T10:08:08&#43;08:00">
-            16 May 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp.net6-mvc/">3小时搞定ASP.NET Core 6.0</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>OS <br>
-<a href="https://github.com/dotnet/core/blob/main/release-notes/6.0/supported-os.md">Windows 10 LTSB 2016+</a></li>
-<li>IDE <br>
-<a href="https://code.visualstudio.com/download">Visual Studio Code</a> - v1.76.1</li>
-<li>SDK <br>
-<a href="https://dotnet.microsoft.com/download/dotnet/6.0">.Net 6.0</a></li>
-<li>终端(Terminal) <br>
-<a href="https://github.com/PowerShell/PowerShell#get-powershell">PowerShell Core</a></li>
-<li>数据库(Database) <br>
-<a href="https://dev.mysql.com/downloads/mysql/">MySQL</a> / Microsoft SQL Server 2012 Express LocalDB (vs2013 inside)</li>
-</ul>
-<h1 id="一create-projectvs-code">一、Create Project(VS Code)</h1>
-<ul>
-<li>Init project</li>
-</ul>
-<blockquote>
-<p>Terminal -&gt; New Terminal</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd .<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>dotnet new mvc -o veic_web --framework net6.0
-</span></span></code></pre></div><ul>
-<li>Set workspace dir</li>
-</ul>
-<blockquote>
-<p>File -&gt; Add Folder to Workspace</p>
-</blockquote>
-<h2 id="设置缺省首页home-set-default">设置缺省首页(Home Set Default)</h2>
-<ul>
-<li>Program.cs</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>app.UseStaticFiles();
-</span></span></code></pre></div><p>变更为:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span>app.UseDefaultFiles();
-</span></span><span style="display:flex;"><span>app.UseStaticFiles();
-</span></span></code></pre></div><ul>
-<li>Html <br>
-新建wwwroot/index.html，See附录<sup>1</sup>.</li>
-</ul>
-<h2 id="run">Run</h2>
-<pre tabindex="0"><code>Run -&gt; Start Debugging
-</code></pre><p>运行效果:
-<img src="https://img-blog.csdnimg.cn/20201102052153747.png" alt="home page"></p>
-<h1 id="二data">二、Data</h1>
-<p>namespace:</p> <a class="read-more" href="/cnblogs/post/asp.net6-mvc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-03-14T08:18:02&#43;08:00">
-            14 Mar 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/java-jmx-ch2/">jmx - first demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>Starting with the J2SE platform 5.0, JMX technology is included in the Java SE platform.</p>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Jmxarchitecture.png" alt="Jmx architecture"></p>
-<ul>
-<li>jmxtools
-Download the <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.jar">jar</a>
-and <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.pom">pom</a> files,
-Then copy it to the M2 directory.
-M2:</li>
-</ul>
-<pre tabindex="0"><code>C:\Users\tdtc\.m2\repository\com\sun\jdmk\jmxtools\1.2.1
-</code></pre><ul>
-<li><a href="https://www.manning.com/downloads/737">Source</a></li>
-</ul>
-<h1 id="project">project</h1>
-<p>. <br>
-|____src <br>
-| |____main <br>
-| | |____java <br>
-| | | |____jmxbook.ch2 <br>
-|____pom.xml</p>
-<p>Gen jar:</p>
-<pre tabindex="0"><code>mvn package
-</code></pre><ul>
-<li>pom.xml</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;modelVersion&gt;</span>4.0.0<span style="color:#f92672">&lt;/modelVersion&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>jmxbook<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>jmxInAction<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;version&gt;</span>0.0.1-SNAPSHOT<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;build/&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;repositories&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;repository&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;id&gt;</span>datanucleus.org/downloads/maven2<span style="color:#f92672">&lt;/id&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;name&gt;</span>datanucleus.org Maven Repository<span style="color:#f92672">&lt;/name&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;url&gt;</span>http://www.datanucleus.org/downloads/maven2/<span style="color:#f92672">&lt;/url&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/repository&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/repositories&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dependencies&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/com.sun.jdmk/jmxtools --&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dependency&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;groupId&gt;</span>com.sun.jdmk<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;artifactId&gt;</span>jmxtools<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;version&gt;</span>1.2.1<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/dependency&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/dependencies&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span>
-</span></span></code></pre></div><h2 id="the-agent-level">The Agent level</h2>
-<p>HelloAgent.java:</p> <a class="read-more" href="/cnblogs/post/java-jmx-ch2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-02-08T08:08:08&#43;08:00">
-            8 Feb 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_spark_rhel/">spark安装</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>Spark <br>
-v3.1</li>
-<li>OS <br>
-RHEL8(Alma / Rocky Linux)</li>
-</ul>
-<h1 id="一基础软件">一、基础软件</h1>
-<h2 id="1-r-lang">1. R-lang</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dnf -y install epel-release
-</span></span><span style="display:flex;"><span>$ sudo dnf  --enablerepo<span style="color:#f92672">=</span>powertools install R
-</span></span></code></pre></div><blockquote>
-<p>注意：如果Java没有安装，会附带着安装OpenJDK。</p>
-</blockquote>
-<h2 id="2-scala">2. Scala</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wget https://downloads.lightbend.com/scala/2.12.17/scala-2.12.17.tgz
-</span></span><span style="display:flex;"><span>$ tar xvf scala-2.12.17.tgz
-</span></span><span style="display:flex;"><span>$ sudo mv scala-2.12.17 /usr/lib
-</span></span><span style="display:flex;"><span>$ sudo ln -s /usr/lib/scala-2.12.17 /usr/lib/scala
-</span></span></code></pre></div><h3 id="1-add-path">1) add path</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$vi ~/.bashrc
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$PATH:/usr/lib/scala/bin
-</span></span></code></pre></div><h1 id="二spark">二、Spark</h1>
-<h2 id="1-down--unzip">1. down &amp; unzip</h2>
-<blockquote>
-<p><a href="https://www.apache.org/dyn/closer.lua/spark/spark-3.1.3/spark-3.1.3-bin-hadoop2.7.tgz">v3.1.3</a></p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir -p ~/app/spark
-</span></span><span style="display:flex;"><span>$ tar zxvf spark-3.1.3-bin-hadoop2.7.tgz -C ~/app/spark
-</span></span><span style="display:flex;"><span>$ mv ~/app/spark/spark-3.1.3-bin-hadoop2.7 ~/app/spark/3.1.3
-</span></span></code></pre></div><h2 id="2-test">2. test</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd ~/app/spark/3.1.3
-</span></span><span style="display:flex;"><span>$ ./bin/spark-shell --master local<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span>
-</span></span></code></pre></div><p>input:</p> <a class="read-more" href="/cnblogs/post/ops_spark_rhel/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-10-10T00:08:08&#43;08:00">
-            10 Oct 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/redis-rhel-setup/">Redis Server installation FAQs</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>OS: RHEL Community Minimal</p>
-</blockquote>
-<ul>
-<li>AlmaLinux 8.x</li>
-<li>RockyLinux 8.x</li>
-<li>CentOS 7.9</li>
-</ul>
-<p>Root Permission:</p>
-<pre tabindex="0"><code>$su - root
-</code></pre><h1 id="0-open-files">0) open files</h1>
-<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
-A:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#ulimit -a</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/systemd/system/redis.service</span>
-</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>LimitNOFILE=10032
-</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
-<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
-A:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/sysctl.conf</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>net.core.somaxconn=1024
-</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
-<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
-To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
-for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-rhel-setup/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-10-08T08:08:08&#43;08:00">
-            8 Oct 2022
+        <time class="post-date" datetime="2023-06-18T08:08:08&#43;08:00">
+            18 Jun 2023
         </time>
     </footer>
 </article>
@@ -800,7 +907,7 @@ for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-rhel
 	
 	    <a class="newer-posts" href="/cnblogs/page/3/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 4 of 7</span>
+	<span class="page-number">Page 4 of 8</span>
 	
 	    <a class="older-posts" href="/cnblogs/page/5/">Older Posts &rarr;</a>
 	

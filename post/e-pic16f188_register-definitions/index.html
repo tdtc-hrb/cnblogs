@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="PIC的 Register Definitions: Configuration Words"/>
+<meta name="twitter:description" content="PIC16(L)F18857/77"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="PIC的 Register Definitions: Configuration Words &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/e-pic16f188_register-definitions/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="PIC16(L)F18857/77" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2023-05-18T10:08:08&#43;08:00" />
+
+    
+    
+
+    <title>PIC的 Register Definitions: Configuration Words &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="PIC16(L)F18857/77" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.164.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-pic16f188_register-definitions/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "PIC的 Register Definitions: Configuration Words",
+    "name": "PIC的 Register Definitions: Configuration Words",
+    "wordCount":  1647 ,
+    "timeRequired": "PT8M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "zh"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/e-pic16f188_register-definitions/",
+    "datePublished": "2023-05-18T10:08Z",
+    "dateModified": "2023-05-18T10:08Z",
+    
+    
+    "description": "PIC16(L)F18857/77",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/e-pic16f188_register-definitions/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">PIC的 Register Definitions: Configuration Words</h1>
+        <small>PIC16(L)F18857/77</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2023-05-18T10:08:08&#43;08:00">
+            May 18, 2023
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>Ver: 0.1</p>
+<h2 id="41-configuration-words">4.1 Configuration Words</h2>
+<p>TABLE 4-1: CONFIGURATION WORD LOCATIONS</p>
+<table>
+	<thead>
+			<tr>
+					<th>Configuration Word</th>
+					<th>Location</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>CONFIG1</td>
+					<td>8007h</td>
+			</tr>
+			<tr>
+					<td>CONFIG2</td>
+					<td>8008h</td>
+			</tr>
+			<tr>
+					<td>CONFIG3</td>
+					<td>8009h</td>
+			</tr>
+			<tr>
+					<td>CONFIG4</td>
+					<td>800Ah</td>
+			</tr>
+			<tr>
+					<td>CONFIG5</td>
+					<td>800Bh</td>
+			</tr>
+	</tbody>
+</table>
+<p>Note: The DEBUG bit in Configuration Words is managed automatically by device
+development tools including debuggers and programmers. For normal device
+operation, this bit should be maintained as a ‘1’</p>
+<h2 id="42-register-definitions-configuration-word">4.2 Register Definitions: Configuration Word</h2>
+<p>Legend:</p>
+<ul>
+<li>R:   Readable bit</li>
+<li>P:   Programmable bit</li>
+<li>U:   Unimplemented bit, read as &lsquo;1&rsquo;</li>
+<li>&lsquo;0&rsquo;: Bit is cleared</li>
+<li>&lsquo;1&rsquo;: Bit is set</li>
+<li>n:   Value when blank or after Bulk Erase</li>
+</ul>
+<h3 id="421-config1">4.2.1 CONFIG1</h3>
+<ul>
+<li>Name:   OSCILLATORS</li>
+<li>Offset: 0x8007</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>13</th>
+					<th>12</th>
+					<th>11</th>
+					<th>10</th>
+					<th>9</th>
+					<th>8</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>FCMEN</td>
+					<td>Reserved</td>
+					<td>CSWEN</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td><SPAN style="TEXT-DECORATION: overline">CLKOUTEN</SPAN></td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>-</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>1</td>
+					<td>-</td>
+					<td>1</td>
+					<td>-</td>
+					<td>-</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>7</th>
+					<th>6 ~ 4</th>
+					<th>3</th>
+					<th>2 ~ 0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>Reserved</td>
+					<td>RSTOSC&lt;2:0&gt;</td>
+					<td>Reserved</td>
+					<td>FEXTOSC&lt;2:0&gt;</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>-</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>-</td>
+					<td>1</td>
+					<td>-</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-13--fcmen-fall-safe-clock-monitor-enable-bit">Bit 13 – FCMEN: Fall-Safe Clock Monitor Enable Bit</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = ON</td>
+					<td>FSCM timer enabled</td>
+			</tr>
+			<tr>
+					<td>0 = OFF</td>
+					<td>FSCM timer disabled</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-11---cswen-clock-switch-enable-bit">Bit 11 - CSWEN: Clock Switch Enable bit</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = ON</td>
+					<td>Writing to NOSO and NDIV is allowed</td>
+			</tr>
+			<tr>
+					<td>0 = OFF</td>
+					<td>The NOSC and NDIV bits cannot be changed by user software</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-8--clkouten-clock-out-enable-bit">Bit 8 – <SPAN style="TEXT-DECORATION: overline">CLKOUTEN</SPAN> Clock Out Enable bit</h4>
+<p>if FEXTOSC = EC(high, mid or low) or Not Enabled:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = OFF</td>
+					<td>CLKOUT function is disabled; I/O or oscillator function on OSC2</td>
+			</tr>
+			<tr>
+					<td>0 = ON</td>
+					<td>CLKOUT function is enabled; F<sub>OSC</sub>/4 clock appears at OSC2</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bits-64--rstosc20-power-up-default-value-for-cosc-bits">Bits 6:4 – RSTOSC&lt;2:0&gt; Power-up Default Value for COSC bits</h4>
+<p>This value is the Reset-default value for COSC, and selects the oscillator first used by user software.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>111 = EXT1X</td>
+					<td>EXTOSC operating per the FEXTOSC bits</td>
+			</tr>
+			<tr>
+					<td>110 = HFINT1</td>
+					<td>HFINTOSC with FRQ = 1 MHz</td>
+			</tr>
+			<tr>
+					<td>101 = LFINT</td>
+					<td>LFINTOSC</td>
+			</tr>
+			<tr>
+					<td>100 = SOSC</td>
+					<td>SOSC</td>
+			</tr>
+			<tr>
+					<td>011</td>
+					<td>Reserved</td>
+			</tr>
+			<tr>
+					<td>010 = EXT4X</td>
+					<td>EXTOSC with 4x PLL, with EXTOSC operating per FEXTOSC bits</td>
+			</tr>
+			<tr>
+					<td>001 = HFINTPLL</td>
+					<td>HFINTOSC with 2x PLL(32 MHz), with OSCFRQ = &lsquo;101&rsquo;(16 MHz) and CDIV = &lsquo;0000&rsquo;(1:1)</td>
+			</tr>
+			<tr>
+					<td>000 = HFINT32</td>
+					<td>HFINTOSC(32 MHz), with FRQ = &lsquo;110&rsquo;(32 MHz) and CDIV = &lsquo;0000&rsquo;(1:1)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bits-20--fextosc20-fextosc-external-oscillator-mode-selection">Bits 2:0 – FEXTOSC&lt;2:0&gt; FEXTOSC External Oscillator Mode Selection</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>111 = ECH</td>
+					<td>EC(External Clock) above 8 MHz</td>
+			</tr>
+			<tr>
+					<td>110 = ECM</td>
+					<td>EC(External Clock) for 100 kHz to 8 MHz</td>
+			</tr>
+			<tr>
+					<td>101 = ECL</td>
+					<td>EC(External Clock) below 100 kHz)</td>
+			</tr>
+			<tr>
+					<td>100 = OFF</td>
+					<td>External Oscillator is disabled. RA7 is available as a general purpose I/O.</td>
+			</tr>
+			<tr>
+					<td>011</td>
+					<td>Reserved</td>
+			</tr>
+			<tr>
+					<td>010 = HS</td>
+					<td>HS(Crystal oscillator) above 4 MHz</td>
+			</tr>
+			<tr>
+					<td>001 = XT</td>
+					<td>XT(Crystal oscillator) above 100, below 4 MHz</td>
+			</tr>
+			<tr>
+					<td>000 = LP</td>
+					<td>LP(Crystal oscillator) optimized for 32.768 kHz</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="422-config2">4.2.2 CONFIG2</h3>
+<ul>
+<li>Name:   SUPERVISORS</li>
+<li>Offset: 0x8008</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>13</th>
+					<th>12</th>
+					<th>11</th>
+					<th>10</th>
+					<th>9</th>
+					<th>8</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td><SPAN style="TEXT-DECORATION: overline">DEBUG</SPAN></td>
+					<td>STVREN</td>
+					<td>PPS1WAY</td>
+					<td>ZCDDIS</td>
+					<td>BORV</td>
+					<td>Reserved</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>R/P</td>
+					<td>R/P</td>
+					<td>R/P</td>
+					<td>R/P</td>
+					<td>R/P</td>
+					<td>-</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>-</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>7 ~ 6</th>
+					<th>5</th>
+					<th>4 ~ 2</th>
+					<th>1</th>
+					<th>0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>BOREN[1:0]</td>
+					<td><SPAN style="TEXT-DECORATION: overline">LPBOREN</SPAN></td>
+					<td>Reserved</td>
+					<td><SPAN style="TEXT-DECORATION: overline">PWRTE</SPAN></td>
+					<td>MCLRE</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>R/P</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>R/P</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>1</td>
+					<td>1</td>
+					<td>-</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-13--debug-debugger-enable2">Bit 13 – <SPAN style="TEXT-DECORATION: overline">DEBUG</SPAN> Debugger Enable<sup>(2)</sup></h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = OFF</td>
+					<td>Background debugger disabled; <br>ICSPCLK and ICSPDAT are general purpose I/O pins</br></td>
+			</tr>
+			<tr>
+					<td>0 = ON</td>
+					<td>Background debugger enabled; <br>ICSPCLK and ICSPDAT are dedicate to the debugger</br></td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-12--stvren-stack-overflowunderflow-reset-enable">Bit 12 – STVREN Stack Overflow/Underflow Reset Enable</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = ON</td>
+					<td>Stack Overflow or Underflow will cause a Reset</td>
+			</tr>
+			<tr>
+					<td>0 = OFF</td>
+					<td>Stack Overflow or Underflow will not cause a Reset</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-11--pps1way-ppslocked-one-way-set-enable">Bit 11 – PPS1WAY PPSLOCKED One-Way Set Enable</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = ON</td>
+					<td>The PPSLOCKED bit can only be set once after an unlocking sequence is executed; <br>once PPSLOCKED is set, all future changes to PPS registers are prevented</br></td>
+			</tr>
+			<tr>
+					<td>0 = OFF</td>
+					<td>The PPSLOCKED bit can be set and cleared as needed (unlocking sequence is required)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-10---zcddis-zero-cross-detect-disable">Bit 10 - ZCDDIS: Zero-Cross Detect Disable</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = ON</td>
+					<td>ZCD disabled. ZCD can be enabled by setting the ZCDSEN bit of the ZCDCON register</td>
+			</tr>
+			<tr>
+					<td>0 = OFF</td>
+					<td>ZCD always enabled(ZCDSEN bit is ignored)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-9--borv-brown-out-reset-bor-voltage-selection1">Bit 9 – BORV Brown-out Reset (BOR) Voltage Selection<sup>(1)</sup></h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = LOW</td>
+					<td>Brown-out Reset voltage (V<sub>BOR</sub>) set to lower trip point level</td>
+			</tr>
+			<tr>
+					<td>0 = HIGH</td>
+					<td>Brown-out Reset voltage (V<sub>BOR</sub>) set to higher trip point level. <br>The higher voltage setting is recommended for operation at or above 16 MHz.</br></td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bits-76--boren10-brown-out-reset-bor-enable">Bits 7:6 – BOREN&lt;1:0&gt; Brown-out Reset (BOR) Enable</h4>
+<p>When enabled, Brown-out Reset Voltage(V<sub>BOR</sub>) is set by the BORV bit</p>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>11 = ON</td>
+					<td>Brown-out Reset enabled, the SBOREN bit is ignored</td>
+			</tr>
+			<tr>
+					<td>10 = SLEEP</td>
+					<td>Brown-out Reset enabled while running, disabled in Sleep; the SBOREN bit is ignored</td>
+			</tr>
+			<tr>
+					<td>01 = SBOREN</td>
+					<td>Brown-out Reset enabled according to SBOREN</td>
+			</tr>
+			<tr>
+					<td>00 = OFF</td>
+					<td>Brown-out Reset disabled</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-5--lpboren-low-power-bor-enable">Bit 5 – <SPAN style="TEXT-DECORATION: overline">LPBOREN</SPAN> Low-Power BOR Enable</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>ULPBOR is disabled</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>ULPBOR is enabled</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-1--pwrte-power-up-timer-enable">Bit 1 – <SPAN style="TEXT-DECORATION: overline">PWRTE<SPAN> Power-Up Timer Enable</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = OFF</td>
+					<td>PWRT is disabled</td>
+			</tr>
+			<tr>
+					<td>0 = ON</td>
+					<td>PWRT is enabled</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-0--mclre-master-clear-mclr-enable">Bit 0 – MCLRE Master Clear (<SPAN style="TEXT-DECORATION: overline">MCLR</SPAN>) Enable</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Condition</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>x</td>
+					<td>If LVP = 1</td>
+					<td><SPAN style="TEXT-DECORATION: overline">MCLR</SPAN> pin is <SPAN style="TEXT-DECORATION: overline">MCLR</SPAN>(it will reset the device when driven low)</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>If LVP = 0</td>
+					<td><SPAN style="TEXT-DECORATION: overline">MCLR</SPAN> pin is <SPAN style="TEXT-DECORATION: overline">MCLR</SPAN></td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>If LVP = 0</td>
+					<td><SPAN style="TEXT-DECORATION: overline">MCLR</SPAN> pin may be used as general purpose RE3 input</td>
+			</tr>
+	</tbody>
+</table>
+<p>Notes:</p>
+<ol>
+<li>See V<sub>BOR</sub> parameter for specific trip point voltages.</li>
+<li>The DEBUG bit is managed automatically by device development tools including debuggers and
+programmers. For normal device operation, this bit needs to be maintained as a ‘1’.</li>
+</ol>
+<h3 id="423-config3">4.2.3 CONFIG3</h3>
+<ul>
+<li>Name:   WINDOWED WATCHDOG</li>
+<li>Offset: 0x8009</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>13 ~ 11</th>
+					<th>10 ~ 8</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>WDTCCS[2:0]</td>
+					<td>WDTCWS[2:0]</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>R/P</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>7</th>
+					<th>6 ~ 5</th>
+					<th>4 ~ 0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>Reserved</td>
+					<td>WDTE&lt;1:0&gt;</td>
+					<td>WDTCPS&lt;4:0&gt;</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>-</td>
+					<td>R/P</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>-</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bits-1311---wdtccs20-wdt-input-clock-selector-bits">Bits 13:11 - WDTCCS&lt;2:0&gt;: WDT Input Clock Selector bits</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>111</td>
+					<td>Software Control</td>
+			</tr>
+			<tr>
+					<td>110</td>
+					<td>Reserved</td>
+			</tr>
+			<tr>
+					<td>101</td>
+					<td>Reserved</td>
+			</tr>
+			<tr>
+					<td>100</td>
+					<td>Reserved</td>
+			</tr>
+			<tr>
+					<td>011</td>
+					<td>Reserved</td>
+			</tr>
+			<tr>
+					<td>010</td>
+					<td>Reserved</td>
+			</tr>
+			<tr>
+					<td>001</td>
+					<td>WDT reference clock is the 31.25 kHz HFINTOSC(MFINTOSC)output</td>
+			</tr>
+			<tr>
+					<td>000</td>
+					<td>WDT reference clock is the 31.0 kHz LFINTOSC(default value)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bits-108---wdtcws20-wdt-window-select-bits">Bits 10:8 - WDTCWS&lt;2:0&gt;: WDT Window Select bits</h4>
+<p>n1: WDTCWS <br>
+n2: Value - WDTWS at POR <br>
+n3: Window delay Percent of time - WDTWS at POR <br>
+n4: Window opening Percent of time - WDTWS at POR <br>
+n5: Software control of WDTWS? <br>
+n6: Keyed access required?</p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/wdt-head6_1.png" alt="wdt multi-head"></p>
+<table>
+	<thead>
+			<tr>
+					<th>n1</th>
+					<th>n2</th>
+					<th>n3</th>
+					<th>n4</th>
+					<th>n5</th>
+					<th>n6</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>111</td>
+					<td>111</td>
+					<td>n/a</td>
+					<td>100</td>
+					<td>Yes</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>110</td>
+					<td>111</td>
+					<td>n/a</td>
+					<td>100</td>
+					<td>No</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>101</td>
+					<td>101</td>
+					<td>25</td>
+					<td>75</td>
+					<td>No</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>100</td>
+					<td>100</td>
+					<td>37.5</td>
+					<td>62.5</td>
+					<td>No</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>011</td>
+					<td>011</td>
+					<td>50</td>
+					<td>50</td>
+					<td>No</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>010</td>
+					<td>010</td>
+					<td>62.5</td>
+					<td>37.5</td>
+					<td>No</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>001</td>
+					<td>001</td>
+					<td>75</td>
+					<td>25</td>
+					<td>No</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>000</td>
+					<td>000</td>
+					<td>87.5</td>
+					<td>12.5</td>
+					<td>No</td>
+					<td>Yes</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bits-65---wdte10-wdt-operating-mode">Bits 6:5 - WDTE&lt;1:0&gt; WDT Operating mode</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>11</td>
+					<td>WDT enabled regardless of Sleep; SWDTEN is ignored</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td>WDT enabled while Sleep = 0, suspended when Sleep = 1; SWDTEN ignored</td>
+			</tr>
+			<tr>
+					<td>01</td>
+					<td>WDT enable/disabled by SWDTEN bit in WDTCON0</td>
+			</tr>
+			<tr>
+					<td>00</td>
+					<td>WDT disabled, SWDTEN is ignored</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bits-40---wdtcps40-wdt-period-select-bits">Bits 4:0 - WDTCPS&lt;4:0&gt; WDT Period Select bits</h4>
+<p>n1: WDTCPS
+n2: Value - WDTPS at POR <br>
+n3: Divider Ratio - - WDTPS at POR <br>
+n4: Divider Ratio(max) - WDTPS at POR <br>
+n5: Typical Time Out(F<sub>IN</sub> = 31 kHz) - WDTPS at POR <br>
+n6: Software Control of WDTPS?</p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/master/images/wdt-head6_2.png" alt="wdt multi-head"></p>
+<table>
+	<thead>
+			<tr>
+					<th>n1</th>
+					<th>n2</th>
+					<th>n3</th>
+					<th>n4</th>
+					<th>n5</th>
+					<th>n6</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>11111</td>
+					<td>01011</td>
+					<td>1:65536</td>
+					<td>2<sup>16</sup></td>
+					<td>2 s</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>11110<br>&hellip;</br><br>10011</br></td>
+					<td>11110<br>&hellip;</br><br>10011</br></td>
+					<td>1:32</td>
+					<td>2<sup>5</sup></td>
+					<td>1 ms</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>10010</td>
+					<td>10010</td>
+					<td>1:8388608</td>
+					<td>2<sup>32</sup></td>
+					<td>256 s</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>10001</td>
+					<td>10001</td>
+					<td>1:4194304</td>
+					<td>2<sup>22</sup></td>
+					<td>128 s</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>10000</td>
+					<td>10000</td>
+					<td>1:2097152</td>
+					<td>2<sup>21</sup></td>
+					<td>64 s</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>01111</td>
+					<td>01111</td>
+					<td>1:1048576</td>
+					<td>2<sup>20</sup></td>
+					<td>32 s</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>01110</td>
+					<td>01110</td>
+					<td>1:524299</td>
+					<td>2<sup>19</sup></td>
+					<td>16 s</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>01101</td>
+					<td>01101</td>
+					<td>1:262144</td>
+					<td>2<sup>18</sup></td>
+					<td>8 s</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>01100</td>
+					<td>01100</td>
+					<td>1:131072</td>
+					<td>2<sup>17</sup></td>
+					<td>4 s</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>01011</td>
+					<td>01011</td>
+					<td>1:65536</td>
+					<td>2<sup>16</sup></td>
+					<td>2 s</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>01010</td>
+					<td>01010</td>
+					<td>1:32768</td>
+					<td>2<sup>15</sup></td>
+					<td>1 s</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>01001</td>
+					<td>01001</td>
+					<td>1:16384</td>
+					<td>2<sup>14</sup></td>
+					<td>512 ms</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>01000</td>
+					<td>01000</td>
+					<td>1:8192</td>
+					<td>2<sup>13</sup></td>
+					<td>256 ms</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>00111</td>
+					<td>00111</td>
+					<td>1:4096</td>
+					<td>2<sup>12</sup></td>
+					<td>128 ms</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>00110</td>
+					<td>00110</td>
+					<td>1:2048</td>
+					<td>2<sup>11</sup></td>
+					<td>64 ms</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>00101</td>
+					<td>00101</td>
+					<td>1:1024</td>
+					<td>2<sup>10</sup></td>
+					<td>32 ms</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>00100</td>
+					<td>00100</td>
+					<td>1:512</td>
+					<td>2<sup>9</sup></td>
+					<td>16 ms</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>00011</td>
+					<td>00011</td>
+					<td>1:256</td>
+					<td>2<sup>8</sup></td>
+					<td>8 ms</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>00010</td>
+					<td>00010</td>
+					<td>1:128</td>
+					<td>2<sup>7</sup></td>
+					<td>4 ms</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>00001</td>
+					<td>00001</td>
+					<td>1:64</td>
+					<td>2<sup>6</sup></td>
+					<td>2 ms</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>00000</td>
+					<td>00000</td>
+					<td>1:32</td>
+					<td>2<sup>5</sup></td>
+					<td>1 ms</td>
+					<td>No</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="424-config4">4.2.4 CONFIG4</h3>
+<ul>
+<li>Name:   MEMORY</li>
+<li>Offset: 0x800A</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>13</th>
+					<th>12</th>
+					<th>11</th>
+					<th>10</th>
+					<th>9</th>
+					<th>8</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>LVP</td>
+					<td>SCANE</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>R/P</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>1</td>
+					<td>1</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>7 ~ 2</th>
+					<th>1 ~ 0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>Reserved</td>
+					<td>WRT&lt;1:0&gt;</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>-</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>-</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-13--lvp-low-voltage-programming-enable">Bit 13 – LVP Low-Voltage Programming Enable</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>Low-Voltage Programming is enabled. <SPAN style="TEXT-DECORATION: overline">MCLR</SPAN>/V<sub>PP</sub> pin function is <SPAN style="TEXT-DECORATION: overline">MCLR</SPAN>. The MCLRE bit is ignored.</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>High voltage (meeting V<sub>IHH</sub> level) on <SPAN style="TEXT-DECORATION: overline">MCLR</SPAN>/V<sub>PP</sub> must be used for programming.</td>
+			</tr>
+	</tbody>
+</table>
+<p>The LVP bit cannot be written (to zero) while using low-voltage programming. High voltage programming is always availale, regardless of the LVP Configuration bit value.</p>
+<h4 id="bit-12--scane-scanner-enable-bit">Bit 12 – SCANE Scanner Enable bit</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>Scanner module is available for use, SCANMD bit enables the module.</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>Scanner module is NOT available for use, SCANMD bit is ignored.</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bits-10--wrt10-program-flash-self-write-erase-protection">Bits 1:0 – WRT&lt;1:0&gt; Program Flash Self-Write Erase Protection</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>11</td>
+					<td>Write protection off</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td>0000h to 01FFh write-protected, 0200h to 7FFFh may be modified by EECON control</td>
+			</tr>
+			<tr>
+					<td>01</td>
+					<td>0000h to 3FFFh write-protected, 4000h to 7FFFh may be modified by EECON control</td>
+			</tr>
+			<tr>
+					<td>00</td>
+					<td>0000h to 7FFFh write-protected, no addresses may be modified by EECON control</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="425-config5">4.2.5 CONFIG5</h3>
+<ul>
+<li>Name:   CODE PROTECTION</li>
+<li>Offset: 0x800B</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>13</th>
+					<th>12</th>
+					<th>11</th>
+					<th>10</th>
+					<th>9</th>
+					<th>8</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>7</th>
+					<th>6</th>
+					<th>5</th>
+					<th>4</th>
+					<th>3</th>
+					<th>2</th>
+					<th>1</th>
+					<th>0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td><SPAN style="TEXT-DECORATION: overline">CPD</SPAN></td>
+					<td><SPAN style="TEXT-DECORATION: overline">CP</SPAN></td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>R/P</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-1-cpd-data-nvm-eeprom-memory-code-protection-bit">bit 1 <SPAN style="TEXT-DECORATION: overline">CPD</SPAN>: Data NVM (EEPROM) Memory Code Protection bit</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>EEPROM code protection disabled</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>EEPROM code protection enabled</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-0--cp--user-program-flash-memory-pfm-code-protection">Bit 0 – <SPAN style="TEXT-DECORATION: overline">CP</SPAN>  User Program Flash Memory (PFM) Code Protection</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>User PFM code protection is disabled</td>
+			</tr>
+			<tr>
+					<td>0</td>
+					<td>User PFM code protection is enabled</td>
+			</tr>
+	</tbody>
+</table>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=PIC%e7%9a%84%20Register%20Definitions%3a%20Configuration%20Words&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic16f188_register-definitions%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic16f188_register-definitions%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic16f188_register-definitions%2f&amp;description=PIC%e7%9a%84%20Register%20Definitions%3a%20Configuration%20Words"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic16f188_register-definitions%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/e-pic16f188_status-register/">
+          <section class="post">
+              <h2>PIC的 STATUS Register</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-pic16f_instruction-set/">
+          <section class="post">
+              <h2>8位单片机PIC汇编语言</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>
+

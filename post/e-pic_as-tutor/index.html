@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="blinked - pic-as"/>
+<meta name="twitter:description" content="pic16f887"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="blinked - pic-as &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/e-pic_as-tutor/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="pic16f887" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2026-07-14T08:08:08&#43;08:00" />
+
+    
+    
+
+    <title>blinked - pic-as &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="pic16f887" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.164.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-pic_as-tutor/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "blinked - pic-as",
+    "name": "blinked - pic-as",
+    "wordCount":  316 ,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "zh"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/e-pic_as-tutor/",
+    "datePublished": "2026-07-14T08:08Z",
+    "dateModified": "2026-07-14T08:08Z",
+    
+    
+    "description": "pic16f887",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/e-pic_as-tutor/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">blinked - pic-as</h1>
+        <small>pic16f887</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2026-07-14T08:08:08&#43;08:00">
+            Jul 14, 2026
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <ul>
+<li>Why use PSECT instead of ORG directive? <br>
+PSECT (Program Section) handles code placement intelligently,
+preventing overlaps and managing placement across memory banks.
+PIC-AS linker resolves section placement automatically, whereas ORG in MPASM required manual address management.</li>
+</ul>
+<h3 id="blinked---pic-as">blinked - pic-as</h3>
+<pre tabindex="0"><code>    PROCESSOR   16F887
+#include &lt;xc.inc&gt;
+
+; _CONFIG1, _INTOSCIO &amp; _WDT_OFF &amp; _PWRTE_ON &amp; _MCLRE_ON &amp; _CP_OFF &amp; _CPD_OFF &amp; _BOR_OFF &amp; _IESO_OFF &amp; _FCMEN_OFF &amp; _LVP_OFF &amp; _DEBUG_ON
+  CONFIG  FOSC = INTRC_NOCLKOUT ; Oscillator Selection bits (INTOSCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin,I/O function on RA7/OSC1/CLKIN)
+  CONFIG  WDTE = OFF            ; Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
+  CONFIG  PWRTE = ON            ; Power-up Timer Enable bit (PWRT enabled)
+  CONFIG  MCLRE = ON            ; RE3/MCLR pin function select bit (RE3/MCLR pin function is MCLR)
+  CONFIG  CP = OFF              ; Code Protection bit (Program memory code protection is disabled)
+  CONFIG  CPD = OFF             ; Data Code Protection bit (Data memory code protection is disabled)
+  CONFIG  BOREN = OFF           ; Brown Out Reset Selection bits (BOR disabled)
+  CONFIG  IESO = OFF            ; Internal External Switchover bit (Internal/External Switchover mode is disabled)
+  CONFIG  FCMEN = ON            ; Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is enabled)
+  CONFIG  LVP = OFF             ; Low Voltage Programming Enable bit (RB3 pin has digital I/O,HV on MCLR must be used for programming)
+
+; CONFIG2
+  CONFIG  BOR4V = BOR21V        ; Brown-out Reset Selection bit (Brown-out Reset set to 2.1V)
+  CONFIG  WRT = OFF             ; Flash Program Memory Self Write Enable bits (Write protection off)
+
+    PSECT reset_vec,class=CODE,delta=2
+ResetVec:
+    PAGESEL Main
+    GOTO    Main
+
+    PSECT   common_data,class=COMMON,space=1,delta=1,noexec
+    GLOBAL  Count1,Count2
+
+Count1: ds 1
+Count2: ds 1
+
+    ; ORG   0
+    PSECT   main_code,class=CODE,delta=2
+Main:
+    BANKSEL     TRISB
+    bcf         TRISB,0
+    BANKSEL     PORTB
+Loop:
+    bcf         PORTB,0
+    CALL        Delay3
+    bsf         PORTB,0
+    CALL        Delay3
+    GOTO        Loop
+
+Delay3:
+    decfsz      Count1,1
+    GOTO        Delay3
+    decfsz      Count2,1
+    GOTO        Delay3
+    RETURN
+
+END
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://industrialmonitordirect.com/blogs/knowledgebase/pic-as-assembly-with-mplab-x-ide-620-setup-guide?srsltid=AfmBOooOw8SjjzN6KxWgEbtCPXzOBCSNqrQX6x-Pp8JLI16zWAXn_puM">PIC-AS Assembly with MPLAB X IDE 6.20 Setup Guide</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=blinked%20-%20pic-as&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic_as-tutor%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic_as-tutor%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic_as-tutor%2f&amp;description=blinked%20-%20pic-as"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic_as-tutor%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/e-pic16f_psect/">
+          <section class="post">
+              <h2>psect - Pseudo instruction</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-pic16f_blink6/">
+          <section class="post">
+              <h2>PIC blinked - m2</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>
+
