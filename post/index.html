@@ -151,13 +151,274 @@
 	<div class="extra-pagination inner">
     <nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 8</span>
+	<span class="page-number">Page 1 of 9</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/2/">Older Posts &rarr;</a>
 	
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic18f_mcc/">microchip code configurator</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://developerhelp.microchip.com/xwiki/bin/view/software-tools/ides/extensions/get-started/">MPLAB Extension Pack - VS Code</a></li>
+<li>XC8: v4.0</li>
+</ul>
+<h3 id="network-settings">network Settings</h3>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_network-vs.png" alt=""></p>
+<ul>
+<li>choose</li>
+</ul>
+<pre tabindex="0"><code>https://registry.npmjs.org/
+https://registry.npmmirror.com
+</code></pre><h2 id="device">device</h2>
+<p>Add the following devices from the &ldquo;Device Resources&rdquo; window:</p>
+<ul>
+<li>TMR2</li>
+<li>CCP1</li>
+<li>WWDT</li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_config-device.png" alt=""></p>
+<h3 id="configurations">configurations</h3>
+<ul>
+<li>Clock Control</li>
+<li>TMR2</li>
+<li>CCP1</li>
+<li>WWDT</li>
+</ul>
+<h4 id="clock-control">Clock Control</h4>
+<ul>
+<li>Clock Source: LFINTOSC</li>
+<li>Clock Divider: 1</li>
+</ul>
+<h4 id="timer2">Timer2</h4>
+<ul>
+<li>Hardware Settings</li>
+</ul>
+<pre tabindex="0"><code>- Enable Timer: checked
+- Control Mode: Roll over pulse
+- Start/Reset Option: Software control
+</code></pre><p>– Timer Clock</p>
+<pre tabindex="0"><code>- Clock Source: FOSC/4
+- Prescaler: 1:32
+- Postscaler: 1:1
+</code></pre><p>– Timer Period</p> <a class="read-more" href="/cnblogs/post/e-pic18f_mcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-18T10:08:08&#43;08:00">
+            18 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic18f_q10_register-definitions/">PIC的 Register Definitions: Configuration Words</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Ver: 0.1</p>
+<pre tabindex="0"><code>Modified from e-pic16f188_register-definitions.md
+</code></pre><h2 id="46-register-summary---configuration-words">4.6 Register Summary - Configuration Words</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Words</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>CONFIG1</td>
+					<td>300000h</td>
+					<td>RSTOSC, FEXTOSC, FCMEN, CSWEN, CLKOUTEN</td>
+			</tr>
+			<tr>
+					<td>CONFIG2</td>
+					<td>300002h</td>
+					<td>BOREN, LPBOREN, PWRTE, MCLRE, XINST, DEBUG, STVREN, PPS1WAY, ZCD, BORV</td>
+			</tr>
+			<tr>
+					<td>CONFIG3</td>
+					<td>300004h</td>
+					<td>WDTE, WDTCPS, WDTCCS, WDTCWS</td>
+			</tr>
+			<tr>
+					<td>CONFIG4</td>
+					<td>300006h</td>
+					<td>WRT3, WRT2, WRT1, WRT0, LVP, SCANE, WRTD, WRTB, WRTC</td>
+			</tr>
+			<tr>
+					<td>CONFIG5</td>
+					<td>300008h</td>
+					<td>CPD, CP</td>
+			</tr>
+			<tr>
+					<td>CONFIG6</td>
+					<td>30000ah</td>
+					<td>EBTR3, EBTR2, EBTR1, EBTR0, EBTRB</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="47-register-definitions-configuration-words">4.7 Register Definitions: Configuration Words</h2>
+<p>Legend:</p>
+<ul>
+<li>R:   Readable bit</li>
+<li>W:   Writable bit</li>
+<li>U:   Unimplemented bit, read as &lsquo;1&rsquo;</li>
+<li>&lsquo;0&rsquo;: Bit is cleared</li>
+<li>&lsquo;1&rsquo;: Bit is set</li>
+<li>n:   Value when blank or after Bulk Erase</li>
+</ul>
+<h3 id="471-config1">4.7.1 CONFIG1</h3>
+<ul>
+<li>Name:   OSCILLATORS</li>
+<li>Address: 0x300000</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>13</th>
+					<th>12</th>
+					<th>11</th>
+					<th>10</th>
+					<th>9</th>
+					<th>8</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>FCMEN</td>
+					<td>Reserved</td>
+					<td>CSWEN</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td><SPAN style="TEXT-DECORATION: overline">CLKOUTEN</SPAN></td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>R/W</td>
+					<td>-</td>
+					<td>R/W</td>
+					<td>-</td>
+					<td>-</td>
+					<td>R/W</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>1</td>
+					<td>-</td>
+					<td>1</td>
+					<td>-</td>
+					<td>-</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>7</th>
+					<th>6 ~ 4</th>
+					<th>3</th>
+					<th>2 ~ 0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>Reserved</td>
+					<td>RSTOSC&lt;2:0&gt;</td>
+					<td>Reserved</td>
+					<td>FEXTOSC&lt;2:0&gt;</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>-</td>
+					<td>R/W</td>
+					<td>-</td>
+					<td>R/W</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>-</td>
+					<td>1</td>
+					<td>-</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-13--fcmen-fall-safe-clock-monitor-enable-bit">Bit 13 – FCMEN: Fall-Safe Clock Monitor Enable Bit</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = ON</td>
+					<td>FSCM timer enabled</td>
+			</tr>
+			<tr>
+					<td>0 = OFF</td>
+					<td>FSCM timer disabled</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-11---cswen-clock-switch-enable-bit">Bit 11 - CSWEN: Clock Switch Enable bit</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1 = ON</td>
+					<td>Writing to NOSO and NDIV is allowed</td>
+			</tr>
+			<tr>
+					<td>0 = OFF</td>
+					<td>The NOSC and NDIV bits cannot be changed by user software</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="bit-8--clkouten-clock-out-enable-bit">Bit 8 – <SPAN style="TEXT-DECORATION: overline">CLKOUTEN</SPAN> Clock Out Enable bit</h4>
+<p>if FEXTOSC = HS, XT, LP, then this bit is ignored.
+Otherwise:</p> <a class="read-more" href="/cnblogs/post/e-pic18f_q10_register-definitions/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-18T10:08:08&#43;08:00">
+            18 Jul 2026
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -959,140 +1220,10 @@ codename: focal</li>
 </article>
 
 	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp-base/">3小时搞定asp.net</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>IDE: <a href="https://visualstudio.microsoft.com">Visual Studio community</a></li>
-<li>DB：MySQL5.7+</li>
-<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-10.0.301-windows-x64-installer">.net SDK - x64</a></li>
-</ul>
-<h2 id="准备">准备</h2>
-<blockquote>
-<p>File-》New-》Project</p>
-<blockquote>
-<p>ASP.NET Core Web Application(Model-View-Controller)</p>
-</blockquote>
-</blockquote>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011124537.png" alt="vs2026"></p>
-<h3 id="additional-information">Additional information</h3>
-<ul>
-<li>.Net 10.0(Lts)</li>
-<li>Authentication type</li>
-</ul>
-<pre tabindex="0"><code>None
-</code></pre><ul>
-<li>Configure for HTTPS</li>
-</ul>
-<pre tabindex="0"><code>checked
-</code></pre><h3 id="web-server">Web Server</h3>
-<ul>
-<li>http</li>
-<li>https</li>
-</ul>
-<blockquote>
-<p>default</p>
-</blockquote>
-<ul>
-<li>
-<p>IIS Express</p>
-<p>点击“IIS Express”运行（如果弹出证书安装选“是”即可）。
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134118.png" alt="iis cert - hint">
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134337.png" alt="windows - hint"></p>
-</li>
-</ul>
-<h1 id="demo">Demo</h1>
-<p><img src="https://img-blog.csdnimg.cn/20210707161947768.png" alt="演示code"></p>
-<h2 id="repository">Repository</h2>
-<blockquote>
-<p>Project-》Manage NuGet Packages
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011135217.png" alt="Microsoft.EntityFrameworkCore"></p>
-</blockquote>
-<h3 id="entity-class">entity class</h3>
-<p>数据表的Entity类</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel.DataAnnotations;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> veic_web.Models
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span>
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Key]</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Param_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Statu_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Lang_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Img_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Description { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="db-context">Db Context</h3>
-<blockquote>
-<p>Solution Explorer</p> <a class="read-more" href="/cnblogs/post/asp-base/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-05T09:08:08&#43;08:00">
-            5 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_nginx-v2/">前端（Web）负载均衡</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>Nginx&rsquo;s load balancing</p>
-<h1 id="一安装">一、安装</h1>
-<p>OS: RHEL Community Version(Rocky8/Alma8) minimal（安装时的选项）</p>
-<h2 id="0-prepare">0. prepare</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf -y install gcc gcc-c++ automake make pcre pcre-devel zlib zlib-devel openssl openssl-devel</span>
-</span></span></code></pre></div><p>see <a href="https://tdtc-hrb.github.io/cnblogs/post/ops_openssl/">update openssl</a></p>
-<h3 id="library-devel">Library devel</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install gd-devel libxml2-devel libxslt-devel
-</span></span></code></pre></div><h4 id="geoip">GeoIP</h4>
-<p>Download latest <a href="http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/">atomic-release</a> <br>
-Install atomic-release rpm:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo rpm -Uvh http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/atomic-release-1.0-23.el8.art.noarch.rpm
-</span></span></code></pre></div><p>Install GeoIP-devel rpm package:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install GeoIP-devel
-</span></span></code></pre></div><h3 id="allow-fw">allow fw</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>80/tcp
-</span></span><span style="display:flex;"><span>$sudo firewall-cmd --reload
-</span></span></code></pre></div><h2 id="installation">installation</h2>
-<p>First, install Nginx of centos <a href="https://nginx.org/en/linux_packages.html#RHEL">repo</a>; <br>
-Then, replace the nginx program file. <br>
-Note: The replaced program file version must be the same as the repo!</p> <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-05T08:38:08&#43;08:00">
-            5 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
 
 	<nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 8</span>
+	<span class="page-number">Page 1 of 9</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/2/">Older Posts &rarr;</a>
 	

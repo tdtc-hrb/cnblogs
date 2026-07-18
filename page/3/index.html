@@ -153,13 +153,133 @@
 	
 	    <a class="newer-posts" href="/cnblogs/page/2/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 3 of 8</span>
+	<span class="page-number">Page 3 of 9</span>
 	
 	    <a class="older-posts" href="/cnblogs/page/4/">Older Posts &rarr;</a>
 	
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ror_getstarted/">开始Ruby On Rails</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="prepare">Prepare</h1>
+<ul>
+<li>
+<p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-debian/">nodejs</a></p>
+</li>
+<li>
+<p>foreman</p>
+</li>
+</ul>
+<pre tabindex="0"><code>gem install foreman
+</code></pre><h2 id="mysql-dev">mysql-dev</h2>
+<ul>
+<li>ubuntu</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
+gem install mysql2
+</code></pre><h3 id="debian"><a href="https://stackoverflow.com/a/34384709">Debian</a></h3>
+<ul>
+<li>mariadb</li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install mariadb-server
+</code></pre><ul>
+<li><a href="https://github.com/ansible-community/ara-collection/issues/8">mariadbclient-dev</a></li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install libmariadb-dev-compat libmariadb-dev
+</code></pre><ul>
+<li><a href="https://stackoverflow.com/questions/72000977/how-do-i-install-libmysqlclient21-on-debianbuster-slim-based-docker-image">client</a></li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install mariadb-client mysql-common default-mysql-client
+</code></pre><ul>
+<li>mysql2</li>
+</ul>
+<pre tabindex="0"><code>gem install mysql2
+</code></pre><h2 id="yarn">Yarn</h2>
+<p>upload <a href="https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn_1.22.22_all.deb">yarn_1.22.22_all.deb</a> to ubuntu:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>scp d:\yarn_1.22.22_all.deb tdtc@192.168.3.99:/home/tdtc/
+</span></span></code></pre></div><p>install:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.22_all.deb
+</span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.22_all.deb
+</span></span></code></pre></div><h3 id="set-proxy">set proxy</h3>
+<pre tabindex="0"><code>sudo yarn config set proxy http://&lt;ip:port&gt;
+sudo yarn config set https-proxy http://&lt;ip:port&gt;
+</code></pre><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
+<p>new:</p> <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-01-10T08:08:08&#43;08:00">
+            10 Jan 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/php-route-sf/">Routing - Symfony</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Symfony v8.0</li>
+</ul>
+<h2 id="creating-routes">Creating Routes</h2>
+<ul>
+<li>routes</li>
+<li>attributes</li>
+</ul>
+<h3 id="routes">routes</h3>
+<p>/config/routes.yaml:</p>
+<pre tabindex="0"><code># yaml-language-server: $schema=../vendor/symfony/routing/Loader/schema/routing.schema.json
+
+# This file is the entry point to configure the routes of your app.
+# Methods with the #[Route] attribute are automatically imported.
+# See also https://symfony.com/doc/current/routing.html
+
+# To list all registered routes, run the following command:
+#   bin/console debug:router
+
+controllers:
+    resource: routing.controllers
+    type: attribute  ## only
+</code></pre><p>Add attributes only!</p>
+<h3 id="creating-routes-as-attributes">Creating Routes as Attributes</h3>
+<p>/config/routes/attributes.yaml:</p>
+<pre tabindex="0"><code>controllers:
+    resource: &#39;../../src/Controller/&#39;
+    type: attribute
+    prefix:
+        ja: &#39;/ja-jp&#39;
+        en: &#39;/en-us&#39;
+        zh: &#39;/zh-cn&#39;
+</code></pre><h2 id="matching-http-methods">Matching HTTP Methods</h2>
+<p>By default, routes match any HTTP verb (GET, POST, PUT, etc.) Use the methods option to restrict the verbs each route should respond to:</p> <a class="read-more" href="/cnblogs/post/php-route-sf/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-01-08T10:08:08&#43;08:00">
+            8 Jan 2026
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -672,166 +792,12 @@ System.Runtime.CompilerServices.Unsafe:5.0.0
 </article>
 
 	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/mysql.net/">MySQL Connector/Net 的简单使用</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><table>
-	<thead>
-			<tr>
-					<th>Connector/NET Version</th>
-					<th>ADO.NET Version</th>
-					<th>.NET Version Required</th>
-					<th>MySQL Server</th>
-					<th>IDE</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>6.9</td>
-					<td>2.x+</td>
-					<td>3.5+ for VS 2008, 4.x+ for VS 2010 / 2012 / 2013, WinRT for VS 2012 / 2013</td>
-					<td>5.7, 5.6, 5.5</td>
-					<td>Visual Studio 2010</td>
-			</tr>
-			<tr>
-					<td>6.1</td>
-					<td>2.x+</td>
-					<td>2.x+</td>
-					<td>5.6, 5.5, 5.1, 5.0, 4.1</td>
-					<td>Visual Studio 2008</td>
-			</tr>
-	</tbody>
-</table>
-<p>连接器(For .net)：</p>
-<ul>
-<li>vs2008/2010 <br>
-<a href="https://cdn.mysql.com/archives/mysql-connector-net-6.1/mysql-connector-net-6.1.6.msi">V6.1.6</a></li>
-<li><a href="https://stackoverflow.com/a/40750607">vs2015</a> <br>
-<a href="https://cdn.mysql.com/archives/mysql-connector-net-6.9/mysql-connector-net-6.9.8.msi">v6.9.8</a></li>
-<li><a href="https://dev.mysql.com/doc/connector-net/en/connector-net-versions.html">dotnet and mysql connector - vs2019</a> <br>
-<a href="https://cdn.mysql.com/archives/mysql-connector-net-8.0/mysql-connector-net-8.0.32.msi">v8.0.32</a></li>
-</ul>
-<h3 id="新建工程---windows-application">新建工程 - Windows Application</h3>
-<ul>
-<li>vs2008
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609110346.png" alt="vs2008 ui"></li>
-<li>vs2019
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20250301074031.png" alt="vs2019 ui"></li>
-</ul>
-<h3 id="增加引用mysqldata">增加引用(MySql.Data)</h3>
-<ul>
-<li>vs2008
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609110557.png" alt="vs2008 ui"></li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609111014.png" alt="vs2008 ui"></p> <a class="read-more" href="/cnblogs/post/mysql.net/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-03-02T00:08:08&#43;08:00">
-            2 Mar 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-serialport_v2/">使用qt6的qml编写Serial Port</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>Qt Environment</li>
-<li>Qt Singleton</li>
-<li>Qt Update Issue</li>
-</ul>
-<h2 id="qt-environment">Qt Environment</h2>
-<ul>
-<li><a href="https://download.qt.io/official_releases/online_installers">Qt online installer</a></li>
-<li><a href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2">Visual Studio 2019/2022</a></li>
-</ul>
-<h3 id="installer">installer</h3>
-<p>default:</p>
-<ul>
-<li>qt creator <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-creator.png" alt="qt-online-creator"></li>
-<li>Build tools <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-cmake.png" alt="qt-online-cmake"></li>
-</ul>
-<h4 id="msvc">MSVC</h4>
-<ul>
-<li>vs2019(qt5.15) <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-msvc2019.png" alt="qt5.15 msvc2019"></li>
-<li>vs2019 <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt6-online-msvc2019.png" alt="qt6.5 msvc2019"></li>
-<li>vs2022 <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-msvc2022.png" alt="qt6.8 msvc2022"></li>
-</ul>
-<h4 id="additional-libraries">Additional Libraries</h4>
-<ul>
-<li>Qt5</li>
-</ul>
-<blockquote>
-<p>Included in the integration module</p>
-</blockquote>
-<p>No need to select additional</p>
-<ul>
-<li>Qt6 <br>
-<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt6-online-serial_port.png" alt="Qt Serial Port"></li>
-</ul>
-<h3 id="cmake-in-qt-creator">CMake in Qt Creator</h3>
-<p>程序设置：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-GNinja
-</span></span><span style="display:flex;"><span>-DCMAKE_BUILD_TYPE:STRING<span style="color:#f92672">=</span>Release
-</span></span><span style="display:flex;"><span>-DCMAKE_PROJECT_INCLUDE_BEFORE:PATH<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>IDE:ResourcePath<span style="color:#f92672">}</span>/package-manager/auto-setup.cmake
-</span></span><span style="display:flex;"><span>-DQT_QMAKE_EXECUTABLE:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Qt:qmakeExecutable<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>-DCMAKE_PREFIX_PATH:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Qt:QT_INSTALL_PREFIX<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>-DCMAKE_C_COMPILER:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Compiler:Executable:C<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>-DCMAKE_CXX_COMPILER:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Compiler:Executable:Cxx<span style="color:#f92672">}</span>
-</span></span></code></pre></div><h3 id="deploy">Deploy</h3>
-<ul>
-<li>v5.15</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\5</span>.15.2<span style="color:#ae81ff">\m</span>svc2019_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
-</span></span></code></pre></div><ul>
-<li>v6.5</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\6</span>.5.3<span style="color:#ae81ff">\m</span>svc2019_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
-</span></span></code></pre></div><ul>
-<li>v6.8</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\6</span>.8.2<span style="color:#ae81ff">\m</span>svc2022_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
-</span></span></code></pre></div><h2 id="qt-singleton">Qt Singleton</h2>
-<p>The version that fully supports singletons is <a href="https://doc.qt.io/qt-5/qqmlengine.html#qmlRegisterSingletonType-2">v5.14+</a></p> <a class="read-more" href="/cnblogs/post/qt-serialport_v2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-02-26T08:18:08&#43;08:00">
-            26 Feb 2025
-        </time>
-    </footer>
-</article>
-
-	
 
 	<nav class="pagination" role="navigation">
 	
 	    <a class="newer-posts" href="/cnblogs/page/2/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 3 of 8</span>
+	<span class="page-number">Page 3 of 9</span>
 	
 	    <a class="older-posts" href="/cnblogs/page/4/">Older Posts &rarr;</a>
 	

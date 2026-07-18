@@ -153,13 +153,143 @@
 	
 	    <a class="newer-posts" href="/cnblogs/post/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 2 of 8</span>
+	<span class="page-number">Page 2 of 9</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/3/">Older Posts &rarr;</a>
 	
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp-base/">3小时搞定asp.net</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: <a href="https://visualstudio.microsoft.com">Visual Studio community</a></li>
+<li>DB：MySQL5.7+</li>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-10.0.301-windows-x64-installer">.net SDK - x64</a></li>
+</ul>
+<h2 id="准备">准备</h2>
+<blockquote>
+<p>File-》New-》Project</p>
+<blockquote>
+<p>ASP.NET Core Web Application(Model-View-Controller)</p>
+</blockquote>
+</blockquote>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011124537.png" alt="vs2026"></p>
+<h3 id="additional-information">Additional information</h3>
+<ul>
+<li>.Net 10.0(Lts)</li>
+<li>Authentication type</li>
+</ul>
+<pre tabindex="0"><code>None
+</code></pre><ul>
+<li>Configure for HTTPS</li>
+</ul>
+<pre tabindex="0"><code>checked
+</code></pre><h3 id="web-server">Web Server</h3>
+<ul>
+<li>http</li>
+<li>https</li>
+</ul>
+<blockquote>
+<p>default</p>
+</blockquote>
+<ul>
+<li>
+<p>IIS Express</p>
+<p>点击“IIS Express”运行（如果弹出证书安装选“是”即可）。
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134118.png" alt="iis cert - hint">
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134337.png" alt="windows - hint"></p>
+</li>
+</ul>
+<h1 id="demo">Demo</h1>
+<p><img src="https://img-blog.csdnimg.cn/20210707161947768.png" alt="演示code"></p>
+<h2 id="repository">Repository</h2>
+<blockquote>
+<p>Project-》Manage NuGet Packages
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011135217.png" alt="Microsoft.EntityFrameworkCore"></p>
+</blockquote>
+<h3 id="entity-class">entity class</h3>
+<p>数据表的Entity类</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel.DataAnnotations;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> veic_web.Models
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Key]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Param_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Statu_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Lang_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Img_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Description { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="db-context">Db Context</h3>
+<blockquote>
+<p>Solution Explorer</p> <a class="read-more" href="/cnblogs/post/asp-base/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-05T09:08:08&#43;08:00">
+            5 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_nginx-v2/">前端（Web）负载均衡</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Nginx&rsquo;s load balancing</p>
+<h1 id="一安装">一、安装</h1>
+<p>OS: RHEL Community Version(Rocky8/Alma8) minimal（安装时的选项）</p>
+<h2 id="0-prepare">0. prepare</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf -y install gcc gcc-c++ automake make pcre pcre-devel zlib zlib-devel openssl openssl-devel</span>
+</span></span></code></pre></div><p>see <a href="https://tdtc-hrb.github.io/cnblogs/post/ops_openssl/">update openssl</a></p>
+<h3 id="library-devel">Library devel</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install gd-devel libxml2-devel libxslt-devel
+</span></span></code></pre></div><h4 id="geoip">GeoIP</h4>
+<p>Download latest <a href="http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/">atomic-release</a> <br>
+Install atomic-release rpm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo rpm -Uvh http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/atomic-release-1.0-23.el8.art.noarch.rpm
+</span></span></code></pre></div><p>Install GeoIP-devel rpm package:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install GeoIP-devel
+</span></span></code></pre></div><h3 id="allow-fw">allow fw</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>80/tcp
+</span></span><span style="display:flex;"><span>$sudo firewall-cmd --reload
+</span></span></code></pre></div><h2 id="installation">installation</h2>
+<p>First, install Nginx of centos <a href="https://nginx.org/en/linux_packages.html#RHEL">repo</a>; <br>
+Then, replace the nginx program file. <br>
+Note: The replaced program file version must be the same as the repo!</p> <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-05T08:38:08&#43;08:00">
+            5 Jul 2026
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -814,132 +944,12 @@ Did you restart the server after uncommenting the LoadModule line for mod_socach
 </article>
 
 	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ror_getstarted/">开始Ruby On Rails</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="prepare">Prepare</h1>
-<ul>
-<li>
-<p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-debian/">nodejs</a></p>
-</li>
-<li>
-<p>foreman</p>
-</li>
-</ul>
-<pre tabindex="0"><code>gem install foreman
-</code></pre><h2 id="mysql-dev">mysql-dev</h2>
-<ul>
-<li>ubuntu</li>
-</ul>
-<pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
-gem install mysql2
-</code></pre><h3 id="debian"><a href="https://stackoverflow.com/a/34384709">Debian</a></h3>
-<ul>
-<li>mariadb</li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install mariadb-server
-</code></pre><ul>
-<li><a href="https://github.com/ansible-community/ara-collection/issues/8">mariadbclient-dev</a></li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install libmariadb-dev-compat libmariadb-dev
-</code></pre><ul>
-<li><a href="https://stackoverflow.com/questions/72000977/how-do-i-install-libmysqlclient21-on-debianbuster-slim-based-docker-image">client</a></li>
-</ul>
-<pre tabindex="0"><code>sudo apt-get install mariadb-client mysql-common default-mysql-client
-</code></pre><ul>
-<li>mysql2</li>
-</ul>
-<pre tabindex="0"><code>gem install mysql2
-</code></pre><h2 id="yarn">Yarn</h2>
-<p>upload <a href="https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn_1.22.22_all.deb">yarn_1.22.22_all.deb</a> to ubuntu:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>scp d:\yarn_1.22.22_all.deb tdtc@192.168.3.99:/home/tdtc/
-</span></span></code></pre></div><p>install:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.22_all.deb
-</span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.22_all.deb
-</span></span></code></pre></div><h3 id="set-proxy">set proxy</h3>
-<pre tabindex="0"><code>sudo yarn config set proxy http://&lt;ip:port&gt;
-sudo yarn config set https-proxy http://&lt;ip:port&gt;
-</code></pre><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
-<p>new:</p> <a class="read-more" href="/cnblogs/post/ror_getstarted/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-01-10T08:08:08&#43;08:00">
-            10 Jan 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/php-route-sf/">Routing - Symfony</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>Symfony v8.0</li>
-</ul>
-<h2 id="creating-routes">Creating Routes</h2>
-<ul>
-<li>routes</li>
-<li>attributes</li>
-</ul>
-<h3 id="routes">routes</h3>
-<p>/config/routes.yaml:</p>
-<pre tabindex="0"><code># yaml-language-server: $schema=../vendor/symfony/routing/Loader/schema/routing.schema.json
-
-# This file is the entry point to configure the routes of your app.
-# Methods with the #[Route] attribute are automatically imported.
-# See also https://symfony.com/doc/current/routing.html
-
-# To list all registered routes, run the following command:
-#   bin/console debug:router
-
-controllers:
-    resource: routing.controllers
-    type: attribute  ## only
-</code></pre><p>Add attributes only!</p>
-<h3 id="creating-routes-as-attributes">Creating Routes as Attributes</h3>
-<p>/config/routes/attributes.yaml:</p>
-<pre tabindex="0"><code>controllers:
-    resource: &#39;../../src/Controller/&#39;
-    type: attribute
-    prefix:
-        ja: &#39;/ja-jp&#39;
-        en: &#39;/en-us&#39;
-        zh: &#39;/zh-cn&#39;
-</code></pre><h2 id="matching-http-methods">Matching HTTP Methods</h2>
-<p>By default, routes match any HTTP verb (GET, POST, PUT, etc.) Use the methods option to restrict the verbs each route should respond to:</p> <a class="read-more" href="/cnblogs/post/php-route-sf/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-01-08T10:08:08&#43;08:00">
-            8 Jan 2026
-        </time>
-    </footer>
-</article>
-
-	
 
 	<nav class="pagination" role="navigation">
 	
 	    <a class="newer-posts" href="/cnblogs/post/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 2 of 8</span>
+	<span class="page-number">Page 2 of 9</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/3/">Older Posts &rarr;</a>
 	

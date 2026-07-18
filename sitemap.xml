@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://tdtc-hrb.github.io/cnblogs/post/</loc>
-    <lastmod>2026-07-14T10:08:08+08:00</lastmod>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic18f_mcc/</loc>
+    <lastmod>2026-07-18T10:08:08+08:00</lastmod>
   </url><url>
-    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_psect/</loc>
-    <lastmod>2026-07-14T10:08:08+08:00</lastmod>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic18f_q10_register-definitions/</loc>
+    <lastmod>2026-07-18T10:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/</loc>
+    <lastmod>2026-07-18T10:08:08+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/</loc>
+    <lastmod>2026-07-18T10:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_psect/</loc>
     <lastmod>2026-07-14T10:08:08+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic_as-tutor/</loc>
