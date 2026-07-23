@@ -164,6 +164,60 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_spark_rhel/">spark安装</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Spark <br>
+v3.1</li>
+<li>OS <br>
+RHEL8(Alma / Rocky Linux)</li>
+</ul>
+<h1 id="一基础软件">一、基础软件</h1>
+<h2 id="1-r-lang">1. R-lang</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dnf -y install epel-release
+</span></span><span style="display:flex;"><span>$ sudo dnf  --enablerepo<span style="color:#f92672">=</span>powertools install R
+</span></span></code></pre></div><blockquote>
+<p>注意：如果Java没有安装，会附带着安装OpenJDK。</p>
+</blockquote>
+<h2 id="2-scala">2. Scala</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wget https://downloads.lightbend.com/scala/2.12.17/scala-2.12.17.tgz
+</span></span><span style="display:flex;"><span>$ tar xvf scala-2.12.17.tgz
+</span></span><span style="display:flex;"><span>$ sudo mv scala-2.12.17 /usr/lib
+</span></span><span style="display:flex;"><span>$ sudo ln -s /usr/lib/scala-2.12.17 /usr/lib/scala
+</span></span></code></pre></div><h3 id="1-add-path">1) add path</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$vi ~/.bashrc
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$PATH:/usr/lib/scala/bin
+</span></span></code></pre></div><h1 id="二spark">二、Spark</h1>
+<h2 id="1-down--unzip">1. down &amp; unzip</h2>
+<blockquote>
+<p><a href="https://www.apache.org/dyn/closer.lua/spark/spark-3.1.3/spark-3.1.3-bin-hadoop2.7.tgz">v3.1.3</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir -p ~/app/spark
+</span></span><span style="display:flex;"><span>$ tar zxvf spark-3.1.3-bin-hadoop2.7.tgz -C ~/app/spark
+</span></span><span style="display:flex;"><span>$ mv ~/app/spark/spark-3.1.3-bin-hadoop2.7 ~/app/spark/3.1.3
+</span></span></code></pre></div><h2 id="2-test">2. test</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd ~/app/spark/3.1.3
+</span></span><span style="display:flex;"><span>$ ./bin/spark-shell --master local<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>input:</p> <a class="read-more" href="/cnblogs/post/ops_spark_rhel/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-10-10T00:08:08&#43;08:00">
+            10 Oct 2022
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/redis-rhel-setup/">Redis Server installation FAQs</a></h2>
     </header>
     <section class="post-excerpt">
@@ -694,81 +748,6 @@ Host1:</p> <a class="read-more" href="/cnblogs/post/mq-kafka-config/">&raquo;</a
         
         <time class="post-date" datetime="2021-11-11T12:38:08&#43;08:00">
             11 Nov 2021
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp.net6-grpc/">ASP.net Core 的gRPC Service应用</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>Server 在Ubuntu V20.04; Client 在Windows CMD运行。</p>
-</blockquote>
-<ul>
-<li>PowerShell Core v7.2</li>
-<li>IDE: VS2022 Community(v17.0)/VS Code(<a href="https://code.visualstudio.com/docs/containers/overview#_installation">docker extension</a>)</li>
-<li>VM: VBox(v6.1)</li>
-</ul>
-<h1 id="接口文件说明">接口文件说明</h1>
-<blockquote>
-<p>Protos/greet.proto</p>
-</blockquote>
-<h2 id="定义service">定义service</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>service Greeter <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  // Sends a greeting
-</span></span><span style="display:flex;"><span>  rpc SayHello <span style="color:#f92672">(</span>HelloRequest<span style="color:#f92672">)</span> returns <span style="color:#f92672">(</span>HelloReply<span style="color:#f92672">)</span> <span style="color:#f92672">{}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h2 id="定义message">定义message</h2>
-<ul>
-<li>request</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloRequest <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  string name <span style="color:#f92672">=</span> 1;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>response</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloReply <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  string message <span style="color:#f92672">=</span> 1;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h1 id="server">server</h1>
-<h2 class="tabset" id="create">Create</h2>
-<h3 id="vs2022">VS2022</h3>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20211109172442.png" alt="VS2022 pre1">
-注意：服务器需要docker支持！
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20211109173447.png" alt="VS2022 pre2"></p>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20211109174850.png" alt="VS2022 pre3"></p>
-<h3 id="vs-code">VS code</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new grpc -o GreeterServer
-</span></span></code></pre></div><h4 id="add-docke-file">add docke file</h4>
-<ul>
-<li>View -&gt; Command Palette(Ctrl+Shift+P)</li>
-</ul>
-<ul>
-<li>Enter: Docker fi</li>
-<li>choice1: Add Docker Files to Workspace&hellip;</li>
-<li>choice2: .NET: ASP.NET Core</li>
-<li>choice3: Linux</li>
-<li>Enter: 80</li>
-<li>choice4: No(Include compose file)</li>
-</ul>
-<h2 id="实现的service">实现的service</h2>
-<blockquote>
-<p>VS2022/vs code自动生成</p> <a class="read-more" href="/cnblogs/post/asp.net6-grpc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2021-11-09T20:38:18&#43;08:00">
-            9 Nov 2021
         </time>
     </footer>
 </article>

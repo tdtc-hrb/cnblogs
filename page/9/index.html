@@ -162,6 +162,79 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/php-lamp/">安装LAMP</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p> 操作系统：CentOS7.6(x86_64) <br>
+安装方式：源码安装 &amp; RPM包  <br>
+安装目录：/opt/</p>
+<blockquote>
+<p>安装文件：  <br>
+(1) Apache Httpd <a href="http://mirror.bit.edu.cn/apache//httpd/httpd-2.4.39.tar.gz">V2.4.x</a>  <br>
+(2) MariaDB V5.5(系统自带) <br>
+(3) PHP <a href="https://www.php.net/distributions/php-5.6.40.tar.gz">V5.6.x</a></p>
+</blockquote>
+</blockquote>
+<h1 id="一httpd">一、Httpd</h1>
+<p>卸载系统自带httpd（V2.4.6-89）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum remove httpd
+</span></span></code></pre></div><h2 id="1-depend-soft">1. depend soft</h2>
+<h2 id="apr">APR</h2>
+<p><a href="http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-1.7.0.tar.gz">down</a></p>
+<h3 id="install">install</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr
+</span></span><span style="display:flex;"><span>$make <span style="color:#f92672">&amp;&amp;</span> sudo make install
+</span></span></code></pre></div><h2 id="apr-util">APR-util</h2>
+<blockquote>
+<p>Tips: <a href="https://bbs.csdn.net/topics/392191188">https://bbs.csdn.net/topics/392191188</a></p>
+</blockquote>
+<p><a href="http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-util-1.6.1.tar.gz">down</a></p>
+<h3 id="expat-devel">expat-devel</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install expat-devel
+</span></span></code></pre></div><h3 id="install-apr-util">install apr-util</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>	    --with-apr<span style="color:#f92672">=</span>/opt/apr <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>	    --with-expat<span style="color:#f92672">=</span>/usr/local/expat
+</span></span><span style="display:flex;"><span>$make <span style="color:#f92672">&amp;&amp;</span> sudo make install
+</span></span></code></pre></div><h2 id="install-httpd">install httpd</h2>
+<h3 id="pcre-devel">pcre-devel</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum -y install pcre-devel
+</span></span></code></pre></div><h2 id="setup">Setup</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tar zxvf httpd-2.4.39.tar.gz
+</span></span><span style="display:flex;"><span>$ &lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;cd&lt;/span&gt; httpd-2.4.39
+</span></span><span style="display:flex;"><span>$ ./configure --prefix<span style="color:#f92672">=</span>/opt/httpd <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>	    --with-apr-util<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>	    --&lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;enable&lt;/span&gt;-so <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        --&lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;enable&lt;/span&gt;-rewrite
+</span></span><span style="display:flex;"><span>$ make
+</span></span><span style="display:flex;"><span>$ sudo make install
+</span></span></code></pre></div><h1 id="二php">二、PHP</h1>
+<h2 id="依赖包安装">依赖包安装</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install libxml2-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>            curl-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>            libjpeg-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>            libpng-devel
+</span></span></code></pre></div><p>如果系统没有安装普通包，则安装之。默认已安装。 <br>
+安装libmcrypt</p> <a class="read-more" href="/cnblogs/post/php-lamp/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-04-13T03:28:08&#43;08:00">
+            13 Apr 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/php-faqs/">veic web的版本使用问题</a></h2>
     </header>
     <section class="post-excerpt">

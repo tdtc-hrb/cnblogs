@@ -162,53 +162,34 @@
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-pic18f_mcc/">microchip code configurator</a></h2>
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic18f_mcc-classic/">MPLAB Code Configurator - Classic</a></h2>
     </header>
     <section class="post-excerpt">
         
-            <p><ul>
-<li><a href="https://developerhelp.microchip.com/xwiki/bin/view/software-tools/ides/extensions/get-started/">MPLAB Extension Pack - VS Code</a></li>
-<li>XC8: v4.0</li>
-</ul>
-<h3 id="network-settings">network Settings</h3>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_network-vs.png" alt=""></p>
+            <p><p><strong>Classic support for this device is not maintatined actively and will be deprecated in the future.</strong></p>
 <ul>
-<li>choose</li>
+<li><a href="https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator/classic">MCC Classic</a></li>
 </ul>
-<pre tabindex="0"><code>https://registry.npmjs.org/
-https://registry.npmmirror.com
-</code></pre><h2 id="device">device</h2>
-<p>Add the following devices from the &ldquo;Device Resources&rdquo; window:</p>
+<pre tabindex="0"><code>PIC10/PIC12/PIC16/PIC18 library v1.81.7 
+</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-type.png" alt=""></p>
+<h1 id="an3049">An3049</h1>
+<ol>
+<li>In the System Module, set the clock to HFINTOSC with 32 MHz frequency.</li>
+</ol>
 <ul>
-<li>TMR2</li>
-<li>CCP1</li>
-<li>WWDT</li>
+<li>mcc.c</li>
 </ul>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_config-device.png" alt=""></p>
-<h3 id="configurations">configurations</h3>
-<ul>
-<li>Clock Control</li>
-<li>TMR2</li>
-<li>CCP1</li>
-<li>WWDT</li>
-</ul>
-<h4 id="clock-control">Clock Control</h4>
-<ul>
-<li>Clock Source: LFINTOSC</li>
-<li>Clock Divider: 1</li>
-</ul>
-<h4 id="timer2">Timer2</h4>
-<ul>
-<li>Hardware Settings</li>
-</ul>
-<pre tabindex="0"><code>- Enable Timer: checked
-- Control Mode: Roll over pulse
-- Start/Reset Option: Software control
-</code></pre><p>– Timer Clock</p>
-<pre tabindex="0"><code>- Clock Source: FOSC/4
-- Prescaler: 1:32
-- Postscaler: 1:1
-</code></pre><p>– Timer Period</p> <a class="read-more" href="/cnblogs/post/e-pic18f_mcc/">&raquo;</a></p>
+<pre tabindex="0"><code>NOSC HFINTOSC; NDIV 1;
+HFFRQ 32_MHz;
+CSWHOLD may proceed; SOSCPWR Low power; 
+</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-clock.png" alt=""></p>
+<ol start="2">
+<li>Set the ADCC module to Basic_mode, with FOSC/ADCLK clock source configured to FOSC/32.</li>
+</ol>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-adcc.png" alt=""></p>
+<h2 id="motor">motor</h2>
+<p>For providing drive signal to the motor,
+three peripherals are needed to be configured: CCP2, TIMER2 and CWG.</p> <a class="read-more" href="/cnblogs/post/e-pic18f_mcc-classic/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -217,8 +198,8 @@ https://registry.npmmirror.com
         
 
         
-        <time class="post-date" datetime="2026-07-18T10:08:08&#43;08:00">
-            18 Jul 2026
+        <time class="post-date" datetime="2026-07-23T10:08:08&#43;08:00">
+            23 Jul 2026
         </time>
     </footer>
 </article>
@@ -226,13 +207,44 @@ https://registry.npmmirror.com
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-pic18f_q10_register-definitions/">PIC的 Register Definitions: Configuration Words</a></h2>
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic18f_q10_register-definitions/">advanced 8-bit mcu 的 Register Definitions: Configuration Words</a></h2>
     </header>
     <section class="post-excerpt">
         
             <p><p>Ver: 0.1</p>
-<pre tabindex="0"><code>Modified from e-pic16f188_register-definitions.md
-</code></pre><h2 id="46-register-summary---configuration-words">4.6 Register Summary - Configuration Words</h2>
+<h3 id="pin-count-vs-memory---q10"><a href="https://www.microchip.com/en-us/products/microcontrollers/8-bit-mcus/pic-mcus/pic18-q10">Pin Count vs. Memory - Q10</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>Flash (KB)</th>
+					<th>28 Pins</th>
+					<th>40 pins}</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>128</td>
+					<td>PIC18F27Q10</td>
+					<td>PIC18F47Q10</td>
+			</tr>
+			<tr>
+					<td>64</td>
+					<td>PIC18F26Q10</td>
+					<td>PIC18F46Q10</td>
+			</tr>
+			<tr>
+					<td>32</td>
+					<td>PIC18F25Q10</td>
+					<td>PIC18F45Q10</td>
+			</tr>
+			<tr>
+					<td>16</td>
+					<td>PIC18F24Q10</td>
+					<td>-</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="46-register-summary---configuration-words">4.6 Register Summary - Configuration Words</h2>
 <table>
 	<thead>
 			<tr>
@@ -275,137 +287,71 @@ https://registry.npmmirror.com
 	</tbody>
 </table>
 <h2 id="47-register-definitions-configuration-words">4.7 Register Definitions: Configuration Words</h2>
-<p>Legend:</p>
-<ul>
-<li>R:   Readable bit</li>
-<li>W:   Writable bit</li>
-<li>U:   Unimplemented bit, read as &lsquo;1&rsquo;</li>
-<li>&lsquo;0&rsquo;: Bit is cleared</li>
-<li>&lsquo;1&rsquo;: Bit is set</li>
-<li>n:   Value when blank or after Bulk Erase</li>
+<p>Legend:</p> <a class="read-more" href="/cnblogs/post/e-pic18f_q10_register-definitions/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-21T10:08:08&#43;08:00">
+            21 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic18f_mcc/">microchip code configurator - melody</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://developerhelp.microchip.com/xwiki/bin/view/software-tools/ides/extensions/get-started/">MPLAB Extension Pack - VS Code</a></li>
+<li><a href="https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator/melody">MCC Melody</a></li>
 </ul>
-<h3 id="471-config1">4.7.1 CONFIG1</h3>
+<h3 id="network-settings">network Settings</h3>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_network-vs.png" alt=""></p>
 <ul>
-<li>Name:   OSCILLATORS</li>
-<li>Address: 0x300000</li>
+<li>choose</li>
 </ul>
-<table>
-	<thead>
-			<tr>
-					<th>Bit</th>
-					<th>13</th>
-					<th>12</th>
-					<th>11</th>
-					<th>10</th>
-					<th>9</th>
-					<th>8</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Name</td>
-					<td>FCMEN</td>
-					<td>Reserved</td>
-					<td>CSWEN</td>
-					<td>Reserved</td>
-					<td>Reserved</td>
-					<td><SPAN style="TEXT-DECORATION: overline">CLKOUTEN</SPAN></td>
-			</tr>
-			<tr>
-					<td>Access</td>
-					<td>R/W</td>
-					<td>-</td>
-					<td>R/W</td>
-					<td>-</td>
-					<td>-</td>
-					<td>R/W</td>
-			</tr>
-			<tr>
-					<td>Reset</td>
-					<td>1</td>
-					<td>-</td>
-					<td>1</td>
-					<td>-</td>
-					<td>-</td>
-					<td>1</td>
-			</tr>
-	</tbody>
-</table>
-<table>
-	<thead>
-			<tr>
-					<th>Bit</th>
-					<th>7</th>
-					<th>6 ~ 4</th>
-					<th>3</th>
-					<th>2 ~ 0</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Name</td>
-					<td>Reserved</td>
-					<td>RSTOSC&lt;2:0&gt;</td>
-					<td>Reserved</td>
-					<td>FEXTOSC&lt;2:0&gt;</td>
-			</tr>
-			<tr>
-					<td>Access</td>
-					<td>-</td>
-					<td>R/W</td>
-					<td>-</td>
-					<td>R/W</td>
-			</tr>
-			<tr>
-					<td>Reset</td>
-					<td>-</td>
-					<td>1</td>
-					<td>-</td>
-					<td>1</td>
-			</tr>
-	</tbody>
-</table>
-<h4 id="bit-13--fcmen-fall-safe-clock-monitor-enable-bit">Bit 13 – FCMEN: Fall-Safe Clock Monitor Enable Bit</h4>
-<table>
-	<thead>
-			<tr>
-					<th>Value</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1 = ON</td>
-					<td>FSCM timer enabled</td>
-			</tr>
-			<tr>
-					<td>0 = OFF</td>
-					<td>FSCM timer disabled</td>
-			</tr>
-	</tbody>
-</table>
-<h4 id="bit-11---cswen-clock-switch-enable-bit">Bit 11 - CSWEN: Clock Switch Enable bit</h4>
-<table>
-	<thead>
-			<tr>
-					<th>Value</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>1 = ON</td>
-					<td>Writing to NOSO and NDIV is allowed</td>
-			</tr>
-			<tr>
-					<td>0 = OFF</td>
-					<td>The NOSC and NDIV bits cannot be changed by user software</td>
-			</tr>
-	</tbody>
-</table>
-<h4 id="bit-8--clkouten-clock-out-enable-bit">Bit 8 – <SPAN style="TEXT-DECORATION: overline">CLKOUTEN</SPAN> Clock Out Enable bit</h4>
-<p>if FEXTOSC = HS, XT, LP, then this bit is ignored.
-Otherwise:</p> <a class="read-more" href="/cnblogs/post/e-pic18f_q10_register-definitions/">&raquo;</a></p>
+<pre tabindex="0"><code>https://registry.npmjs.org/
+https://registry.npmmirror.com
+</code></pre><h2 id="device">device</h2>
+<p>Add the following devices from the &ldquo;Device Resources&rdquo; window:</p>
+<ul>
+<li>TMR2</li>
+<li>CCP1</li>
+<li>WWDT</li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_config-device.png" alt=""></p>
+<h3 id="configurations">configurations</h3>
+<ul>
+<li>Clock Control</li>
+<li>TMR2</li>
+<li>CCP1</li>
+<li>WWDT</li>
+</ul>
+<h4 id="clock-control">Clock Control</h4>
+<ul>
+<li>Clock Source: LFINTOSC</li>
+<li>Clock Divider: 1</li>
+</ul>
+<h4 id="timer2">Timer2</h4>
+<ul>
+<li>Hardware Settings</li>
+</ul>
+<pre tabindex="0"><code>- Enable Timer: checked
+- Control Mode: Roll over pulse
+- Start/Reset Option: Software control
+</code></pre><p>– Timer Clock</p>
+<pre tabindex="0"><code>- Clock Source: FOSC/4
+- Prescaler: 1:32
+- Postscaler: 1:1
+</code></pre><p>– Timer Period</p> <a class="read-more" href="/cnblogs/post/e-pic18f_mcc/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -1149,72 +1095,6 @@ IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代�
         
         <time class="post-date" datetime="2026-07-07T01:08:08&#43;08:00">
             7 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/mq-rabbitmq-config/">Install and Configure RabbitMQ</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>Ubuntu 18.04 <br>
-codename: bionic</li>
-<li>Ubuntu 20.04 <br>
-codename: focal</li>
-</ul>
-<p>Current Version(RabbitMQ):</p>
-<pre tabindex="0"><code>RabbitMQ 3.10.2 Erlang 24.3.3
-</code></pre><h1 id="installation">Installation</h1>
-<p>需要<a href="https://tdtc-hrb.github.io/csdn/post/ops_network_adapter_linux/">设置固定IP</a></p>
-<p>Replace the &ldquo;bionic&rdquo; in the <a href="https://www.rabbitmq.com/install-debian.html#apt-packagecloud">official website</a> shell with the ubuntu codename.</p>
-<p>Note: When saving, the format is Unix(LF).</p>
-<p>focal_rq.sh:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sudo apt-get install curl gnupg apt-transport-https -y
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## Team RabbitMQ&#39;s main signing key</span>
-</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/com.rabbitmq.team.gpg &gt; /dev/null
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## Launchpad PPA that provides modern Erlang releases</span>
-</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0xf77f1eda57ebb1cc&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg &gt; /dev/null
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## PackageCloud RabbitMQ repository</span>
-</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/io.packagecloud.rabbitmq.gpg &gt; /dev/null
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## Add apt repositories maintained by Team RabbitMQ</span>
-</span></span><span style="display:flex;"><span>sudo tee /etc/apt/sources.list.d/rabbitmq.list <span style="color:#e6db74">&lt;&lt;EOF
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Provides modern Erlang/OTP releases
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">##
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## &#34;focal&#34; as distribution name should work for any reasonably recent Ubuntu or Debian release.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb [signed-by=/usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg] http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu focal main
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb-src [signed-by=/usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg] http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu focal main
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Provides RabbitMQ
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">##
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## &#34;focal&#34; as distribution name should work for any reasonably recent Ubuntu or Debian release.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb [signed-by=/usr/share/keyrings/io.packagecloud.rabbitmq.gpg] https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal main
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb-src [signed-by=/usr/share/keyrings/io.packagecloud.rabbitmq.gpg] https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal main
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## Update package indices</span>
-</span></span><span style="display:flex;"><span>sudo apt-get update -y
-</span></span></code></pre></div><p>exec:</p> <a class="read-more" href="/cnblogs/post/mq-rabbitmq-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-05T18:08:08&#43;08:00">
-            5 Jul 2026
         </time>
     </footer>
 </article>

@@ -164,6 +164,84 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/php-devenv-win/">Windows搭建PHP环境</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.apachelounge.com/download/">Apache Lounge Downloads</a></li>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/dev_wsl_ubuntu">openssl - wsl1</a></li>
+</ul>
+<h1 id="apache配置">Apache配置</h1>
+<ul>
+<li>ServerRoot</li>
+</ul>
+<pre tabindex="0"><code>Define SRVROOT &#34;C:/Apache24&#34;
+</code></pre><ul>
+<li>ServerName</li>
+</ul>
+<pre tabindex="0"><code>ServerName localhost:80
+</code></pre><h2 id="php-apache">php-apache</h2>
+<pre tabindex="0"><code>Non Thread Safe(NTS) 和 Thread Safe(TS)： &#34;NTS&#34;，没有&#34;php(5/7/8)apache2_4.dll&#34;
+</code></pre><ul>
+<li>PHP 8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;C:/php-8.4&#34;</span>
+</span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;C:/php-8.4/php8apache2_4.dll&#34;</span>
+</span></span></code></pre></div><p>在配置文件(conf/httpd.conf)最后增加:</p>
+<pre tabindex="0"><code>AddType application/x-httpd-php .php
+</code></pre><ul>
+<li>test config</li>
+</ul>
+<pre tabindex="0"><code>httpd -t
+</code></pre><h3 id="directory-index">Directory Index</h3>
+<p>DirectoryIndex: sets the file that Apache will serve if a directory is requested.</p>
+<ul>
+<li>append</li>
+</ul>
+<pre tabindex="0"><code>index.php
+</code></pre><h2 id="重写">重写</h2>
+<ul>
+<li>a.打开模块</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule rewrite_module modules/mod_rewrite.so
+</span></span></code></pre></div><ul>
+<li>b.允许重写</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
+</span></span></code></pre></div><h2 id="ssl">SSL</h2>
+<ul>
+<li>open module</li>
+</ul>
+<pre tabindex="0"><code>LoadModule ssl_module modules/mod_ssl.so
+LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
+</code></pre><ul>
+<li>at httpd.conf:</li>
+</ul>
+<pre tabindex="0"><code>Include conf/extra/httpd-ssl.conf
+</code></pre><h3 id="shmcb"><a href="https://www.apachelounge.com/viewtopic.php?t=7614">shmcb</a></h3>
+<pre tabindex="0"><code>glsmith:
+Did you restart the server after uncommenting the LoadModule line for mod_socache_shmcb?
+</code></pre><h3 id="basic-conf">basic conf</h3>
+<blockquote>
+<p>development</p> <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-01-20T00:12:08&#43;08:00">
+            20 Jan 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/ror_getstarted/">开始Ruby On Rails</a></h2>
     </header>
     <section class="post-excerpt">
@@ -717,76 +795,6 @@ If you continue to use it, Android Studio and the Android Gradle plugin will che
         
         <time class="post-date" datetime="2025-09-25T19:08:08&#43;08:00">
             25 Sep 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/mysql.ef/">MySQL EF 的简单使用</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/net452">v4.5.2 Developer pack</a></li>
-<li>entityframework:6.4.4</li>
-</ul>
-<h2 id="nuget">NuGet</h2>
-<blockquote>
-<p>%USERPROFILE%\AppData\Roaming\NuGet
-NuGet.Config:</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;config&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;http_proxy&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;http://192.168.3.19:8580&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;https_proxy&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;http://192.168.3.19:8580&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/config&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageRestore&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;enabled&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;True&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;automatic&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;True&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageRestore&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageSources&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://www.nuget.org/api/v2/&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;NuGet V3&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://api.nuget.org/v3/index.json&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageSources&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;activePackageSource&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://www.nuget.org/api/v2/&#34;</span> <span style="color:#f92672">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/activePackageSource&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/configuration&gt;</span>
-</span></span></code></pre></div><h3 id="new">New</h3>
-<p>Update <a href="https://dist.nuget.org/visualstudio-2013-vsix/v2.12.0/NuGet.Tools.vsix">NuGet.Tools.vsix</a>
-and
-<a href="https://stackoverflow.com/a/63574949">Visual Studio 2013 NuGet package management not working</a>:</p>
-<pre tabindex="0"><code class="language-Package" data-lang="Package">PM &gt; [Net.ServicePointManager]::SecurityProtocol=[Net.ServicePointManager]::SecurityProtocol-bOR [Net.SecurityProtocolType]::Tls12
-</code></pre><p>Put the following nuget packages into the Offline folder:</p>
-<ul>
-<li>mysql.data.entityframework:8.0.32</li>
-<li>mysql.data:8.0.32.1</li>
-</ul>
-<pre tabindex="0"><code>portable.bouncycastle:1.9.0
-Google.Protobuf:3.21.12
-K4os.Compression.LZ4.Streams:1.2.6
-Portable.BouncyCastle:1.9.0
-System.Buffers:4.5.1
-System.Runtime.CompilerServices.Unsafe:5.0.0
-</code></pre><h1 id="ref">Ref</h1>
-<ul>
-<li><a href="https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework60.html">Entity Framework 6 Support</a></li>
-<li><a href="https://learn.microsoft.com/en-us/nuget/consume-packages/configuring-nuget-behavior">Common NuGet configurations</a></li>
-<li><a href="https://github.com/tdtc-hrb/Cps_dotnet-fx">Cps_x32-fx</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/mysql.ef/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-08-08T00:08:08&#43;08:00">
-            8 Aug 2025
         </time>
     </footer>
 </article>

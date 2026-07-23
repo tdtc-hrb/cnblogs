@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="MPLAB Code Configurator - Classic"/>
+<meta name="twitter:description" content="Based on An3049"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="MPLAB Code Configurator - Classic &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/e-pic18f_mcc-classic/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="Based on An3049" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2026-07-23T10:08:08&#43;08:00" />
+
+    
+    
+
+    <title>MPLAB Code Configurator - Classic &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="Based on An3049" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.164.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-pic18f_mcc-classic/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "MPLAB Code Configurator - Classic",
+    "name": "MPLAB Code Configurator - Classic",
+    "wordCount":  297 ,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "zh"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/e-pic18f_mcc-classic/",
+    "datePublished": "2026-07-23T10:08Z",
+    "dateModified": "2026-07-23T10:08Z",
+    
+    
+    "description": "Based on An3049",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/e-pic18f_mcc-classic/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">MPLAB Code Configurator - Classic</h1>
+        <small>Based on An3049</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2026-07-23T10:08:08&#43;08:00">
+            Jul 23, 2026
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p><strong>Classic support for this device is not maintatined actively and will be deprecated in the future.</strong></p>
+<ul>
+<li><a href="https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator/classic">MCC Classic</a></li>
+</ul>
+<pre tabindex="0"><code>PIC10/PIC12/PIC16/PIC18 library v1.81.7 
+</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-type.png" alt=""></p>
+<h1 id="an3049">An3049</h1>
+<ol>
+<li>In the System Module, set the clock to HFINTOSC with 32 MHz frequency.</li>
+</ol>
+<ul>
+<li>mcc.c</li>
+</ul>
+<pre tabindex="0"><code>NOSC HFINTOSC; NDIV 1;
+HFFRQ 32_MHz;
+CSWHOLD may proceed; SOSCPWR Low power; 
+</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-clock.png" alt=""></p>
+<ol start="2">
+<li>Set the ADCC module to Basic_mode, with FOSC/ADCLK clock source configured to FOSC/32.</li>
+</ol>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-adcc.png" alt=""></p>
+<h2 id="motor">motor</h2>
+<p>For providing drive signal to the motor,
+three peripherals are needed to be configured: CCP2, TIMER2 and CWG.</p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-ccp2.png" alt=""></p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-tmr2.png" alt=""></p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-cwg.png" alt=""></p>
+<h2 id="digital-pulses">digital pulses</h2>
+<p>In counting the digital pulses,
+three peripherals are utilized: CLC1, CCP1 and TIMER1.</p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-clc1.png" alt=""></p>
+<ul>
+<li><s>Enable the CCP interrupt</s></li>
+</ul>
+<pre tabindex="0"><code>Manually comment out &#34;CCP1_CompareISR(void)&#34;.
+</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-ccp1.png" alt=""></p>
+<h3 id="tmr1">Tmr1</h3>
+<ul>
+<li>not enable the TIMER1</li>
+<li>Clock Source: FOSC/4 <br>
+usage CLC1OUT:</li>
+</ul>
+<pre tabindex="0"><code>Configure Timer 1 to operate on frequency equal to or lesser than FOSC/4 to use it as Compare source.
+</code></pre><ul>
+<li>period count : 0x7FFF</li>
+<li>not enable Synchronization</li>
+</ul>
+<h4 id="gate">gate</h4>
+<ul>
+<li>enable Gate Toggle mode</li>
+<li>gate signal source : CLC1OUT</li>
+<li>gate polarity : HIGH</li>
+<li>enable Gate</li>
+</ul>
+<pre tabindex="0"><code>enable Timer Gate Interrupt
+</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-tmr1.png" alt=""></p>
+<h2 id="eusart1">EUSART1</h2>
+<p>For displaying the data, EUSART1 is configured in Asynchronous mode with Transmit enabled, and a baud rate of 9600.</p>
+<ul>
+<li>Redirect STDIO to USART.</li>
+</ul>
+<h2 id="memory">MEMORY</h2>
+<p>The MEMORY is added to store the data. From the Device Resources, find the MEMORY and
+double click so that it will be added to the application.</p>
+<ul>
+<li>add DataEE Routiones</li>
+</ul>
+<h3 id="tmr4">Tmr4</h3>
+<ul>
+<li>not enable the TIMER4</li>
+<li>external reset source : CLC1_OUT</li>
+<li>reset at rising TMR4_ers</li>
+<li>clock source : MFINTOSC_31.25 kHz</li>
+<li>Prescaler : 1:128</li>
+<li>Timer Period : 100 ms</li>
+<li>Enable the Timer interrupt</li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-tmr4.png" alt=""></p>
+<h2 id="pins">pins</h2>
+<p>pdip40:</p>
+<ul>
+<li>ra0: adcc anx input</li>
+<li>ra2: clcx clcin0 input</li>
+<li>ra4: gpio output</li>
+<li>ra5: gpio output</li>
+<li>ra6: gpio output</li>
+<li>ra7: gpio output</li>
+<li>rb0: cwg1a output</li>
+<li>rb1: gpio input</li>
+<li>rb2: gpio input</li>
+<li>rb4: gpio input</li>
+<li>rc5: gpio input</li>
+<li>rc6: eusart1 tx1 output</li>
+<li>rd1: cwg1b output</li>
+<li>rd2: cwg1c output</li>
+<li>rd3: cwg1d output</li>
+<li>re3: reset</li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=MPLAB%20Code%20Configurator%20-%20Classic&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic18f_mcc-classic%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic18f_mcc-classic%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic18f_mcc-classic%2f&amp;description=MPLAB%20Code%20Configurator%20-%20Classic"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic18f_mcc-classic%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-pic18f_q10_register-definitions/">
+          <section class="post">
+              <h2>advanced 8-bit mcu 的 Register Definitions: Configuration Words</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>
+
