@@ -164,6 +164,71 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp-tryvalue/">Try Value</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h2 id="get-value-by-key">Get Value by Key</h2>
+<ul>
+<li>GetValueOrDefault</li>
+</ul>
+<blockquote>
+<p>.net core</p>
+</blockquote>
+<ul>
+<li>TryGetValue</li>
+</ul>
+<blockquote>
+<p>fx</p>
+</blockquote>
+<h3 id="getvalueordefault"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.collectionextensions.getvalueordefault">GetValueOrDefault</a></h3>
+<pre tabindex="0"><code>Dictionary&lt;string, string&gt; m_kbd = new Dictionary&lt;string, string&gt;();
+result += m_kbd.GetValueOrDefault(kbd.Key);
+</code></pre><h3 id="trygetvalue"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2.trygetvalue">TryGetValue</a></h3>
+<pre tabindex="0"><code>Dictionary&lt;string, string&gt; m_kbd = new Dictionary&lt;string, string&gt;();
+result += m_kbd.TryGetValue(kbd.Key, out var value)? value : null;
+</code></pre><h2 id="get-an-integer-from-a-string">Get an integer from a string</h2>
+<ul>
+<li>TryParse</li>
+</ul>
+<h3 id="tryparse"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.int32.tryparse">TryParse</a></h3>
+<pre tabindex="0"><code>string itostr(string val)
+{
+    string result = &#34;&#34;;
+    int iVal = 0;
+
+    if (Int32.TryParse(val, out iVal))
+    {
+        val = &#34;_&#34; + val;
+    }
+
+    result = val;
+
+    return result;
+}
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history">The history of C#</a></li>
+<li><a href="https://github.com/dotnet/runtime/issues/23651#issuecomment-332634353">GetValueOrDefault available for IReadOnlyDictionary but not IDictionary</a></li>
+<li><a href="https://stackoverflow.com/a/67204390">C# System.Collections.Generic cannot use GetValueOrDefault method</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/asp-tryvalue/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-02-09T09:08:08&#43;08:00">
+            9 Feb 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/php-devenv-win/">Windows搭建PHP环境</a></h2>
     </header>
     <section class="post-excerpt">
@@ -695,106 +760,6 @@ If you continue to use it, Android Studio and the Android Gradle plugin will che
         
         <time class="post-date" datetime="2025-10-03T12:38:08&#43;08:00">
             3 Oct 2025
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/qt-hello/">Widgets简单demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://tdtc-hrb.github.io/ops-win/posts/vc-win">VC++</a></li>
-<li>Qt Design Studio</li>
-</ul>
-<h3 id="qt-visual-studio-tools"><a href="https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022">Qt Visual Studio Tools</a></h3>
-<p>Find &ldquo;Qt&rdquo; in &ldquo;Tools-&gt;Options&rdquo; of Visual Studio and set the qmake path
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123104033.png" alt="Versions - vs2022"></p>
-<h1 id="widget工程">Widget工程</h1>
-<ul>
-<li>QtHello
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123111036.png" alt="vs2022 info1"></li>
-</ul>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130638.png" alt="Build config"></p>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130026.png" alt="set class name">
-&ldquo;User Interface(.ui)file&rdquo; is only available if you install the QtDesignStudio</p>
-<h2 id="ui">UI</h2>
-<ul>
-<li>Open the UI file using QT
-<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123131837.png" alt="QtDesignStudio"></li>
-</ul>
-<h3 id="push-button">Push Button</h3>
-<p>拖拽“Push Button”，并修改属性：</p>
-<ul>
-<li>ObjectName</li>
-</ul>
-<pre tabindex="0"><code>btnHello
-</code></pre><ul>
-<li>Text</li>
-</ul>
-<pre tabindex="0"><code>Click Me
-</code></pre><h1 id="code-implementation">Code Implementation</h1>
-<ul>
-<li>QtHello.h</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMainWindow&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ui_QtHello.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QtHello</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QMainWindow
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    Q_OBJECT
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    QtHello(QWidget <span style="color:#f92672">*</span>parent <span style="color:#f92672">=</span> Q_NULLPTR);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    Ui<span style="color:#f92672">::</span>QtHelloClass ui;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Declarative methods
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> slots:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> helloQT();
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><ul>
-<li>QtHello.cpp</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtHello.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMessageBox&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>QtHello<span style="color:#f92672">::</span>QtHello(QWidget <span style="color:#f92672">*</span>parent)
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">:</span> QMainWindow(parent)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    ui.setupUi(<span style="color:#66d9ef">this</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// add code // Association 3-Elements: Ui-Event-Method
-</span></span></span><span style="display:flex;"><span>    connect(ui.btnHello, <span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked, <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>QtHello<span style="color:#f92672">::</span>helloQT);
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The other way to connect a signal to a slot is to use QObject::connect() and the SIGNAL and SLOT macros. 
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// connect(ui.btnHello, SIGNAL(clicked()), this, SLOT(helloQT()));
-</span></span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Implementation
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> QtHello<span style="color:#f92672">::</span>helloQT()
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    QMessageBox msgBox;
-</span></span><span style="display:flex;"><span>    msgBox.setText(<span style="color:#e6db74">&#34;Hello Qt!&#34;</span>);
-</span></span><span style="display:flex;"><span>    msgBox.exec();
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="signals-and-slots"><a href="https://doc.qt.io/qt-6/signalsandslots.html">Signals and Slots</a></h2>
-<p><img src="https://doc.qt.io/qt-6/images/abstract-connections.png" alt="qt6 offical"></p> <a class="read-more" href="/cnblogs/post/qt-hello/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-09-25T19:08:08&#43;08:00">
-            25 Sep 2025
         </time>
     </footer>
 </article>

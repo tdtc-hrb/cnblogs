@@ -164,6 +164,110 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-web-server/">web server</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>created date： 2021-03-10 <br>
+modified date：</p>
+<pre tabindex="0"><code>2023-03-25
+</code></pre><ul>
+<li>IDE <br>
+Arduino <a href="https://www.arduino.cc/en/software">V1.8.19</a></li>
+<li>Library <br>
+<a href="https://github.com/UIPEthernet/UIPEthernet/releases">UIP Ethernet v2.x</a></li>
+</ul>
+<h1 id="接线">接线</h1>
+<table>
+	<thead>
+			<tr>
+					<th>Arduino Uno</th>
+					<th>Enc28j60</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Pin 10</td>
+					<td>CS</td>
+			</tr>
+			<tr>
+					<td>Pin 11</td>
+					<td>SI</td>
+			</tr>
+			<tr>
+					<td>Pin 12</td>
+					<td>SO</td>
+			</tr>
+			<tr>
+					<td>Pin 13</td>
+					<td>SCK</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>RST<sup>*</sup></td>
+			</tr>
+			<tr>
+					<td>+3v3</td>
+					<td>Vcc</td>
+			</tr>
+			<tr>
+					<td>GND<sup>*</sup></td>
+					<td>GND</td>
+			</tr>
+	</tbody>
+</table>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Connection-Diagram.png" alt="spi connect"></p>
+<h2 id="enc28j60">Enc28j60</h2>
+<p>INTN: 置空（不接）</p>
+<p>*Rst接线: 注意 <a href="https://robotdyn.com/nano-v3-ethernet-shield-enc28j60.html">Nano V3 Ethernet Shield</a> 接7号线柱，如下图所示：
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/NanoEthENC28J60-Shield.jpg" alt="reset connect"></p>
+<h2 id="arduino-uno"><a href="https://content.arduino.cc/assets/UNO-TH_Rev3e_sch.pdf">Arduino Uno</a></h2>
+<p>*GND接线:  5V旁边的GND.</p>
+<p><strong>供电: 必须使用USB接口.</strong>
+<em><strong>使用 圆形 DC 接口 无法工作!</strong></em></p>
+<h1 id="网络及pc驱动">网络及PC驱动</h1>
+<p>两种方式：</p>
+<ul>
+<li>
+<p>平行线 <br>
+接路由器Lan口。</p>
+</li>
+<li>
+<p>交叉线 <br>
+接PC的Lan口。</p>
+</li>
+</ul>
+<h2 id="network">Network</h2>
+<p>设置同一网段的IP地址。</p>
+<ul>
+<li>PC <br>
+Control Panel -&gt; Network and Internet -&gt; Network Connections <br>
+Ethernet -&gt; Properties:</li>
+</ul>
+<pre tabindex="0"><code>Internet Protocol Version 4(TCP/IPv4)
+</code></pre><ul>
+<li>Enc28J60 <br>
+IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代码中更改.</li>
+</ul>
+<h3 id="router">Router</h3>
+<p>不支持以下路由器:</p> <a class="read-more" href="/cnblogs/post/e-avr8-web-server/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-07T01:08:08&#43;08:00">
+            7 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/mq-rabbitmq-config/">Install and Configure RabbitMQ</a></h2>
     </header>
     <section class="post-excerpt">
@@ -862,71 +966,6 @@ v8.0+</li>
         
         <time class="post-date" datetime="2026-02-19T19:18:08&#43;08:00">
             19 Feb 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/asp-tryvalue/">Try Value</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h2 id="get-value-by-key">Get Value by Key</h2>
-<ul>
-<li>GetValueOrDefault</li>
-</ul>
-<blockquote>
-<p>.net core</p>
-</blockquote>
-<ul>
-<li>TryGetValue</li>
-</ul>
-<blockquote>
-<p>fx</p>
-</blockquote>
-<h3 id="getvalueordefault"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.collectionextensions.getvalueordefault">GetValueOrDefault</a></h3>
-<pre tabindex="0"><code>Dictionary&lt;string, string&gt; m_kbd = new Dictionary&lt;string, string&gt;();
-result += m_kbd.GetValueOrDefault(kbd.Key);
-</code></pre><h3 id="trygetvalue"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2.trygetvalue">TryGetValue</a></h3>
-<pre tabindex="0"><code>Dictionary&lt;string, string&gt; m_kbd = new Dictionary&lt;string, string&gt;();
-result += m_kbd.TryGetValue(kbd.Key, out var value)? value : null;
-</code></pre><h2 id="get-an-integer-from-a-string">Get an integer from a string</h2>
-<ul>
-<li>TryParse</li>
-</ul>
-<h3 id="tryparse"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.int32.tryparse">TryParse</a></h3>
-<pre tabindex="0"><code>string itostr(string val)
-{
-    string result = &#34;&#34;;
-    int iVal = 0;
-
-    if (Int32.TryParse(val, out iVal))
-    {
-        val = &#34;_&#34; + val;
-    }
-
-    result = val;
-
-    return result;
-}
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history">The history of C#</a></li>
-<li><a href="https://github.com/dotnet/runtime/issues/23651#issuecomment-332634353">GetValueOrDefault available for IReadOnlyDictionary but not IDictionary</a></li>
-<li><a href="https://stackoverflow.com/a/67204390">C# System.Collections.Generic cannot use GetValueOrDefault method</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/asp-tryvalue/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-02-09T09:08:08&#43;08:00">
-            9 Feb 2026
         </time>
     </footer>
 </article>

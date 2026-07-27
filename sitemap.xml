@@ -14,6 +14,9 @@
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic18f_q10_register-definitions/</loc>
     <lastmod>2026-07-21T10:08:08+08:00</lastmod>
   </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f188_memory-map-banks/</loc>
+    <lastmod>2026-07-18T18:08:08+08:00</lastmod>
+  </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic18f_mcc/</loc>
     <lastmod>2026-07-18T10:08:08+08:00</lastmod>
   </url><url>
@@ -134,11 +137,8 @@
     <loc>https://tdtc-hrb.github.io/cnblogs/post/php-build-win/</loc>
     <lastmod>2023-08-20T10:08:08+08:00</lastmod>
   </url><url>
-    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_mpasm2xc8/</loc>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic8_mpasm2xc8/</loc>
     <lastmod>2023-06-18T08:08:08+08:00</lastmod>
-  </url><url>
-    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f188_memory-map-banks/</loc>
-    <lastmod>2023-05-18T18:08:08+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f188_status-register/</loc>
     <lastmod>2023-05-18T12:08:08+08:00</lastmod>
@@ -146,7 +146,7 @@
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f188_register-definitions/</loc>
     <lastmod>2023-05-18T10:08:08+08:00</lastmod>
   </url><url>
-    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic16f_instruction-set/</loc>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic8_instruction-set/</loc>
     <lastmod>2023-05-17T10:08:08+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-proteus_component-designing/</loc>
