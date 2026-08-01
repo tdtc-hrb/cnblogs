@@ -1,0 +1,2362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="迁移自(cnblogs.com/xiaobin-hlj80)"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/" />
+
+    
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="" />
+    
+
+    <title>迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+        <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+    
+    <meta name="generator" content="Hugo 0.164.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/"
+    },
+    "description":  null 
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+	<header class="main-header tag-head no-cover">
+
+    <nav class="main-nav overlay clearfix">
+      
+      
+        
+          <a class="menu-button icon-feed" href='/cnblogs/index.xml'>&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">迁移自(cnblogs.com/xiaobin-hlj80)</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 8</span>
+	
+	    <a class="older-posts" href="/cnblogs/page/2/">Older Posts &rarr;</a>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_data123x/">Data Memory Organization - PIC16F</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/partitioning188.png" alt="Banked Memory Partitioning - 18857/77"></p>
+<h3 id="core-registers">Core Registers</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Addresses in BANKx</th>
+					<th>Core Registers</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>x00h or x80h</td>
+					<td>INDF0</td>
+			</tr>
+			<tr>
+					<td>x01h or x81h</td>
+					<td>INDF1</td>
+			</tr>
+			<tr>
+					<td>x02h or x82h</td>
+					<td>PCL</td>
+			</tr>
+			<tr>
+					<td>x03h or x83h</td>
+					<td>STATUS</td>
+			</tr>
+			<tr>
+					<td>x04h or x84h</td>
+					<td>FSR0L</td>
+			</tr>
+			<tr>
+					<td>x05h or x85h</td>
+					<td>FSR0H</td>
+			</tr>
+			<tr>
+					<td>x06h or x86h</td>
+					<td>FSR1L</td>
+			</tr>
+			<tr>
+					<td>x07h or x87h</td>
+					<td>FSR1H</td>
+			</tr>
+			<tr>
+					<td>x08h or x88h</td>
+					<td>BSR</td>
+			</tr>
+			<tr>
+					<td>x09h or x89h</td>
+					<td>WREG</td>
+			</tr>
+			<tr>
+					<td>x0Ah or x8Ah</td>
+					<td>PCLATH</td>
+			</tr>
+			<tr>
+					<td>x0Bh or x8Bh</td>
+					<td>INTCON</td>
+			</tr>
+	</tbody>
+</table>
+<p><em><strong>BSR : Bank Select Register</strong></em></p>
+<h2 id="banks">banks</h2>
+<ul>
+<li>General Purpose RAM (GPR) / Special Function Registers (SFR)</li>
+</ul>
+<h3 id="bank0">bank0</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>00Ch</td>
+					<td>PORTA</td>
+			</tr>
+			<tr>
+					<td>00Dh</td>
+					<td>PORTB</td>
+			</tr>
+			<tr>
+					<td>00Eh</td>
+					<td>PORTC</td>
+			</tr>
+			<tr>
+					<td>00Fh</td>
+					<td>PORTD</td>
+			</tr>
+			<tr>
+					<td>010h</td>
+					<td>PORTE</td>
+			</tr>
+			<tr>
+					<td>011h</td>
+					<td>TRISA</td>
+			</tr>
+			<tr>
+					<td>012h</td>
+					<td>TRISB</td>
+			</tr>
+			<tr>
+					<td>013h</td>
+					<td>TRISC</td>
+			</tr>
+			<tr>
+					<td>014h</td>
+					<td>TRISD</td>
+			</tr>
+			<tr>
+					<td>015h</td>
+					<td>TRISE</td>
+			</tr>
+			<tr>
+					<td>016h</td>
+					<td>LATA</td>
+			</tr>
+			<tr>
+					<td>017h</td>
+					<td>LATB</td>
+			</tr>
+			<tr>
+					<td>018h</td>
+					<td>LATC</td>
+			</tr>
+			<tr>
+					<td>019h</td>
+					<td>LATD</td>
+			</tr>
+			<tr>
+					<td>01Ah</td>
+					<td>LATE</td>
+			</tr>
+			<tr>
+					<td>01Ch</td>
+					<td>TMR0L</td>
+			</tr>
+			<tr>
+					<td>01Dh</td>
+					<td>TMR0H</td>
+			</tr>
+			<tr>
+					<td>01Eh</td>
+					<td>T0CON0</td>
+			</tr>
+			<tr>
+					<td>01Fh</td>
+					<td>T0CON1</td>
+			</tr>
+			<tr>
+					<td>020h</td>
+					<td>GPR</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank1">bank1</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>08Ch</td>
+					<td>ADRESL</td>
+			</tr>
+			<tr>
+					<td>08Dh</td>
+					<td>ADRESH</td>
+			</tr>
+			<tr>
+					<td>08Eh</td>
+					<td>ADPREVL</td>
+			</tr>
+			<tr>
+					<td>08Fh</td>
+					<td>ADPREVH</td>
+			</tr>
+			<tr>
+					<td>090h</td>
+					<td>ADACCL</td>
+			</tr>
+			<tr>
+					<td>091h</td>
+					<td>ADACCH</td>
+			</tr>
+			<tr>
+					<td>093h</td>
+					<td>ADCON0</td>
+			</tr>
+			<tr>
+					<td>094h</td>
+					<td>ADCON1</td>
+			</tr>
+			<tr>
+					<td>095h</td>
+					<td>ADCON2</td>
+			</tr>
+			<tr>
+					<td>096h</td>
+					<td>ADCON3</td>
+			</tr>
+			<tr>
+					<td>097h</td>
+					<td>ADSTAT</td>
+			</tr>
+			<tr>
+					<td>098h</td>
+					<td>ADCLK</td>
+			</tr>
+			<tr>
+					<td>099h</td>
+					<td>ADACT</td>
+			</tr>
+			<tr>
+					<td>09Ah</td>
+					<td>ADREF</td>
+			</tr>
+			<tr>
+					<td>09Bh</td>
+					<td>ADCAP</td>
+			</tr>
+			<tr>
+					<td>09Ch</td>
+					<td>ADPRE</td>
+			</tr>
+			<tr>
+					<td>09Dh</td>
+					<td>ADACQ</td>
+			</tr>
+			<tr>
+					<td>09Eh</td>
+					<td>ADPCH</td>
+			</tr>
+			<tr>
+					<td>0A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>0F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank2">bank2</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>10Ch</td>
+					<td>ADCNT</td>
+			</tr>
+			<tr>
+					<td>10Dh</td>
+					<td>ADRPT</td>
+			</tr>
+			<tr>
+					<td>10Eh</td>
+					<td>ADLTHL</td>
+			</tr>
+			<tr>
+					<td>10Fh</td>
+					<td>ADLTHH</td>
+			</tr>
+			<tr>
+					<td>110h</td>
+					<td>ADUTHL</td>
+			</tr>
+			<tr>
+					<td>111h</td>
+					<td>ADUTHH</td>
+			</tr>
+			<tr>
+					<td>112h</td>
+					<td>ADSTPTL</td>
+			</tr>
+			<tr>
+					<td>113h</td>
+					<td>ADSTPTH</td>
+			</tr>
+			<tr>
+					<td>114h</td>
+					<td>ADFLTRL</td>
+			</tr>
+			<tr>
+					<td>115h</td>
+					<td>ADFLTRH</td>
+			</tr>
+			<tr>
+					<td>116h</td>
+					<td>ADERRL</td>
+			</tr>
+			<tr>
+					<td>117h</td>
+					<td>ADERRH</td>
+			</tr>
+			<tr>
+					<td>119h</td>
+					<td>RC1REG1</td>
+			</tr>
+			<tr>
+					<td>11Ah</td>
+					<td>TX1REG1</td>
+			</tr>
+			<tr>
+					<td>11Bh</td>
+					<td>SP1BRG1L</td>
+			</tr>
+			<tr>
+					<td>11Ch</td>
+					<td>SP1BRG1H</td>
+			</tr>
+			<tr>
+					<td>11Dh</td>
+					<td>RC1STA</td>
+			</tr>
+			<tr>
+					<td>11Eh</td>
+					<td>TX1STA</td>
+			</tr>
+			<tr>
+					<td>11Fh</td>
+					<td>BAUD1CON</td>
+			</tr>
+			<tr>
+					<td>120h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>170h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank3">bank3</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>18Ch</td>
+					<td>SSP1BUF</td>
+			</tr>
+			<tr>
+					<td>18Dh</td>
+					<td>SSP1ADD</td>
+			</tr>
+			<tr>
+					<td>18Eh</td>
+					<td>SSP1MSK</td>
+			</tr>
+			<tr>
+					<td>18Fh</td>
+					<td>SSP1STAT</td>
+			</tr>
+			<tr>
+					<td>190h</td>
+					<td>SSP1CON1</td>
+			</tr>
+			<tr>
+					<td>191h</td>
+					<td>SSP1CON2</td>
+			</tr>
+			<tr>
+					<td>192h</td>
+					<td>SSP1CON3</td>
+			</tr>
+			<tr>
+					<td>196h</td>
+					<td>SSP2BUF</td>
+			</tr>
+			<tr>
+					<td>197h</td>
+					<td>SSP2ADD</td>
+			</tr>
+			<tr>
+					<td>198h</td>
+					<td>SSP2MSK</td>
+			</tr>
+			<tr>
+					<td>199h</td>
+					<td>SSP2STAT</td>
+			</tr>
+			<tr>
+					<td>19Ah</td>
+					<td>SSP2CON1</td>
+			</tr>
+			<tr>
+					<td>19Bh</td>
+					<td>SSP2CON2</td>
+			</tr>
+			<tr>
+					<td>19Ch</td>
+					<td>SSP2CON3</td>
+			</tr>
+			<tr>
+					<td>1A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>1F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank4">bank4</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>20Ch</td>
+					<td>TMR1L</td>
+			</tr>
+			<tr>
+					<td>20Dh</td>
+					<td>TMR1H</td>
+			</tr>
+			<tr>
+					<td>20Eh</td>
+					<td>T1CON</td>
+			</tr>
+			<tr>
+					<td>20Fh</td>
+					<td>T1GCON</td>
+			</tr>
+			<tr>
+					<td>210h</td>
+					<td>T1GATE</td>
+			</tr>
+			<tr>
+					<td>211h</td>
+					<td>T1CLK</td>
+			</tr>
+			<tr>
+					<td>212h</td>
+					<td>TMR3L</td>
+			</tr>
+			<tr>
+					<td>213h</td>
+					<td>TMR3H</td>
+			</tr>
+			<tr>
+					<td>214h</td>
+					<td>T3CON</td>
+			</tr>
+			<tr>
+					<td>215h</td>
+					<td>T3GCON</td>
+			</tr>
+			<tr>
+					<td>216h</td>
+					<td>T3GATE</td>
+			</tr>
+			<tr>
+					<td>217h</td>
+					<td>T3CLK</td>
+			</tr>
+			<tr>
+					<td>218h</td>
+					<td>TMR5L</td>
+			</tr>
+			<tr>
+					<td>219h</td>
+					<td>TMR5H</td>
+			</tr>
+			<tr>
+					<td>21Ah</td>
+					<td>T5CON</td>
+			</tr>
+			<tr>
+					<td>21Bh</td>
+					<td>T5GCON</td>
+			</tr>
+			<tr>
+					<td>21Ch</td>
+					<td>T5GATE</td>
+			</tr>
+			<tr>
+					<td>21Dh</td>
+					<td>T5CLK</td>
+			</tr>
+			<tr>
+					<td>21Eh</td>
+					<td>CCPTMRS0</td>
+			</tr>
+			<tr>
+					<td>21Fh</td>
+					<td>CCPTMRS1</td>
+			</tr>
+			<tr>
+					<td>220h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>270h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank5">bank5</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>28Ch</td>
+					<td>T2TMR</td>
+			</tr>
+			<tr>
+					<td>28Dh</td>
+					<td>T2PR</td>
+			</tr>
+			<tr>
+					<td>28Eh</td>
+					<td>T2CON</td>
+			</tr>
+			<tr>
+					<td>28Fh</td>
+					<td>T2HLT</td>
+			</tr>
+			<tr>
+					<td>290h</td>
+					<td>T2CLKCON</td>
+			</tr>
+			<tr>
+					<td>291h</td>
+					<td>T2ERT</td>
+			</tr>
+			<tr>
+					<td>292h</td>
+					<td>T4TMR</td>
+			</tr>
+			<tr>
+					<td>293h</td>
+					<td>T4PR</td>
+			</tr>
+			<tr>
+					<td>294h</td>
+					<td>T4CON</td>
+			</tr>
+			<tr>
+					<td>295h</td>
+					<td>T4HLT</td>
+			</tr>
+			<tr>
+					<td>296h</td>
+					<td>T4CLKCON</td>
+			</tr>
+			<tr>
+					<td>297h</td>
+					<td>T4RST</td>
+			</tr>
+			<tr>
+					<td>298h</td>
+					<td>T6TMR</td>
+			</tr>
+			<tr>
+					<td>299h</td>
+					<td>T6PR</td>
+			</tr>
+			<tr>
+					<td>29Ah</td>
+					<td>T6CON</td>
+			</tr>
+			<tr>
+					<td>29Bh</td>
+					<td>T6HLT</td>
+			</tr>
+			<tr>
+					<td>29Ch</td>
+					<td>T6CLKCON</td>
+			</tr>
+			<tr>
+					<td>29Dh</td>
+					<td>T6RST</td>
+			</tr>
+			<tr>
+					<td>2A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>2F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank6">bank6</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>30Ch</td>
+					<td>CCPR1L</td>
+			</tr>
+			<tr>
+					<td>30Dh</td>
+					<td>CCPR1H</td>
+			</tr>
+			<tr>
+					<td>30Eh</td>
+					<td>CCP1CON</td>
+			</tr>
+			<tr>
+					<td>30Fh</td>
+					<td>CCP1CAP</td>
+			</tr>
+			<tr>
+					<td>310h</td>
+					<td>CCPR2L</td>
+			</tr>
+			<tr>
+					<td>311h</td>
+					<td>CCPR2H</td>
+			</tr>
+			<tr>
+					<td>312h</td>
+					<td>CCP2CON</td>
+			</tr>
+			<tr>
+					<td>313h</td>
+					<td>CCP2CAP</td>
+			</tr>
+			<tr>
+					<td>314h</td>
+					<td>CCPPR3L</td>
+			</tr>
+			<tr>
+					<td>315h</td>
+					<td>CCPPR3H</td>
+			</tr>
+			<tr>
+					<td>316h</td>
+					<td>CCP3CON</td>
+			</tr>
+			<tr>
+					<td>317h</td>
+					<td>CCP3CAP</td>
+			</tr>
+			<tr>
+					<td>318h</td>
+					<td>CCPPR4L</td>
+			</tr>
+			<tr>
+					<td>319h</td>
+					<td>CCPPR4H</td>
+			</tr>
+			<tr>
+					<td>31Ah</td>
+					<td>CCP4CON</td>
+			</tr>
+			<tr>
+					<td>31Bh</td>
+					<td>CCP4CAP</td>
+			</tr>
+			<tr>
+					<td>31Ch</td>
+					<td>CCPR5L</td>
+			</tr>
+			<tr>
+					<td>31Dh</td>
+					<td>CCPR5H</td>
+			</tr>
+			<tr>
+					<td>31Eh</td>
+					<td>CCP5CON</td>
+			</tr>
+			<tr>
+					<td>31Fh</td>
+					<td>CCP5CAP</td>
+			</tr>
+			<tr>
+					<td>320h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>370h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank7">bank7</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>38Ch</td>
+					<td>PWM6DCL</td>
+			</tr>
+			<tr>
+					<td>38Dh</td>
+					<td>PWM6DCH</td>
+			</tr>
+			<tr>
+					<td>38Eh</td>
+					<td>PWM6CON</td>
+			</tr>
+			<tr>
+					<td>390h</td>
+					<td>PWM7DCL</td>
+			</tr>
+			<tr>
+					<td>391h</td>
+					<td>PWM7DCH</td>
+			</tr>
+			<tr>
+					<td>392h</td>
+					<td>PWM7CON</td>
+			</tr>
+			<tr>
+					<td>3A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>3F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank8">bank8</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>40Ch</td>
+					<td>SCANLADRL</td>
+			</tr>
+			<tr>
+					<td>40Dh</td>
+					<td>SCANLADRH</td>
+			</tr>
+			<tr>
+					<td>40Eh</td>
+					<td>SCANHADRL</td>
+			</tr>
+			<tr>
+					<td>40Fh</td>
+					<td>SCANHADRH</td>
+			</tr>
+			<tr>
+					<td>410h</td>
+					<td>SCANCON0</td>
+			</tr>
+			<tr>
+					<td>411h</td>
+					<td>SCANTRIG</td>
+			</tr>
+			<tr>
+					<td>416h</td>
+					<td>CRCDATL</td>
+			</tr>
+			<tr>
+					<td>417h</td>
+					<td>CRCDATH</td>
+			</tr>
+			<tr>
+					<td>418h</td>
+					<td>CRCACCL</td>
+			</tr>
+			<tr>
+					<td>419h</td>
+					<td>CRCACCH</td>
+			</tr>
+			<tr>
+					<td>41Ah</td>
+					<td>CRCSHIFTL</td>
+			</tr>
+			<tr>
+					<td>41Bh</td>
+					<td>CRCSHIFTH</td>
+			</tr>
+			<tr>
+					<td>41Ch</td>
+					<td>CRCXORL</td>
+			</tr>
+			<tr>
+					<td>41Dh</td>
+					<td>CRCXORH</td>
+			</tr>
+			<tr>
+					<td>41Eh</td>
+					<td>CRCCON0</td>
+			</tr>
+			<tr>
+					<td>41Fh</td>
+					<td>CRCCON1</td>
+			</tr>
+			<tr>
+					<td>420h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>470h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank9">bank9</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>48Ch</td>
+					<td>SMT1TMRL</td>
+			</tr>
+			<tr>
+					<td>48Dh</td>
+					<td>SMT1TMRH</td>
+			</tr>
+			<tr>
+					<td>48Eh</td>
+					<td>SMT1TMRU</td>
+			</tr>
+			<tr>
+					<td>48Fh</td>
+					<td>SMT1CPRL</td>
+			</tr>
+			<tr>
+					<td>490h</td>
+					<td>SMT1CPRH</td>
+			</tr>
+			<tr>
+					<td>491h</td>
+					<td>SMT1CPRU</td>
+			</tr>
+			<tr>
+					<td>492h</td>
+					<td>SMT1CPWL</td>
+			</tr>
+			<tr>
+					<td>493h</td>
+					<td>SMT1CPWH</td>
+			</tr>
+			<tr>
+					<td>494h</td>
+					<td>SMT1CPWU</td>
+			</tr>
+			<tr>
+					<td>495h</td>
+					<td>SMT1PRL</td>
+			</tr>
+			<tr>
+					<td>496h</td>
+					<td>SMT1PRH</td>
+			</tr>
+			<tr>
+					<td>497h</td>
+					<td>SMT1PRU</td>
+			</tr>
+			<tr>
+					<td>498h</td>
+					<td>SMT1CON0</td>
+			</tr>
+			<tr>
+					<td>499h</td>
+					<td>SMT1CON1</td>
+			</tr>
+			<tr>
+					<td>49Ah</td>
+					<td>SMT1STAT</td>
+			</tr>
+			<tr>
+					<td>49Bh</td>
+					<td>SMT1CLK</td>
+			</tr>
+			<tr>
+					<td>49Ch</td>
+					<td>SMT1SIG</td>
+			</tr>
+			<tr>
+					<td>49Dh</td>
+					<td>SMT1WIN</td>
+			</tr>
+			<tr>
+					<td>4A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>4F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank10">bank10</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>50Ch</td>
+					<td>SMT2TMRL</td>
+			</tr>
+			<tr>
+					<td>50Dh</td>
+					<td>SMT2TMRH</td>
+			</tr>
+			<tr>
+					<td>50Eh</td>
+					<td>SMT2TMRU</td>
+			</tr>
+			<tr>
+					<td>48Fh</td>
+					<td>SMT1CPRL</td>
+			</tr>
+			<tr>
+					<td>510h</td>
+					<td>SMT2CPRH</td>
+			</tr>
+			<tr>
+					<td>511h</td>
+					<td>SMT2CPRU</td>
+			</tr>
+			<tr>
+					<td>512h</td>
+					<td>SMT2CPWL</td>
+			</tr>
+			<tr>
+					<td>513h</td>
+					<td>SMT2CPWH</td>
+			</tr>
+			<tr>
+					<td>514h</td>
+					<td>SMT2CPWU</td>
+			</tr>
+			<tr>
+					<td>515h</td>
+					<td>SMT2PRL</td>
+			</tr>
+			<tr>
+					<td>516h</td>
+					<td>SMT2PRH</td>
+			</tr>
+			<tr>
+					<td>517h</td>
+					<td>SMT2PRU</td>
+			</tr>
+			<tr>
+					<td>518h</td>
+					<td>SMT2CON0</td>
+			</tr>
+			<tr>
+					<td>519h</td>
+					<td>SMT2CON1</td>
+			</tr>
+			<tr>
+					<td>51Ah</td>
+					<td>SMT2STAT</td>
+			</tr>
+			<tr>
+					<td>51Bh</td>
+					<td>SMT2CLK</td>
+			</tr>
+			<tr>
+					<td>51Ch</td>
+					<td>SMT2SIG</td>
+			</tr>
+			<tr>
+					<td>51Dh</td>
+					<td>SMT2WIN</td>
+			</tr>
+			<tr>
+					<td>520h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>570h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank11">bank11</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>58Ch</td>
+					<td>NCO1ACCL</td>
+			</tr>
+			<tr>
+					<td>58Dh</td>
+					<td>NCO1ACCH</td>
+			</tr>
+			<tr>
+					<td>58Eh</td>
+					<td>NCO1ACCU</td>
+			</tr>
+			<tr>
+					<td>58Fh</td>
+					<td>NCO1INCL</td>
+			</tr>
+			<tr>
+					<td>590h</td>
+					<td>NCO1INCH</td>
+			</tr>
+			<tr>
+					<td>591h</td>
+					<td>NCO1INCU</td>
+			</tr>
+			<tr>
+					<td>592h</td>
+					<td>NCO1CON</td>
+			</tr>
+			<tr>
+					<td>593h</td>
+					<td>NCO1CLK</td>
+			</tr>
+			<tr>
+					<td>5A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>5F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank12">bank12</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>60Ch</td>
+					<td>CWG1CLKCON</td>
+			</tr>
+			<tr>
+					<td>60Dh</td>
+					<td>CWG1ISM</td>
+			</tr>
+			<tr>
+					<td>60Eh</td>
+					<td>CWG1DBR</td>
+			</tr>
+			<tr>
+					<td>60Fh</td>
+					<td>CWG1DBF</td>
+			</tr>
+			<tr>
+					<td>610h</td>
+					<td>CWG1CON0</td>
+			</tr>
+			<tr>
+					<td>611h</td>
+					<td>CWG1CON1</td>
+			</tr>
+			<tr>
+					<td>612h</td>
+					<td>CWG1AS0</td>
+			</tr>
+			<tr>
+					<td>613h</td>
+					<td>CWG1AS1</td>
+			</tr>
+			<tr>
+					<td>614h</td>
+					<td>CWG1STR</td>
+			</tr>
+			<tr>
+					<td>616h</td>
+					<td>CWG2CLKCON</td>
+			</tr>
+			<tr>
+					<td>617h</td>
+					<td>CWG2ISM</td>
+			</tr>
+			<tr>
+					<td>618h</td>
+					<td>CWG2DBR</td>
+			</tr>
+			<tr>
+					<td>619h</td>
+					<td>CWG2DBF</td>
+			</tr>
+			<tr>
+					<td>61Ah</td>
+					<td>CWG2CON0</td>
+			</tr>
+			<tr>
+					<td>61Bh</td>
+					<td>CWG2CON1</td>
+			</tr>
+			<tr>
+					<td>61Ch</td>
+					<td>CWG2AS0</td>
+			</tr>
+			<tr>
+					<td>61Dh</td>
+					<td>CWG2AS1</td>
+			</tr>
+			<tr>
+					<td>61Eh</td>
+					<td>CWG2STR</td>
+			</tr>
+			<tr>
+					<td>620h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>670h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank13">bank13</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>68Ch</td>
+					<td>CWG3CLKCON</td>
+			</tr>
+			<tr>
+					<td>68Dh</td>
+					<td>CWG3ISM</td>
+			</tr>
+			<tr>
+					<td>68Eh</td>
+					<td>CWG3DBR</td>
+			</tr>
+			<tr>
+					<td>68Fh</td>
+					<td>CWG3DBF</td>
+			</tr>
+			<tr>
+					<td>690h</td>
+					<td>CWG3CON0</td>
+			</tr>
+			<tr>
+					<td>691h</td>
+					<td>CWG3CON1</td>
+			</tr>
+			<tr>
+					<td>692h</td>
+					<td>CWG3AS0</td>
+			</tr>
+			<tr>
+					<td>693h</td>
+					<td>CWG3AS1</td>
+			</tr>
+			<tr>
+					<td>694h</td>
+					<td>CWG3STR</td>
+			</tr>
+			<tr>
+					<td>6A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>6F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank14">bank14</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>70Ch</td>
+					<td>PIR0</td>
+			</tr>
+			<tr>
+					<td>70Dh</td>
+					<td>PIR1</td>
+			</tr>
+			<tr>
+					<td>70Eh</td>
+					<td>PIR2</td>
+			</tr>
+			<tr>
+					<td>70Fh</td>
+					<td>PIR3</td>
+			</tr>
+			<tr>
+					<td>710h</td>
+					<td>PIR4</td>
+			</tr>
+			<tr>
+					<td>711h</td>
+					<td>PIR5</td>
+			</tr>
+			<tr>
+					<td>712h</td>
+					<td>PIR6</td>
+			</tr>
+			<tr>
+					<td>713h</td>
+					<td>PIR7</td>
+			</tr>
+			<tr>
+					<td>714h</td>
+					<td>PIR8</td>
+			</tr>
+			<tr>
+					<td>716h</td>
+					<td>PIE0</td>
+			</tr>
+			<tr>
+					<td>717h</td>
+					<td>PIE1</td>
+			</tr>
+			<tr>
+					<td>718h</td>
+					<td>PIE2</td>
+			</tr>
+			<tr>
+					<td>719h</td>
+					<td>PIE3</td>
+			</tr>
+			<tr>
+					<td>71Ah</td>
+					<td>PIE4</td>
+			</tr>
+			<tr>
+					<td>71Bh</td>
+					<td>PIE5</td>
+			</tr>
+			<tr>
+					<td>71Ch</td>
+					<td>PIE6</td>
+			</tr>
+			<tr>
+					<td>71Dh</td>
+					<td>PIE7</td>
+			</tr>
+			<tr>
+					<td>71Eh</td>
+					<td>pie8</td>
+			</tr>
+			<tr>
+					<td>720h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>770h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank15">bank15</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>796h</td>
+					<td>PMD0</td>
+			</tr>
+			<tr>
+					<td>797h</td>
+					<td>PMD1</td>
+			</tr>
+			<tr>
+					<td>798h</td>
+					<td>PMD2</td>
+			</tr>
+			<tr>
+					<td>799h</td>
+					<td>PMD3</td>
+			</tr>
+			<tr>
+					<td>79Ah</td>
+					<td>PMD4</td>
+			</tr>
+			<tr>
+					<td>79Bh</td>
+					<td>PMD5</td>
+			</tr>
+			<tr>
+					<td>7A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>7F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank16">bank16</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>80Ch</td>
+					<td>WDTCON0</td>
+			</tr>
+			<tr>
+					<td>80Dh</td>
+					<td>WDTCON1</td>
+			</tr>
+			<tr>
+					<td>80Eh</td>
+					<td>WDTPSL</td>
+			</tr>
+			<tr>
+					<td>80Fh</td>
+					<td>WDTPSH</td>
+			</tr>
+			<tr>
+					<td>810h</td>
+					<td>WDTTMR</td>
+			</tr>
+			<tr>
+					<td>811h</td>
+					<td>BORCON</td>
+			</tr>
+			<tr>
+					<td>812h</td>
+					<td>VERGCON <sup>(1)<sup></td>
+			</tr>
+			<tr>
+					<td>813h</td>
+					<td>PCON0</td>
+			</tr>
+			<tr>
+					<td>81Ah</td>
+					<td>NVMADRL</td>
+			</tr>
+			<tr>
+					<td>81Bh</td>
+					<td>NVMADRH</td>
+			</tr>
+			<tr>
+					<td>81Ch</td>
+					<td>NVMDATL</td>
+			</tr>
+			<tr>
+					<td>81Dh</td>
+					<td>NVMDATH</td>
+			</tr>
+			<tr>
+					<td>81Eh</td>
+					<td>NVMCON1</td>
+			</tr>
+			<tr>
+					<td>81Fh</td>
+					<td>NVMCON2</td>
+			</tr>
+			<tr>
+					<td>820h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>870h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<p>Note 1: Present only on PIC16(L)F18877.</p> <a class="read-more" href="/cnblogs/post/e-pic8_data123x/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-31T18:08:08&#43;08:00">
+            31 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_asm-tutor2/">blinked - pic-as</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>TRIS: Set port/bit direction (input or output)</li>
+<li>LAT: Set port state when writing a port bit.</li>
+<li>PORT: Read present state of port bits.</li>
+</ul>
+<p>Always setup TRIS in initialization and as needed.
+Always write to the LAT (never the PORT)
+Read the PORT for the bit status.</p>
+<p>You can read the LAT, but it always what you wrote,
+it does not contain any &ldquo;live &quot; readings.</p>
+<h3 id="tris-x---tri-state">Tris x - tri-state</h3>
+<p>TRISA, TRISB, and TRISC are data direction registers in PIC microcontrollers that
+configure the individual pins of corresponding ports (PORTA, PORTB, and PORTC) as either digital inputs or outputs.</p> <a class="read-more" href="/cnblogs/post/e-pic8_asm-tutor2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-31T08:08:08&#43;08:00">
+            31 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-proteus_component-an3049/">Unavailable components and their substitutes</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h2 id="h-bridge">H-bridge</h2>
+<p><img src="https://modularcircuits.com/blog/wp-content/uploads/2011/10/image_thumb7.png" alt=""></p>
+<ul>
+<li>The switching elements (Q1..Q4) are usually bi-polar or FET transistors, in some high-voltage applications IGBTs.
+Integrated solutions also exist but whether the switching elements are integrated with their control circuits
+or not is not relevant for the most part for this discussion.</li>
+<li>The diodes (D1..D4) are called catch diodes and are usually of a Schottky type.</li>
+</ul>
+<h3 id="substitutes">substitutes</h3>
+<ul>
+<li><a href="https://www.renesas.cn/zh/document/dst/hip4080-datasheet">hip4080a</a></li>
+<li><a href="https://www.renesas.com/en/document/dst/hip4081a-datasheet">hip4081a</a></li>
+<li><a href="https://www.st.com/en/motor-drivers/l298.html">L298</a></li>
+</ul>
+<p>The biggest difference between the HIP4080A and the HIP4081A is that the HIP4081A allows separate and individual control of the 4 MOSFET gates,
+whereas the HIP4080A does not.</p> <a class="read-more" href="/cnblogs/post/e-proteus_component-an3049/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-30T10:08:08&#43;08:00">
+            30 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_mcc-classic/">MPLAB Code Configurator - Classic</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><strong>Classic support for this device is not maintatined actively and will be deprecated in the future.</strong></p>
+<ul>
+<li><a href="https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator/classic">MCC Classic</a></li>
+</ul>
+<pre tabindex="0"><code>PIC10/PIC12/PIC16/PIC18 library v1.81.7 
+</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-type.png" alt=""></p>
+<h1 id="an3049">An3049</h1>
+<ol>
+<li>In the System Module, set the clock to HFINTOSC with 32 MHz frequency.</li>
+</ol>
+<ul>
+<li>mcc.c</li>
+</ul>
+<pre tabindex="0"><code>NOSC HFINTOSC; NDIV 1;
+HFFRQ 32_MHz;
+CSWHOLD may proceed; SOSCPWR Low power; 
+</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-clock.png" alt=""></p>
+<ol start="2">
+<li>Set the ADCC module to Basic_mode, with FOSC/ADCLK clock source configured to FOSC/32.</li>
+</ol>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-adcc.png" alt=""></p>
+<h2 id="motor">motor</h2>
+<p>For providing drive signal to the motor,
+three peripherals are needed to be configured: CCP2, TIMER2 and CWG.</p> <a class="read-more" href="/cnblogs/post/e-pic8_mcc-classic/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-23T10:08:08&#43;08:00">
+            23 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_conf123x/">advanced 8-bit mcu 的 Register Definitions: Configuration Words</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Ver: 0.1</p>
+<h3 id="pin-count-vs-memory---q10"><a href="https://www.microchip.com/en-us/products/microcontrollers/8-bit-mcus/pic-mcus/pic18-q10">Pin Count vs. Memory - Q10</a></h3>
+<table>
+	<thead>
+			<tr>
+					<th>Flash (KB)</th>
+					<th>28 Pins</th>
+					<th>40 pins}</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>128</td>
+					<td>PIC18F27Q10</td>
+					<td>PIC18F47Q10</td>
+			</tr>
+			<tr>
+					<td>64</td>
+					<td>PIC18F26Q10</td>
+					<td>PIC18F46Q10</td>
+			</tr>
+			<tr>
+					<td>32</td>
+					<td>PIC18F25Q10</td>
+					<td>PIC18F45Q10</td>
+			</tr>
+			<tr>
+					<td>16</td>
+					<td>PIC18F24Q10</td>
+					<td>-</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="46-register-summary---configuration-words">4.6 Register Summary - Configuration Words</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Words</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>CONFIG1</td>
+					<td>300000h</td>
+					<td>RSTOSC, FEXTOSC, FCMEN, CSWEN, CLKOUTEN</td>
+			</tr>
+			<tr>
+					<td>CONFIG2</td>
+					<td>300002h</td>
+					<td>BOREN, LPBOREN, PWRTE, MCLRE, XINST, DEBUG, STVREN, PPS1WAY, ZCD, BORV</td>
+			</tr>
+			<tr>
+					<td>CONFIG3</td>
+					<td>300004h</td>
+					<td>WDTE, WDTCPS, WDTCCS, WDTCWS</td>
+			</tr>
+			<tr>
+					<td>CONFIG4</td>
+					<td>300006h</td>
+					<td>WRT3, WRT2, WRT1, WRT0, LVP, SCANE, WRTD, WRTB, WRTC</td>
+			</tr>
+			<tr>
+					<td>CONFIG5</td>
+					<td>300008h</td>
+					<td>CPD, CP</td>
+			</tr>
+			<tr>
+					<td>CONFIG6</td>
+					<td>30000ah</td>
+					<td>EBTR3, EBTR2, EBTR1, EBTR0, EBTRB</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="47-register-definitions-configuration-words">4.7 Register Definitions: Configuration Words</h2>
+<p>Legend:</p> <a class="read-more" href="/cnblogs/post/e-pic8_conf123x/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-21T10:08:08&#43;08:00">
+            21 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_mcc/">microchip code configurator - melody</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://developerhelp.microchip.com/xwiki/bin/view/software-tools/ides/extensions/get-started/">MPLAB Extension Pack - VS Code</a></li>
+<li><a href="https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator/melody">MCC Melody</a></li>
+</ul>
+<h3 id="network-settings">network Settings</h3>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_network-vs.png" alt=""></p>
+<ul>
+<li>choose</li>
+</ul>
+<pre tabindex="0"><code>https://registry.npmjs.org/
+https://registry.npmmirror.com
+</code></pre><h2 id="device">device</h2>
+<p>Add the following devices from the &ldquo;Device Resources&rdquo; window:</p>
+<ul>
+<li>TMR2</li>
+<li>CCP1</li>
+<li>WWDT</li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_config-device.png" alt=""></p>
+<h3 id="configurations">configurations</h3>
+<ul>
+<li>Clock Control</li>
+<li>TMR2</li>
+<li>CCP1</li>
+<li>WWDT</li>
+</ul>
+<h4 id="clock-control">Clock Control</h4>
+<ul>
+<li>Clock Source: LFINTOSC</li>
+<li>Clock Divider: 1</li>
+</ul>
+<h4 id="timer2">Timer2</h4>
+<ul>
+<li>Hardware Settings</li>
+</ul>
+<pre tabindex="0"><code>- Enable Timer: checked
+- Control Mode: Roll over pulse
+- Start/Reset Option: Software control
+</code></pre><p>– Timer Clock</p>
+<pre tabindex="0"><code>- Clock Source: FOSC/4
+- Prescaler: 1:32
+- Postscaler: 1:1
+</code></pre><p>– Timer Period</p> <a class="read-more" href="/cnblogs/post/e-pic8_mcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-18T10:08:08&#43;08:00">
+            18 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink6/">PIC blinked - m2</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>blink188m2.asm:</p>
+<pre tabindex="0"><code>    title &#34;Blink V. 1.1&#34;
+    subtitle &#34;The uC Equivalent of Hello world&#34;
+; This program uses Assembly language to blink a small LED, using the PIC16F18877&#39;s onboard timers
+; and interrupts.  Use and modify this code however you wish
+
+; ***** Program Header *******************************************************************************
+    list P=PIC16F18877, ST=OFF, MM=OFF, N=42, B=4, W=1 ; &lt;-- List file directives
+    include &lt;p16f18877.inc&gt; ; &lt;--Use the name of your PIC here
+
+; ***** Device Configuration *************************************************************************
+    __CONFIG _CONFIG1, _FEXTOSC_OFF &amp; _RSTOSC_HFINT32 &amp; _CLKOUTEN_OFF &amp; _CSWEN_ON &amp; _FCMEN_ON
+    __CONFIG _CONFIG2, _MCLRE_ON &amp; _PWRTE_OFF &amp; _LPBOREN_OFF &amp; _BOREN_OFF &amp; _BORV_LO &amp; _ZCD_OFF &amp; _PPS1WAY_OFF &amp; _STVREN_ON
+    __CONFIG _CONFIG3, _WDTCPS_WDTCPS_31 &amp; _WDTE_OFF &amp; _WDTCWS_WDTCWS_7 &amp; _WDTCCS_SC
+    __CONFIG _CONFIG4, _WRT_OFF &amp; _SCANE_available &amp; _LVP_ON
+    __CONFIG _CONFIG5, _CP_OFF &amp; _CPD_OFF
+
+; ******* Main Program ********************************************************************************
+; Org 0 tells the compiler that this is literally the origin of the actual program, IE line 0
+; From hereon out, the compiler assumes that each instruction is to be executed sequentially.
+    org 0
+
+Start:
+    clrf    INTCON      ; Disable all interrupts
+    banksel PIE0
+    clrf    PIE0
+    clrf    PIE1
+    clrf    PIE2
+    clrf    PIE3
+    clrf    PIE4
+    clrf    PIE5
+    clrf    PIE6
+    clrf    PIE7
+    clrf    PIE8
+
+    banksel OSCCON1
+    movlw   0x62        ; System oscillator set to 8MHz
+    movwf   OSCCON1
+
+    banksel T0CON1
+    movlw   0x48        ; Set TIMER0 clock source to FOSC/4, scale 1:256 TIMER0 overflows every 32.768 milliseconds
+    movwf   T0CON1
+    banksel T0CON0
+    movlw   0x80        ; Start TIMER0
+    movwf   T0CON0
+
+    banksel ANSELB
+    clrf    ANSELB
+    banksel TRISB
+    movlw   0xF0
+    movwf   TRISB
+    banksel LATB
+    movwf   LATB
+
+    banksel TMR0L
+    clrf    TMR0L
+    movlw   0xFF
+    movwf   TMR0H
+    banksel PIR0
+    bcf     PIR0, TMR0IF
+
+    clrf    FSR1L
+    movlw   10
+    subwf   FSR1L,F
+    goto    AppLoop
+;
+; Application loop
+;
+AppLoop:
+    banksel LATB
+    movlw   1
+    xorwf   LATB,F      ; Toggle LED1
+    call    Delay
+    goto    AppLoop     ;loop forever
+;
+; Spin wait
+;
+Delay:
+    clrf    FSR0L
+    clrf    FSR0H
+    bsf     FSR0H,7
+Delay_1:
+    call    Delay_2
+    incfsz  FSR0L,F
+    goto    Delay_1
+    incfsz  FSR0H,F
+    goto    Delay_1
+    return
+;
+; Toggle LED2 when TIMER0 overflows
+;
+; Note: This delay always takes the same number
+;       of instruction cycles for each of
+;       three possible paths.
+;
+Delay_2:
+    banksel PIR0
+    btfss   PIR0, TMR0IF
+    goto    Delay_3
+    bcf     PIR0, TMR0IF
+    banksel FSR1L
+    movlw   10
+    incfsz  FSR1L,F
+    goto    Delay_4
+    subwf   FSR1L,F
+    movlw   2
+    xorwf   LATB,F      ; Toggle LED2
+    return
+Delay_3:
+    nop
+    nop
+    nop
+    nop
+    nop
+Delay_4:
+    nop
+    nop
+    return
+
+    end
+</code></pre> <a class="read-more" href="/cnblogs/post/e-pic8_blink6/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-14T08:08:08&#43;08:00">
+            14 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink7/">PIC blinked</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v5.35-windows-installer.exe">MPLAB X v5.35 - latest MPASM</a></li>
+<li><a href="https://www.jb51.net/softs/905053.html">Proteus v8.16</a></li>
+</ul>
+<h1 id="blinking-led">Blinking LED</h1>
+<ul>
+<li>First, use the MPLAB X to generate hex;</li>
+<li>Then, use protelus to draw &ldquo;Schematic Capture&rdquo;;</li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/schematic_capture-887a.png" alt="blink-16f877a"></p>
+<ul>
+<li>Finally, import the hex file into the MCU component.</li>
+</ul>
+<pre tabindex="0"><code>Right-click the &#34;mcu&#34; icon and select &#34;Edit Properties&#34;.
+</code></pre><p><img src="https://electrosome.com/wp-content/uploads/2012/05/Proteus-Edit-Component-PIC-16F877A.jpg" alt="load hex"></p>
+<h2 id="16f887"><a href="https://web.archive.org/web/20260120160017/https://www.fypsolutions.com/assembly-language/pic-microcontroller-led-blink-code-example-in-assembly-language">16F887</a></h2>
+<ul>
+<li>PIC16F887 or PIC16F877A</li>
+<li>LED</li>
+<li>470R Resistor</li>
+<li>8Mhz Crystal</li>
+<li>Two 22pF capacitors in parallel</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">LIST</span> <span style="color:#66d9ef">p</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">16</span><span style="color:#66d9ef">F887</span>			 <span style="color:#75715e">;tell assembler what chip we are using
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">INCLUDE</span> <span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#66d9ef">P16F887.INC</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">__CONFIG</span>  <span style="color:#66d9ef">_CONFIG1</span>, <span style="color:#66d9ef">_INTOSCIO</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDT_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_PWRTE_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_MCLRE_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CP_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CPD_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_BOR_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_IESO_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_FCMEN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_LVP_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_DEBUG_ON</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">CBLOCK</span> <span style="color:#66d9ef">h</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#ae81ff">20</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">COUNT1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">COUNT2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ENDC</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ORG</span>		<span style="color:#ae81ff">0x00</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MAIN:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>		<span style="color:#66d9ef">TRISB</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span> 	    <span style="color:#66d9ef">TRISB</span>,<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>		<span style="color:#66d9ef">PORTB</span>
+</span></span><span style="display:flex;"><span>MainLoop:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span>		    <span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CALL</span>		<span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BSF</span>			<span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CALL</span>		<span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>	    <span style="color:#66d9ef">MainLoop</span>            <span style="color:#75715e">; Do it again...
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DELAY3:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>		<span style="color:#66d9ef">COUNT1</span>,<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>		<span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>		<span style="color:#66d9ef">COUNT2</span>,<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>		<span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">END</span>
+</span></span></code></pre></div><h2 id="16f18877-example-v550mplabx"><a href="https://github.com/dsoze1138/MPLABXv5xx_pic-as_examples/tree/master/16F18877_Example_v550.X">16F18877 Example v550(mplabx)</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#66d9ef">Blink</span> <span style="color:#66d9ef">V.</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">.0</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">subtitle</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#66d9ef">The</span> <span style="color:#66d9ef">uC</span> <span style="color:#66d9ef">Equivalent</span> <span style="color:#66d9ef">of</span> <span style="color:#66d9ef">Hello</span> <span style="color:#66d9ef">world</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">; ***** Program Header *******************************************************************************
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">list</span> <span style="color:#66d9ef">P</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">PIC16F18877</span>, <span style="color:#66d9ef">ST</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">OFF</span>, <span style="color:#66d9ef">MM</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">OFF</span>, <span style="color:#66d9ef">N</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">42</span>, <span style="color:#66d9ef">B</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">4</span>, <span style="color:#66d9ef">W</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">1</span> <span style="color:#75715e">; &lt;-- List file directives
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">include</span> <span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#66d9ef">p16f18877.inc</span><span style="color:#960050;background-color:#1e0010">&gt;</span> <span style="color:#75715e">; &lt;--Use the name of your PIC here
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">; ***** Device Configuration *************************************************************************
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG1</span>, <span style="color:#66d9ef">_FEXTOSC_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_RSTOSC_HFINT32</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CLKOUTEN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CSWEN_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_FCMEN_ON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG2</span>, <span style="color:#66d9ef">_MCLRE_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_PWRTE_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_LPBOREN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_BOREN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_BORV_LO</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_ZCD_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_PPS1WAY_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_STVREN_ON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG3</span>, <span style="color:#66d9ef">_WDTCPS_WDTCPS_31</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTE_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTCWS_WDTCWS_7</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTCCS_SC</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG4</span>, <span style="color:#66d9ef">_WRT_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_SCANE_available</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_LVP_ON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG5</span>, <span style="color:#66d9ef">_CP_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CPD_OFF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CBLOCK</span> <span style="color:#66d9ef">h</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#ae81ff">20</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">COUNT1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">COUNT2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ENDC</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ORG</span>     <span style="color:#ae81ff">0x00</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MAIN:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>     <span style="color:#66d9ef">TRISB</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span>         <span style="color:#66d9ef">TRISB</span>,<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CALL</span>        <span style="color:#66d9ef">Init_Osc</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>     <span style="color:#66d9ef">PORTB</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MainLoop:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span>         <span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CALL</span>        <span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BSF</span>         <span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CALL</span>        <span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">MainLoop</span>            <span style="color:#75715e">; Do it again...
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">; Initialize the PIC Oscillator.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; For the 16F18877, 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; page 122 of the data sheet(F version), the OSCCON1 register. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Set according to Table 6-1(NOSC/COSC Bit Settings) and Table 6-2(NDIV/CDIV Bit Settings): 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">;  Clock Source: HFINTOSC(110)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">;  Clock divider: 8(0011)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100000(0x60) - 32 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100001(0x61) - 16 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100010(0x62) - 8 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100011(0x63) - 4 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100100(0x64) - 2 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100101(0x65) - 1 Mhz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100110(0x66) - 500 kHz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100111(0x67) - 250 kHz.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1101001(0x68) - 125 kHz.
+</span></span></span><span style="display:flex;"><span>Init_Osc:          <span style="color:#75715e">; System oscillator set to 4MHz
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">banksel</span> <span style="color:#66d9ef">OSCCON1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">movlw</span>   <span style="color:#ae81ff">0x63</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">movwf</span>   <span style="color:#66d9ef">OSCCON1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DELAY3:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>      <span style="color:#66d9ef">COUNT1</span>,<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>      <span style="color:#66d9ef">COUNT2</span>,<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">DELAY3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">END</span>
+</span></span></code></pre></div> <a class="read-more" href="/cnblogs/post/e-pic8_blink7/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-13T08:08:08&#43;08:00">
+            13 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-comp_enc28j60/">Enc28j60 外接模块</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.flyrobo.in/nano-v3-ethernet-shield">Nano V3 Ethernet Shield - ENC28J60</a></li>
+</ul>
+<blockquote>
+<p>Purchased on February 12, 2020.</p>
+</blockquote>
+<h2 id="sam4s-ek2"><a href="https://www.microchip.com/en-us/development-tool/atsam4s-ek">SAM4S-EK2</a></h2>
+<ul>
+<li>IDE: <a href="https://tdtc-hrb.github.io/cnblogs/post/e-iar-project-setup">iar V7.50.3.10751</a></li>
+<li>Advanced Software Framework (ASF): <a href="https://www.microchip.com/en-us/tools-resources/archives/avr-sam-mcus">V3.33.0.50</a></li>
+<li>ICE: j-link v8.0</li>
+</ul>
+<h3 id="test">test</h3>
+<ul>
+<li>解压缩ASF</li>
+<li>使用IDE - &ldquo;IAR Embedded Workbench&rdquo;, 打开工作区文件</li>
+</ul>
+<pre tabindex="0"><code>for example:
+xdk-asf-3.33.0\sam\applications\getting-started\sam4sd32c_sam4s_ek2\iar\getting-started.eww
+</code></pre><h4 id="led--uart">led &amp; uart</h4>
+<ul>
+<li>getting-started.eww</li>
+</ul>
+<pre tabindex="0"><code>xdk-asf-3.33.0\sam\applications\getting-started\sam4sd32c_sam4s_ek2
+</code></pre><ol>
+<li>LED</li>
+<li>UART</li>
+</ol>
+<pre tabindex="0"><code>Baud: 115200
+</code></pre><h4 id="tft-lcd">TFT LCD</h4>
+<ul>
+<li>ili93xx_example.eww</li>
+</ul>
+<pre tabindex="0"><code>xdk-asf-3.33.0\sam\components\display\ili93xx\example\sam4sd32c_sam4s_ek2
+</code></pre><ol>
+<li>On</li>
+</ol>
+<pre tabindex="0"><code>JP13 Connect.
+</code></pre><h3 id="web-server">web server</h3>
+<p><strong>无论是 USB 接口 供电，还是 圆形 DC 接口 供电 均无法工作!</strong></p>
+<h2 id="arduino-uno-rev-3e">Arduino Uno Rev 3e</h2>
+<ul>
+<li><a href="https://tdtc-hrb.github.io/cnblogs/post/e-avr8-blink">blink</a> - Ok</li>
+</ul>
+<h3 id="web-server-1"><a href="https://tdtc-hrb.github.io/cnblogs/post/e-avr8-web-server">web server</a></h3>
+<p><strong>供电1: USB接口 - 可以工作.</strong>
+<em><strong>供电2: 圆形 DC 接口 - 无法工作!</strong></em></p> <a class="read-more" href="/cnblogs/post/e-comp_enc28j60/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-07T01:08:08&#43;08:00">
+            7 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-web-server/">web server</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>created date： 2021-03-10 <br>
+modified date：</p>
+<pre tabindex="0"><code>2023-03-25
+</code></pre><ul>
+<li>IDE <br>
+Arduino <a href="https://www.arduino.cc/en/software">V1.8.19</a></li>
+<li>Library <br>
+<a href="https://github.com/UIPEthernet/UIPEthernet/releases">UIP Ethernet v2.x</a></li>
+</ul>
+<h1 id="接线">接线</h1>
+<table>
+	<thead>
+			<tr>
+					<th>Arduino Uno</th>
+					<th>Enc28j60</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Pin 10</td>
+					<td>CS</td>
+			</tr>
+			<tr>
+					<td>Pin 11</td>
+					<td>SI</td>
+			</tr>
+			<tr>
+					<td>Pin 12</td>
+					<td>SO</td>
+			</tr>
+			<tr>
+					<td>Pin 13</td>
+					<td>SCK</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>RST<sup>*</sup></td>
+			</tr>
+			<tr>
+					<td>+3v3</td>
+					<td>Vcc</td>
+			</tr>
+			<tr>
+					<td>GND<sup>*</sup></td>
+					<td>GND</td>
+			</tr>
+	</tbody>
+</table>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Connection-Diagram.png" alt="spi connect"></p>
+<h2 id="enc28j60">Enc28j60</h2>
+<p>INTN: 置空（不接）</p>
+<p>*Rst接线: 注意 <a href="https://robotdyn.com/nano-v3-ethernet-shield-enc28j60.html">Nano V3 Ethernet Shield</a> 接7号线柱，如下图所示：
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/NanoEthENC28J60-Shield.jpg" alt="reset connect"></p>
+<h2 id="arduino-uno"><a href="https://content.arduino.cc/assets/UNO-TH_Rev3e_sch.pdf">Arduino Uno</a></h2>
+<p>*GND接线:  5V旁边的GND.</p>
+<p><strong>供电: 必须使用USB接口.</strong>
+<em><strong>使用 圆形 DC 接口 无法工作!</strong></em></p>
+<h1 id="网络及pc驱动">网络及PC驱动</h1>
+<p>两种方式：</p>
+<ul>
+<li>
+<p>平行线 <br>
+接路由器Lan口。</p>
+</li>
+<li>
+<p>交叉线 <br>
+接PC的Lan口。</p>
+</li>
+</ul>
+<h2 id="network">Network</h2>
+<p>设置同一网段的IP地址。</p>
+<ul>
+<li>PC <br>
+Control Panel -&gt; Network and Internet -&gt; Network Connections <br>
+Ethernet -&gt; Properties:</li>
+</ul>
+<pre tabindex="0"><code>Internet Protocol Version 4(TCP/IPv4)
+</code></pre><ul>
+<li>Enc28J60 <br>
+IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代码中更改.</li>
+</ul>
+<h3 id="router">Router</h3>
+<p>不支持以下路由器:</p> <a class="read-more" href="/cnblogs/post/e-avr8-web-server/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-07T01:08:08&#43;08:00">
+            7 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 8</span>
+	
+	    <a class="older-posts" href="/cnblogs/page/2/">Older Posts &rarr;</a>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>

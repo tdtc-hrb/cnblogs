@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/" />
+
+    
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="" />
+    
+
+    <title>Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+        <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+    
+    <meta name="generator" content="Hugo 0.164.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/"
+    },
+    "description":  null 
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/post/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+	<header class="main-header tag-head no-cover">
+
+    <nav class="main-nav overlay clearfix">
+      
+      
+        
+          <a class="menu-button icon-feed" href='/cnblogs/post/index.xml'>&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Posts</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs/post/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 2 of 8</span>
+	
+	    <a class="older-posts" href="/cnblogs/post/page/3/">Older Posts &rarr;</a>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/mq-rabbitmq-config/">Install and Configure RabbitMQ</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Ubuntu 18.04 <br>
+codename: bionic</li>
+<li>Ubuntu 20.04 <br>
+codename: focal</li>
+</ul>
+<p>Current Version(RabbitMQ):</p>
+<pre tabindex="0"><code>RabbitMQ 3.10.2 Erlang 24.3.3
+</code></pre><h1 id="installation">Installation</h1>
+<p>需要<a href="https://tdtc-hrb.github.io/csdn/post/ops_network_adapter_linux/">设置固定IP</a></p>
+<p>Replace the &ldquo;bionic&rdquo; in the <a href="https://www.rabbitmq.com/install-debian.html#apt-packagecloud">official website</a> shell with the ubuntu codename.</p>
+<p>Note: When saving, the format is Unix(LF).</p>
+<p>focal_rq.sh:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apt-get install curl gnupg apt-transport-https -y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Team RabbitMQ&#39;s main signing key</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/com.rabbitmq.team.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Launchpad PPA that provides modern Erlang releases</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0xf77f1eda57ebb1cc&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## PackageCloud RabbitMQ repository</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/io.packagecloud.rabbitmq.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Add apt repositories maintained by Team RabbitMQ</span>
+</span></span><span style="display:flex;"><span>sudo tee /etc/apt/sources.list.d/rabbitmq.list <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Provides modern Erlang/OTP releases
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">##
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## &#34;focal&#34; as distribution name should work for any reasonably recent Ubuntu or Debian release.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb [signed-by=/usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg] http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb-src [signed-by=/usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg] http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Provides RabbitMQ
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">##
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## &#34;focal&#34; as distribution name should work for any reasonably recent Ubuntu or Debian release.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb [signed-by=/usr/share/keyrings/io.packagecloud.rabbitmq.gpg] https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb-src [signed-by=/usr/share/keyrings/io.packagecloud.rabbitmq.gpg] https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Update package indices</span>
+</span></span><span style="display:flex;"><span>sudo apt-get update -y
+</span></span></code></pre></div><p>exec:</p> <a class="read-more" href="/cnblogs/post/mq-rabbitmq-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-05T18:08:08&#43;08:00">
+            5 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp-base/">3小时搞定asp.net</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: <a href="https://visualstudio.microsoft.com">Visual Studio community</a></li>
+<li>DB：MySQL5.7+</li>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-10.0.301-windows-x64-installer">.net SDK - x64</a></li>
+</ul>
+<h2 id="准备">准备</h2>
+<blockquote>
+<p>File-》New-》Project</p>
+<blockquote>
+<p>ASP.NET Core Web Application(Model-View-Controller)</p>
+</blockquote>
+</blockquote>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011124537.png" alt="vs2026"></p>
+<h3 id="additional-information">Additional information</h3>
+<ul>
+<li>.Net 10.0(Lts)</li>
+<li>Authentication type</li>
+</ul>
+<pre tabindex="0"><code>None
+</code></pre><ul>
+<li>Configure for HTTPS</li>
+</ul>
+<pre tabindex="0"><code>checked
+</code></pre><h3 id="web-server">Web Server</h3>
+<ul>
+<li>http</li>
+<li>https</li>
+</ul>
+<blockquote>
+<p>default</p>
+</blockquote>
+<ul>
+<li>
+<p>IIS Express</p>
+<p>点击“IIS Express”运行（如果弹出证书安装选“是”即可）。
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134118.png" alt="iis cert - hint">
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134337.png" alt="windows - hint"></p>
+</li>
+</ul>
+<h1 id="demo">Demo</h1>
+<p><img src="https://img-blog.csdnimg.cn/20210707161947768.png" alt="演示code"></p>
+<h2 id="repository">Repository</h2>
+<blockquote>
+<p>Project-》Manage NuGet Packages
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011135217.png" alt="Microsoft.EntityFrameworkCore"></p>
+</blockquote>
+<h3 id="entity-class">entity class</h3>
+<p>数据表的Entity类</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel.DataAnnotations;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> veic_web.Models
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Key]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Param_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Statu_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Lang_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Img_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Description { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="db-context">Db Context</h3>
+<blockquote>
+<p>Solution Explorer</p> <a class="read-more" href="/cnblogs/post/asp-base/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-05T09:08:08&#43;08:00">
+            5 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_nginx-v2/">前端（Web）负载均衡</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Nginx&rsquo;s load balancing</p>
+<h1 id="一安装">一、安装</h1>
+<p>OS: RHEL Community Version(Rocky8/Alma8) minimal（安装时的选项）</p>
+<h2 id="0-prepare">0. prepare</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf -y install gcc gcc-c++ automake make pcre pcre-devel zlib zlib-devel openssl openssl-devel</span>
+</span></span></code></pre></div><p>see <a href="https://tdtc-hrb.github.io/cnblogs/post/ops_openssl/">update openssl</a></p>
+<h3 id="library-devel">Library devel</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install gd-devel libxml2-devel libxslt-devel
+</span></span></code></pre></div><h4 id="geoip">GeoIP</h4>
+<p>Download latest <a href="http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/">atomic-release</a> <br>
+Install atomic-release rpm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo rpm -Uvh http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/atomic-release-1.0-23.el8.art.noarch.rpm
+</span></span></code></pre></div><p>Install GeoIP-devel rpm package:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install GeoIP-devel
+</span></span></code></pre></div><h3 id="allow-fw">allow fw</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>80/tcp
+</span></span><span style="display:flex;"><span>$sudo firewall-cmd --reload
+</span></span></code></pre></div><h2 id="installation">installation</h2>
+<p>First, install Nginx of centos <a href="https://nginx.org/en/linux_packages.html#RHEL">repo</a>; <br>
+Then, replace the nginx program file. <br>
+Note: The replaced program file version must be the same as the repo!</p> <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-05T08:38:08&#43;08:00">
+            5 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow3-gcc/">size_t warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
+</ul>
+<hr>
+<p><strong>NOTE</strong></p>
+<h2 id="no-warning-messages-are-displayed-in-cdt">No warning messages are displayed in CDT.</h2>
+<h2 id="heapsort">heapsort</h2>
+<pre tabindex="0"><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// TIP To &lt;b&gt;Run&lt;/b&gt; code, press &lt;shortcut actionId=&#34;Run&#34;/&gt; or click the &lt;icon src=&#34;AllIcons.Actions.Execute&#34;/&gt; icon in the gutter.
+/**
+ * Internal method for heapsort.
+ * i is the index of an item in the heap.
+ * Returns the index of the left child.
+ */
+inline int leftChild( int i )
+{
+    return 2 * i + 1;
+}
+
+/**
+ * Internal method for heapsort that is used in deleteMax and buildHeap.
+ * i is the position from which to percolate down.
+ * n is the logical size of the binary heap.
+ */
+template &lt;typename Comparable&gt;
+void percDown( vector&lt;Comparable&gt; &amp; a, int i, int n )
+{
+    int child;
+    Comparable tmp;
+
+    for( tmp = std::move( a[ i ] ); leftChild( i ) &lt; n; i = child )
+    {
+        child = leftChild( i );
+        if( child != n-1 &amp;&amp; a[ child ] &lt; a[ child + 1 ] )
+            ++child;
+        if( tmp &lt; a[ child ] )
+            a[ i ] = std::move( a[ child ] );
+        else
+            break;
+    }
+    a[ i ] = std::move( tmp );
+}
+
+/**
+ * Standard heapsort.
+ */
+template &lt;typename Comparable&gt;
+void heapsort( vector&lt;Comparable&gt; &amp; a)
+{
+    for( int i = a.size( ) / 2- 1; i &gt;= 0; --i ) /* buildHeap */
+        percDown( a, i, a.size() );
+    for( int j = a.size( )- 1; j &gt; 0; --j )
+    {
+        std::swap( a[ 0 ], a[ j ] ); /* deleteMax */
+        percDown( a, 0, j );
+    }
+}
+
+int main() {
+    vector v = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
+    heapsort(v);
+
+    for(int i : v)
+        cout &lt;&lt; i &lt;&lt; &#34; &#34;;
+
+    return 0;
+    // TIP See CLion help at &lt;a href=&#34;https://www.jetbrains.com/help/clion/&#34;&gt;jetbrains.com/help/clion/&lt;/a&gt;. Also, you can try interactive lessons for CLion by selecting &#39;Help | Learn IDE Features&#39; from the main menu.
+}
+</code></pre><ul>
+<li>Warn info - vs2022</li>
+</ul>
+<pre tabindex="0"><code>ConsoleApplication1.cpp(45,16): warning C4267: &#39;initializing&#39;: conversion from &#39;size_t&#39; to &#39;int&#39;, possible loss of data
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow3-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-21T11:08:08&#43;08:00">
+            21 Mar 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow4-gcc/">size_t warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
+</ul>
+<hr>
+<p><strong>NOTE</strong></p>
+<h2 id="no-warning-messages-are-displayed-in-cdt">No warning messages are displayed in CDT.</h2>
+<h2 id="mergesort">MergeSort</h2>
+<pre tabindex="0"><code>/**
+ * Internal method that makes recursive calls.
+ * a is an array of Comparable items.
+ * tmpArray is an array to place the merged result.
+ * left is the left-most index of the subarray.
+ * right is the right-most index of the subarray.
+ */
+template &lt;typename Comparable&gt;
+void mergeSort( vector&lt;Comparable&gt; &amp; a,
+                vector&lt;Comparable&gt; &amp; tmpArray, int left, int right )
+{
+    if( left &lt; right )
+    {
+        int center = ( left + right ) / 2;
+        mergeSort( a, tmpArray, left, center );
+        mergeSort( a, tmpArray, center + 1, right );
+        merge( a, tmpArray, left, center + 1, right );
+    }
+}
+
+/**
+ * Mergesort algorithm (driver).
+ */
+template &lt;typename Comparable&gt;
+void mergeSort( vector&lt;Comparable&gt; &amp; a )
+{
+    vector&lt;Comparable&gt; tmpArray( a.size( ) );
+
+    mergeSort( a, tmpArray, 0, a.size( ) - 1 );
+}
+</code></pre><ul>
+<li>merge</li>
+</ul>
+<pre tabindex="0"><code>/**
+ * Internal method that merges two sorted halves of a subarray.
+ * a is an array of Comparable items.
+ * tmpArray is an array to place the merged result.
+ * leftPos is the left-most index of the subarray.
+ * rightPos is the index of the start of the second half.
+ * rightEnd is the right-most index of the subarray.
+ */
+template &lt;typename Comparable&gt;
+void merge( vector&lt;Comparable&gt; &amp; a, vector&lt;Comparable&gt; &amp; tmpArray,
+            int leftPos, int rightPos, int rightEnd )
+{
+    int leftEnd = rightPos - 1;
+    int tmpPos = leftPos;
+    int numElements = rightEnd - leftPos + 1;
+
+    // Main loop
+    while( leftPos &lt;= leftEnd &amp;&amp; rightPos &lt;= rightEnd )
+        if( a[ leftPos ] &lt;= a[ rightPos ] )
+            tmpArray[ tmpPos++ ] = std::move( a[ leftPos++ ] );
+        else
+            tmpArray[ tmpPos++ ] = std::move( a[ rightPos++ ] );
+
+    while( leftPos &lt;= leftEnd )    // Copy rest of first half
+        tmpArray[ tmpPos++ ] = std::move( a[ leftPos++ ] );
+
+    while( rightPos &lt;= rightEnd )  // Copy rest of right half
+        tmpArray[ tmpPos++ ] = std::move( a[ rightPos++ ] );
+
+    // Copy tmpArray back
+    for( int i = 0; i &lt; numElements; ++i, --rightEnd )
+        a[ rightEnd ] = std::move( tmpArray[ rightEnd ] );
+}
+</code></pre><ul>
+<li>main</li>
+</ul>
+<pre tabindex="0"><code>int main() {
+	vector v = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
+
+	mergeSort(v);
+
+    for(size_t i = 0; i &lt; v.size(); ++i)
+        cout &lt;&lt; v[i] &lt;&lt; &#34; &#34;;
+
+    return 0;
+}
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow4-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-21T11:08:08&#43;08:00">
+            21 Mar 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/doxy-comment/">c or c&#43;&#43; comments</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><a href="https://www.jetbrains.com/help/rider/Creating_and_Viewing_Doxygen_Documentation.html#create-doxygen-comments">Type one of the following symbols</a>:</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags">c-sharp style</a></li>
+</ul>
+<pre tabindex="0"><code>///
+</code></pre><ul>
+<li>Qt style</li>
+</ul>
+<pre tabindex="0"><code>//!
+/*!
+</code></pre><ul>
+<li>javadoc</li>
+</ul>
+<pre tabindex="0"><code>/**
+</code></pre><h4 id="putting-documentation-after-members">Putting documentation after members</h4>
+<pre tabindex="0"><code>//!&lt; this is End of line
+</code></pre><h3 id="javadoc-style">javadoc style</h3>
+<ul>
+<li><a href="https://www.doxygen.nl/manual/commands.html#cmdfile">file</a></li>
+</ul>
+<pre tabindex="0"><code>/**
+ * @file PokerType.h
+ * Created by tdtc-hrb on 2/14/2026 - UTC+8.
+ */
+</code></pre><ul>
+<li><a href="https://www.doxygen.nl/manual/commands.html#cmdauthor">author</a></li>
+</ul>
+<pre tabindex="0"><code>/**
+ *  Pretty nice class.
+ *  @details   This class is used to demonstrate a number of section commands; 
+ *             detailed description.
+ *  @author    John Doe
+ *  @author    Jan Doe
+ *  @version   1.16.1
+ *  @date      2026-03-11
+ */
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://www.doxygen.nl/manual/docblocks.html">Documenting the code</a></li>
+<li><a href="https://www.doxygen.nl/manual/commands.html">Special Commands</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/doxy-comment/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-11T20:38:18&#43;08:00">
+            11 Mar 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/doxy-config/">config doxygen</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>template -&gt; basic -&gt; project -&gt;
+generate documentation</p>
+<pre tabindex="0"><code>doxygen mydoxy
+</code></pre><h2 id="config---template">config - template</h2>
+<pre tabindex="0"><code>doxygen -g mydoxy
+</code></pre><p>default name: Doxyfile</p>
+<h3 id="update">update</h3>
+<p>If you are using a newer version of Doxygen, you need to execute:</p>
+<pre tabindex="0"><code>doxygen -u mydoxy
+</code></pre><h2 id="config---basic">config - basic</h2>
+<ul>
+<li>AUTO BRIEF</li>
+</ul>
+<pre tabindex="0"><code>JAVADOC_AUTOBRIEF      = YES
+</code></pre><ul>
+<li>BANNER</li>
+</ul>
+<pre tabindex="0"><code>JAVADOC_BANNER         = YES
+</code></pre><h4 id="python---off">PYTHON - Off</h4>
+<pre tabindex="0"><code>PYTHON_DOCSTRING       = NO
+</code></pre><h4 id="inherit---off">Inherit - Off</h4>
+<pre tabindex="0"><code>INHERIT_DOCS           = NO
+</code></pre><h2 id="config---project">config - project</h2>
+<ul>
+<li>output</li>
+</ul>
+<pre tabindex="0"><code>OUTPUT_DIRECTORY       = C:/Users/hp262/Documents
+</code></pre><h3 id="project-src">project src</h3>
+<pre tabindex="0"><code>INPUT                  = C:/Users/hp262/CLionProjects/untitled
+</code></pre><h4 id="searched-subdirectories">Searched subdirectories</h4>
+<pre tabindex="0"><code>RECURSIVE              = YES
+</code></pre> <a class="read-more" href="/cnblogs/post/doxy-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-11T20:38:18&#43;08:00">
+            11 Mar 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow2-gcc/">Accessing map value by index</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup></p>
+<h3 id="define-and-use">define and use</h3>
+<ul>
+<li>aMap and bMap</li>
+</ul>
+<pre tabindex="0"><code>    std::map&lt;int, string&gt; aMap;
+    std::map&lt;int, string&gt; bMap;
+</code></pre><ul>
+<li>calc it</li>
+</ul>
+<pre tabindex="0"><code>    int a = getMapKey(aMap, 0);
+    int b = getMapKey(bMap, 0);
+</code></pre><h3 id="getmapkey">getMapKey</h3>
+<p><code>int getMapKey(std::map&lt;int, std::string&gt; myMap ,int index) { }</code></p>
+<ul>
+<li>next</li>
+</ul>
+<pre tabindex="0"><code>    auto it = myMap.begin();
+    auto it2 = std::next(it, index);
+    return it2-&gt;first;
+</code></pre><ul>
+<li>advance</li>
+</ul>
+<pre tabindex="0"><code>    auto it = myMap.begin();
+    std::advance(it, index);
+    return it-&gt;first;
+</code></pre><h4 id="diff">diff</h4>
+<table>
+	<thead>
+			<tr>
+					<th>std::next</th>
+					<th>std::advance</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>It is used to return nth successor of an iterator</td>
+					<td>It does not have any return type.</td>
+			</tr>
+			<tr>
+					<td>It takes two parameters that are -: number of elements and a iterator.</td>
+					<td>It takes two parameters number of elements and iterator</td>
+			</tr>
+			<tr>
+					<td>Its Time complexity in best case is constant</td>
+					<td>Its Time complexity in best case is constant</td>
+			</tr>
+			<tr>
+					<td>Its Time complexity in worst case is linear</td>
+					<td>Its Time complexity in worst case is linear</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="test">test</h3>
+<pre tabindex="0"><code>#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;cmath&gt;
+
+int getMapKey(std::map&lt;int, std::string&gt; myMap ,int index) {
+    auto it = myMap.begin();
+    auto it2 = std::next(it, index);
+    return it2-&gt;first;
+}
+
+int main() {
+    std::map&lt;int, std::string&gt; aMap;
+    std::map&lt;int, std::string&gt; bMap;
+
+    aMap.insert(std::pair&lt;int, std::string&gt;(3, &#34;a&#34;));
+    bMap.insert(std::pair&lt;int, std::string&gt;(4, &#34;b&#34;));
+
+    int a = getMapKey(aMap, 0);
+    int b = getMapKey(bMap, 0);
+
+    int c = pow(a, 2) + pow(b, 2);
+
+    std::cout &lt;&lt; sqrt(c) &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/7856453/accessing-map-value-by-index">Accessing map value by index</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/iterator/advance.html">std::advance - c++17</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/iterator/next.html">std::next - c++11</a></li>
+<li><a href="https://www.geeksforgeeks.org/cpp/stdnext-vs-stdadvance-in-cpp/">std::next vs std::advance in C++</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow2-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-11T11:08:08&#43;08:00">
+            11 Mar 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/sqlite.net.core/">SQLite在.net core的demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>.net core <br>
+v8.0+</li>
+<li>test-backup.db <br>
+由 <a href="https://tdtc-hrb.github.io/com-vc/posts/sqlite3lib-wx">Windows的SQLite静态库 - wx</a> 的 minimal.exe 生成</li>
+</ul>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016122849.png" alt="program ui"></p>
+<h3 id="nuget">NuGet</h3>
+<blockquote>
+<p>pmc: Package Manager Console</p>
+</blockquote>
+<ul>
+<li>SQLite3MC.PCLRaw.bundle</li>
+</ul>
+<pre tabindex="0"><code class="language-pmc" data-lang="pmc">Install-Package SQLite3MC.PCLRaw.bundle
+</code></pre><p>Warning! Don&rsquo;t use multiple SQLitePCLRaw bundles in the same project. See the instructions below for details.</p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016121731.png" alt="SQLite3MC.PCLRaw.bundle"></p>
+<ul>
+<li>SQLite-net</li>
+</ul>
+<pre tabindex="0"><code class="language-pmc" data-lang="pmc">Install-Package sqlite-net-base -Version 1.9.172
+</code></pre><p>With SQLite-net, be sure to use the sqlite-net-base package instead of the main one to avoid using multiple bundles.</p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016115835.png" alt="sqlite-net-base"></p>
+<h2 id="1-连接">1. 连接</h2>
+<p>SQLite Connection String:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(
+</span></span><span style="display:flex;"><span>    edtDB.Text, 
+</span></span><span style="display:flex;"><span>    storeDateTimeAsTicks: true,
+</span></span><span style="display:flex;"><span>    key: edtPwd.Text);
+</span></span></code></pre></div><ul>
+<li>Async Connection</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>asyncConn <span style="color:#f92672">=</span> new SQLite.<span style="color:#a6e22e">SQLiteAsyncConnection</span>(options);
+</span></span></code></pre></div><ul>
+<li>Sync</li>
+</ul>
+<pre tabindex="0"><code></code></pre><h2 id="2-查询">2. 查询</h2>
+<ul>
+<li>Synchronous API</li>
+<li>Asynchronous API</li>
+</ul>
+<h3 id="异步查询">异步查询</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var empRecords <span style="color:#f92672">=</span> connection.Table<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(emp <span style="color:#f92672">=&gt;</span> emp.Empno <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">111</span> <span style="color:#f92672">&amp;&amp;</span> emp.Empno <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">666</span>);
+</span></span></code></pre></div><h3 id="show-data">show data</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  table <span style="color:#f92672">=</span> new System.Data.<span style="color:#a6e22e">DataTable</span>(<span style="color:#e6db74">&#34;emp&#34;</span>);
+</span></span></code></pre></div><ul>
+<li>数据源</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  dataGridView1.DataSource <span style="color:#f92672">=</span> table;
+</span></span></code></pre></div><h2 id="3-插入">3. 插入</h2>
+<p>也可以执行Update、Delete等DML语句。</p> <a class="read-more" href="/cnblogs/post/sqlite.net.core/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-02-19T19:18:08&#43;08:00">
+            19 Feb 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp-tryvalue/">Try Value</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h2 id="get-value-by-key">Get Value by Key</h2>
+<ul>
+<li>GetValueOrDefault</li>
+</ul>
+<blockquote>
+<p>.net core</p>
+</blockquote>
+<ul>
+<li>TryGetValue</li>
+</ul>
+<blockquote>
+<p>fx</p>
+</blockquote>
+<h3 id="getvalueordefault"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.collectionextensions.getvalueordefault">GetValueOrDefault</a></h3>
+<pre tabindex="0"><code>Dictionary&lt;string, string&gt; m_kbd = new Dictionary&lt;string, string&gt;();
+result += m_kbd.GetValueOrDefault(kbd.Key);
+</code></pre><h3 id="trygetvalue"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2.trygetvalue">TryGetValue</a></h3>
+<pre tabindex="0"><code>Dictionary&lt;string, string&gt; m_kbd = new Dictionary&lt;string, string&gt;();
+result += m_kbd.TryGetValue(kbd.Key, out var value)? value : null;
+</code></pre><h2 id="get-an-integer-from-a-string">Get an integer from a string</h2>
+<ul>
+<li>TryParse</li>
+</ul>
+<h3 id="tryparse"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.int32.tryparse">TryParse</a></h3>
+<pre tabindex="0"><code>string itostr(string val)
+{
+    string result = &#34;&#34;;
+    int iVal = 0;
+
+    if (Int32.TryParse(val, out iVal))
+    {
+        val = &#34;_&#34; + val;
+    }
+
+    result = val;
+
+    return result;
+}
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history">The history of C#</a></li>
+<li><a href="https://github.com/dotnet/runtime/issues/23651#issuecomment-332634353">GetValueOrDefault available for IReadOnlyDictionary but not IDictionary</a></li>
+<li><a href="https://stackoverflow.com/a/67204390">C# System.Collections.Generic cannot use GetValueOrDefault method</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/asp-tryvalue/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-02-09T09:08:08&#43;08:00">
+            9 Feb 2026
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs/post/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 2 of 8</span>
+	
+	    <a class="older-posts" href="/cnblogs/post/page/3/">Older Posts &rarr;</a>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>

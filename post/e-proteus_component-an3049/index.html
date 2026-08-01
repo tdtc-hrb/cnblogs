@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="Unavailable components and their substitutes"/>
+<meta name="twitter:description" content="include the full bridge and MCU"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Unavailable components and their substitutes &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/e-proteus_component-an3049/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="include the full bridge and MCU" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2026-07-30T10:08:08&#43;08:00" />
+
+    
+    
+
+    <title>Unavailable components and their substitutes &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="include the full bridge and MCU" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.164.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-proteus_component-an3049/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "Unavailable components and their substitutes",
+    "name": "Unavailable components and their substitutes",
+    "wordCount":  113 ,
+    "timeRequired": "PT1M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "zh"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/e-proteus_component-an3049/",
+    "datePublished": "2026-07-30T10:08Z",
+    "dateModified": "2026-07-30T10:08Z",
+    
+    
+    "description": "include the full bridge and MCU",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/e-proteus_component-an3049/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Unavailable components and their substitutes</h1>
+        <small>include the full bridge and MCU</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2026-07-30T10:08:08&#43;08:00">
+            Jul 30, 2026
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <h2 id="h-bridge">H-bridge</h2>
+<p><img src="https://modularcircuits.com/blog/wp-content/uploads/2011/10/image_thumb7.png" alt=""></p>
+<ul>
+<li>The switching elements (Q1..Q4) are usually bi-polar or FET transistors, in some high-voltage applications IGBTs.
+Integrated solutions also exist but whether the switching elements are integrated with their control circuits
+or not is not relevant for the most part for this discussion.</li>
+<li>The diodes (D1..D4) are called catch diodes and are usually of a Schottky type.</li>
+</ul>
+<h3 id="substitutes">substitutes</h3>
+<ul>
+<li><a href="https://www.renesas.cn/zh/document/dst/hip4080-datasheet">hip4080a</a></li>
+<li><a href="https://www.renesas.com/en/document/dst/hip4081a-datasheet">hip4081a</a></li>
+<li><a href="https://www.st.com/en/motor-drivers/l298.html">L298</a></li>
+</ul>
+<p>The biggest difference between the HIP4080A and the HIP4081A is that the HIP4081A allows separate and individual control of the 4 MOSFET gates,
+whereas the HIP4080A does not.</p>
+<h2 id="pic16f177x">Pic16F177x</h2>
+<ul>
+<li>pin 28</li>
+</ul>
+<pre tabindex="0"><code>pic16f1778
+</code></pre><ul>
+<li>pin 40</li>
+</ul>
+<pre tabindex="0"><code>pic16f1777
+pic16f1779
+</code></pre><p>There is no alternative to the PIC16F177x; a redesign is required.</p>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://www.modularcircuits.com/blog/articles/h-bridge-secrets/h-bridges-the-basics">H-Bridges – the Basics</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Unavailable%20components%20and%20their%20substitutes&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-proteus_component-an3049%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-proteus_component-an3049%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-proteus_component-an3049%2f&amp;description=Unavailable%20components%20and%20their%20substitutes"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-proteus_component-an3049%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/e-pic8_asm-tutor2/">
+          <section class="post">
+              <h2>blinked - pic-as</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-pic8_mcc-classic/">
+          <section class="post">
+              <h2>MPLAB Code Configurator - Classic</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>
+
