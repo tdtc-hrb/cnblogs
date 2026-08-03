@@ -162,6 +162,136 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink1/">PIC blinked - standard</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>MPLAB X - v6.35</li>
+<li>Proteus - v8.16</li>
+</ul>
+<p>The example below demonstrates how to configure the microcontroller to turn on an LED when a user button is
+pressed. To achieve this, the user needs to identify the pins of the microcontroller routed to the user LED and to the
+user button.</p>
+<h3 id="vsm">VSM</h3>
+<ul>
+<li>RC5 <br>
+LED</li>
+<li>RC7 <br>
+Button</li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/blinked46q10a.png" alt=""></p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/blinked46q10b.png" alt=""></p>
+<h3 id="code">code</h3>
+<pre tabindex="0"><code>#include &lt;xc.h&gt;
+void main(void)
+{
+    /* setting pin RC5 as output (LED) */
+    TRISCbits.TRISC5 = 0;
+    /* setting pin RC7 as input (button) */
+    TRISCbits.TRISC7 = 1;
+    /* enable digital input buffer for pin RC7 (button) */
+    ANSELCbits.ANSELC7 = 0;
+    /* enable internal pull-up for pin RC7 (button) */
+    WPUCbits.WPUC7 = 1;
+
+    while(1)
+    {
+        if(PORTCbits.RC7) {
+            LATC &amp;= ~_LATC_LATC5_MASK;
+        }
+        else {
+            LATC |= _LATC_LATC5_MASK;
+        }
+    }
+}
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://www.microchip.com/en-us/application-notes/tb3270">Getting Started With PWM Using CCP on PIC18</a></li>
+<li><a href="https://www.microchip.com/en-us/application-notes/tb3261">PIC1000: Getting Started with Writing C-Code for PIC16F and PIC18F</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/e-pic8_blink1/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-08-03T20:08:08&#43;08:00">
+            3 Aug 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_mcc/">microchip code configurator - melody</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://developerhelp.microchip.com/xwiki/bin/view/software-tools/ides/extensions/get-started/">MPLAB Extension Pack - microchip</a></li>
+<li>C/C++ Extension Pack - MS</li>
+<li><a href="https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator/melody">MCC Melody</a></li>
+</ul>
+<h3 id="network-settings">network Settings</h3>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_network-vs.png" alt=""></p>
+<ul>
+<li>choose</li>
+</ul>
+<pre tabindex="0"><code>https://registry.npmjs.org/
+https://registry.npmmirror.com
+</code></pre><h2 id="device">device</h2>
+<p>Add the following devices from the &ldquo;Device Resources&rdquo; window:</p>
+<ul>
+<li>TMR2</li>
+<li>CCP1</li>
+<li>WWDT</li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_config-device.png" alt=""></p>
+<h3 id="configurations">configurations</h3>
+<ul>
+<li>Clock Control</li>
+<li>TMR2</li>
+<li>CCP1</li>
+<li>WWDT</li>
+</ul>
+<h4 id="clock-control">Clock Control</h4>
+<ul>
+<li>Clock Source: LFINTOSC</li>
+<li>Clock Divider: 1</li>
+</ul>
+<h4 id="timer2">Timer2</h4>
+<ul>
+<li>Hardware Settings</li>
+</ul>
+<pre tabindex="0"><code>- Enable Timer: checked
+- Control Mode: Roll over pulse
+- Start/Reset Option: Software control
+</code></pre><p>– Timer Clock</p>
+<pre tabindex="0"><code>- Clock Source: FOSC/4
+- Prescaler: 1:32
+- Postscaler: 1:1
+</code></pre><p>– Timer Period</p> <a class="read-more" href="/cnblogs/post/e-pic8_mcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-08-01T10:08:08&#43;08:00">
+            1 Aug 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-pic8_data123x/">Data Memory Organization - PIC16F</a></h2>
     </header>
     <section class="post-excerpt">
@@ -1818,70 +1948,6 @@ three peripherals are needed to be configured: CCP2, TIMER2 and CWG.</p> <a clas
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_mcc/">microchip code configurator - melody</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://developerhelp.microchip.com/xwiki/bin/view/software-tools/ides/extensions/get-started/">MPLAB Extension Pack - VS Code</a></li>
-<li><a href="https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator/melody">MCC Melody</a></li>
-</ul>
-<h3 id="network-settings">network Settings</h3>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_network-vs.png" alt=""></p>
-<ul>
-<li>choose</li>
-</ul>
-<pre tabindex="0"><code>https://registry.npmjs.org/
-https://registry.npmmirror.com
-</code></pre><h2 id="device">device</h2>
-<p>Add the following devices from the &ldquo;Device Resources&rdquo; window:</p>
-<ul>
-<li>TMR2</li>
-<li>CCP1</li>
-<li>WWDT</li>
-</ul>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_config-device.png" alt=""></p>
-<h3 id="configurations">configurations</h3>
-<ul>
-<li>Clock Control</li>
-<li>TMR2</li>
-<li>CCP1</li>
-<li>WWDT</li>
-</ul>
-<h4 id="clock-control">Clock Control</h4>
-<ul>
-<li>Clock Source: LFINTOSC</li>
-<li>Clock Divider: 1</li>
-</ul>
-<h4 id="timer2">Timer2</h4>
-<ul>
-<li>Hardware Settings</li>
-</ul>
-<pre tabindex="0"><code>- Enable Timer: checked
-- Control Mode: Roll over pulse
-- Start/Reset Option: Software control
-</code></pre><p>– Timer Clock</p>
-<pre tabindex="0"><code>- Clock Source: FOSC/4
-- Prescaler: 1:32
-- Postscaler: 1:1
-</code></pre><p>– Timer Period</p> <a class="read-more" href="/cnblogs/post/e-pic8_mcc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-18T10:08:08&#43;08:00">
-            18 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink6/">PIC blinked - m2</a></h2>
     </header>
     <section class="post-excerpt">
@@ -2174,11 +2240,37 @@ Delay_4:
 <blockquote>
 <p>Purchased on February 12, 2020.</p>
 </blockquote>
+<h2 id="arduino-uno-rev-3e">Arduino Uno Rev 3e</h2>
+<ul>
+<li><a href="https://tdtc-hrb.github.io/cnblogs/post/e-avr8-blink">blink</a> - Ok</li>
+</ul>
+<h3 id="web-server"><a href="https://tdtc-hrb.github.io/cnblogs/post/e-avr8-web-server">web server</a></h3>
+<p><strong>供电1: USB接口 - 可以工作.</strong>
+<em><strong>供电2: 圆形 DC 接口 - 无法工作!</strong></em></p>
 <h2 id="sam4s-ek2"><a href="https://www.microchip.com/en-us/development-tool/atsam4s-ek">SAM4S-EK2</a></h2>
 <ul>
 <li>IDE: <a href="https://tdtc-hrb.github.io/cnblogs/post/e-iar-project-setup">iar V7.50.3.10751</a></li>
 <li>Advanced Software Framework (ASF): <a href="https://www.microchip.com/en-us/tools-resources/archives/avr-sam-mcus">V3.33.0.50</a></li>
 <li>ICE: j-link v8.0</li>
+</ul>
+<h3 id="iar">IAR</h3>
+<ul>
+<li>Current Use:
+V7.50.3</li>
+<li><a href="http://supp.iar.com/Updates/?product=EWarm">version history</a></li>
+</ul>
+<h3 id="j-link-driver">j-link driver</h3>
+<pre tabindex="0"><code>IAR &lt;=&gt; J-Link:
+   V7.50.3 - v5.10m
+   V7.80.4 - v6.12f 
+</code></pre><h3 id="down-file-from-csdn-blog">down file: from <a href="https://blog.csdn.net/weixin_38343172/article/details/84034840">CSDN Blog</a></h3>
+<pre tabindex="0"><code>    CD-EWARM-6405-4275
+    EWARM-CD-7501-10273.exe
+    EWARM-CD-7503-10751.exe
+</code></pre><p>for example:</p>
+<ul>
+<li><a href="http://files.iar.com/ftp/pub/box/EWARM-CD-7602-11350.exe">http://files.iar.com/ftp/pub/box/EWARM-CD-7602-11350.exe</a></li>
+<li><a href="http://files.iar.com/ftp/pub/box/EWARM-CD-7804-12495.exe">http://files.iar.com/ftp/pub/box/EWARM-CD-7804-12495.exe</a></li>
 </ul>
 <h3 id="test">test</h3>
 <ul>
@@ -2206,119 +2298,8 @@ xdk-asf-3.33.0\sam\applications\getting-started\sam4sd32c_sam4s_ek2\iar\getting-
 <li>On</li>
 </ol>
 <pre tabindex="0"><code>JP13 Connect.
-</code></pre><h3 id="web-server">web server</h3>
-<p><strong>无论是 USB 接口 供电，还是 圆形 DC 接口 供电 均无法工作!</strong></p>
-<h2 id="arduino-uno-rev-3e">Arduino Uno Rev 3e</h2>
-<ul>
-<li><a href="https://tdtc-hrb.github.io/cnblogs/post/e-avr8-blink">blink</a> - Ok</li>
-</ul>
-<h3 id="web-server-1"><a href="https://tdtc-hrb.github.io/cnblogs/post/e-avr8-web-server">web server</a></h3>
-<p><strong>供电1: USB接口 - 可以工作.</strong>
-<em><strong>供电2: 圆形 DC 接口 - 无法工作!</strong></em></p> <a class="read-more" href="/cnblogs/post/e-comp_enc28j60/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-07T01:08:08&#43;08:00">
-            7 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-web-server/">web server</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>created date： 2021-03-10 <br>
-modified date：</p>
-<pre tabindex="0"><code>2023-03-25
-</code></pre><ul>
-<li>IDE <br>
-Arduino <a href="https://www.arduino.cc/en/software">V1.8.19</a></li>
-<li>Library <br>
-<a href="https://github.com/UIPEthernet/UIPEthernet/releases">UIP Ethernet v2.x</a></li>
-</ul>
-<h1 id="接线">接线</h1>
-<table>
-	<thead>
-			<tr>
-					<th>Arduino Uno</th>
-					<th>Enc28j60</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Pin 10</td>
-					<td>CS</td>
-			</tr>
-			<tr>
-					<td>Pin 11</td>
-					<td>SI</td>
-			</tr>
-			<tr>
-					<td>Pin 12</td>
-					<td>SO</td>
-			</tr>
-			<tr>
-					<td>Pin 13</td>
-					<td>SCK</td>
-			</tr>
-			<tr>
-					<td>Reset</td>
-					<td>RST<sup>*</sup></td>
-			</tr>
-			<tr>
-					<td>+3v3</td>
-					<td>Vcc</td>
-			</tr>
-			<tr>
-					<td>GND<sup>*</sup></td>
-					<td>GND</td>
-			</tr>
-	</tbody>
-</table>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Connection-Diagram.png" alt="spi connect"></p>
-<h2 id="enc28j60">Enc28j60</h2>
-<p>INTN: 置空（不接）</p>
-<p>*Rst接线: 注意 <a href="https://robotdyn.com/nano-v3-ethernet-shield-enc28j60.html">Nano V3 Ethernet Shield</a> 接7号线柱，如下图所示：
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/NanoEthENC28J60-Shield.jpg" alt="reset connect"></p>
-<h2 id="arduino-uno"><a href="https://content.arduino.cc/assets/UNO-TH_Rev3e_sch.pdf">Arduino Uno</a></h2>
-<p>*GND接线:  5V旁边的GND.</p>
-<p><strong>供电: 必须使用USB接口.</strong>
-<em><strong>使用 圆形 DC 接口 无法工作!</strong></em></p>
-<h1 id="网络及pc驱动">网络及PC驱动</h1>
-<p>两种方式：</p>
-<ul>
-<li>
-<p>平行线 <br>
-接路由器Lan口。</p>
-</li>
-<li>
-<p>交叉线 <br>
-接PC的Lan口。</p>
-</li>
-</ul>
-<h2 id="network">Network</h2>
-<p>设置同一网段的IP地址。</p>
-<ul>
-<li>PC <br>
-Control Panel -&gt; Network and Internet -&gt; Network Connections <br>
-Ethernet -&gt; Properties:</li>
-</ul>
-<pre tabindex="0"><code>Internet Protocol Version 4(TCP/IPv4)
-</code></pre><ul>
-<li>Enc28J60 <br>
-IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代码中更改.</li>
-</ul>
-<h3 id="router">Router</h3>
-<p>不支持以下路由器:</p> <a class="read-more" href="/cnblogs/post/e-avr8-web-server/">&raquo;</a></p>
+</code></pre><h3 id="web-server-1">web server</h3>
+<p><strong>无论是 USB 接口 供电，还是 圆形 DC 接口 供电 均无法工作!</strong></p> <a class="read-more" href="/cnblogs/post/e-comp_enc28j60/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
