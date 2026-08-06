@@ -153,13 +153,144 @@
 	
 	    <a class="newer-posts" href="/cnblogs/post/page/4/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 5 of 8</span>
+	<span class="page-number">Page 5 of 9</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/6/">Older Posts &rarr;</a>
 	
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/ops_openssl/">install and usage with OpenSSL</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>RHEL Community Version <br>
+Alma Linux / Rocky Linux</li>
+</ul>
+<h1 id="prepare">Prepare</h1>
+<p>Install development tool:</p>
+<pre tabindex="0"><code># dnf group install &#39;Development Tools&#39;
+</code></pre><p>Install dependencies:</p>
+<pre tabindex="0"><code># dnf install perl-core zlib-devel -y
+</code></pre><h2 id="down-latest-openssl">down latest OpenSSL</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$mkdir openssl-1.1.1
+</span></span><span style="display:flex;"><span>$curl --progress https://www.openssl.org/source/openssl-1.1.1w.tar.gz | tar xz -C ./openssl-1.1.1 --strip-components <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h1 id="setup">setup</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$cd openssl-1.1.1
+</span></span></code></pre></div><ul>
+<li>RHEL8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr/local/ssl --openssldir<span style="color:#f92672">=</span>/usr/local/ssl shared zlib
+</span></span></code></pre></div><ul>
+<li>RHEL7</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr --shared
+</span></span></code></pre></div><h2 id="make--install">make &amp;&amp; install</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$make
+</span></span></code></pre></div><p>Root permission Required:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo make install
+</span></span></code></pre></div><h2 id="rhel8">RHEL8</h2>
+<pre tabindex="0"><code># mv /bin/openssl /bin/openssl.backup
+# cp /usr/local/ssl/bin/openssl /bin/openssl
+</code></pre><p>test:</p> <a class="read-more" href="/cnblogs/post/ops_openssl/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-12-29T08:38:08&#43;08:00">
+            29 Dec 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/asp-ws2/">WebSockets over HTTP/2</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><a href="https://github.com/dotnet/AspNetCore.Docs/commit/75ce89b25e9ba61f9687ce36a41cd3c50aec1e3c">NET 7 introduces Websockets over HTTP/2 support for Kestrel, the SignalR JavaScript client, and SignalR with Blazor WebAssembly.</a></p>
+<h3 id="http2">HTTP2</h3>
+<ul>
+<li>Multiplexing
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*lY05UTuA-dWCXU-q.png" alt="Request multiplexing"></li>
+<li>Server push
+<img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*ZJLgVdXq_06hcF1o.png" alt="cacheable information"></li>
+<li>Header compression
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*5r8-MbhEseP6lEQg.png" alt="HPACK"></li>
+</ul>
+<p>ref site:</p>
+<ul>
+<li><a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1/">HTTP/2 vs. HTTP/1.1: How do they affect web performance?</a></li>
+<li><a href="https://factoryhr.medium.com/http-2-the-difference-between-http-1-1-benefits-and-how-to-use-it-38094fa0e95b">HTTP/2: the difference between HTTP/1.1, benefits and how to use it</a></li>
+</ul>
+<h4 id="os-and-browsers-support">os and browsers support</h4>
+<ul>
+<li>Windows 10 1607+</li>
+<li>TLS 1.2+</li>
+<li><a href="https://caniuse.com/http2">browsers</a></li>
+</ul>
+<p>Note: recommended to use Chrome/FireFox</p>
+<h2 id="websockets">WebSockets</h2>
+<ul>
+<li>Accept a WebSocket connection as an asynchronous operation <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.httplistenercontext.acceptwebsocketasync">HttpListenerContext.AcceptWebSocketAsync()</a></li>
+<li>Receives data from the WebSocket connection asynchronously <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.receiveasync">WebSocket.ReceiveAsync()</a></li>
+<li>Sends data over the WebSocket connection asynchronously <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.sendasync">WebSocket.SendAsync()</a></li>
+<li>Closes the WebSocket connection as an asynchronous operation <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.closeasync">CloseAsync</a></li>
+</ul>
+<h3 id="enable-websocket">Enable WebSocket</h3>
+<ul>
+<li>default</li>
+</ul>
+<pre tabindex="0"><code>app.UseWebSockets()
+</code></pre><ul>
+<li>options</li>
+</ul>
+<pre tabindex="0"><code>var webSocketOptions = new WebSocketOptions
+{
+    KeepAliveInterval = TimeSpan.FromMinutes(2)
+};
+
+app.UseWebSockets(webSocketOptions);
+</code></pre><h3 id="accept-websocket-requests">Accept WebSocket requests</h3>
+<pre tabindex="0"><code>if (HttpContext.WebSockets.IsWebSocketRequest)
+{
+    using var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
+}
+</code></pre><h3 id="receive-messages">receive messages</h3>
+<pre tabindex="0"><code>var buffer = new byte[1024 * 4];
+
+var receiveResult = await webSocket.ReceiveAsync(
+    new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
+</code></pre><h4 id="arraysegment"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
+<p>Array version of substring()</p> <a class="read-more" href="/cnblogs/post/asp-ws2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-11-18T20:38:18&#43;08:00">
+            18 Nov 2024
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -474,6 +605,47 @@ git clone -b PHP-8.0.* https://github.com/php/php-src.git
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_asm-tutor1c/">MPASM to MPLAB XC8 PIC Assembler - Psects</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h2 id="lacing-psects-into-memory">lacing Psects into Memory</h2>
+<table>
+	<thead>
+			<tr>
+					<th>MPASM</th>
+					<th>XC8 Assembler</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ORG</td>
+					<td>PSECT</td>
+			</tr>
+	</tbody>
+</table>
+<p>MPASM supports absolute mode, using the ORG directive, or relocatable mode, using program sections. <br>
+PIC Assembler only supports the relocatable mode.</p>
+<p>Since the tutorials use the absolute mode you will need to remove the ORG directive and add a program section for the code and data. <br>
+I have just added a code section for all the instructions and used the already defined equates to access the data memory variables (user registers). <br>
+So, I have just replaced the ORG directive with the PSECT directive like this:</p> <a class="read-more" href="/cnblogs/post/e-pic8_asm-tutor1c/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-06-18T08:08:08&#43;08:00">
+            18 Jun 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-pic8_instruction-set/">8位单片机PIC汇编语言</a></h2>
     </header>
     <section class="post-excerpt">
@@ -645,185 +817,12 @@ For this, click on the Device Pins Mode as shown in the below figure and click o
 </article>
 
 	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/java-jmx-ch2/">jmx - first demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>Starting with the J2SE platform 5.0, JMX technology is included in the Java SE platform.</p>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Jmxarchitecture.png" alt="Jmx architecture"></p>
-<ul>
-<li>jmxtools
-Download the <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.jar">jar</a>
-and <a href="https://www.datanucleus.org/downloads/maven2/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.pom">pom</a> files,
-Then copy it to the M2 directory.
-M2:</li>
-</ul>
-<pre tabindex="0"><code>C:\Users\tdtc\.m2\repository\com\sun\jdmk\jmxtools\1.2.1
-</code></pre><ul>
-<li><a href="https://www.manning.com/downloads/737">Source</a></li>
-</ul>
-<h1 id="project">project</h1>
-<p>. <br>
-|____src <br>
-| |____main <br>
-| | |____java <br>
-| | | |____jmxbook.ch2 <br>
-|____pom.xml</p>
-<p>Gen jar:</p>
-<pre tabindex="0"><code>mvn package
-</code></pre><ul>
-<li>pom.xml</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;modelVersion&gt;</span>4.0.0<span style="color:#f92672">&lt;/modelVersion&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>jmxbook<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>jmxInAction<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;version&gt;</span>0.0.1-SNAPSHOT<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;build/&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;repositories&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;repository&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;id&gt;</span>datanucleus.org/downloads/maven2<span style="color:#f92672">&lt;/id&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;name&gt;</span>datanucleus.org Maven Repository<span style="color:#f92672">&lt;/name&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;url&gt;</span>http://www.datanucleus.org/downloads/maven2/<span style="color:#f92672">&lt;/url&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/repository&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/repositories&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dependencies&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/com.sun.jdmk/jmxtools --&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dependency&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;groupId&gt;</span>com.sun.jdmk<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;artifactId&gt;</span>jmxtools<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;version&gt;</span>1.2.1<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/dependency&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/dependencies&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span>
-</span></span></code></pre></div><h2 id="the-agent-level">The Agent level</h2>
-<p>HelloAgent.java:</p> <a class="read-more" href="/cnblogs/post/java-jmx-ch2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-02-08T08:08:08&#43;08:00">
-            8 Feb 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_spark_rhel/">spark安装</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>Spark <br>
-v3.1</li>
-<li>OS <br>
-RHEL8(Alma / Rocky Linux)</li>
-</ul>
-<h1 id="一基础软件">一、基础软件</h1>
-<h2 id="1-r-lang">1. R-lang</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo dnf -y install epel-release
-</span></span><span style="display:flex;"><span>$ sudo dnf  --enablerepo<span style="color:#f92672">=</span>powertools install R
-</span></span></code></pre></div><blockquote>
-<p>注意：如果Java没有安装，会附带着安装OpenJDK。</p>
-</blockquote>
-<h2 id="2-scala">2. Scala</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wget https://downloads.lightbend.com/scala/2.12.17/scala-2.12.17.tgz
-</span></span><span style="display:flex;"><span>$ tar xvf scala-2.12.17.tgz
-</span></span><span style="display:flex;"><span>$ sudo mv scala-2.12.17 /usr/lib
-</span></span><span style="display:flex;"><span>$ sudo ln -s /usr/lib/scala-2.12.17 /usr/lib/scala
-</span></span></code></pre></div><h3 id="1-add-path">1) add path</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$vi ~/.bashrc
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$PATH:/usr/lib/scala/bin
-</span></span></code></pre></div><h1 id="二spark">二、Spark</h1>
-<h2 id="1-down--unzip">1. down &amp; unzip</h2>
-<blockquote>
-<p><a href="https://www.apache.org/dyn/closer.lua/spark/spark-3.1.3/spark-3.1.3-bin-hadoop2.7.tgz">v3.1.3</a></p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir -p ~/app/spark
-</span></span><span style="display:flex;"><span>$ tar zxvf spark-3.1.3-bin-hadoop2.7.tgz -C ~/app/spark
-</span></span><span style="display:flex;"><span>$ mv ~/app/spark/spark-3.1.3-bin-hadoop2.7 ~/app/spark/3.1.3
-</span></span></code></pre></div><h2 id="2-test">2. test</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd ~/app/spark/3.1.3
-</span></span><span style="display:flex;"><span>$ ./bin/spark-shell --master local<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span>
-</span></span></code></pre></div><p>input:</p> <a class="read-more" href="/cnblogs/post/ops_spark_rhel/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-10-10T00:08:08&#43;08:00">
-            10 Oct 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/redis-rhel-setup/">Redis Server installation FAQs</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>OS: RHEL Community Minimal</p>
-</blockquote>
-<ul>
-<li>AlmaLinux 8.x</li>
-<li>RockyLinux 8.x</li>
-<li>CentOS 7.9</li>
-</ul>
-<p>Root Permission:</p>
-<pre tabindex="0"><code>$su - root
-</code></pre><h1 id="0-open-files">0) open files</h1>
-<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
-A:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#ulimit -a</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/systemd/system/redis.service</span>
-</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>LimitNOFILE=10032
-</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
-<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
-A:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/sysctl.conf</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>net.core.somaxconn=1024
-</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
-<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
-To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
-for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-rhel-setup/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-10-08T08:08:08&#43;08:00">
-            8 Oct 2022
-        </time>
-    </footer>
-</article>
-
-	
 
 	<nav class="pagination" role="navigation">
 	
 	    <a class="newer-posts" href="/cnblogs/post/page/4/">&larr; Newer Posts</a>
 	
-	<span class="page-number">Page 5 of 8</span>
+	<span class="page-number">Page 5 of 9</span>
 	
 	    <a class="older-posts" href="/cnblogs/post/page/6/">Older Posts &rarr;</a>
 	

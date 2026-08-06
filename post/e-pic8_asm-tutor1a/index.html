@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="MPASM to MPLAB XC8 PIC Assembler - Directive"/>
+<meta name="twitter:description" content="Equivalent Directives"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="MPASM to MPLAB XC8 PIC Assembler - Directive &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/e-pic8_asm-tutor1a/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="Equivalent Directives" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2026-08-06T08:08:08&#43;08:00" />
+
+    
+    
+
+    <title>MPASM to MPLAB XC8 PIC Assembler - Directive &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="Equivalent Directives" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.164.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-pic8_asm-tutor1a/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "MPASM to MPLAB XC8 PIC Assembler - Directive",
+    "name": "MPASM to MPLAB XC8 PIC Assembler - Directive",
+    "wordCount":  663 ,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "zh"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/e-pic8_asm-tutor1a/",
+    "datePublished": "2026-08-06T08:08Z",
+    "dateModified": "2026-08-06T08:08Z",
+    
+    
+    "description": "Equivalent Directives",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/e-pic8_asm-tutor1a/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">MPASM to MPLAB XC8 PIC Assembler - Directive</h1>
+        <small>Equivalent Directives</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2026-08-06T08:08:08&#43;08:00">
+            Aug 6, 2026
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>Table 4-1.Equivalent Directives</p>
+<table>
+	<thead>
+			<tr>
+					<th>MPASM Directive</th>
+					<th>PIC Assembler Replacement</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ACCESS_OVR</td>
+					<td>A psect with the ovrld flag set</td>
+			</tr>
+			<tr>
+					<td>__BADRAM and __BADROM No replacement</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>BANSISEL</td>
+					<td>The instruction sequence to write indirect access registers</td>
+			</tr>
+			<tr>
+					<td>BANKSEL</td>
+					<td>The BANKSEL directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>CBLOCK</td>
+					<td>Consider the SET/EQU directives, or DS.</td>
+			</tr>
+			<tr>
+					<td>CODE</td>
+					<td>The code psect or similar</td>
+			</tr>
+			<tr>
+					<td>CODE_PACK</td>
+					<td>The code psect or similar</td>
+			</tr>
+			<tr>
+					<td>__CONFIG</td>
+					<td>The CONFIG directive with appropriate settings and values</td>
+			</tr>
+			<tr>
+					<td>CONFIG</td>
+					<td>The CONFIG directive with appropriate settings and values</td>
+			</tr>
+			<tr>
+					<td>CONSTANT</td>
+					<td>The EQU directive</td>
+			</tr>
+			<tr>
+					<td>DA</td>
+					<td>Consider the DB or IRPC directives</td>
+			</tr>
+			<tr>
+					<td>DATA</td>
+					<td>Consider the DW directive</td>
+			</tr>
+			<tr>
+					<td>DB</td>
+					<td>The DB directive</td>
+			</tr>
+			<tr>
+					<td>DE</td>
+					<td>Consider the DB directive inside a suitable psect</td>
+			</tr>
+			<tr>
+					<td>#DEFINE</td>
+					<td>The #define preprocessor directive</td>
+			</tr>
+			<tr>
+					<td>DT</td>
+					<td>The IRP directive</td>
+			</tr>
+			<tr>
+					<td>DTM</td>
+					<td>The IRP directive</td>
+			</tr>
+			<tr>
+					<td>DW</td>
+					<td>The DW or DB directive</td>
+			</tr>
+			<tr>
+					<td>ELSE</td>
+					<td>The ELSE directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>END</td>
+					<td>The END directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>ENDC</td>
+					<td>No replacement</td>
+			</tr>
+			<tr>
+					<td>ENDM</td>
+					<td>The ENDM directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>ENDW</td>
+					<td>No replacement</td>
+			</tr>
+			<tr>
+					<td>EQU</td>
+					<td>The EQU directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>ERROR</td>
+					<td>The ERROR directive</td>
+			</tr>
+			<tr>
+					<td>ERRORLEVEL</td>
+					<td>Consider the -w driver option</td>
+			</tr>
+			<tr>
+					<td>EXITM</td>
+					<td>No replacement</td>
+			</tr>
+			<tr>
+					<td>EXPAND</td>
+					<td>The EXPAND directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>EXTERN</td>
+					<td>The EXTRN directive (note different spelling)</td>
+			</tr>
+			<tr>
+					<td>FILL</td>
+					<td>Consider the &ndash;fill driver option</td>
+			</tr>
+			<tr>
+					<td>GLOBAL</td>
+					<td>The GLOBAL directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>IDATA</td>
+					<td>A psect with the initial values in program memory and another reserving space for the data objects</td>
+			</tr>
+			<tr>
+					<td>IDATA_ACS</td>
+					<td>A psect with the initial values in program memory and another reserving space for the data objects</td>
+			</tr>
+			<tr>
+					<td>IF</td>
+					<td>The IF directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>IFDEF</td>
+					<td>Consider the #ifdef preprocessor directive</td>
+			</tr>
+			<tr>
+					<td>IFNDEF</td>
+					<td>Consider the #ifndef preprocessor directive</td>
+			</tr>
+			<tr>
+					<td>#INCLUDE</td>
+					<td>The #include preprocessor directive</td>
+			</tr>
+			<tr>
+					<td>LIST</td>
+					<td>The LIST directive or consider alternate assembler options</td>
+			</tr>
+			<tr>
+					<td>LOCAL</td>
+					<td>The LOCAL directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>MACRO</td>
+					<td>The MACRO directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>__MAXRAM <sub>and</sub> __MAXROM</td>
+					<td>No replacement</td>
+			</tr>
+			<tr>
+					<td>MESSG</td>
+					<td>The MESSG directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>NOEXPAND</td>
+					<td>The NOEXPAND directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>NOLIST</td>
+					<td>The NOLIST directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>ORG</td>
+					<td>Consider the ORG directive</td>
+			</tr>
+			<tr>
+					<td>PAGE</td>
+					<td>No replacement</td>
+			</tr>
+			<tr>
+					<td>PAGESEL</td>
+					<td>The PAGESEL directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>PAGESELW</td>
+					<td>Consider the PAGESEL directive</td>
+			</tr>
+			<tr>
+					<td>PROCESSOR</td>
+					<td>The PROCESSOR directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>RADIX</td>
+					<td>The RADIX directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>RES</td>
+					<td>Consider the DS directive</td>
+			</tr>
+			<tr>
+					<td>SET</td>
+					<td>The SET directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>SPACE</td>
+					<td>The SPACE directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>SUBTITLE</td>
+					<td>The SUBTITLE directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>TITLE</td>
+					<td>The TITLE directive (no change required)</td>
+			</tr>
+			<tr>
+					<td>UDATA</td>
+					<td>The udata_bankn psect or similar</td>
+			</tr>
+			<tr>
+					<td>UDATA_ACS</td>
+					<td>The udata_acs psect or similar</td>
+			</tr>
+			<tr>
+					<td>UDATA_OVR</td>
+					<td>A psect with the ovrld flag set</td>
+			</tr>
+			<tr>
+					<td>UDATA_SHR</td>
+					<td>A psect with the ovrld flag set</td>
+			</tr>
+			<tr>
+					<td>#UNDEFINE</td>
+					<td>The #undefine preprocessor directive</td>
+			</tr>
+			<tr>
+					<td>VARIABLE</td>
+					<td>Consider the SET directive</td>
+			</tr>
+			<tr>
+					<td>WHILE</td>
+					<td>Consider the REPT directive</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="list-directive">List Directive</h3>
+<p>TABLE 4-2: LIST DIRECTIVE OPTIONS</p>
+<table>
+	<thead>
+			<tr>
+					<th>Option</th>
+					<th>Default</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>b=nnn</td>
+					<td>8</td>
+					<td>Set tab spaces.</td>
+			</tr>
+			<tr>
+					<td>c=nnn</td>
+					<td>132</td>
+					<td>Set column width.</td>
+			</tr>
+			<tr>
+					<td>f=format</td>
+					<td>INHX8 <br>M</br></td>
+					<td>Set the hex file output. format can be INHX32, INHX8M, or INHX8S. <br>Note: Hex file format is set in the IDE (Build Options dialog.)</br></td>
+			</tr>
+			<tr>
+					<td>free</td>
+					<td>FIXED</td>
+					<td>Use free-format parser. Provided for backward compatibility.</td>
+			</tr>
+			<tr>
+					<td>fixed</td>
+					<td>FIXED</td>
+					<td>Use fixed-format parser.</td>
+			</tr>
+			<tr>
+					<td>mm={ON</td>
+					<td>OFF}</td>
+					<td>On</td>
+			</tr>
+			<tr>
+					<td>n=nnn</td>
+					<td>60</td>
+					<td>Set lines per page.</td>
+			</tr>
+			<tr>
+					<td>p=type</td>
+					<td>None</td>
+					<td>Set processor type; for example, PIC16F877. See also processor. <br>Note: Processor type is set in MPLAB IDE or MPLAB X IDE projects.</br></td>
+			</tr>
+			<tr>
+					<td>pe=type</td>
+					<td>None</td>
+					<td>Set processor type and enable extended instruction set, for example; LIST pe=PIC18F4620 <br>Only valid with processors which support the extended instruction set and the generic processor PIC18XXX. Is overridden by command-line option /y- or -y- (disable extended instruction set).<br>Note: Processor type is set in MPLAB IDE or MPLAB X IDE projects.</br></td>
+			</tr>
+			<tr>
+					<td>r=radix</td>
+					<td>hex</td>
+					<td>Set radix: hex, dec, oct. See also radix.</td>
+			</tr>
+			<tr>
+					<td>st={ON</td>
+					<td>OFF}</td>
+					<td>On</td>
+			</tr>
+			<tr>
+					<td>t={ON</td>
+					<td>OFF}</td>
+					<td>Off</td>
+			</tr>
+			<tr>
+					<td>w={0</td>
+					<td>1</td>
+					<td>2}</td>
+			</tr>
+			<tr>
+					<td>x={ON</td>
+					<td>OFF}</td>
+					<td>On</td>
+			</tr>
+	</tbody>
+</table>
+<h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MPASM%20to%20MPLAB%20XC8%20PIC%20Assembler%20Migration%20Guide%2050002973A.pdf">MPASM to MPLAB XC8 PIC Assembler Migration Guide 50002973A</a></li>
+<li><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MPLAB%20XC8%20PIC%20Assembler%20User%27s%20Guide%2050002974A.pdf">MPLAB XC8 PIC Assembler User&rsquo;s Guide 50002974A</a></li>
+<li><a href="https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/UserGuides/MPLAB-XC8-PIC-Assembler-User-Guide-50002974.pdf">MPLAB-XC8-PIC-Assembler-User-Guide-50002974</a></li>
+<li><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/50002994B.pdf">MPLAB XC8 PIC Assembler User&rsquo;s Guide for Embedded Engineers</a></li>
+<li><a href="https://www.circuitbread.com/tutorials/mpasm-to-mplab-xc8-pic-assembler">MPASM to MPLAB XC8 PIC Assembler</a></li>
+<li><a href="https://microcontrollerlog.wordpress.com/2012/08/17/when-to-use-banksel/">When to use banksel</a></li>
+<li><a href="https://forum.microchip.com/s/topic/a5C3l000000MbBxEAK/t373025">There is no make executable in the path. - MPLABX v5.35</a></li>
+<li><a href="https://ww1.microchip.com/downloads/en/devicedoc/33014l.pdf">4.43 list - Listing Options</a></li>
+<li><a href="https://ww1.microchip.com/downloads/en/devicedoc/33014l.pdf">4.8.5 Simple Example - MPASM Assembler User&rsquo;s Guide</a></li>
+<li><a href="https://electronics.stackexchange.com/a/12364">What is the meaning of Microchip&rsquo;s acronym TRIS for data direction registers?</a></li>
+<li><a href="http://www.matidavid.com/pic/picbook_site/2_05chapter.htm">2.4 Ports</a></li>
+<li><a href="https://forum.microchip.com/s/topic/a5C3l000000McGfEAK/t377161?comment=P-2834053">MPASM Removed? !!!</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=MPASM%20to%20MPLAB%20XC8%20PIC%20Assembler%20-%20Directive&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_asm-tutor1a%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_asm-tutor1a%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_asm-tutor1a%2f&amp;description=MPASM%20to%20MPLAB%20XC8%20PIC%20Assembler%20-%20Directive"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_asm-tutor1a%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/e-pic8_asm-tutor1b/">
+          <section class="post">
+              <h2>MPASM to MPLAB XC8 PIC Assembler - b</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-pic8_blink1/">
+          <section class="post">
+              <h2>PIC blinked - standard</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>
+
