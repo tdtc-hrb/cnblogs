@@ -92,8 +92,8 @@
     },
     "headline": "8位单片机PIC汇编语言",
     "name": "8位单片机PIC汇编语言",
-    "wordCount":  1147 ,
-    "timeRequired": "PT6M",
+    "wordCount":  804 ,
+    "timeRequired": "PT4M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "zh"
@@ -234,9 +234,7 @@
 | DC | Digit Carry bit|
 | Z  | Zero bit|
 | PD | Power-Down bit|</p>
-<ul>
-<li>
-<p>Byte-Oriented File Register Operations</p>
+<h2 id="byte-manipulation-for-io-control">Byte Manipulation for I/O Control</h2>
 <table>
 	<thead>
 			<tr>
@@ -253,53 +251,15 @@
 					<td>Z</td>
 					<td>1</td>
 			</tr>
-			<tr>
-					<td>CLRW</td>
-					<td>W=0 <br>Clears W.</br></td>
-					<td>Z</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>SWAPF  f, d</td>
-					<td>Swaps the nibbles of f and write the result to destination d.</td>
-					<td>None</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>ADDWFC f, d</td>
-					<td>Add WREG and Carry bit to f. <sup>1<sup></td>
-					<td>C, DC, Z</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>ASRF   f, d</td>
-					<td>Arithmetic Right Shift. <sup>1<sup></td>
-					<td>C, Z</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>LSLF   f, d</td>
-					<td>Logical Left Shift. <sup>1<sup></td>
-					<td>C, Z</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>LSRF   f, d</td>
-					<td>Logical Right Shift. <sup>1<sup></td>
-					<td>C, Z</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>SUBWFB f, d</td>
-					<td>Subtract WREG from f with Borrow. <sup>1<sup></td>
-					<td>C, DC, Z</td>
-					<td>2</td>
-			</tr>
 	</tbody>
 </table>
-</li>
-<li>
-<p>Bit-Oriented File Register Operations</p>
+<h3 id="example">example</h3>
+<pre tabindex="0"><code>; Subroutine to initialize PORTA
+Init_PORTA:
+BANKSEL TRISA
+CLRF TRISA ; Set PORTA as output
+RETURN;
+</code></pre><h2 id="bit-manipulation-for-io-control">Bit Manipulation for I/O Control</h2>
 <table>
 	<thead>
 			<tr>
@@ -336,151 +296,13 @@
 			</tr>
 	</tbody>
 </table>
-</li>
-<li>
-<p>Literal Operations</p>
-<table>
-	<thead>
-			<tr>
-					<th>Instruction</th>
-					<th>Description</th>
-					<th>Affected Flags</th>
-					<th>Instruction Cycles</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>MOVLB  k</td>
-					<td>Move literal to BSR. <sup>1<sup></td>
-					<td>None</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>MOVLP  k</td>
-					<td>Move literal to PCLATH. <sup>1<sup></td>
-					<td>None</td>
-					<td>1</td>
-			</tr>
-	</tbody>
-</table>
-</li>
-<li>
-<p>Control Operations</p>
-<table>
-	<thead>
-			<tr>
-					<th>Instruction</th>
-					<th>Description</th>
-					<th>Affected Flags</th>
-					<th>Instruction Cycles</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>BRA    k</td>
-					<td>Relative Branch. <sup>1<sup></td>
-					<td>None</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>BRW    —</td>
-					<td>Relative Branch with WREG. <sup>1<sup></td>
-					<td>None</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>CALL  LABEL</td>
-					<td>Calls subroutine LABEL.</td>
-					<td>None</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>CALLW  —</td>
-					<td>Call Subroutine with WREG. <sup>1<sup></td>
-					<td>None</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>GOTO  LABEL</td>
-					<td>Jumps to the code under LABEL.</td>
-					<td>None</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>RETFIE</td>
-					<td>Return command for interrupt subroutines.</td>
-					<td>None</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>RETLW  k</td>
-					<td>Return from a subroutine with W=N.</td>
-					<td>None</td>
-					<td>2</td>
-			</tr>
-			<tr>
-					<td>RETURN</td>
-					<td>Return from a subroutine.</td>
-					<td>None</td>
-					<td>2</td>
-			</tr>
-	</tbody>
-</table>
-</li>
-<li>
-<p>Inherent Operations</p>
-<table>
-	<thead>
-			<tr>
-					<th>Instruction</th>
-					<th>Description</th>
-					<th>Affected Flags</th>
-					<th>Instruction Cycles</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>CLRWDT</td>
-					<td>Clears Watchdog Timer.</td>
-					<td><SPAN style="TEXT-DECORATION: overline">TO</SPAN>, <SPAN style="TEXT-DECORATION: overline">PD</SPAN></td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>NOP</td>
-					<td>No Operation <br>Does Nothing.</br></td>
-					<td>None</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>RESET  —</td>
-					<td>Software device Reset. <sup>1<sup></td>
-					<td>None</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>SLEEP</td>
-					<td>Go into Standby Mode.</td>
-					<td><SPAN style="TEXT-DECORATION: overline">TO</SPAN>, <SPAN style="TEXT-DECORATION: overline">PD</SPAN></td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>TRIS   f</td>
-					<td>Load TRIS register with WREG. <sup>1<sup></td>
-					<td>None</td>
-					<td>1</td>
-			</tr>
-	</tbody>
-</table>
-</li>
-</ul>
-<p>*1: New MCU (PIC16F188/152 etc.) series add 12（47 in total） assembly instructions.</p>
-<h2 id="data-movement">Data Movement</h2>
-<ul>
-<li>PIC16: Moving data between two general RAM locations requires routing through the working register (W),
-often requiring manual bank switching via status bits (RP0, RP1).</li>
-<li>PIC18: Includes the dedicated MOVFF instruction,
-which can move data directly from any RAM/Special Function Register (SFR) location to any other RAM/SFR location in a single (two-word) command.</li>
-</ul>
+<h3 id="example-1">example</h3>
+<p>Use bit-oriented instructions for efficient I/O control:</p>
+<pre tabindex="0"><code>BSF LATA, 2 ; Set RA2 high (turn on LED)
+BCF LATA, 2 ; Clear RA2 low (turn off LED)
+BTFSC PORTA, 1 ; Check if RA1 is low (button pressed)
+GOTO BUTTON_PRESSED
+</code></pre><h2 id="data-movement">Data Movement</h2>
 <table>
 	<thead>
 			<tr>
@@ -511,20 +333,56 @@ which can move data directly from any RAM/Special Function Register (SFR) locati
 			</tr>
 	</tbody>
 </table>
-<h3 id="movf-and-movff">MOVF and MOVFF</h3>
-<ul>
-<li>pic16f</li>
-</ul>
-<pre tabindex="0"><code>    movf    STATUS, w
-    movwf   STATUS_TEMP
-
-    movf    BSR, w
-    movwf   BSR_TEMP
-</code></pre><ul>
-<li>pic18f</li>
-</ul>
-<pre tabindex="0"><code>    MOVFF   STATUS,STATUS_TEMP  ; DE STATUS Y DE BSR
-    MOVFF   BSR,BSR_TEMP        ; PARA RESTAURARLOS AL VALOR ANTES DE LA INTERRUPCION
+<h3 id="bank-selection">Bank Selection</h3>
+<pre tabindex="0"><code>BANKSEL TRISA ; Select bank containing TRISA
+MOVLW 0xFF
+MOVWF TRISA ; Set PORTA as all inputs
+</code></pre><h2 id="program-control">Program Control</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Instruction</th>
+					<th>Description</th>
+					<th>Affected Flags</th>
+					<th>Instruction Cycles</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>CALL  LABEL</td>
+					<td>Calls subroutine LABEL.</td>
+					<td>None</td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td>GOTO  LABEL</td>
+					<td>Jumps to the code under LABEL.</td>
+					<td>None</td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td>RETFIE</td>
+					<td>Return command for interrupt subroutines.</td>
+					<td>None</td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td>RETURN</td>
+					<td>Return from a subroutine.</td>
+					<td>None</td>
+					<td>2</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="interrupt-handling">Interrupt Handling</h3>
+<p>Interrupts allow the microcontroller to respond to external events promptly.
+Proper handling of interrupts is crucial for real-time applications.</p>
+<pre tabindex="0"><code>ORG 0x0004 ; Interrupt vector location
+GOTO ISR ; Jump to ISRISR:
+ISR:     ; Handle interrupt
+BCF INTCON, INTF ; Clear interrupt flag
+; Perform interrupt-specific tasks
+RETFIE ; Return from interrupt
 </code></pre><h2 id="math">Math</h2>
 <ul>
 <li>Skip if Zero</li>
@@ -604,21 +462,6 @@ which can move data directly from any RAM/Special Function Register (SFR) locati
 			</tr>
 	</tbody>
 </table>
-<h3 id="subwf"><a href="http://www.onlinepiccompiler.com/InstructionsENG.html#section=SUBWF">SUBWF</a></h3>
-<p><img src="http://www.onlinepiccompiler.com/img/subwfENG.png" alt="d=0">
-<img src="http://www.onlinepiccompiler.com/img/subwfENG.png" alt="d=1"></p>
-<h4 id="affected-flags">AFFECTED FLAGS</h4>
-<p>SUBWF affects the flags Z, DC and C. <br>
-Note: The destination D (=0, W, 1 or F) is not effective on the flags.</p>
-<ul>
-<li>Z <br>
-Zero Flag (Z) is set if the result of the subtraction is equal to zero. <br>
-In the example below, because the result is 48 (different from 0) Z=0 at the end of SUBWF instruction.</li>
-</ul>
-<p>Example: <br>
-Let&rsquo;s say W=15 and COUNTER=63, then</p>
-<pre tabindex="0"><code>SUBWF COUNTER, F
-</code></pre><p>makes COUNTER=48. W remains the same. If the destination was W (or 0), W becomes 48 and COUNTER remains the same.</p>
 <h3 id="logic-operation">logic operation</h3>
 <table>
 	<thead>
@@ -668,46 +511,13 @@ Let&rsquo;s say W=15 and COUNTER=63, then</p>
 			</tr>
 	</tbody>
 </table>
-<h2 id="code-bit-manipulation">Code bit manipulation</h2>
-<table>
-	<thead>
-			<tr>
-					<th>Instruction</th>
-					<th>Description</th>
-					<th>Affected Flags</th>
-					<th>Instruction Cycles</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>COMF   f, d</td>
-					<td><SPAN style="TEXT-DECORATION: overline">f</SPAN>⇒W (if d=0), <SPAN style="TEXT-DECORATION: overline">f</SPAN>⇒f (if d=1) <br>Takes the complement of each bit in f and write the result to destination d.</br></td>
-					<td>Z</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>RLF    f, d</td>
-					<td>f&lt;1⇒W (if d=0), f&lt;1⇒f (if d=1) <br>Rotates f one bit to the left through Carry Bit and write the result to destination d.</br></td>
-					<td>C</td>
-					<td>1</td>
-			</tr>
-			<tr>
-					<td>RRF    f, d</td>
-					<td>f&gt;1⇒W (if d=0), f&gt;1⇒f (if d=1) <br>Rotates f one bit to the right through Carry Bit and write the result to destination d.</br></td>
-					<td>C</td>
-					<td>1</td>
-			</tr>
-	</tbody>
-</table>
 <h1 id="ref">Ref</h1>
 <ul>
-<li><a href="http://www.onlinepiccompiler.com/InstructionsENG.html#section=div0">Summary of Instructions</a></li>
-<li><a href="http://player.slideplayer.com/download/78/12900510/cNyMX-VU_CZjdfqY7w9taQ/1684229591/12900510.ppt">Lecture 29 - Continue with PIC example programs: Interrupt</a></li>
-<li>ASCII code</li>
+<li><a href="https://web.archive.org/web/20220523013104/http://www.onlinepiccompiler.com:80/InstructionsENG.html">Summary of Instructions</a></li>
+<li><a href="https://openwa.pressbooks.pub/nehakardam10/chapter/part-1-introduction-to-pic16f18875-instruction-set/">Introduction to PIC16F18875 Instruction Set</a></li>
+<li><a href="https://openwa.pressbooks.pub/nehakardam10/chapter/part-2-detailed-pic16f18875-instruction-set-and-programming-techniques/">PIC16F18875 Instruction Set - 2</a></li>
+<li><a href="https://openwa.pressbooks.pub/nehakardam10/chapter/155/">PIC16F18875 Instruction Set - 3</a></li>
 </ul>
-<pre tabindex="0"><code>&amp;#124; - |
-&amp;#96;  - `
-</code></pre><p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Dot_printer_ASCII.png" alt="Dot printer ASCII"></p>
 
     </section>
 

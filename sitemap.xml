@@ -2,16 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/</loc>
+    <lastmod>2026-08-08T10:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic8_conf123x/</loc>
+    <lastmod>2026-08-08T10:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://tdtc-hrb.github.io/cnblogs/</loc>
+    <lastmod>2026-08-08T10:08:08+08:00</lastmod>
+  </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic8_asm-tutor1b/</loc>
     <lastmod>2026-08-06T08:08:08+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic8_asm-tutor1a/</loc>
-    <lastmod>2026-08-06T08:08:08+08:00</lastmod>
-  </url><url>
-    <loc>https://tdtc-hrb.github.io/cnblogs/post/</loc>
-    <lastmod>2026-08-06T08:08:08+08:00</lastmod>
-  </url><url>
-    <loc>https://tdtc-hrb.github.io/cnblogs/</loc>
     <lastmod>2026-08-06T08:08:08+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic8_blink1/</loc>
@@ -31,9 +34,6 @@
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic8_mcc-classic/</loc>
     <lastmod>2026-07-23T10:08:08+08:00</lastmod>
-  </url><url>
-    <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic8_conf123x/</loc>
-    <lastmod>2026-07-21T10:08:08+08:00</lastmod>
   </url><url>
     <loc>https://tdtc-hrb.github.io/cnblogs/post/e-pic8_blink6/</loc>
     <lastmod>2026-07-14T08:08:08+08:00</lastmod>

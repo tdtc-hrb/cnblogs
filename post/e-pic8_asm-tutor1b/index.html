@@ -13,7 +13,7 @@
 
 
 <meta name="twitter:title" content="MPASM to MPLAB XC8 PIC Assembler - b"/>
-<meta name="twitter:description" content="Block and banksel"/>
+<meta name="twitter:description" content="bankmask and banksel"/>
 <meta name="twitter:site" content="@"/>
 
 
@@ -27,7 +27,7 @@
     
 
     
-    <meta property="og:description" content="Block and banksel" />
+    <meta property="og:description" content="bankmask and banksel" />
   	<meta property="og:type" content="article" />
     <meta property="article:published_time" content="2026-08-06T08:08:08&#43;08:00" />
 
@@ -37,7 +37,7 @@
     <title>MPASM to MPLAB XC8 PIC Assembler - b &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
 
     
-    <meta name="description" content="Block and banksel" />
+    <meta name="description" content="bankmask and banksel" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -92,7 +92,7 @@
     },
     "headline": "MPASM to MPLAB XC8 PIC Assembler - b",
     "name": "MPASM to MPLAB XC8 PIC Assembler - b",
-    "wordCount":  337 ,
+    "wordCount":  350 ,
     "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
@@ -103,7 +103,7 @@
     "dateModified": "2026-08-06T08:08Z",
     
     
-    "description": "Block and banksel",
+    "description": "bankmask and banksel",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://tdtc-hrb.github.io/cnblogs/post/e-pic8_asm-tutor1b/"
@@ -164,7 +164,7 @@
 
     <header class="post-header">
         <h1 class="post-title">MPASM to MPLAB XC8 PIC Assembler - b</h1>
-        <small>Block and banksel</small>
+        <small>bankmask and banksel</small>
 
         <section class="post-meta">
         
@@ -212,24 +212,16 @@
 <a href="https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers/downloads-documentation#XC8">XC8 v2.20+</a></p>
 </li>
 </ul>
-<h3 id="define-a-block-of-constants">Define a Block Of Constants</h3>
-<p>Do not use <b>cblock</b> or <b>equ</b> to define variable location names for relocatable code.</p>
-<pre tabindex="0"><code>CBLOCK = accumulative equ
-</code></pre><ul>
-<li>CBLOCK</li>
-</ul>
-<pre tabindex="0"><code>cblock 0x20 ; name_1 will be assigned 20
-name_1, name_2 ; name_2, 21 and so on
-name_3, name_4 ; name_4 is assigned 23.
-endc
-</code></pre><ul>
-<li>EQU</li>
-</ul>
-<pre tabindex="0"><code>    name_1    EQU 0x20
-    name_2    EQU 0x21
-    name_3    EQU 0x22
-    name_4    EQU 0x23
-</code></pre><h3 id="banksel">banksel</h3>
+<h3 id="bankmask---macro">bankmask - macro</h3>
+<p>It is recommended that you mask all addresses used by PIC file register instructions whose operand represents a bank offset.</p>
+<pre tabindex="0"><code>#include &lt;xc.inc&gt;
+copy:
+  BANKSEL (src)              ;select the bank of src
+  movf     BANKMASK(src),w   ;move from src, masking the address
+  BANKSEL (dst)              ;select the bank of dst
+  movwf    BANKMASK(dst)     ;move to dst, masking the address
+</code></pre><p>The BANKMASK() macro, can perform the mask using the correct values, based on the selected device.</p>
+<h3 id="banksel---pseudo-instructions">banksel - Pseudo-instructions</h3>
 <p>The file registers of the pic are held in banks,
 some are shared across all banks and some program data can also be shared across all banks but this is obviously
 wasteful of memory so it’s limited to select registers and shared data.</p>
@@ -314,6 +306,13 @@ This is where the ‘banksel’ instruction comes in. It makes sure you are addr
 
 
   <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/e-pic8_conf123x/">
+          <section class="post">
+              <h2>Register Definitions: Configuration Words</h2>
+              
+          </section>
+      </a>
   
   
       <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-pic8_asm-tutor1a/">

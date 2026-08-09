@@ -162,6 +162,257 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_conf123x/">Register Definitions: Configuration Words</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Legend:</p>
+<ul>
+<li>R:   Readable bit</li>
+<li>P:   Programmable bit</li>
+<li>U:   Unimplemented bit, read as &lsquo;1&rsquo;</li>
+<li>&lsquo;0&rsquo;: Bit is cleared</li>
+<li>&lsquo;1&rsquo;: Bit is set</li>
+<li>n:   Value when blank or after Bulk Erase</li>
+</ul>
+<h3 id="config1---oscillators">CONFIG1 - OSCILLATORS</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>13</th>
+					<th>12</th>
+					<th>11</th>
+					<th>10</th>
+					<th>9</th>
+					<th>8</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>FCMEN</td>
+					<td>Reserved</td>
+					<td>CSWEN</td>
+					<td>Reserved</td>
+					<td>Reserved</td>
+					<td>CLKOUTEN</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>-</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>1</td>
+					<td>-</td>
+					<td>1</td>
+					<td>-</td>
+					<td>-</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>7</th>
+					<th>6 ~ 4</th>
+					<th>3</th>
+					<th>2 ~ 0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>Reserved</td>
+					<td>RSTOSC&lt;2:0&gt;</td>
+					<td>Reserved</td>
+					<td>FEXTOSC&lt;2:0&gt;</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>-</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>-</td>
+					<td>1</td>
+					<td>-</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="config2----supervisors">CONFIG2 -  SUPERVISORS</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>13</th>
+					<th>12</th>
+					<th>11</th>
+					<th>10</th>
+					<th>9</th>
+					<th>8</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>DEBUG</td>
+					<td>STVREN</td>
+					<td>PPS1WAY</td>
+					<td>ZCDDIS</td>
+					<td>BORV</td>
+					<td>Reserved</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>R/P</td>
+					<td>R/P</td>
+					<td>R/P</td>
+					<td>R/P</td>
+					<td>R/P</td>
+					<td>-</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>1</td>
+					<td>-</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>7 ~ 6</th>
+					<th>5</th>
+					<th>4 ~ 2</th>
+					<th>1</th>
+					<th>0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>BOREN&lt;1:0&gt;</td>
+					<td>LPBOREN</td>
+					<td>Reserved</td>
+					<td>PWRTE</td>
+					<td>MCLRE</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>R/P</td>
+					<td>R/P</td>
+					<td>-</td>
+					<td>R/P</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>1</td>
+					<td>1</td>
+					<td>-</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="config3---windowed-watchdog">CONFIG3 - WINDOWED WATCHDOG</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>13 ~ 11</th>
+					<th>10 ~ 8</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>WDTCCS&lt;2:0&gt;</td>
+					<td>WDTCWS&lt;2:0&gt;</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>R/P</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>Bit</th>
+					<th>7</th>
+					<th>6 ~ 5</th>
+					<th>4 ~ 0</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Name</td>
+					<td>Reserved</td>
+					<td>WDTE&lt;1:0&gt;</td>
+					<td>WDTCPS&lt;4:0&gt;</td>
+			</tr>
+			<tr>
+					<td>Access</td>
+					<td>-</td>
+					<td>R/P</td>
+					<td>R/P</td>
+			</tr>
+			<tr>
+					<td>Reset</td>
+					<td>-</td>
+					<td>1</td>
+					<td>1</td>
+			</tr>
+	</tbody>
+</table>
+<p>n1: WDTCWS <br>
+n2: Value - WDTWS at POR <br>
+n3: Window delay Percent of time - WDTWS at POR <br>
+n4: Window opening Percent of time - WDTWS at POR <br>
+n5: Software control of WDTWS? <br>
+n6: Keyed access required?</p> <a class="read-more" href="/cnblogs/post/e-pic8_conf123x/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-08-08T10:08:08&#43;08:00">
+            8 Aug 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-pic8_asm-tutor1b/">MPASM to MPLAB XC8 PIC Assembler - b</a></h2>
     </header>
     <section class="post-excerpt">
@@ -201,27 +452,15 @@
 <a href="https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers/downloads-documentation#XC8">XC8 v2.20+</a></p>
 </li>
 </ul>
-<h3 id="define-a-block-of-constants">Define a Block Of Constants</h3>
-<p>Do not use <b>cblock</b> or <b>equ</b> to define variable location names for relocatable code.</p>
-<pre tabindex="0"><code>CBLOCK = accumulative equ
-</code></pre><ul>
-<li>CBLOCK</li>
-</ul>
-<pre tabindex="0"><code>cblock 0x20 ; name_1 will be assigned 20
-name_1, name_2 ; name_2, 21 and so on
-name_3, name_4 ; name_4 is assigned 23.
-endc
-</code></pre><ul>
-<li>EQU</li>
-</ul>
-<pre tabindex="0"><code>    name_1    EQU 0x20
-    name_2    EQU 0x21
-    name_3    EQU 0x22
-    name_4    EQU 0x23
-</code></pre><h3 id="banksel">banksel</h3>
-<p>The file registers of the pic are held in banks,
-some are shared across all banks and some program data can also be shared across all banks but this is obviously
-wasteful of memory so it’s limited to select registers and shared data.</p> <a class="read-more" href="/cnblogs/post/e-pic8_asm-tutor1b/">&raquo;</a></p>
+<h3 id="bankmask---macro">bankmask - macro</h3>
+<p>It is recommended that you mask all addresses used by PIC file register instructions whose operand represents a bank offset.</p>
+<pre tabindex="0"><code>#include &lt;xc.inc&gt;
+copy:
+  BANKSEL (src)              ;select the bank of src
+  movf     BANKMASK(src),w   ;move from src, masking the address
+  BANKSEL (dst)              ;select the bank of dst
+  movwf    BANKMASK(dst)     ;move to dst, masking the address
+</code></pre><p>The BANKMASK() macro, can perform the mask using the correct values, based on the selected device.</p> <a class="read-more" href="/cnblogs/post/e-pic8_asm-tutor1b/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -2201,104 +2440,6 @@ three peripherals are needed to be configured: CCP2, TIMER2 and CWG.</p> <a clas
         
         <time class="post-date" datetime="2026-07-23T10:08:08&#43;08:00">
             23 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_conf123x/">advanced 8-bit mcu 的 Register Definitions: Configuration Words</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>Ver: 0.1</p>
-<h3 id="pin-count-vs-memory---q10"><a href="https://www.microchip.com/en-us/products/microcontrollers/8-bit-mcus/pic-mcus/pic18-q10">Pin Count vs. Memory - Q10</a></h3>
-<table>
-	<thead>
-			<tr>
-					<th>Flash (KB)</th>
-					<th>28 Pins</th>
-					<th>40 pins}</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>128</td>
-					<td>PIC18F27Q10</td>
-					<td>PIC18F47Q10</td>
-			</tr>
-			<tr>
-					<td>64</td>
-					<td>PIC18F26Q10</td>
-					<td>PIC18F46Q10</td>
-			</tr>
-			<tr>
-					<td>32</td>
-					<td>PIC18F25Q10</td>
-					<td>PIC18F45Q10</td>
-			</tr>
-			<tr>
-					<td>16</td>
-					<td>PIC18F24Q10</td>
-					<td>-</td>
-			</tr>
-	</tbody>
-</table>
-<h2 id="46-register-summary---configuration-words">4.6 Register Summary - Configuration Words</h2>
-<table>
-	<thead>
-			<tr>
-					<th>Name</th>
-					<th>Address</th>
-					<th>Words</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>CONFIG1</td>
-					<td>300000h</td>
-					<td>RSTOSC, FEXTOSC, FCMEN, CSWEN, CLKOUTEN</td>
-			</tr>
-			<tr>
-					<td>CONFIG2</td>
-					<td>300002h</td>
-					<td>BOREN, LPBOREN, PWRTE, MCLRE, XINST, DEBUG, STVREN, PPS1WAY, ZCD, BORV</td>
-			</tr>
-			<tr>
-					<td>CONFIG3</td>
-					<td>300004h</td>
-					<td>WDTE, WDTCPS, WDTCCS, WDTCWS</td>
-			</tr>
-			<tr>
-					<td>CONFIG4</td>
-					<td>300006h</td>
-					<td>WRT3, WRT2, WRT1, WRT0, LVP, SCANE, WRTD, WRTB, WRTC</td>
-			</tr>
-			<tr>
-					<td>CONFIG5</td>
-					<td>300008h</td>
-					<td>CPD, CP</td>
-			</tr>
-			<tr>
-					<td>CONFIG6</td>
-					<td>30000ah</td>
-					<td>EBTR3, EBTR2, EBTR1, EBTR0, EBTRB</td>
-			</tr>
-	</tbody>
-</table>
-<h2 id="47-register-definitions-configuration-words">4.7 Register Definitions: Configuration Words</h2>
-<p>Legend:</p> <a class="read-more" href="/cnblogs/post/e-pic8_conf123x/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-21T10:08:08&#43;08:00">
-            21 Jul 2026
         </time>
     </footer>
 </article>
