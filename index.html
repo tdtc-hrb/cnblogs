@@ -162,6 +162,198 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink2/">PIC blinked - init</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Osciliator</li>
+<li>timer0</li>
+<li>led</li>
+</ul>
+<h3 id="osciliator">Osciliator</h3>
+<pre tabindex="0"><code>    banksel OSCCON1
+    movlw   0x63        ; System oscillator set to 4MHz
+    movwf   OSCCON1
+</code></pre><h3 id="start-timer0">Start timer0</h3>
+<pre tabindex="0"><code>    banksel T0CON1
+    movlw   0x48        ; Set TIMER0 clock source to FOSC/4, scale 1:256 TIMER0 overflows every 32.768 milliseconds
+    movwf   T0CON1
+    banksel T0CON0
+    movlw   0x80        ; Start TIMER0
+    movwf   T0CON0
+</code></pre><h3 id="seup-timer0">Seup TIMER0</h3>
+<pre tabindex="0"><code>;
+; Seup TIMER0
+;
+    banksel TMR0L
+    clrf    TMR0L
+    movlw   0xFF
+    movwf   TMR0H
+    banksel PIR0
+    bcf     PIR0,PIR0_TMR0IF_POSITION
+    bsf     PIE0,PIE0_TMR0IE_POSITION
+    movlw   TIMER0_TICKS_TO_LED_TOGGLE
+    movwf   LED_D2_wait
+</code></pre><ul>
+<li>Constant</li>
+</ul>
+<pre tabindex="0"><code>#define TIMER0_TICKS_TO_LED_TOGGLE 10
+</code></pre><ul>
+<li>Variable</li>
+</ul>
+<pre tabindex="0"><code>    PSECT   Isr_Data,global,class=COMMON,space=1,delta=1,noexec
+LED_D2_wait:DS      1
+</code></pre><h3 id="led">led</h3>
+<pre tabindex="0"><code>    banksel TRISA
+    bcf     TRISA,TRISA_TRISA4_POSITION
+    bcf     TRISA,TRISA_TRISA5_POSITION
+    banksel LATA
+    bcf     LATA,LATA_LATA4_POSITION
+    bcf     LATA,LATA_LATA5_POSITION
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://github.com/dsoze1138/MPLABX_pic-as_examples/tree/master/16F18877_DN164136_ADC_UART_v615.X">adc+uart+timer0</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/e-pic8_blink2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-08-10T08:08:08&#43;08:00">
+            10 Aug 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink3/">PIC blinked - init</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><pre tabindex="0"><code>; Disable all interrupts
+; some interrupt code ;
+
+; Other peripheral initialization code.
+
+; Enable system interrupts
+; some interrupt code ;
+</code></pre><h3 id="disable-all-interrupts">Disable all interrupts</h3>
+<pre tabindex="0"><code>    clrf    INTCON      ; Disable all interrupts
+    banksel PIE0
+    clrf    PIE0
+    clrf    PIE1
+    clrf    PIE2
+    clrf    PIE3
+    clrf    PIE4
+    clrf    PIE5
+    clrf    PIE6
+    clrf    PIE7
+    clrf    PIE8
+</code></pre><h3 id="enable-system-interrupts">Enable system interrupts</h3>
+<pre tabindex="0"><code>;
+; Enable system interrupts
+;
+    bsf     INTCON,INTCON_PEIE_POSITION
+    bsf     INTCON,INTCON_GIE_POSITION
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://github.com/dsoze1138/MPLABX_pic-as_examples/tree/master/16F18877_DN164136_ADC_UART_v615.X">adc+uart+timer0</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/e-pic8_blink3/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-08-10T08:08:08&#43;08:00">
+            10 Aug 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink4/">PIC blinked - interrupt</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="/cnblogs/post/e-pic8_blink2/">Initialation: Peripheral</a></li>
+<li><a href="/cnblogs/post/e-pic8_blink3/">Initialation: System interrupt</a></li>
+</ul>
+<h2 id="interrupt-vector">INTERRUPT VECTOR</h2>
+<pre tabindex="0"><code>; Add this line in the project properties box, pic-as Global Options -&gt; Additional options: 
+;    -Wa,-a -Wl,-DCODE=2,-pResetVec=0h,-pISR_Vec=4h
+;
+</code></pre><h3 id="timer0-vector">Timer0 Vector</h3>
+<pre tabindex="0"><code>;
+; Interrupt vector
+;
+    PSECT   ISR_Vec,class=CODE,delta=2
+    global  ISR
+ISR:
+    banksel PIE0
+    btfsc   PIE0,PIE0_TMR0IE_POSITION
+    btfss   PIR0,PIR0_TMR0IF_POSITION
+    goto    ISR_TIMER0_EXIT
+    bcf     PIR0,PIR0_TMR0IF_POSITION
+    movf    LED_D2_wait,F
+    skipnz
+    goto    ISR_TIMER0_EXIT
+    decfsz  LED_D2_wait,F
+    goto    ISR_TIMER0_EXIT
+    movlw   TIMER0_TICKS_TO_LED_TOGGLE
+    movwf   LED_D2_wait
+    banksel LATA
+    movlw   (1&lt;&lt;LATA_LATA4_POSITION)
+    xorwf   LATA,F      ; Toggle LED_D3
+ISR_TIMER0_EXIT:
+
+    retfie
+</code></pre><ul>
+<li>Variable</li>
+</ul>
+<pre tabindex="0"><code>    PSECT   Isr_Data,global,class=COMMON,space=1,delta=1,noexec
+LED_D2_wait:DS      1
+</code></pre><h3 id="reset-vector">Reset vector</h3>
+<pre tabindex="0"><code>;
+; Reset vector
+;
+    PSECT   ResetVec,class=CODE,delta=2
+    global  ResetVector
+ResetVector:
+    pagesel Start
+    goto    Start
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://github.com/dsoze1138/MPLABX_pic-as_examples/tree/master/16F18877_DN164136_ADC_UART_v615.X">adc+uart+timer0</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/e-pic8_blink4/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-08-10T08:08:08&#43;08:00">
+            10 Aug 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-pic8_conf123x/">Register Definitions: Configuration Words</a></h2>
     </header>
     <section class="post-excerpt">
@@ -2358,230 +2550,6 @@ configure the individual pins of corresponding ports (PORTA, PORTB, and PORTC) a
         
         <time class="post-date" datetime="2026-07-31T08:08:08&#43;08:00">
             31 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-proteus_component-an3049/">Unavailable components and their substitutes</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h2 id="h-bridge">H-bridge</h2>
-<p><img src="https://modularcircuits.com/blog/wp-content/uploads/2011/10/image_thumb7.png" alt=""></p>
-<ul>
-<li>The switching elements (Q1..Q4) are usually bi-polar or FET transistors, in some high-voltage applications IGBTs.
-Integrated solutions also exist but whether the switching elements are integrated with their control circuits
-or not is not relevant for the most part for this discussion.</li>
-<li>The diodes (D1..D4) are called catch diodes and are usually of a Schottky type.</li>
-</ul>
-<h3 id="substitutes">substitutes</h3>
-<ul>
-<li><a href="https://www.renesas.cn/zh/document/dst/hip4080-datasheet">hip4080a</a></li>
-<li><a href="https://www.renesas.com/en/document/dst/hip4081a-datasheet">hip4081a</a></li>
-<li><a href="https://www.st.com/en/motor-drivers/l298.html">L298</a></li>
-</ul>
-<p>The biggest difference between the HIP4080A and the HIP4081A is that the HIP4081A allows separate and individual control of the 4 MOSFET gates,
-whereas the HIP4080A does not.</p> <a class="read-more" href="/cnblogs/post/e-proteus_component-an3049/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-30T10:08:08&#43;08:00">
-            30 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_mcc-classic/">MPLAB Code Configurator - Classic</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p><strong>Classic support for this device is not maintatined actively and will be deprecated in the future.</strong></p>
-<ul>
-<li><a href="https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator/classic">MCC Classic</a></li>
-</ul>
-<pre tabindex="0"><code>PIC10/PIC12/PIC16/PIC18 library v1.81.7 
-</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-type.png" alt=""></p>
-<h1 id="an3049">An3049</h1>
-<ol>
-<li>In the System Module, set the clock to HFINTOSC with 32 MHz frequency.</li>
-</ol>
-<ul>
-<li>mcc.c</li>
-</ul>
-<pre tabindex="0"><code>NOSC HFINTOSC; NDIV 1;
-HFFRQ 32_MHz;
-CSWHOLD may proceed; SOSCPWR Low power; 
-</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-clock.png" alt=""></p>
-<ol start="2">
-<li>Set the ADCC module to Basic_mode, with FOSC/ADCLK clock source configured to FOSC/32.</li>
-</ol>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-adcc.png" alt=""></p>
-<h2 id="motor">motor</h2>
-<p>For providing drive signal to the motor,
-three peripherals are needed to be configured: CCP2, TIMER2 and CWG.</p> <a class="read-more" href="/cnblogs/post/e-pic8_mcc-classic/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-23T10:08:08&#43;08:00">
-            23 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink6/">PIC blinked - m2</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>blink188m2.asm:</p>
-<pre tabindex="0"><code>    title &#34;Blink V. 1.1&#34;
-    subtitle &#34;The uC Equivalent of Hello world&#34;
-; This program uses Assembly language to blink a small LED, using the PIC16F18877&#39;s onboard timers
-; and interrupts.  Use and modify this code however you wish
-
-; ***** Program Header *******************************************************************************
-    list P=PIC16F18877, ST=OFF, MM=OFF, N=42, B=4, W=1 ; &lt;-- List file directives
-    include &lt;p16f18877.inc&gt; ; &lt;--Use the name of your PIC here
-
-; ***** Device Configuration *************************************************************************
-    __CONFIG _CONFIG1, _FEXTOSC_OFF &amp; _RSTOSC_HFINT32 &amp; _CLKOUTEN_OFF &amp; _CSWEN_ON &amp; _FCMEN_ON
-    __CONFIG _CONFIG2, _MCLRE_ON &amp; _PWRTE_OFF &amp; _LPBOREN_OFF &amp; _BOREN_OFF &amp; _BORV_LO &amp; _ZCD_OFF &amp; _PPS1WAY_OFF &amp; _STVREN_ON
-    __CONFIG _CONFIG3, _WDTCPS_WDTCPS_31 &amp; _WDTE_OFF &amp; _WDTCWS_WDTCWS_7 &amp; _WDTCCS_SC
-    __CONFIG _CONFIG4, _WRT_OFF &amp; _SCANE_available &amp; _LVP_ON
-    __CONFIG _CONFIG5, _CP_OFF &amp; _CPD_OFF
-
-; ******* Main Program ********************************************************************************
-; Org 0 tells the compiler that this is literally the origin of the actual program, IE line 0
-; From hereon out, the compiler assumes that each instruction is to be executed sequentially.
-    org 0
-
-Start:
-    clrf    INTCON      ; Disable all interrupts
-    banksel PIE0
-    clrf    PIE0
-    clrf    PIE1
-    clrf    PIE2
-    clrf    PIE3
-    clrf    PIE4
-    clrf    PIE5
-    clrf    PIE6
-    clrf    PIE7
-    clrf    PIE8
-
-    banksel OSCCON1
-    movlw   0x62        ; System oscillator set to 8MHz
-    movwf   OSCCON1
-
-    banksel T0CON1
-    movlw   0x48        ; Set TIMER0 clock source to FOSC/4, scale 1:256 TIMER0 overflows every 32.768 milliseconds
-    movwf   T0CON1
-    banksel T0CON0
-    movlw   0x80        ; Start TIMER0
-    movwf   T0CON0
-
-    banksel ANSELB
-    clrf    ANSELB
-    banksel TRISB
-    movlw   0xF0
-    movwf   TRISB
-    banksel LATB
-    movwf   LATB
-
-    banksel TMR0L
-    clrf    TMR0L
-    movlw   0xFF
-    movwf   TMR0H
-    banksel PIR0
-    bcf     PIR0, TMR0IF
-
-    clrf    FSR1L
-    movlw   10
-    subwf   FSR1L,F
-    goto    AppLoop
-;
-; Application loop
-;
-AppLoop:
-    banksel LATB
-    movlw   1
-    xorwf   LATB,F      ; Toggle LED1
-    call    Delay
-    goto    AppLoop     ;loop forever
-;
-; Spin wait
-;
-Delay:
-    clrf    FSR0L
-    clrf    FSR0H
-    bsf     FSR0H,7
-Delay_1:
-    call    Delay_2
-    incfsz  FSR0L,F
-    goto    Delay_1
-    incfsz  FSR0H,F
-    goto    Delay_1
-    return
-;
-; Toggle LED2 when TIMER0 overflows
-;
-; Note: This delay always takes the same number
-;       of instruction cycles for each of
-;       three possible paths.
-;
-Delay_2:
-    banksel PIR0
-    btfss   PIR0, TMR0IF
-    goto    Delay_3
-    bcf     PIR0, TMR0IF
-    banksel FSR1L
-    movlw   10
-    incfsz  FSR1L,F
-    goto    Delay_4
-    subwf   FSR1L,F
-    movlw   2
-    xorwf   LATB,F      ; Toggle LED2
-    return
-Delay_3:
-    nop
-    nop
-    nop
-    nop
-    nop
-Delay_4:
-    nop
-    nop
-    return
-
-    end
-</code></pre> <a class="read-more" href="/cnblogs/post/e-pic8_blink6/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-14T08:08:08&#43;08:00">
-            14 Jul 2026
         </time>
     </footer>
 </article>

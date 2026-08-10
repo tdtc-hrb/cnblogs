@@ -12,15 +12,15 @@
 
 
 
-<meta name="twitter:title" content="PIC blinked - count"/>
+<meta name="twitter:title" content="PIC blinked - TIMER0 overflows"/>
 <meta name="twitter:description" content="pic16f18877"/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="PIC blinked - count &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:title" content="PIC blinked - TIMER0 overflows &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
   	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
-  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/e-pic8_blink6/" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/e-pic8_blink5/" />
 
     
         
@@ -34,7 +34,7 @@
     
     
 
-    <title>PIC blinked - count &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+    <title>PIC blinked - TIMER0 overflows &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
 
     
     <meta name="description" content="pic16f18877" />
@@ -61,7 +61,7 @@
     
     <meta name="generator" content="Hugo 0.164.0">
 
-    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-pic8_blink6/" />
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-pic8_blink5/" />
 
     
       
@@ -90,15 +90,15 @@
             
         ]
     },
-    "headline": "PIC blinked - count",
-    "name": "PIC blinked - count",
-    "wordCount":  304 ,
+    "headline": "PIC blinked - TIMER0 overflows",
+    "name": "PIC blinked - TIMER0 overflows",
+    "wordCount":  377 ,
     "timeRequired": "PT2M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "zh"
     },
-    "url": "https://tdtc-hrb.github.io/cnblogs/post/e-pic8_blink6/",
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/e-pic8_blink5/",
     "datePublished": "2026-07-14T08:08Z",
     "dateModified": "2026-07-14T08:08Z",
     
@@ -106,7 +106,7 @@
     "description": "pic16f18877",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://tdtc-hrb.github.io/cnblogs/post/e-pic8_blink6/"
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/e-pic8_blink5/"
     }
 }
     </script>
@@ -163,7 +163,7 @@
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">PIC blinked - count</h1>
+        <h1 class="post-title">PIC blinked - TIMER0 overflows</h1>
         <small>pic16f18877</small>
 
         <section class="post-meta">
@@ -178,9 +178,9 @@
 
     <section class="post-content">
       <ul>
-<li><a href="/cnblogs/post/e-pic8_blink5/">timer0: overflows</a></li>
+<li><a href="/cnblogs/post/e-pic8_blink6/">timer0: count</a></li>
 </ul>
-<p>blink188m2.asm:</p>
+<p>blink188m1.asm:</p>
 <pre tabindex="0"><code>    title &#34;Blink V. 1.1&#34;
     subtitle &#34;The uC Equivalent of Hello world&#34;
 ; This program uses Assembly language to blink a small LED, using the PIC16F18877&#39;s onboard timers
@@ -252,15 +252,48 @@ AppLoop:
     banksel LATB
     movlw   1
     xorwf   LATB,F      ; Toggle LED1
-    call    Delay
+    call    Delay_1
     goto    AppLoop     ;loop forever
 ;
 ; Spin wait
 ;
-Delay:
-    clrf    FSR0L
-    clrf    FSR0H
-    bsf     FSR0H,7
+Delay_1:
+    call    Delay_2
+    incfsz  FSR0L,F
+    goto    Delay_1
+    incfsz  FSR0H,F
+    goto    Delay_1
+    return
+;
+; Toggle LED2 when TIMER0 overflows
+;
+; Note: This delay always takes the same number
+;       of instruction cycles for each of
+;       three possible paths.
+;
+Delay_2:
+    banksel PIR0
+    btfss   PIR0, TMR0IF
+    goto    Delay_3
+    bcf     PIR0, TMR0IF
+    banksel FSR1L
+    movlw   10
+    incfsz  FSR1L,F
+    goto    Delay_4
+    subwf   FSR1L,F
+    movlw   2
+    xorwf   LATB,F      ; Toggle LED2
+    return
+Delay_3:
+    nop
+    nop
+    nop
+    nop
+    nop
+Delay_4:
+    nop
+    nop
+    return
 
     end
 </code></pre><h2 id="ref">Ref</h2>
@@ -282,19 +315,19 @@ Delay:
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=PIC%20blinked%20-%20count&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_blink6%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=PIC%20blinked%20-%20TIMER0%20overflows&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_blink5%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_blink6%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_blink5%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_blink6%2f&amp;description=PIC%20blinked%20-%20count"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_blink5%2f&amp;description=PIC%20blinked%20-%20TIMER0%20overflows"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_blink6%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-pic8_blink5%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -318,17 +351,17 @@ Delay:
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/e-pic8_mcc-classic/">
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/e-pic8_blink6/">
           <section class="post">
-              <h2>MPLAB Code Configurator - Classic</h2>
+              <h2>PIC blinked - count</h2>
               
           </section>
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-pic8_blink5/">
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-pic8_blink7/">
           <section class="post">
-              <h2>PIC blinked - TIMER0 overflows</h2>
+              <h2>PIC blinked</h2>
           </section>
       </a>
   

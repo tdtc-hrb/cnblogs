@@ -164,6 +164,343 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-proteus_component-an3049/">Unavailable components and their substitutes</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h2 id="h-bridge">H-bridge</h2>
+<p><img src="https://modularcircuits.com/blog/wp-content/uploads/2011/10/image_thumb7.png" alt=""></p>
+<ul>
+<li>The switching elements (Q1..Q4) are usually bi-polar or FET transistors, in some high-voltage applications IGBTs.
+Integrated solutions also exist but whether the switching elements are integrated with their control circuits
+or not is not relevant for the most part for this discussion.</li>
+<li>The diodes (D1..D4) are called catch diodes and are usually of a Schottky type.</li>
+</ul>
+<h3 id="substitutes">substitutes</h3>
+<ul>
+<li><a href="https://www.renesas.cn/zh/document/dst/hip4080-datasheet">hip4080a</a></li>
+<li><a href="https://www.renesas.com/en/document/dst/hip4081a-datasheet">hip4081a</a></li>
+<li><a href="https://www.st.com/en/motor-drivers/l298.html">L298</a></li>
+</ul>
+<p>The biggest difference between the HIP4080A and the HIP4081A is that the HIP4081A allows separate and individual control of the 4 MOSFET gates,
+whereas the HIP4080A does not.</p> <a class="read-more" href="/cnblogs/post/e-proteus_component-an3049/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-30T10:08:08&#43;08:00">
+            30 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_mcc-classic/">MPLAB Code Configurator - Classic</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><strong>Classic support for this device is not maintatined actively and will be deprecated in the future.</strong></p>
+<ul>
+<li><a href="https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator/classic">MCC Classic</a></li>
+</ul>
+<pre tabindex="0"><code>PIC10/PIC12/PIC16/PIC18 library v1.81.7 
+</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-type.png" alt=""></p>
+<h1 id="an3049">An3049</h1>
+<ol>
+<li>In the System Module, set the clock to HFINTOSC with 32 MHz frequency.</li>
+</ol>
+<ul>
+<li>mcc.c</li>
+</ul>
+<pre tabindex="0"><code>NOSC HFINTOSC; NDIV 1;
+HFFRQ 32_MHz;
+CSWHOLD may proceed; SOSCPWR Low power; 
+</code></pre><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-clock.png" alt=""></p>
+<ol start="2">
+<li>Set the ADCC module to Basic_mode, with FOSC/ADCLK clock source configured to FOSC/32.</li>
+</ol>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/mcc_classic-adcc.png" alt=""></p>
+<h2 id="motor">motor</h2>
+<p>For providing drive signal to the motor,
+three peripherals are needed to be configured: CCP2, TIMER2 and CWG.</p> <a class="read-more" href="/cnblogs/post/e-pic8_mcc-classic/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-23T10:08:08&#43;08:00">
+            23 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink6/">PIC blinked - count</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="/cnblogs/post/e-pic8_blink5/">timer0: overflows</a></li>
+</ul>
+<p>blink188m2.asm:</p>
+<pre tabindex="0"><code>    title &#34;Blink V. 1.1&#34;
+    subtitle &#34;The uC Equivalent of Hello world&#34;
+; This program uses Assembly language to blink a small LED, using the PIC16F18877&#39;s onboard timers
+; and interrupts.  Use and modify this code however you wish
+
+; ***** Program Header *******************************************************************************
+    list P=PIC16F18877, ST=OFF, MM=OFF, N=42, B=4, W=1 ; &lt;-- List file directives
+    include &lt;p16f18877.inc&gt; ; &lt;--Use the name of your PIC here
+
+; ***** Device Configuration *************************************************************************
+    __CONFIG _CONFIG1, _FEXTOSC_OFF &amp; _RSTOSC_HFINT32 &amp; _CLKOUTEN_OFF &amp; _CSWEN_ON &amp; _FCMEN_ON
+    __CONFIG _CONFIG2, _MCLRE_ON &amp; _PWRTE_OFF &amp; _LPBOREN_OFF &amp; _BOREN_OFF &amp; _BORV_LO &amp; _ZCD_OFF &amp; _PPS1WAY_OFF &amp; _STVREN_ON
+    __CONFIG _CONFIG3, _WDTCPS_WDTCPS_31 &amp; _WDTE_OFF &amp; _WDTCWS_WDTCWS_7 &amp; _WDTCCS_SC
+    __CONFIG _CONFIG4, _WRT_OFF &amp; _SCANE_available &amp; _LVP_ON
+    __CONFIG _CONFIG5, _CP_OFF &amp; _CPD_OFF
+
+; ******* Main Program ********************************************************************************
+; Org 0 tells the compiler that this is literally the origin of the actual program, IE line 0
+; From hereon out, the compiler assumes that each instruction is to be executed sequentially.
+    org 0
+
+Start:
+    clrf    INTCON      ; Disable all interrupts
+    banksel PIE0
+    clrf    PIE0
+    clrf    PIE1
+    clrf    PIE2
+    clrf    PIE3
+    clrf    PIE4
+    clrf    PIE5
+    clrf    PIE6
+    clrf    PIE7
+    clrf    PIE8
+
+    banksel OSCCON1
+    movlw   0x62        ; System oscillator set to 8MHz
+    movwf   OSCCON1
+
+    banksel T0CON1
+    movlw   0x48        ; Set TIMER0 clock source to FOSC/4, scale 1:256 TIMER0 overflows every 32.768 milliseconds
+    movwf   T0CON1
+    banksel T0CON0
+    movlw   0x80        ; Start TIMER0
+    movwf   T0CON0
+
+    banksel ANSELB
+    clrf    ANSELB
+    banksel TRISB
+    movlw   0xF0
+    movwf   TRISB
+    banksel LATB
+    movwf   LATB
+
+    banksel TMR0L
+    clrf    TMR0L
+    movlw   0xFF
+    movwf   TMR0H
+    banksel PIR0
+    bcf     PIR0, TMR0IF
+
+    clrf    FSR1L
+    movlw   10
+    subwf   FSR1L,F
+    goto    AppLoop
+;
+; Application loop
+;
+AppLoop:
+    banksel LATB
+    movlw   1
+    xorwf   LATB,F      ; Toggle LED1
+    call    Delay
+    goto    AppLoop     ;loop forever
+;
+; Spin wait
+;
+Delay:
+    clrf    FSR0L
+    clrf    FSR0H
+    bsf     FSR0H,7
+
+    end
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://github.com/dsoze1138/MPLABXv5xx_pic-as_examples/tree/master/16F18877_Example_v550.X">16F18877 Example v550(mplabx)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/e-pic8_blink6/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-14T08:08:08&#43;08:00">
+            14 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink5/">PIC blinked - TIMER0 overflows</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="/cnblogs/post/e-pic8_blink6/">timer0: count</a></li>
+</ul>
+<p>blink188m1.asm:</p>
+<pre tabindex="0"><code>    title &#34;Blink V. 1.1&#34;
+    subtitle &#34;The uC Equivalent of Hello world&#34;
+; This program uses Assembly language to blink a small LED, using the PIC16F18877&#39;s onboard timers
+; and interrupts.  Use and modify this code however you wish
+
+; ***** Program Header *******************************************************************************
+    list P=PIC16F18877, ST=OFF, MM=OFF, N=42, B=4, W=1 ; &lt;-- List file directives
+    include &lt;p16f18877.inc&gt; ; &lt;--Use the name of your PIC here
+
+; ***** Device Configuration *************************************************************************
+    __CONFIG _CONFIG1, _FEXTOSC_OFF &amp; _RSTOSC_HFINT32 &amp; _CLKOUTEN_OFF &amp; _CSWEN_ON &amp; _FCMEN_ON
+    __CONFIG _CONFIG2, _MCLRE_ON &amp; _PWRTE_OFF &amp; _LPBOREN_OFF &amp; _BOREN_OFF &amp; _BORV_LO &amp; _ZCD_OFF &amp; _PPS1WAY_OFF &amp; _STVREN_ON
+    __CONFIG _CONFIG3, _WDTCPS_WDTCPS_31 &amp; _WDTE_OFF &amp; _WDTCWS_WDTCWS_7 &amp; _WDTCCS_SC
+    __CONFIG _CONFIG4, _WRT_OFF &amp; _SCANE_available &amp; _LVP_ON
+    __CONFIG _CONFIG5, _CP_OFF &amp; _CPD_OFF
+
+; ******* Main Program ********************************************************************************
+; Org 0 tells the compiler that this is literally the origin of the actual program, IE line 0
+; From hereon out, the compiler assumes that each instruction is to be executed sequentially.
+    org 0
+
+Start:
+    clrf    INTCON      ; Disable all interrupts
+    banksel PIE0
+    clrf    PIE0
+    clrf    PIE1
+    clrf    PIE2
+    clrf    PIE3
+    clrf    PIE4
+    clrf    PIE5
+    clrf    PIE6
+    clrf    PIE7
+    clrf    PIE8
+
+    banksel OSCCON1
+    movlw   0x62        ; System oscillator set to 8MHz
+    movwf   OSCCON1
+
+    banksel T0CON1
+    movlw   0x48        ; Set TIMER0 clock source to FOSC/4, scale 1:256 TIMER0 overflows every 32.768 milliseconds
+    movwf   T0CON1
+    banksel T0CON0
+    movlw   0x80        ; Start TIMER0
+    movwf   T0CON0
+
+    banksel ANSELB
+    clrf    ANSELB
+    banksel TRISB
+    movlw   0xF0
+    movwf   TRISB
+    banksel LATB
+    movwf   LATB
+
+    banksel TMR0L
+    clrf    TMR0L
+    movlw   0xFF
+    movwf   TMR0H
+    banksel PIR0
+    bcf     PIR0, TMR0IF
+
+    clrf    FSR1L
+    movlw   10
+    subwf   FSR1L,F
+    goto    AppLoop
+;
+; Application loop
+;
+AppLoop:
+    banksel LATB
+    movlw   1
+    xorwf   LATB,F      ; Toggle LED1
+    call    Delay_1
+    goto    AppLoop     ;loop forever
+;
+; Spin wait
+;
+Delay_1:
+    call    Delay_2
+    incfsz  FSR0L,F
+    goto    Delay_1
+    incfsz  FSR0H,F
+    goto    Delay_1
+    return
+;
+; Toggle LED2 when TIMER0 overflows
+;
+; Note: This delay always takes the same number
+;       of instruction cycles for each of
+;       three possible paths.
+;
+Delay_2:
+    banksel PIR0
+    btfss   PIR0, TMR0IF
+    goto    Delay_3
+    bcf     PIR0, TMR0IF
+    banksel FSR1L
+    movlw   10
+    incfsz  FSR1L,F
+    goto    Delay_4
+    subwf   FSR1L,F
+    movlw   2
+    xorwf   LATB,F      ; Toggle LED2
+    return
+Delay_3:
+    nop
+    nop
+    nop
+    nop
+    nop
+Delay_4:
+    nop
+    nop
+    return
+
+    end
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://github.com/dsoze1138/MPLABXv5xx_pic-as_examples/tree/master/16F18877_Example_v550.X">16F18877 Example v550(mplabx)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/e-pic8_blink5/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-14T08:08:08&#43;08:00">
+            14 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink7/">PIC blinked</a></h2>
     </header>
     <section class="post-excerpt">
@@ -183,9 +520,8 @@
 </ul>
 <pre tabindex="0"><code>Right-click the &#34;mcu&#34; icon and select &#34;Edit Properties&#34;.
 </code></pre><p><img src="https://electrosome.com/wp-content/uploads/2012/05/Proteus-Edit-Component-PIC-16F877A.jpg" alt="load hex"></p>
-<h2 id="16f887"><a href="https://web.archive.org/web/20260120160017/https://www.fypsolutions.com/assembly-language/pic-microcontroller-led-blink-code-example-in-assembly-language">16F887</a></h2>
+<h2 id="pic16f887-or-pic16f877a">PIC16F887 or PIC16F877A</h2>
 <ul>
-<li>PIC16F887 or PIC16F877A</li>
 <li>LED</li>
 <li>470R Resistor</li>
 <li>8Mhz Crystal</li>
@@ -223,70 +559,10 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">END</span>
-</span></span></code></pre></div><h2 id="16f18877-example-v550mplabx"><a href="https://github.com/dsoze1138/MPLABXv5xx_pic-as_examples/tree/master/16F18877_Example_v550.X">16F18877 Example v550(mplabx)</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#66d9ef">Blink</span> <span style="color:#66d9ef">V.</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">.0</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">subtitle</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#66d9ef">The</span> <span style="color:#66d9ef">uC</span> <span style="color:#66d9ef">Equivalent</span> <span style="color:#66d9ef">of</span> <span style="color:#66d9ef">Hello</span> <span style="color:#66d9ef">world</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">; ***** Program Header *******************************************************************************
-</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">list</span> <span style="color:#66d9ef">P</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">PIC16F18877</span>, <span style="color:#66d9ef">ST</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">OFF</span>, <span style="color:#66d9ef">MM</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">OFF</span>, <span style="color:#66d9ef">N</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">42</span>, <span style="color:#66d9ef">B</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">4</span>, <span style="color:#66d9ef">W</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">1</span> <span style="color:#75715e">; &lt;-- List file directives
-</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">include</span> <span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#66d9ef">p16f18877.inc</span><span style="color:#960050;background-color:#1e0010">&gt;</span> <span style="color:#75715e">; &lt;--Use the name of your PIC here
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">; ***** Device Configuration *************************************************************************
-</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG1</span>, <span style="color:#66d9ef">_FEXTOSC_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_RSTOSC_HFINT32</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CLKOUTEN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CSWEN_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_FCMEN_ON</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG2</span>, <span style="color:#66d9ef">_MCLRE_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_PWRTE_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_LPBOREN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_BOREN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_BORV_LO</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_ZCD_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_PPS1WAY_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_STVREN_ON</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG3</span>, <span style="color:#66d9ef">_WDTCPS_WDTCPS_31</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTE_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTCWS_WDTCWS_7</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTCCS_SC</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG4</span>, <span style="color:#66d9ef">_WRT_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_SCANE_available</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_LVP_ON</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG5</span>, <span style="color:#66d9ef">_CP_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CPD_OFF</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CBLOCK</span> <span style="color:#66d9ef">h</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#ae81ff">20</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">COUNT1</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">COUNT2</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ENDC</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ORG</span>     <span style="color:#ae81ff">0x00</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>MAIN:
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>     <span style="color:#66d9ef">TRISB</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span>         <span style="color:#66d9ef">TRISB</span>,<span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CALL</span>        <span style="color:#66d9ef">Init_Osc</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>     <span style="color:#66d9ef">PORTB</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>MainLoop:
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span>         <span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CALL</span>        <span style="color:#66d9ef">DELAY3</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BSF</span>         <span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span> 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CALL</span>        <span style="color:#66d9ef">DELAY3</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">MainLoop</span>            <span style="color:#75715e">; Do it again...
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">; Initialize the PIC Oscillator.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; For the 16F18877, 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; page 122 of the data sheet(F version), the OSCCON1 register. 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Set according to Table 6-1(NOSC/COSC Bit Settings) and Table 6-2(NDIV/CDIV Bit Settings): 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">;  Clock Source: HFINTOSC(110)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">;  Clock divider: 8(0011)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100000(0x60) - 32 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100001(0x61) - 16 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100010(0x62) - 8 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100011(0x63) - 4 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100100(0x64) - 2 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100101(0x65) - 1 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100110(0x66) - 500 kHz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100111(0x67) - 250 kHz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1101001(0x68) - 125 kHz.
-</span></span></span><span style="display:flex;"><span>Init_Osc:          <span style="color:#75715e">; System oscillator set to 4MHz
-</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">banksel</span> <span style="color:#66d9ef">OSCCON1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">movlw</span>   <span style="color:#ae81ff">0x63</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">movwf</span>   <span style="color:#66d9ef">OSCCON1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>DELAY3:
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>      <span style="color:#66d9ef">COUNT1</span>,<span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">DELAY3</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>      <span style="color:#66d9ef">COUNT2</span>,<span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">DELAY3</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">END</span>
-</span></span></code></pre></div> <a class="read-more" href="/cnblogs/post/e-pic8_blink7/">&raquo;</a></p>
+</span></span></code></pre></div><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://web.archive.org/web/20260120160017/https://www.fypsolutions.com/assembly-language/pic-microcontroller-led-blink-code-example-in-assembly-language">pic16F887</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/e-pic8_blink7/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -684,336 +960,6 @@ Note: The replaced program file version must be the same as the repo!</p> <a cla
         
         <time class="post-date" datetime="2026-07-05T08:38:08&#43;08:00">
             5 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow3-gcc/">size_t warning</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
-</ul>
-<hr>
-<p><strong>NOTE</strong></p>
-<h2 id="no-warning-messages-are-displayed-in-cdt">No warning messages are displayed in CDT.</h2>
-<h2 id="heapsort">heapsort</h2>
-<pre tabindex="0"><code>#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-// TIP To &lt;b&gt;Run&lt;/b&gt; code, press &lt;shortcut actionId=&#34;Run&#34;/&gt; or click the &lt;icon src=&#34;AllIcons.Actions.Execute&#34;/&gt; icon in the gutter.
-/**
- * Internal method for heapsort.
- * i is the index of an item in the heap.
- * Returns the index of the left child.
- */
-inline int leftChild( int i )
-{
-    return 2 * i + 1;
-}
-
-/**
- * Internal method for heapsort that is used in deleteMax and buildHeap.
- * i is the position from which to percolate down.
- * n is the logical size of the binary heap.
- */
-template &lt;typename Comparable&gt;
-void percDown( vector&lt;Comparable&gt; &amp; a, int i, int n )
-{
-    int child;
-    Comparable tmp;
-
-    for( tmp = std::move( a[ i ] ); leftChild( i ) &lt; n; i = child )
-    {
-        child = leftChild( i );
-        if( child != n-1 &amp;&amp; a[ child ] &lt; a[ child + 1 ] )
-            ++child;
-        if( tmp &lt; a[ child ] )
-            a[ i ] = std::move( a[ child ] );
-        else
-            break;
-    }
-    a[ i ] = std::move( tmp );
-}
-
-/**
- * Standard heapsort.
- */
-template &lt;typename Comparable&gt;
-void heapsort( vector&lt;Comparable&gt; &amp; a)
-{
-    for( int i = a.size( ) / 2- 1; i &gt;= 0; --i ) /* buildHeap */
-        percDown( a, i, a.size() );
-    for( int j = a.size( )- 1; j &gt; 0; --j )
-    {
-        std::swap( a[ 0 ], a[ j ] ); /* deleteMax */
-        percDown( a, 0, j );
-    }
-}
-
-int main() {
-    vector v = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
-    heapsort(v);
-
-    for(int i : v)
-        cout &lt;&lt; i &lt;&lt; &#34; &#34;;
-
-    return 0;
-    // TIP See CLion help at &lt;a href=&#34;https://www.jetbrains.com/help/clion/&#34;&gt;jetbrains.com/help/clion/&lt;/a&gt;. Also, you can try interactive lessons for CLion by selecting &#39;Help | Learn IDE Features&#39; from the main menu.
-}
-</code></pre><ul>
-<li>Warn info - vs2022</li>
-</ul>
-<pre tabindex="0"><code>ConsoleApplication1.cpp(45,16): warning C4267: &#39;initializing&#39;: conversion from &#39;size_t&#39; to &#39;int&#39;, possible loss of data
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
-<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
-<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow3-gcc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-03-21T11:08:08&#43;08:00">
-            21 Mar 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow4-gcc/">size_t warning</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
-</ul>
-<hr>
-<p><strong>NOTE</strong></p>
-<h2 id="no-warning-messages-are-displayed-in-cdt">No warning messages are displayed in CDT.</h2>
-<h2 id="mergesort">MergeSort</h2>
-<pre tabindex="0"><code>/**
- * Internal method that makes recursive calls.
- * a is an array of Comparable items.
- * tmpArray is an array to place the merged result.
- * left is the left-most index of the subarray.
- * right is the right-most index of the subarray.
- */
-template &lt;typename Comparable&gt;
-void mergeSort( vector&lt;Comparable&gt; &amp; a,
-                vector&lt;Comparable&gt; &amp; tmpArray, int left, int right )
-{
-    if( left &lt; right )
-    {
-        int center = ( left + right ) / 2;
-        mergeSort( a, tmpArray, left, center );
-        mergeSort( a, tmpArray, center + 1, right );
-        merge( a, tmpArray, left, center + 1, right );
-    }
-}
-
-/**
- * Mergesort algorithm (driver).
- */
-template &lt;typename Comparable&gt;
-void mergeSort( vector&lt;Comparable&gt; &amp; a )
-{
-    vector&lt;Comparable&gt; tmpArray( a.size( ) );
-
-    mergeSort( a, tmpArray, 0, a.size( ) - 1 );
-}
-</code></pre><ul>
-<li>merge</li>
-</ul>
-<pre tabindex="0"><code>/**
- * Internal method that merges two sorted halves of a subarray.
- * a is an array of Comparable items.
- * tmpArray is an array to place the merged result.
- * leftPos is the left-most index of the subarray.
- * rightPos is the index of the start of the second half.
- * rightEnd is the right-most index of the subarray.
- */
-template &lt;typename Comparable&gt;
-void merge( vector&lt;Comparable&gt; &amp; a, vector&lt;Comparable&gt; &amp; tmpArray,
-            int leftPos, int rightPos, int rightEnd )
-{
-    int leftEnd = rightPos - 1;
-    int tmpPos = leftPos;
-    int numElements = rightEnd - leftPos + 1;
-
-    // Main loop
-    while( leftPos &lt;= leftEnd &amp;&amp; rightPos &lt;= rightEnd )
-        if( a[ leftPos ] &lt;= a[ rightPos ] )
-            tmpArray[ tmpPos++ ] = std::move( a[ leftPos++ ] );
-        else
-            tmpArray[ tmpPos++ ] = std::move( a[ rightPos++ ] );
-
-    while( leftPos &lt;= leftEnd )    // Copy rest of first half
-        tmpArray[ tmpPos++ ] = std::move( a[ leftPos++ ] );
-
-    while( rightPos &lt;= rightEnd )  // Copy rest of right half
-        tmpArray[ tmpPos++ ] = std::move( a[ rightPos++ ] );
-
-    // Copy tmpArray back
-    for( int i = 0; i &lt; numElements; ++i, --rightEnd )
-        a[ rightEnd ] = std::move( tmpArray[ rightEnd ] );
-}
-</code></pre><ul>
-<li>main</li>
-</ul>
-<pre tabindex="0"><code>int main() {
-	vector v = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
-
-	mergeSort(v);
-
-    for(size_t i = 0; i &lt; v.size(); ++i)
-        cout &lt;&lt; v[i] &lt;&lt; &#34; &#34;;
-
-    return 0;
-}
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
-<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
-<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow4-gcc/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-03-21T11:08:08&#43;08:00">
-            21 Mar 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/doxy-comment/">c or c&#43;&#43; comments</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p><a href="https://www.jetbrains.com/help/rider/Creating_and_Viewing_Doxygen_Documentation.html#create-doxygen-comments">Type one of the following symbols</a>:</p>
-<ul>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags">c-sharp style</a></li>
-</ul>
-<pre tabindex="0"><code>///
-</code></pre><ul>
-<li>Qt style</li>
-</ul>
-<pre tabindex="0"><code>//!
-/*!
-</code></pre><ul>
-<li>javadoc</li>
-</ul>
-<pre tabindex="0"><code>/**
-</code></pre><h4 id="putting-documentation-after-members">Putting documentation after members</h4>
-<pre tabindex="0"><code>//!&lt; this is End of line
-</code></pre><h3 id="javadoc-style">javadoc style</h3>
-<ul>
-<li><a href="https://www.doxygen.nl/manual/commands.html#cmdfile">file</a></li>
-</ul>
-<pre tabindex="0"><code>/**
- * @file PokerType.h
- * Created by tdtc-hrb on 2/14/2026 - UTC+8.
- */
-</code></pre><ul>
-<li><a href="https://www.doxygen.nl/manual/commands.html#cmdauthor">author</a></li>
-</ul>
-<pre tabindex="0"><code>/**
- *  Pretty nice class.
- *  @details   This class is used to demonstrate a number of section commands; 
- *             detailed description.
- *  @author    John Doe
- *  @author    Jan Doe
- *  @version   1.16.1
- *  @date      2026-03-11
- */
-</code></pre><h2 id="ref">Ref</h2>
-<ul>
-<li><a href="https://www.doxygen.nl/manual/docblocks.html">Documenting the code</a></li>
-<li><a href="https://www.doxygen.nl/manual/commands.html">Special Commands</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/doxy-comment/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-03-11T20:38:18&#43;08:00">
-            11 Mar 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/doxy-config/">config doxygen</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>template -&gt; basic -&gt; project -&gt;
-generate documentation</p>
-<pre tabindex="0"><code>doxygen mydoxy
-</code></pre><h2 id="config---template">config - template</h2>
-<pre tabindex="0"><code>doxygen -g mydoxy
-</code></pre><p>default name: Doxyfile</p>
-<h3 id="update">update</h3>
-<p>If you are using a newer version of Doxygen, you need to execute:</p>
-<pre tabindex="0"><code>doxygen -u mydoxy
-</code></pre><h2 id="config---basic">config - basic</h2>
-<ul>
-<li>AUTO BRIEF</li>
-</ul>
-<pre tabindex="0"><code>JAVADOC_AUTOBRIEF      = YES
-</code></pre><ul>
-<li>BANNER</li>
-</ul>
-<pre tabindex="0"><code>JAVADOC_BANNER         = YES
-</code></pre><h4 id="python---off">PYTHON - Off</h4>
-<pre tabindex="0"><code>PYTHON_DOCSTRING       = NO
-</code></pre><h4 id="inherit---off">Inherit - Off</h4>
-<pre tabindex="0"><code>INHERIT_DOCS           = NO
-</code></pre><h2 id="config---project">config - project</h2>
-<ul>
-<li>output</li>
-</ul>
-<pre tabindex="0"><code>OUTPUT_DIRECTORY       = C:/Users/hp262/Documents
-</code></pre><h3 id="project-src">project src</h3>
-<pre tabindex="0"><code>INPUT                  = C:/Users/hp262/CLionProjects/untitled
-</code></pre><h4 id="searched-subdirectories">Searched subdirectories</h4>
-<pre tabindex="0"><code>RECURSIVE              = YES
-</code></pre> <a class="read-more" href="/cnblogs/post/doxy-config/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-03-11T20:38:18&#43;08:00">
-            11 Mar 2026
         </time>
     </footer>
 </article>

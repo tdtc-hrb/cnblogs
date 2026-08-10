@@ -13,7 +13,7 @@
 
 
 <meta name="twitter:title" content="MPASM to MPLAB XC8 PIC Assembler - Psects"/>
-<meta name="twitter:description" content="v0.1"/>
+<meta name="twitter:description" content="lacing Psects into Memory"/>
 <meta name="twitter:site" content="@"/>
 
 
@@ -27,7 +27,7 @@
     
 
     
-    <meta property="og:description" content="v0.1" />
+    <meta property="og:description" content="lacing Psects into Memory" />
   	<meta property="og:type" content="article" />
     <meta property="article:published_time" content="2023-06-18T08:08:08&#43;08:00" />
 
@@ -37,7 +37,7 @@
     <title>MPASM to MPLAB XC8 PIC Assembler - Psects &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
 
     
-    <meta name="description" content="v0.1" />
+    <meta name="description" content="lacing Psects into Memory" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -92,7 +92,7 @@
     },
     "headline": "MPASM to MPLAB XC8 PIC Assembler - Psects",
     "name": "MPASM to MPLAB XC8 PIC Assembler - Psects",
-    "wordCount":  577 ,
+    "wordCount":  582 ,
     "timeRequired": "PT3M",
     "inLanguage": {
       "@type": "Language",
@@ -103,7 +103,7 @@
     "dateModified": "2023-06-18T08:08Z",
     
     
-    "description": "v0.1",
+    "description": "lacing Psects into Memory",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://tdtc-hrb.github.io/cnblogs/post/e-pic8_asm-tutor1c/"
@@ -164,7 +164,7 @@
 
     <header class="post-header">
         <h1 class="post-title">MPASM to MPLAB XC8 PIC Assembler - Psects</h1>
-        <small>v0.1</small>
+        <small>lacing Psects into Memory</small>
 
         <section class="post-meta">
         
@@ -177,7 +177,11 @@
     </header>
 
     <section class="post-content">
-      <h2 id="lacing-psects-into-memory">lacing Psects into Memory</h2>
+      <ul>
+<li>MPASM supports absolute mode, using the ORG directive, or relocatable mode, using program sections.</li>
+<li>PIC Assembler only supports the relocatable mode.</li>
+</ul>
+<h2 id="lacing-psects-into-memory">lacing Psects into Memory</h2>
 <table>
 	<thead>
 			<tr>
@@ -192,16 +196,20 @@
 			</tr>
 	</tbody>
 </table>
-<p>MPASM supports absolute mode, using the ORG directive, or relocatable mode, using program sections. <br>
-PIC Assembler only supports the relocatable mode.</p>
-<p>Since the tutorials use the absolute mode you will need to remove the ORG directive and add a program section for the code and data. <br>
-I have just added a code section for all the instructions and used the already defined equates to access the data memory variables (user registers). <br>
-So, I have just replaced the ORG directive with the PSECT directive like this:</p>
-<pre tabindex="0"><code>PSECT MyCode,class=CODE,delta=2
-</code></pre><p>To make sure the linker places this section at address 000h,
+<ul>
+<li>Since the tutorials use the absolute mode you will need to remove the ORG directive and add a program section for the code and data. <br>
+I have just added a code section for all the instructions and used the already defined equates to access the data memory variables (user registers).
+So, I have just replaced the ORG directive with the PSECT directive like this:</li>
+</ul>
+<pre tabindex="0"><code>PSECT Reset_Vec,class=CODE,delta=2
+</code></pre><p>other:</p>
+<pre tabindex="0"><code>PSECT   ISR_Vec,class=CODE,delta=2
+</code></pre><ul>
+<li>To make sure the linker places this section at address 000h and 004h,
 we need to provide an additional command line parameter: <br>
-Go to “Project Properties” &gt; “pic-as Global Options” &gt; “Additional Options:” and add the following parameter (without spaces!):</p>
-<pre tabindex="0"><code>-Wl,-pMyCode=0h
+Go to “Project Properties” &gt; “pic-as Global Options” &gt; “Additional Options:” and add the following parameter (without spaces!):</li>
+</ul>
+<pre tabindex="0"><code>-Wl,-pReset_Vec=0h,-pISR_Vec=4h
 </code></pre><h3 id="about-section-name">About section name</h3>
 <p>Where “MyCode” is the section name, “class=CODE” tells the linker to use the default code section,
 “delta=2&quot; tells the linker the number of data bytes that are associated with each address.</p>

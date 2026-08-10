@@ -164,6 +164,309 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-blink/">arduino 开发环境</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.arduino.cc/en/software"><s>Legacy IDE (1.8.19)- arduino</s></a></li>
+<li><a href="https://www.microchip.com/en-us/tools-resources/develop/microchip-studio"><s>Atmel Studio 7</s></a></li>
+</ul>
+<p><strong>使用新的 Arduino 2 - ide 已经可以查看函数原型</strong></p>
+<h1 id="编码">编码</h1>
+<p>我们使用使用AS7是为了使用它的智能提示和方便查看函数原型.</p>
+<h2 id="建立工程---arduino">建立工程 - Arduino</h2>
+<p>文件-&gt;示例-&gt;01.Basics-&gt;Blink</p>
+<h2 id="建立工程---as7">建立工程 - AS7</h2>
+<p>New-&gt;Project <br>
+&ldquo;Create Project from Arduino Sketch&rdquo;
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20210306045329.png" alt="Create Project from Arduino Sketch">
+设置Arduino sketch属性: Sketch File、Arduino IDE、Board、Device
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20210306045520.png" alt="设置Arduino sketch"></p>
+<h1 id="烧写">烧写</h1>
+<p>把代码copy回arduino ide</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Blink
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Turns on an LED on for one second, then off for one second, repeatedly.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN takes care
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  of use the correct LED pin whatever is the board used.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  If you want to know what pin the on-board LED is connected to on your Arduino model, check
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  the Technical Specs of your board  at https://www.arduino.cc/en/Main/Products
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  This example code is in the public domain.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  modified 8 May 2014
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  by Scott Fitzgerald
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  modified 2 Sep 2016
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  by Arturo Guadalupi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  modified 6 Mar 2021
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  by tdtc
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> led1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">// pin2
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> led2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>; <span style="color:#75715e">// pin3
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> led3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; <span style="color:#75715e">// pin4
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the setup function runs once when you press reset or power the board
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// initialize digital pin LED_BUILTIN as an output.
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pinMode</span>(led1, OUTPUT);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pinMode</span>(led2, OUTPUT);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pinMode</span>(led3, OUTPUT);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the loop function runs over and over again forever
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led1, HIGH);   <span style="color:#75715e">// turn the LED on (HIGH is the voltage level)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);                       <span style="color:#75715e">// wait for a second
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led1, LOW);    <span style="color:#75715e">// turn the LED off by making the voltage LOW
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);                       <span style="color:#75715e">// wait for a second
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led2, HIGH);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led2, LOW);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led3, HIGH);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led3, LOW);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>step 1: 项目-&gt;验证/编译 <br>
+step 2: 项目-&gt;上传 <br>
+在上传前,一定要查看&quot;工具&quot;中&quot;端口&quot;信息是否正确!</p> <a class="read-more" href="/cnblogs/post/e-avr8-blink/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-03-06T05:08:08&#43;08:00">
+            6 Mar 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-lwip-ethernet/">lwIP移植笔记 - ethernet篇</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>ethernet的移植工作，主要是“填空”ethernetif.c的过程！ <br>
+（PS. 再一次感谢Adam Dunkels大侠的无私工作！以及对他的敬意！）</p>
+<h1 id="头文件">头文件</h1>
+<blockquote>
+<p>ethernetif.h</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef ETHERNETIF_H_INCLUDED
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define ETHERNETIF_H_INCLUDED
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/netif.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/ip_addr.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/err.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;netif/etharp.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">err_t</span> <span style="color:#a6e22e">ethernetif_init</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ethernetif_input</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* ETHERNETIF_H_INCLUDED */</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h1 id="ethernet-interface">ethernet interface</h1>
+<blockquote>
+<p>ethernetif.c位置: ../src/netif</p>
+</blockquote>
+<ul>
+<li>初始化（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_init</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif)
+</span></span></code></pre></div><ul>
+<li>发送（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">err_t</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_output</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif, <span style="color:#66d9ef">struct</span> pbuf<span style="color:#f92672">*</span> p)
+</span></span></code></pre></div><ul>
+<li>接收（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> pbuf<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_input</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif)
+</span></span></code></pre></div><h2 id="0-define-hardware">0. define hardware</h2>
+<p>根据硬件的不同！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;enc28j60.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>##　1. 初始化（低级）</p>
+<h3 id="1-初始化mac地址">（1） 初始化MAC地址</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x04</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x25</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1C</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xA0</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x02</span>;
+</span></span></code></pre></div><h3 id="2-初始化网卡">（2） 初始化网卡</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">enc28j60Init</span>(netif<span style="color:#f92672">-&gt;</span>hwaddr);
+</span></span></code></pre></div><h3 id="3中断使能">（3）中断使能</h3>
+<p>如果使用RTOS，则设置MCU的SPI中断使能； <br>
+例如在CM0/3/4中：</p> <a class="read-more" href="/cnblogs/post/e-lwip-ethernet/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-25T10:08:08&#43;08:00">
+            25 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-freertos-port_sam4s/">freeRTOS移植-sam</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>freeRTOS v7.0.0</p>
+</blockquote>
+<p>移植编译器（IAR）,以及头文件和hook。</p>
+<h1 id="头文件">头文件</h1>
+<blockquote>
+<p>asf.h</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// From module: FreeRTOS mini Real-Time Kernel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;task.h&gt;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h2 id="freertos-config">freeRTOS config</h2>
+<blockquote>
+<p>FreeRTOSConfig.h</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef FREERTOS_CONFIG_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FREERTOS_CONFIG_H
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//#define configUSE_PREEMPTION                     1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_PREEMPTION                       0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_IDLE_HOOK                        1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TICK_HOOK                        1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configCPU_CLOCK_HZ                         (sysclk_get_cpu_hz())
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configTICK_RATE_HZ                         ((portTickType) 1000)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMINIMAL_STACK_SIZE                   ((unsigned short) 70)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//#define configTOTAL_HEAP_SIZE                    ((size_t) ( 0x2C00-600 ))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_TASK_NAME_LEN                    ( 16 )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TRACE_FACILITY                   1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_16_BIT_TICKS                     0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configIDLE_SHOULD_YIELD                    0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_CO_ROUTINES                      0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_MUTEXES                          1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_RECURSIVE_MUTEXES                0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configCHECK_FOR_STACK_OVERFLOW             2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configGENERATE_RUN_TIME_STATS              0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configENABLE_BACKWARD_COMPATIBILITY        1
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_PRIORITIES                       ((unsigned portBASE_TYPE) 5)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_CO_ROUTINE_PRIORITIES            (2)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configQUEUE_REGISTRY_SIZE                  10
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskPrioritySet                   1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_uxTaskPriorityGet                  0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelete                        0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskCleanUpResources              0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskSuspend                       1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelayUntil                    0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelay                         1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_uxTaskGetStackHighWaterMark        1
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define configKERNEL_INTERRUPT_PRIORITY            (0x0f &lt;&lt; 4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_SYSCALL_INTERRUPT_PRIORITY       (0x05 &lt;&lt; 4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div><h1 id="hook">hook</h1>
+<blockquote>
+<p>必须实现3个callback函数</p> <a class="read-more" href="/cnblogs/post/e-freertos-port_sam4s/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-08T08:08:08&#43;08:00">
+            8 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-freertos-port_win32/">freeRTOS移植</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>freeRTOS v6.1.1</p>
+</blockquote>
+<h1 id="portableh">portable.h</h1>
+<h2 id="memory">memory</h2>
+<h3 id="tcb">TCB</h3>
+<p>Ln167~Ln187(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>pxPortInitialiseStack
+</span></span></code></pre></div><h3 id="memory-management">memory management</h3>
+<p>在heap_n.c中实现</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">pvPortMalloc</span>( <span style="color:#66d9ef">size_t</span> xSize ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortFree</span>( <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>pv ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><p>如果MPU可用，则使用Ln105~106(mpu_wrappers.h)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortInitialiseBlocks</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">size_t</span> <span style="color:#a6e22e">xPortGetFreeHeapSize</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><h2 id="task">task</h2>
+<p>此实现在Ln189<del>Ln262、Ln401</del>Ln406(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>portBASE_TYPE <span style="color:#a6e22e">xPortStartScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEndScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><blockquote>
+<p>注意：在windows系统下end是调用了TerminateProcess（WinBase.h Ln3398）</p>
+</blockquote>
+<h1 id="portmacroh">portmacro.h</h1>
+<h2 id="critical">Critical</h2>
+<p>此实现在Ln452~Ln513(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEnterCritical</span>( <span style="color:#66d9ef">void</span> );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortExitCritical</span>( <span style="color:#66d9ef">void</span> );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define portENTER_CRITICAL()		vPortEnterCritical()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define portEXIT_CRITICAL()			vPortExitCritical()
+</span></span></span></code></pre></div><h2 id="interrupt">Interrupt</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define portDISABLE_INTERRUPTS()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define portENABLE_INTERRUPTS()
+</span></span></span></code></pre></div><p>此实现在Ln408~Ln450(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortGenerateSimulatedInterrupt</span>( <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> ulInterruptNumber );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortSetInterruptHandler</span>( <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> ulInterruptNumber, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> (<span style="color:#f92672">*</span>pvHandler)( <span style="color:#66d9ef">void</span> ) );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define portYIELD()					vPortGenerateSimulatedInterrupt( portINTERRUPT_YIELD )
+</span></span></span></code></pre></div><h1 id="other">other</h1>
+<h2 id="thread">thread</h2>
+<p>在portmacro.h定义，在Ln377~Ln399(port.c)实现</p> <a class="read-more" href="/cnblogs/post/e-freertos-port_win32/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-06T08:08:08&#43;08:00">
+            6 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-freertos-base/">freeRTOS基础</a></h2>
     </header>
     <section class="post-excerpt">
@@ -549,378 +852,6 @@ thekeystore file:</p>
 
         
         <time class="post-date" datetime="2020-05-16T10:08:08&#43;08:00">
-            16 May 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/redis-centos7-setup/">Redis Server installation FAQs</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><blockquote>
-<p>OS: CentOS 7 Minimal</p>
-</blockquote>
-<h1 id="0-open-files">0) open files</h1>
-<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
-A:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ulimit -a
-</span></span><span style="display:flex;"><span>$vi /etc/systemd/system/redis.service
-</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LimitNOFILE<span style="color:#f92672">=</span><span style="color:#ae81ff">10032</span>
-</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
-<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
-A:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$vi /etc/sysctl.conf
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net.core.somaxconn<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span>
-</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
-<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
-To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
-for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-centos7-setup/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-05-16T08:08:08&#43;08:00">
-            16 May 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/java-connector-cluster_mysql/">cluster connector</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="elementary">Elementary</h1>
-<blockquote>
-<p>在没有出来NDB之前，都是使用这个组件。</p>
-</blockquote>
-<p><a href="http://www.frogthinker.org/projects/sequoia">C-JDBC</a></p>
-<blockquote>
-<p><a href="http://c-jdbc.ow2.org/index.html">c-jdbc文档</a> <br>
-<a href="https://sourceforge.net/projects/sequoiadb/files/">src-Sequoia 2.10.10</a></p>
-</blockquote>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Sequoia_architecture.jpg" alt="Sequoia architecture"></p>
-<h1 id="ndb-cluster">NDB Cluster</h1>
-<blockquote>
-<p>关于：</p>
-<blockquote>
-<p>JPA、JDBC省略不表。
-<img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-java-to-cluster.png" alt="mysql dev"></p>
-</blockquote>
-</blockquote>
-<h2 id="clusterj">ClusterJ</h2>
-<blockquote>
-<p>ClusterJ requires Java 1.7 or 1.8.</p>
-</blockquote>
-<p><img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-clusterj-user-view.png" alt="Figure 4.2 ClusterJ User View Of Application And Environment"></p>
-<p>首先使用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-sessionfactory.html">SessionFactory</a>建立一个会话实例， <br>
-然后用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-session.html">Session</a>提供的方法操作数据。</p>
-<h3 id="会话实例">会话实例</h3>
-<p>读取配置文件，然后建立Session实例。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>File propsFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;clusterj.properties&#34;</span>);
-</span></span><span style="display:flex;"><span>InputStream inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(propsFile);
-</span></span><span style="display:flex;"><span>Properties props <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Properties();
-</span></span><span style="display:flex;"><span>props.<span style="color:#a6e22e">load</span>(inStream);
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>SessionFactory factory <span style="color:#f92672">=</span> ClusterJHelper.<span style="color:#a6e22e">getSessionFactory</span>(props);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Session session <span style="color:#f92672">=</span> factory.<span style="color:#a6e22e">getSession</span>();
-</span></span></code></pre></div><h4 id="配置信息">配置信息</h4>
-<blockquote>
-<p>clusterj.properties</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">com.mysql.clusterj.connectstring</span><span style="color:#f92672">=</span><span style="color:#e6db74">localhost:1186</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">com.mysql.clusterj.database</span><span style="color:#f92672">=</span><span style="color:#e6db74">mydb</span>
-</span></span></code></pre></div><h3 id="操作数据">操作数据</h3>
-<p>参考<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj-operations.html">4.2.2.4 ClusterJ Basic Operations</a>文档。</p>
-<h1 id="reference">Reference</h1>
-<ul>
-<li><a href="https://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj.html">4.2.2 Using ClusterJ</a></li>
-</ul> <a class="read-more" href="/cnblogs/post/java-connector-cluster_mysql/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-05-16T05:58:08&#43;08:00">
-            16 May 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/java-jmx-jdk7/">jmx - first demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="1-pomxml">1. pom.xml</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;modelVersion&gt;</span>4.0.0<span style="color:#f92672">&lt;/modelVersion&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>jmxbook<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>jmxInAction<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;version&gt;</span>0.0.1-SNAPSHOT<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;build/&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;repositories&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;repository&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;id&gt;</span>datanucleus.org/downloads/maven2<span style="color:#f92672">&lt;/id&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;name&gt;</span>datanucleus.org Maven Repository<span style="color:#f92672">&lt;/name&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;url&gt;</span>http://www.datanucleus.org/downloads/maven2/<span style="color:#f92672">&lt;/url&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/repository&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/repositories&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dependencies&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/com.sun.jdmk/jmxtools --&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dependency&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;groupId&gt;</span>com.sun.jdmk<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;artifactId&gt;</span>jmxtools<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;version&gt;</span>1.2.1<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/dependency&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/dependencies&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span>
-</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Jmxarchitecture.png" alt="Jmx architecture"></p>
-<h1 id="2-the-agent-level">2. The Agent level</h1>
-<p>HelloAgent.java</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> jmxbook.ch2;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.management.*;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.sun.jdmk.comm.HtmlAdaptorServer;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @url http://localhost:9092
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @author Benjamin G. Sullins &amp;&amp; Mark B. Whipple
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloAgent</span> <span style="color:#66d9ef">implements</span> NotificationListener
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> MBeanServer mbs <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">HelloAgent</span> ( )
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    mbs <span style="color:#f92672">=</span> MBeanServerFactory.<span style="color:#a6e22e">createMBeanServer</span>( <span style="color:#e6db74">&#34;HelloAgent&#34;</span> );
-</span></span><span style="display:flex;"><span>    HtmlAdaptorServer adapter <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HtmlAdaptorServer();
-</span></span><span style="display:flex;"><span>    HelloWorld hw <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HelloWorld();
-</span></span><span style="display:flex;"><span>    ObjectName adapterName <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
-</span></span><span style="display:flex;"><span>    ObjectName helloWorldName <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>      adapterName <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectName( <span style="color:#e6db74">&#34;HelloAgent:name=htmladapter,port=9092&#34;</span> );
-</span></span><span style="display:flex;"><span>      mbs.<span style="color:#a6e22e">registerMBean</span>( adapter, adapterName );
-</span></span><span style="display:flex;"><span>      adapter.<span style="color:#a6e22e">setPort</span>( 9092 );
-</span></span><span style="display:flex;"><span>      adapter.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>      helloWorldName <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectName( <span style="color:#e6db74">&#34;HelloAgent:name=helloWorld1&#34;</span> );
-</span></span><span style="display:flex;"><span>      mbs.<span style="color:#a6e22e">registerMBean</span>( hw, helloWorldName );
-</span></span><span style="display:flex;"><span>      hw.<span style="color:#a6e22e">addNotificationListener</span>( <span style="color:#66d9ef">this</span>, <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">null</span> );
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">catch</span>( Exception e )
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>      e.<span style="color:#a6e22e">printStackTrace</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  }<span style="color:#75715e">//constructor</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">handleNotification</span>( Notification notif, Object handback )
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>( <span style="color:#e6db74">&#34;Receiving notification...&#34;</span> );
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>( notif.<span style="color:#a6e22e">getType</span>() );
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>( notif.<span style="color:#a6e22e">getMessage</span>() );
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">   * @exec java -cp jmxInAction.jar;jmxtools.jar jmxbook.ch2.HelloAgent
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">   * @param args
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">   */</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>( String args<span style="color:#f92672">[]</span> )
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    HelloAgent agent <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HelloAgent();
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}<span style="color:#75715e">//class</span>
-</span></span></code></pre></div><h1 id="3-the-probe-level">3. The Probe level</h1>
-<h2 id="1-standard-mbeans">1) Standard MBeans</h2>
-<h3 id="mbean">MBean</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> jmxbook.ch2;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @author Benjamin G. Sullins &amp;&amp; Mark B. Whipple
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">HelloWorldMBean</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setGreeting</span>( String greeting );
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getGreeting</span>();
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printGreeting</span>();
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="impl">impl</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> jmxbook.ch2;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.management.*;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @author Benjamin G. Sullins &amp;&amp; Mark B. Whipple
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloWorld</span> <span style="color:#66d9ef">extends</span> NotificationBroadcasterSupport <span style="color:#66d9ef">implements</span> HelloWorldMBean
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">HelloWorld</span>()
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">greeting</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello World! I am a Standard MBean&#34;</span>;
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">HelloWorld</span>( String greeting )
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">greeting</span> <span style="color:#f92672">=</span> greeting;
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setGreeting</span>( String greeting )
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">greeting</span> <span style="color:#f92672">=</span> greeting;
-</span></span><span style="display:flex;"><span>    Notification notification <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Notification( <span style="color:#e6db74">&#34;jmxbook.ch2.helloWorld.test&#34;</span>, <span style="color:#66d9ef">this</span>, <span style="color:#f92672">-</span>1, System.<span style="color:#a6e22e">currentTimeMillis</span>(), greeting );
-</span></span><span style="display:flex;"><span>    sendNotification( notification );
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getGreeting</span>()
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> greeting;
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printGreeting</span>()
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>( greeting );
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String greeting;
-</span></span><span style="display:flex;"><span>}<span style="color:#75715e">//class</span>
-</span></span></code></pre></div><p>diagram：<a href="https://pan.baidu.com/s/1Rg3lZTatY8G6emJ4g7uH_w">Standard-MBeans</a>
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20180825023547867.png" alt="Standard-MBeans"></p> <a class="read-more" href="/cnblogs/post/java-jmx-jdk7/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-05-16T03:58:08&#43;08:00">
-            16 May 2020
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/java-apache_cli/">Apache CLI Demo</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="1-options">1. Options</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> Options options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Options();
-</span></span></code></pre></div><h1 id="2-option">2. option</h1>
-<p>增加选项有两种方式：直接赋值给各个参数； <br>
-另一种，就是赋值到一个实例中。</p>
-<h2 id="1-way1">1) way1</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;show help.&#34;</span>);
-</span></span></code></pre></div><h2 id="2-way2">2) way2</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(optFile);
-</span></span></code></pre></div><h1 id="3-command-line-parser">3. command line parser</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>CommandLineParser cmdParser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DefaultParser();
-</span></span></code></pre></div><h1 id="4-exec-method">4. exec method</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">help</span>() {
-</span></span><span style="display:flex;"><span> <span style="color:#75715e">// This prints out some help</span>
-</span></span><span style="display:flex;"><span>  HelpFormatter formater <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HelpFormatter();
-</span></span><span style="display:flex;"><span>  formater.<span style="color:#a6e22e">printHelp</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getClass</span>().<span style="color:#a6e22e">getSimpleName</span>(), options);
-</span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">exit</span>(0);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h1 id="5-test">5. test</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -cp cliDemo-0.0.1-SNAPSHOT.jar;C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\x</span>iaobin<span style="color:#ae81ff">\.</span>m2<span style="color:#ae81ff">\r</span>epository<span style="color:#ae81ff">\c</span>ommons-cli<span style="color:#ae81ff">\c</span>ommons-cli<span style="color:#ae81ff">\1</span>.4<span style="color:#ae81ff">\c</span>ommons-cli-1.4.jar my.csdn9.ConsoleLauncher --help
-</span></span></code></pre></div><h1 id="source-code">source code</h1>
-<p>ConsoleLauncher.java</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> my.csdn9;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.CommandLine;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.CommandLineParser;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.DefaultParser;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.HelpFormatter;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.Option;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.Options;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.ParseException;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConsoleLauncher</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Step 1: otions</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Options options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Options();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// TODO Auto-generated method stub</span>
-</span></span><span style="display:flex;"><span>        ConsoleLauncher launcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConsoleLauncher();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 2: add option</span>
-</span></span><span style="display:flex;"><span>        Option optFile <span style="color:#f92672">=</span> Option.<span style="color:#a6e22e">builder</span>( <span style="color:#e6db74">&#34;file&#34;</span> )
-</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">longOpt</span>( <span style="color:#e6db74">&#34;logfile&#34;</span> )
-</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">hasArg</span>(<span style="color:#66d9ef">false</span>)
-</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">desc</span>(  <span style="color:#e6db74">&#34;use given file for log&#34;</span> )
-</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">build</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Way I: Direct definition</span>
-</span></span><span style="display:flex;"><span>        launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;show help.&#34;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Way II: Use the option class to define</span>
-</span></span><span style="display:flex;"><span>        launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(optFile);
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 3: cmd parser</span>
-</span></span><span style="display:flex;"><span>        CommandLineParser cmdParser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DefaultParser();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            CommandLine cmd <span style="color:#f92672">=</span> cmdParser.<span style="color:#a6e22e">parse</span>(launcher.<span style="color:#a6e22e">options</span>, args);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cmd.<span style="color:#a6e22e">hasOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>)) {
-</span></span><span style="display:flex;"><span>                launcher.<span style="color:#a6e22e">help</span>();
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cmd.<span style="color:#a6e22e">hasOption</span>(<span style="color:#e6db74">&#34;file&#34;</span>)) {
-</span></span><span style="display:flex;"><span>                 System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;----file----&#34;</span>);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (ParseException e) {
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// TODO Auto-generated catch block</span>
-</span></span><span style="display:flex;"><span>             e.<span style="color:#a6e22e">printStackTrace</span>();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// Step 4: exec method</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">help</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// This prints out some help</span>
-</span></span><span style="display:flex;"><span>         HelpFormatter formater <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HelpFormatter();
-</span></span><span style="display:flex;"><span>         formater.<span style="color:#a6e22e">printHelp</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getClass</span>().<span style="color:#a6e22e">getSimpleName</span>(), options);
-</span></span><span style="display:flex;"><span>         System.<span style="color:#a6e22e">exit</span>(0);
-</span></span><span style="display:flex;"><span>     }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="pom">pom</h2>
-<p>pom.xml</p> <a class="read-more" href="/cnblogs/post/java-apache_cli/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2020-05-16T02:58:08&#43;08:00">
             16 May 2020
         </time>
     </footer>

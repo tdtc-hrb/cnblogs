@@ -92,8 +92,8 @@
     },
     "headline": "PIC blinked",
     "name": "PIC blinked",
-    "wordCount":  421 ,
-    "timeRequired": "PT2M",
+    "wordCount":  131 ,
+    "timeRequired": "PT1M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "zh"
@@ -192,9 +192,8 @@
 </ul>
 <pre tabindex="0"><code>Right-click the &#34;mcu&#34; icon and select &#34;Edit Properties&#34;.
 </code></pre><p><img src="https://electrosome.com/wp-content/uploads/2012/05/Proteus-Edit-Component-PIC-16F877A.jpg" alt="load hex"></p>
-<h2 id="16f887"><a href="https://web.archive.org/web/20260120160017/https://www.fypsolutions.com/assembly-language/pic-microcontroller-led-blink-code-example-in-assembly-language">16F887</a></h2>
+<h2 id="pic16f887-or-pic16f877a">PIC16F887 or PIC16F877A</h2>
 <ul>
-<li>PIC16F887 or PIC16F877A</li>
 <li>LED</li>
 <li>470R Resistor</li>
 <li>8Mhz Crystal</li>
@@ -232,70 +231,11 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">END</span>
-</span></span></code></pre></div><h2 id="16f18877-example-v550mplabx"><a href="https://github.com/dsoze1138/MPLABXv5xx_pic-as_examples/tree/master/16F18877_Example_v550.X">16F18877 Example v550(mplabx)</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#66d9ef">Blink</span> <span style="color:#66d9ef">V.</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">.0</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">subtitle</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#66d9ef">The</span> <span style="color:#66d9ef">uC</span> <span style="color:#66d9ef">Equivalent</span> <span style="color:#66d9ef">of</span> <span style="color:#66d9ef">Hello</span> <span style="color:#66d9ef">world</span><span style="color:#960050;background-color:#1e0010">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">; ***** Program Header *******************************************************************************
-</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">list</span> <span style="color:#66d9ef">P</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">PIC16F18877</span>, <span style="color:#66d9ef">ST</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">OFF</span>, <span style="color:#66d9ef">MM</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#66d9ef">OFF</span>, <span style="color:#66d9ef">N</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">42</span>, <span style="color:#66d9ef">B</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">4</span>, <span style="color:#66d9ef">W</span><span style="color:#960050;background-color:#1e0010">=</span><span style="color:#ae81ff">1</span> <span style="color:#75715e">; &lt;-- List file directives
-</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">include</span> <span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#66d9ef">p16f18877.inc</span><span style="color:#960050;background-color:#1e0010">&gt;</span> <span style="color:#75715e">; &lt;--Use the name of your PIC here
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">; ***** Device Configuration *************************************************************************
-</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG1</span>, <span style="color:#66d9ef">_FEXTOSC_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_RSTOSC_HFINT32</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CLKOUTEN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CSWEN_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_FCMEN_ON</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG2</span>, <span style="color:#66d9ef">_MCLRE_ON</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_PWRTE_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_LPBOREN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_BOREN_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_BORV_LO</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_ZCD_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_PPS1WAY_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_STVREN_ON</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG3</span>, <span style="color:#66d9ef">_WDTCPS_WDTCPS_31</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTE_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTCWS_WDTCWS_7</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_WDTCCS_SC</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG4</span>, <span style="color:#66d9ef">_WRT_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_SCANE_available</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_LVP_ON</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__CONFIG</span> <span style="color:#66d9ef">_CONFIG5</span>, <span style="color:#66d9ef">_CP_OFF</span> <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#66d9ef">_CPD_OFF</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CBLOCK</span> <span style="color:#66d9ef">h</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#ae81ff">20</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">COUNT1</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">COUNT2</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ENDC</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ORG</span>     <span style="color:#ae81ff">0x00</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>MAIN:
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>     <span style="color:#66d9ef">TRISB</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span>         <span style="color:#66d9ef">TRISB</span>,<span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CALL</span>        <span style="color:#66d9ef">Init_Osc</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BANKSEL</span>     <span style="color:#66d9ef">PORTB</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>MainLoop:
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BCF</span>         <span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">CALL</span>        <span style="color:#66d9ef">DELAY3</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BSF</span>         <span style="color:#66d9ef">PORTB</span>,<span style="color:#ae81ff">0</span> 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CALL</span>        <span style="color:#66d9ef">DELAY3</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">MainLoop</span>            <span style="color:#75715e">; Do it again...
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">; Initialize the PIC Oscillator.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; For the 16F18877, 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; page 122 of the data sheet(F version), the OSCCON1 register. 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Set according to Table 6-1(NOSC/COSC Bit Settings) and Table 6-2(NDIV/CDIV Bit Settings): 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">;  Clock Source: HFINTOSC(110)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">;  Clock divider: 8(0011)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100000(0x60) - 32 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100001(0x61) - 16 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100010(0x62) - 8 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100011(0x63) - 4 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100100(0x64) - 2 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100101(0x65) - 1 Mhz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100110(0x66) - 500 kHz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1100111(0x67) - 250 kHz.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">; Our byte now looks like this x1101001(0x68) - 125 kHz.
-</span></span></span><span style="display:flex;"><span>Init_Osc:          <span style="color:#75715e">; System oscillator set to 4MHz
-</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">banksel</span> <span style="color:#66d9ef">OSCCON1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">movlw</span>   <span style="color:#ae81ff">0x63</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">movwf</span>   <span style="color:#66d9ef">OSCCON1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>DELAY3:
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>      <span style="color:#66d9ef">COUNT1</span>,<span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">DELAY3</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DECFSZ</span>      <span style="color:#66d9ef">COUNT2</span>,<span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GOTO</span>        <span style="color:#66d9ef">DELAY3</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">RETURN</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">END</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://web.archive.org/web/20260120160017/https://www.fypsolutions.com/assembly-language/pic-microcontroller-led-blink-code-example-in-assembly-language">pic16F887</a></li>
+</ul>
+
     </section>
 
 
@@ -346,9 +286,9 @@
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/e-pic8_blink6/">
+      <a class="read-next-story" style="no-cover" href="/cnblogs/post/e-pic8_blink5/">
           <section class="post">
-              <h2>PIC blinked - m2</h2>
+              <h2>PIC blinked - TIMER0 overflows</h2>
               
           </section>
       </a>
