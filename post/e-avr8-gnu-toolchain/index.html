@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="avr gnu toolchain 开发环境"/>
+<meta name="twitter:description" content="mplab x and Atmel Studio"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="avr gnu toolchain 开发环境 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/e-avr8-gnu-toolchain/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="mplab x and Atmel Studio" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2026-08-15T22:08:08&#43;08:00" />
+
+    
+    
+
+    <title>avr gnu toolchain 开发环境 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="mplab x and Atmel Studio" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.165.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/e-avr8-gnu-toolchain/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "avr gnu toolchain 开发环境",
+    "name": "avr gnu toolchain 开发环境",
+    "wordCount":  123 ,
+    "timeRequired": "PT1M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "zh"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/e-avr8-gnu-toolchain/",
+    "datePublished": "2026-08-15T22:08Z",
+    "dateModified": "2026-08-15T22:08Z",
+    
+    
+    "description": "mplab x and Atmel Studio",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/e-avr8-gnu-toolchain/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">avr gnu toolchain 开发环境</h1>
+        <small>mplab x and Atmel Studio</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2026-08-15T22:08:08&#43;08:00">
+            Aug 15, 2026
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <ul>
+<li><a href="https://github.com/ZakKemble/avr-gcc-build/releases">avr-gcc-<version num>-x64-windows</a></li>
+</ul>
+<p>Copy the <code>.\avr\include\avr</code> folder
+from <a href="https://www.microchip.com/en-us/tools-resources/develop/microchip-studio/gcc-compilers">avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64.zip</a>
+to <code>.\avr\include</code></p>
+<h2 id="mplab-x-v635---toolchain">MPLAB X v6.35 - Toolchain</h2>
+<pre tabindex="0"><code>Tools -&gt; Options -&gt; Embedded
+</code></pre><p>Add (Base Directory):</p>
+<pre tabindex="0"><code>C:\Users\tdtc\Programs\avr8-gnu-toolchain\bin
+</code></pre><h3 id="differences-between-zakkemble-avr-and-microchip-avr">Differences between ZakKemble AVR and Microchip AVR</h3>
+<ul>
+<li>avrdude.conf</li>
+<li>avrdude.exe</li>
+<li>avr-run.exe</li>
+<li>make.exe</li>
+</ul>
+<h2 id="microchip-studioatmel-studio---toolchain">Microchip Studio(Atmel Studio) - Toolchain</h2>
+<pre tabindex="0"><code>Tools -&gt; Options -&gt; Toolchain
+Package Configuration
+</code></pre><h3 id="xc8-update">xc8 (update)</h3>
+<p>Toolchains: Microchip XC8 AVR 8-bit (C language)</p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/xc8-as7.png" alt=""></p>
+<p><strong>安装as7时，取消xc8的安装</strong></p>
+<h3 id="avr8-gcc-update">avr8-gcc (update)</h3>
+<p>Toolchains: Atmel AVR 8-bit (C language)</p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/avr8-gcc_a_as7.png" alt=""></p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/avr8-gcc_b_as7.png" alt=""></p>
+<h2 id="example">example</h2>
+<pre tabindex="0"><code>#define F_CPU 24000000UL
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
+#include &lt;util/delay.h&gt;
+
+int main(void)
+{
+    CCP = CCP_IOREG_gc; // Protected write
+    CLKCTRL.OSCHFCTRLA = CLKCTRL_FRQSEL_24M_gc; // Set clock to 24MHz
+    
+    PORTD.DIR = 0xFF;
+
+    while (1)
+    {
+        _delay_ms(500);
+        PORTD.OUT = 255;
+        _delay_ms(500);
+        PORTD.OUT = 0;
+    }
+}
+</code></pre><p>The macro <a href="https://onlinedocs.microchip.com/oxy/GUID-78362176-487F-41B9-95C7-B478A9A186EB-en-US-2/GUID-19D17420-19A7-43D6-9517-1FAD8F0A3143.html">F_CPU</a>
+specifies the CPU frequency to be considered by the delay macros.</p>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://github.com/swharden/AVR-projects/">example</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=avr%20gnu%20toolchain%20%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-avr8-gnu-toolchain%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-avr8-gnu-toolchain%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-avr8-gnu-toolchain%2f&amp;description=avr%20gnu%20toolchain%20%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fe-avr8-gnu-toolchain%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-pic8_blink2/">
+          <section class="post">
+              <h2>PIC blinked - init</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>
+

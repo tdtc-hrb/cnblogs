@@ -162,6 +162,78 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-gnu-toolchain/">avr gnu toolchain 开发环境</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://github.com/ZakKemble/avr-gcc-build/releases">avr-gcc-<version num>-x64-windows</a></li>
+</ul>
+<p>Copy the <code>.\avr\include\avr</code> folder
+from <a href="https://www.microchip.com/en-us/tools-resources/develop/microchip-studio/gcc-compilers">avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64.zip</a>
+to <code>.\avr\include</code></p>
+<h2 id="mplab-x-v635---toolchain">MPLAB X v6.35 - Toolchain</h2>
+<pre tabindex="0"><code>Tools -&gt; Options -&gt; Embedded
+</code></pre><p>Add (Base Directory):</p>
+<pre tabindex="0"><code>C:\Users\tdtc\Programs\avr8-gnu-toolchain\bin
+</code></pre><h3 id="differences-between-zakkemble-avr-and-microchip-avr">Differences between ZakKemble AVR and Microchip AVR</h3>
+<ul>
+<li>avrdude.conf</li>
+<li>avrdude.exe</li>
+<li>avr-run.exe</li>
+<li>make.exe</li>
+</ul>
+<h2 id="microchip-studioatmel-studio---toolchain">Microchip Studio(Atmel Studio) - Toolchain</h2>
+<pre tabindex="0"><code>Tools -&gt; Options -&gt; Toolchain
+Package Configuration
+</code></pre><h3 id="xc8-update">xc8 (update)</h3>
+<p>Toolchains: Microchip XC8 AVR 8-bit (C language)</p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/xc8-as7.png" alt=""></p>
+<p><strong>安装as7时，取消xc8的安装</strong></p>
+<h3 id="avr8-gcc-update">avr8-gcc (update)</h3>
+<p>Toolchains: Atmel AVR 8-bit (C language)</p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/avr8-gcc_a_as7.png" alt=""></p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/avr8-gcc_b_as7.png" alt=""></p>
+<h2 id="example">example</h2>
+<pre tabindex="0"><code>#define F_CPU 24000000UL
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
+#include &lt;util/delay.h&gt;
+
+int main(void)
+{
+    CCP = CCP_IOREG_gc; // Protected write
+    CLKCTRL.OSCHFCTRLA = CLKCTRL_FRQSEL_24M_gc; // Set clock to 24MHz
+    
+    PORTD.DIR = 0xFF;
+
+    while (1)
+    {
+        _delay_ms(500);
+        PORTD.OUT = 255;
+        _delay_ms(500);
+        PORTD.OUT = 0;
+    }
+}
+</code></pre><p>The macro <a href="https://onlinedocs.microchip.com/oxy/GUID-78362176-487F-41B9-95C7-B478A9A186EB-en-US-2/GUID-19D17420-19A7-43D6-9517-1FAD8F0A3143.html">F_CPU</a>
+specifies the CPU frequency to be considered by the delay macros.</p> <a class="read-more" href="/cnblogs/post/e-avr8-gnu-toolchain/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-08-15T22:08:08&#43;08:00">
+            15 Aug 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-pic8_blink2/">PIC blinked - init</a></h2>
     </header>
     <section class="post-excerpt">
@@ -2515,40 +2587,6 @@ https://registry.npmmirror.com
 
         
         <time class="post-date" datetime="2026-07-31T18:08:08&#43;08:00">
-            31 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_asm-tutor2/">blinked - pic-as</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>TRIS: Set port/bit direction (input or output)</li>
-<li>LAT: Set port state when writing a port bit.</li>
-<li>PORT: Read present state of port bits.</li>
-</ul>
-<p>Always setup TRIS in initialization and as needed.
-Always write to the LAT (never the PORT)
-Read the PORT for the bit status.</p>
-<p>You can read the LAT, but it always what you wrote,
-it does not contain any &ldquo;live &quot; readings.</p>
-<h3 id="data-direction-registertrisx">Data Direction Register(TRISx)</h3>
-<p>TRISA, TRISB, and TRISC are data direction registers in PIC microcontrollers that
-configure the individual pins of corresponding ports (PORTA, PORTB, and PORTC) as either digital inputs or outputs.</p> <a class="read-more" href="/cnblogs/post/e-pic8_asm-tutor2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-31T08:08:08&#43;08:00">
             31 Jul 2026
         </time>
     </footer>

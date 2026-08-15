@@ -164,6 +164,40 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_asm-tutor2/">blinked - pic-as</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>TRIS: Set port/bit direction (input or output)</li>
+<li>LAT: Set port state when writing a port bit.</li>
+<li>PORT: Read present state of port bits.</li>
+</ul>
+<p>Always setup TRIS in initialization and as needed.
+Always write to the LAT (never the PORT)
+Read the PORT for the bit status.</p>
+<p>You can read the LAT, but it always what you wrote,
+it does not contain any &ldquo;live &quot; readings.</p>
+<h3 id="data-direction-registertrisx">Data Direction Register(TRISx)</h3>
+<p>TRISA, TRISB, and TRISC are data direction registers in PIC microcontrollers that
+configure the individual pins of corresponding ports (PORTA, PORTB, and PORTC) as either digital inputs or outputs.</p> <a class="read-more" href="/cnblogs/post/e-pic8_asm-tutor2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-31T08:08:08&#43;08:00">
+            31 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-proteus_component-an3049/">Unavailable components and their substitutes</a></h2>
     </header>
     <section class="post-excerpt">
@@ -888,48 +922,6 @@ codename: focal</li>
 
         
         <time class="post-date" datetime="2026-07-05T09:08:08&#43;08:00">
-            5 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/ops_nginx-v2/">前端（Web）负载均衡</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>Nginx&rsquo;s load balancing</p>
-<h1 id="一安装">一、安装</h1>
-<p>OS: RHEL Community Version(Rocky8/Alma8) minimal（安装时的选项）</p>
-<h2 id="0-prepare">0. prepare</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#dnf -y install gcc gcc-c++ automake make pcre pcre-devel zlib zlib-devel openssl openssl-devel</span>
-</span></span></code></pre></div><p>see <a href="https://tdtc-hrb.github.io/cnblogs/post/ops_openssl/">update openssl</a></p>
-<h3 id="library-devel">Library devel</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install gd-devel libxml2-devel libxslt-devel
-</span></span></code></pre></div><h4 id="geoip">GeoIP</h4>
-<p>Download latest <a href="http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/">atomic-release</a> <br>
-Install atomic-release rpm:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo rpm -Uvh http://www6.atomicorp.com/channels/atomic/centos/8/x86_64/RPMS/atomic-release-1.0-23.el8.art.noarch.rpm
-</span></span></code></pre></div><p>Install GeoIP-devel rpm package:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf install GeoIP-devel
-</span></span></code></pre></div><h3 id="allow-fw">allow fw</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>80/tcp
-</span></span><span style="display:flex;"><span>$sudo firewall-cmd --reload
-</span></span></code></pre></div><h2 id="installation">installation</h2>
-<p>First, install Nginx of centos <a href="https://nginx.org/en/linux_packages.html#RHEL">repo</a>; <br>
-Then, replace the nginx program file. <br>
-Note: The replaced program file version must be the same as the repo!</p> <a class="read-more" href="/cnblogs/post/ops_nginx-v2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-05T08:38:08&#43;08:00">
             5 Jul 2026
         </time>
     </footer>
