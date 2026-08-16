@@ -176,14 +176,7 @@ to <code>.\avr\include</code></p>
 <pre tabindex="0"><code>Tools -&gt; Options -&gt; Embedded
 </code></pre><p>Add (Base Directory):</p>
 <pre tabindex="0"><code>C:\Users\tdtc\Programs\avr8-gnu-toolchain\bin
-</code></pre><h3 id="differences-between-zakkemble-avr-and-microchip-avr">Differences between ZakKemble AVR and Microchip AVR</h3>
-<ul>
-<li>avrdude.conf</li>
-<li>avrdude.exe</li>
-<li>avr-run.exe</li>
-<li>make.exe</li>
-</ul>
-<h2 id="microchip-studioatmel-studio---toolchain">Microchip Studio(Atmel Studio) - Toolchain</h2>
+</code></pre><h2 id="microchip-studioatmel-studio---toolchain">Microchip Studio(Atmel Studio) - Toolchain</h2>
 <pre tabindex="0"><code>Tools -&gt; Options -&gt; Toolchain
 Package Configuration
 </code></pre><h3 id="xc8-update">xc8 (update)</h3>
@@ -194,29 +187,8 @@ Package Configuration
 <p>Toolchains: Atmel AVR 8-bit (C language)</p>
 <p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/avr8-gcc_a_as7.png" alt=""></p>
 <p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/avr8-gcc_b_as7.png" alt=""></p>
-<h2 id="example">example</h2>
-<pre tabindex="0"><code>#define F_CPU 24000000UL
-#include &lt;avr/io.h&gt;
-#include &lt;avr/interrupt.h&gt;
-#include &lt;util/delay.h&gt;
-
-int main(void)
-{
-    CCP = CCP_IOREG_gc; // Protected write
-    CLKCTRL.OSCHFCTRLA = CLKCTRL_FRQSEL_24M_gc; // Set clock to 24MHz
-    
-    PORTD.DIR = 0xFF;
-
-    while (1)
-    {
-        _delay_ms(500);
-        PORTD.OUT = 255;
-        _delay_ms(500);
-        PORTD.OUT = 0;
-    }
-}
-</code></pre><p>The macro <a href="https://onlinedocs.microchip.com/oxy/GUID-78362176-487F-41B9-95C7-B478A9A186EB-en-US-2/GUID-19D17420-19A7-43D6-9517-1FAD8F0A3143.html">F_CPU</a>
-specifies the CPU frequency to be considered by the delay macros.</p> <a class="read-more" href="/cnblogs/post/e-avr8-gnu-toolchain/">&raquo;</a></p>
+<h3 id="as-70-is-no-longer-maintained">AS 7.0 is no longer maintained</h3>
+<p>This means that new devices will not be able to appear in its device list.</p> <a class="read-more" href="/cnblogs/post/e-avr8-gnu-toolchain/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
