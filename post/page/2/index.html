@@ -164,6 +164,1448 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_data123x/">Data Memory Organization - PIC16F</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/partitioning188.png" alt="Banked Memory Partitioning - 18857/77"></p>
+<h3 id="core-registers">Core Registers</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Addresses in BANKx</th>
+					<th>Core Registers</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>x00h or x80h</td>
+					<td>INDF0</td>
+			</tr>
+			<tr>
+					<td>x01h or x81h</td>
+					<td>INDF1</td>
+			</tr>
+			<tr>
+					<td>x02h or x82h</td>
+					<td>PCL</td>
+			</tr>
+			<tr>
+					<td>x03h or x83h</td>
+					<td>STATUS</td>
+			</tr>
+			<tr>
+					<td>x04h or x84h</td>
+					<td>FSR0L</td>
+			</tr>
+			<tr>
+					<td>x05h or x85h</td>
+					<td>FSR0H</td>
+			</tr>
+			<tr>
+					<td>x06h or x86h</td>
+					<td>FSR1L</td>
+			</tr>
+			<tr>
+					<td>x07h or x87h</td>
+					<td>FSR1H</td>
+			</tr>
+			<tr>
+					<td>x08h or x88h</td>
+					<td>BSR</td>
+			</tr>
+			<tr>
+					<td>x09h or x89h</td>
+					<td>WREG</td>
+			</tr>
+			<tr>
+					<td>x0Ah or x8Ah</td>
+					<td>PCLATH</td>
+			</tr>
+			<tr>
+					<td>x0Bh or x8Bh</td>
+					<td>INTCON</td>
+			</tr>
+	</tbody>
+</table>
+<p><em><strong>BSR : Bank Select Register</strong></em></p>
+<h2 id="banks">banks</h2>
+<ul>
+<li>General Purpose RAM (GPR) / Special Function Registers (SFR)</li>
+</ul>
+<h3 id="bank0">bank0</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>00Ch</td>
+					<td>PORTA</td>
+			</tr>
+			<tr>
+					<td>00Dh</td>
+					<td>PORTB</td>
+			</tr>
+			<tr>
+					<td>00Eh</td>
+					<td>PORTC</td>
+			</tr>
+			<tr>
+					<td>00Fh</td>
+					<td>PORTD</td>
+			</tr>
+			<tr>
+					<td>010h</td>
+					<td>PORTE</td>
+			</tr>
+			<tr>
+					<td>011h</td>
+					<td>TRISA</td>
+			</tr>
+			<tr>
+					<td>012h</td>
+					<td>TRISB</td>
+			</tr>
+			<tr>
+					<td>013h</td>
+					<td>TRISC</td>
+			</tr>
+			<tr>
+					<td>014h</td>
+					<td>TRISD</td>
+			</tr>
+			<tr>
+					<td>015h</td>
+					<td>TRISE</td>
+			</tr>
+			<tr>
+					<td>016h</td>
+					<td>LATA</td>
+			</tr>
+			<tr>
+					<td>017h</td>
+					<td>LATB</td>
+			</tr>
+			<tr>
+					<td>018h</td>
+					<td>LATC</td>
+			</tr>
+			<tr>
+					<td>019h</td>
+					<td>LATD</td>
+			</tr>
+			<tr>
+					<td>01Ah</td>
+					<td>LATE</td>
+			</tr>
+			<tr>
+					<td>01Ch</td>
+					<td>TMR0L</td>
+			</tr>
+			<tr>
+					<td>01Dh</td>
+					<td>TMR0H</td>
+			</tr>
+			<tr>
+					<td>01Eh</td>
+					<td>T0CON0</td>
+			</tr>
+			<tr>
+					<td>01Fh</td>
+					<td>T0CON1</td>
+			</tr>
+			<tr>
+					<td>020h</td>
+					<td>GPR</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank1">bank1</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>08Ch</td>
+					<td>ADRESL</td>
+			</tr>
+			<tr>
+					<td>08Dh</td>
+					<td>ADRESH</td>
+			</tr>
+			<tr>
+					<td>08Eh</td>
+					<td>ADPREVL</td>
+			</tr>
+			<tr>
+					<td>08Fh</td>
+					<td>ADPREVH</td>
+			</tr>
+			<tr>
+					<td>090h</td>
+					<td>ADACCL</td>
+			</tr>
+			<tr>
+					<td>091h</td>
+					<td>ADACCH</td>
+			</tr>
+			<tr>
+					<td>093h</td>
+					<td>ADCON0</td>
+			</tr>
+			<tr>
+					<td>094h</td>
+					<td>ADCON1</td>
+			</tr>
+			<tr>
+					<td>095h</td>
+					<td>ADCON2</td>
+			</tr>
+			<tr>
+					<td>096h</td>
+					<td>ADCON3</td>
+			</tr>
+			<tr>
+					<td>097h</td>
+					<td>ADSTAT</td>
+			</tr>
+			<tr>
+					<td>098h</td>
+					<td>ADCLK</td>
+			</tr>
+			<tr>
+					<td>099h</td>
+					<td>ADACT</td>
+			</tr>
+			<tr>
+					<td>09Ah</td>
+					<td>ADREF</td>
+			</tr>
+			<tr>
+					<td>09Bh</td>
+					<td>ADCAP</td>
+			</tr>
+			<tr>
+					<td>09Ch</td>
+					<td>ADPRE</td>
+			</tr>
+			<tr>
+					<td>09Dh</td>
+					<td>ADACQ</td>
+			</tr>
+			<tr>
+					<td>09Eh</td>
+					<td>ADPCH</td>
+			</tr>
+			<tr>
+					<td>0A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>0F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank2">bank2</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>10Ch</td>
+					<td>ADCNT</td>
+			</tr>
+			<tr>
+					<td>10Dh</td>
+					<td>ADRPT</td>
+			</tr>
+			<tr>
+					<td>10Eh</td>
+					<td>ADLTHL</td>
+			</tr>
+			<tr>
+					<td>10Fh</td>
+					<td>ADLTHH</td>
+			</tr>
+			<tr>
+					<td>110h</td>
+					<td>ADUTHL</td>
+			</tr>
+			<tr>
+					<td>111h</td>
+					<td>ADUTHH</td>
+			</tr>
+			<tr>
+					<td>112h</td>
+					<td>ADSTPTL</td>
+			</tr>
+			<tr>
+					<td>113h</td>
+					<td>ADSTPTH</td>
+			</tr>
+			<tr>
+					<td>114h</td>
+					<td>ADFLTRL</td>
+			</tr>
+			<tr>
+					<td>115h</td>
+					<td>ADFLTRH</td>
+			</tr>
+			<tr>
+					<td>116h</td>
+					<td>ADERRL</td>
+			</tr>
+			<tr>
+					<td>117h</td>
+					<td>ADERRH</td>
+			</tr>
+			<tr>
+					<td>119h</td>
+					<td>RC1REG1</td>
+			</tr>
+			<tr>
+					<td>11Ah</td>
+					<td>TX1REG1</td>
+			</tr>
+			<tr>
+					<td>11Bh</td>
+					<td>SP1BRG1L</td>
+			</tr>
+			<tr>
+					<td>11Ch</td>
+					<td>SP1BRG1H</td>
+			</tr>
+			<tr>
+					<td>11Dh</td>
+					<td>RC1STA</td>
+			</tr>
+			<tr>
+					<td>11Eh</td>
+					<td>TX1STA</td>
+			</tr>
+			<tr>
+					<td>11Fh</td>
+					<td>BAUD1CON</td>
+			</tr>
+			<tr>
+					<td>120h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>170h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank3">bank3</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>18Ch</td>
+					<td>SSP1BUF</td>
+			</tr>
+			<tr>
+					<td>18Dh</td>
+					<td>SSP1ADD</td>
+			</tr>
+			<tr>
+					<td>18Eh</td>
+					<td>SSP1MSK</td>
+			</tr>
+			<tr>
+					<td>18Fh</td>
+					<td>SSP1STAT</td>
+			</tr>
+			<tr>
+					<td>190h</td>
+					<td>SSP1CON1</td>
+			</tr>
+			<tr>
+					<td>191h</td>
+					<td>SSP1CON2</td>
+			</tr>
+			<tr>
+					<td>192h</td>
+					<td>SSP1CON3</td>
+			</tr>
+			<tr>
+					<td>196h</td>
+					<td>SSP2BUF</td>
+			</tr>
+			<tr>
+					<td>197h</td>
+					<td>SSP2ADD</td>
+			</tr>
+			<tr>
+					<td>198h</td>
+					<td>SSP2MSK</td>
+			</tr>
+			<tr>
+					<td>199h</td>
+					<td>SSP2STAT</td>
+			</tr>
+			<tr>
+					<td>19Ah</td>
+					<td>SSP2CON1</td>
+			</tr>
+			<tr>
+					<td>19Bh</td>
+					<td>SSP2CON2</td>
+			</tr>
+			<tr>
+					<td>19Ch</td>
+					<td>SSP2CON3</td>
+			</tr>
+			<tr>
+					<td>1A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>1F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank4">bank4</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>20Ch</td>
+					<td>TMR1L</td>
+			</tr>
+			<tr>
+					<td>20Dh</td>
+					<td>TMR1H</td>
+			</tr>
+			<tr>
+					<td>20Eh</td>
+					<td>T1CON</td>
+			</tr>
+			<tr>
+					<td>20Fh</td>
+					<td>T1GCON</td>
+			</tr>
+			<tr>
+					<td>210h</td>
+					<td>T1GATE</td>
+			</tr>
+			<tr>
+					<td>211h</td>
+					<td>T1CLK</td>
+			</tr>
+			<tr>
+					<td>212h</td>
+					<td>TMR3L</td>
+			</tr>
+			<tr>
+					<td>213h</td>
+					<td>TMR3H</td>
+			</tr>
+			<tr>
+					<td>214h</td>
+					<td>T3CON</td>
+			</tr>
+			<tr>
+					<td>215h</td>
+					<td>T3GCON</td>
+			</tr>
+			<tr>
+					<td>216h</td>
+					<td>T3GATE</td>
+			</tr>
+			<tr>
+					<td>217h</td>
+					<td>T3CLK</td>
+			</tr>
+			<tr>
+					<td>218h</td>
+					<td>TMR5L</td>
+			</tr>
+			<tr>
+					<td>219h</td>
+					<td>TMR5H</td>
+			</tr>
+			<tr>
+					<td>21Ah</td>
+					<td>T5CON</td>
+			</tr>
+			<tr>
+					<td>21Bh</td>
+					<td>T5GCON</td>
+			</tr>
+			<tr>
+					<td>21Ch</td>
+					<td>T5GATE</td>
+			</tr>
+			<tr>
+					<td>21Dh</td>
+					<td>T5CLK</td>
+			</tr>
+			<tr>
+					<td>21Eh</td>
+					<td>CCPTMRS0</td>
+			</tr>
+			<tr>
+					<td>21Fh</td>
+					<td>CCPTMRS1</td>
+			</tr>
+			<tr>
+					<td>220h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>270h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank5">bank5</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>28Ch</td>
+					<td>T2TMR</td>
+			</tr>
+			<tr>
+					<td>28Dh</td>
+					<td>T2PR</td>
+			</tr>
+			<tr>
+					<td>28Eh</td>
+					<td>T2CON</td>
+			</tr>
+			<tr>
+					<td>28Fh</td>
+					<td>T2HLT</td>
+			</tr>
+			<tr>
+					<td>290h</td>
+					<td>T2CLKCON</td>
+			</tr>
+			<tr>
+					<td>291h</td>
+					<td>T2ERT</td>
+			</tr>
+			<tr>
+					<td>292h</td>
+					<td>T4TMR</td>
+			</tr>
+			<tr>
+					<td>293h</td>
+					<td>T4PR</td>
+			</tr>
+			<tr>
+					<td>294h</td>
+					<td>T4CON</td>
+			</tr>
+			<tr>
+					<td>295h</td>
+					<td>T4HLT</td>
+			</tr>
+			<tr>
+					<td>296h</td>
+					<td>T4CLKCON</td>
+			</tr>
+			<tr>
+					<td>297h</td>
+					<td>T4RST</td>
+			</tr>
+			<tr>
+					<td>298h</td>
+					<td>T6TMR</td>
+			</tr>
+			<tr>
+					<td>299h</td>
+					<td>T6PR</td>
+			</tr>
+			<tr>
+					<td>29Ah</td>
+					<td>T6CON</td>
+			</tr>
+			<tr>
+					<td>29Bh</td>
+					<td>T6HLT</td>
+			</tr>
+			<tr>
+					<td>29Ch</td>
+					<td>T6CLKCON</td>
+			</tr>
+			<tr>
+					<td>29Dh</td>
+					<td>T6RST</td>
+			</tr>
+			<tr>
+					<td>2A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>2F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank6">bank6</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>30Ch</td>
+					<td>CCPR1L</td>
+			</tr>
+			<tr>
+					<td>30Dh</td>
+					<td>CCPR1H</td>
+			</tr>
+			<tr>
+					<td>30Eh</td>
+					<td>CCP1CON</td>
+			</tr>
+			<tr>
+					<td>30Fh</td>
+					<td>CCP1CAP</td>
+			</tr>
+			<tr>
+					<td>310h</td>
+					<td>CCPR2L</td>
+			</tr>
+			<tr>
+					<td>311h</td>
+					<td>CCPR2H</td>
+			</tr>
+			<tr>
+					<td>312h</td>
+					<td>CCP2CON</td>
+			</tr>
+			<tr>
+					<td>313h</td>
+					<td>CCP2CAP</td>
+			</tr>
+			<tr>
+					<td>314h</td>
+					<td>CCPPR3L</td>
+			</tr>
+			<tr>
+					<td>315h</td>
+					<td>CCPPR3H</td>
+			</tr>
+			<tr>
+					<td>316h</td>
+					<td>CCP3CON</td>
+			</tr>
+			<tr>
+					<td>317h</td>
+					<td>CCP3CAP</td>
+			</tr>
+			<tr>
+					<td>318h</td>
+					<td>CCPPR4L</td>
+			</tr>
+			<tr>
+					<td>319h</td>
+					<td>CCPPR4H</td>
+			</tr>
+			<tr>
+					<td>31Ah</td>
+					<td>CCP4CON</td>
+			</tr>
+			<tr>
+					<td>31Bh</td>
+					<td>CCP4CAP</td>
+			</tr>
+			<tr>
+					<td>31Ch</td>
+					<td>CCPR5L</td>
+			</tr>
+			<tr>
+					<td>31Dh</td>
+					<td>CCPR5H</td>
+			</tr>
+			<tr>
+					<td>31Eh</td>
+					<td>CCP5CON</td>
+			</tr>
+			<tr>
+					<td>31Fh</td>
+					<td>CCP5CAP</td>
+			</tr>
+			<tr>
+					<td>320h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>370h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank7">bank7</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>38Ch</td>
+					<td>PWM6DCL</td>
+			</tr>
+			<tr>
+					<td>38Dh</td>
+					<td>PWM6DCH</td>
+			</tr>
+			<tr>
+					<td>38Eh</td>
+					<td>PWM6CON</td>
+			</tr>
+			<tr>
+					<td>390h</td>
+					<td>PWM7DCL</td>
+			</tr>
+			<tr>
+					<td>391h</td>
+					<td>PWM7DCH</td>
+			</tr>
+			<tr>
+					<td>392h</td>
+					<td>PWM7CON</td>
+			</tr>
+			<tr>
+					<td>3A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>3F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank8">bank8</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>40Ch</td>
+					<td>SCANLADRL</td>
+			</tr>
+			<tr>
+					<td>40Dh</td>
+					<td>SCANLADRH</td>
+			</tr>
+			<tr>
+					<td>40Eh</td>
+					<td>SCANHADRL</td>
+			</tr>
+			<tr>
+					<td>40Fh</td>
+					<td>SCANHADRH</td>
+			</tr>
+			<tr>
+					<td>410h</td>
+					<td>SCANCON0</td>
+			</tr>
+			<tr>
+					<td>411h</td>
+					<td>SCANTRIG</td>
+			</tr>
+			<tr>
+					<td>416h</td>
+					<td>CRCDATL</td>
+			</tr>
+			<tr>
+					<td>417h</td>
+					<td>CRCDATH</td>
+			</tr>
+			<tr>
+					<td>418h</td>
+					<td>CRCACCL</td>
+			</tr>
+			<tr>
+					<td>419h</td>
+					<td>CRCACCH</td>
+			</tr>
+			<tr>
+					<td>41Ah</td>
+					<td>CRCSHIFTL</td>
+			</tr>
+			<tr>
+					<td>41Bh</td>
+					<td>CRCSHIFTH</td>
+			</tr>
+			<tr>
+					<td>41Ch</td>
+					<td>CRCXORL</td>
+			</tr>
+			<tr>
+					<td>41Dh</td>
+					<td>CRCXORH</td>
+			</tr>
+			<tr>
+					<td>41Eh</td>
+					<td>CRCCON0</td>
+			</tr>
+			<tr>
+					<td>41Fh</td>
+					<td>CRCCON1</td>
+			</tr>
+			<tr>
+					<td>420h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>470h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank9">bank9</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>48Ch</td>
+					<td>SMT1TMRL</td>
+			</tr>
+			<tr>
+					<td>48Dh</td>
+					<td>SMT1TMRH</td>
+			</tr>
+			<tr>
+					<td>48Eh</td>
+					<td>SMT1TMRU</td>
+			</tr>
+			<tr>
+					<td>48Fh</td>
+					<td>SMT1CPRL</td>
+			</tr>
+			<tr>
+					<td>490h</td>
+					<td>SMT1CPRH</td>
+			</tr>
+			<tr>
+					<td>491h</td>
+					<td>SMT1CPRU</td>
+			</tr>
+			<tr>
+					<td>492h</td>
+					<td>SMT1CPWL</td>
+			</tr>
+			<tr>
+					<td>493h</td>
+					<td>SMT1CPWH</td>
+			</tr>
+			<tr>
+					<td>494h</td>
+					<td>SMT1CPWU</td>
+			</tr>
+			<tr>
+					<td>495h</td>
+					<td>SMT1PRL</td>
+			</tr>
+			<tr>
+					<td>496h</td>
+					<td>SMT1PRH</td>
+			</tr>
+			<tr>
+					<td>497h</td>
+					<td>SMT1PRU</td>
+			</tr>
+			<tr>
+					<td>498h</td>
+					<td>SMT1CON0</td>
+			</tr>
+			<tr>
+					<td>499h</td>
+					<td>SMT1CON1</td>
+			</tr>
+			<tr>
+					<td>49Ah</td>
+					<td>SMT1STAT</td>
+			</tr>
+			<tr>
+					<td>49Bh</td>
+					<td>SMT1CLK</td>
+			</tr>
+			<tr>
+					<td>49Ch</td>
+					<td>SMT1SIG</td>
+			</tr>
+			<tr>
+					<td>49Dh</td>
+					<td>SMT1WIN</td>
+			</tr>
+			<tr>
+					<td>4A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>4F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank10">bank10</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>50Ch</td>
+					<td>SMT2TMRL</td>
+			</tr>
+			<tr>
+					<td>50Dh</td>
+					<td>SMT2TMRH</td>
+			</tr>
+			<tr>
+					<td>50Eh</td>
+					<td>SMT2TMRU</td>
+			</tr>
+			<tr>
+					<td>48Fh</td>
+					<td>SMT1CPRL</td>
+			</tr>
+			<tr>
+					<td>510h</td>
+					<td>SMT2CPRH</td>
+			</tr>
+			<tr>
+					<td>511h</td>
+					<td>SMT2CPRU</td>
+			</tr>
+			<tr>
+					<td>512h</td>
+					<td>SMT2CPWL</td>
+			</tr>
+			<tr>
+					<td>513h</td>
+					<td>SMT2CPWH</td>
+			</tr>
+			<tr>
+					<td>514h</td>
+					<td>SMT2CPWU</td>
+			</tr>
+			<tr>
+					<td>515h</td>
+					<td>SMT2PRL</td>
+			</tr>
+			<tr>
+					<td>516h</td>
+					<td>SMT2PRH</td>
+			</tr>
+			<tr>
+					<td>517h</td>
+					<td>SMT2PRU</td>
+			</tr>
+			<tr>
+					<td>518h</td>
+					<td>SMT2CON0</td>
+			</tr>
+			<tr>
+					<td>519h</td>
+					<td>SMT2CON1</td>
+			</tr>
+			<tr>
+					<td>51Ah</td>
+					<td>SMT2STAT</td>
+			</tr>
+			<tr>
+					<td>51Bh</td>
+					<td>SMT2CLK</td>
+			</tr>
+			<tr>
+					<td>51Ch</td>
+					<td>SMT2SIG</td>
+			</tr>
+			<tr>
+					<td>51Dh</td>
+					<td>SMT2WIN</td>
+			</tr>
+			<tr>
+					<td>520h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>570h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank11">bank11</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>58Ch</td>
+					<td>NCO1ACCL</td>
+			</tr>
+			<tr>
+					<td>58Dh</td>
+					<td>NCO1ACCH</td>
+			</tr>
+			<tr>
+					<td>58Eh</td>
+					<td>NCO1ACCU</td>
+			</tr>
+			<tr>
+					<td>58Fh</td>
+					<td>NCO1INCL</td>
+			</tr>
+			<tr>
+					<td>590h</td>
+					<td>NCO1INCH</td>
+			</tr>
+			<tr>
+					<td>591h</td>
+					<td>NCO1INCU</td>
+			</tr>
+			<tr>
+					<td>592h</td>
+					<td>NCO1CON</td>
+			</tr>
+			<tr>
+					<td>593h</td>
+					<td>NCO1CLK</td>
+			</tr>
+			<tr>
+					<td>5A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>5F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank12">bank12</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>60Ch</td>
+					<td>CWG1CLKCON</td>
+			</tr>
+			<tr>
+					<td>60Dh</td>
+					<td>CWG1ISM</td>
+			</tr>
+			<tr>
+					<td>60Eh</td>
+					<td>CWG1DBR</td>
+			</tr>
+			<tr>
+					<td>60Fh</td>
+					<td>CWG1DBF</td>
+			</tr>
+			<tr>
+					<td>610h</td>
+					<td>CWG1CON0</td>
+			</tr>
+			<tr>
+					<td>611h</td>
+					<td>CWG1CON1</td>
+			</tr>
+			<tr>
+					<td>612h</td>
+					<td>CWG1AS0</td>
+			</tr>
+			<tr>
+					<td>613h</td>
+					<td>CWG1AS1</td>
+			</tr>
+			<tr>
+					<td>614h</td>
+					<td>CWG1STR</td>
+			</tr>
+			<tr>
+					<td>616h</td>
+					<td>CWG2CLKCON</td>
+			</tr>
+			<tr>
+					<td>617h</td>
+					<td>CWG2ISM</td>
+			</tr>
+			<tr>
+					<td>618h</td>
+					<td>CWG2DBR</td>
+			</tr>
+			<tr>
+					<td>619h</td>
+					<td>CWG2DBF</td>
+			</tr>
+			<tr>
+					<td>61Ah</td>
+					<td>CWG2CON0</td>
+			</tr>
+			<tr>
+					<td>61Bh</td>
+					<td>CWG2CON1</td>
+			</tr>
+			<tr>
+					<td>61Ch</td>
+					<td>CWG2AS0</td>
+			</tr>
+			<tr>
+					<td>61Dh</td>
+					<td>CWG2AS1</td>
+			</tr>
+			<tr>
+					<td>61Eh</td>
+					<td>CWG2STR</td>
+			</tr>
+			<tr>
+					<td>620h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>670h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank13">bank13</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>68Ch</td>
+					<td>CWG3CLKCON</td>
+			</tr>
+			<tr>
+					<td>68Dh</td>
+					<td>CWG3ISM</td>
+			</tr>
+			<tr>
+					<td>68Eh</td>
+					<td>CWG3DBR</td>
+			</tr>
+			<tr>
+					<td>68Fh</td>
+					<td>CWG3DBF</td>
+			</tr>
+			<tr>
+					<td>690h</td>
+					<td>CWG3CON0</td>
+			</tr>
+			<tr>
+					<td>691h</td>
+					<td>CWG3CON1</td>
+			</tr>
+			<tr>
+					<td>692h</td>
+					<td>CWG3AS0</td>
+			</tr>
+			<tr>
+					<td>693h</td>
+					<td>CWG3AS1</td>
+			</tr>
+			<tr>
+					<td>694h</td>
+					<td>CWG3STR</td>
+			</tr>
+			<tr>
+					<td>6A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>6F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank14">bank14</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>70Ch</td>
+					<td>PIR0</td>
+			</tr>
+			<tr>
+					<td>70Dh</td>
+					<td>PIR1</td>
+			</tr>
+			<tr>
+					<td>70Eh</td>
+					<td>PIR2</td>
+			</tr>
+			<tr>
+					<td>70Fh</td>
+					<td>PIR3</td>
+			</tr>
+			<tr>
+					<td>710h</td>
+					<td>PIR4</td>
+			</tr>
+			<tr>
+					<td>711h</td>
+					<td>PIR5</td>
+			</tr>
+			<tr>
+					<td>712h</td>
+					<td>PIR6</td>
+			</tr>
+			<tr>
+					<td>713h</td>
+					<td>PIR7</td>
+			</tr>
+			<tr>
+					<td>714h</td>
+					<td>PIR8</td>
+			</tr>
+			<tr>
+					<td>716h</td>
+					<td>PIE0</td>
+			</tr>
+			<tr>
+					<td>717h</td>
+					<td>PIE1</td>
+			</tr>
+			<tr>
+					<td>718h</td>
+					<td>PIE2</td>
+			</tr>
+			<tr>
+					<td>719h</td>
+					<td>PIE3</td>
+			</tr>
+			<tr>
+					<td>71Ah</td>
+					<td>PIE4</td>
+			</tr>
+			<tr>
+					<td>71Bh</td>
+					<td>PIE5</td>
+			</tr>
+			<tr>
+					<td>71Ch</td>
+					<td>PIE6</td>
+			</tr>
+			<tr>
+					<td>71Dh</td>
+					<td>PIE7</td>
+			</tr>
+			<tr>
+					<td>71Eh</td>
+					<td>pie8</td>
+			</tr>
+			<tr>
+					<td>720h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>770h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank15">bank15</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>796h</td>
+					<td>PMD0</td>
+			</tr>
+			<tr>
+					<td>797h</td>
+					<td>PMD1</td>
+			</tr>
+			<tr>
+					<td>798h</td>
+					<td>PMD2</td>
+			</tr>
+			<tr>
+					<td>799h</td>
+					<td>PMD3</td>
+			</tr>
+			<tr>
+					<td>79Ah</td>
+					<td>PMD4</td>
+			</tr>
+			<tr>
+					<td>79Bh</td>
+					<td>PMD5</td>
+			</tr>
+			<tr>
+					<td>7A0h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>7F0h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="bank16">bank16</h3>
+<table>
+	<thead>
+			<tr>
+					<th>File Address</th>
+					<th>Register</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>80Ch</td>
+					<td>WDTCON0</td>
+			</tr>
+			<tr>
+					<td>80Dh</td>
+					<td>WDTCON1</td>
+			</tr>
+			<tr>
+					<td>80Eh</td>
+					<td>WDTPSL</td>
+			</tr>
+			<tr>
+					<td>80Fh</td>
+					<td>WDTPSH</td>
+			</tr>
+			<tr>
+					<td>810h</td>
+					<td>WDTTMR</td>
+			</tr>
+			<tr>
+					<td>811h</td>
+					<td>BORCON</td>
+			</tr>
+			<tr>
+					<td>812h</td>
+					<td>VERGCON <sup>(1)<sup></td>
+			</tr>
+			<tr>
+					<td>813h</td>
+					<td>PCON0</td>
+			</tr>
+			<tr>
+					<td>81Ah</td>
+					<td>NVMADRL</td>
+			</tr>
+			<tr>
+					<td>81Bh</td>
+					<td>NVMADRH</td>
+			</tr>
+			<tr>
+					<td>81Ch</td>
+					<td>NVMDATL</td>
+			</tr>
+			<tr>
+					<td>81Dh</td>
+					<td>NVMDATH</td>
+			</tr>
+			<tr>
+					<td>81Eh</td>
+					<td>NVMCON1</td>
+			</tr>
+			<tr>
+					<td>81Fh</td>
+					<td>NVMCON2</td>
+			</tr>
+			<tr>
+					<td>820h</td>
+					<td>GPR</td>
+			</tr>
+			<tr>
+					<td>870h</td>
+					<td>Common RAM</td>
+			</tr>
+	</tbody>
+</table>
+<p>Note 1: Present only on PIC16(L)F18877.</p> <a class="read-more" href="/cnblogs/post/e-pic8_data123x/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-07-31T18:08:08&#43;08:00">
+            31 Jul 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-pic8_asm-tutor2/">blinked - pic-as</a></h2>
     </header>
     <section class="post-excerpt">
@@ -655,110 +2097,6 @@ xdk-asf-3.33.0\sam\applications\getting-started\sam4sd32c_sam4s_ek2\iar\getting-
 <pre tabindex="0"><code>JP13 Connect.
 </code></pre><h3 id="web-server-1">web server</h3>
 <p><strong>无论是 USB 接口 供电，还是 圆形 DC 接口 供电 均无法工作!</strong></p> <a class="read-more" href="/cnblogs/post/e-comp_enc28j60/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-07-07T01:08:08&#43;08:00">
-            7 Jul 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-web-server/">web server</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>created date： 2021-03-10 <br>
-modified date：</p>
-<pre tabindex="0"><code>2023-03-25
-</code></pre><ul>
-<li>IDE <br>
-Arduino <a href="https://www.arduino.cc/en/software">V1.8.19</a></li>
-<li>Library <br>
-<a href="https://github.com/UIPEthernet/UIPEthernet/releases">UIP Ethernet v2.x</a></li>
-</ul>
-<h1 id="接线">接线</h1>
-<table>
-	<thead>
-			<tr>
-					<th>Arduino Uno</th>
-					<th>Enc28j60</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Pin 10</td>
-					<td>CS</td>
-			</tr>
-			<tr>
-					<td>Pin 11</td>
-					<td>SI</td>
-			</tr>
-			<tr>
-					<td>Pin 12</td>
-					<td>SO</td>
-			</tr>
-			<tr>
-					<td>Pin 13</td>
-					<td>SCK</td>
-			</tr>
-			<tr>
-					<td>Reset</td>
-					<td>RST<sup>*</sup></td>
-			</tr>
-			<tr>
-					<td>+3v3</td>
-					<td>Vcc</td>
-			</tr>
-			<tr>
-					<td>GND<sup>*</sup></td>
-					<td>GND</td>
-			</tr>
-	</tbody>
-</table>
-<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Connection-Diagram.png" alt="spi connect"></p>
-<h2 id="enc28j60">Enc28j60</h2>
-<p>INTN: 置空（不接）</p>
-<p>*Rst接线: 注意 <a href="https://robotdyn.com/nano-v3-ethernet-shield-enc28j60.html">Nano V3 Ethernet Shield</a> 接7号线柱，如下图所示：
-<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/NanoEthENC28J60-Shield.jpg" alt="reset connect"></p>
-<h2 id="arduino-uno"><a href="https://content.arduino.cc/assets/UNO-TH_Rev3e_sch.pdf">Arduino Uno</a></h2>
-<p>*GND接线:  5V旁边的GND.</p>
-<p><strong>供电: 必须使用USB接口.</strong>
-<em><strong>使用 圆形 DC 接口 无法工作!</strong></em></p>
-<h1 id="网络及pc驱动">网络及PC驱动</h1>
-<p>两种方式：</p>
-<ul>
-<li>
-<p>平行线 <br>
-接路由器Lan口。</p>
-</li>
-<li>
-<p>交叉线 <br>
-接PC的Lan口。</p>
-</li>
-</ul>
-<h2 id="network">Network</h2>
-<p>设置同一网段的IP地址。</p>
-<ul>
-<li>PC <br>
-Control Panel -&gt; Network and Internet -&gt; Network Connections <br>
-Ethernet -&gt; Properties:</li>
-</ul>
-<pre tabindex="0"><code>Internet Protocol Version 4(TCP/IPv4)
-</code></pre><ul>
-<li>Enc28J60 <br>
-IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代码中更改.</li>
-</ul>
-<h3 id="router">Router</h3>
-<p>不支持以下路由器:</p> <a class="read-more" href="/cnblogs/post/e-avr8-web-server/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
