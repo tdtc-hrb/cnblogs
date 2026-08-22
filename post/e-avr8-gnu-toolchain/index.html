@@ -29,7 +29,7 @@
     
     <meta property="og:description" content="mplab x and Atmel Studio" />
   	<meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2026-08-15T22:08:08&#43;08:00" />
+    <meta property="article:published_time" content="2026-08-22T22:08:08&#43;08:00" />
 
     
     
@@ -92,15 +92,15 @@
     },
     "headline": "avr gnu toolchain 开发环境",
     "name": "avr gnu toolchain 开发环境",
-    "wordCount":  151 ,
+    "wordCount":  192 ,
     "timeRequired": "PT1M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "zh"
     },
     "url": "https://tdtc-hrb.github.io/cnblogs/post/e-avr8-gnu-toolchain/",
-    "datePublished": "2026-08-15T22:08Z",
-    "dateModified": "2026-08-15T22:08Z",
+    "datePublished": "2026-08-22T22:08Z",
+    "dateModified": "2026-08-22T22:08Z",
     
     
     "description": "mplab x and Atmel Studio",
@@ -168,8 +168,8 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2026-08-15T22:08:08&#43;08:00">
-            Aug 15, 2026
+          <time class="post-date" datetime="2026-08-22T22:08:08&#43;08:00">
+            Aug 22, 2026
           </time>
         
          
@@ -202,10 +202,21 @@ Package Configuration
 <p>removed &ldquo;avr8-gnu-toolchain&rdquo; at:</p>
 <pre tabindex="0"><code>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\
 </code></pre><p>copy new version avr8-gnu-toolchain.</p>
-<h3 id="as-70-is-no-longer-maintained">AS 7.0 is no longer maintained</h3>
-<p>This means that new devices will not be able to appear in its device list.</p>
-<p>For example: &ldquo;AVR32DD28&rdquo; etc.</p>
+<h3 id="device-pack-manager">Device Pack Manager</h3>
+<ul>
+<li>list issue <br>
+A network proxy must be set up.</li>
+<li>install issue <br>
+First, select the version you want to install; then, click &ldquo;Install&rdquo; -&gt; &ldquo;Install selected package&rdquo;.</li>
+</ul>
+<h4 id="network-proxy">network proxy</h4>
+<p>Tools -&gt; Options -&gt; Web Browser</p>
+<p>Go to &ldquo;Internet Explorer Options&rdquo; settings.</p>
+<h4 id="install">install</h4>
+<p>When the new version of the device list appears, you can disable the network proxy settings.</p>
+<p>Then, proceed with the installation.</p>
 <h2 id="example">example</h2>
+<p>Atmel.AVR-Dx:</p>
 <pre tabindex="0"><code>#define F_CPU 24000000UL
 #include &lt;avr/io.h&gt;
 #include &lt;avr/interrupt.h&gt;
@@ -283,17 +294,10 @@ specifies the CPU frequency to be considered by the delay macros.</p>
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="/cnblogs/post/e-avr8-web-server/">
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-avr8-web-server/">
           <section class="post">
               <h2>web server - Enc28j60</h2>
-              
-          </section>
-      </a>
-  
-  
-      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-pic8_blink2/">
-          <section class="post">
-              <h2>PIC blinked - init</h2>
           </section>
       </a>
   

@@ -162,6 +162,61 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-gnu-toolchain/">avr gnu toolchain 开发环境</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://github.com/ZakKemble/avr-gcc-build/releases">avr-gcc-<version num>-x64-windows</a></li>
+</ul>
+<p>Copy the <code>.\avr\include\avr</code> folder
+from <a href="https://www.microchip.com/en-us/tools-resources/develop/microchip-studio/gcc-compilers">avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64.zip</a>
+to <code>.\avr\include</code></p>
+<h2 id="mplab-x-v635---toolchain">MPLAB X v6.35 - Toolchain</h2>
+<pre tabindex="0"><code>Tools -&gt; Options -&gt; Embedded
+</code></pre><p>Add (Base Directory):</p>
+<pre tabindex="0"><code>C:\Users\tdtc\Programs\avr8-gnu-toolchain\bin
+</code></pre><h2 id="microchip-studioatmel-studio---toolchain">Microchip Studio(Atmel Studio) - Toolchain</h2>
+<pre tabindex="0"><code>Tools -&gt; Options -&gt; Toolchain
+Package Configuration
+</code></pre><h3 id="xc8-update">xc8 (update)</h3>
+<p>Toolchains: Microchip XC8 AVR 8-bit (C language)</p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/xc8-as7.png" alt=""></p>
+<p><strong>安装as7时，取消xc8的安装</strong></p>
+<h3 id="avr8-gcc-update">avr8-gcc (update)</h3>
+<p>Toolchains: Atmel AVR 8-bit (C language)</p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/avr8-gcc_a_as7.png" alt=""></p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/avr8-gcc_b_as7.png" alt=""></p>
+<h4 id="replaced---other-way">Replaced - other way</h4>
+<p>removed &ldquo;avr8-gnu-toolchain&rdquo; at:</p>
+<pre tabindex="0"><code>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\
+</code></pre><p>copy new version avr8-gnu-toolchain.</p>
+<h3 id="device-pack-manager">Device Pack Manager</h3>
+<ul>
+<li>list issue <br>
+A network proxy must be set up.</li>
+<li>install issue <br>
+First, select the version you want to install; then, click &ldquo;Install&rdquo; -&gt; &ldquo;Install selected package&rdquo;.</li>
+</ul>
+<h4 id="network-proxy">network proxy</h4>
+<p>Tools -&gt; Options -&gt; Web Browser</p> <a class="read-more" href="/cnblogs/post/e-avr8-gnu-toolchain/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-08-22T22:08:08&#43;08:00">
+            22 Aug 2026
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs/post/e-avr8-web-server/">web server - Enc28j60</a></h2>
     </header>
     <section class="post-excerpt">
@@ -256,54 +311,6 @@ IP and <a href="https://www.browserling.com/tools/random-mac">MAC</a> 在源代�
         
         <time class="post-date" datetime="2026-08-18T06:08:08&#43;08:00">
             18 Aug 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-avr8-gnu-toolchain/">avr gnu toolchain 开发环境</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li><a href="https://github.com/ZakKemble/avr-gcc-build/releases">avr-gcc-<version num>-x64-windows</a></li>
-</ul>
-<p>Copy the <code>.\avr\include\avr</code> folder
-from <a href="https://www.microchip.com/en-us/tools-resources/develop/microchip-studio/gcc-compilers">avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64.zip</a>
-to <code>.\avr\include</code></p>
-<h2 id="mplab-x-v635---toolchain">MPLAB X v6.35 - Toolchain</h2>
-<pre tabindex="0"><code>Tools -&gt; Options -&gt; Embedded
-</code></pre><p>Add (Base Directory):</p>
-<pre tabindex="0"><code>C:\Users\tdtc\Programs\avr8-gnu-toolchain\bin
-</code></pre><h2 id="microchip-studioatmel-studio---toolchain">Microchip Studio(Atmel Studio) - Toolchain</h2>
-<pre tabindex="0"><code>Tools -&gt; Options -&gt; Toolchain
-Package Configuration
-</code></pre><h3 id="xc8-update">xc8 (update)</h3>
-<p>Toolchains: Microchip XC8 AVR 8-bit (C language)</p>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/xc8-as7.png" alt=""></p>
-<p><strong>安装as7时，取消xc8的安装</strong></p>
-<h3 id="avr8-gcc-update">avr8-gcc (update)</h3>
-<p>Toolchains: Atmel AVR 8-bit (C language)</p>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/avr8-gcc_a_as7.png" alt=""></p>
-<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/avr8-gcc_b_as7.png" alt=""></p>
-<h4 id="replaced---other-way">Replaced - other way</h4>
-<p>removed &ldquo;avr8-gnu-toolchain&rdquo; at:</p>
-<pre tabindex="0"><code>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\
-</code></pre><p>copy new version avr8-gnu-toolchain.</p>
-<h3 id="as-70-is-no-longer-maintained">AS 7.0 is no longer maintained</h3>
-<p>This means that new devices will not be able to appear in its device list.</p> <a class="read-more" href="/cnblogs/post/e-avr8-gnu-toolchain/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2026-08-15T22:08:08&#43;08:00">
-            15 Aug 2026
         </time>
     </footer>
 </article>
