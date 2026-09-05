@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="迁移自(cnblogs.com/xiaobin-hlj80)"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/" />
+
+    
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="" />
+    
+
+    <title>迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+        <link href='/cnblogs/index.xml' rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80) &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+    
+    <meta name="generator" content="Hugo 0.165.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/"
+    },
+    "description":  null 
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+	<header class="main-header tag-head no-cover">
+
+    <nav class="main-nav overlay clearfix">
+      
+      
+        
+          <a class="menu-button icon-feed" href='/cnblogs/index.xml'>&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">迁移自(cnblogs.com/xiaobin-hlj80)</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs/page/7/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 8 of 9</span>
+	
+	    <a class="older-posts" href="/cnblogs/page/9/">Older Posts &rarr;</a>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-lwip-ethernet/">lwIP移植笔记 - ethernet篇</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>ethernet的移植工作，主要是“填空”ethernetif.c的过程！ <br>
+（PS. 再一次感谢Adam Dunkels大侠的无私工作！以及对他的敬意！）</p>
+<h1 id="头文件">头文件</h1>
+<blockquote>
+<p>ethernetif.h</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef ETHERNETIF_H_INCLUDED
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define ETHERNETIF_H_INCLUDED
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/netif.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/ip_addr.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/err.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;netif/etharp.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">err_t</span> <span style="color:#a6e22e">ethernetif_init</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ethernetif_input</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* ETHERNETIF_H_INCLUDED */</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h1 id="ethernet-interface">ethernet interface</h1>
+<blockquote>
+<p>ethernetif.c位置: ../src/netif</p>
+</blockquote>
+<ul>
+<li>初始化（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_init</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif)
+</span></span></code></pre></div><ul>
+<li>发送（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">err_t</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_output</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif, <span style="color:#66d9ef">struct</span> pbuf<span style="color:#f92672">*</span> p)
+</span></span></code></pre></div><ul>
+<li>接收（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> pbuf<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_input</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif)
+</span></span></code></pre></div><h2 id="0-define-hardware">0. define hardware</h2>
+<p>根据硬件的不同！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;enc28j60.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>##　1. 初始化（低级）</p>
+<h3 id="1-初始化mac地址">（1） 初始化MAC地址</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x04</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x25</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1C</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xA0</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x02</span>;
+</span></span></code></pre></div><h3 id="2-初始化网卡">（2） 初始化网卡</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">enc28j60Init</span>(netif<span style="color:#f92672">-&gt;</span>hwaddr);
+</span></span></code></pre></div><h3 id="3中断使能">（3）中断使能</h3>
+<p>如果使用RTOS，则设置MCU的SPI中断使能； <br>
+例如在CM0/3/4中：</p> <a class="read-more" href="/cnblogs/post/e-lwip-ethernet/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-25T10:08:08&#43;08:00">
+            25 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-freertos-port_sam4s/">freeRTOS移植-sam</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>freeRTOS v7.0.0</p>
+</blockquote>
+<p>移植编译器（IAR）,以及头文件和hook。</p>
+<h1 id="头文件">头文件</h1>
+<blockquote>
+<p>asf.h</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// From module: FreeRTOS mini Real-Time Kernel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;task.h&gt;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h2 id="freertos-config">freeRTOS config</h2>
+<blockquote>
+<p>FreeRTOSConfig.h</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef FREERTOS_CONFIG_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FREERTOS_CONFIG_H
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//#define configUSE_PREEMPTION                     1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_PREEMPTION                       0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_IDLE_HOOK                        1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TICK_HOOK                        1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configCPU_CLOCK_HZ                         (sysclk_get_cpu_hz())
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configTICK_RATE_HZ                         ((portTickType) 1000)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMINIMAL_STACK_SIZE                   ((unsigned short) 70)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//#define configTOTAL_HEAP_SIZE                    ((size_t) ( 0x2C00-600 ))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_TASK_NAME_LEN                    ( 16 )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TRACE_FACILITY                   1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_16_BIT_TICKS                     0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configIDLE_SHOULD_YIELD                    0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_CO_ROUTINES                      0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_MUTEXES                          1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_RECURSIVE_MUTEXES                0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configCHECK_FOR_STACK_OVERFLOW             2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configGENERATE_RUN_TIME_STATS              0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configENABLE_BACKWARD_COMPATIBILITY        1
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_PRIORITIES                       ((unsigned portBASE_TYPE) 5)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_CO_ROUTINE_PRIORITIES            (2)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configQUEUE_REGISTRY_SIZE                  10
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskPrioritySet                   1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_uxTaskPriorityGet                  0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelete                        0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskCleanUpResources              0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskSuspend                       1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelayUntil                    0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelay                         1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_uxTaskGetStackHighWaterMark        1
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define configKERNEL_INTERRUPT_PRIORITY            (0x0f &lt;&lt; 4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_SYSCALL_INTERRUPT_PRIORITY       (0x05 &lt;&lt; 4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div><h1 id="hook">hook</h1>
+<blockquote>
+<p>必须实现3个callback函数</p> <a class="read-more" href="/cnblogs/post/e-freertos-port_sam4s/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-08T08:08:08&#43;08:00">
+            8 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-freertos-port_win32/">freeRTOS移植</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>freeRTOS v6.1.1</p>
+</blockquote>
+<h1 id="portableh">portable.h</h1>
+<h2 id="memory">memory</h2>
+<h3 id="tcb">TCB</h3>
+<p>Ln167~Ln187(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>pxPortInitialiseStack
+</span></span></code></pre></div><h3 id="memory-management">memory management</h3>
+<p>在heap_n.c中实现</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">pvPortMalloc</span>( <span style="color:#66d9ef">size_t</span> xSize ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortFree</span>( <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>pv ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><p>如果MPU可用，则使用Ln105~106(mpu_wrappers.h)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortInitialiseBlocks</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">size_t</span> <span style="color:#a6e22e">xPortGetFreeHeapSize</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><h2 id="task">task</h2>
+<p>此实现在Ln189<del>Ln262、Ln401</del>Ln406(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>portBASE_TYPE <span style="color:#a6e22e">xPortStartScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEndScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><blockquote>
+<p>注意：在windows系统下end是调用了TerminateProcess（WinBase.h Ln3398）</p>
+</blockquote>
+<h1 id="portmacroh">portmacro.h</h1>
+<h2 id="critical">Critical</h2>
+<p>此实现在Ln452~Ln513(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEnterCritical</span>( <span style="color:#66d9ef">void</span> );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortExitCritical</span>( <span style="color:#66d9ef">void</span> );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define portENTER_CRITICAL()		vPortEnterCritical()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define portEXIT_CRITICAL()			vPortExitCritical()
+</span></span></span></code></pre></div><h2 id="interrupt">Interrupt</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define portDISABLE_INTERRUPTS()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define portENABLE_INTERRUPTS()
+</span></span></span></code></pre></div><p>此实现在Ln408~Ln450(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortGenerateSimulatedInterrupt</span>( <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> ulInterruptNumber );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortSetInterruptHandler</span>( <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> ulInterruptNumber, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> (<span style="color:#f92672">*</span>pvHandler)( <span style="color:#66d9ef">void</span> ) );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define portYIELD()					vPortGenerateSimulatedInterrupt( portINTERRUPT_YIELD )
+</span></span></span></code></pre></div><h1 id="other">other</h1>
+<h2 id="thread">thread</h2>
+<p>在portmacro.h定义，在Ln377~Ln399(port.c)实现</p> <a class="read-more" href="/cnblogs/post/e-freertos-port_win32/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-06T08:08:08&#43;08:00">
+            6 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-freertos-base/">freeRTOS基础</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>freeRTOS v6.1.1</p>
+</blockquote>
+<h1 id="约定">约定</h1>
+<h2 id="变量名">变量名</h2>
+<p>u: unsigned
+c: char
+s: int16_t(short)
+l: int32_t(long)<br>
+x: BaseType_t 和其他所有</p>
+<h2 id="函数名">函数名</h2>
+<blockquote>
+<p>前面的小写字母表示返回值；
+紧随其后的是文件名。</p>
+</blockquote>
+<p>p: pointer
+v: void
+x: xQueueReceive() returns a variable of type BaseType_t and is defined within queue.c.</p>
+<h1 id="必须使用">必须使用</h1>
+<ul>
+<li>task.c</li>
+<li>list.c</li>
+<li>queue.c <br>
+task-to-task, task-to-interrupt, interrupt-to-task.</li>
+</ul>
+<h2 id="移植必须">移植必须</h2>
+<blockquote>
+<p>实现 portable.h</p>
+</blockquote>
+<ul>
+<li>heap_1.c or heap_2.c or heap_3.c</li>
+<li>port.c</li>
+</ul>
+<h3 id="header">header</h3>
+<ul>
+<li>portmacro.h</li>
+</ul>
+<h1 id="最小化系统">最小化系统</h1>
+<p>main.c</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">vTaskStartScheduler</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="header-1">header</h2>
+<blockquote>
+<p>vc <br>
+Configuration Properties -&gt; c/c++ -&gt; Additional include Directories</p> <a class="read-more" href="/cnblogs/post/e-freertos-base/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-04T08:08:08&#43;08:00">
+            4 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/e-iar-project-setup/">iar 工程基本设置</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>IAR7.50</p>
+<blockquote>
+<p>J-Link 5.10m</p>
+</blockquote>
+</blockquote>
+<p>建立一个c工程： <br>
+project -&gt; Create new project <br>
+“Project Templates”选择empty project <br>
+选择工程目录下的prj（可自定义，主要是放IAR生成的相关文件）</p>
+<blockquote>
+<p>注意：没有更改的项，使用缺省设置！</p>
+</blockquote>
+<h1 id="general-options">General Options</h1>
+<p>主要设置：目标芯片, CMSIS库, 打印和输入函数</p>
+<h2 id="设备">设备</h2>
+<blockquote>
+<p>Target</p>
+<blockquote>
+<p>Device</p>
+</blockquote>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Atmel SAM4SD32C
+</span></span></code></pre></div><h2 id="cmsis">CMSIS</h2>
+<blockquote>
+<p>Library Configuration</p>
+</blockquote>
+<p>✔ Verify DownloadUse CMSIS <br>
+✔ DSP library</p>
+<h2 id="不使用低级库">不使用低级库</h2>
+<blockquote>
+<p>Library Configuration</p>
+</blockquote>
+<p>Library low-level interface implementation</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>None
+</span></span></code></pre></div><h2 id="打印和输入">打印和输入</h2>
+<blockquote>
+<p>Library Options</p>
+</blockquote>
+<p>Printf formatter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Large
+</span></span></code></pre></div><p>Scanf formatter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>small
+</span></span></code></pre></div><hr>
+<h1 id="runtime-checking">Runtime Checking</h1>
+<blockquote>
+<p>Note：一定要设置Preprocessor（C/C++和Assembler）！！！</p>
+</blockquote>
+<p>在C/C++ Complie和Linker中开启诊断程序：</p>
+<blockquote>
+<p>Diagnostics <br>
+✔ Enable remarks</p>
+</blockquote>
+<h2 id="cc-complie">C/C++ Complie</h2>
+<p>设置方言和程序的大小</p>
+<h3 id="c方言设置">C方言设置</h3>
+<blockquote>
+<p>Language1</p>
+<blockquote>
+<p>C dialect</p>
+</blockquote>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Require prototype
+</span></span></code></pre></div><h3 id="生成最小的程序">生成最小的程序</h3>
+<blockquote>
+<p>Optimizations</p> <a class="read-more" href="/cnblogs/post/e-iar-project-setup/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-02T08:08:08&#43;08:00">
+            2 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/golang-ubuntu-config/">install go on ubuntu</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>WSL: Ubuntu 18.04</p>
+</blockquote>
+<h1 id="1-install-go">1. install go</h1>
+<p><a href="https://dl.google.com/go/go1.13.10.linux-amd64.tar.gz">go1.13.10</a></p>
+<h2 id="1-unzip">1) unzip</h2>
+<p>rename:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /usr/local/go
+</span></span><span style="display:flex;"><span>sudo mv go 1.13
+</span></span></code></pre></div><h2 id="2-set-path">2) set path</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vi ~/.bashrc
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export GOROOT<span style="color:#f92672">=</span>/usr/local/go/1.13
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>export GOPATH<span style="color:#f92672">=</span>/home/tdtc/go
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$PATH:$GOROOT/bin:$GOPATH/bin
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bashrc
+</span></span></code></pre></div><h1 id="test">test</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go version
+</span></span></code></pre></div><h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://tecadmin.net/install-go-on-ubuntu/">How To Install Go 1.12 on Ubuntu 18.04 &amp; 16.04 LTS</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/golang-ubuntu-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-17T00:08:08&#43;08:00">
+            17 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/dev-service_registry-zk/">ZooKeeper Installation(Dev)</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Install ZooKeeper packages</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># sudo apt-get install openjdk-8-jre-headless</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sudo apt-get install zookeeper zookeeperd</span>
+</span></span></code></pre></div><p>If you need a cluster, configure the Conf file, otherwise ignore it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Configure ZooKeeper
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Common Configuration
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Edit the /etc/zookeeper/conf/zoo.cfg file to contain the following:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server.1<span style="color:#f92672">=</span>nsdb1:2888:3888
+</span></span><span style="display:flex;"><span>server.2<span style="color:#f92672">=</span>nsdb2:2888:3888
+</span></span><span style="display:flex;"><span>server.3<span style="color:#f92672">=</span>nsdb3:2888:3888
+</span></span><span style="display:flex;"><span>autopurge.snapRetainCount<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>autopurge.purgeInterval <span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Important<span style="color:#f92672">]</span>    Important
+</span></span><span style="display:flex;"><span>For production deployments it is recommended to configure the storage of snapshots in a different disk than the commit log, this is <span style="color:#66d9ef">done</span> by setting the parameters dataDir and dataLogDir in zoo.cfg. In addition we advice to use an SSD drive <span style="color:#66d9ef">for</span> the commit log.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Node-specific Configuration
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NSDB Node <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Create the /var/lib/zookeeper/myid file and edit it to contain the host’s ID:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo 1 &gt; /var/lib/zookeeper/myid</span>
+</span></span><span style="display:flex;"><span>NSDB Node <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Create the /var/lib/zookeeper/myid file and edit it to contain the host’s ID:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo 2 &gt; /var/lib/zookeeper/myid</span>
+</span></span><span style="display:flex;"><span>NSDB Node <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Create the /var/lib/zookeeper/myid file and edit it to contain the host’s ID:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo 3 &gt; /var/lib/zookeeper/myid</span>
+</span></span></code></pre></div><p>Restart ZooKeeper</p> <a class="read-more" href="/cnblogs/post/dev-service_registry-zk/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T18:08:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/cas-client-config/">cas client设置</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>The client and server are the same <a href="https://xiaobin80.gitee.io/cnblogs/post/cas-server-config/">thekeystore</a></p>
+</blockquote>
+<p>cas client version: 3.5.1(<a href="https://github.com/apereo/java-cas-client/tree/master/cas-client-core">cas-client-core-3.5.1</a>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://gitee.com/xiaobin80/cas-sample-java-webapp
+</span></span></code></pre></div><h1 id="1-config">1. config</h1>
+<p>web.xml(src\main\webapp\WEB-INF)</p>
+<h2 id="1-cas-single-sign-out-filter">1) CAS Single Sign Out Filter</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas
+</span></span></code></pre></div><h2 id="2-cas-authentication-filter">2) CAS Authentication Filter</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas/login
+</span></span></code></pre></div><h2 id="3-cas-validation-filter">3) CAS Validation Filter</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas
+</span></span></code></pre></div><h2 id="4-server-name">4) server name</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>localhost
+</span></span></code></pre></div><h1 id="2-keystore">2. keystore</h1>
+<p>copy</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/etc/cas/jetty/thekeystore
+</span></span></code></pre></div><p>to</p>
+<p>The disk root directory of the application. <br>
+For example:
+my application:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>D:<span style="color:#ae81ff">\p</span>rojects<span style="color:#ae81ff">\c</span>as-sample-java-webapp
+</span></span></code></pre></div><p>then <br>
+thekeystore file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>D:<span style="color:#ae81ff">\e</span>tc<span style="color:#ae81ff">\c</span>as<span style="color:#ae81ff">\j</span>etty<span style="color:#ae81ff">\t</span>hekeystore
+</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181113192532190.png" alt="win info"></p>
+<h1 id="3-build">3. build</h1>
+<p>alter context path(pom.xml):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;webApp&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;contextPath&gt;</span>/loginInfo<span style="color:#f92672">&lt;/contextPath&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;overrideDescriptor&gt;</span>${basedir}/etc/jetty/web.xml<span style="color:#f92672">&lt;/overrideDescriptor&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/webApp&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mvn clean package jetty:run-forked
+</span></span></code></pre></div><h2 id="1-run-directly">1) Run directly</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mvn jetty:run-forked
+</span></span></code></pre></div><h1 id="4-test">4. test</h1>
+<p>http://localhost:9080/loginInfo
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20190811082322077.png" alt="browser info">
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181115204456890.png" alt="cas info"></p> <a class="read-more" href="/cnblogs/post/cas-client-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T12:08:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/cas-server-config/">cas server设置</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Tomcat: V8.5.x</li>
+<li>Java: 1.8 x64</li>
+<li>MySQL: 5.5.x+</li>
+<li>OS: Win10 x64</li>
+</ul>
+<h1 id="下载部署包">下载部署包</h1>
+<blockquote>
+<p>使用gradle 的repo最高只支持gradle V4.3！</p>
+</blockquote>
+<h2 id="0-clone">0. clone</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/apereo/cas-gradle-overlay-template.git
+</span></span></code></pre></div><h2 id="1-set-gradle">1. set gradle</h2>
+<h3 id="1-extract">1) extract</h3>
+<p><a href="https://gradle.org/next-steps/?version=4.10.3&amp;format=bin">gradle-4.10.3-bin.zip</a></p>
+<h3 id="2-set-system-variable">2) set system variable</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  $PATH<span style="color:#f92672">=</span>$PATH;%GRADLE_HOME%<span style="color:#ae81ff">\b</span>in
+</span></span></code></pre></div><h2 id="2-build-war">2. build war</h2>
+<blockquote>
+<p>File location: cas\build\libs\cas.war</p>
+</blockquote>
+<h3 id="1-config-file">1) config file</h3>
+<p>gradle.properties</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cas.version<span style="color:#f92672">=</span>5.3.2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt;
+</span></span><span style="display:flex;"><span>cas.version<span style="color:#f92672">=</span>5.3.15.1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gradle.version<span style="color:#f92672">=</span>4.8
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt;
+</span></span><span style="display:flex;"><span>gradle.version<span style="color:#f92672">=</span>4.10.3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>springboot.version<span style="color:#f92672">=</span>1.5.14.RELEASE
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt;
+</span></span><span style="display:flex;"><span>springboot.version<span style="color:#f92672">=</span>1.5.18.RELEASE
+</span></span></code></pre></div><h3 id="2-build">2) build</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd cas-gradle-overlay-template
+</span></span><span style="display:flex;"><span>$gradle build
+</span></span></code></pre></div><h1 id="ii-run">II. Run</h1>
+<h2 id="0-keycertificate">0. key/certificate</h2>
+<h3 id="1-genkey">1) genkey</h3>
+<blockquote>
+<p>info:
+-dname &ldquo;CN=localhost,OU=test.com,O=test,L=WH,ST=HB,C=CN&rdquo;</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -genkey -keyalg RSA -alias thekeystore -keypass changeit -storepass changeit -keysize <span style="color:#ae81ff">2048</span> -keystore e:/etc/cas/thekeystore
+</span></span></code></pre></div><h3 id="2-export">2) export</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -export -alias thekeystore -file e:/etc/cas/cas5311.crt -keystore e:/etc/cas/thekeystore -storepass changeit
+</span></span></code></pre></div><h3 id="3-import">3) import</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -import -alias thekeystore -storepass changeit -file e:/etc/cas/cas5311.crt -keystore <span style="color:#e6db74">&#34;%JAVA_HOME%\jre\lib\security\cacerts&#34;</span>
+</span></span></code></pre></div><h2 id="1-set-tomcat">1. set tomcat</h2>
+<h3 id="1-thekeystore">1) thekeystore</h3>
+<p>copy thekeystore file to $TOMCAT_HOME/conf</p> <a class="read-more" href="/cnblogs/post/cas-server-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T10:08:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/redis-centos7-setup/">Redis Server installation FAQs</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>OS: CentOS 7 Minimal</p>
+</blockquote>
+<h1 id="0-open-files">0) open files</h1>
+<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ulimit -a
+</span></span><span style="display:flex;"><span>$vi /etc/systemd/system/redis.service
+</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LimitNOFILE<span style="color:#f92672">=</span><span style="color:#ae81ff">10032</span>
+</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
+<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$vi /etc/sysctl.conf
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net.core.somaxconn<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span>
+</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
+<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
+To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
+for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-centos7-setup/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T08:08:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs/page/7/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 8 of 9</span>
+	
+	    <a class="older-posts" href="/cnblogs/page/9/">Older Posts &rarr;</a>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>
