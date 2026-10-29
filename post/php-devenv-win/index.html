@@ -61,7 +61,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.166.0">
+    <meta name="generator" content="Hugo 0.169.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/php-devenv-win/" />
 
@@ -94,7 +94,7 @@
     },
     "headline": "Windows搭建PHP环境",
     "name": "Windows搭建PHP环境",
-    "wordCount":  539 ,
+    "wordCount":  574 ,
     "timeRequired": "PT3M",
     "inLanguage": {
       "@type": "Language",
@@ -426,7 +426,25 @@ C:\wamp64\bin\apache\apache2.4.65\bin\php.ini
 </code></pre><h3 id="ah01906">AH01906</h3>
 <pre tabindex="0"><code>localhost:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
 </code></pre><p>A: <a href="https://tdtc-hrb.github.io/cnblogs/post/ops_openssl">use interactive</a></p>
-
+<h2 id="cve">CVE</h2>
+<ul>
+<li><a href="https://www.php.net/archive/2026.php#2026-10-21-5">2026 - 01 and 02</a></li>
+<li><a href="https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC">php2shell - 109618 and 109619</a></li>
+</ul>
+<h3 id="cve-01-and-02-of-2026">cve 01 and 02 of 2026</h3>
+<blockquote>
+<p>Below PHP 8.6</p>
+</blockquote>
+<ul>
+<li>upload progress is Off</li>
+</ul>
+<pre tabindex="0"><code>session.upload_progress.enabled = Off
+session.upload_progress.enabled = 0
+</code></pre><ul>
+<li>memory limit is off</li>
+</ul>
+<pre tabindex="0"><code>memory_limit=-1
+</code></pre>
     </section>
 
 

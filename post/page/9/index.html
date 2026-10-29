@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.166.0">
+    <meta name="generator" content="Hugo 0.169.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -158,6 +158,46 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/redis-centos7-setup/">Redis Server installation FAQs</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>OS: CentOS 7 Minimal</p>
+</blockquote>
+<h1 id="0-open-files">0) open files</h1>
+<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ulimit -a
+</span></span><span style="display:flex;"><span>$vi /etc/systemd/system/redis.service
+</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LimitNOFILE<span style="color:#f92672">=</span><span style="color:#ae81ff">10032</span>
+</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
+<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$vi /etc/sysctl.conf
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net.core.somaxconn<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span>
+</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
+<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
+To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
+for this to take effect.</p> <a class="read-more" href="/cnblogs/post/redis-centos7-setup/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T08:08:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">

@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.166.0">
+    <meta name="generator" content="Hugo 0.169.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -160,6 +160,66 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/qt-serialport/">使用qt5编写Serial Port</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><img src="https://www.eltima.com/images/upload/products/spm/articles/howto/178.jpg" alt="RS-232 Testing Guide"></p>
+<h1 id="thread">thread</h1>
+<blockquote>
+<p>线程相关</p>
+</blockquote>
+<h2 id="asynchronously">asynchronously</h2>
+<p><a href="https://doc.qt.io/qt-5/qobject.html#connect">connect方法</a> 已实现异步。</p>
+<h2 id="synchronously">synchronously</h2>
+<p><a href="https://doc.qt.io/qt-5/qmutexlocker.html">qmutexlocker</a></p>
+<h3 id="创建信号锁">创建信号锁</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>m_mutex.lock();
+</span></span></code></pre></div><h2 id="信号">信号</h2>
+<p>为便于调用者获得线程的内部信息，我们需要提供信号。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>signals:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> error(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>s);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">timeout</span>(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>s);
+</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20200627152341.png" alt="program ui"></p>
+<h1 id="worker-method">Worker method</h1>
+<h2 id="init-port">Init Port</h2>
+<p>设置私有成员变量</p>
+<blockquote>
+<p>部分代码</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>m_waitTimeout <span style="color:#f92672">=</span> waitTimeout;
+</span></span></code></pre></div><h2 id="receive-data">Receive data</h2>
+<p>打开串口</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>m_serialPort<span style="color:#f92672">-&gt;</span>open(QIODevice<span style="color:#f92672">::</span>ReadWrite)) {
+</span></span><span style="display:flex;"><span>		qDebug() <span style="color:#f92672">&lt;&lt;</span> tr(<span style="color:#e6db74">&#34;Can&#39;t open %1, error code %2&#34;</span>)
+</span></span><span style="display:flex;"><span>			.arg(m_portName).arg(m_serialPort<span style="color:#f92672">-&gt;</span>error());
+</span></span><span style="display:flex;"><span>		m_serialPort<span style="color:#f92672">-&gt;</span>close();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>接收数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (m_serialPort<span style="color:#f92672">-&gt;</span>waitForReadyRead(<span style="color:#ae81ff">500</span>))
+</span></span><span style="display:flex;"><span>            responseData <span style="color:#f92672">+=</span> m_serialPort<span style="color:#f92672">-&gt;</span>read(<span style="color:#ae81ff">1024</span>);
+</span></span></code></pre></div><h1 id="deploy-for-windows">Deploy for windows</h1>
+<p>copy exe to target directory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>copy C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\P</span>rojects<span style="color:#ae81ff">\s</span>erialCommQt<span style="color:#ae81ff">\R</span>elease<span style="color:#ae81ff">\s</span>erialCommQt.exe C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\s</span>erialCommQt_qmake<span style="color:#ae81ff">\
+</span></span></span></code></pre></div><p>exec windeployqt:</p> <a class="read-more" href="/cnblogs/post/qt-serialport/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-02-23T08:18:08&#43;08:00">
+            23 Feb 2025
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -354,13 +414,6 @@ Controller.h</p>
 					<td>&gt;= 1.8.11</td>
 					<td>Maintained</td>
 			</tr>
-			<tr>
-					<td>7.2.Z</td>
-					<td>&gt;= 3.1.0</td>
-					<td>3.4.Z</td>
-					<td>&gt;= 1.8.11</td>
-					<td>Maintained</td>
-			</tr>
 	</tbody>
 </table>
 <h1 id="rbenv">RbEnv</h1>
@@ -376,7 +429,7 @@ the operation is the same as Ubuntu.</p>
 </blockquote>
 <ul>
 <li>Ubuntu <br>
-Ubuntu 20.04 default Ruby version is v2.7</li>
+Ubuntu 24.04 default Ruby version is v3.1</li>
 </ul>
 <pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
  libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
@@ -670,7 +723,28 @@ public class ReadXbf {
 <ul>
 <li>
 <p>v6.1 <br>
-6.1.x is the upcoming feature branch (<a href="https://calendar.spring.io/">November 2023</a>).</p> <a class="read-more" href="/cnblogs/post/java-servlet_versions/">&raquo;</a></p>
+6.1.x is the upcoming feature branch (<a href="https://calendar.spring.io/">November 2023</a>).</p>
+</li>
+<li>
+<p>v6.0 <br>
+As a major revision of the core framework, Spring Framework 6.0 comes with a Java 17+ baseline and a move to Jakarta EE 9+ (in the jakarta namespace), <br>
+with a focus on the recently released Jakarta EE 10 APIs such as Servlet 6.0 and JPA 3.1.</p>
+</li>
+<li>
+<p>v5.3 <br>
+5.3.x is the final feature branch of the 5th generation, with long-term support provided on JDK 8, JDK 11, JDK 17 and the Java EE 8 level.</p>
+</li>
+<li>
+<p>v4.3 <br>
+The 4.3.x line will enjoy an extended support life until 2020, within the general Spring Framework 4 system requirements (JDK 6+, Servlet 2.5+)
+but with a focus on recent servers such as Tomcat 8.5+ and WebSphere 8.5+ on JDK 7 and 8.</p>
+</li>
+<li>
+<p>v2.5.x <br>
+As of Spring 2.5, support for JDK 1.3 has been removed, following Sun&rsquo;s official deprecation of JDK 1.3 in late 2006. <br>
+If you haven&rsquo;t done so already, upgrade to JDK 1.4.2 or higher.</p>
+</li>
+</ul> <a class="read-more" href="/cnblogs/post/java-servlet_versions/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -807,53 +881,6 @@ git clone -b PHP-8.0.* https://github.com/php/php-src.git
 </code></pre><h2 id="label-name">Label name</h2>
 <p>Labels in PIC Assembler must be followed by a colon “:” <br>
 In MPASM the colon is optional.</p> <a class="read-more" href="/cnblogs/post/e-pic8_asm-tutor1/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2023-06-18T08:08:08&#43;08:00">
-            18 Jun 2023
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/e-pic8_asm-tutor1c/">MPASM to MPLAB XC8 PIC Assembler - Psects</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><ul>
-<li>MPASM supports absolute mode, using the ORG directive, or relocatable mode, using program sections.</li>
-<li>PIC Assembler only supports the relocatable mode.</li>
-</ul>
-<h2 id="lacing-psects-into-memory">lacing Psects into Memory</h2>
-<table>
-	<thead>
-			<tr>
-					<th>MPASM</th>
-					<th>XC8 Assembler</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>ORG</td>
-					<td>PSECT</td>
-			</tr>
-	</tbody>
-</table>
-<ul>
-<li>Since the tutorials use the absolute mode you will need to remove the ORG directive and add a program section for the code and data. <br>
-I have just added a code section for all the instructions and used the already defined equates to access the data memory variables (user registers).
-So, I have just replaced the ORG directive with the PSECT directive like this:</li>
-</ul>
-<pre tabindex="0"><code>PSECT Reset_Vec,class=CODE,delta=2
-</code></pre><p>other:</p> <a class="read-more" href="/cnblogs/post/e-pic8_asm-tutor1c/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

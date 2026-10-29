@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="前端（Web）IO 吞吐"/>
+<meta name="twitter:description" content="proxy_cache配置"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="前端（Web）IO 吞吐 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs/post/ops_nginx-buf/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="proxy_cache配置" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2026-10-29T13:38:08&#43;08:00" />
+
+    
+    
+
+    <title>前端（Web）IO 吞吐 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="proxy_cache配置" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.169.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/ops_nginx-buf/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "前端（Web）IO 吞吐",
+    "name": "前端（Web）IO 吞吐",
+    "wordCount":  732 ,
+    "timeRequired": "PT4M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "zh"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs/post/ops_nginx-buf/",
+    "datePublished": "2026-10-29T13:38Z",
+    "dateModified": "2026-10-29T13:38Z",
+    
+    
+    "description": "proxy_cache配置",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs/post/ops_nginx-buf/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">前端（Web）IO 吞吐</h1>
+        <small>proxy_cache配置</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2026-10-29T13:38:08&#43;08:00">
+            Oct 29, 2026
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>Nginx&rsquo;s I/O throughput</p>
+<h1 id="一安装">一、安装</h1>
+<p>OS: Dianbian 12 (SSH Server + Standard system utilities)</p>
+<h2 id="install">install</h2>
+<pre tabindex="0"><code>sudo apt update
+sudo apt install nginx
+</code></pre><p>default version:<code>1.22.1</code></p>
+<h3 id="upgrade">upgrade</h3>
+<pre tabindex="0"><code>sudo apt update
+sudo apt full-upgrade
+</code></pre><p>You need to complete the following series of operations first.</p>
+<h4 id="install-the-prerequisites">Install the prerequisites</h4>
+<pre tabindex="0"><code>sudo apt install curl gnupg2 ca-certificates lsb-release debian-archive-keyring
+</code></pre><h4 id="official-nginx-signing-key">official nginx signing key</h4>
+<ul>
+<li>Fetch the key</li>
+</ul>
+<pre tabindex="0"><code>curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
+    | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg &gt;/dev/null
+</code></pre><ul>
+<li>stable</li>
+</ul>
+<pre tabindex="0"><code>echo &#34;deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
+https://nginx.org/packages/debian `lsb_release -cs` nginx&#34; \
+    | sudo tee /etc/apt/sources.list.d/nginx.list
+</code></pre><h1 id="二配置">二、配置</h1>
+<p>The key configurations to remember:</p>
+<ul>
+<li>proxy_cache_path: Define cache storage, size limits, and shared memory zones</li>
+<li>proxy_cache_valid: Set TTL per HTTP status code</li>
+<li>proxy_ignore_headers: Override backend cache control for consistent caching</li>
+<li>proxy_cache_lock: Prevent thundering herd on cache misses</li>
+<li>proxy_cache_use_stale: Serve stale content during updates and failures</li>
+<li>proxy_cache_background_update: Update cache without user-visible latency</li>
+</ul>
+<h3 id="startup">startup</h3>
+<p>Once configuration is complete, start Nginx:</p>
+<pre tabindex="0"><code>sudo systemctl enable --now nginx
+</code></pre><p>config file: <code>/etc/nginx/nginx.conf</code></p>
+<h3 id="defining-the-cache-zone">Defining the Cache Zone</h3>
+<p>The proxy_cache_path directive defines where NGINX stores cached content and how the cache is managed:</p>
+<pre tabindex="0"><code>proxy_cache_path /var/cache/nginx/proxy_cache
+    levels=1:2
+    keys_zone=my_cache:10m
+    max_size=1g
+    inactive=60m
+    use_temp_path=off;
+</code></pre><ul>
+<li><code>/var/cache/nginx/proxy_cache</code>: The filesystem path where cached content is stored. Create this directory with proper permissions:</li>
+</ul>
+<pre tabindex="0"><code>mkdir -p /var/cache/nginx/proxy_cache
+chown nginx:nginx /var/cache/nginx/proxy_cache
+</code></pre><h3 id="complete-production-configuration">Complete Production Configuration</h3>
+<pre tabindex="0"><code># Cache path definition (place in http context)
+proxy_cache_path /var/cache/nginx/proxy_cache
+    levels=1:2
+    keys_zone=main_cache:100m
+    max_size=10g
+    inactive=24h
+    use_temp_path=off;
+
+# Microcache for API responses
+proxy_cache_path /var/cache/nginx/api_cache
+    levels=1:2
+    keys_zone=api_cache:10m
+    max_size=1g
+    inactive=10m
+    use_temp_path=off;
+
+upstream backend {
+    server 127.0.0.1:8080;
+    keepalive 32;
+}
+
+server {
+    listen 80;
+    server_name example.com;
+
+    # Static assets - long cache
+    location /static {
+        proxy_pass http://backend;
+        proxy_cache main_cache;
+        proxy_cache_valid 200 7d;
+        proxy_cache_valid 404 1m;
+
+        proxy_cache_use_stale error timeout http_500 http_502 http_503 http_504;
+
+        add_header X-Cache-Status $upstream_cache_status always;
+    }
+
+    # API endpoints - microcaching
+    location /api {
+        proxy_pass http://backend;
+        proxy_cache api_cache;
+        proxy_cache_valid 200 1s;
+
+        proxy_ignore_headers Cache-Control Expires Set-Cookie;
+        proxy_cache_lock on;
+        proxy_cache_lock_timeout 3s;
+
+        # Bypass cache for authenticated requests
+        proxy_cache_bypass $http_authorization;
+        proxy_no_cache $http_authorization;
+
+        add_header X-Cache-Status $upstream_cache_status always;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    # Default - standard caching with stale-while-revalidate
+    location / {
+        proxy_pass http://backend;
+        proxy_cache main_cache;
+        proxy_cache_valid 200 5m;
+        proxy_cache_valid 301 302 1h;
+        proxy_cache_valid 404 1m;
+
+        proxy_ignore_headers Cache-Control Expires;
+
+        proxy_cache_use_stale updating error timeout http_500 http_502 http_503 http_504;
+        proxy_cache_background_update on;
+        proxy_cache_lock on;
+
+        # Bypass for logged-in users
+        proxy_cache_bypass $cookie_session;
+        proxy_no_cache $cookie_session;
+
+        add_header X-Cache-Status $upstream_cache_status always;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        # Upstream connection keepalive
+        proxy_http_version 1.1;
+        proxy_set_header Connection &#34;&#34;;
+    }
+}
+</code></pre><h2 id="scenarios">Scenarios</h2>
+<ul>
+<li>Ignoring Backend Cache Headers</li>
+<li>Microcaching: Caching Dynamic Content</li>
+<li>Thundering Herd Prevention with proxy_cache_lock</li>
+<li>Stale-While-Revalidate Pattern</li>
+<li>Cache Bypass and Conditional Caching</li>
+<li>Bypassing Cache for Logged-In Users</li>
+<li>Cache Key Configuration</li>
+<li>Minimum Uses Before Caching</li>
+</ul>
+<h3 id="ignoring-backend-cache-headers">Ignoring Backend Cache Headers</h3>
+<pre tabindex="0"><code>location / {
+    proxy_pass http://backend;
+    proxy_cache my_cache;
+    proxy_cache_valid 200 10m;
+
+    # Ignore backend cache control headers
+    proxy_ignore_headers Cache-Control Expires;
+
+    add_header X-Cache-Status $upstream_cache_status always;
+}
+</code></pre><h3 id="microcaching-caching-dynamic-content">Microcaching: Caching Dynamic Content</h3>
+<pre tabindex="0"><code>location /api {
+    proxy_pass http://backend;
+    proxy_cache my_cache;
+
+    # Cache for just 1 second
+    proxy_cache_valid 200 1s;
+
+    # Ignore backend cache headers (critical for microcaching)
+    proxy_ignore_headers Cache-Control Expires Set-Cookie;
+
+    # Prevent thundering herd
+    proxy_cache_lock on;
+
+    add_header X-Cache-Status $upstream_cache_status always;
+}
+</code></pre><h3 id="thundering-herd-prevention-with-proxy_cache_lock">Thundering Herd Prevention with proxy_cache_lock</h3>
+<pre tabindex="0"><code>location / {
+    proxy_pass http://backend;
+    proxy_cache my_cache;
+    proxy_cache_valid 200 10m;
+
+    # Only one request fetches from backend
+    proxy_cache_lock on;
+
+    # How long to wait for lock before fetching anyway
+    proxy_cache_lock_timeout 5s;
+
+    # How long a request can hold the lock
+    proxy_cache_lock_age 5s;
+
+    add_header X-Cache-Status $upstream_cache_status always;
+}
+</code></pre><h3 id="stale-while-revalidate-pattern">Stale-While-Revalidate Pattern</h3>
+<pre tabindex="0"><code>location / {
+    proxy_pass http://backend;
+    proxy_cache my_cache;
+    proxy_cache_valid 200 5m;
+
+    # Serve stale content while updating
+    proxy_cache_use_stale updating error timeout http_500 http_502 http_503 http_504;
+
+    # Update cache in background subrequest
+    proxy_cache_background_update on;
+
+    # Prevent thundering herd
+    proxy_cache_lock on;
+
+    add_header X-Cache-Status $upstream_cache_status always;
+}
+</code></pre><h3 id="cache-bypass-and-conditional-caching">Cache Bypass and Conditional Caching</h3>
+<pre tabindex="0"><code>location / {
+    proxy_pass http://backend;
+    proxy_cache my_cache;
+    proxy_cache_valid 200 10m;
+
+    # Bypass cache for requests with nocache cookie or argument
+    proxy_cache_bypass $cookie_nocache $arg_nocache;
+
+    # Don&#39;t store response in cache for these requests
+    proxy_no_cache $cookie_nocache $arg_nocache;
+
+    add_header X-Cache-Status $upstream_cache_status always;
+}
+</code></pre><h3 id="bypassing-cache-for-logged-in-users">Bypassing Cache for Logged-In Users</h3>
+<pre tabindex="0"><code>location / {
+    proxy_pass http://backend;
+    proxy_cache my_cache;
+    proxy_cache_valid 200 10m;
+
+    # Bypass cache if session cookie exists
+    proxy_cache_bypass $cookie_session $cookie_PHPSESSID;
+    proxy_no_cache $cookie_session $cookie_PHPSESSID;
+
+    add_header X-Cache-Status $upstream_cache_status always;
+}
+</code></pre><h3 id="cache-key-configuration">Cache Key Configuration</h3>
+<pre tabindex="0"><code>location / {
+    proxy_pass http://backend;
+    proxy_cache my_cache;
+    proxy_cache_valid 200 10m;
+
+    # Default cache key
+    proxy_cache_key $scheme$proxy_host$request_uri;
+
+    add_header X-Cache-Status $upstream_cache_status always;
+}
+</code></pre><h3 id="minimum-uses-before-caching">Minimum Uses Before Caching</h3>
+<pre tabindex="0"><code>location /assets {
+    proxy_pass http://backend;
+    proxy_cache my_cache;
+    proxy_cache_valid 200 1h;
+
+    # Only cache after 3 requests
+    proxy_cache_min_uses 3;
+
+    add_header X-Cache-Status $upstream_cache_status always;
+}
+</code></pre><h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://nginx.org/en/linux_packages.html">nginx: Linux packages</a></li>
+<li><a href="https://www.getpagespeed.com/server-setup/nginx/nginx-proxy-cache-microcaching">NGINX Proxy Cache &amp; Microcaching: Complete Guide</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e5%89%8d%e7%ab%af%ef%bc%88Web%ef%bc%89IO%20%e5%90%9e%e5%90%90&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fops_nginx-buf%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fops_nginx-buf%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fops_nginx-buf%2f&amp;description=%e5%89%8d%e7%ab%af%ef%bc%88Web%ef%bc%89IO%20%e5%90%9e%e5%90%90"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs%2fpost%2fops_nginx-buf%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs/post/e-avr8-gnu-toolchain/">
+          <section class="post">
+              <h2>avr gnu toolchain 开发环境</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs/js/index.js"></script>
+    
+</body>
+</html>
+

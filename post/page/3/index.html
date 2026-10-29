@@ -57,7 +57,7 @@
         <link href='/cnblogs/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
       
     
-    <meta name="generator" content="Hugo 0.166.0">
+    <meta name="generator" content="Hugo 0.169.0">
 
     <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs/post/" />
 
@@ -160,6 +160,108 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs/post/c2plus-overflow3-gcc/">size_t warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: CDT + <a href="https://github.com/niXman/mingw-builds-binaries">Mingw 13.1.0</a></li>
+</ul>
+<hr>
+<p><strong>NOTE</strong></p>
+<h2 id="no-warning-messages-are-displayed-in-cdt">No warning messages are displayed in CDT.</h2>
+<h2 id="heapsort">heapsort</h2>
+<pre tabindex="0"><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// TIP To &lt;b&gt;Run&lt;/b&gt; code, press &lt;shortcut actionId=&#34;Run&#34;/&gt; or click the &lt;icon src=&#34;AllIcons.Actions.Execute&#34;/&gt; icon in the gutter.
+/**
+ * Internal method for heapsort.
+ * i is the index of an item in the heap.
+ * Returns the index of the left child.
+ */
+inline int leftChild( int i )
+{
+    return 2 * i + 1;
+}
+
+/**
+ * Internal method for heapsort that is used in deleteMax and buildHeap.
+ * i is the position from which to percolate down.
+ * n is the logical size of the binary heap.
+ */
+template &lt;typename Comparable&gt;
+void percDown( vector&lt;Comparable&gt; &amp; a, int i, int n )
+{
+    int child;
+    Comparable tmp;
+
+    for( tmp = std::move( a[ i ] ); leftChild( i ) &lt; n; i = child )
+    {
+        child = leftChild( i );
+        if( child != n-1 &amp;&amp; a[ child ] &lt; a[ child + 1 ] )
+            ++child;
+        if( tmp &lt; a[ child ] )
+            a[ i ] = std::move( a[ child ] );
+        else
+            break;
+    }
+    a[ i ] = std::move( tmp );
+}
+
+/**
+ * Standard heapsort.
+ */
+template &lt;typename Comparable&gt;
+void heapsort( vector&lt;Comparable&gt; &amp; a)
+{
+    for( int i = a.size( ) / 2- 1; i &gt;= 0; --i ) /* buildHeap */
+        percDown( a, i, a.size() );
+    for( int j = a.size( )- 1; j &gt; 0; --j )
+    {
+        std::swap( a[ 0 ], a[ j ] ); /* deleteMax */
+        percDown( a, 0, j );
+    }
+}
+
+int main() {
+    vector v = {81, 94, 11, 96, 12, 35, 17, 95, 28, 58, 41, 75, 15};
+    heapsort(v);
+
+    for(int i : v)
+        cout &lt;&lt; i &lt;&lt; &#34; &#34;;
+
+    return 0;
+    // TIP See CLion help at &lt;a href=&#34;https://www.jetbrains.com/help/clion/&#34;&gt;jetbrains.com/help/clion/&lt;/a&gt;. Also, you can try interactive lessons for CLion by selecting &#39;Help | Learn IDE Features&#39; from the main menu.
+}
+</code></pre><ul>
+<li>Warn info - vs2022</li>
+</ul>
+<pre tabindex="0"><code>ConsoleApplication1.cpp(45,16): warning C4267: &#39;initializing&#39;: conversion from &#39;size_t&#39; to &#39;int&#39;, possible loss of data
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/6578048/size-t-vs-int-warning">size_t vs int warning</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c&#43;&#43;4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs/post/c2plus-overflow3-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2026-03-21T11:08:08&#43;08:00">
+            21 Mar 2026
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">
@@ -696,7 +798,11 @@ LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
 Did you restart the server after uncommenting the LoadModule line for mod_socache_shmcb?
 </code></pre><h3 id="basic-conf">basic conf</h3>
 <blockquote>
-<p>development</p> <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
+<p>development</p>
+<blockquote>
+<p>httpd-ssl.conf</p>
+</blockquote>
+</blockquote> <a class="read-more" href="/cnblogs/post/php-devenv-win/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -718,7 +824,15 @@ Did you restart the server after uncommenting the LoadModule line for mod_socach
     </header>
     <section class="post-excerpt">
         
-            <p><h1 id="prepare">Prepare</h1>
+            <p><p>AI 威胁下当前排名前 5 的编程语言：</p>
+<ol>
+<li>Perl：AI 在 Python 中生成脚本和文本处理要好得多，从而加速其彻底废弃。</li>
+<li>Ruby：废弃仓库比例很高；AI 整合趋势指向 TypeScript 和 Go，后者有更好的支持。</li>
+<li>Objective-C：Swift 正在取代它，而 AI 则简化了遗留代码的大规模迁移。</li>
+<li>Scala：几乎没有新代码；AI 优先考虑更简单且训练数据更多的语言。</li>
+<li>Haskell：训练数据稀少导致 AI 生成的代码质量低下，进一步降低了其采用率。</li>
+</ol>
+<h1 id="prepare">Prepare</h1>
 <ul>
 <li>
 <p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-debian/">nodejs</a></p>
@@ -827,47 +941,6 @@ controllers:
         
         <time class="post-date" datetime="2026-01-08T10:08:08&#43;08:00">
             8 Jan 2026
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs/post/docker_ce-cmd1/">docker(ce) command</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h2 id="1-清理image">1. 清理image</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker system prune -a
-</span></span></code></pre></div><h2 id="2-管理image">2. 管理image</h2>
-<h3 id="1-ps">1) ps</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dokcer ps
-</span></span></code></pre></div><h3 id="2-进入container">2) 进入container</h3>
-<p>fat shell:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker exec -it &lt;container-id&gt; bash
-</span></span></code></pre></div><p>simple shell:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker exec -it &lt;container-id&gt; sh
-</span></span></code></pre></div><h3 id="3container内执行">3)container内执行</h3>
-<p>查看:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat Gopkg.toml |more
-</span></span></code></pre></div><p>编辑:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt-get update
-</span></span><span style="display:flex;"><span>apt-get install vim -y
-</span></span><span style="display:flex;"><span>vi Gopkg.toml
-</span></span></code></pre></div><h3 id="4-stop-all-containers">4) stop all containers</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker stop <span style="color:#66d9ef">$(</span>sudo docker ps -q<span style="color:#66d9ef">)</span>
-</span></span></code></pre></div> <a class="read-more" href="/cnblogs/post/docker_ce-cmd1/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2025-12-31T08:08:08&#43;08:00">
-            31 Dec 2025
         </time>
     </footer>
 </article>
